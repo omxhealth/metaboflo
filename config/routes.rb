@@ -1,7 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :data_file_types
+
+  map.resources :data_files
+
   map.resources :cohorts
 
-  map.resources :samples
+  map.resources :samples do |sample|
+    sample.resources :data_files
+  end
 
   map.resources :patients
 

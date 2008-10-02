@@ -23,6 +23,6 @@
   <%=h @sample.taken_by %>
 </p>
 
-
+<%= link_to 'Data Files', sample_data_files_path(@sample) %> |
 <%= link_to 'Edit', edit_sample_path(@sample) %> |
 <%= link_to 'Back', samples_path %>

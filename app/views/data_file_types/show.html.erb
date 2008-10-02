@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @data_file_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @data_file_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_data_file_type_path(@data_file_type) %> |
+<%= link_to 'Back', data_file_types_path %>
