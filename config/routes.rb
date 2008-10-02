@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :cohorts
+
+  map.resources :samples
+
+  map.resources :patients
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

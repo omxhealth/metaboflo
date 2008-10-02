@@ -1,0 +1,20 @@
+<h1>Editing cohort</h1>
+
+<% form_for(@cohort) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @cohort %> |
+<%= link_to 'Back', cohorts_path %>

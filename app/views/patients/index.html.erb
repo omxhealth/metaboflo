@@ -1,0 +1,34 @@
+<h1>Listing patients</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>First name</th>
+    <th>Middle name</th>
+    <th>Last name</th>
+    <th>Birthdate</th>
+    <th>Gender</th>
+    <th>Height</th>
+    <th>Weight</th>
+  </tr>
+
+<% for patient in @patients %>
+  <tr>
+    <td><%=h patient.code %></td>
+    <td><%=h patient.first_name %></td>
+    <td><%=h patient.middle_name %></td>
+    <td><%=h patient.last_name %></td>
+    <td><%=h patient.birthdate %></td>
+    <td><%=h patient.gender %></td>
+    <td><%=h patient.height %></td>
+    <td><%=h patient.weight %></td>
+    <td><%= link_to 'Show', patient %></td>
+    <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+    <td><%= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New patient', new_patient_path %>

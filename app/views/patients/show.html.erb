@@ -1,0 +1,43 @@
+<p>
+  <b>Code:</b>
+  <%=h @patient.code %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%=h @patient.first_name %>
+</p>
+
+<p>
+  <b>Middle name:</b>
+  <%=h @patient.middle_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @patient.last_name %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%=h @patient.birthdate %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%=h @patient.gender %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @patient.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%=h @patient.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>

@@ -1,0 +1,28 @@
+<p>
+  <b>Amount:</b>
+  <%=h @sample.amount %>
+</p>
+
+<p>
+  <b>Barcode:</b>
+  <%=h @sample.barcode %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%=h @sample.patient_id %>
+</p>
+
+<p>
+  <b>Taken on:</b>
+  <%=h @sample.taken_on %>
+</p>
+
+<p>
+  <b>Taken by:</b>
+  <%=h @sample.taken_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_sample_path(@sample) %> |
+<%= link_to 'Back', samples_path %>

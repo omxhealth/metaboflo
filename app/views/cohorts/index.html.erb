@@ -1,0 +1,22 @@
+<h1>Listing cohorts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% for cohort in @cohorts %>
+  <tr>
+    <td><%=h cohort.name %></td>
+    <td><%=h cohort.description %></td>
+    <td><%= link_to 'Show', cohort %></td>
+    <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
+    <td><%= link_to 'Destroy', cohort, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cohort', new_cohort_path %>

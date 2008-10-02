@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  birthdate: 2008-09-25
+  gender: MyString
+  height: MyString
+  weight: 1.5
+
+two:
+  code: MyString
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  birthdate: 2008-09-25
+  gender: MyString
+  height: MyString
+  weight: 1.5

@@ -1,0 +1,82 @@
+  [4;36;1mSQL (0.000326)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.020014)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.013172)[0m   [0;1mCREATE DATABASE `duke_development` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m
+  [4;35;1mSQL (0.000112)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.000112)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000428)[0m   [0mCREATE DATABASE `duke_production` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m
+  [4;36;1mSQL (0.000177)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000112)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000451)[0m   [0;1mCREATE DATABASE `duke_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m
+  [4;36;1mSQL (0.000188)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000075)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000306)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.090291)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.101789)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.000405)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000476)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreatePatients (20080926000731)
+  [4;35;1mSQL (0.020118)[0m   [0mCREATE TABLE `patients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255), `first_name` varchar(255), `middle_name` varchar(255), `last_name` varchar(255), `birthdate` date, `gender` varchar(255), `height` varchar(255), `weight` float, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000893)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080926000731')[0m
+  [4;35;1mSQL (0.000575)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000137)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000194)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.002792)[0m   [0;1mSHOW FIELDS FROM `patients`[0m
+  [4;35;1mSQL (0.002226)[0m   [0mdescribe `patients`[0m
+  [4;36;1mSQL (0.001773)[0m   [0;1mSHOW KEYS FROM `patients`[0m
+  [4;36;1mSQL (0.000299)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000319)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.495279)[0m   [0;1mDROP DATABASE IF EXISTS `duke_development`[0m
+  [4;35;1mSQL (0.000145)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.000093)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.047943)[0m   [0mCREATE DATABASE `duke_development` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m
+  [4;36;1mSQL (0.000132)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000197)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000484)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.162017)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.043893)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.000754)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000455)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreatePatients (20080926000731)
+  [4;35;1mSQL (0.020976)[0m   [0mCREATE TABLE `patients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255), `first_name` varchar(255), `middle_name` varchar(255), `last_name` varchar(255), `birthdate` date, `gender` varchar(255), `height` varchar(255), `weight` float, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000901)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080926000731')[0m
+Migrating to CreateSamples (20080926003755)
+  [4;36;1mSQL (0.000207)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000108)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.024529)[0m   [0;1mDROP DATABASE IF EXISTS `duke_development`[0m
+  [4;35;1mSQL (0.000111)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.000109)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000427)[0m   [0mCREATE DATABASE `duke_development` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m
+  [4;36;1mSQL (0.000097)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.000068)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000519)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.003518)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.008281)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.000517)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000434)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreatePatients (20080926000731)
+  [4;35;1mSQL (0.003954)[0m   [0mCREATE TABLE `patients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255), `first_name` varchar(255), `middle_name` varchar(255), `last_name` varchar(255), `birthdate` date, `gender` varchar(255), `height` varchar(255), `weight` float, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000972)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080926000731')[0m
+Migrating to CreateSamples (20080926003755)
+  [4;35;1mSQL (0.024389)[0m   [0mCREATE TABLE `samples` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `patient_id` int(11), `amount` float, `barcode` varchar(255), `taken_on` date, `taken_by` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.003567)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080926003755')[0m
+Migrating to CreateCohorts (20081002210240)
+  [4;35;1mSQL (0.002818)[0m   [0mCREATE TABLE `cohorts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000868)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081002210240')[0m
+Migrating to CreateCohortAssignments (20081002210350)
+  [4;35;1mSQL (0.012148)[0m   [0mCREATE TABLE `cohort_assignments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `patient_id` int(11), `cohort_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000872)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081002210350')[0m
+  [4;35;1mSQL (0.000459)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000250)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000354)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.003061)[0m   [0;1mSHOW FIELDS FROM `cohort_assignments`[0m
+  [4;35;1mSQL (0.002638)[0m   [0mdescribe `cohort_assignments`[0m
+  [4;36;1mSQL (0.019430)[0m   [0;1mSHOW KEYS FROM `cohort_assignments`[0m
+  [4;35;1mSQL (0.019017)[0m   [0mSHOW FIELDS FROM `cohorts`[0m
+  [4;36;1mSQL (0.002135)[0m   [0;1mdescribe `cohorts`[0m
+  [4;35;1mSQL (0.000668)[0m   [0mSHOW KEYS FROM `cohorts`[0m
+  [4;36;1mSQL (0.021996)[0m   [0;1mSHOW FIELDS FROM `patients`[0m
+  [4;35;1mSQL (0.003321)[0m   [0mdescribe `patients`[0m
+  [4;36;1mSQL (0.000734)[0m   [0;1mSHOW KEYS FROM `patients`[0m
+  [4;35;1mSQL (0.002994)[0m   [0mSHOW FIELDS FROM `samples`[0m
+  [4;36;1mSQL (0.002293)[0m   [0;1mdescribe `samples`[0m
+  [4;35;1mSQL (0.000679)[0m   [0mSHOW KEYS FROM `samples`[0m
