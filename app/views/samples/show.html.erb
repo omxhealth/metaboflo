@@ -10,7 +10,7 @@
 
 <p>
   <b>Patient:</b>
-  <%=h @sample.patient_id %>
+  <%= link_to @sample.patient.name, patient_path(@sample.patient) %>
 </p>
 
 <p>

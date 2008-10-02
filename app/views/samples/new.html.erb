@@ -13,7 +13,7 @@
   </p>
   <p>
     <%= f.label :patient_id %><br />
-    <%= f.text_field :patient_id %>
+    <%= f.select :patient_id, Patient.all.collect {|p| [ "#{p.name} (#{p.code})", p.id ] }, { :include_blank => true } %>
   </p>
   <p>
     <%= f.label :taken_on %><br />
