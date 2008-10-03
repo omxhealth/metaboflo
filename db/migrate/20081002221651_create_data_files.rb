@@ -4,7 +4,7 @@ class CreateDataFiles < ActiveRecord::Migration
       t.integer :size
       t.string :content_type
       t.string :filename
-      t.string :comments, :limit => 10000
+      t.text :description, :limit => 10000
       t.references :data_file_type
       t.references :sample
 

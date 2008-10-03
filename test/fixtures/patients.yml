@@ -1,21 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  code: MyString
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
+  code: ABC123
+  first_name: Joe
+  middle_name: F
+  last_name: Shmoe
   birthdate: 2008-09-25
-  gender: MyString
-  height: MyString
+  gender: Male
+  height: 180
   weight: 1.5
 
 two:
-  code: MyString
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
+  code: AB456
+  first_name: Jane
+  middle_name: P
+  last_name: Doe
   birthdate: 2008-09-25
-  gender: MyString
-  height: MyString
+  gender: Female
+  height: 130
   weight: 1.5

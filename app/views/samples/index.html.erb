@@ -11,7 +11,7 @@
 
 <% for sample in @samples %>
   <tr>
-    <td><%=h sample.amount %></td>
+    <td><%=h sample.amount %> <%=h sample.unit %></td>
     <td><%=h sample.barcode %></td>
     <td><%=h sample.patient_id %></td>
     <td><%=h sample.taken_on %></td>

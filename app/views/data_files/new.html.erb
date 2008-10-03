@@ -12,8 +12,8 @@
     <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true } %>
 	</p>
   <p>
-    <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
   </p>
 	
   <p>

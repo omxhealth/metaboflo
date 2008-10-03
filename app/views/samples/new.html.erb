@@ -8,6 +8,10 @@
     <%= f.text_field :amount %>
   </p>
   <p>
+    <%= f.label :unit %><br />
+    <%= f.text_field :unit %>
+  </p>
+  <p>
     <%= f.label :barcode %><br />
     <%= f.text_field :barcode %>
   </p>
@@ -22,6 +26,10 @@
   <p>
     <%= f.label :taken_by %><br />
     <%= f.text_field :taken_by %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
   </p>
   <p>
     <%= f.submit "Create" %>

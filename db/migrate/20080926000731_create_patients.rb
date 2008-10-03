@@ -7,7 +7,7 @@ class CreatePatients < ActiveRecord::Migration
       t.string :last_name
       t.date :birthdate
       t.string :gender
-      t.string :height
+      t.float :height
       t.float :weight
 
       t.timestamps
