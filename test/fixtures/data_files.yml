@@ -3,9 +3,13 @@
 one:
   size: 1
   content_type: MyString
-  filename: MyString
+  filename: MS File
+  sample: one
+  data_file_type: one
 
 two:
   size: 1
   content_type: MyString
-  filename: MyString
+  filename: NMR File
+  sample: one
+  data_file_type: two

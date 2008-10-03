@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  description: MyString
+  name: Mass Spec
+  description: A Data file for Mass Spectrometry
 
 two:
-  name: MyString
-  description: MyString
+  name: NMR
+  description: A Data file for Nuclear Magnetic Resonance
+
+three:
+  name: HPLC
+  description: A Data file for High Performance Liquid Chromatography
