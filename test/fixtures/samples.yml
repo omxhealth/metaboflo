@@ -3,13 +3,13 @@
 one:
   amount: 1.5
   barcode: MyString
-  patient_id: 1
+  patient: one
   taken_on: 2008-09-25
   taken_by: 
 
 two:
   amount: 1.5
   barcode: MyString
-  patient_id: 1
+  patient: two
   taken_on: 2008-09-25
   taken_by: 

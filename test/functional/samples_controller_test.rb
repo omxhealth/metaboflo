@@ -14,7 +14,7 @@ class SamplesControllerTest < ActionController::TestCase
 
   def test_should_create_sample
     assert_difference('Sample.count') do
-      post :create, :sample => { }
+      post :create, :sample => { :patient_id => patients(:one) }
     end
 
     assert_redirected_to sample_path(assigns(:sample))
