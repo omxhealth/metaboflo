@@ -2,25 +2,24 @@
 
 <table>
   <tr>
+  	<th>Filename</th>
     <th>Size</th>
-    <th>Content type</th>
-    <th>Filename</th>
-		<th>Type</th>
+	<th>Type</th>
   </tr>
 
 <% for data_file in @data_files %>
   <tr>
+	<td><%=h data_file.data_file_type.name %></td>
     <td><%=h number_to_human_size(data_file.size) %></td>
-    <td><%=h data_file.content_type %></td>
-    <td><%=h data_file.filename %></td>
-		<td><%=h data_file.data_file_type.name %></td>
-    <td><%= link_to 'Show', data_file %></td>
-    <td><%= link_to 'Edit', edit_sample_data_file_path(@sample, data_file) %></td>
-    <td><%= link_to 'Destroy', sample_data_file_path(@sample, data_file), :confirm => 'Are you sure?', :method => :delete %></td>
+    <!--<td><%=h data_file.filename %></td>-->
+	<td><%= link_to h(data_file.filename), data_file_type_path(data_file.data_file_type) %></td>
+    <td><%= link_to 'File Information', sample_data_file_path(@sample, data_file) %></td>
+    <td><%= link_to 'Delete File', sample_data_file_path(@sample, data_file), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Upload new data file for this sample', new_sample_data_file_path(@sample) %>
+<%= link_to 'Upload new data file for this sample', new_sample_data_file_path(@sample) %> | 
+<%= link_to 'Back to Sample', sample_path(@sample) %>
