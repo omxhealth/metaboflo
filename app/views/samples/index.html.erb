@@ -25,4 +25,6 @@
 
 <br />
 
-<%= link_to 'New sample', new_sample_path %>
+<% unless @patient.nil? %>
+<%= link_to "New sample for patient #{@patient.code}", new_patient_sample_path(@patient) %>
+<% end %>

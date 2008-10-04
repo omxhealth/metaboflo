@@ -1,8 +1,14 @@
 class SamplesController < ApplicationController
+  before_filter :find_patient
+  
   # GET /samples
   # GET /samples.xml
   def index
-    @samples = Sample.find(:all)
+    if @patient
+      @samples = @patient.samples
+    else
+      @samples = Sample.find(:all)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +47,8 @@ class SamplesController < ApplicationController
   # POST /samples.xml
   def create
     @sample = Sample.new(params[:sample])
-
+    @sample.patient = @patient
+    
     respond_to do |format|
       if @sample.save
         flash[:notice] = 'Sample was successfully created.'
@@ -80,6 +87,18 @@ class SamplesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(samples_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def find_patient
+    if params[:patient_id]
+      @patient = Patient.find(params[:patient_id])
+    elsif ['new', 'create'].include?(action_name)
+      flash[:notice] = "Patient must be specified."
+      respond_to do |format|
+        format.html { redirect_to samples_url }
+        format.xml { redirect_to formatted_samples_url }
+      end
     end
   end
 end
