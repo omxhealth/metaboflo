@@ -14,7 +14,7 @@ class DataFileTypesControllerTest < ActionController::TestCase
 
   def test_should_create_data_file_type
     assert_difference('DataFileType.count') do
-      post :create, :data_file_type => { }
+      post :create, :data_file_type => { :name => 'txt' }
     end
 
     assert_redirected_to data_file_type_path(assigns(:data_file_type))

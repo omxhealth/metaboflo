@@ -14,7 +14,7 @@ class CohortsControllerTest < ActionController::TestCase
 
   def test_should_create_cohort
     assert_difference('Cohort.count') do
-      post :create, :cohort => { }
+      post :create, :cohort => { :name => 'abc' }
     end
 
     assert_redirected_to cohort_path(assigns(:cohort))
