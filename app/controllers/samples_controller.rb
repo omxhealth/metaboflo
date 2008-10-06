@@ -19,7 +19,7 @@ class SamplesController < ApplicationController
   # GET /samples/1
   # GET /samples/1.xml
   def show
-    @sample = Sample.find(params[:id])
+    @sample = @patient.samples.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -52,7 +52,7 @@ class SamplesController < ApplicationController
     respond_to do |format|
       if @sample.save
         flash[:notice] = 'Sample was successfully created.'
-        format.html { redirect_to(@sample) }
+        format.html { redirect_to(patient_sample_url(@patient, @sample)) }
         format.xml  { render :xml => @sample, :status => :created, :location => @sample }
       else
         format.html { render :action => "new" }
@@ -69,7 +69,7 @@ class SamplesController < ApplicationController
     respond_to do |format|
       if @sample.update_attributes(params[:sample])
         flash[:notice] = 'Sample was successfully updated.'
-        format.html { redirect_to(@sample) }
+        format.html { redirect_to(patient_sample_url(@patient, @sample)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,7 +85,7 @@ class SamplesController < ApplicationController
     @sample.destroy
 
     respond_to do |format|
-      format.html { redirect_to(samples_url) }
+      format.html { redirect_to(patient_samples_url(@patient)) }
       format.xml  { head :ok }
     end
   end
@@ -93,7 +93,7 @@ class SamplesController < ApplicationController
   def find_patient
     if params[:patient_id]
       @patient = Patient.find(params[:patient_id])
-    elsif ['new', 'create'].include?(action_name)
+    elsif action_name != 'index'
       flash[:notice] = "Patient must be specified."
       respond_to do |format|
         format.html { redirect_to samples_url }

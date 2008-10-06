@@ -8,11 +8,24 @@
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
+<h1>Duke LIMS</h1>
 <%= link_to 'Patients', patients_path %> |
 <%= link_to 'Samples', samples_path %>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
+<% unless @patient.nil? %>
+<ul>
+	<li>
+	<%= link_to "Patient #{@patient.code}", patient_path(@patient) %>
+	<ul>
+		<% @patient.samples.each do |sample| %>
+		<li><%= link_to "Sample #{sample.id}", sample_path(sample) %></li>
+		<% end %>
+	</ul>
+	</li>
+</ul>
+<% end %>
 <%= yield  %>
 
 </body>
