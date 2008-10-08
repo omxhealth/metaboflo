@@ -16,9 +16,9 @@
     <td><%=h sample.patient_id %></td>
     <td><%=h sample.taken_on %></td>
     <td><%=h sample.taken_by %></td>
-    <td><%= link_to 'Show', sample %></td>
-    <td><%= link_to 'Edit', edit_sample_path(sample) %></td>
-    <td><%= link_to 'Destroy', sample, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', patient_sample_path(sample.patient, sample) %></td>
+    <td><%= link_to 'Edit', edit_patient_sample_path(sample.patient, sample) %></td>
+    <td><%= link_to 'Destroy', patient_sample_path(sample.patient, sample), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

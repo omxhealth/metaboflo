@@ -22,4 +22,4 @@
 <br />
 
 <%= link_to 'Upload new data file for this sample', new_sample_data_file_path(@sample) %> | 
-<%= link_to 'Back to Sample', sample_path(@sample) %>
+<%= link_to 'Back to Sample', patient_sample_path(@sample.patient, @sample) %>

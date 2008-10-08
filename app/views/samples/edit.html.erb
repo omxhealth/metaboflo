@@ -1,6 +1,6 @@
 <h1>Editing sample</h1>
 
-<% form_for(@sample) do |f| %>
+<% form_for([@patient, @sample]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label :unit %><br />
-    <%= f.text_field :unit %>
+    <%= f.select :unit, ['ml', 'g'], :include_blank => true %>
   </p>
   <p>
     <%= f.label :barcode %><br />
@@ -32,5 +32,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @sample %> |
-<%= link_to 'Back', samples_path %>
+<%= link_to 'Show', patient_sample_path(@sample.patient, @sample) %>

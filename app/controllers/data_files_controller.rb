@@ -68,5 +68,6 @@ class DataFilesController < ApplicationController
   private 
   def find_sample
     @sample = Sample.find(params[:sample_id])
+    @patient = @sample.patient
   end  
 end

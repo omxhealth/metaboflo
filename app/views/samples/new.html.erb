@@ -9,7 +9,7 @@
   </p>
   <p>
     <%= f.label :unit %><br />
-    <%= f.text_field :unit %>
+    <%= f.select :unit, ['ml', 'g'], :include_blank => true %>
   </p>
   <p>
     <%= f.label :barcode %><br />
@@ -31,5 +31,3 @@
     <%= f.submit "Create" %>
   </p>
 <% end %>
-
-<%= link_to 'Back', samples_path %>

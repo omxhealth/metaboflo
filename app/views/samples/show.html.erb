@@ -29,5 +29,4 @@
 </p>
 
 <%= link_to 'Data Files', sample_data_files_path(@sample) %> |
-<%= link_to 'Edit', edit_sample_path(@sample) %> |
-<%= link_to 'Back', samples_path %>
+<%= link_to 'Edit', edit_patient_sample_path(@sample.patient, @sample) %>

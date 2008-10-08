@@ -21,11 +21,11 @@
   </p>
   <p>
     <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate %>
+    <%= f.date_select :birthdate, :order => [:day, :month, :year] %>
   </p>
   <p>
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= f.select :gender, ['Male', 'Female'], :include_blank => true %>
   </p>
   <p>
     <%= f.label :height %><br />

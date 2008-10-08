@@ -6,7 +6,7 @@ class Patient < ActiveRecord::Base
   
   validates_presence_of :code
   validates_numericality_of :height, :weight, :greater_than => 0, :allow_blank => true
-  validates_inclusion_of :gender, :in => ['Male', 'Female'], :allow_blank => true
+  validates_inclusion_of :gender, :in => ['Male', 'Female'], :allow_blank => true, :message => 'must be either Male or Female'
   
   def name
     "#{self.first_name} #{self.middle_name} #{self.last_name}".gsub(/\s+/, " ").strip

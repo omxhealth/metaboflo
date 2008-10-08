@@ -4,6 +4,8 @@ body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
+	margin: 0;
+/*	padding: 0;*/
 }
 
 pre {
@@ -52,3 +54,92 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+/* Layout CSS */
+div#container {
+	min-width: 47em;
+/*	max-width: 77em;*/
+	min-height: 100%;
+}
+
+div#headerbar {
+	background-color: #001a57;
+	height: 6em;
+}
+
+div#menu {
+	background-color: #001a57;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 0.4em;
+}
+
+div#menu a.menu {
+	text-decoration: none;
+	color: #cccc00;
+	font-weight: bold;
+}
+
+div#menu a:hover.menu {
+	color: #ffffff;
+	background-color: #001a57;
+}
+
+div#main {
+/*	height: 28em;*/
+	padding: 0.5em;
+}
+
+div#sidebar {
+	min-height: 28em;
+	width: 20em;
+	float: left;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+div#tree ul {
+	padding-left: 2em;
+}
+
+div#tree li.patient {
+	list-style-image: url(/images/patient.jpg);
+}
+
+div#tree li.sample {
+	list-style-image: url(/images/kidney.jpg);
+}
+
+div#tree li.report {
+	list-style-image: url(/images/report.jpg);
+}
+
+div#tree a {
+	text-decoration: none;
+}
+
+div#tree a:hover {
+	color: #001a57;
+	background-color: #fff;
+}
+
+div#tree a.create {
+	color: green;
+}
+
+div#tree a:hover.create {
+	color: #000;
+}
+
+div#content {
+	min-height: 28em;
+	height: 100%;
+	min-width: -20em;
+	overflow: auto;
+	padding-left: 0.5em;
+	border-left: 1px solid black;
+}
+
+div#footerbar {
+	width: 100%;
+	text-align: center;
+}
