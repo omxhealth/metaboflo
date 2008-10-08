@@ -5,17 +5,17 @@ one:
   first_name: Joe
   middle_name: F
   last_name: Shmoe
-  birthdate: 2008-09-25
+  birthdate: 2000-09-25
   gender: Male
   height: 180
-  weight: 1.5
+  weight: 190
 
 two:
   code: AB456
   first_name: Jane
   middle_name: P
   last_name: Doe
-  birthdate: 2008-09-25
+  birthdate: 1954-08-22
   gender: Female
   height: 130
-  weight: 1.5
+  weight: 110

@@ -1,4 +1,4 @@
-<h1>Listing samples</h1>
+<h1>Samples</h1>
 
 <table>
   <tr>
@@ -13,7 +13,7 @@
   <tr>
     <td><%=h sample.amount %> <%=h sample.unit %></td>
     <td><%=h sample.barcode %></td>
-    <td><%=h sample.patient_id %></td>
+    <td><%=h sample.patient.code %></td>
     <td><%=h sample.taken_on %></td>
     <td><%=h sample.taken_by %></td>
     <td><%= link_to 'Show', patient_sample_path(sample.patient, sample) %></td>

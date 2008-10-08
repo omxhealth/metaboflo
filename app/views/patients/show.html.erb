@@ -1,3 +1,5 @@
+<h1>Information for Patient <%=@patient.code%></h1>
+
 <p>
   <b>Code:</b>
   <%=h @patient.code %>
@@ -38,6 +40,7 @@
   <%=h @patient.weight %>
 </p>
 
+<br />
 
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Back to all patients', patients_path %>

@@ -1,4 +1,4 @@
-<h1>Editing patient</h1>
+<h1>Editing Patient <%=@patient.code%></h1>
 
 <% form_for(@patient) do |f| %>
   <%= f.error_messages %>
@@ -35,10 +35,13 @@
     <%= f.label :weight %><br />
     <%= f.text_field :weight %>
   </p>
+  <br />
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 
+<br />
+
 <%= link_to 'Show', @patient %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Back to all patients', patients_path %>

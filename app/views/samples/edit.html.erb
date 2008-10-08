@@ -1,4 +1,4 @@
-<h1>Editing sample</h1>
+<h1>Editing Sample</h1>
 
 <% form_for([@patient, @sample]) do |f| %>
   <%= f.error_messages %>
@@ -31,5 +31,7 @@
     <%= f.submit "Update" %>
   </p>
 <% end %>
+
+<br />
 
 <%= link_to 'Show', patient_sample_path(@sample.patient, @sample) %>

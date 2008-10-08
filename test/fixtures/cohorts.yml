@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  description: MyString
+  name: Cancer Study 2A
+  description: A study of cancer
 
 two:
-  name: MyString
-  description: MyString
+  name: Metabolomics Study
+  description: Group of patients
+
+three:
+  name: Heart Disease Study
+  description: Group of patients

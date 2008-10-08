@@ -2,14 +2,32 @@
 
 one:
   amount: 1.5
-  barcode: MyString
+  unit: ml
+  barcode: 12346
   patient: one
   taken_on: 2008-09-25
   taken_by: 
-
+      
 two:
-  amount: 1.5
-  barcode: MyString
+  amount: 500
+  unit: g
+  barcode: 12345
   patient: two
+  taken_on: 2008-09-25
+  taken_by: 
+      
+three:
+  amount: 150.3
+  unit: ml
+  barcode: 12347
+  patient: one
+  taken_on: 2008-09-25
+  taken_by: 
+      
+four:
+  amount: 10.3
+  unit: ml
+  barcode: 12348
+  patient: one
   taken_on: 2008-09-25
   taken_by: 

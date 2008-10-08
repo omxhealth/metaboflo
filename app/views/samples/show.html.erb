@@ -28,5 +28,14 @@
   <%=h @sample.description %>
 </p>
 
-<%= link_to 'Data Files', sample_data_files_path(@sample) %> |
+<p>
+  <b>Data Files:</b>
+  <%=h @sample.data_files.length %>
+  <% if @sample.data_files.length > 0 %>
+    (<%= link_to 'Show', sample_data_files_path(@sample) %>)
+  <% end %>
+</p>
+
+<br />
+
 <%= link_to 'Edit', edit_patient_sample_path(@sample.patient, @sample) %>
