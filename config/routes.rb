@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+#  map.resources :cohort_assignments
+
   map.resources :data_file_types
 
   map.resources :data_files
@@ -7,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :samples, :has_many => :data_files
 
-  map.resources :patients, :has_many => :samples
+  map.resources :patients, :has_many => [ :samples, :cohort_assignments ]
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -48,6 +50,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # map.connect ':controller/:action/:id'
+  # map.connect ':controller/:action/:id.:format'
 end

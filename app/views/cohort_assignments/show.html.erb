@@ -1,0 +1,8 @@
+<p>
+  <b>Cohort:</b>
+  <%=h @cohort_assignment.cohort.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_cohort_assignment_path(@patient, @cohort_assignment) %> |
+<%= link_to 'Back', patient_cohort_assignments_path(@patient) %>

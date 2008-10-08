@@ -19,7 +19,7 @@
 		<%= link_to 'Data file types', data_file_types_path, :class => 'menu' %>
 	</div>
 	<div id="main">
-		<% unless @patient.nil? || @patient.id.nil? -%>
+		<% unless @patient.nil? || @patient.new_record? -%>
 		<div id="sidebar">
 			<div id="tree">
 			<ul>
@@ -49,6 +49,17 @@
 							</ul>
 						</li>
 					</ul>
+					<ul>
+						<li class="report">
+							<%= link_to 'Cohorts', patient_cohort_assignments_path(@patient) %>
+							<ul>
+								<li class="report"><%= link_to 'Add to cohort', new_patient_cohort_assignment_path(@patient), :class => 'create' %></li>
+								<% @patient.cohort_assignments.each do |cohort_assignment| -%>
+								<li class="report"><%= link_to cohort_assignment.cohort.name, patient_cohort_assignment_path(@patient, cohort_assignment) %></li>
+								<% end -%>
+							</ul>
+						</li>
+					</ul>
 				</li>
 			</ul>
 			</div>
@@ -65,7 +76,7 @@
 		<% end -%>
 	</div>
 	<div id="footerbar">
-		&copy;2008 The University of Alberta
+
 	</div>
 </div>
 </body>

@@ -1,0 +1,2 @@
+module CohortAssignmentsHelper
+end

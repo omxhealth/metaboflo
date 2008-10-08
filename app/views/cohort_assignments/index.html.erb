@@ -1,0 +1,22 @@
+<h1>Listing cohort_assignments</h1>
+
+<table>
+  <tr>
+    <th>Patient</th>
+    <th>Cohort</th>
+  </tr>
+
+<% for cohort_assignment in @cohort_assignments %>
+  <tr>
+    <td><%=h cohort_assignment.patient.name %></td>
+    <td><%=h cohort_assignment.cohort.name %></td>
+    <td><%= link_to 'Show', patient_cohort_assignment_path(@patient, cohort_assignment) %></td>
+    <td><%= link_to 'Edit', edit_patient_cohort_assignment_path(@patient, cohort_assignment) %></td>
+    <td><%= link_to 'Destroy', patient_cohort_assignment_path(@patient, cohort_assignment), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cohort_assignment', new_patient_cohort_assignment_path(@patient) %>

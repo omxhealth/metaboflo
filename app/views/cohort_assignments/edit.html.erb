@@ -1,0 +1,16 @@
+<h1>Editing cohort_assignment</h1>
+
+<p>
+	Cohort: <%= @cohort_assignment.cohort.name %>
+</p>
+
+<% form_for([@patient, @cohort_assignment]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', patient_cohort_assignment_path(@patient, @cohort_assignment) %> |
+<%= link_to 'Back', patient_cohort_assignments_path(@patient) %>
