@@ -1,10 +1,10 @@
-<h1>Samples</h1>
+<h1><%= @patient ? "Samples for Patient #{@patient.code}" : 'All Samples' %></h1>
 
 <table>
   <tr>
     <th>Amount</th>
     <th>Barcode</th>
-    <th>Patient</th>
+    <th><%= 'Patient' unless @patient %></th>
     <th>Taken on</th>
     <th>Taken by</th>
   </tr>
@@ -13,7 +13,7 @@
   <tr>
     <td><%=h sample.amount %> <%=h sample.unit %></td>
     <td><%=h sample.barcode %></td>
-    <td><%=h sample.patient.code %></td>
+    <td><%=h(sample.patient.code) unless @patient %></td>
     <td><%=h sample.taken_on %></td>
     <td><%=h sample.taken_by %></td>
     <td><%= link_to 'Show', patient_sample_path(sample.patient, sample) %></td>

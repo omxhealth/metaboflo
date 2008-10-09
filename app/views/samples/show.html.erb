@@ -1,3 +1,5 @@
+<h1>Information for Sample <%= @sample.id %></h1>
+
 <p>
   <b>Amount:</b>
   <%=h @sample.amount %> <%=h @sample.unit %>
@@ -10,7 +12,7 @@
 
 <p>
   <b>Patient:</b>
-  <%= link_to @sample.patient.name, patient_path(@sample.patient) %>
+  <%= link_to @sample.patient.code, patient_path(@sample.patient) %>
 </p>
 
 <p>

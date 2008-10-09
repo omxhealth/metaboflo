@@ -8,6 +8,14 @@
   <%=h @cohort.description %>
 </p>
 
+<p>
+	<b>Patients in cohort:</b>
+	<ul>
+	<% @cohort.cohort_assignments.each do |ch| -%>
+	<li><%= ch.patient.name %></li>
+	<% end -%>
+	</ul>
+</p>
 
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
 <%= link_to 'Back', cohorts_path %>

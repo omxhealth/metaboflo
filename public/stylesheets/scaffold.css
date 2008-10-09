@@ -113,6 +113,10 @@ div#tree li.report {
 	list-style-image: url(/images/report.jpg);
 }
 
+div#tree li.cohort {
+	list-style-image: url(/images/cohort.png);
+}
+
 div#tree a {
 	text-decoration: none;
 }

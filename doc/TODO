@@ -1,1 +1,2 @@
 - Edit fixtures to have data_files
+- Add :dependent => [:destroy, :protect, etc.] rules for models
