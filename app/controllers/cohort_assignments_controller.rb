@@ -89,16 +89,4 @@ class CohortAssignmentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  def find_patient
-    if params[:patient_id]
-      @patient = Patient.find(params[:patient_id])
-    else
-      flash[:notice] = "Patient must be specified."
-      respond_to do |format|
-        format.html { redirect_to patients_url }
-        format.xml { redirect_to formatted_patients_url }
-      end
-    end
-  end
 end

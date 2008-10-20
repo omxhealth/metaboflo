@@ -1,0 +1,28 @@
+<h1>Listing cholesterols</h1>
+
+<table>
+  <tr>
+    <th>Patient</th>
+    <th>Collected at</th>
+    <th>Tested at</th>
+    <th>Level</th>
+    <th>Unit</th>
+  </tr>
+
+<% for cholesterol in @cholesterols %>
+  <tr>
+    <td><%=h cholesterol.patient %></td>
+    <td><%=h cholesterol.collected_at %></td>
+    <td><%=h cholesterol.tested_at %></td>
+    <td><%=h cholesterol.level %></td>
+    <td><%=h cholesterol.unit %></td>
+    <td><%= link_to 'Show', patient_cholesterol_path(@patient, cholesterol) %></td>
+    <td><%= link_to 'Edit', edit_patient_cholesterol_path(@patient, cholesterol) %></td>
+    <td><%= link_to 'Destroy', patient_cholesterol_path(@patient, cholesterol), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cholesterol', new_patient_cholesterol_path(@patient) %>

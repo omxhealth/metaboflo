@@ -1,0 +1,28 @@
+<h1>Editing medication</h1>
+
+<% form_for([@patient, @medication]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :patient %><br />
+    <%= f.text_field :patient %>
+  </p>
+  <p>
+    <%= f.label :drug %><br />
+    <%= f.text_field :drug %>
+  </p>
+  <p>
+    <%= f.label :started_on %><br />
+    <%= f.date_select :started_on %>
+  </p>
+  <p>
+    <%= f.label :stopped_on %><br />
+    <%= f.date_select :stopped_on %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', patient_medication_path(@patient, @medication) %> |
+<%= link_to 'Back', patient_medications_path(@patient) %>

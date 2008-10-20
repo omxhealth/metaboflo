@@ -1,0 +1,32 @@
+<h1>Editing cholesterol</h1>
+
+<% form_for([@patient, @cholesterol]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :patient %><br />
+    <%= f.text_field :patient %>
+  </p>
+  <p>
+    <%= f.label :collected_at %><br />
+    <%= f.date_select :collected_at %>
+  </p>
+  <p>
+    <%= f.label :tested_at %><br />
+    <%= f.date_select :tested_at %>
+  </p>
+  <p>
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </p>
+  <p>
+    <%= f.label :unit %><br />
+    <%= f.text_field :unit %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', patient_cholesterol_path(@patient, @cholesterol) %> |
+<%= link_to 'Back', patient_cholesterols_path(@patient) %>

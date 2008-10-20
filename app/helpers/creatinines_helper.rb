@@ -1,0 +1,2 @@
+module CreatininesHelper
+end

@@ -1,0 +1,23 @@
+<p>
+  <b>Patient:</b>
+  <%=h @medication.patient %>
+</p>
+
+<p>
+  <b>Drug:</b>
+  <%=h @medication.drug %>
+</p>
+
+<p>
+  <b>Started on:</b>
+  <%=h @medication.started_on %>
+</p>
+
+<p>
+  <b>Stopped on:</b>
+  <%=h @medication.stopped_on %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_medication_path(@patient, @medication) %> |
+<%= link_to 'Back', patient_medications_path(@patient) %>

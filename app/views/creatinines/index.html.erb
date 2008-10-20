@@ -1,0 +1,28 @@
+<h1>Listing creatinines</h1>
+
+<table>
+  <tr>
+    <th>Patient</th>
+    <th>Collected at</th>
+    <th>Tested at</th>
+    <th>Level</th>
+    <th>Unit</th>
+  </tr>
+
+<% for creatinine in @creatinines %>
+  <tr>
+    <td><%=h creatinine.patient %></td>
+    <td><%=h creatinine.collected_at %></td>
+    <td><%=h creatinine.tested_at %></td>
+    <td><%=h creatinine.level %></td>
+    <td><%=h creatinine.unit %></td>
+    <td><%= link_to 'Show', patient_creatinine_path(@patient, creatinine) %></td>
+    <td><%= link_to 'Edit', edit_patient_creatinine_path(@patient, creatinine) %></td>
+    <td><%= link_to 'Destroy', patient_creatinine_path(@patient, creatinine), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New creatinine', new_patient_creatinine_path(@patient) %>

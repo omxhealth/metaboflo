@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  patient: one
+  drug: MyString
+  started_on: 2008-10-19
+  stopped_on: 2008-10-19
+
+two:
+  patient: one
+  drug: MyString
+  started_on: 2008-10-19
+  stopped_on: 2008-10-19

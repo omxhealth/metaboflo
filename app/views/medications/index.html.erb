@@ -1,0 +1,26 @@
+<h1>Listing medications</h1>
+
+<table>
+  <tr>
+    <th>Patient</th>
+    <th>Drug</th>
+    <th>Started on</th>
+    <th>Stopped on</th>
+  </tr>
+
+<% for medication in @medications %>
+  <tr>
+    <td><%=h medication.patient %></td>
+    <td><%=h medication.drug %></td>
+    <td><%=h medication.started_on %></td>
+    <td><%=h medication.stopped_on %></td>
+    <td><%= link_to 'Show', patient_medication_path(@patient, medication) %></td>
+    <td><%= link_to 'Edit', edit_patient_medication_path(@patient, medication) %></td>
+    <td><%= link_to 'Destroy', patient_medication_path(@patient, medication), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New medication', new_patient_medication_path(@patient) %>

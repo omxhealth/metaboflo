@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+#  map.resources :creatinines
+
+#  map.resources :cholesterols
+
+#  map.resources :medications
+
 #  map.resources :cohort_assignments
 
   map.resources :data_file_types
@@ -9,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :samples, :has_many => :data_files
 
-  map.resources :patients, :has_many => [ :samples, :cohort_assignments ]
+  map.resources :patients, :has_many => [ :samples, :cohort_assignments, :cholesterols, :creatinines, :medications ]
 
   # The priority is based upon order of creation: first created -> highest priority.
 

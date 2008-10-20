@@ -14,4 +14,17 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+
+  protected
+    def find_patient
+      if params[:patient_id]
+        @patient = Patient.find(params[:patient_id])
+      else
+        flash[:notice] = "Patient must be specified."
+        respond_to do |format|
+          format.html { redirect_to patients_url }
+          format.xml { redirect_to formatted_patients_url }
+        end
+      end
+    end
 end

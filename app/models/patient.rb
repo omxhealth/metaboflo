@@ -4,6 +4,10 @@ class Patient < ActiveRecord::Base
   has_many :cohort_assignments, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments
   
+  has_many :medications
+  has_many :cholesterols, :order => 'tested_at ASC'
+  has_many :creatinines, :order => 'tested_at ASC'
+  
   validates_presence_of :code
   validates_numericality_of :height, :weight, :greater_than => 0, :allow_blank => true
   validates_inclusion_of :gender, :in => ['Male', 'Female'], :allow_blank => true, :message => 'must be either Male or Female'

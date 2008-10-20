@@ -1,0 +1,28 @@
+<p>
+  <b>Patient:</b>
+  <%=h @cholesterol.patient %>
+</p>
+
+<p>
+  <b>Collected at:</b>
+  <%=h @cholesterol.collected_at %>
+</p>
+
+<p>
+  <b>Tested at:</b>
+  <%=h @cholesterol.tested_at %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%=h @cholesterol.level %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%=h @cholesterol.unit %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_cholesterol_path(@patient, @cholesterol) %> |
+<%= link_to 'Back', patient_cholesterols_path(@patient) %>

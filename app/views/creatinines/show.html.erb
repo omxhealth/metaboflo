@@ -1,0 +1,28 @@
+<p>
+  <b>Patient:</b>
+  <%=h @creatinine.patient %>
+</p>
+
+<p>
+  <b>Collected at:</b>
+  <%=h @creatinine.collected_at %>
+</p>
+
+<p>
+  <b>Tested at:</b>
+  <%=h @creatinine.tested_at %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%=h @creatinine.level %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%=h @creatinine.unit %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_creatinine_path(@patient, @creatinine) %> |
+<%= link_to 'Back', patient_creatinines_path(@patient) %>
