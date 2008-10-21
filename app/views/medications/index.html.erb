@@ -1,8 +1,7 @@
-<h1>Listing medications</h1>
+<h1>Listing medications for Patient '<%= @patient.code %>'</h1>
 
 <table>
   <tr>
-    <th>Patient</th>
     <th>Drug</th>
     <th>Started on</th>
     <th>Stopped on</th>
@@ -10,7 +9,6 @@
 
 <% for medication in @medications %>
   <tr>
-    <td><%=h medication.patient %></td>
     <td><%=h medication.drug %></td>
     <td><%=h medication.started_on %></td>
     <td><%=h medication.stopped_on %></td>

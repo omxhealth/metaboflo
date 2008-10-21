@@ -1,8 +1,7 @@
-<h1>Listing creatinines</h1>
+<h1>Listing creatinines for Patient '<%= @patient.code %>'</h1>
 
 <table>
   <tr>
-    <th>Patient</th>
     <th>Collected at</th>
     <th>Tested at</th>
     <th>Level</th>
@@ -11,7 +10,6 @@
 
 <% for creatinine in @creatinines %>
   <tr>
-    <td><%=h creatinine.patient %></td>
     <td><%=h creatinine.collected_at %></td>
     <td><%=h creatinine.tested_at %></td>
     <td><%=h creatinine.level %></td>

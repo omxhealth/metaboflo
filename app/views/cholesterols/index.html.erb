@@ -1,8 +1,7 @@
-<h1>Listing cholesterols</h1>
+<h1>Listing cholesterols for Patient '<%= @patient.code %>'</h1>
 
 <table>
   <tr>
-    <th>Patient</th>
     <th>Collected at</th>
     <th>Tested at</th>
     <th>Level</th>
@@ -11,7 +10,6 @@
 
 <% for cholesterol in @cholesterols %>
   <tr>
-    <td><%=h cholesterol.patient %></td>
     <td><%=h cholesterol.collected_at %></td>
     <td><%=h cholesterol.tested_at %></td>
     <td><%=h cholesterol.level %></td>
