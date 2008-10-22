@@ -5,6 +5,7 @@ class Patient < ActiveRecord::Base
   has_many :cohorts, :through => :cohort_assignments
   
   has_many :medications
+  has_many :patient_evaluations
   has_many :cholesterols, :order => 'tested_at ASC'
   has_many :creatinines, :order => 'tested_at ASC'
   

@@ -1,0 +1,103 @@
+<p>
+  <b>Diagnosis:</b>
+  <%=h @patient_evaluation.diagnosis %>
+</p>
+
+<p>
+  <b>Current smoker:</b>
+  <%=h @patient_evaluation.current_smoker %>
+</p>
+
+<p>
+  <b>Past smoker:</b>
+  <%=h @patient_evaluation.past_smoker %>
+</p>
+
+<p>
+  <b>Drinking weekly:</b>
+  <%=h @patient_evaluation.drinking_weekly %>
+</p>
+
+<p>
+  <b>Exercise weekly:</b>
+  <%=h @patient_evaluation.exercise_weekly %>
+</p>
+
+<p>
+  <b>Hours sleep:</b>
+  <%=h @patient_evaluation.hours_sleep %>
+</p>
+
+<p>
+  <b>Enough sleep:</b>
+  <%=h @patient_evaluation.enough_sleep %>
+</p>
+
+<p>
+  <b>Past medical:</b>
+  <%=h @patient_evaluation.past_medical %>
+</p>
+
+<p>
+  <b>Father age:</b>
+  <%=h @patient_evaluation.father_age %>
+</p>
+
+<p>
+  <b>Father health:</b>
+  <%=h @patient_evaluation.father_health %>
+</p>
+
+<p>
+  <b>Father death age:</b>
+  <%=h @patient_evaluation.father_death_age %>
+</p>
+
+<p>
+  <b>Father death cause:</b>
+  <%=h @patient_evaluation.father_death_cause %>
+</p>
+
+<p>
+  <b>Mother age:</b>
+  <%=h @patient_evaluation.mother_age %>
+</p>
+
+<p>
+  <b>Mother health:</b>
+  <%=h @patient_evaluation.mother_health %>
+</p>
+
+<p>
+  <b>Mother death age:</b>
+  <%=h @patient_evaluation.mother_death_age %>
+</p>
+
+<p>
+  <b>Mother death cause:</b>
+  <%=h @patient_evaluation.mother_death_cause %>
+</p>
+
+<p>
+  <b>Num children:</b>
+  <%=h @patient_evaluation.num_children %>
+</p>
+
+<p>
+  <b>Relative condition:</b>
+  <%=h @patient_evaluation.relative_condition %>
+</p>
+
+<p>
+  <b>Relative relationship:</b>
+  <%=h @patient_evaluation.relative_relationship %>
+</p>
+
+<p>
+	<b>Evaluated On:</b>
+	<%=h @patient_evaluation.evaluated_on %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_patient_evaluation_path(@patient, @patient_evaluation) %> |
+<%= link_to 'Back', patient_patient_evaluations_path(@patient) %>

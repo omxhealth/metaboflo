@@ -1,0 +1,91 @@
+<h1>New Patient Evaluation</h1>
+
+<% form_for([@patient, @patient_evaluation]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :diagnosis %><br />
+    <%= f.text_area :diagnosis %>
+  </p>
+  <p>
+    <%= f.label :current_smoker %><br />
+    <%= f.check_box :current_smoker %>
+  </p>
+  <p>
+    <%= f.label :past_smoker %><br />
+    <%= f.text_field :past_smoker %>
+  </p>
+  <p>
+    <%= f.label :drinking_weekly %><br />
+    <%= f.text_field :drinking_weekly %>
+  </p>
+  <p>
+    <%= f.label :exercise_weekly %><br />
+    <%= f.text_field :exercise_weekly %>
+  </p>
+  <p>
+    <%= f.label :hours_sleep %><br />
+    <%= f.text_field :hours_sleep %>
+  </p>
+  <p>
+    <%= f.label :enough_sleep %><br />
+    <%= f.check_box :enough_sleep %>
+  </p>
+  <p>
+    <%= f.label :past_medical %><br />
+    <%= f.text_area :past_medical %>
+  </p>
+  <p>
+    <%= f.label :father_age %><br />
+    <%= f.text_field :father_age %>
+  </p>
+  <p>
+    <%= f.label :father_health %><br />
+    <%= f.text_field :father_health %>
+  </p>
+  <p>
+    <%= f.label :father_death_age %><br />
+    <%= f.text_field :father_death_age %>
+  </p>
+  <p>
+    <%= f.label :father_death_cause %><br />
+    <%= f.text_field :father_death_cause %>
+  </p>
+  <p>
+    <%= f.label :mother_age %><br />
+    <%= f.text_field :mother_age %>
+  </p>
+  <p>
+    <%= f.label :mother_health %><br />
+    <%= f.text_field :mother_health %>
+  </p>
+  <p>
+    <%= f.label :mother_death_age %><br />
+    <%= f.text_field :mother_death_age %>
+  </p>
+  <p>
+    <%= f.label :mother_death_cause %><br />
+    <%= f.text_field :mother_death_cause %>
+  </p>
+  <p>
+    <%= f.label :num_children %><br />
+    <%= f.text_field :num_children %>
+  </p>
+  <p>
+    <%= f.label :relative_condition %><br />
+    <%= f.text_field :relative_condition %>
+  </p>
+  <p>
+    <%= f.label :relative_relationship %><br />
+    <%= f.text_field :relative_relationship %>
+  </p>
+  <p>
+    <%= f.label :evaluated_on %><br />
+    <%= f.text_field :evaluated_on %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', patient_patient_evaluations_path(@patient) %>

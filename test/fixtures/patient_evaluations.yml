@@ -1,0 +1,70 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  patient: one
+  diagnosis: Bad!
+  current_smoker: false
+  past_smoker: 1.5
+  drinking_weekly: 1.5
+  exercise_weekly: 1.5
+  hours_sleep: 1.5
+  enough_sleep: false
+  past_medical: MyText
+  father_age: 1
+  father_health: MyString
+  father_death_age: 1
+  father_death_cause: MyString
+  mother_age: 1
+  mother_health: MyString
+  mother_death_age: 1
+  mother_death_cause: MyString
+  num_children: 1
+  relative_condition: MyString
+  relative_relationship: MyString
+  evaluated_on: 2008-09-25
+
+two:
+  patient: one
+  diagnosis: MyText
+  current_smoker: false
+  past_smoker: 1.5
+  drinking_weekly: 1.5
+  exercise_weekly: 1.5
+  hours_sleep: 1.5
+  enough_sleep: false
+  past_medical: MyText
+  father_age: 1
+  father_health: MyString
+  father_death_age: 1
+  father_death_cause: MyString
+  mother_age: 1
+  mother_health: MyString
+  mother_death_age: 1
+  mother_death_cause: MyString
+  num_children: 1
+  relative_condition: MyString
+  relative_relationship: MyString
+  evaluated_on: 2008-09-30
+  
+three:
+  patient: two
+  diagnosis: MyText
+  current_smoker: false
+  past_smoker: 1.5
+  drinking_weekly: 1.5
+  exercise_weekly: 1.5
+  hours_sleep: 1.5
+  enough_sleep: false
+  past_medical: MyText
+  father_age: 1
+  father_health: MyString
+  father_death_age: 1
+  father_death_cause: MyString
+  mother_age: 1
+  mother_health: MyString
+  mother_death_age: 1
+  mother_death_cause: MyString
+  num_children: 1
+  relative_condition: MyString
+  relative_relationship: MyString
+  evaluated_on: 2008-08-22
