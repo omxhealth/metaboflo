@@ -1,0 +1,57 @@
+<p>
+  <%= f.label :diagnosis %><br />
+  <%= f.text_area :diagnosis %>
+</p>
+<p>
+  <%= f.label :current_smoker, 'Smoker' %>
+  <%= f.check_box :current_smoker %>
+  <%= f.label :past_smoker, 'If quit, how long ago?' %>
+  <%= f.text_field :past_smoker %>
+</p>
+<p>
+  <%= f.label :drinking_weekly, 'Number of alcoholic drinks per week' %><br />
+  <%= f.text_field :drinking_weekly %>
+</p>
+<p>
+  <%= f.label :exercise_weekly, 'Amount of exercise per week' %><br />
+  <%= f.text_field :exercise_weekly %> days
+</p>
+<p>
+  <%= f.label :hourse_sleep, 'Hours of sleep nightly' %><br />
+  <%= f.text_field :hours_sleep %>
+</p>
+<p>
+  <%= f.label :enough_sleep, 'Patient feels they get enough sleep' %><br />
+  <%= f.check_box :enough_sleep %>
+</p>
+<p>
+  <%= f.label :past_medical, 'Past medical history' %><br />
+  <%= f.text_area :past_medical %>
+</p>
+
+<hr>
+
+<h2>Family History</h2>
+
+<table border=1 cellpadding=5 cellspacing=5>
+	<tr><th>&nbsp;</th><th>If Living</th><th>If Dead</th></tr>
+	<tr><td>Father</td><td><%= f.label :father_age, "Age" %><%= f.text_field :father_age %><br><%= f.label :father_health, "Health" %><%= f.text_field :father_health %></td><td><%= f.label :father_death_age, "Age at death" %><%= f.text_field :father_death_age %><br><%= f.label :father_death_cause, "Cause" %><%= f.text_field :father_death_cause %></td></tr>
+	<tr><td>Mother</td><td><%= f.label :mother_age, "Age" %><%= f.text_field :mother_age %><br><%= f.label "Health" %><%= f.text_field :mother_health %></td><td><%= f.label :mother_death_age, "Age" %><%= f.text_field :mother_death_age %><br><%= f.label :mother_death_cause, "Cause" %><%= f.text_field :mother_death_cause %></td></tr>
+</table>
+
+<p>
+  <%= f.label :num_children, 'Number of children' %><br />
+  <%= f.text_field :num_children %>
+</p>
+<p>
+  <%= f.label :relative_condition %><br />
+  <%= f.text_field :relative_condition %>
+</p>
+<p>
+  <%= f.label :relative_relationship %><br />
+  <%= f.text_field :relative_relationship %>
+</p>
+<p>
+  <%= f.label :evaluated_on, 'Date evaluated on' %><br />
+  <%= f.text_field :evaluated_on %>
+</p>

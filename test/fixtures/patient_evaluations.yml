@@ -2,21 +2,21 @@
 
 one:
   patient: one
-  diagnosis: Bad!
+  diagnosis: Patient is surly
   current_smoker: false
   past_smoker: 1.5
   drinking_weekly: 1.5
-  exercise_weekly: 1.5
-  hours_sleep: 1.5
+  exercise_weekly: 2
+  hours_sleep: 5.5
   enough_sleep: false
   past_medical: MyText
   father_age: 1
   father_health: MyString
-  father_death_age: 1
-  father_death_cause: MyString
-  mother_age: 1
-  mother_health: MyString
-  mother_death_age: 1
+  father_death_age: 63
+  father_death_cause: Heart Attack
+  mother_age: 65
+  mother_health: Diabetic
+  mother_death_age: -1
   mother_death_cause: MyString
   num_children: 1
   relative_condition: MyString
@@ -25,21 +25,21 @@ one:
 
 two:
   patient: one
-  diagnosis: MyText
+  diagnosis: Patient is improving
   current_smoker: false
   past_smoker: 1.5
-  drinking_weekly: 1.5
-  exercise_weekly: 1.5
-  hours_sleep: 1.5
-  enough_sleep: false
+  drinking_weekly: 1
+  exercise_weekly: 3
+  hours_sleep: 6.5
+  enough_sleep: true
   past_medical: MyText
   father_age: 1
   father_health: MyString
-  father_death_age: 1
-  father_death_cause: MyString
-  mother_age: 1
-  mother_health: MyString
-  mother_death_age: 1
+  father_death_age: 63
+  father_death_cause: Heart Attack
+  mother_age: 65
+  mother_health: Diabetic
+  mother_death_age: -1
   mother_death_cause: MyString
   num_children: 1
   relative_condition: MyString
@@ -48,23 +48,23 @@ two:
   
 three:
   patient: two
-  diagnosis: MyText
-  current_smoker: false
-  past_smoker: 1.5
+  diagnosis: Patient is perfectly healthy...except he smokes 3 packs a day
+  current_smoker: true
+  past_smoker: -1
   drinking_weekly: 1.5
   exercise_weekly: 1.5
-  hours_sleep: 1.5
-  enough_sleep: false
+  hours_sleep: 8
+  enough_sleep: true
   past_medical: MyText
-  father_age: 1
-  father_health: MyString
-  father_death_age: 1
+  father_age: 55
+  father_health: Good
+  father_death_age: -1
   father_death_cause: MyString
-  mother_age: 1
-  mother_health: MyString
-  mother_death_age: 1
+  mother_age: 56
+  mother_health: Good
+  mother_death_age: -1
   mother_death_cause: MyString
-  num_children: 1
+  num_children: 4
   relative_condition: MyString
   relative_relationship: MyString
-  evaluated_on: 2008-08-22
+  evaluated_on: 2008-04-22
