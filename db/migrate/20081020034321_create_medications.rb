@@ -5,6 +5,8 @@ class CreateMedications < ActiveRecord::Migration
       t.string :drug
       t.date :started_on
       t.date :stopped_on
+      t.boolean :currently_taking
+      t.string :drugbank_reference
 
       t.timestamps
     end

@@ -18,6 +18,16 @@
   <%=h @medication.stopped_on %>
 </p>
 
+<p>
+	<b>Currently taking:</b>
+	<%=h boolean_to_english(@medication.currently_taking) %>
+</p>
+
+<p>
+	<b>Drugbank reference:</b>
+	<%=h @medication.drugbank_reference %>
+</p>
+
 
 <%= link_to 'Edit', edit_patient_medication_path(@patient, @medication) %> |
 <%= link_to 'Back', patient_medications_path(@patient) %>

@@ -5,6 +5,8 @@
     <th>Drug</th>
     <th>Started on</th>
     <th>Stopped on</th>
+		<th>Currently taking</th>
+		<th>Drugbank reference</th>
   </tr>
 
 <% for medication in @medications %>
@@ -12,6 +14,8 @@
     <td><%=h medication.drug %></td>
     <td><%=h medication.started_on %></td>
     <td><%=h medication.stopped_on %></td>
+		<td><%=h boolean_to_english(medication.currently_taking) %></td>
+		<td><%=h medication.drugbank_reference %></td>
     <td><%= link_to 'Show', patient_medication_path(@patient, medication) %></td>
     <td><%= link_to 'Edit', edit_patient_medication_path(@patient, medication) %></td>
     <td><%= link_to 'Destroy', patient_medication_path(@patient, medication), :confirm => 'Are you sure?', :method => :delete %></td>

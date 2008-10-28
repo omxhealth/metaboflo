@@ -19,6 +19,14 @@
     <%= f.label :stopped_on %><br />
     <%= f.date_select :stopped_on %>
   </p>
+	<p>
+		<%= f.label :currently_taking %><br />
+		<%= f.check_box :currently_taking %>
+	</p>
+	<p>
+		<%= f.label :drugbank_reference %><br />
+		<%= f.text_field :drugbank_reference %>
+	</p>
   <p>
     <%= f.submit "Update" %>
   </p>
