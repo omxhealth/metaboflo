@@ -1,8 +1,13 @@
 <h1>New Sample</h1>
 
-<% form_for([@patient, @sample]) do |f| %>
+<% form_for(@sample) do |f| %>
   <%= f.error_messages %>
-
+	<%= f.hidden(:patient_id) if @sample.patient %>
+	<%= f.hidden(:parent_sample_id) if @sample.sample %>
+	<p>
+		<%= f.label :sample_type %><br />
+		<%= f.select :sample_type, ['blood', 'CSF', 'urine'] %>
+	</p>
   <p>
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
@@ -16,12 +21,16 @@
     <%= f.text_field :barcode %>
   </p>
   <p>
-    <%= f.label :taken_on %><br />
-    <%= f.date_select :taken_on %>
+		<%= f.label :storage_location %><br />
+		<%= f.text_area :storage_location %>
+	</p>
+  <p>
+    <%= f.label :collected_on %><br />
+    <%= f.date_select :collected_on %>
   </p>
   <p>
-    <%= f.label :taken_by %><br />
-    <%= f.text_field :taken_by %>
+    <%= f.label :collected_by %><br />
+    <%= f.text_field :collected_by %>
   </p>
   <p>
     <%= f.label :description %><br />

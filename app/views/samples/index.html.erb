@@ -1,30 +1,36 @@
-<h1><%= @patient ? "Samples for Patient #{@patient.code}" : 'All Samples' %></h1>
+<h1><%= @parent_sample ? "Samples for Sample #{@parent_sample.id}" : @patient ? "Samples for Patient #{@patient.code}" : 'All Samples' %></h1>
 
 <table>
   <tr>
+		<th>Sample type</th>
     <th>Amount</th>
     <th>Barcode</th>
     <th><%= 'Patient' unless @patient %></th>
-    <th>Taken on</th>
-    <th>Taken by</th>
+		<th><%= 'Parent sample' unless @parent_sample %></th>
+    <th>Collected on</th>
+    <th>Collected by</th>
   </tr>
 
 <% for sample in @samples %>
   <tr>
+		<td><%=h sample.sample_type %></td>
     <td><%=h sample.amount %> <%=h sample.unit %></td>
     <td><%=h sample.barcode %></td>
-    <td><%=h(sample.patient.code) unless @patient %></td>
-    <td><%=h sample.taken_on %></td>
-    <td><%=h sample.taken_by %></td>
-    <td><%= link_to 'Show', patient_sample_path(sample.patient, sample) %></td>
-    <td><%= link_to 'Edit', edit_patient_sample_path(sample.patient, sample) %></td>
-    <td><%= link_to 'Destroy', patient_sample_path(sample.patient, sample), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h(sample.patient.code) unless @patient || sample.patient.nil? %></td>
+		<td><%=h(sample.sample.id) unless @parent_sample || sample.sample.nil? %></td>
+    <td><%=h sample.collected_on %></td>
+    <td><%=h sample.collected_by %></td>
+    <td><%= link_to 'Show', sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample) %></td>
+    <td><%= link_to 'Edit', sample.sample ? edit_sample_sample_path(sample.sample, sample) : edit_patient_sample_path(sample.patient, sample) %></td>
+    <td><%= link_to 'Destroy', sample.sample ? edit_sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<% unless @patient.nil? %>
+<% if @patient %>
 <%= link_to "New sample for patient #{@patient.code}", new_patient_sample_path(@patient) %>
+<% elsif @parent_sample %>
+<%= link_to "Fractionate sample #{@parent_sample.id}", new_sample_sample_path(@parent_sample) %>
 <% end %>

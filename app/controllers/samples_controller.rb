@@ -1,10 +1,12 @@
 class SamplesController < ApplicationController
-  before_filter :find_patient
+  before_filter :find_parent
   
   # GET /samples
   # GET /samples.xml
   def index
-    if @patient
+    if @parent_sample
+      @samples = @parent_sample.samples
+    elsif @patient
       @samples = @patient.samples
     else
       @samples = Sample.find(:all)
@@ -19,7 +21,7 @@ class SamplesController < ApplicationController
   # GET /samples/1
   # GET /samples/1.xml
   def show
-    @sample = @patient.samples.find(params[:id])
+    @sample = Sample.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +49,11 @@ class SamplesController < ApplicationController
   # POST /samples.xml
   def create
     @sample = Sample.new(params[:sample])
-    @sample.patient = @patient
+    if @parent_sample
+      @sample.sample = @parent_sample
+    else
+      @sample.patient = @patient
+    end
     
     respond_to do |format|
       if @sample.save
@@ -90,11 +96,18 @@ class SamplesController < ApplicationController
     end
   end
   
-  def find_patient
+  def find_parent
     if params[:patient_id]
       @patient = Patient.find(params[:patient_id])
+    elsif params[:sample_id]
+      @parent_sample = Sample.find(params[:sample_id])
+      current_sample = @parent_sample
+      while @patient.nil?
+        @patient = current_sample.patient
+        current_sample = current_sample.sample
+      end
     elsif action_name != 'index'
-      flash[:notice] = "Patient must be specified."
+      flash[:notice] = "Patient or parent sample must be specified."
       respond_to do |format|
         format.html { redirect_to samples_url }
         format.xml { redirect_to formatted_samples_url }

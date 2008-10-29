@@ -34,22 +34,7 @@
 							<%= link_to 'Samples', patient_samples_path(@patient) %>
 							<ul>
 								<li><%= link_to 'Create new sample', new_patient_sample_path(@patient), :class => 'create' %></li>
-								<% @patient.samples.each do |sample| -%>
-								<li class="sample">
-									<%= link_to "Sample #{sample.id}", patient_sample_path(@patient, sample) %>
-									<ul>
-										<li class="report">
-											<%= link_to 'Data files', sample_data_files_path(sample) %>
-											<ul>
-												<li class="report"><%= link_to 'Upload data file', new_sample_data_file_path(sample), :class => 'create' %></li>
-												<% sample.data_files.each do |data_file| -%>
-												<li class="report"><%= link_to data_file.filename, sample_data_file_path(sample, data_file) %></li>
-												<% end -%>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<% end -%>
+								<%= render :partial => '/layouts/samples_hierarchy', :locals => { :samples => @patient.samples } %>
 							</ul>
 						</li>
 					</ul>

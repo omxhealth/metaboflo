@@ -8,34 +8,34 @@ class SampleTest < ActiveSupport::TestCase
   
   def test_taken_on
     #Birthdate == taken_on
-    sample = Sample.new(:taken_on => patients(:one).birthdate, :patient => patients(:one))
+    sample = Sample.new(:collected_on => patients(:one).birthdate, :patient => patients(:one))
     assert sample.valid?
     
     #Birthdate > taken_on
-    sample.taken_on = patients(:one).birthdate - 1
+    sample.collected_on = patients(:one).birthdate - 1
     assert !sample.valid?
-    assert sample.errors.invalid?(:taken_on)
+    assert sample.errors.invalid?(:collected_on)
 
     #Birthdate < taken_on
-    sample.taken_on = patients(:one).birthdate + 1
+    sample.collected_on = patients(:one).birthdate + 1
     assert sample.valid?
 
 
     #When taken_on is nil, still valid
     sample = Sample.new
     sample.valid?
-    assert !sample.errors.invalid?(:taken_on)
+    assert !sample.errors.invalid?(:collected_on)
 
     sample.patient = patients(:one)
     sample.valid?
-    assert !sample.errors.invalid?(:taken_on)
+    assert !sample.errors.invalid?(:collected_on)
 
-    sample.taken_on = patients(:one).birthdate
+    sample.collected_on = patients(:one).birthdate
     
     #When birthdate is nil, still valid
     sample.patient.birthdate = nil
     sample.valid?
-    assert !sample.errors.invalid?(:taken_on)
+    assert !sample.errors.invalid?(:collected_on)
   end
   
 end

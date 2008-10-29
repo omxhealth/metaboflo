@@ -1,6 +1,10 @@
 <h1>Information for Sample <%= @sample.id %></h1>
 
 <p>
+	<b>Sample type:</b>
+	<%=h @sample.sample_type %>
+</p>
+<p>
   <b>Amount:</b>
   <%=h @sample.amount %> <%=h @sample.unit %>
 </p>
@@ -12,17 +16,27 @@
 
 <p>
   <b>Patient:</b>
-  <%= link_to @sample.patient.code, patient_path(@sample.patient) %>
+  <%= link_to(@sample.patient.code, patient_path(@sample.patient)) if @sample.patient %>
 </p>
 
 <p>
-  <b>Taken on:</b>
-  <%=h @sample.taken_on %>
+	<b>Parent sample:</b>
+	<%= link_to(@sample.sample.id, sample_path(@sample.sample)) if @sample.sample %>
 </p>
 
 <p>
-  <b>Taken by:</b>
-  <%=h @sample.taken_by %>
+	<b>Storage location:</b>
+	<%=h @sample.storage_location %>
+</p>
+
+<p>
+  <b>Collected on:</b>
+  <%=h @sample.collected_on %>
+</p>
+
+<p>
+  <b>Collected by:</b>
+  <%=h @sample.collected_by %>
 </p>
 
 <p>
@@ -40,4 +54,4 @@
 
 <br />
 
-<%= link_to 'Edit', edit_patient_sample_path(@sample.patient, @sample) %>
+<%= link_to 'Edit', edit_sample_path(@sample) %>

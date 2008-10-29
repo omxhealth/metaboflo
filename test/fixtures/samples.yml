@@ -1,33 +1,37 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  sample_type: blood
   amount: 1.5
   unit: ml
   barcode: 12346
   patient: one
-  taken_on: 2008-09-25
-  taken_by: 
+  collected_on: 2008-09-25
+  collected_by: 
       
 two:
+  sample_type: CSF
   amount: 500
   unit: g
   barcode: 12345
   patient: two
-  taken_on: 2008-09-25
-  taken_by: 
+  collected_on: 2008-09-25
+  collected_by: 
       
 three:
+  sample_type: urine
   amount: 150.3
   unit: ml
   barcode: 12347
   patient: one
-  taken_on: 2008-09-25
-  taken_by: 
+  collected_on: 2008-09-25
+  collected_by: 
       
 four:
+  sample_type: blood
   amount: 10.3
   unit: ml
   barcode: 12348
-  patient: one
-  taken_on: 2008-09-25
-  taken_by: 
+  sample: one
+  collected_on: 2008-09-25
+  collected_by: 

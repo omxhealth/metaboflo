@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
     map.resources :cohorts
 
-    map.resources :samples, :has_many => :data_files
+    map.resources :samples, :has_many => [ :samples, :data_files ]
 
     map.resources :patients, :has_many => [ :samples, :cohort_assignments, :cholesterols, :creatinines, :medications, :patient_evaluations ]
 
