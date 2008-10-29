@@ -16,4 +16,7 @@ class Sample < ActiveRecord::Base
     end
   end
 
+  def before_validation
+    self.sample_type = self.sample.sample_type if self.sample
+  end
 end

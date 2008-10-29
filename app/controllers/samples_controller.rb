@@ -91,7 +91,7 @@ class SamplesController < ApplicationController
     @sample.destroy
 
     respond_to do |format|
-      format.html { redirect_to(patient_samples_url(@patient)) }
+      format.html { redirect_to(@parent_sample ? sample_samples_url(@parent_sample) : patient_samples_url(@patient)) }
       format.xml  { head :ok }
     end
   end

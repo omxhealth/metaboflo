@@ -22,15 +22,15 @@
     <td><%=h sample.collected_by %></td>
     <td><%= link_to 'Show', sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample) %></td>
     <td><%= link_to 'Edit', sample.sample ? edit_sample_sample_path(sample.sample, sample) : edit_patient_sample_path(sample.patient, sample) %></td>
-    <td><%= link_to 'Destroy', sample.sample ? edit_sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<% if @patient %>
-<%= link_to "New sample for patient #{@patient.code}", new_patient_sample_path(@patient) %>
-<% elsif @parent_sample %>
+<% if @parent_sample %>
 <%= link_to "Fractionate sample #{@parent_sample.id}", new_sample_sample_path(@parent_sample) %>
+<% elsif @patient %>
+<%= link_to "New sample for patient #{@patient.code}", new_patient_sample_path(@patient) %>
 <% end %>

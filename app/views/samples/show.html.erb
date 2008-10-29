@@ -54,4 +54,4 @@
 
 <br />
 
-<%= link_to 'Edit', edit_sample_path(@sample) %>
+<%= link_to 'Edit', @parent_sample ? edit_sample_sample_path(@parent_sample, @sample) : edit_patient_sample_path(@patient, @sample) %>

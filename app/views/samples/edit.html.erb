@@ -1,12 +1,8 @@
 <h1>Editing Sample</h1>
 
-<% form_for(@sample) do |f| %>
+<% form_for([@parent_sample || @patient, @sample]) do |f| %>
   <%= f.error_messages %>
 
-	<p>
-		<%= f.label :sample_type %><br />
-		<%= f.select :sample_type, ['blood', 'CSF', 'urine'] %>
-	</p>
   <p>
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
@@ -42,4 +38,4 @@
 
 <br />
 
-<%= link_to 'Show', sample_path(@sample) %>
+<%= link_to 'Show', @parent_sample ? sample_sample_path(@parent_sample, @sample) : patient_sample_path(@patient, @sample) %>

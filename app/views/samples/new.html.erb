@@ -1,12 +1,12 @@
 <h1>New Sample</h1>
 
-<% form_for(@sample) do |f| %>
+<% form_for([@parent_sample || @patient, @sample]) do |f| %>
   <%= f.error_messages %>
 	<%= f.hidden(:patient_id) if @sample.patient %>
 	<%= f.hidden(:parent_sample_id) if @sample.sample %>
 	<p>
 		<%= f.label :sample_type %><br />
-		<%= f.select :sample_type, ['blood', 'CSF', 'urine'] %>
+		<%= @parent_sample ? @parent_sample.sample_type : f.select(:sample_type, ['blood', 'CSF', 'urine']) %>
 	</p>
   <p>
     <%= f.label :amount %><br />
