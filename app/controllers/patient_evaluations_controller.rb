@@ -26,7 +26,7 @@ class PatientEvaluationsController < ApplicationController
   # GET /patient_evaluations/new
   # GET /patient_evaluations/new.xml
   def new
-    @patient_evaluation = PatientEvaluation.new
+    @patient_evaluation = PatientEvaluation.new()
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,6 +62,14 @@ class PatientEvaluationsController < ApplicationController
   # PUT /patient_evaluations/1.xml
   def update
     @patient_evaluation = @patient.patient_evaluations.find(params[:id])
+
+    #Check if symptoms and past_medical is empty
+    if !params.has_key?(:symptoms)
+      @patient_evaluation.symptoms = []
+    end
+    if !params.has_key?(:past_medical)
+      @patient_evaluation.past_medical = []
+    end
 
     respond_to do |format|
       if @patient_evaluation.update_attributes(params[:patient_evaluation])

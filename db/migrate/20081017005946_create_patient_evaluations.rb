@@ -9,7 +9,6 @@ class CreatePatientEvaluations < ActiveRecord::Migration
       t.float :exercise_weekly
       t.float :hours_sleep
       t.boolean :enough_sleep
-      t.text :past_medical
       t.integer :father_age
       t.string :father_health
       t.integer :father_death_age
@@ -21,6 +20,8 @@ class CreatePatientEvaluations < ActiveRecord::Migration
       t.integer :num_children
       t.string :relative_condition
       t.string :relative_relationship
+      t.string :past_medical, :default => '--- []'
+      t.string :symptoms, :default => '--- []'
       t.date :evaluated_on
 
       t.timestamps

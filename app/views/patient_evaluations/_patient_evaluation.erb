@@ -17,16 +17,22 @@
   <%= f.text_field :exercise_weekly %> days
 </p>
 <p>
-  <%= f.label :hourse_sleep, 'Hours of sleep nightly' %><br />
+  <%= f.label :hours_sleep, 'Hours of sleep nightly' %><br />
   <%= f.text_field :hours_sleep %>
 </p>
 <p>
   <%= f.label :enough_sleep, 'Patient feels they get enough sleep' %><br />
   <%= f.check_box :enough_sleep %>
 </p>
+
 <p>
   <%= f.label :past_medical, 'Past medical history' %><br />
-  <%= f.text_area :past_medical %>
+  <%= check_boxes(4, "patient_evaluation[past_medical][]", medical_history_list, @patient_evaluation.past_medical) %>
+</p>
+
+<p>
+  <%= f.label :symptoms, 'Symptoms' %><br />
+  <%= check_boxes(3, "patient_evaluation[symptoms][]", symptoms_list, @patient_evaluation.symptoms) %>
 </p>
 
 <hr>

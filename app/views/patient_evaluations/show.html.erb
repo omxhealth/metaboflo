@@ -40,13 +40,18 @@ TODO: Past medical history
 </p>
 
 <p>
-  <b>Past medical:</b>
-  <%=h @patient_evaluation.past_medical %>
+  <b>Past medical history:</b>
+  <%=h list_string(@patient_evaluation.past_medical) %>
+</p>
+
+<p>
+  <b>Symptoms:</b>
+  <%=h list_string(@patient_evaluation.symptoms) %>
 </p>
 
 <hr>
 
-<% if @patient_evaluation.father_death_age == -1 %>
+<% if @patient_evaluation.father_death_age == nil %>
 	<p>
 	  <b>Father's age:</b>
 	  <%=h @patient_evaluation.father_age %>
@@ -68,7 +73,7 @@ TODO: Past medical history
 	</p>
 <% end %>
 
-<% if @patient_evaluation.mother_death_age == -1 %>
+<% if @patient_evaluation.mother_death_age == nil %>
 	<p>
 	  <b>Mother's age:</b>
 	  <%=h @patient_evaluation.mother_age %>
