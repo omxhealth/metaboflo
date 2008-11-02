@@ -3,13 +3,13 @@ require 'test_helper'
 class DataFilesControllerTest < ActionController::TestCase
   
   def test_should_get_index
-    get :index, :sample_id => samples(:one).id
+    get :index, :experiment_id => experiments(:one).id
     assert_response :success
     assert_not_nil assigns(:data_files)
   end
 
   def test_should_get_new
-    get :new, :sample_id => samples(:one).id
+    get :new, :experiment_id => experiments(:one).id
     assert_response :success
   end
 
@@ -19,30 +19,30 @@ class DataFilesControllerTest < ActionController::TestCase
     mimetype = "image/png" 
     
     assert_difference('DataFile.count') do
-      post :create, :sample_id => samples(:one).id, :data_file => {:uploaded_data => ActionController::TestUploadedFile.new(path, mimetype), :data_file_type_id => data_file_types(:one).id }
+      post :create, :experiment_id => experiments(:one).id, :data_file => {:uploaded_data => ActionController::TestUploadedFile.new(path, mimetype), :data_file_type_id => data_file_types(:one).id }
     end
 
     assert_redirected_to data_file_path(assigns(:data_file))
   end
 
   def test_should_show_data_file
-    get :show, :id => data_files(:one).id, :sample_id => samples(:one).id
+    get :show, :id => data_files(:one).id, :experiment_id => experiments(:one).id
     assert_response :success
   end
 
   # def test_should_get_edit
-  #   get :edit, :id => data_files(:one).id, :sample_id => samples(:one).id
+  #   get :edit, :id => data_files(:one).id, :experiment_id => experiments(:one).id
   #   assert_response :success
   # end
   # 
   # def test_should_update_data_file
-  #   put :update, :id => data_files(:one).id, :data_file => { }, :sample_id => samples(:one).id
+  #   put :update, :id => data_files(:one).id, :data_file => { }, :experiment_id => experiments(:one).id
   #   assert_redirected_to data_file_path(assigns(:data_file))
   # end
 
   def test_should_destroy_data_file
     assert_difference('DataFile.count', -1) do
-      delete :destroy, :id => data_files(:one).id, :sample_id => samples(:one).id
+      delete :destroy, :id => data_files(:one).id, :experiment_id => experiments(:one).id
     end
 
     assert_redirected_to data_files_path

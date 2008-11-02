@@ -1,10 +1,10 @@
 class DataFilesController < ApplicationController
-  before_filter :find_sample
+  before_filter :find_experiment
 
   # GET /data_files
   # GET /data_files.xml
   def index
-    @data_files = @sample.data_files
+    @data_files = @experiment.data_files
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class DataFilesController < ApplicationController
   # GET /data_files/1
   # GET /data_files/1.xml
   def show
-    @data_file = @sample.data_files.find(params[:id])
+    @data_file = @experiment.data_files.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,7 @@ class DataFilesController < ApplicationController
   # GET /data_files/new.xml
   def new
     @data_file = DataFile.new
-    @data_file.sample = @sample
+    @data_file.experiment = @experiment
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,12 +39,12 @@ class DataFilesController < ApplicationController
   # POST /data_files.xml
   def create
     @data_file = DataFile.new(params[:data_file])
-    @data_file.sample = @sample
+    @data_file.experiment = @experiment
 
     respond_to do |format|
       if @data_file.save
         flash[:notice] = 'Data File was successfully uploaded.'
-        format.html { redirect_to(sample_data_file_path(@sample, @data_file)) }
+        format.html { redirect_to(experiment_data_file_path(@experiment, @data_file)) }
         format.xml  { render :xml => @data_file, :status => :created, :location => @data_file }
       else
         format.html { render :action => "new" }
@@ -56,18 +56,19 @@ class DataFilesController < ApplicationController
   # DELETE /data_files/1
   # DELETE /data_files/1.xml
   def destroy
-    @data_file = @sample.data_files.find(params[:id])
+    @data_file = @experiment.data_files.find(params[:id])
     @data_file.destroy
 
     respond_to do |format|
-      format.html { redirect_to(sample_data_files_path(@sample)) }
+      format.html { redirect_to(experiment_data_files_path(@experiment)) }
       format.xml  { head :ok }
     end
   end
   
   private 
   def find_sample
-    @sample = Sample.find(params[:sample_id])
+    @experiment = Experiment.find(params[:experiment_id])
+    @sample = @experiment.sample
     @patient = @sample.patient
   end  
 end
