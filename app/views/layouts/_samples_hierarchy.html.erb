@@ -1,40 +1,13 @@
-<% samples.each do |sample| -%>
-<li class="sample">
-	<% if sample.sample -%>
-	<%= link_to "Sample #{sample.id}", sample_sample_path(sample.sample, sample) %>
-	<% elsif sample.patient -%>
-	<%= link_to "Sample #{sample.id}", patient_sample_path(@patient, sample) %>
+<%= link_to 'Samples', parent.kind_of?(Patient) ? patient_samples_path(parent) : sample_samples_path(parent) %>
+<ul>
+	<li><%= link_to 'Create new sample', parent.kind_of?(Patient) ? new_patient_sample_path(parent) : new_sample_sample_path(parent), :class => 'create' %></li>
+	<% parent.samples.each do |sample| -%>
+	<li class="sample">
+		<%= link_to "Sample #{sample.id}", sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(@patient, sample) %>
+		<ul>
+			<li class="sample"><%= render :partial => '/layouts/samples_hierarchy', :locals => { :parent => sample } %></li>
+			<li class="report"><%= render :partial => '/layouts/experiments_hierarchy', :locals => { :sample => sample } %></li>
+		</ul>
+	</li>
 	<% end -%>
-	<ul>
-		<li class="sample">
-			<%= link_to 'Samples', sample_samples_path(sample) %>
-			<ul>
-				<li><%= link_to 'Create new sample', new_sample_sample_path(sample), :class => 'create' %></li>
-				<%= render :partial => '/layouts/samples_hierarchy', :locals => { :samples => sample.samples } %>
-			</ul>
-		</li>
-		<li class="report">
-			<%= link_to 'Experiments', sample_experiments_path(sample) %>
-			<ul>
-				<li><%= link_to 'Perform new experiment', new_sample_experiment_path(sample), :class => 'create' %></li>
-				<% sample.experiments.each do |experiment| -%>
-				<li class="report">
-					<%= link_to experiment.name, sample_experiment_path(sample, experiment) %>
-					<ul>
-						<li class="report">
-							<%= link_to 'Data files', experiment_data_files_path(experiment) %>
-							<ul>
-								<li class="report"><%= link_to 'Upload data file', new_experiment_data_file_path(experiment), :class => 'create' %></li>
-								<% experiment.data_files.each do |data_file| -%>
-								<li class="report"><%= link_to data_file.filename, experiment_data_file_path(experiment, data_file) %></li>
-								<% end -%>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<% end -%>
-			</ul>
-		</li>
-	</ul>
-</li>
-<% end -%>
+</ul>

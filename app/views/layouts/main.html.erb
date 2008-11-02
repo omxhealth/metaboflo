@@ -15,6 +15,7 @@
 	<div id="menu">
 		<%= link_to 'Patients', patients_path, :class => 'menu' %> |
 		<%= link_to 'Samples', samples_path, :class => 'menu' %> |
+		<%= link_to 'Experiments', experiments_path, :class => 'menu' %> |
 		<%= link_to 'Cohorts', cohorts_path, :class => 'menu' %> |
 		<%= link_to 'Data file types', data_file_types_path, :class => 'menu' %>
 	</div>
@@ -22,35 +23,9 @@
 		<% unless @patient.nil? || @patient.new_record? -%>
 		<div id="sidebar">
 			<div id="tree">
-			<ul>
-				<li class="patient">
-					<%= link_to "Patient #{@patient.code}", patient_path(@patient) %>
-					<ul>
-						<li class="report"><%= link_to 'Medications', patient_medications_path(@patient) %></li>
-						<li class="report"><%= link_to 'Cholesterol', patient_cholesterols_path(@patient) %></li>
-						<li class="report"><%= link_to 'Creatinine', patient_creatinines_path(@patient) %></li>
-						<li class="report"><%= link_to 'Patient Evaluations', patient_patient_evaluations_path(@patient) %></li>
-						<li class="sample">
-							<%= link_to 'Samples', patient_samples_path(@patient) %>
-							<ul>
-								<li><%= link_to 'Create new sample', new_patient_sample_path(@patient), :class => 'create' %></li>
-								<%= render :partial => '/layouts/samples_hierarchy', :locals => { :samples => @patient.samples } %>
-							</ul>
-						</li>
-					</ul>
-					<ul>
-						<li class="cohort">
-							<%= link_to 'Cohorts', patient_cohort_assignments_path(@patient) %>
-							<ul>
-								<li class="cohort"><%= link_to 'Add to cohort', new_patient_cohort_assignment_path(@patient), :class => 'create' %></li>
-								<% @patient.cohort_assignments.each do |cohort_assignment| -%>
-								<li class="cohort"><%= cohort_assignment.cohort.name %></li>
-								<% end -%>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
+				<ul>
+					<li class="patient"><%= render :partial => '/layouts/patient_hierarchy' %></li>
+				</ul>
 			</div>
 		</div>
 		<div id="content">

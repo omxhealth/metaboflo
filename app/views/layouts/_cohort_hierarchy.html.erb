@@ -1,0 +1,7 @@
+<%= link_to 'Cohorts', patient_cohort_assignments_path(patient) %>
+<ul>
+	<li class="cohort"><%= link_to 'Add to cohort', new_patient_cohort_assignment_path(patient), :class => 'create' %></li>
+	<% @patient.cohort_assignments.each do |cohort_assignment| -%>
+	<li class="cohort"><%= cohort_assignment.cohort.name %></li>
+	<% end -%>
+</ul>
