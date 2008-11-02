@@ -21,22 +21,6 @@ module PatientEvaluationsHelper
     l += ['excessive worries', 'anxiety', 'easily lossing temper', 'depression', 'agitation', 'difficulty falling asleep', 'difficulty staying asleep']
   end
   
-  def list_string(list)
-    if list.length == 0
-      return ''
-    end
-      
-    str = ''
-    list.each do |l|
-      if str.length == 0
-        str += l
-      else
-        str += ", #{l}"
-      end
-    end
-    return str
-  end
-  
   def check_boxes(num_per_row, param_str, valid_list, model_has_list)
     count = 0
     out = "<table border=0 cellpadding=3 cellspacing=3><tr>"

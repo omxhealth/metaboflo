@@ -41,12 +41,12 @@ TODO: Past medical history
 
 <p>
   <b>Past medical history:</b>
-  <%=h list_string(@patient_evaluation.past_medical) %>
+  <%=h @patient_evaluation.past_medical.join(', ') %>
 </p>
 
 <p>
   <b>Symptoms:</b>
-  <%=h list_string(@patient_evaluation.symptoms) %>
+  <%=h @patient_evaluation.symptoms.join(', ') %>
 </p>
 
 <hr>
