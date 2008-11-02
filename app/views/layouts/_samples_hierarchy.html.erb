@@ -14,13 +14,20 @@
 			</ul>
 		</li>
 		<li class="report">
-			<%= link_to 'Data files', sample_data_files_path(sample) %>
+			<%= link_to 'Experiments', sample_experiments_path(sample) %>
 			<ul>
-				<li class="report"><%= link_to 'Upload data file', new_sample_data_file_path(sample), :class => 'create' %></li>
-				<% sample.data_files.each do |data_file| -%>
-				<li class="report"><%= link_to data_file.filename, sample_data_file_path(sample, data_file) %></li>
+				<li><%= link_to 'Perform new experiment', new_sample_experiment_path(sample), :class => 'create' %></li>
+				<% sample.experiments.each do |experiment| -%>
+				<li class="report"><%= link_to experiment.name, sample_experiment_path(sample, experiment) %></li>
+				<%= link_to 'Data files', sample_data_files_path(sample) %>
+				<ul>
+					<li class="report"><%= link_to 'Upload data file', new_sample_data_file_path(sample), :class => 'create' %></li>
+					<% sample.data_files.each do |data_file| -%>
+					<li class="report"><%= link_to data_file.filename, sample_data_file_path(sample, data_file) %></li>
+					<% end -%>
+				</ul>
+				</ul>
 				<% end -%>
-			</ul>
 		</li>
 	</ul>
 </li>
