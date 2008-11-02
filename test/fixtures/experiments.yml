@@ -1,19 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
+  name: Metabolite Concentrations
   performed_on: 2008-11-02
-  performed_by: MyString
+  performed_by: Sally
   amount_used: 1.5
-  amount_used_unit: MyString
-  protocol: MyText
+  amount_used_unit: ml
+  protocol: 32
   sample: one
 
 two:
-  name: MyString
+  name: Random Experiment
   performed_on: 2008-11-02
-  performed_by: MyString
+  performed_by: Steve
   amount_used: 1.5
-  amount_used_unit: MyString
-  protocol: MyText
+  amount_used_unit: ml
+  protocol: 125
   sample: two

@@ -1,4 +1,8 @@
-<h1>Listing experiments</h1>
+<% if @sample %>
+  <h1>Experiments for Sample <%= @sample.id %></h1>
+<% else %>
+  <h1>All Experiments</h1>
+<% end %>
 
 <table>
   <tr>
@@ -24,4 +28,6 @@
 
 <br />
 
-<%= link_to 'New experiment', new_experiment_path %>
+<% if @sample %>
+  <%= link_to 'New experiment for this sample', new_sample_experiment_path(@sample) %>
+<% end %>

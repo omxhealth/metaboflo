@@ -4,7 +4,11 @@ class ExperimentsController < ApplicationController
   # GET /experiments
   # GET /experiments.xml
   def index
-    @experiments = Experiment.find(:all)
+    if @sample
+      @experiments = @sample.experiments
+    else
+      @experiments = Experiment.find(:all)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -88,7 +92,15 @@ class ExperimentsController < ApplicationController
   
   private 
   def find_sample
-    @sample = Sample.find(params[:sample_id])
-    @patient = @sample.patient
+    if params[:sample_id]
+      @sample = Sample.find(params[:sample_id])
+      #@patient = @sample.patient
+    elsif ['new', 'create'].include?(action_name)
+      flash[:notice] = "Sample must be specified."
+      respond_to do |format|
+        format.html { redirect_to experiments_url }
+        format.xml { redirect_to formatted_experiments_url }
+      end
+    end
   end
 end
