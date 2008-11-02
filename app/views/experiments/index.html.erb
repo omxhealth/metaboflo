@@ -1,0 +1,27 @@
+<h1>Listing experiments</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Performed on</th>
+    <th>Performed by</th>
+    <th>Protocol</th>
+	<th>Data Files</th>
+  </tr>
+
+<% for experiment in @experiments %>
+  <tr>
+    <td><%=h experiment.name %></td>
+    <td><%=h experiment.performed_on %></td>
+    <td><%=h experiment.performed_by %></td>
+	<td><%=h experiment.data_files.length %></td>
+    <td><%= link_to 'Show', experiment %></td>
+    <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+    <td><%= link_to 'Destroy', experiment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New experiment', new_experiment_path %>

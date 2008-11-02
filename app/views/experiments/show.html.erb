@@ -1,0 +1,45 @@
+<p>
+  <b>Name:</b>
+  <%=h @experiment.name %>
+</p>
+
+<p>
+  <b>Performed on:</b>
+  <%=h @experiment.performed_on %>
+</p>
+
+<p>
+  <b>Performed by:</b>
+  <%=h @experiment.performed_by %>
+</p>
+
+<p>
+  <b>Amount used:</b>
+  <%=h @experiment.amount_used %>
+</p>
+
+<p>
+  <b>Amount used unit:</b>
+  <%=h @experiment.amount_used_unit %>
+</p>
+
+<p>
+  <b>Protocol:</b>
+  <%=h @experiment.protocol %>
+</p>
+
+<p>
+  <b>Sample:</b>
+  <%=h @experiment.sample %>
+</p>
+
+<p>
+  <b>Data Files:</b>
+  <%=h @experiment.data_files.length %>
+  <% if @experiment.data_files.length > 0 %>
+    (<%= link_to 'Show', experiment_data_files_path(@experiment) %>)
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_experiment_path(@experiment) %> |
+<%= link_to 'Back', experiments_path %>

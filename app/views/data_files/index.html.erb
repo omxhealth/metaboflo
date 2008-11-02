@@ -1,4 +1,4 @@
-<h1>Data files for Sample <%= @sample.id %></h1>
+<h1>Data files for Experiment <%= @experiment.id %></h1>
 
 <table>
   <tr>
@@ -12,13 +12,13 @@
 	<td><%=h data_file.data_file_type.name %></td>
     <td><%=h number_to_human_size(data_file.size) %></td>
 	<td><%= link_to h(data_file.filename), data_file_type_path(data_file.data_file_type) %></td>
-    <td><%= link_to 'File Information', sample_data_file_path(@sample, data_file) %></td>
-    <td><%= link_to 'Delete File', sample_data_file_path(@sample, data_file), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'File Information', experiment_data_file_path(@experiment, data_file) %></td>
+    <td><%= link_to 'Delete File', experiment_data_file_path(@experiment, data_file), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Upload a data file for this sample', new_sample_data_file_path(@sample) %> | 
-<%= link_to 'Back to Sample', patient_sample_path(@sample.patient, @sample) %>
+<%= link_to 'Upload a data file for this experiment', new_experiment_data_file_path(@experiment) %> | 
+<%= link_to 'Back to Experiment', experiment_path(@experiment) %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  performed_on: 2008-11-02
+  performed_by: MyString
+  amount_used: 1.5
+  amount_used_unit: MyString
+  protocol: MyText
+  sample: one
+
+two:
+  name: MyString
+  performed_on: 2008-11-02
+  performed_by: MyString
+  amount_used: 1.5
+  amount_used_unit: MyString
+  protocol: MyText
+  sample: two

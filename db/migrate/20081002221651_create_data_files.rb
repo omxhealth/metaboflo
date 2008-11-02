@@ -6,7 +6,7 @@ class CreateDataFiles < ActiveRecord::Migration
       t.string :filename
       t.text :description
       t.references :data_file_type
-      t.references :sample
+      t.references :experiment
 
       t.timestamps
     end

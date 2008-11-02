@@ -4,12 +4,12 @@ one:
   size: 1
   content_type: MyString
   filename: MS File
-  sample: one
+  experiment: one
   data_file_type: one
 
 two:
   size: 1
   content_type: MyString
   filename: NMR File
-  sample: one
+  experiment: one
   data_file_type: two

@@ -4,5 +4,5 @@ class DataFile < ActiveRecord::Base
   validates_presence_of :data_file_type_id
   
   belongs_to :data_file_type
-  belongs_to :sample
+  belongs_to :experiment
 end

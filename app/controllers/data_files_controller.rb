@@ -66,7 +66,7 @@ class DataFilesController < ApplicationController
   end
   
   private 
-  def find_sample
+  def find_experiment
     @experiment = Experiment.find(params[:experiment_id])
     @sample = @experiment.sample
     @patient = @sample.patient

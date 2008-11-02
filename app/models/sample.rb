@@ -3,7 +3,7 @@ class Sample < ActiveRecord::Base
   belongs_to :sample
   
   has_many :samples
-  has_many :data_files
+  has_many :experiments
   
   validates_numericality_of :amount, :greater_than_or_equal => 0, :allow_blank => true
   validates_inclusion_of :unit, :in => ['ml', 'g'], :allow_blank => true
