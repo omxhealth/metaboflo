@@ -1,5 +1,6 @@
 class ExperimentsController < ApplicationController
   before_filter :find_sample
+  before_filter :find_experiment, :only => [ :show, :edit, :update, :destroy ]
   
   # GET /experiments
   # GET /experiments.xml
@@ -19,8 +20,6 @@ class ExperimentsController < ApplicationController
   # GET /experiments/1
   # GET /experiments/1.xml
   def show
-    @experiment = Experiment.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @experiment }
@@ -40,7 +39,6 @@ class ExperimentsController < ApplicationController
 
   # GET /experiments/1/edit
   def edit
-    @experiment = Experiment.find(params[:id])
   end
 
   # POST /experiments
@@ -64,8 +62,6 @@ class ExperimentsController < ApplicationController
   # PUT /experiments/1
   # PUT /experiments/1.xml
   def update
-    @experiment = Experiment.find(params[:id])
-
     respond_to do |format|
       if @experiment.update_attributes(params[:experiment])
         flash[:notice] = 'Experiment was successfully updated.'
@@ -81,7 +77,6 @@ class ExperimentsController < ApplicationController
   # DELETE /experiments/1
   # DELETE /experiments/1.xml
   def destroy
-    @experiment = Experiment.find(params[:id])
     @experiment.destroy
 
     respond_to do |format|
@@ -90,11 +85,21 @@ class ExperimentsController < ApplicationController
     end
   end
   
-  private 
+  private
+  def find_experiment
+    @experiment = Experiment.find(params[:id])
+    @sample = @experiment.sample
+    current_sample = @sample
+    while @patient.nil?
+      @patient = current_sample.patient
+      current_sample = current_sample.sample
+    end
+  end
+  
   def find_sample
     if params[:sample_id]
       @sample = Sample.find(params[:sample_id])
-      #@patient = @sample.patient
+      @patient = @sample.patient
     elsif ['new', 'create'].include?(action_name)
       flash[:notice] = "Sample must be specified."
       respond_to do |format|
