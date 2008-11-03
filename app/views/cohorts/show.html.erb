@@ -8,14 +8,17 @@
   <%=h @cohort.description %>
 </p>
 
-<p>
-	<b>Patients in cohort:</b>
-	<ul>
-	<% @cohort.cohort_assignments.each do |ch| -%>
-	<li><%= ch.patient.name %></li>
-	<% end -%>
-	</ul>
-</p>
+<% if !@cohort.cohort_assignments.empty? %>
+	<p>
+		<b>Patients in cohort:</b>
+		<ul>
+		<% @cohort.cohort_assignments.each do |ch| -%>
+		<li><%= ch.patient.name %></li>
+		<% end -%>
+		</ul>
+	</p>
+	
+<% end %>
 
-<%= link_to 'Edit', edit_cohort_path(@cohort) %> |
+<%= link_to 'Modify Patients in Cohort', edit_cohort_cohort_patients_path(@cohort) %> | <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
 <%= link_to 'Back', cohorts_path %>

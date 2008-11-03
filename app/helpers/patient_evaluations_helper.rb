@@ -31,12 +31,8 @@ module PatientEvaluationsHelper
       count += 1
 
   	  out += "<td>"
-      out += "<input type=\"checkbox\" name=\"#{param_str}\" value=\"#{c}\""
-  	  if model_has_list.include?(c)
-  	    out += 'checked="checked"'
-  	  end
-  	  
-  	  out += "/>#{c}"
+  	  out += check_box_tag(param_str, c, model_has_list.include?(c))
+  	  out += c
       out += "</td>"
     end
     out += "</tr></table>"

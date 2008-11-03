@@ -8,4 +8,6 @@ module ApplicationHelper
       return 'no'
     end
   end
+  
+  
 end
