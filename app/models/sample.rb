@@ -5,6 +5,9 @@ class Sample < ActiveRecord::Base
   has_many :samples
   has_many :experiments
   
+  has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
+  has_many :cohorts, :through => :cohort_assignments
+  
   validates_numericality_of :amount, :greater_than_or_equal => 0, :allow_blank => true
   validates_inclusion_of :unit, :in => ['ml', 'g'], :allow_blank => true
 

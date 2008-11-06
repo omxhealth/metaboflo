@@ -47,7 +47,7 @@ class CohortAssignmentsController < ApplicationController
   # POST /cohort_assignments.xml
   def create
     @cohort_assignment = CohortAssignment.new(params[:cohort_assignment])
-    @cohort_assignment.patient = @patient
+    @cohort_assignment.assignable = @patient
 
     respond_to do |format|
       if @cohort_assignment.save

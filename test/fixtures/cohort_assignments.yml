@@ -1,9 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  patient: one
+  assignable: one
+  assignable_type: Patient
   cohort: one
 
 two:
-  patient: two
+  assignable: two
+  assignable_type: Patient
   cohort: one
+
+three:
+  assignable: one
+  assignable_type: Sample
+  cohort: two
+  
+four:
+  assignable: one
+  assignable_type: Experiment
+  cohort: three
