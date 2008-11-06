@@ -13,7 +13,7 @@
 		<b>Patients in cohort:</b>
 		<ul>
 		<% @cohort.cohort_assignments.each do |ch| -%>
-		<li><%= ch.patient.name %></li>
+		<li><%= ch.assignable.name %></li>
 		<% end -%>
 		</ul>
 	</p>
