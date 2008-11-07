@@ -2,6 +2,7 @@
 
 one:
   code: ABC123
+  site: one
   first_name: Joe
   middle_name: F
   last_name: Shmoe
@@ -12,6 +13,7 @@ one:
 
 two:
   code: AB456
+  site: two
   first_name: Jane
   middle_name: P
   last_name: Doe

@@ -1,6 +1,7 @@
 class CreatePatients < ActiveRecord::Migration
   def self.up
     create_table :patients do |t|
+      t.references :site
       t.string :code
       t.string :first_name
       t.string :middle_name

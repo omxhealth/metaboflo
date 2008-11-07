@@ -4,13 +4,15 @@
   <tr>
     <th>Code</th>
     <th>Name</th>
-	<th>Number of Samples</th>
+		<th>Site</th>
+		<th>Number of Samples</th>
   </tr>
 
 <% for patient in @patients %>
   <tr>
     <td><%=h patient.code %></td>
     <td><%=h patient.name %></td>
+		<td><%=h patient.site.name %></td>
 	<td><%=h patient.samples.length %></td>
     <td><%= link_to 'Show', patient %></td>
     <td><%= link_to 'Edit', edit_patient_path(patient) %></td>

@@ -7,6 +7,10 @@
     <%= f.label :code %><br />
     <%= f.text_field :code %>
   </p>
+	<p>
+		<%= f.label :site_id %><br />
+		<%= f.select :site_id, Site.find(:all).collect { |s| [s.name, s.id] }, :allow_blank => true %>
+	</p>
   <p>
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>

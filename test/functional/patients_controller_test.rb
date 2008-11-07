@@ -14,7 +14,7 @@ class PatientsControllerTest < ActionController::TestCase
 
   def test_should_create_patient
     assert_difference('Patient.count') do
-      post :create, :patient => { :code => 'TESTCODE' }
+      post :create, :patient => { :code => 'TESTCODE', :site_id => sites(:one).id }
     end
 
     assert_redirected_to patient_path(assigns(:patient))
