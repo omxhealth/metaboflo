@@ -12,10 +12,10 @@ two:
 
 three:
   assignable: one
-  assignable_type: Sample
+  assignable_type: Patient
   cohort: two
   
 four:
   assignable: one
-  assignable_type: Experiment
+  assignable_type: Patient
   cohort: three

@@ -19,10 +19,10 @@ class CohortPatientsController < ApplicationController
 
     CohortAssignment.transaction do
       
-      CohortAssignment.destroy_all(["cohort_id = ? and patient_id in (?)", @cohort.id, patients_to_remove.join(',') ])
+      CohortAssignment.destroy_all(["cohort_id = ? and assignable_id in (?) and assignable_type=?", @cohort.id, patients_to_remove.join(','), 'Patient'])
       
       patients_to_add.each do |patient_id|
-        CohortAssignment.create(:cohort_id => @cohort.id, :patient_id => patient_id)
+        CohortAssignment.create(:cohort_id => @cohort.id, :assignable_id => patient_id, :assignable_type => 'Patient')
       end
       
     end

@@ -2,13 +2,16 @@
 
 one:
   name: Cancer Study 2A
+  type: PatientCohort
   description: A study of cancer
 
 two:
   name: Metabolomics Study
+  type: PatientCohort
   description: Group of patients
 
 three:
   name: Heart Disease Study
+  type: PatientCohort
   description: Group of patients
 

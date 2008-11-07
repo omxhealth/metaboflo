@@ -10,9 +10,9 @@
   <tr>
     <td><%=h cohort.name %></td>
     <td><%=h cohort.description %></td>
-    <td><%= link_to 'Show', cohort %></td>
+    <td><%= link_to 'Show', cohort_path(cohort) %></td>
     <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
-    <td><%= link_to 'Destroy', cohort, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', cohort_path(cohort), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

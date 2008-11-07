@@ -62,7 +62,7 @@ class CohortsController < ApplicationController
     respond_to do |format|
       if @cohort.update_attributes(params[:cohort])
         flash[:notice] = 'Cohort was successfully updated.'
-        format.html { redirect_to(@cohort) }
+        format.html { redirect_to(cohort_path(@cohort)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
