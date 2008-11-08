@@ -1,8 +1,13 @@
 class PatientsController < ApplicationController
+  before_filter :login_required
+  before_filter :find_patient, :only => [ :show, :edit, :update, :destroy ]
+  
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = Patient.find(:all)
+    @patients = current_user.rank == 'User' ?
+                  Patient.find(:all, :conditions => [ 'site_id=?', current_user.site ]) :
+                  Patient.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +18,6 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.xml
   def show
-    @patient = Patient.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @patient }
@@ -34,7 +37,6 @@ class PatientsController < ApplicationController
 
   # GET /patients/1/edit
   def edit
-    @patient = Patient.find(params[:id])
   end
 
   # POST /patients
@@ -57,8 +59,6 @@ class PatientsController < ApplicationController
   # PUT /patients/1
   # PUT /patients/1.xml
   def update
-    @patient = Patient.find(params[:id])
-
     respond_to do |format|
       if @patient.update_attributes(params[:patient])
         flash[:notice] = 'Patient was successfully updated.'
@@ -74,7 +74,6 @@ class PatientsController < ApplicationController
   # DELETE /patients/1
   # DELETE /patients/1.xml
   def destroy
-    @patient = Patient.find(params[:id])
     @patient.destroy
 
     respond_to do |format|
@@ -82,4 +81,15 @@ class PatientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+    def site_condition
+      @conditions = current_user.rank == 'User' ? [ 'site_id=?', current_user.site ] : []
+    end
+    
+    def find_patient
+      @patient = current_user.rank == 'User' ?
+                  Patient.find(params[:id], :conditions => [ 'site_id=?', current_user.site ]) :
+                  Patient.find(params[:id])
+    end
 end

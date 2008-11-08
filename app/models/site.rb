@@ -1,4 +1,5 @@
 class Site < ActiveRecord::Base
+  has_many :users
   has_many :patients
   
   validates_presence_of :name

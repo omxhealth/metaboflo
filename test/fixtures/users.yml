@@ -29,3 +29,28 @@ old_password_holder:
   created_at:                <%= 1.days.ago.to_s :db %>
 
 
+user:
+  login: user
+  email: user@example.com
+  site: one
+  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  rank: User
+  created_at: <%= 5.days.ago.to_s :db %>
+
+superuser:
+  login: superuser
+  site: two
+  email: superuser@example.com
+  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  rank: Superuser
+  created_at: <%= 5.days.ago.to_s :db %>
+  
+admin:
+  login: admin
+  email: notadmin@example.com
+  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  rank: Administrator
+  created_at: <%= 5.days.ago.to_s :db %>

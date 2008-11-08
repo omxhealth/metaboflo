@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
   layout 'main'
+
+  include AuthenticatedSystem
   
   helper :all # include all helpers, all the time
 
