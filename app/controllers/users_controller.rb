@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :login_required
+  
   # render new.rhtml
   def new
     @user = User.new
@@ -21,4 +23,9 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
+  
+  protected
+    def authorized?
+      super && (current_user.rank == 'Superuser' || current_user.rank == 'Administrator')
+    end
 end

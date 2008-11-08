@@ -5,9 +5,9 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.xml
   def index
-    @patients = current_user.rank == 'User' ?
-                  Patient.find(:all, :conditions => [ 'site_id=?', current_user.site ]) :
-                  Patient.find(:all)
+    @patients = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+                  Patient.find(:all) :
+                  Patient.find(:all, :conditions => [ 'site_id=?', current_user.site ])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -83,13 +83,9 @@ class PatientsController < ApplicationController
   end
   
   protected
-    def site_condition
-      @conditions = current_user.rank == 'User' ? [ 'site_id=?', current_user.site ] : []
-    end
-    
     def find_patient
-      @patient = current_user.rank == 'User' ?
-                  Patient.find(params[:id], :conditions => [ 'site_id=?', current_user.site ]) :
-                  Patient.find(params[:id])
+      @patient = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+                  Patient.find(params[:id]) :
+                  Patient.find(params[:id], :conditions => [ 'site_id=?', current_user.site ])
     end
 end
