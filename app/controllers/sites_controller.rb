@@ -1,5 +1,4 @@
 class SitesController < ApplicationController
-  before_filter :login_required
   before_filter :only_user?, :only => [ :new, :create, :update ]
   before_filter :administrator?, :only => [ :destroy ]
   

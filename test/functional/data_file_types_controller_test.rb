@@ -2,17 +2,20 @@ require 'test_helper'
 
 class DataFileTypesControllerTest < ActionController::TestCase
   def test_should_get_index
+    login_as :user
     get :index
     assert_response :success
     assert_not_nil assigns(:data_file_types)
   end
 
   def test_should_get_new
+    login_as :user
     get :new
     assert_response :success
   end
 
   def test_should_create_data_file_type
+    login_as :user
     assert_difference('DataFileType.count') do
       post :create, :data_file_type => { :name => 'txt' }
     end
@@ -21,21 +24,25 @@ class DataFileTypesControllerTest < ActionController::TestCase
   end
 
   def test_should_show_data_file_type
+    login_as :user
     get :show, :id => data_file_types(:one).id
     assert_response :success
   end
 
   def test_should_get_edit
+    login_as :user
     get :edit, :id => data_file_types(:one).id
     assert_response :success
   end
 
   def test_should_update_data_file_type
+    login_as :user
     put :update, :id => data_file_types(:one).id, :data_file_type => { }
     assert_redirected_to data_file_type_path(assigns(:data_file_type))
   end
 
   def test_should_destroy_data_file_type
+    login_as :user
     assert_difference('DataFileType.count', -1) do
       delete :destroy, :id => data_file_types(:one).id
     end

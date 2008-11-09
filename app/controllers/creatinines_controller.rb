@@ -1,5 +1,4 @@
 class CreatininesController < ApplicationController
-  before_filter :login_required
   before_filter :find_patient
   
   # GET /creatinines
