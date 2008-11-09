@@ -1,4 +1,8 @@
 class SitesController < ApplicationController
+  before_filter :login_required
+  before_filter :only_user?, :only => [ :new, :create, :update ]
+  before_filter :administrator?, :only => [ :destroy ]
+  
   # GET /sites
   # GET /sites.xml
   def index
@@ -82,4 +86,13 @@ class SitesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+    def only_user?
+      redirect_to sites_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
+    end
+    
+    def administrator?
+      redirect_to sites_path unless current_user.rank == 'Administrator'
+    end
 end

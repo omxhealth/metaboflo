@@ -18,15 +18,9 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   protected
-    def find_patient
-      if params[:patient_id]
-        @patient = Patient.find(params[:patient_id])
-      else
-        flash[:notice] = "Patient must be specified."
-        respond_to do |format|
-          format.html { redirect_to patients_url }
-          format.xml { redirect_to formatted_patients_url }
-        end
-      end
+    def find_patient(param_name = :patient_id)
+      @patient = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+                  Patient.find(params[param_name]) :
+                  Patient.find(params[param_name], :conditions => [ 'site_id=?', current_user.site ])
     end
 end

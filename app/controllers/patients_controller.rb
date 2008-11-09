@@ -83,9 +83,7 @@ class PatientsController < ApplicationController
   end
   
   protected
-    def find_patient
-      @patient = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-                  Patient.find(params[:id]) :
-                  Patient.find(params[:id], :conditions => [ 'site_id=?', current_user.site ])
+    def find_patient(param_name = :id)
+      super
     end
 end
