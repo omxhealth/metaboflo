@@ -38,4 +38,8 @@ class SampleTest < ActiveSupport::TestCase
     assert !sample.errors.invalid?(:collected_on)
   end
   
+  def test_root
+    assert_equal patients(:one), samples(:one).root
+    assert_equal patients(:one), samples(:four).root
+  end
 end

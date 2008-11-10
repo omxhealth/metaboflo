@@ -25,7 +25,7 @@ one:
   evaluated_on: 2008-09-25
 
 two:
-  patient: one
+  patient: two
   diagnosis: Patient is improving
   current_smoker: false
   past_smoker: 1.5
@@ -49,7 +49,7 @@ two:
   evaluated_on: 2008-09-30
   
 three:
-  patient: two
+  patient: one
   diagnosis: Patient is perfectly healthy...except he smokes 3 packs a day
   current_smoker: true
   past_smoker: -1

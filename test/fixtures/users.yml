@@ -38,6 +38,15 @@ user:
   rank: User
   created_at: <%= 5.days.ago.to_s :db %>
 
+user2:
+  login: user2
+  email: user2@example.com
+  site: two
+  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  rank: User
+  created_at: <%= 5.days.ago.to_s :db %>
+  
 superuser:
   login: superuser
   site: two

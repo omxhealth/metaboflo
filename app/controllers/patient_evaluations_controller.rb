@@ -26,7 +26,7 @@ class PatientEvaluationsController < ApplicationController
   # GET /patient_evaluations/new
   # GET /patient_evaluations/new.xml
   def new
-    @patient_evaluation = PatientEvaluation.new()
+    @patient_evaluation = PatientEvaluation.new
 
     respond_to do |format|
       format.html # new.html.erb

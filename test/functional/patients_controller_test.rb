@@ -1,14 +1,20 @@
 require 'test_helper'
 
 class PatientsControllerTest < ActionController::TestCase
-  def test_should_get_index_superuser_and_admin
-    [:superuser, :admin].each do |user|
-      login_as user
-      get :index
-      assert_response :success
-      assert_not_nil assigns(:patients)
-      assert_equal 2, assigns(:patients).size
-    end
+  def test_should_get_index_administrator
+    login_as :admin
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:patients)
+    assert_equal 2, assigns(:patients).size
+  end
+  
+  def test_should_get_index_superuser
+    login_as :superuser
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:patients)
+    assert_equal 2, assigns(:patients).size
   end
   
   def test_should_get_index_user
@@ -47,12 +53,16 @@ class PatientsControllerTest < ActionController::TestCase
     end
   end
   
-  def test_should_get_patient_different_site_admin_and_superuser
-    [:superuser, :admin].each do |user|
-      login_as user
-      get :show, :id => patients(:one).id
-      assert_response :success
-    end
+  def test_should_get_patient_different_site_administrator
+    login_as :admin
+    get :show, :id => patients(:one).id
+    assert_response :success
+  end
+  
+  def test_should_get_patient_different_site_superuser
+    login_as :superuser
+    get :show, :id => patients(:one).id
+    assert_response :success
   end
 
   def test_should_get_edit
@@ -68,12 +78,16 @@ class PatientsControllerTest < ActionController::TestCase
     end
   end
   
-  def test_should_get_edit_different_site_admin_and_superuser
-    [:superuser, :admin].each do |user|
-      login_as user
-      get :edit, :id => patients(:one).id
-      assert_response :success
-    end
+  def test_should_get_edit_different_site_administrator
+    login_as :admin
+    get :edit, :id => patients(:one).id
+    assert_response :success
+  end
+  
+  def test_should_get_edit_different_site_superuser
+    login_as :superuser
+    get :edit, :id => patients(:one).id
+    assert_response :success
   end
 
   def test_should_update_patient
@@ -89,14 +103,18 @@ class PatientsControllerTest < ActionController::TestCase
     end
   end
   
-  def test_should_update_patient_different_site_admin_and_superuser
-    [:superuser, :admin].each do |user|
-      login_as user
-      put :update, :id => patients(:one).id, :patient => { }
-      assert_redirected_to patient_path(assigns(:patient))
-    end
+  def test_should_update_patient_different_site_administrator
+    login_as :admin
+    put :update, :id => patients(:one).id, :patient => { }
+    assert_redirected_to patient_path(assigns(:patient))
   end
 
+  def test_should_update_patient_different_site_superuser
+    login_as :superuser
+    put :update, :id => patients(:one).id, :patient => { }
+    assert_redirected_to patient_path(assigns(:patient))
+  end
+  
   def test_should_destroy_patient
     login_as :user
     assert_difference('Patient.count', -1) do
@@ -113,7 +131,7 @@ class PatientsControllerTest < ActionController::TestCase
     end
   end
   
-  def test_should_destroy_patient_different_site_admin
+  def test_should_destroy_patient_different_site_administrator
     login_as :admin
     assert_difference('Patient.count', -1) do
       delete :destroy, :id => patients(:one).id

@@ -22,4 +22,12 @@ class Sample < ActiveRecord::Base
   def before_validation
     self.sample_type = self.sample.sample_type if self.sample
   end
+  
+  def root
+    current_sample = self
+    while current_sample.patient.nil?
+      current_sample = current_sample.sample
+    end
+    current_sample.patient
+  end
 end
