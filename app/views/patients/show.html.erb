@@ -81,13 +81,18 @@
 </p>
 
 <p>
-  <b>Height:</b>
-  <%=h @patient.height %>
+    <b>Height:</b>
+    <%=h @patient.height %> inches
 </p>
 
 <p>
-  <b>Weight:</b>
-  <%=h @patient.weight %>
+    <b>Weight:</b>
+    <%=h @patient.weight %> lbs
+</p>
+
+<p>
+    <b>BMI:</b>
+    <%=h BMI(@patient.height, @patient.weight) %>
 </p>
 
 <p>

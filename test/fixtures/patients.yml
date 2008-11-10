@@ -8,7 +8,7 @@ one:
   last_name: Shmoe
   birthdate: 2000-09-25
   gender: Male
-  height: 180
+  height: 72
   weight: 190
 
 two:
@@ -19,5 +19,60 @@ two:
   last_name: Doe
   birthdate: 1954-08-22
   gender: Female
-  height: 130
+  height: 60
   weight: 110
+
+three:
+  code: AB4563
+  site: two
+  first_name: Stephen
+  middle_name: 
+  last_name: Harper
+  birthdate: 1954-08-22
+  gender: Male
+  height: 65
+  weight: 190
+  
+four:
+  code: AB452
+  site: two
+  first_name: Stephane
+  middle_name: 
+  last_name: Dion
+  birthdate: 1955-08-22
+  gender: Male
+  height: 64
+  weight: 144
+  
+five:
+  code: AB453
+  site: one
+  first_name: Gilles
+  middle_name: 
+  last_name: Duceppe
+  birthdate: 1955-08-22
+  gender: Male
+  height: 63
+  weight: 166
+  
+six:
+  code: AB454
+  site: one
+  first_name: Jack
+  middle_name: 
+  last_name: Layton
+  birthdate: 1955-08-22
+  gender: Male
+  height: 58
+  weight: 170
+  
+seven:
+  code: AB451
+  site: one
+  first_name: Elizabeth
+  middle_name: 
+  last_name: May
+  birthdate: 1955-08-22
+  gender: Male
+  height: 59
+  weight: 130
