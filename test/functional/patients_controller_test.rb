@@ -5,21 +5,21 @@ class PatientsControllerTest < ActionController::TestCase
     login_as :admin
     get :index
     assert_response :success
-    assert_equal 2, assigns(:patients).size
+    assert_equal Patient.find(:all).size, assigns(:patients).size
   end
   
   def test_should_get_index_superuser
     login_as :superuser
     get :index
     assert_response :success
-    assert_equal 2, assigns(:patients).size
+    assert_equal Patient.find(:all).size, assigns(:patients).size
   end
   
   def test_should_get_index_user
     login_as :user
     get :index
     assert_response :success
-    assert_equal 1, assigns(:patients).size
+    assert_equal Patient.find(:all, :conditions => ['site_id=?', sites(:one)]).size, assigns(:patients).size
   end
 
   def test_should_get_new
