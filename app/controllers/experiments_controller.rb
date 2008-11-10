@@ -86,26 +86,19 @@ class ExperimentsController < ApplicationController
   end
   
   private
-  def find_experiment
-    @experiment = Experiment.find(params[:id])
-    @sample = @experiment.sample
-    current_sample = @sample
-    while @patient.nil?
-      @patient = current_sample.patient
-      current_sample = current_sample.sample
-    end
-  end
-  
-  def find_sample
-    if params[:sample_id]
+    def find_sample
       @sample = Sample.find(params[:sample_id])
-      @patient = @sample.patient
-    elsif ['new', 'create'].include?(action_name)
-      flash[:notice] = "Sample must be specified."
-      respond_to do |format|
-        format.html { redirect_to experiments_url }
-        format.xml { redirect_to formatted_experiments_url }
+      params[:patient_id] = @sample.root.id
+      find_patient
+    end
+    
+    def find_experiment
+      @experiment = Experiment.find(params[:id])
+      @sample = @experiment.sample
+      current_sample = @sample
+      while @patient.nil?
+        @patient = current_sample.patient
+        current_sample = current_sample.sample
       end
     end
-  end
 end

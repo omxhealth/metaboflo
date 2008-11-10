@@ -17,3 +17,12 @@ two:
   amount_used_unit: ml
   protocol: 125
   sample: two
+
+three:
+  name: Random Experiment 2
+  performed_on: 2008-11-02
+  performed_by: Steve
+  amount_used: 1.5
+  amount_used_unit: ml
+  protocol: 125
+  sample: one
