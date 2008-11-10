@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_filter :only_user?, :only => [ :new, :create, :update ]
+  before_filter :only_user?, :only => [ :new, :create, :edit, :update ]
   before_filter :administrator?, :only => [ :destroy ]
   
   # GET /sites
@@ -87,11 +87,11 @@ class SitesController < ApplicationController
   end
   
   protected
-    def only_user?
-      redirect_to sites_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
+    def only_user?(redirect_path = sites_path)
+      super
     end
     
-    def administrator?
-      redirect_to sites_path unless current_user.rank == 'Administrator'
+    def administrator?(redirect_path = sites_path)
+      super
     end
 end

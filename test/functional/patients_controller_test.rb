@@ -5,7 +5,6 @@ class PatientsControllerTest < ActionController::TestCase
     login_as :admin
     get :index
     assert_response :success
-    assert_not_nil assigns(:patients)
     assert_equal 2, assigns(:patients).size
   end
   
@@ -13,7 +12,6 @@ class PatientsControllerTest < ActionController::TestCase
     login_as :superuser
     get :index
     assert_response :success
-    assert_not_nil assigns(:patients)
     assert_equal 2, assigns(:patients).size
   end
   
@@ -21,7 +19,6 @@ class PatientsControllerTest < ActionController::TestCase
     login_as :user
     get :index
     assert_response :success
-    assert_not_nil assigns(:patients)
     assert_equal 1, assigns(:patients).size
   end
 
@@ -40,82 +37,106 @@ class PatientsControllerTest < ActionController::TestCase
     assert_redirected_to patient_path(assigns(:patient))
   end
 
-  def test_should_show_patient
+  def test_should_show_patient_administrator
+    login_as :admin
+    get :show, :id => patients(:one).id
+    assert_response :success
+  end
+  
+  def test_should_show_patient_superuser
+    login_as :superuser
+    get :show, :id => patients(:one).id
+    assert_response :success
+  end
+  
+  def test_should_show_patient_user
     login_as :user
     get :show, :id => patients(:one).id
     assert_response :success
   end
   
-  def test_should_not_get_patient_different_site
+  def test_should_not_get_patient
     login_as :user
+    
+    # wrong site
     assert_raise ActiveRecord::RecordNotFound do
       get :show, :id => patients(:two).id
     end
   end
-  
-  def test_should_get_patient_different_site_administrator
-    login_as :admin
-    get :show, :id => patients(:one).id
-    assert_response :success
-  end
-  
-  def test_should_get_patient_different_site_superuser
-    login_as :superuser
-    get :show, :id => patients(:one).id
-    assert_response :success
-  end
 
-  def test_should_get_edit
+  def test_should_get_edit_administrator
+    login_as :admin
+    get :edit, :id => patients(:one).id
+    assert_response :success
+  end
+  
+  def test_should_get_edit_superuser
+    login_as :superuser
+    get :edit, :id => patients(:one).id
+    assert_response :success
+  end
+  
+  def test_should_get_edit_user
     login_as :user
     get :edit, :id => patients(:one).id
     assert_response :success
   end
   
-  def test_should_not_get_edit_different_site
+  def test_should_not_get_edit
     login_as :user
+    
+    # wrong site
     assert_raise ActiveRecord::RecordNotFound do
       get :edit, :id => patients(:two).id
     end
   end
-  
-  def test_should_get_edit_different_site_administrator
+
+  def test_should_update_patient_administrator
     login_as :admin
-    get :edit, :id => patients(:one).id
-    assert_response :success
-  end
-  
-  def test_should_get_edit_different_site_superuser
-    login_as :superuser
-    get :edit, :id => patients(:one).id
-    assert_response :success
+    put :update, :id => patients(:one).id, :patient => { }
+    assert_redirected_to patient_path(assigns(:patient))
   end
 
-  def test_should_update_patient
+  def test_should_update_patient_superuser
+    login_as :superuser
+    put :update, :id => patients(:one).id, :patient => { }
+    assert_redirected_to patient_path(assigns(:patient))
+  end
+  
+  def test_should_update_patient_user
     login_as :user
     put :update, :id => patients(:one).id, :patient => { }
     assert_redirected_to patient_path(assigns(:patient))
   end
   
-  def test_should_not_update_patient_different_site
+  def test_should_not_update_patient
     login_as :user
+    
+    # wrong site
     assert_raise ActiveRecord::RecordNotFound do
       put :update, :id => patients(:two).id, :patients => { }
     end
   end
   
-  def test_should_update_patient_different_site_administrator
+  def test_should_destroy_patient_administrator
     login_as :admin
-    put :update, :id => patients(:one).id, :patient => { }
-    assert_redirected_to patient_path(assigns(:patient))
-  end
-
-  def test_should_update_patient_different_site_superuser
-    login_as :superuser
-    put :update, :id => patients(:one).id, :patient => { }
-    assert_redirected_to patient_path(assigns(:patient))
+    assert_difference('Patient.count', -1) do
+      delete :destroy, :id => patients(:one).id
+    end
+    
+    assert_redirected_to patients_path
   end
   
-  def test_should_destroy_patient
+  def test_should_destroy_patient_superuser
+    login_as :superuser
+    assert_difference('Patient.count', -1) do
+      delete :destroy, :id => patients(:one).id
+    end
+    
+    assert_redirected_to patients_path
+  end
+  
+  def test_should_destroy_patient_user
     login_as :user
     assert_difference('Patient.count', -1) do
       delete :destroy, :id => patients(:one).id
@@ -124,28 +145,12 @@ class PatientsControllerTest < ActionController::TestCase
     assert_redirected_to patients_path
   end
   
-  def test_should_not_destroy_patient_different_site
+  def test_should_not_destroy_patient
     login_as :user
+    
+    # wrong site
     assert_raise ActiveRecord::RecordNotFound do
       delete :destroy, :id => patients(:two).id
     end
-  end
-  
-  def test_should_destroy_patient_different_site_administrator
-    login_as :admin
-    assert_difference('Patient.count', -1) do
-      delete :destroy, :id => patients(:one).id
-    end
-    
-    assert_redirected_to patients_path
-  end
-  
-  def test_should_destroy_patient_different_site_superuser
-    login_as :superuser
-    assert_difference('Patient.count', -1) do
-      delete :destroy, :id => patients(:one).id
-    end
-    
-    assert_redirected_to patients_path
   end
 end

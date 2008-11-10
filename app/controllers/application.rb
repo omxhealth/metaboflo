@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   protected
+    def only_user?(redirect_path = root_path)
+      redirect_to redirect_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
+    end
+  
+    def administrator?(redirect_path = root_path)
+      redirect_to redirect_path unless current_user.rank == 'Administrator'
+    end
+  
     def find_patient(param_name = :patient_id)
       @patient = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
                   Patient.find(params[param_name]) :

@@ -1,6 +1,6 @@
 <h1>Editing Sample</h1>
 
-<% form_for([@parent_sample || @patient, @sample]) do |f| %>
+<% form_for([@parent, @sample]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -38,4 +38,4 @@
 
 <br />
 
-<%= link_to 'Show', @parent_sample ? sample_sample_path(@parent_sample, @sample) : patient_sample_path(@patient, @sample) %>
+<%= link_to 'Show', [@parent, @sample] %>

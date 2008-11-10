@@ -2,12 +2,18 @@
 
 one:
   patient: one
-  drug: MyString
+  drug: Acetaminophen
   started_on: 2008-10-19
   stopped_on: 2008-10-19
 
 two:
+  patient: two
+  drug: Ibuprofen
+  started_on: 2008-10-19
+  stopped_on: 2008-10-19
+
+three:
   patient: one
-  drug: MyString
+  drug: Ibuprofen
   started_on: 2008-10-19
   stopped_on: 2008-10-19
