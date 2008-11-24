@@ -1,9 +1,0 @@
-<h1>Patients in Cohort <%= @cohort.name %></h1>
-
-<% form_tag cohort_cohort_patients_path(@cohort), :method => :put do %>
-
-	<%= patient_check_boxes(1, 'patients[]', @patients, @cohort.assignables) %>
-
-	<%= submit_tag 'Submit' %>
-
-<% end %>
