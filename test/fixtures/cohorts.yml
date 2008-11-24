@@ -15,3 +15,13 @@ three:
   type: PatientCohort
   description: Group of patients
 
+four:
+  name: Soylent Green Samples
+  type: SampleCohort
+  description: Group of Samples
+
+five:
+  name: Grad Study Experiments
+  type: ExperimentCohort
+  description: Group of Experiments
+

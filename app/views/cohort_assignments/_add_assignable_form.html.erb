@@ -1,0 +1,8 @@
+<% form_remote_tag :url => cohort_cohort_assignments_path(@cohort) do %>
+	<% fields_for :cohort_assignment, CohortAssignment.new(:assignable_type => @cohort.assignable_type) do |ca_fields| %>
+	<%= ca_fields.hidden_field :assignable_type %>
+	<%= @cohort.assignable_type %>: <%= ca_fields.select(:assignable_id, @cohort.assignable_type.constantize.all.collect {|p| [ p.to_s, p.id ] }, { :include_blank => true } ) %>
+
+	<%= submit_tag "Add #{@cohort.assignable_type}" %>
+	<% end %>
+<% end %>

@@ -1,7 +1,7 @@
 class ExperimentsController < ApplicationController
   before_filter :find_sample
   before_filter :find_experiment, :only => [ :show, :edit, :update, :destroy ]
-  
+
   # GET /experiments
   # GET /experiments.xml
   def index
@@ -84,21 +84,21 @@ class ExperimentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   private
-    def find_sample
-      @sample = Sample.find(params[:sample_id])
-      params[:patient_id] = @sample.root.id
-      find_patient
+  def find_sample
+    @sample = Sample.find(params[:sample_id])
+    params[:patient_id] = @sample.root.id
+    find_patient
+  end
+
+  def find_experiment
+    @experiment = Experiment.find(params[:id])
+    @sample = @experiment.sample
+    current_sample = @sample
+    while @patient.nil?
+      @patient = current_sample.patient
+      current_sample = current_sample.sample
     end
-    
-    def find_experiment
-      @experiment = Experiment.find(params[:id])
-      @sample = @experiment.sample
-      current_sample = @sample
-      while @patient.nil?
-        @patient = current_sample.patient
-        current_sample = current_sample.sample
-      end
-    end
+  end
 end

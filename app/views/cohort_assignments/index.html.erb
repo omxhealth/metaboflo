@@ -1,4 +1,4 @@
-<h1>Cohort to which Patient <%= @patient.code %> belongs</h1>
+<h1>Cohort to which <%= @assignable_type %> <%= @assignable.name %> belongs</h1>
 
 <table>
   <tr>
@@ -8,11 +8,11 @@
 <% for cohort_assignment in @cohort_assignments %>
   <tr>
     <td><%=h cohort_assignment.cohort.name %></td>
-    <td><%= link_to 'Remove', patient_cohort_assignment_path(@patient, cohort_assignment), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Remove', { :action => 'destroy', :id => cohort_assignment, "#{@assignable_type.downcase}_id" => @assignable }, { :confirm => 'Are you sure?', :method => :delete } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New cohort_assignment', new_patient_cohort_assignment_path(@patient) %>
+<%= link_to "Add #{@assignable_type} to Cohort", :action => 'new', "#{@assignable_type.downcase}_id" => @assignable %>

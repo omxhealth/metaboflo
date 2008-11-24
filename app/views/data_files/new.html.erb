@@ -6,7 +6,6 @@
     <%= f.label 'File to Upload' %><br />
 	<%= f.file_field :uploaded_data %>
   </p>
-	
   <p>
     <%= f.label :data_file_type %><br />
     <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true } %>

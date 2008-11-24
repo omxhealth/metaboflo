@@ -6,6 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= controller.controller_name %>: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+	<%= javascript_include_tag :defaults %>
 </head>
 <body>
 <div id="container">
@@ -14,9 +15,9 @@
 	</div>
 	<div id="menu">
 		<%= link_to 'Patients', patients_path, :class => 'menu' %> |
-		<%= link_to 'Samples', samples_path, :class => 'menu' %> |
+		<%= link_to 'Samples', samples_url, :class => 'menu' %> |
 		<%= link_to 'Experiments', experiments_path, :class => 'menu' %> |
-		<%= link_to 'Cohorts', cohorts_path, :class => 'menu' %> |
+		<%= link_to 'Cohorts', patient_cohorts_path, :class => 'menu' %> |
 		<%= link_to 'Admin', admin_path, :class => 'menu' %>
 	</div>
 	<div id="main">
@@ -29,13 +30,18 @@
 			</div>
 		</div>
 		<div id="content">
-			<p style="color: green"><%= flash[:notice] %></p>
+			<div id="flash">
+				<p style="color: green"><%= flash[:notice] %></p>
+				<p style="color: red"><%= flash[:error] %></p>
+			</div>
 
 			<%= yield  %>
 		</div>
 		<% else -%>
-		<p style="color: green"><%= flash[:notice] %></p>
-
+		<div id="flash">
+			<p style="color: green"><%= flash[:notice] %></p>
+			<p style="color: red"><%= flash[:error] %></p>
+		</div>
 		<%= yield  %>
 		<% end -%>
 	</div>
@@ -43,5 +49,38 @@
 
 	</div>
 </div>
+
+<% if ENV['RAILS_ENV'] == 'development' %>
+	<div id="debug" style="margin: 40px 5px 5px 5px;">
+		<a href="#" onclick="Element.toggle('debug_info');return false" style="text-decoration: none; color: #ccc;">
+			Show Debug Info &#10162;
+		</a>
+		<div id="debug_info" style="display: none;">
+			<%= debug session %>
+			<%= debug params %>
+		</div>
+	</div>
+	<div id="javascript-debug" style="margin: 5px 5px 5px 5px;">
+		<a href="#" onclick="Element.toggle('javascript_debug_info');return false" style="text-decoration: none; color: #ccc;">
+			Show JavaScript Debug Info &#10162;
+		</a>
+		<div id="javascript_debug_info" style="display: none;">
+		</div>
+	</div>
+	
+	<% if ActionView::Base.debug_rjs %> 
+		<script type="text/javascript"> 
+			Ajax.Responders.register({ 
+				onComplete: function(request, transport) { 
+					new Insertion.Bottom('javascript_debug_info', 
+					'<div style="border: 1px solid">' + 
+					'<pre>' + transport.responseText.escapeHTML() + '</pre>' + 
+					'</div>') 
+				} 
+			}); 
+		</script> 
+	<% end %>
+<% end %>
+
 </body>
 </html>

@@ -1,24 +1,31 @@
 <p>
-  <b>Name:</b>
-  <%=h @cohort.name %>
+	<b>Name:</b>
+	<%=h @cohort.name %>
 </p>
 
 <p>
-  <b>Description:</b>
-  <%=h @cohort.description %>
+	<b>Description:</b>
+	<%=h @cohort.description %>
 </p>
 
-<% if !@cohort.cohort_assignments.empty? %>
-	<p>
-		<b>Patients in cohort:</b>
-		<ul>
-		<% @cohort.cohort_assignments.each do |ch| -%>
-		<li><%= ch.assignable.name %></li>
-		<% end -%>
-		</ul>
-	</p>
-	
-<% end %>
+<h2><%= @cohort.assignable_type.pluralize %> in this cohort</h2>
 
-<%= link_to 'Modify Patients in Cohort', edit_cohort_cohort_patients_path(@cohort) %> | <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
-<%= link_to 'Back', cohorts_path %>
+<div class="association">
+	<table>
+		<thead>
+			<tr>
+				<th><%= @cohort.assignable_type %></th>
+				<th>Remove</th>		
+			</tr>
+		</thead>
+		<tbody id="assignable-associations">
+			<%= render :partial => '/cohort_assignments/cohort_assignment', :collection => @cohort.cohort_assignments, :locals => { :from => 'cohort' } %>
+		</tbody>
+	</table>
+	<div class="new-association">
+		<%= render :partial => '/cohort_assignments/add_assignable_form' %>
+	</div>
+</div>
+
+<%= link_to 'Edit', :action => 'edit', :type => @type %> |
+<%= link_to 'Back', :action => 'index', :type => @type %>

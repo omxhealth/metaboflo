@@ -1,8 +1,10 @@
 class CohortsController < ApplicationController
+  before_filter :find_type
+
   # GET /cohorts
   # GET /cohorts.xml
   def index
-    @cohorts = Cohort.find(:all)
+    @cohorts = "#{@type}Cohort".constantize.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +42,7 @@ class CohortsController < ApplicationController
   # POST /cohorts
   # POST /cohorts.xml
   def create
-    @cohort = Cohort.new(params[:cohort])
+    @cohort = Cohort.factory(@type, params[:cohort])
 
     respond_to do |format|
       if @cohort.save
@@ -62,7 +64,7 @@ class CohortsController < ApplicationController
     respond_to do |format|
       if @cohort.update_attributes(params[:cohort])
         flash[:notice] = 'Cohort was successfully updated.'
-        format.html { redirect_to(cohort_path(@cohort)) }
+        format.html { redirect_to(:action => 'show', :type => @type, :id => @cohort) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,8 +80,16 @@ class CohortsController < ApplicationController
     @cohort.destroy
 
     respond_to do |format|
-      format.html { redirect_to(cohorts_url) }
+      flash[:notice] = 'Cohort was successfully deleted.'
+      format.html { redirect_to(:action => 'index', :type => @type) }
       format.xml  { head :ok }
     end
   end
+
+  private 
+  def find_type
+    Cohort.valid_types
+    @type = params[:type]
+  end
+
 end

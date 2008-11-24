@@ -1,6 +1,6 @@
-<h1>Editing cohort</h1>
+<h1>Editing <%= @type %> cohort</h1>
 
-<% form_for(@cohort, :url => cohort_path) do |f| %>
+<% form_for(:cohort, @cohort, :url => { :action => "update", :type => @type }, :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,5 +16,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', cohort_path(@cohort) %> |
-<%= link_to 'Back', cohorts_path %>
+<%= link_to 'Show', :action => 'show', :id => @cohort, :type => @type %> |
+<%= link_to 'Back', :action => 'index', :type => @type %>

@@ -10,8 +10,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  map.resources :experiments, :has_many => [ :data_files ]
-
   # map.resources :patient_evaluations
 
   #  map.resources :creatinines
@@ -20,17 +18,23 @@ ActionController::Routing::Routes.draw do |map|
 
   #  map.resources :medications
 
-  #  map.resources :cohort_assignments
+  map.resources :data_file_types
 
-    map.resources :data_file_types
+  map.resources :data_files
 
-    map.resources :data_files
+  map.resources :experiments, :has_many => [ :data_files, :cohort_assignments ]
+  
+  map.resources :samples, :has_many => [ :samples, :experiments, :cohort_assignments ]
 
-    map.resources :cohorts, :has_one => [ :cohort_patients]
-    
-    map.resources :samples, :has_many => [ :samples, :experiments ]
+  map.resources :patients, :has_many => [ :samples, :cohort_assignments, :cholesterols, :creatinines, :medications, :patient_evaluations ]
 
-    map.resources :patients, :has_many => [ :samples, :cohort_assignments, :cholesterols, :creatinines, :medications, :patient_evaluations ]
+  map.resources :cohorts, :has_many => [ :cohort_assignments ]
+  
+  # Add routes to direct the cohort types to the correct place
+  Cohort.valid_types.each do |cohort_type|
+    map.resources "#{cohort_type.downcase}_cohorts", :controller => 'cohorts', :requirements => { :type => cohort_type } 
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -50,7 +54,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments

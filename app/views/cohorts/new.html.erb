@@ -1,12 +1,13 @@
-<h1>New cohort</h1>
+<h1>New <%= @type %> cohort</h1>
 
-<% form_for(@cohort) do |f| %>
+<% form_for :cohort, @cohort, :url => { :action => "create", :type => @type } do |f| %>
   <%= f.error_messages %>
 
-  <p>
+	<p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+
   <p>
     <%= f.label :description %><br />
     <%= f.text_field :description %>
@@ -16,4 +17,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', cohorts_path %>
+<%= link_to 'Back', :action => 'index', :type => @type %>

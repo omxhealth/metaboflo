@@ -1,22 +1,30 @@
-<h1>Cohorts</h1>
+<h1><%= @type %> Cohorts</h1>
+
+<div class="submenu" style="margin: 1em 0em">
+	<% Cohort.valid_types.each do |cohort_type| %>
+	<%= link_to "#{cohort_type} Cohorts", :type => cohort_type %>&nbsp;
+	<% end %>
+</div>
 
 <table>
   <tr>
     <th>Name</th>
     <th>Description</th>
+		<th># of <%= @type.pluralize %></th>
   </tr>
 
 <% for cohort in @cohorts %>
   <tr>
     <td><%=h cohort.name %></td>
     <td><%=h cohort.description %></td>
-    <td><%= link_to 'Show', cohort_path(cohort) %></td>
-    <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
-    <td><%= link_to 'Destroy', cohort_path(cohort), :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%=h cohort.assignables.count %></td>
+    <td><%= link_to 'Show', :action => 'show', :id => cohort, :type => @type %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => cohort, :type => @type %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => cohort, :type => @type }, { :confirm => 'Are you sure?', :method => :delete } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New cohort', new_cohort_path %>
+<%= link_to "New #{@type} Cohort", :action => 'new', :type => @type %>

@@ -19,3 +19,13 @@ four:
   assignable: one
   assignable_type: Patient
   cohort: three
+
+five:
+  assignable: one
+  assignable_type: Sample
+  cohort: four
+
+six:
+  assignable: two
+  assignable_type: Sample
+  cohort: four

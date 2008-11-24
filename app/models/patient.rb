@@ -18,4 +18,10 @@ class Patient < ActiveRecord::Base
   def name
     "#{self.first_name} #{self.middle_name} #{self.last_name}".gsub(/\s+/, " ").strip
   end
+  
+  # Required so that Experiments, Samples, and Patients can be displayed in cohorts
+  def to_s
+    return self.name
+  end
+  
 end

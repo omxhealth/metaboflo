@@ -6,4 +6,10 @@ class Experiment < ActiveRecord::Base
   has_many :cohorts, :through => :cohort_assignments
   
   validates_presence_of :sample_id
+  
+  # Required so that Experiments, Samples, and Patients can be displayed in cohorts
+  def to_s
+    return self.name
+  end
+
 end
