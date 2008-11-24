@@ -19,6 +19,7 @@
 		<%= link_to 'Experiments', experiments_path, :class => 'menu' %> |
 		<%= link_to 'Cohorts', patient_cohorts_path, :class => 'menu' %> |
 		<%= link_to 'Admin', admin_path, :class => 'menu' %>
+		<%= link_to 'Logout', logout_path, :class => 'menu', :style => 'float: right' %>
 	</div>
 	<div id="main">
 		<% unless @patient.nil? || @patient.new_record? -%>

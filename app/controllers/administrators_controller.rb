@@ -3,6 +3,6 @@ class AdministratorsController < ApplicationController
   end
 
   def authorized?
-    current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
+    !current_user.blank? && (current_user.rank == 'Superuser' || current_user.rank == 'Administrator')
   end
 end
