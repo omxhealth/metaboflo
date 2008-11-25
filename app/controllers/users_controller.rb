@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def index
+    @users = User.find(:all)
+  end
+  
   protected
     def authorized?
       super && (current_user.rank == 'Superuser' || current_user.rank == 'Administrator')

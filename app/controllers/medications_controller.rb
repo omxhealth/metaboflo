@@ -1,6 +1,6 @@
 class MedicationsController < ApplicationController
   before_filter :find_patient
-  
+
   # GET /medications
   # GET /medications.xml
   def index
@@ -85,4 +85,5 @@ class MedicationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

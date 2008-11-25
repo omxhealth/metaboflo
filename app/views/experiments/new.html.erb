@@ -1,6 +1,6 @@
 <h1>New experiment</h1>
 
-<% form_for(@experiment) do |f| %>
+<% form_for([@sample, @experiment]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -26,10 +26,6 @@
   <p>
     <%= f.label :protocol %><br />
     <%= f.text_area :protocol %>
-  </p>
-  <p>
-    <%= f.label :sample %><br />
-    <%= f.text_field :sample %>
   </p>
   <p>
     <%= f.submit "Create" %>

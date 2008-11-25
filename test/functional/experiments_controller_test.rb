@@ -20,8 +20,13 @@ class ExperimentsControllerTest < ActionController::TestCase
     get :index, :sample_id => samples(:one)
     assert_response :success
     assert_equal 2, assigns(:experiments).size
+    
+    #No sample -> Should list all experiments
+    get :index
+    assert_response :success
+    #assert_equal 2, assigns(:experiments).size
   end
-
+  
   def test_should_get_new_administrator
     login_as :admin
     get :new, :sample_id => samples(:one)

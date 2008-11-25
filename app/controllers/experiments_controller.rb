@@ -50,7 +50,7 @@ class ExperimentsController < ApplicationController
     respond_to do |format|
       if @experiment.save
         flash[:notice] = 'Experiment was successfully created.'
-        format.html { redirect_to(@experiment) }
+        format.html { redirect_to([@sample, @experiment]) }
         format.xml  { render :xml => @experiment, :status => :created, :location => @experiment }
       else
         format.html { render :action => "new" }
@@ -101,4 +101,5 @@ class ExperimentsController < ApplicationController
       current_sample = current_sample.sample
     end
   end
+
 end

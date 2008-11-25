@@ -9,9 +9,9 @@
 
 <% for data_file in @data_files %>
   <tr>
-	<td><%=h data_file.data_file_type.name %></td>
+	<td><%= link_to h(data_file.filename), data_file.public_filename %></td>
     <td><%=h number_to_human_size(data_file.size) %></td>
-	<td><%= link_to h(data_file.filename), data_file_type_path(data_file.data_file_type) %></td>
+	<td><%= link_to h(data_file.data_file_type.name), data_file_type_path(data_file.data_file_type) %></td>
     <td><%= link_to 'File Information', experiment_data_file_path(@experiment, data_file) %></td>
     <td><%= link_to 'Delete File', experiment_data_file_path(@experiment, data_file), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

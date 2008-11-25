@@ -1,0 +1,27 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Login</th>
+    <th>Site</th>
+    <th>Email</th>
+  </tr>
+
+<% for user in @users %>
+  <tr>
+    <td><%=h user.name %></td>
+    <td><%=h user.login %></td>
+	<% if user.site %>
+		<td><%=h user.site.name %></td>
+	<% else %>
+    	<td>-</td>
+	<% end %>
+    <td><%=h user.email %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user', new_user_path %>

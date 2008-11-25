@@ -9,8 +9,8 @@
 </p>
 
 <p>
-  <b>Filename:</b>
-  <%=h @data_file.filename %>
+  <b>File:</b>
+  <%= link_to h(@data_file.filename), @data_file.public_filename %>
 </p>
 
 <p>
