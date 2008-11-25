@@ -87,9 +87,11 @@ class ExperimentsController < ApplicationController
 
   private
   def find_sample
-    @sample = Sample.find(params[:sample_id])
-    params[:patient_id] = @sample.root.id
-    find_patient
+    if action_name != 'index' || !params[:sample_id].blank?
+      @sample = Sample.find(params[:sample_id])
+      params[:patient_id] = @sample.root.id
+      find_patient
+    end
   end
 
   def find_experiment
