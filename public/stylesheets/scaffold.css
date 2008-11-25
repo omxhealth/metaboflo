@@ -18,6 +18,24 @@ a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
 
+div#flash p.notice, div#flash p.error {
+	border: 1px solid gray;
+	margin: 1em 1em 1em 0em;
+	width: 80%;
+	padding: 0.5em;
+}
+
+div#flash p.notice {
+	background: #A6D785;
+	color: green;
+}
+
+div#flash p.error {
+	background: #CD9B9B;
+	color: #8C1717;
+}
+
+
 .fieldWithErrors {
   padding: 2px;
   background-color: red;
@@ -73,13 +91,13 @@ div#menu {
 	padding: 0.4em;
 }
 
-div#menu a.menu {
+div#menu a {
 	text-decoration: none;
 	color: #cccc00;
 	font-weight: bold;
 }
 
-div#menu a:hover.menu {
+div#menu a:hover {
 	color: #ffffff;
 	background-color: #001a57;
 }
@@ -90,17 +108,19 @@ div#main {
 }
 
 div#sidebar {
-	min-height: 28em;
-	width: 20em;
+	min-height: 40em;
+	width: 25em;
 	float: left;
 	overflow: auto;
 	white-space: nowrap;
+/*	border-right: 1px solid grey;*/
+	margin-right: 1em;
 }
 
 div#tree ul {
 	padding-left: 2em;
 }
-
+	
 div#tree li.patient {
 	list-style-image: url(/images/patient.jpg);
 }
@@ -138,9 +158,14 @@ div#content {
 	min-height: 28em;
 	height: 100%;
 	min-width: -20em;
-	overflow: auto;
+/*	overflow: auto;*/
 	padding-left: 0.5em;
-	border-left: 1px solid black;
+}
+
+.content-with-sidebar
+{
+	margin-left: 25em;
+	border-left: 1px solid silver;
 }
 
 div#footerbar {

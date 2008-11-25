@@ -1,4 +1,4 @@
-<h1>Assign <%= @assignable_type %> to a cohort</h1>
+<h1>Add <%= @assignable_type %> to a cohort</h1>
 
 <% form_for([@assignable, @cohort_assignment]) do |f| %>
   <%= f.error_messages %>
@@ -7,9 +7,11 @@
     <%= f.label :cohort_id %><br />
     <%= f.select :cohort_id, "#{@assignable_type}Cohort".constantize.all.collect { |c| [ c.name, c.id ] } %>
   </p>
+	
+	<br />
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
-
+<br />
 <%= link_to 'Back', "#{@assignable_type.downcase}_id" => @assignable %>

@@ -1,8 +1,8 @@
 if @successful
   page.replace_html "assignable-associations", :partial => 'cohort_assignment', :collection => @cohort.cohort_assignments, :locals => { :from => 'cohort' }
-  page.replace_html 'flash', "<p style='color:green'>Added patient to cohort successfully</p>"
+  page.replace_html 'flash', "<p class=\"notice\">Added patient to cohort successfully</p>"
 else
-  page.replace_html 'flash', "<p style='color:red'>Error adding patient to cohort</p>"
+  page.replace_html 'flash', "<p class=\"error\">Error adding patient to cohort</p>"
 end
 
 # page.visual_effect :highlight, "drug_categorization-association-#{@drug_categorization.id}", :duration => 1      

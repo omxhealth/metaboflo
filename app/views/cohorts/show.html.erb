@@ -22,9 +22,11 @@
 			<%= render :partial => '/cohort_assignments/cohort_assignment', :collection => @cohort.cohort_assignments, :locals => { :from => 'cohort' } %>
 		</tbody>
 	</table>
+	<br />
 	<div class="new-association">
 		<%= render :partial => '/cohort_assignments/add_assignable_form' %>
 	</div>
+	<br />
 </div>
 
 <%= link_to 'Edit', :action => 'edit', :type => @type %> |
