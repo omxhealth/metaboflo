@@ -3,6 +3,16 @@ class CreatePatientEvaluations < ActiveRecord::Migration
     create_table :patient_evaluations do |t|
       t.references :patient
       t.text :diagnosis
+      t.float :height
+      t.float :weight
+      t.string :education
+      t.string :marital_status
+      t.string :address
+      t.string :address_2
+      t.string :city
+      t.string :province_state
+      t.string :country
+      t.string :postal_zip_code
       t.boolean :current_smoker
       t.float :past_smoker
       t.float :drinking_weekly

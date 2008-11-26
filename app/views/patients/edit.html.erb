@@ -3,62 +3,38 @@
 <% form_for(@patient) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </p>
+	 <p>
+	   <%= f.label :code %><br />
+	   <%= f.text_field :code %>
+	 </p>
 	<p>
 		<%= f.label :site_id %><br />
 		<%= f.select :site_id, Site.find(:all).collect { |s| [s.name, s.id] }, :allow_blank => true %>
 	</p>
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :middle_name %><br />
-    <%= f.text_field :middle_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-	<p>
-		<%= f.label :address %><br />
-		<%= f.text_field :address %>
-	</p>
-	<p>
-		<%= f.label :address_2 %><br />
-		<%= f.text_field :address_2 %>
-	</p>
-	<p>
-		<%= f.label :city %><br />
-		<%= f.text_field :city %>
-	</p>
-	<p>
-		<%= f.label :province_state, 'Province/State' %><br />
-		<%= f.text_field :province_state %>
-	</p>
-	<p>
-		<%= f.label :country %><br />
-		<%= f.country_select :country, nil, :include_blank => true %>
-	</p>
-	<p>
-		<%= f.label :postal_zip_code, 'Postal/Zip code' %><br />
-		<%= f.text_field :postal_zip_code %>
-	</p>
-  <p>
-    <%= f.label :birthdate %><br />
-    <%= f.date_select :birthdate, :order => [:day, :month, :year] %>
-  </p>
+	 <p>
+	   <%= f.label :first_name %><br />
+	   <%= f.text_field :first_name %>
+	 </p>
+	 <p>
+	   <%= f.label :middle_name %><br />
+	   <%= f.text_field :middle_name %>
+	 </p>
+	 <p>
+	   <%= f.label :last_name %><br />
+	   <%= f.text_field :last_name %>
+	 </p>
+	 <p>
+	   <%= f.label :birthdate %><br />
+	   <%= f.date_select :birthdate, :order => [:day, :month, :year] %>
+	 </p>
 	<p>
 		<%= f.label :blood_type %><br />
 		<%= f.select :blood_type, ['A', 'B', 'O', 'AB'], :include_blank => true %>
 	</p>
-  <p>
-    <%= f.label :gender %><br />
-    <%= f.select :gender, ['Male', 'Female'], :include_blank => true %>
-  </p>
+	 <p>
+	   <%= f.label :gender %><br />
+	   <%= f.select :gender, ['Male', 'Female'], :include_blank => true %>
+	 </p>
 	<p>
 		<%= f.label :ethnicity %><br />
 		<%= f.text_field :ethnicity %>
@@ -67,22 +43,7 @@
 		<%= f.label :race %><br />
 		<%= f.text_field :race %>
 	</p>
-  <p>
-    <%= f.label :height %><br />
-    <%= f.text_field :height %> inches
-  </p>
-  <p>
-    <%= f.label :weight %><br />
-    <%= f.text_field :weight %> lbs
-  </p>
-	<p>
-		<%= f.label :education %><br />
-		<%= f.text_field :education %>
-	</p>
-	<p>
-		<%= f.label :marital_status %><br />
-		<%= f.select :marital_status, ['Single', 'Married', 'Separated', 'Divorced', 'Widowed'], :include_blank => true %>
-	</p>
+
 	<p>
 		<%= f.label :practitioner %><br />
 		<%= f.text_field :practitioner %>

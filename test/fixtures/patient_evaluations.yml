@@ -23,6 +23,8 @@ one:
   relative_condition: MyString
   relative_relationship: MyString
   evaluated_on: 2008-09-25
+  height: 72
+  weight: 190
 
 two:
   patient: two
@@ -47,6 +49,8 @@ two:
   relative_condition: MyString
   relative_relationship: MyString
   evaluated_on: 2008-09-30
+  height: 60
+  weight: 110
   
 three:
   patient: one
@@ -71,3 +75,5 @@ three:
   relative_condition: MyString
   relative_relationship: MyString
   evaluated_on: 2008-04-22
+  height: 72
+  weight: 160

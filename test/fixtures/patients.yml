@@ -8,8 +8,6 @@ one:
   last_name: Shmoe
   birthdate: 2000-09-25
   gender: Male
-  height: 72
-  weight: 190
 
 two:
   code: AB456
@@ -19,8 +17,6 @@ two:
   last_name: Doe
   birthdate: 1954-08-22
   gender: Female
-  height: 60
-  weight: 110
 
 three:
   code: AB4563
@@ -30,8 +26,6 @@ three:
   last_name: Harper
   birthdate: 1954-08-22
   gender: Male
-  height: 65
-  weight: 190
   
 four:
   code: AB452
@@ -41,8 +35,6 @@ four:
   last_name: Dion
   birthdate: 1955-08-22
   gender: Male
-  height: 64
-  weight: 144
   
 five:
   code: AB453
@@ -52,8 +44,6 @@ five:
   last_name: Duceppe
   birthdate: 1955-08-22
   gender: Male
-  height: 63
-  weight: 166
   
 six:
   code: AB454
@@ -63,8 +53,6 @@ six:
   last_name: Layton
   birthdate: 1955-08-22
   gender: Male
-  height: 58
-  weight: 170
   
 seven:
   code: AB451
@@ -74,5 +62,3 @@ seven:
   last_name: May
   birthdate: 1955-08-22
   gender: Male
-  height: 59
-  weight: 130

@@ -2,6 +2,64 @@
 TODO: relatives / conditions
 TODO: Past medical history
 -->
+
+<p>
+    <b>Height:</b>
+    <%=h @patient_evaluation.height %> inches
+</p>
+
+<p>
+    <b>Weight:</b>
+    <%=h @patient_evaluation.weight %> lbs
+</p>
+
+<p>
+    <b>BMI:</b>
+    <%=h BMI(@patient_evaluation.height, @patient_evaluation.weight) %>
+</p>
+
+<p>
+	<b>Education:</b>
+	<%=h @patient_evaluation.education %>
+</p>
+
+<p>
+	<b>Marital status:</b>
+	<%=h @patient_evaluation.marital_status %>
+</p>
+
+<p>
+	<b>Address:</b>
+	<%=h @patient_evaluation.address %>
+</p>
+
+<p>
+	<b>Address 2:</b>
+	<%=h @patient_evaluation.address_2 %>
+</p>
+
+<p>
+	<b>City:</b>
+	<%=h @patient_evaluation.city %>
+</p>
+
+<p>
+	<b>Province/State:</b>
+	<%=h @patient_evaluation.province_state %>
+</p>
+
+<p>
+	<b>Country:</b>
+	<%=h @patient_evaluation.country %>
+</p>
+
+<p>
+	<b>Postal/Zip code:</b>
+	<%=h @patient_evaluation.postal_zip_code %>
+</p>
+
+<hr>
+
 <p>
   <b>Diagnosis:</b>
   <%=h @patient_evaluation.diagnosis %>
