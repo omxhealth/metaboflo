@@ -20,7 +20,7 @@
 			<%= link_to 'Samples', samples_url %> |
 			<%= link_to 'Experiments', experiments_path %> |
 			<%= link_to 'Cohorts', patient_cohorts_path %> |
-			<%= link_to 'Admin', admin_path %> | 
+			<%= link_to 'Administration', admin_path %> | 
 			<%= link_to 'Logout', logout_path %>
 		</div>
 		<% end %>
@@ -29,7 +29,10 @@
 
 			<% unless @patient.nil? || @patient.new_record? -%>
 			<div id="sidebar">
-				<div id="tree">
+				<div style="background: silver; margin-bottom: 0.8em;">
+					Patient Outline
+				</div>
+				<div id="tree" style="background: #E8F1D4">
 					<ul>
 						<li class="patient"><%= render :partial => '/layouts/patient_hierarchy' %></li>
 					</ul>

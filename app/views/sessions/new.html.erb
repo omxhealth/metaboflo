@@ -1,16 +1,37 @@
-<h1>Log In</h1>
+<h1>Welcome - Please Log In</h1>
 
+<div class="subcontainer" style="float: left; margin-right: 1.5em;">
 <% form_tag session_path do -%>
 <p><%= label_tag 'login' %><br />
-<%= text_field_tag 'login', @login %></p>
+<%= text_field_tag 'login', @login, :style => 'height: 15px; font-size: larger' %></p>
 
 <p><%= label_tag 'password' %><br/>
-<%= password_field_tag 'password', nil %></p>
+<%= password_field_tag 'password', nil, :style => 'height: 15px; font-size: larger' %></p>
 
-<!-- Uncomment this if you want this functionality
+
+<!-- Uncomment this if you want this functionality -->
 <p><%= label_tag 'remember_me', 'Remember me' %>
 <%= check_box_tag 'remember_me', '1', @remember_me %></p>
--->
 
+<br/>
 <p><%= submit_tag 'Log in' %></p>
+<br/>
 <% end -%>
+</div>
+
+<p style="font-size: larger;">
+	Welcome to the Duke Scientific Data Management System, a joint project of <a href="http://www.duke.edu/">Duke University</a>, 
+	<a href="http://www.ualberta.ca/" title="University of Alberta - Edmonton, Alberta, Canada">University of Alberta</a>, and
+	<a href="http://www.other.com">Some Other University</a>.  The Duke SDMS is a central repository for patient and scientific
+	information.  It is a secure, fast, intuitive web-application developed by the <a href="http://gchelpdesk.ualberta.ca/" title="Canadian Bioinformatics Help Desk -- At the Nexus of Science and Service">Genome Canada Helpdesk</a>.
+</p>
+<p style="font-size: larger;">
+	If you would like further information on this project or other Genome Canada projects, please <a href="mailto:&#x69;&#x6E;&#x66;&#x6F;&#x40;&#x67;&#x63;&#x68;&#x65;&#x6C;&#x70;&#x64;&#x65;&#x73;&#x6B;&#x2E;&#x75;&#x61;&#x6C;&#x62;&#x65;&#x72;&#x74;&#x61;&#x2E;&#x63;&#x61;">contact</a> 
+	us.
+</p>
+<br />
+<div style="text-align: center;">
+	<%= image_tag 'blood_sample.png', :style => 'padding-left: 0em; padding-right: 4em' %>
+	<%= image_tag 'patient.png', :style => 'padding-left: 0em; padding-right: 4em' %>
+	<%= image_tag 'dna.png' %>
+</p>

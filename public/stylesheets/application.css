@@ -1,0 +1,196 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+	margin: 0;
+/*	padding: 0;*/
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+
+h1 {
+	color: #004D4D;
+	font-size: 16px;
+	background: silver;
+	padding: 0.3em;
+	border: 1px solid gray;
+	margin-bottom: 2em;
+}
+
+p {
+	margin: 1em;
+}
+
+div#flash p.notice, div#flash p.error {
+	border: 1px solid gray;
+	margin: 1em 1em 1em 0em;
+	width: 80%;
+	padding: 0.5em;
+}
+
+div#flash p.notice {
+	background: #A6D785;
+	color: green;
+}
+
+div#flash p.error {
+	background: #CD9B9B;
+	color: #8C1717;
+}
+
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* Layout CSS */
+div#container {
+	min-width: 47em;
+/*	max-width: 77em;*/
+	min-height: 100%;
+}
+
+div#headerbar {
+	background-color: #001a57;
+	height: 6em;
+}
+
+div#menu {
+	background: #001a57 url(/images/menu_bg.png) repeat-x 0 100%;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 0.4em;
+}
+
+div#menu a {
+	text-decoration: none;
+	color: #cccc00;
+	font-weight: bold;
+}
+
+div#menu a:hover {
+	color: #ffffff;
+	background-color: #001a57;
+}
+
+div#main {
+/*	height: 28em;*/
+	padding: 0.5em;
+}
+
+div#sidebar {
+	min-height: 40em;
+	width: 25em;
+	float: left;
+	overflow: auto;
+	white-space: nowrap;
+/*	border-right: 1px solid grey;*/
+	margin-right: 1em;
+}
+
+div#tree ul {
+	padding-left: 2em;
+}
+	
+div#tree li.patient {
+	list-style-image: url(/images/patient.jpg);
+}
+
+div#tree li.sample {
+	list-style-image: url(/images/kidney.jpg);
+}
+
+div#tree li.report {
+	list-style-image: url(/images/report.jpg);
+}
+
+div#tree li.cohort {
+	list-style-image: url(/images/cohort.png);
+}
+
+div#tree a {
+	text-decoration: none;
+}
+
+div#tree a:hover {
+	color: #001a57;
+	background-color: #fff;
+}
+
+div#tree a.create {
+	color: green;
+}
+
+div#tree a:hover.create {
+	color: #000;
+}
+
+div#content {
+	min-height: 28em;
+	height: 100%;
+	min-width: -20em;
+/*	overflow: auto;*/
+	padding-left: 0.5em;
+}
+
+.content-with-sidebar
+{
+	margin-left: 25em;
+	border-left: 1px solid silver;
+}
+
+div#footerbar {
+	width: 100%;
+	text-align: center;
+}
+
+
+div.subcontainer {
+	background: #F0F0F0;
+	display: table;
+	padding: 1em;
+	border: 1px solid #A3A3A3;
+}
