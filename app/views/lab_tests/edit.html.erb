@@ -1,0 +1,41 @@
+<h1>Editing lab_test</h1>
+
+<% form_for([@patient, @lab_test]) do |f| %>
+
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :cholesterol_value %><br />
+    <%= f.text_field :cholesterol_value %>
+  </p>
+  <p>
+    <%= f.label :cholesterol_unit %><br />
+    <%= f.text_field :cholesterol_unit %>
+  </p>
+  <p>
+    <%= f.label :cholesterol_tested_at %><br />
+    <%= f.datetime_select :cholesterol_tested_at %>
+  </p>
+  <p>
+    <%= f.label :creatinine_value %><br />
+    <%= f.text_field :creatinine_value %>
+  </p>
+  <p>
+    <%= f.label :creatinine_unit %><br />
+    <%= f.text_field :creatinine_unit %>
+  </p>
+  <p>
+    <%= f.label :creatinine_tested_at %><br />
+    <%= f.datetime_select :creatinine_tested_at %>
+  </p>
+  <p>
+    <%= f.label :collected_at %><br />
+    <%= f.datetime_select :collected_at %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', patient_lab_test_path(@patient, @lab_test) %> |
+<%= link_to 'Back', patient_lab_tests_path(@patient) %>

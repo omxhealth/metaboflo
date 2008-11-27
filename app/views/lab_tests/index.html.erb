@@ -1,0 +1,22 @@
+<h1>Listing Lab Tests for Patient '<%= @patient.code %>'</h1>
+
+<table>
+  <tr>
+	<th>Number of Tests Performed</th>
+	<th>Collected At</th>
+  </tr>
+
+<% for lab_test in @lab_tests %>
+  <tr>
+    <td><%=h num_tests(lab_test) %></td>
+    <td><%=h lab_test.collected_at %></td>
+    <td><%= link_to 'Show', patient_lab_test_path(@patient, lab_test) %></td>
+    <td><%= link_to 'Edit', edit_patient_lab_test_path(@patient, lab_test) %></td>
+    <td><%= link_to 'Destroy', patient_lab_test_path(@patient, lab_test), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New lab_test', new_patient_lab_test_path(@patient) %>

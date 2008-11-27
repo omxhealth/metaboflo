@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :lab_tests
+
   map.resources :sites
 
   map.admin 'admin', :controller => 'administrators', :action => 'index'
@@ -12,10 +14,6 @@ ActionController::Routing::Routes.draw do |map|
 
   # map.resources :patient_evaluations
 
-  #  map.resources :creatinines
-
-  #  map.resources :cholesterols
-
   #  map.resources :medications
 
   map.resources :data_file_types
@@ -26,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :samples, :has_many => [ :samples, :experiments, :cohort_assignments ]
 
-  map.resources :patients, :has_many => [ :samples, :cohort_assignments, :cholesterols, :creatinines, :medications, :patient_evaluations ]
+  map.resources :patients, :has_many => [ :samples, :cohort_assignments, :lab_tests, :medications, :patient_evaluations ]
 
   map.resources :cohorts, :has_many => [ :cohort_assignments ]
   

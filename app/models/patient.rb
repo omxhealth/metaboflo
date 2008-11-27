@@ -8,8 +8,7 @@ class Patient < ActiveRecord::Base
   
   has_many :medications
   has_many :patient_evaluations
-  has_many :cholesterols, :order => 'tested_at ASC'
-  has_many :creatinines, :order => 'tested_at ASC'
+  has_many :lab_tests, :order => 'collected_at ASC'
   
   validates_presence_of :code, :site_id
   validates_inclusion_of :gender, :in => ['Male', 'Female'], :allow_blank => true, :message => 'must be either Male or Female'

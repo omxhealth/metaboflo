@@ -1,8 +1,7 @@
 <%= link_to "Patient #{@patient.code}", patient_path(@patient) %>
 <ul>
 	<li class="report"><%= link_to 'Medications', patient_medications_path(@patient) %></li>
-	<li class="report"><%= link_to 'Cholesterol', patient_cholesterols_path(@patient) %></li>
-	<li class="report"><%= link_to 'Creatinine', patient_creatinines_path(@patient) %></li>
+	<li class="report"><%= link_to 'Lab Tests', patient_lab_tests_path(@patient) %></li>
 	<li class="report"><%= link_to 'Patient Evaluations', patient_patient_evaluations_path(@patient) %></li>
 	<li class="sample"><%= render :partial => '/layouts/samples_hierarchy', :locals => { :parent => @patient } %></li>
 	<li class="cohort"><%= render :partial => '/layouts/cohort_hierarchy', :locals => { :patient => @patient } %></li>

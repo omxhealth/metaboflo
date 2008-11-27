@@ -1,0 +1,43 @@
+<p>
+  <b>Cholesterol value:</b>
+  <%=h @lab_test.cholesterol_value %>
+</p>
+
+<p>
+  <b>Cholesterol unit:</b>
+  <%=h @lab_test.cholesterol_unit %>
+</p>
+
+<p>
+  <b>Cholesterol tested at:</b>
+  <%=h @lab_test.cholesterol_tested_at %>
+</p>
+
+<p>
+  <b>Creatinine value:</b>
+  <%=h @lab_test.creatinine_value %>
+</p>
+
+<p>
+  <b>Creatinine unit:</b>
+  <%=h @lab_test.creatinine_unit %>
+</p>
+
+<p>
+  <b>Creatinine tested at:</b>
+  <%=h @lab_test.creatinine_tested_at %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%=h @lab_test.patient %>
+</p>
+
+<p>
+  <b>Collected at:</b>
+  <%=h @lab_test.collected_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_patient_lab_test_path(@patient, @lab_test) %> |
+<%= link_to 'Back', patient_lab_tests_path(@patient) %>

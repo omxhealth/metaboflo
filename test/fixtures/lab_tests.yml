@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cholesterol_value: 1.5
+  cholesterol_unit: g
+  cholesterol_tested_at: 2008-11-26 17:29:19
+  creatinine_value: 
+  creatinine_unit: 
+  creatinine_tested_at: 
+  patient: one
+  collected_at: 2008-11-26 17:29:19
+
+two:
+  cholesterol_value: 3.0
+  cholesterol_unit: g
+  cholesterol_tested_at: 2008-11-26 17:29:19
+  creatinine_value: 1.5
+  creatinine_unit: g
+  creatinine_tested_at: 2008-11-26 17:29:19
+  patient: one
+  collected_at: 2008-11-26 17:29:19
+
+three:
+  cholesterol_value: 1.5
+  cholesterol_unit: g
+  cholesterol_tested_at: 2008-11-26 17:29:19
+  creatinine_value: 1.5
+  creatinine_unit: g
+  creatinine_tested_at: 2008-11-26 17:29:19
+  patient: two
+  collected_at: 2008-11-26 17:29:19
