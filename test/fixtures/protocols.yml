@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Standard HNMR Protocol
+  version: 2.0
+  comments: This is the standard protocol for all proton NMR experiments
+  size: 1
+  content_type: MyString
+  filename: MS File
+
+two:
+  name: Standard MS Protocol
+  version: 1.0
+  comments: This is the standard protocol for all Mass Spec experiments
+  size: 1
+  content_type: MyString
+  filename: MS File

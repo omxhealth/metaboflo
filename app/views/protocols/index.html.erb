@@ -1,0 +1,22 @@
+<h1>Listing protocols</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Version</th>
+  </tr>
+
+<% for protocol in @protocols %>
+  <tr>
+    <td><%=h protocol.name %></td>
+    <td><%=h protocol.version %></td>
+    <td><%= link_to 'Show', protocol %></td>
+    <td><%= link_to 'Edit', edit_protocol_path(protocol) %></td>
+    <td><%= link_to 'Destroy', protocol, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New protocol', new_protocol_path %>

@@ -1,6 +1,6 @@
 <h1>Editing experiment</h1>
 
-<% form_for(@experiment) do |f| %>
+<% form_for([@sample, @experiment]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -25,16 +25,12 @@
   </p>
   <p>
     <%= f.label :protocol %><br />
-    <%= f.text_area :protocol %>
-  </p>
-  <p>
-    <%= f.label :sample %><br />
-    <%= f.text_field :sample %>
+    <%= f.select :protocol_id, Protocol.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true } %>
   </p>
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @experiment %> |
-<%= link_to 'Back', experiments_path %>
+<%= link_to 'Show', [@sample, @experiment] %> |
+<%= link_to 'Back to Experiments', experiments_path %>

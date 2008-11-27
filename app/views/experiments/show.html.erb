@@ -25,12 +25,11 @@
 
 <p>
   <b>Protocol:</b>
-  <%=h @experiment.protocol %>
-</p>
-
-<p>
-  <b>Sample:</b>
-  <%=h @experiment.sample.id %>
+  <% if @experiment.protocol %>
+  	<%= link_to @experiment.protocol.name, protocol_path(@experiment.protocol) %>
+  <% else %>
+	None
+  <% end %>
 </p>
 
 <p>

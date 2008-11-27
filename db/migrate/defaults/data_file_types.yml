@@ -1,5 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
   name: GC MS
   description: A Data file for GC MS

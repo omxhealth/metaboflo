@@ -6,8 +6,8 @@ class CreateExperiments < ActiveRecord::Migration
       t.string :performed_by
       t.float :amount_used
       t.string :amount_used_unit
-      t.text :protocol
       t.references :sample
+      t.references :protocol
 
       t.timestamps
     end

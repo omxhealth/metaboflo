@@ -65,7 +65,7 @@ class ExperimentsController < ApplicationController
     respond_to do |format|
       if @experiment.update_attributes(params[:experiment])
         flash[:notice] = 'Experiment was successfully updated.'
-        format.html { redirect_to(@experiment) }
+        format.html { redirect_to([@sample, @experiment]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

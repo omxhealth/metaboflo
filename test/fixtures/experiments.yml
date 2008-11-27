@@ -6,8 +6,8 @@ one:
   performed_by: Sally
   amount_used: 1.5
   amount_used_unit: ml
-  protocol: 32
   sample: one
+  protocol: one
 
 two:
   name: Random Experiment
@@ -15,8 +15,8 @@ two:
   performed_by: Steve
   amount_used: 1.5
   amount_used_unit: ml
-  protocol: 125
   sample: two
+  protocol: one
 
 three:
   name: Random Experiment 2
@@ -24,5 +24,5 @@ three:
   performed_by: Steve
   amount_used: 1.5
   amount_used_unit: ml
-  protocol: 125
   sample: one
+  protocol: two
