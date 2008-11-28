@@ -23,7 +23,7 @@ module PatientEvaluationsHelper
   
   def check_boxes(num_per_row, param_str, valid_list, model_has_list)
     count = 0
-    out = "<table border=0 cellpadding=3 cellspacing=3><tr>"
+    out = "<table border=0 cellpadding=3 cellspacing=3 style=\"margin-left: 1em\"><tr>"
     valid_list.each do |c|
   	  if count % num_per_row == 0
         out += "</tr><tr>"
@@ -31,7 +31,7 @@ module PatientEvaluationsHelper
       count += 1
 
   	  out += "<td>"
-  	  out += check_box_tag(param_str, c, model_has_list.include?(c))
+  	  out += check_box_tag(param_str, c, model_has_list.include?(c)) << " "
   	  out += c
       out += "</td>"
     end

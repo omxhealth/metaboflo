@@ -39,7 +39,7 @@
 				<%= link_to 'Experiments', experiments_path %> 
 				<%= link_to 'Cohorts', patient_cohorts_path %> 
 				<%= link_to 'Protocols', protocols_path %> 
-				<%= link_to 'Administration', admin_path %> 
+				<%= link_to 'Administration', admin_path %>
 				<%= link_to 'HMDB', 'http://hmdb.ca' %> 
 				<%= link_to 'Drugbank', 'http://drugbank.ca' %> 
 				<%= link_to 'Metabo-Analyst', 'http://www.hmdb.ca' %> 
@@ -78,37 +78,7 @@
 		</div>  
 		
 		<div id="ft"><!-- footer -->
-			<% if ENV['RAILS_ENV'] == 'development' %>
-			<div id="debug" style="margin: 40px 5px 5px 5px;">
-				<a href="#" onclick="Element.toggle('debug_info');return false" style="text-decoration: none; color: #ccc;">
-					Show Debug Info &#10162;
-				</a>
-				<div id="debug_info" style="display: none;">
-					<%= debug session %>
-					<%= debug params %>
-				</div>
-			</div>
-			<div id="javascript-debug" style="margin: 5px 5px 5px 5px;">
-				<a href="#" onclick="Element.toggle('javascript_debug_info');return false" style="text-decoration: none; color: #ccc;">
-					Show JavaScript Debug Info &#10162;
-				</a>
-				<div id="javascript_debug_info" style="display: none;">
-				</div>
-			</div>
 
-			<% if ActionView::Base.debug_rjs %> 
-			<script type="text/javascript"> 
-			Ajax.Responders.register({ 
-				onComplete: function(request, transport) { 
-					new Insertion.Bottom('javascript_debug_info', 
-					'<div style="border: 1px solid">' + 
-					'<pre>' + transport.responseText.escapeHTML() + '</pre>' + 
-					'</div>') 
-				} 
-			}); 
-			</script> 
-			<% end %>
-			<% end %>
 
 		</div>  
 	</div>

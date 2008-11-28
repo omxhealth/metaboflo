@@ -8,9 +8,8 @@
     <%= f.select :cohort_id, "#{@assignable_type}Cohort".constantize.all.collect { |c| [ c.name, c.id ] } %>
   </p>
 	
-	<br />
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Add to Cohort" %>
   </p>
 <% end %>
 <br />
