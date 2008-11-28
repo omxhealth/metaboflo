@@ -1,20 +1,21 @@
 <h1>Listing Patient Evaluations For <%= @patient.code %></h1>
 
 <table>
-  <tr>
-    <th>Diagnosis</th>
-    <th>Evaluation Date</th>
-  </tr>
+	<tr>
+		<th>Diagnosis</th>
+		<th>Evaluation Date</th>
+		<th colspan="3">Actions</th>
+	</tr>
 
-<% for patient_evaluation in @patient_evaluations %>
-  <tr>
-    <td><%=h patient_evaluation.diagnosis %></td>
-    <td><%=h patient_evaluation.evaluated_on %></td>
-    <td><%= link_to 'Show', patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
-    <td><%= link_to 'Edit', edit_patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
-    <td><%= link_to 'Destroy', patient_patient_evaluation_path(@patient, patient_evaluation), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<% for patient_evaluation in @patient_evaluations %>
+	<tr class="<%= cycle('odd', 'even') %>">
+		<td><%=h patient_evaluation.diagnosis %></td>
+		<td><%=h patient_evaluation.evaluated_on %></td>
+		<td><%= link_to 'Show', patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
+		<td><%= link_to 'Edit', edit_patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
+		<td><%= link_to 'Destroy', patient_patient_evaluation_path(@patient, patient_evaluation), :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />

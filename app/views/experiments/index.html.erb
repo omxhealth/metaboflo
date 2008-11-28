@@ -1,32 +1,33 @@
 <% if @sample %>
-  <h1>Experiments for Sample <%= @sample.id %></h1>
+<h1>Experiments for Sample <%= @sample.id %></h1>
 <% else %>
-  <h1>All Experiments</h1>
+<h1>All Experiments</h1>
 <% end %>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Performed on</th>
-    <th>Performed by</th>
-	<th>Data Files</th>
-  </tr>
+	<tr>
+		<th>Name</th>
+		<th>Performed on</th>
+		<th>Performed by</th>
+		<th>Data Files</th>
+		<th colspan="3">Actions</th>
+	</tr>
 
-<% for experiment in @experiments %>
-  <tr>
-    <td><%=h experiment.name %></td>
-    <td><%=h experiment.performed_on %></td>
-    <td><%=h experiment.performed_by %></td>
-	<td><%=h experiment.data_files.length %></td>
-    <td><%= link_to 'Show', sample_experiment_path(experiment.sample, experiment) %></td>
-    <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
-    <td><%= link_to 'Destroy', experiment, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<% for experiment in @experiments %>
+	<tr class="<%= cycle('odd', 'even') %>">
+		<td><%=h experiment.name %></td>
+		<td><%=h experiment.performed_on %></td>
+		<td><%=h experiment.performed_by %></td>
+		<td><%=h experiment.data_files.length %></td>
+		<td><%= link_to 'Show', sample_experiment_path(experiment.sample, experiment) %></td>
+		<td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+		<td><%= link_to 'Destroy', experiment, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />
 
 <% if @sample %>
-  <%= link_to 'New experiment for this sample', new_sample_experiment_path(@sample) %>
+<%= link_to 'New experiment for this sample', new_sample_experiment_path(@sample) %>
 <% end %>

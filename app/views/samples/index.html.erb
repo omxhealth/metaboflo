@@ -9,10 +9,11 @@
 		<th><%= 'Parent sample' unless @parent_sample %></th>
     <th>Collected on</th>
     <th>Collected by</th>
+		<th colspan="3">Actions</th>
   </tr>
 
 <% for sample in @samples %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
 		<td><%=h sample.sample_type %></td>
     <td><%=h sample.amount %> <%=h sample.unit %></td>
     <td><%=h sample.barcode %></td>

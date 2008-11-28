@@ -1,21 +1,22 @@
 <h1>Data files for Experiment <%= @experiment.id %></h1>
 
 <table>
-  <tr>
-  	<th>Filename</th>
-    <th>Size</th>
-	<th>Type</th>
-  </tr>
+	<tr>
+		<th>Filename</th>
+		<th>Size</th>
+		<th>Type</th>
+		<th colspan="3">Actions</th>
+	</tr>
 
-<% for data_file in @data_files %>
-  <tr>
-	<td><%= link_to h(data_file.filename), data_file.public_filename %></td>
-    <td><%=h number_to_human_size(data_file.size) %></td>
-	<td><%= link_to h(data_file.data_file_type.name), data_file_type_path(data_file.data_file_type) %></td>
-    <td><%= link_to 'File Information', experiment_data_file_path(@experiment, data_file) %></td>
-    <td><%= link_to 'Delete File', experiment_data_file_path(@experiment, data_file), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<% for data_file in @data_files %>
+	<tr class="<%= cycle('odd', 'even') %>">
+		<td><%= link_to h(data_file.filename), data_file.public_filename %></td>
+		<td><%=h number_to_human_size(data_file.size) %></td>
+		<td><%= link_to h(data_file.data_file_type.name), data_file_type_path(data_file.data_file_type) %></td>
+		<td><%= link_to 'File Information', experiment_data_file_path(@experiment, data_file) %></td>
+		<td><%= link_to 'Delete File', experiment_data_file_path(@experiment, data_file), :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />

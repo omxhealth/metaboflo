@@ -11,10 +11,11 @@
     <th>Name</th>
     <th>Description</th>
 		<th># of <%= @type.pluralize %></th>
+		<th colspan="3">Actions</th>
   </tr>
 
 <% for cohort in @cohorts %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%=h cohort.name %></td>
     <td><%=h cohort.description %></td>
 		<td><%=h cohort.assignables.count %></td>

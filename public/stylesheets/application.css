@@ -5,6 +5,7 @@ body, p, ol, ul, td {
   font-size:   13px;
   line-height: 18px;
 	margin: 0;
+
 /*	padding: 0;*/
 }
 
@@ -88,27 +89,32 @@ div#flash p.error {
 
 /* Layout CSS */
 div#container {
-	min-width: 47em;
+	min-width: 1000px;
 /*	max-width: 77em;*/
 	min-height: 100%;
 }
 
 div#headerbar {
-	background-color: #001a57;
-	height: 6em;
+	vertical-align: middle;
+	line-height: 40px;
+	height: 100px;
+	background: #081351 url(/images/header_bg.png) repeat-x 0 100%;
 }
+
 
 div#menu {
 	background: #001a57 url(/images/menu_bg.png) repeat-x 0 100%;
-	font-weight: bold;
+/*	font-weight: bold;*/
 	color: #ffffff;
 	padding: 0.4em;
+	padding-left: 1em;
 }
 
 div#menu a {
 	text-decoration: none;
-	color: #cccc00;
-	font-weight: bold;
+	color: #CDCDB4;
+	font-size: 14px;
+	margin-right: 1.4em;
 }
 
 div#menu a:hover {
@@ -119,6 +125,7 @@ div#menu a:hover {
 div#main {
 /*	height: 28em;*/
 	padding: 0.5em;
+	background: #FAFAFA url(/images/body_bg.gif) repeat-x;
 }
 
 div#sidebar {
@@ -193,4 +200,31 @@ div.subcontainer {
 	display: table;
 	padding: 1em;
 	border: 1px solid #A3A3A3;
+}
+
+/* Standard table style */
+div#content table {
+	text-align: left;
+	border-collapse: collapse;
+}
+
+div#content th, div#content td {
+	padding: 0.2em 0.4em;
+}
+
+div#content th {
+/*	background: #D9D9D9;*/
+/*	border-bottom: 1px solid #C0C0C0;*/
+}
+
+div#content tr.even {
+	background: #ECF3FE;
+}
+
+div#content tr.odd {
+	background: white;
+}
+	
+div#content tr:first-child {
+	border-bottom: 1px solid silver;
 }

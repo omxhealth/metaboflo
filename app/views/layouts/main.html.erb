@@ -11,20 +11,33 @@
 <body>
 	<div id="container">
 		<div id="headerbar">
-			<%= image_tag 'logo.gif' %>
+			<%= image_tag 'dna_blend.png', :style => 'padding: 0em; float: right;' %>
+			<div style="margin-top: 1em;float: right; color: silver; font-size: smaller; text-align: right;">
+				<span style="color: silver; font-size: smaller">Version 0.1 Beta</span>
+				<br />
+				<form action="">
+				Quick Search: <input type="text" />
+				<input type="submit" value="Go" />
+				</form>
+			</div>
+
+			<%= image_tag 'duke_logo.png', :style => 'padding: 1em; float: left;' %>
+			<%= image_tag 'title.png', :style => 'padding-left: 1em; float: left;' %>
+			
+			<!-- <%= image_tag 'logo.gif' %> -->
 		</div>
 
 		<% if current_user %>
 		<div id="menu">
-			<%= link_to 'Patients', patients_path %> |
-			<%= link_to 'Samples', samples_url %> |
-			<%= link_to 'Experiments', experiments_path %> |
-			<%= link_to 'Cohorts', patient_cohorts_path %> |
-			<%= link_to 'Protocols', protocols_path %> | 
-			<%= link_to 'Administration', admin_path %> | 
-			<%= link_to 'HMDB', 'http://hmdb.ca' %> | 
-			<%= link_to 'Drugbank', 'http://drugbank.ca' %> | 
-			<%= link_to 'Metabo-Analyst', 'http://www.hmdb.ca' %> | 
+			<%= link_to 'Patients', patients_path %> 
+			<%= link_to 'Samples', samples_url %> 
+			<%= link_to 'Experiments', experiments_path %> 
+			<%= link_to 'Cohorts', patient_cohorts_path %> 
+			<%= link_to 'Protocols', protocols_path %> 
+			<%= link_to 'Administration', admin_path %> 
+			<%= link_to 'HMDB', 'http://hmdb.ca' %> 
+			<%= link_to 'Drugbank', 'http://drugbank.ca' %> 
+			<%= link_to 'Metabo-Analyst', 'http://www.hmdb.ca' %> 
 			<%= link_to 'Logout', logout_path %>
 		</div>
 		<% end %>

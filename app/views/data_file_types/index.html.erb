@@ -4,10 +4,11 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
+		<th colspan="3">Actions</th>
   </tr>
 
 <% for data_file_type in @data_file_types %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%=h data_file_type.name %></td>
     <td><%=h data_file_type.description %></td>
     <td><%= link_to 'Show', data_file_type %></td>

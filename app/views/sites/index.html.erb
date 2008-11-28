@@ -3,10 +3,11 @@
 <table>
   <tr>
     <th>Name</th>
+		<th colspan="3">Actions</th>
   </tr>
 
 <% for site in @sites %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%=h site.name %></td>
     <td><%= link_to 'Show', site %></td>
     <td><%= link_to 'Edit', edit_site_path(site) %></td>

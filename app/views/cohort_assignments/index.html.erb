@@ -3,10 +3,11 @@
 <table>
   <tr>
     <th>Cohort</th>
+		<th colspan="3">Actions</th>
   </tr>
 
 <% for cohort_assignment in @cohort_assignments %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%=h cohort_assignment.cohort.name %></td>
     <td><%= link_to 'Remove', { :action => 'destroy', :id => cohort_assignment, "#{@assignable_type.downcase}_id" => @assignable }, { :confirm => 'Are you sure?', :method => :delete } %></td>
   </tr>

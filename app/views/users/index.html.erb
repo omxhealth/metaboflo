@@ -1,25 +1,26 @@
 <h1>Listing users</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Login</th>
-    <th>Site</th>
-    <th>Email</th>
-  </tr>
+	<tr>
+		<th>Name</th>
+		<th>Login</th>
+		<th>Site</th>
+		<th>Email</th>
+		<th colspan="3">Actions</th>
+	</tr>
 
-<% for user in @users %>
-  <tr>
-    <td><%=h user.name %></td>
-    <td><%=h user.login %></td>
-	<% if user.site %>
+	<% for user in @users %>
+	<tr class="<%= cycle('odd', 'even') %>">
+		<td><%=h user.name %></td>
+		<td><%=h user.login %></td>
+		<% if user.site %>
 		<td><%=h user.site.name %></td>
-	<% else %>
-    	<td>-</td>
+		<% else %>
+		<td>-</td>
+		<% end %>
+		<td><%=h user.email %></td>
+	</tr>
 	<% end %>
-    <td><%=h user.email %></td>
-  </tr>
-<% end %>
 </table>
 
 <br />
