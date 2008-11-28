@@ -88,6 +88,7 @@ class CohortAssignmentsController < ApplicationController
       if !params["#{assignable_type.downcase}_id"].blank?
         @assignable_type = assignable_type
         @entity = @assignable = assignable_type.constantize.find(params["#{assignable_type.downcase}_id"])
+        @patient = @entity if @entity.class == Patient
       end
     end
   end

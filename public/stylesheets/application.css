@@ -23,8 +23,8 @@ a:hover { color: #fff; background-color:#000; }
 h1 {
 	color: #004D4D;
 	font-size: 16px;
-	background: silver;
-	padding: 0.3em;
+	background: #CDC9C9;
+	padding: 0.2em;
 	border: 1px solid gray;
 	margin-bottom: 2em;
 }
@@ -34,9 +34,7 @@ p {
 }
 
 div#flash p.notice, div#flash p.error {
-	border: 1px solid gray;
-	margin: 1em 1em 1em 0em;
-	width: 80%;
+	margin: 0.2em 0em 1em 0em;
 	padding: 0.5em;
 }
 
@@ -88,12 +86,6 @@ div#flash p.error {
 }
 
 /* Layout CSS */
-div#container {
-	min-width: 1000px;
-/*	max-width: 77em;*/
-	min-height: 100%;
-}
-
 div#headerbar {
 	vertical-align: middle;
 	line-height: 40px;
@@ -122,20 +114,30 @@ div#menu a:hover {
 	background-color: #001a57;
 }
 
+div#main, div#sidebar {
+	min-height: 40em;
+	padding: 0.5em;		
+}
+
 div#main {
-	min-height: 30em;
-	padding: 0.5em;
+	height: 100%;
+	margin-left: 0em;
 	background: #FAFAFA url(/images/body_bg.gif) repeat-x;
 }
 
 div#sidebar {
-	min-height: 40em;
-	width: 25em;
-	float: left;
 	overflow: auto;
 	white-space: nowrap;
-/*	border-right: 1px solid grey;*/
-	margin-right: 1em;
+	background: #FCFFF0;
+}
+
+div#sidebar h2 {
+/*	background: #CDCDC1; */
+	border: 1px solid #CDCDC1;
+	background: white;
+	font-weight: bold;
+	margin-bottom: 0.8em; 
+	padding: 0.3em;
 }
 
 div#tree ul {
@@ -175,25 +177,6 @@ div#tree a:hover.create {
 	color: #000;
 }
 
-div#content {
-	min-height: 28em;
-	height: 100%;
-	min-width: -20em;
-/*	overflow: auto;*/
-	padding-left: 0.5em;
-}
-
-.content-with-sidebar
-{
-	margin-left: 25em;
-	border-left: 1px solid silver;
-}
-
-div#footerbar {
-	width: 100%;
-	text-align: center;
-}
-
 
 div.subcontainer {
 	background: #F0F0F0;
@@ -203,28 +186,30 @@ div.subcontainer {
 }
 
 /* Standard table style */
-div#content table {
+div#main table {
 	text-align: left;
 	border-collapse: collapse;
 }
 
-div#content th, div#content td {
+div#main th, div#main td {
 	padding: 0.2em 0.4em;
 }
 
-div#content th {
+div#main th {
+	font-weight: bold;
+	color: #636363;
 /*	background: #D9D9D9;*/
 /*	border-bottom: 1px solid #C0C0C0;*/
 }
 
-div#content tr.even {
+div#main tr.even {
 	background: #ECF3FE;
 }
 
-div#content tr.odd {
+div#main tr.odd {
 	background: white;
 }
 	
-div#content tr:first-child {
+div#main tr:first-child {
 	border-bottom: 1px solid silver;
 }
