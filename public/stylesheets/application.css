@@ -123,7 +123,7 @@ div#menu a:hover {
 }
 
 div#main {
-/*	height: 28em;*/
+	min-height: 30em;
 	padding: 0.5em;
 	background: #FAFAFA url(/images/body_bg.gif) repeat-x;
 }
