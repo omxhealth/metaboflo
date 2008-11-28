@@ -33,6 +33,10 @@ p {
 	margin: 1em;
 }
 
+div#doc3 {
+	min-width: 950px;
+}
+
 div#flash p.notice, div#flash p.error {
 	margin: 0.2em 0em 1em 0em;
 	padding: 0.5em;
