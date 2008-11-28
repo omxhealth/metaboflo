@@ -15,10 +15,12 @@
 			<div style="margin-top: 1em;float: right; color: silver; font-size: smaller; text-align: right;">
 				<span style="color: silver; font-size: smaller">Version 0.1 Beta</span>
 				<br />
+				<% if current_user %>
 				<form action="">
 				Quick Search: <input type="text" />
 				<input type="submit" value="Go" />
 				</form>
+				<% end %>
 			</div>
 
 			<%= image_tag 'duke_logo.png', :style => 'padding: 1em; float: left;' %>
