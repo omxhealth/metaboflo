@@ -90,12 +90,12 @@ div#headerbar {
 	vertical-align: middle;
 	line-height: 40px;
 	height: 100px;
-	background: #081351 url(/images/header_bg.png) repeat-x 0 100%;
+	background: #081351 url(../images/header_bg.png) repeat-x 0 100%;
 }
 
 
 div#menu {
-	background: #001a57 url(/images/menu_bg.png) repeat-x 0 100%;
+	background: #001a57 url(../images/menu_bg.png) repeat-x 0 100%;
 /*	font-weight: bold;*/
 	color: #ffffff;
 	padding: 0.4em;
@@ -122,7 +122,7 @@ div#main, div#sidebar {
 div#main {
 	height: 100%;
 	margin-left: 0em;
-	background: #FAFAFA url(/images/body_bg.gif) repeat-x;
+	background: #FAFAFA url(../images/body_bg.gif) repeat-x;
 }
 
 div#sidebar {
@@ -145,19 +145,19 @@ div#tree ul {
 }
 	
 div#tree li.patient {
-	list-style-image: url(/images/patient.jpg);
+	list-style-image: url(../images/patient.jpg);
 }
 
 div#tree li.sample {
-	list-style-image: url(/images/kidney.jpg);
+	list-style-image: url(../images/kidney.jpg);
 }
 
 div#tree li.report {
-	list-style-image: url(/images/report.jpg);
+	list-style-image: url(../images/report.jpg);
 }
 
 div#tree li.cohort {
-	list-style-image: url(/images/cohort.png);
+	list-style-image: url(../images/cohort.png);
 }
 
 div#tree a {
