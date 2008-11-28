@@ -2,11 +2,7 @@ body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
   line-height: 18px;
-	margin: 0;
-
-/*	padding: 0;*/
 }
 
 pre {
@@ -52,11 +48,15 @@ div#flash p.error {
 	color: #8C1717;
 }
 
+.fieldWithErrors label {
+  padding: 2px 4px;
+  background-color: #FF6A6A;
+	margin-bottom: 1px;
+}
 
-.fieldWithErrors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+.fieldWithErrors input, .fieldWithErrors select {
+	margin-top: 4px;
+	background-color: #ffdfdf;
 }
 
 #errorExplanation {
@@ -86,6 +86,8 @@ div#flash p.error {
 
 #errorExplanation ul li {
   font-size: 12px;
+	padding-left: 0em;
+	margin-left: 4em;
   list-style: square;
 }
 
