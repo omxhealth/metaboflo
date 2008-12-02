@@ -1,7 +1,7 @@
 <% if @site %>
-	<h1>All Users for "<%= @site.name %>"</h1>
+<h1>All Users for "<%= @site.name %>"</h1>
 <% else %>
-	<h1>All Users</h1>
+<h1>All Users</h1>
 <% end %>
 
 <table>
@@ -14,19 +14,23 @@
 	</tr>
 
 	<% for user in @users %>
-		<tr class="<%= cycle('odd', 'even') %>">
-			<td><%=h user.name %></td>
-			<td><%=h user.login %></td>
-			<% if user.site %>
-				<td><%=h user.site.name %></td>
-			<% else %>
-				<td>-</td>
-			<% end %>
-			<td><%=h user.email %></td>
-		</tr>
+	<tr class="<%= cycle('odd', 'even') %>">
+		<td><%=h user.name %></td>
+		<td><%=h user.login %></td>
+		<% if user.site %>
+		<td><%=h user.site.name %></td>
+		<% else %>
+		<td>-</td>
+		<% end %>
+		<td><%=h user.email %></td>
+		<td><%= link_to 'Show', user %></td>
+		<td><%= link_to 'Edit', edit_user_path(user) %></td>
+		<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+
 	<% end %>
 </table>
 
 <br />
 
-<%= link_to 'New user', new_user_path %>
+<%= link_to 'Add New User', new_user_path %>
