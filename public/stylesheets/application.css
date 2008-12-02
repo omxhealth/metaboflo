@@ -197,8 +197,13 @@ div#main table {
 	border-collapse: collapse;
 }
 
+div#main tr {
+	border-bottom: 1px solid silver;
+}
+
 div#main th, div#main td {
 	padding: 0.2em 0.4em;
+	vertical-align: top;
 }
 
 div#main th {
@@ -217,7 +222,7 @@ div#main tr.odd {
 }
 	
 div#main tr:first-child {
-	border-bottom: 1px solid silver;
+	border-bottom: 1px solid #666;
 }
 
 div#main h2.sub {

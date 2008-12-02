@@ -14,7 +14,7 @@
 		<td><%=h patient.code %></td>
 		<td><%=h patient.name %></td>
 		<td><%=h patient.site.name %></td>
-		<td><%=h patient.samples.length %></td>
+		<td><%= link_to patient.samples.length, patient_samples_path(patient) %></td>
 		<td><%= link_to 'Show', patient %></td>
 		<td><%= link_to 'Edit', edit_patient_path(patient) %></td>
 		<td><%= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete %></td>
