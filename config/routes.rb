@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :lab_tests
 
-  map.resources :sites
+  map.resources :sites, :has_many => [ :users ]
 
   map.admin 'admin', :controller => 'administrators', :action => 'index'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

@@ -23,7 +23,12 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.find(:all)
+    if params[:site_id]
+      @site = Site.find(params[:site_id])
+      @users = @site.users
+    else
+      @users = User.find(:all)
+    end
   end
   
   protected
