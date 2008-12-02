@@ -1,4 +1,4 @@
-<h1><%= @parent_sample ? "Samples for Sample #{@parent_sample.id}" : @patient ? "Samples for Patient #{@patient.code}" : 'All Samples' %></h1>
+<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(Patient)) ? "Samples for Patient #{@parent.code}" : 'All Samples' %></h1>
 
 <table>
   <tr>
@@ -36,8 +36,8 @@
 
 <br />
 
-<% if @parent_sample %>
-<%= link_to "Fractionate sample #{@parent_sample.id}", new_sample_sample_path(@parent_sample) %>
-<% elsif @patient %>
-<%= link_to "New sample for patient #{@patient.code}", new_patient_sample_path(@patient) %>
+<% if (@parent and @parent.kind_of?(Sample)) %>
+<%= link_to "New Aliquot of sample #{@parent.id}", new_sample_sample_path(@parent) %>
+<% elsif (@parent and @parent.kind_of?(Patient)) %>
+<%= link_to "New sample for patient #{@parent.code}", new_patient_sample_path(@parent) %>
 <% end %>

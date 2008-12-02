@@ -1,4 +1,8 @@
-<h1>New Sample</h1>
+<% if (@parent and @parent.kind_of?(Sample)) %>
+	<h1>New Aliquot of Sample <%= @parent.id %></h1>
+<% else %>
+	<h1>New Sample</h1>
+<% end %>
 
 <% form_for([@parent, @sample]) do |f| %>
   <%= f.error_messages %>
