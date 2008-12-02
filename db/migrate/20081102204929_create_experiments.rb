@@ -2,8 +2,10 @@ class CreateExperiments < ActiveRecord::Migration
   def self.up
     create_table :experiments do |t|
       t.string :name
+      t.date :perform_on
+      t.references :assigned_to
       t.date :performed_on
-      t.string :performed_by
+      t.references :performed_by
       t.float :amount_used
       t.string :amount_used_unit
       t.references :sample

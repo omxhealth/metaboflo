@@ -1,5 +1,8 @@
 class Experiment < ActiveRecord::Base
 
+  belongs_to :assigned_to, :class_name => 'User'
+  belongs_to :performed_by, :class_name => 'User'
+  
   belongs_to :sample
   belongs_to :protocol
   has_many :data_files

@@ -1,1 +1,22 @@
-Welcome!!
+<p>
+	Welcome <%= current_user.login %>!!
+</p>
+
+<h1>Pending Experiments</h1>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Perform on</th>
+		<th colspan="3">Actions</th>
+	</tr>
+
+	<% for experiment in @experiments %>
+	<tr class="<%= cycle('odd', 'even') %>">
+		<td><%=h experiment.name %></td>
+		<td><%=h experiment.perform_on %></td>
+		<td><%= link_to 'Show', [experiment.sample, experiment] %></td>
+		<td><%= link_to 'Edit', edit_sample_experiment_path(experiment.sample, experiment) %></td>
+		<td><%= link_to 'Destroy', [experiment.sample, experiment], :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
+</table>

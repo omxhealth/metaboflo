@@ -7,6 +7,8 @@
 <table>
 	<tr>
 		<th>Name</th>
+		<th>Perform on</th>
+		<th>Assigned to</th>
 		<th>Performed on</th>
 		<th>Performed by</th>
 		<th>Data Files</th>
@@ -16,6 +18,8 @@
 	<% for experiment in @experiments %>
 	<tr class="<%= cycle('odd', 'even') %>">
 		<td><%=h experiment.name %></td>
+		<td><%=h experiment.perform_on %></td>
+		<td><%=h experiment.assigned_to %></td>
 		<td><%=h experiment.performed_on %></td>
 		<td><%=h experiment.performed_by %></td>
 		<td><%=h experiment.data_files.length %></td>

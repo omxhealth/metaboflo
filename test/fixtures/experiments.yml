@@ -2,8 +2,10 @@
 
 one:
   name: Metabolite Concentrations
-  performed_on: 2008-11-02
-  performed_by: Sally
+  perform_on: <%= 5.days.ago.to_s :db %>
+  assigned_to: user
+  performed_on: <%= 4.days.ago.to_s :db %>
+  performed_by: user2
   amount_used: 1.5
   amount_used_unit: ml
   sample: one
@@ -11,8 +13,10 @@ one:
 
 two:
   name: Random Experiment
-  performed_on: 2008-11-02
-  performed_by: Steve
+  perform_on: <%= 5.days.ago.to_s :db %>
+  assigned_to: user2
+  performed_on: <%= 6.days.ago.to_s :db %>
+  performed_by: user
   amount_used: 1.5
   amount_used_unit: ml
   sample: two
@@ -20,8 +24,10 @@ two:
 
 three:
   name: Random Experiment 2
-  performed_on: 2008-11-02
-  performed_by: Steve
+  perform_on: <%= 2.days.from_now.to_s :db %>
+  assigned_to: user
+  performed_on: 
+  performed_by: 
   amount_used: 1.5
   amount_used_unit: ml
   sample: one

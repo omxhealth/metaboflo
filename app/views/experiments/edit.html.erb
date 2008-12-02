@@ -7,13 +7,21 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+	<p>
+		<%= f.label :perform_on %><br />
+		<%= f.date_select :perform_on %>
+	</p>
+	<p>
+		<%= f.label :assigned_to_id, 'Assigned to' %><br />
+		<%= f.select :assigned_to_id, User.find(:all, :order => 'login ASC').collect { |u| [ u.login, u.id ] }, :include_blank => true %>
+	</p>
   <p>
     <%= f.label :performed_on %><br />
     <%= f.date_select :performed_on %>
   </p>
   <p>
-    <%= f.label :performed_by %><br />
-    <%= f.text_field :performed_by %>
+    <%= f.label :performed_by_id, 'Performed by' %><br />
+    <%= f.select :performed_by_id, User.find(:all, :order => 'login ASC').collect { |u| [ u.login, u.id ] }, :include_blank => true %>
   </p>
   <p>
     <%= f.label :amount_used %><br />
