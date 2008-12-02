@@ -4,8 +4,10 @@ class CreateSamples < ActiveRecord::Migration
       t.references :patient
       t.references :sample
       t.string :sample_type
-      t.float :amount
-      t.string :unit
+      t.float :original_amount
+      t.string :original_unit
+      t.float :actual_amount
+      t.string :actual_unit
       t.string :barcode
       t.text :storage_location
       t.date :collected_on

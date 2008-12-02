@@ -2,8 +2,10 @@
 
 one:
   sample_type: blood
-  amount: 1.5
-  unit: ml
+  original_amount: 20.5
+  original_unit: ml
+  actual_amount: 5.2
+  actual_unit: ml
   barcode: 12346
   patient: one
   collected_on: 2008-09-25
@@ -11,8 +13,10 @@ one:
       
 two:
   sample_type: CSF
-  amount: 500
-  unit: g
+  original_amount: 500
+  original_unit: g
+  actual_amount: 500
+  actual_unit: g
   barcode: 12345
   patient: two
   collected_on: 2008-09-25
@@ -20,8 +24,10 @@ two:
       
 three:
   sample_type: urine
-  amount: 150.3
-  unit: ml
+  original_amount: 150.3
+  original_unit: ml
+  actual_amount: 150.3
+  actual_unit: ml
   barcode: 12347
   patient: one
   collected_on: 2008-09-25
@@ -29,8 +35,10 @@ three:
       
 four:
   sample_type: blood
-  amount: 10.3
-  unit: ml
+  original_amount: 10.3
+  original_unit: ml
+  actual_amount: 10.3
+  actual_amount: ml
   barcode: 12348
   sample: one
   collected_on: 2008-09-25

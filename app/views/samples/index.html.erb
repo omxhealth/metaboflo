@@ -3,7 +3,8 @@
 <table>
   <tr>
 		<th>Sample type</th>
-    <th>Amount</th>
+    <th>Original amount</th>
+		<th>Actual amount</th>
     <th>Barcode</th>
     <th><%= 'Patient' unless @patient %></th>
 		<th><%= 'Parent sample' unless @parent_sample %></th>
@@ -16,7 +17,8 @@
 <% for sample in @samples %>
   <tr class="<%= cycle('odd', 'even') %>">
 		<td><%=h sample.sample_type %></td>
-    <td><%=h sample.amount %> <%=h sample.unit %></td>
+    <td><%=h sample.original_amount %> <%=h sample.original_unit %></td>
+		<td><%=h sample.actual_amount %> <%=h sample.actual_unit %></td>
     <td><%=h sample.barcode %></td>
     <td><%= link_to(sample.patient.code, sample.patient) unless @patient || sample.patient.nil? %></td>
 		<td><%=h(sample.sample.id) unless @parent_sample || sample.sample.nil? %></td>

@@ -8,14 +8,16 @@ class Sample < ActiveRecord::Base
   has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments
   
-  validates_numericality_of :amount, :greater_than_or_equal => 0, :allow_blank => true
-  validates_inclusion_of :unit, :in => ['ml', 'g'], :allow_blank => true
+  validates_numericality_of :original_amount, :greater_than_or_equal => 0, :allow_blank => true
+  validates_inclusion_of :original_unit, :in => ['ml', 'g'], :allow_blank => true
+  validates_numericality_of :actual_amount, :greater_than_or_equal => 0, :allow_blank => true
+  validates_inclusion_of :actual_unit, :in => ['ml', 'g'], :allow_blank => true
 
   # belongs_to :collected_by, :class_name => 'User', :foreign_key => 'collected_by_id'
   
   # Required so that Experiments, Samples, and Patients can be displayed in cohorts
   def to_s
-    return "#{self.barcode} (#{sample_type} - #{amount} #{unit})"
+    return "#{self.barcode} (#{sample_type} - #{original_amount} #{original_unit})"
   end
   
   def validate
@@ -34,5 +36,16 @@ class Sample < ActiveRecord::Base
       current_sample = current_sample.sample
     end
     current_sample.patient
+  end
+
+  # calculates the theoretical amount of this sample = original amount - sum(original amount of each child)
+  #
+  # assumes that original_unit for this sample and all children are the same
+  def theoretical_amount
+    theoretical = self.original_amount
+    self.samples.each do |child|
+      theoretical -= child.original_amount
+    end
+    theoretical
   end
 end

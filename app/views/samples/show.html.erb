@@ -4,9 +4,15 @@
 	<b>Sample type:</b>
 	<%=h @sample.sample_type %>
 </p>
+
 <p>
-  <b>Amount:</b>
-  <%=h @sample.amount %> <%=h @sample.unit %>
+  <b>Original amount:</b>
+  <%=h @sample.original_amount %> <%=h @sample.original_unit %>
+</p>
+
+<p>
+  <b>Actual amount:</b>
+  <%=h @sample.actual_amount %> <%=h @sample.actual_unit %>
 </p>
 
 <p>

@@ -3,13 +3,13 @@
 <% form_for([@parent, @sample]) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :amount %><br />
-    <%= f.text_field :amount %>
+	<p>
+    <%= f.label :actual_amount %><br />
+    <%= f.text_field :actual_amount %>
   </p>
   <p>
-    <%= f.label :unit %><br />
-    <%= f.select :unit, ['ml', 'g'], :include_blank => true %>
+    <%= f.label :actual_unit %><br />
+    <%= f.select :actual_unit, ['ml', 'g'], :include_blank => true %>
   </p>
   <p>
     <%= f.label :barcode %><br />
