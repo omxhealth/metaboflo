@@ -196,7 +196,7 @@ class SamplesControllerTest < ActionController::TestCase
     login_as :user
     
     # no patient_id or sample_id
-    assert_difference('Sample.count', -1) do
+    assert_difference('Sample.count', -2) do
       delete :destroy, :id => samples(:one).id
     end
     
@@ -207,7 +207,7 @@ class SamplesControllerTest < ActionController::TestCase
     login_as :user
     
     # with patient_id
-    assert_difference('Sample.count', -1) do
+    assert_difference('Sample.count', -2) do
       delete :destroy, :patient_id => patients(:one).id, :id => samples(:one).id
     end
 
