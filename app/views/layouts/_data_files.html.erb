@@ -1,7 +1,0 @@
-<%= link_to 'Data files', experiment_data_files_path(experiment) %>
-<ul>
-	<li class="report"><%= link_to 'Upload data file', new_experiment_data_file_path(experiment), :class => 'create' %></li>
-	<% experiment.data_files.each do |data_file| -%>
-	<li class="report"><%= link_to data_file.filename, experiment_data_file_path(experiment, data_file) %></li>
-	<% end -%>
-</ul>
