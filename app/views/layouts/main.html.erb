@@ -21,15 +21,16 @@
 			
 			<div id="headerbar">
 				<%= image_tag 'dna_blend.png', :style => 'padding: 0em; float: right;' %>
-				<div style="margin-top: 1em; float: right; color: silver; font-size: smaller; text-align: right;">
-					<span style="color: silver; font-size: smaller">Version 0.1 Beta</span>
-					<br />
+				<div id="headerbar-right">
 					<% if current_user %>
-					<form action="">
+					<div id="logged-in">Logged in as <em><%= current_user.login %></em> | <%= link_to 'Administration', admin_path %> | <%= link_to 'Logout', logout_path %></div>
+					
+					<form action="" style="margin: 0em; padding: 0em">
 						Quick Search: <input type="text" />
 						<input type="submit" value="Go" />
 					</form>
 					<% end %>
+					<div id="version">Version 0.1 Beta</div>
 				</div>
 
 				<%= image_tag 'duke_logo.png', :style => 'padding: 1em; float: left;' %>
@@ -37,20 +38,20 @@
 			</div>
 
 			<% if current_user %>
-			<div id="menu">
-				<%= link_to 'HMDB', 'http://hmdb.ca', :style => "float: right" %> 
-				<%= link_to 'Drugbank', 'http://drugbank.ca', :style => "float: right" %> 
-				<%= link_to 'Metabo-Analyst', 'http://www.hmdb.ca', :style => "float: right" %> 
-
+			<div id="menu" style="font-size: xx-small">
+				<span style="float: right">
+				<%= link_to 'HMDB', 'http://hmdb.ca' %> 
+				<%= link_to 'DrugBank', 'http://drugbank.ca' %> 
+				<%= link_to 'PharmGKB', 'http://www.pharmgkb.org' %> 
+				<%= link_to 'Metabo-Analyst', 'http://www.hmdb.ca' %> 
+				</span>
 				<%= link_to 'Home', root_path %>
 				<%= link_to 'Patients', patients_path %> 
 				<%= link_to 'Samples', samples_url %> 
 				<%= link_to 'Experiments', experiments_path %> 
 				<%= link_to 'Cohorts', patient_cohorts_path %> 
 				<%= link_to 'Protocols', protocols_path %> 
-				<%= link_to 'Administration', admin_path %>
-
-				<%= link_to 'Logout', logout_path %>
+				<%= link_to 'Users', users_path %> 
 			</div>
 			<% end %>
 

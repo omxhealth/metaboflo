@@ -29,8 +29,17 @@ p {
 	margin: 1em;
 }
 
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+
 div#doc3 {
-	min-width: 950px;
+	min-width: 1000px;
 }
 
 div#flash p.notice, div#flash p.error {
@@ -99,6 +108,29 @@ div#headerbar {
 	background: #081351 url(../images/header_bg.png) repeat-x 0 100%;
 }
 
+/* Layout CSS */
+div#headerbar div#headerbar-right {
+	margin-top: 1em; 
+	float: right; 
+	color: silver; 
+	font-size: smaller; 
+	text-align: right; 
+	line-height: 2em;
+}
+
+div#headerbar div#headerbar-right div#logged-in {
+	font-size: larger; 
+	margin-bottom: 1em;
+}
+
+div#headerbar div#headerbar-right div#logged-in a {
+	color: white;
+}
+
+div#headerbar div#headerbar-right div#version {
+	font-size: smaller; 
+	margin-top: 0.8em;
+}
 
 div#menu {
 	background: #001a57 url(../images/menu_bg.png) repeat-x 0 100%;
@@ -146,44 +178,6 @@ div#sidebar h2 {
 	padding: 0.3em;
 }
 
-div#tree ul {
-	padding-left: 2em;
-}
-	
-div#tree li.patient {
-	list-style-image: url(../images/patient.jpg);
-}
-
-div#tree li.sample {
-	list-style-image: url(../images/kidney.jpg);
-}
-
-div#tree li.report {
-	list-style-image: url(../images/report.jpg);
-}
-
-div#tree li.cohort {
-	list-style-image: url(../images/cohort.png);
-}
-
-div#tree a {
-	text-decoration: none;
-}
-
-div#tree a:hover {
-	color: #001a57;
-	background-color: #fff;
-}
-
-div#tree a.create {
-	color: green;
-}
-
-div#tree a:hover.create {
-	color: #000;
-}
-
-
 div.subcontainer {
 	background: #F0F0F0;
 	display: table;
@@ -197,20 +191,19 @@ div#main table {
 	border-collapse: collapse;
 }
 
-div#main tr {
-	border-bottom: 1px solid silver;
-}
-
 div#main th, div#main td {
 	padding: 0.2em 0.4em;
 	vertical-align: top;
 }
 
+div#main td {
+	border-bottom: 1px solid silver;
+}
+
 div#main th {
 	font-weight: bold;
 	color: #636363;
-/*	background: #D9D9D9;*/
-/*	border-bottom: 1px solid #C0C0C0;*/
+	border-bottom: 1px solid #666;
 }
 
 div#main tr.even {
