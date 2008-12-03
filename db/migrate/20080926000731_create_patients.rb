@@ -3,9 +3,9 @@ class CreatePatients < ActiveRecord::Migration
     create_table :patients do |t|
       t.references :site
       t.string :code
-      t.string :first_name
-      t.string :middle_name
-      t.string :last_name
+      t.string :first_initial
+      t.string :middle_initial
+      t.string :last_initial
       t.date :birthdate
       t.string :blood_type
       t.string :gender

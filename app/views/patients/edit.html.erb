@@ -11,18 +11,18 @@
 		<%= f.label :site_id %><br />
 		<%= f.select :site_id, Site.find(:all).collect { |s| [s.name, s.id] }, :allow_blank => true %>
 	</p>
-	 <p>
-	   <%= f.label :first_name %><br />
-	   <%= f.text_field :first_name %>
-	 </p>
-	 <p>
-	   <%= f.label :middle_name %><br />
-	   <%= f.text_field :middle_name %>
-	 </p>
-	 <p>
-	   <%= f.label :last_name %><br />
-	   <%= f.text_field :last_name %>
-	 </p>
+	  <p>
+	    <%= f.label :first_initial %><br />
+	    <%= f.text_field :first_initial %>
+	  </p>
+	  <p>
+	    <%= f.label :middle_initial %><br />
+	    <%= f.text_field :middle_initial %>
+	  </p>
+	  <p>
+	    <%= f.label :last_initial %><br />
+	    <%= f.text_field :last_initial %>
+	  </p>
 	 <p>
 	   <%= f.label :birthdate %><br />
 	   <%= f.date_select :birthdate, :order => [:day, :month, :year] %>

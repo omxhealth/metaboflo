@@ -3,62 +3,62 @@
 one:
   code: ABC123
   site: one
-  first_name: Joe
-  middle_name: F
-  last_name: Shmoe
+  first_initial: J
+  middle_initial: F
+  last_initial: S
   birthdate: 2000-09-25
   gender: Male
 
 two:
   code: AB456
   site: two
-  first_name: Jane
-  middle_name: P
-  last_name: Doe
+  first_initial: J
+  middle_initial: P
+  last_initial: D
   birthdate: 1954-08-22
   gender: Female
 
 three:
   code: AB4563
   site: two
-  first_name: Stephen
-  middle_name: 
-  last_name: Harper
+  first_initial: S
+  middle_initial: 
+  last_initial: H
   birthdate: 1954-08-22
   gender: Male
   
 four:
   code: AB452
   site: two
-  first_name: Stephane
-  middle_name: 
-  last_name: Dion
+  first_initial: S
+  middle_initial: 
+  last_initial: D
   birthdate: 1955-08-22
   gender: Male
   
 five:
   code: AB453
   site: one
-  first_name: Gilles
-  middle_name: 
-  last_name: Duceppe
+  first_initial: G
+  middle_initial: 
+  last_initial: D
   birthdate: 1955-08-22
   gender: Male
   
 six:
   code: AB454
   site: one
-  first_name: Jack
-  middle_name: 
-  last_name: Layton
+  first_initial: J
+  middle_initial: 
+  last_initial: L
   birthdate: 1955-08-22
   gender: Male
   
 seven:
   code: AB451
   site: one
-  first_name: Elizabeth
-  middle_name: 
-  last_name: May
+  first_initial: E
+  middle_initial: 
+  last_initial: M
   birthdate: 1955-08-22
   gender: Male
