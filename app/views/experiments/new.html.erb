@@ -9,7 +9,7 @@
   </p>
   <p>
 		<%= f.label :perform_on %><br />
-		<%= f.date_select :perform_on %>
+		<%= f.date_select :perform_on, :include_blank => true %>
 	</p>
 	<p>
 		<%= f.label :assigned_to_id, 'Assigned to' %><br />
@@ -17,7 +17,7 @@
 	</p>
   <p>
     <%= f.label :performed_on %><br />
-    <%= f.date_select :performed_on %>
+    <%= f.date_select :performed_on, :include_blank => true %>
   </p>
   <p>
     <%= f.label :performed_by_id, 'Performed by' %><br />
