@@ -6,9 +6,9 @@ class Patient < ActiveRecord::Base
   has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments
   
-  has_many :medications
-  has_many :patient_evaluations
-  has_many :lab_tests, :order => 'collected_at ASC'
+  has_many :medications, :dependent => :destroy
+  has_many :patient_evaluations, :dependent => :destroy
+  has_many :lab_tests, :order => 'collected_at ASC', :dependent => :destroy
   
   validates_presence_of :code, :site_id
   validates_inclusion_of :gender, :in => ['Male', 'Female'], :allow_blank => true, :message => 'must be either Male or Female'
@@ -23,7 +23,7 @@ class Patient < ActiveRecord::Base
   
   # Required so that Experiments, Samples, and Patients can be displayed in cohorts
   def to_s
-    return self.name
+    return "#{self.code} (initials: #{self.name})"
   end
   
 end

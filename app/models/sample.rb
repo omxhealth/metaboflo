@@ -2,8 +2,8 @@ class Sample < ActiveRecord::Base
   belongs_to :patient
   belongs_to :sample
   
-  has_many :samples
-  has_many :experiments
+  has_many :samples, :dependent => :destroy
+  has_many :experiments, :dependent => :destroy
   
   has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments
