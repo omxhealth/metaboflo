@@ -30,6 +30,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :cohorts, :has_many => [ :cohort_assignments ]
   
+  map.resources :passwords, :methods => [ :edit, :update ]
+  
   # Add routes to direct the cohort types to the correct place
   Cohort.valid_types.each do |cohort_type|
     map.resources "#{cohort_type.downcase}_cohorts", :controller => 'cohorts', :requirements => { :type => cohort_type } 

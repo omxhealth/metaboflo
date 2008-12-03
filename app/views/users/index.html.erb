@@ -22,6 +22,7 @@
 		<% end %>
 		<td><%=h user.email %></td>
 		<td><%= link_to 'Show', user %></td>
+		<td><%= link_to 'Change Password', edit_password_path(user) %></td>
 		<td><%= link_to 'Edit', edit_user_path(user) %></td>
 		<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
 	</tr>
