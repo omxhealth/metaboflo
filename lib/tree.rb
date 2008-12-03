@@ -3,13 +3,15 @@ require 'node'
 
 class Tree < Node 
     
-  attr_reader :id, :parent,:buffer_nodes
+  attr_reader :id, :parent, :buffer_nodes
+  attr_accessor :image_path
 
   def initialize(options={},html_options={},&block) 
     super
     @tree_nodes=[]
     @buffer_nodes=""
     @id,@parent=0,-1
+    @image_path = options[:image_path] || '/images'
     
   end
    
@@ -42,7 +44,7 @@ class Tree < Node
       make(tn)   
     end
        
-    "<script>\nd = new dTree('d');\n#{@buffer_nodes}document.write(d);\n</script>"
+    "<script>\nd = new dTree('d', '#{@image_path}');\n#{@buffer_nodes}document.write(d);\n</script>"
   end
 
    
