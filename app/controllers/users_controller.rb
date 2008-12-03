@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :login_required
   before_filter :find_site
   before_filter :find_user, :only => [ :show, :edit, :update, :destroy ]
   
