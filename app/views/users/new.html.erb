@@ -8,6 +8,15 @@
 		<%= f.label :login %><br/>
 		<%= f.text_field :login %>
 	</p>
+	
+	<p>
+		<%= f.label :rank %><br />
+		<% if current_user.rank == 'Administrator' -%>
+		<%= f.select :rank, [ 'Administrator', 'Superuser', 'User' ], :include_blank => true %>
+		<% else -%>
+		<% @user.rank = 'User' %><%= f.hidden_field :rank %>User
+		<% end -%>
+	</p>
 
 	<p>
 		<%= f.label :email %><br/>
