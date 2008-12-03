@@ -6,7 +6,6 @@
 
 <table>
 	<tr>
-		<th>Name</th>
 		<th>Login</th>
 		<th>Site</th>
 		<th>Email</th>
@@ -15,7 +14,6 @@
 
 	<% for user in @users %>
 	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%=h user.name %></td>
 		<td><%=h user.login %></td>
 		<% if user.site %>
 		<td><%=h user.site.name %></td>
