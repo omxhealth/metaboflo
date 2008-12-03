@@ -7,6 +7,10 @@
 	<title><%= controller.controller_name %>: <%= controller.action_name %></title>
 	<%= stylesheet_link_tag 'yui' %>
 	<%= stylesheet_link_tag 'application' %>
+
+	<%= stylesheet_link_tag 'tree' %>
+	<%= javascript_include_tag 'tree' %>
+
 	<%= javascript_include_tag :defaults %>
 </head>
 <body>
@@ -55,9 +59,7 @@
 				<% if sidebar -%>
 				<div id="sidebar">
 					<h2>Patient Summary</h2>
-					<div id="tree">
-						<ul><li class="patient"><%= render :partial => '/layouts/patient_hierarchy' %></li></ul>
-					</div>
+					<%= patient_tree(@patient) %>
 				</div>
 				<% end %>
 			</div>

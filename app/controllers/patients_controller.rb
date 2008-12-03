@@ -1,12 +1,12 @@
 class PatientsController < ApplicationController
   before_filter :find_patient, :only => [ :show, :edit, :update, :destroy ]
-  
+
   # GET /patients
   # GET /patients.xml
   def index
     @patients = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-                  Patient.find(:all) :
-                  Patient.find(:all, :conditions => [ 'site_id=?', current_user.site ])
+    Patient.find(:all) :
+    Patient.find(:all, :conditions => [ 'site_id=?', current_user.site ])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +17,10 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.xml
   def show
+
+    # @tree = patient_tree(@patient)
+
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @patient }
@@ -80,9 +84,9 @@ class PatientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   protected
-    def find_patient(param_name = :id)
-      super
-    end
+  def find_patient(param_name = :id)
+    super
+  end
 end

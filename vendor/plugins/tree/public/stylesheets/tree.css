@@ -21,7 +21,7 @@
 	text-decoration: underline;
 }
 
-.dtree a:visited, .dtree a:active {
+a:visited,a:active {
 	border:none;
 	text-decoration: none;
 }
@@ -29,9 +29,10 @@
 	background-color: #c0d2ec;
 }
 .dtree .clip {
-/*	overflow: hidden;*/
+	overflow: hidden;
 }
-.node {
-	cursor: pointer;
-	_cursor: hand;
+.node{
+
+ cursor: pointer;
+ _cursor: hand;
 }

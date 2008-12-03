@@ -1,6 +1,7 @@
 <%= link_to 'Experiments', sample_experiments_path(sample) %>
+(<%= link_to 'Add', new_sample_experiment_path(sample), :class => 'create' %>)
 <ul>
-	<li><%= link_to 'Perform new experiment', new_sample_experiment_path(sample), :class => 'create' %></li>
+	<li></li>
 	<% sample.experiments.each do |experiment| -%>
 	<li class="report">
 		<%= link_to experiment.name, sample_experiment_path(experiment.sample, experiment) %>
