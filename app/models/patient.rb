@@ -13,9 +13,9 @@ class Patient < ActiveRecord::Base
   validates_presence_of :code, :site_id
   validates_inclusion_of :gender, :in => ['Male', 'Female'], :allow_blank => true, :message => 'must be either Male or Female'
   
-  validates_length_of  :first_initial, :maximum => 1, :message => "should be at most 1 character"
-  validates_length_of  :middle_initial, :maximum => 1, :message => "should be at most 1 character"
-  validates_length_of  :last_initial, :maximum => 1, :message => "should be at most 1 character"
+  validates_length_of :first_initial, :allow_blank => true, :maximum => 1, :message => "should be at most 1 character"
+  validates_length_of :middle_initial, :allow_blank => true, :maximum => 1, :message => "should be at most 1 character"
+  validates_length_of :last_initial, :allow_blank => true, :maximum => 1, :message => "should be at most 1 character"
   
   def name
     "#{self.first_initial} #{self.middle_initial} #{self.last_initial}".gsub(/\s+/, " ").strip
