@@ -1,0 +1,53 @@
+<p>
+  <b>Subject:</b>
+  <%=h @task.subject %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @task.description %>
+</p>
+
+<p>
+  <b>Task status:</b>
+  <%=h @task.status.name if @task.status %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%=h @task.priority.name if @task.priority %>
+</p>
+
+<p>
+  <b>Assigned to:</b>
+  <%=h @task.assigned_to.login if @task.assigned_to %>
+</p>
+
+<p>
+  <b>Task category:</b>
+  <%=h @task.category.name if @task.category %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%=h @task.start_date %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%=h @task.due_date %>
+</p>
+
+<p>
+  <b>Estimated hours:</b>
+  <%=h @task.estimated_hours %>
+</p>
+
+<p>
+  <b>% done:</b>
+  <%=h @task.done_ratio %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task), :class => 'icon icon-edit' %> |
+<%= link_to 'Back', tasks_path %>

@@ -1,6 +1,6 @@
 <h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(Patient)) ? "Samples for Patient #{@parent.code}" : 'All Samples' %></h1>
 
-<table>
+<table class="list">
   <tr>
 		<th>Sample type</th>
     <th>Original amount</th>

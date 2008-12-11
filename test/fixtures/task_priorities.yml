@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+high:
+  name: High
+  description: Task is a high priority item
+
+low:
+  name: Low
+  description: Task is a low priority item

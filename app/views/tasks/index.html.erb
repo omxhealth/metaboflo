@@ -1,0 +1,39 @@
+<h1>Listing tasks</h1>
+
+<table class="list">
+  <tr>
+    <th>Subject</th>
+    <th>Description</th>
+    <th>Task status</th>
+    <th>Priority</th>
+    <th>Assigned to</th>
+    <th>Task category</th>
+    <th>Start date</th>
+    <th>Due date</th>
+    <th>Estimated hours</th>
+    <th>% done</th>
+		<th colspan="3">Actions</th>
+  </tr>
+
+<% for task in @tasks %>
+	<tr class="<%= cycle('odd', 'even') %>">
+    <td><%=h task.subject %></td>
+    <td><%=h task.description %></td>
+    <td><%=h task.status.name if task.status %></td>
+    <td><%=h task.priority.name if task.priority %></td>
+    <td><%=h task.assigned_to.login if task.assigned_to %></td>
+    <td><%=h task.category.name if task.category %></td>
+    <td><%=h task.start_date %></td>
+    <td><%=h task.due_date %></td>
+    <td><%=h task.estimated_hours %></td>
+    <td><%=h task.done_ratio %></td>
+    <td><%= link_to 'Show', task %></td>
+    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New task', new_task_path, :class => 'icon icon-add' %> | <%= link_to 'Gantt', gantt_tasks_path %> | <%= link_to 'Calendar', calendar_tasks_path %>

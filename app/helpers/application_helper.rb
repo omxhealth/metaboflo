@@ -7,6 +7,5 @@ module ApplicationHelper
     else
       return 'no'
     end
-  end
-  
+  end    
 end

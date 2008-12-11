@@ -1,0 +1,65 @@
+<div id="content">
+	<fieldset id="date-range" style="margin-bottom: 1.5em"><legend>Date</legend>
+		<% form_remote_tag :update => 'main', :method => :get do %>
+		<%= select_month(@month, :prefix => "month", :discard_type => true) %>
+		<%= select_year(@year, :prefix => "year", :discard_type => true) %>
+
+		<%= submit_tag 'Apply' %> &nbsp;
+		<% end %>
+	</fieldset>
+
+	<p style="float:right; margin:0px;">
+	<%= link_to_remote ('&#171; ' + (@month==1 ? "#{Date::MONTHNAMES[12]} #{@year-1}" : "#{Date::MONTHNAMES[@month-1]}")), 
+		{:update => 'main', :url => { :year => (@month==1 ? @year-1 : @year), :month =>(@month==1 ? 12 : @month-1) }, :method => :get },
+		{:href => url_for(:action => 'calendar', :year => (@month==1 ? @year-1 : @year), :month =>(@month==1 ? 12 : @month-1))}
+	%> |
+	<%= link_to_remote ((@month==12 ? "#{Date::MONTHNAMES[1]} #{@year+1}" : "#{Date::MONTHNAMES[@month+1]}") + ' &#187;'), 
+		{:update => 'main', :url => { :year => (@month==12 ? @year+1 : @year), :month =>(@month==12 ? 1 : @month+1) }, :method => :get },
+		{:href => url_for(:action => 'calendar', :year => (@month==12 ? @year+1 : @year), :month =>(@month==12 ? 1 : @month+1))}
+	%>
+	</p>
+	<p style="margin:0px;">
+		<%= link_to_remote 'Today', {:url => { :month => nil, :year => nil }, :update => 'main', :method => :get}, { :href => url_for(:month => nil, :year => nil), :class => 'icon icon-home' } %>
+	</p>
+	
+	<table class="cal" style="clear: both">
+		<thead>
+			<tr><td></td><% 7.times do |i| %><th><%= Date::DAYNAMES[(@calendar.first_wday+i)%7] %></th><% end %></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<% day = @calendar.startdt
+				while day <= @calendar.enddt %>
+				<%= "<th>#{day.cweek}</th>" if day.cwday == @calendar.first_wday %>
+				<td class="<%= day.month==@calendar.month ? 'even' : 'odd' %><%= ' today' if Date.today == day %>">
+					<p class="day-num"><%= day.day %></p>	
+					<% @calendar.events_on(day).each do |i| %>
+					<% if i.is_a? Task %>
+					<div class="tooltip">
+						<%= if day == i.start_date && day == i.due_date
+							image_tag('arrow_bw.png')
+						elsif day == i.start_date
+							image_tag('arrow_from.png') 
+						elsif day == i.due_date
+							image_tag('arrow_to.png') 
+						end %>
+						<%= link_to i.subject, task_path(i) %>
+						<span class="tip"><%= render_task_tooltip i %></span>
+					</div>
+					<% end %>
+					<% end %>
+				</td>
+				<%= '</tr><tr>' if day.cwday==@calendar.last_wday and day!=@calendar.enddt %>
+					<% day = day + 1
+				end %>
+			</tr>
+		</tbody>
+	</table>
+
+	<%= image_tag 'arrow_from.png' %>&nbsp;&nbsp; task beginning this day<br />
+	<%= image_tag 'arrow_to.png' %>&nbsp;&nbsp; task ending this day<br />
+	<%= image_tag 'arrow_bw.png' %>&nbsp;&nbsp; task beginning and ending this day<br />
+
+</div>
+
+<%= link_to 'New task', new_task_path %> | <%= link_to 'Tasks', tasks_path %> | <%= link_to 'Gantt', gantt_tasks_path %>

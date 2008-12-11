@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @task_priority.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @task_priority.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_priority_path(@task_priority) %> |
+<%= link_to 'Back', task_priorities_path %>

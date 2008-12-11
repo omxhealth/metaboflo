@@ -1,0 +1,22 @@
+<h1>Listing Task Priorities</h1>
+
+<table class="list">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% for task_priority in @task_priorities %>
+  <tr>
+    <td><%=h task_priority.name %></td>
+    <td><%=h task_priority.description %></td>
+    <td><%= link_to 'Show', task_priority %></td>
+    <td><%= link_to 'Edit', edit_task_priority_path(task_priority) %></td>
+    <td><%= link_to 'Destroy', task_priority, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New task priority', new_task_priority_path %>

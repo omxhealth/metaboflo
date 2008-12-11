@@ -4,3 +4,11 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
 Instructions for running on server:
 Start: ruby -S mongrel_rails start -p 3007 --prefix=/duke -d
 Stop:  ruby -S mongrel_rails stop
+
+
+# Calendar options
+
+- Calendar allowing users to add new tasks to a specific day
+- Also show readonly events like "run sample X" - different color
+- New LabBookEntry model (maybe the readonly event from above would be a readonly LabBookEntry with category "Samples" or something - this way the calendar/tasks/labbook are still independent.
+- Each day can have multiple LabBookEntrysx

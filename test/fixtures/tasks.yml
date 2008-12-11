@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subject: Rewrite Universe
+  description: Universe is written in horrible Perl and refactoring is not possible.  Rewrite is the only option.
+  status: open
+  priority: high
+  assigned_to: superuser
+  category: nmr
+  start_date: 2008-12-08
+  due_date: 2009-12-08
+  estimated_hours: 1.5
+  done_ratio: 0
+
+two:
+  subject: Invest in Banks
+  description: Good time to invest according to Warren Buffet.
+  status: closed
+  priority: low
+  assigned_to: admin
+  category: equipment
+  start_date: 2008-12-08
+  due_date: 2008-12-15
+  estimated_hours: 1.5
+  done_ratio: 40

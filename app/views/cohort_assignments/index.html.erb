@@ -1,6 +1,6 @@
 <h1>Cohort to which <%= @assignable_type %> <%= @assignable.name %> belongs</h1>
 
-<table>
+<table class="list">
   <tr>
     <th>Cohort</th>
 		<th colspan="3">Actions</th>
@@ -16,4 +16,4 @@
 
 <br />
 
-<%= link_to "Add #{@assignable_type} to Cohort", :action => 'new', "#{@assignable_type.downcase}_id" => @assignable %>
+<%= link_to "Add #{@assignable_type} to Cohort", { :action => 'new', "#{@assignable_type.downcase}_id" => @assignable }, :class => 'icon icon-add' %>

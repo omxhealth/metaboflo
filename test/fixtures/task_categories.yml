@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+nmr:
+  name: NMR
+  description: All tasks involving NMR
+
+equipment:
+  name: Equipment
+  description: All tasks involving lab equipment

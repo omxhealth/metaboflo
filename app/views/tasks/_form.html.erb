@@ -1,0 +1,42 @@
+<%= form.error_messages %>
+
+<p>
+  <%= form.label :subject %><br />
+  <%= form.text_field :subject %>
+</p>
+<p>
+  <%= form.label :description %><br />
+  <%= form.text_field :description %>
+</p>
+<p>
+  <%= form.label :status_id %><br />
+  <%= form.select :status_id, TaskStatus.all.collect { |ts| [ts.name, ts.id] }, :include_blank => true %>
+</p>
+<p>
+  <%= form.label :priority_id %><br />
+  <%= form.select :priority_id, TaskPriority.all.collect { |tp| [tp.name, tp.id] }, :include_blank => true %>
+</p>
+<p>
+  <%= form.label :assigned_to_id %><br />
+  <%= form.select :assigned_to_id, User.find(:all).collect { |u| [u.login, u.id] }, :include_blank => true %>
+</p>
+<p>
+  <%= form.label :category_id %><br />
+  <%= form.select :category_id, TaskCategory.all.collect { |tc| [tc.name, tc.id] }, :include_blank => true %>
+</p>
+<p>
+  <%= form.label :start_date %><br />
+  <%= form.date_select :start_date %>
+</p>
+<p>
+  <%= form.label :due_date %><br />
+  <%= form.date_select :due_date %>
+</p>
+<p>
+  <%= form.label :estimated_hours %><br />
+  <%= form.text_field :estimated_hours %>
+</p>
+<p>
+  <%= form.label :done_ratio, '% done' %><br />
+  <%= form.text_field :done_ratio %>
+</p>

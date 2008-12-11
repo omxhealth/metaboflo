@@ -11,7 +11,7 @@
 <h2><%= @cohort.assignable_type.pluralize %> in this cohort</h2>
 
 <div class="association">
-	<table>
+	<table class="list">
 		<thead>
 			<tr>
 				<th><%= @cohort.assignable_type %></th>
@@ -29,5 +29,5 @@
 	<br />
 </div>
 
-<%= link_to 'Edit', :action => 'edit', :type => @type %> |
+<%= link_to 'Edit', { :action => 'edit', :type => @type }, :class => 'icon icon-edit' %> |
 <%= link_to 'Back', :action => 'index', :type => @type %>

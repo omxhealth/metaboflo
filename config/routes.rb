@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :task_categories
+
+  map.resources :task_priorities
+
+  map.resources :tasks, :collection => { :gantt => :get, :calendar => :get }
+
   map.resources :protocols
 
   map.resources :lab_tests
