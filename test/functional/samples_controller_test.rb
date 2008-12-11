@@ -90,6 +90,11 @@ class SamplesControllerTest < ActionController::TestCase
       post :create, :sample => { }
     end
     assert_redirected_to samples_path
+
+    # invalid sample
+    assert_no_difference('Sample.count') do
+      post :create, :sample => { :original_amount => '24fs' }, :patient_id => patients(:one).id
+    end
     
     # patient_id from other site
     assert_raise ActiveRecord::RecordNotFound do

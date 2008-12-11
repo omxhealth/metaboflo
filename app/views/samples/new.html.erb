@@ -6,8 +6,8 @@
 
 <% form_for([@parent, @sample]) do |f| %>
   <%= f.error_messages %>
-	<%= f.hidden(:patient_id) if @sample.patient %>
-	<%= f.hidden(:parent_sample_id) if @sample.sample %>
+	<%= f.hidden_field(:patient_id) if @sample.patient %>
+	<%= f.hidden_field(:parent_sample_id) if @sample.sample %>
 	<p>
 		<%= f.label :sample_type %><br />
 		<%= @parent_sample ? @parent_sample.sample_type : f.select(:sample_type, ['blood', 'CSF', 'urine']) %>
