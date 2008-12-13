@@ -29,5 +29,5 @@
 	<br />
 </div>
 
-<%= link_to 'Edit', { :action => 'edit', :type => @type }, :class => 'icon icon-edit' %> |
+<%= edit_link({:action => 'edit', :type => @type}) %> |
 <%= link_to 'Back', :action => 'index', :type => @type %>

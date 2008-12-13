@@ -10,13 +10,13 @@
   <tr>
     <td><%=h task_priority.name %></td>
     <td><%=h task_priority.description %></td>
-    <td><%= link_to 'Show', task_priority %></td>
-    <td><%= link_to 'Edit', edit_task_priority_path(task_priority) %></td>
-    <td><%= link_to 'Destroy', task_priority, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= show_link task_priority %></td>
+    <td><%= edit_link edit_task_priority_path(task_priority) %></td>
+    <td><%= destroy_link task_priority %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New task priority', new_task_priority_path %>
+<%= new_link 'task priority', new_task_priority_path %>

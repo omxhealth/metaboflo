@@ -23,9 +23,9 @@
 		<td><%=h experiment.performed_on %></td>
 		<td><%=h experiment.performed_by %></td>
 		<td><%=h experiment.data_files.length %></td>
-		<td><%= link_to 'Show', [experiment.sample, experiment] %></td>
-		<td><%= link_to 'Edit', edit_sample_experiment_path(experiment.sample, experiment) %></td>
-		<td><%= link_to 'Destroy', [experiment.sample, experiment], :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= show_link [experiment.sample, experiment] %></td>
+		<td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
+		<td><%= destroy_link [experiment.sample, experiment] %></td>
 	</tr>
 	<% end %>
 </table>
@@ -33,5 +33,5 @@
 <br />
 
 <% if @sample %>
-<%= link_to 'New experiment for this sample', new_sample_experiment_path(@sample) %>
+<%= new_link 'experiment for this sample', new_sample_experiment_path(@sample) %>
 <% end %>

@@ -15,13 +15,13 @@
 		<td><%=h patient.name %></td>
 		<td><%=h patient.site.name %></td>
 		<td><%= link_to patient.samples.length, patient_samples_path(patient) %></td>
-		<td><%= link_to 'Show', patient %></td>
-		<td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-		<td><%= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= show_link patient %></td>
+		<td><%= edit_link edit_patient_path(patient) %></td>
+		<td><%= destroy_link patient %></td>
 	</tr>
 	<% end %>
 </table>
 
 <br />
 
-<%= link_to 'New patient', new_patient_path, :class => 'icon icon-add' %>
+<%= new_link 'patient', new_patient_path %>

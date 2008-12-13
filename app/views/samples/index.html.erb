@@ -31,9 +31,9 @@
 			<%= link_to experiment.name, [sample, experiment] %><br />
 			<% end -%>
 		</td>
-    <td><%= link_to 'Show', sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample) %></td>
-    <td><%= link_to 'Edit', sample.sample ? edit_sample_sample_path(sample.sample, sample) : edit_patient_sample_path(sample.patient, sample) %></td>
-    <td><%= link_to 'Destroy', sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= show_link sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample) %></td>
+    <td><%= edit_link sample.sample ? edit_sample_sample_path(sample.sample, sample) : edit_patient_sample_path(sample.patient, sample) %></td>
+    <td><%= destroy_link sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample) %></td>
   </tr>
 <% end %>
 </table>
@@ -41,7 +41,7 @@
 <br />
 
 <% if (@parent and @parent.kind_of?(Sample)) %>
-<%= link_to "New Aliquot of sample #{@parent.id}", new_sample_sample_path(@parent) %>
+<%= new_link "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent) %>
 <% elsif (@parent and @parent.kind_of?(Patient)) %>
-<%= link_to "New sample for patient #{@parent.code}", new_patient_sample_path(@parent) %>
+<%= new_link "sample for patient #{@parent.code}", new_patient_sample_path(@parent) %>
 <% end %>

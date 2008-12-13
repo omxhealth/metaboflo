@@ -11,13 +11,13 @@
 	<tr class="<%= cycle('odd', 'even') %>">
 		<td><%=h patient_evaluation.diagnosis %></td>
 		<td><%=h patient_evaluation.evaluated_on %></td>
-		<td><%= link_to 'Show', patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
-		<td><%= link_to 'Edit', edit_patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
-		<td><%= link_to 'Destroy', patient_patient_evaluation_path(@patient, patient_evaluation), :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= show_link patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
+		<td><%= edit_link edit_patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
+		<td><%= destroy_link patient_patient_evaluation_path(@patient, patient_evaluation) %></td>
 	</tr>
 	<% end %>
 </table>
 
 <br />
 
-<%= link_to 'New patient_evaluation', new_patient_patient_evaluation_path(@patient) %>
+<%= new_link 'patient evaluation', new_patient_patient_evaluation_path(@patient) %>

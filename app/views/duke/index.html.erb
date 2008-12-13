@@ -14,9 +14,9 @@
 	<tr class="<%= cycle('odd', 'even') %>">
 		<td><%=h experiment.name %></td>
 		<td><%=h experiment.perform_on %></td>
-		<td><%= link_to 'Show', [experiment.sample, experiment] %></td>
-		<td><%= link_to 'Edit', edit_sample_experiment_path(experiment.sample, experiment) %></td>
-		<td><%= link_to 'Destroy', [experiment.sample, experiment], :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= show_link [experiment.sample, experiment] %></td>
+		<td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
+		<td><%= destroy_link [experiment.sample, experiment] %></td>
 	</tr>
 	<% end %>
 </table>
