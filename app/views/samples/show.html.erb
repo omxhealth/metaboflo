@@ -1,4 +1,6 @@
-<h1>Information for Sample <%= @sample.id %></h1>
+<h1>
+  Showing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : 'aliquot ' %> <%= @sample.parent %>
+</h1>
 
 <p>
 	<b>Sample type:</b>
@@ -27,13 +29,15 @@
 
 <p>
   <b>Patient:</b>
-  <%= link_to(@sample.patient.code, patient_path(@sample.patient)) if @sample.patient %>
+  <%= link_to(@sample.root.to_s, patient_path(@sample.root)) %>
 </p>
 
+<% if @sample.aliquot? %>
 <p>
-	<b>Parent sample:</b>
-	<%= link_to(@sample.sample.id, sample_path(@sample.sample)) if @sample.sample %>
+	<b>Source sample:</b>
+	<%= link_to(@sample.sample, sample_path(@sample.sample)) %>
 </p>
+<% end %>
 
 <p>
 	<b>Storage location:</b>
@@ -57,4 +61,4 @@
 
 <br />
 
-<%= edit_link @parent_sample ? edit_sample_sample_path(@parent_sample, @sample) : edit_patient_sample_path(@patient, @sample) %>
+<%= edit_link @sample.aliquot? ? edit_sample_sample_path(@parent, @sample) : edit_patient_sample_path(@patient, @sample) %>

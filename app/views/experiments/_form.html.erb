@@ -1,0 +1,54 @@
+<%= form.error_messages %>
+
+<fieldset style="width: 70%">
+  <legend>Experiment Description</legend>
+  <p>
+    <%= form.label :protocol, 'Experiment protocol' %>: 
+    <%= form.select :protocol_id, Protocol.all.collect {|p| [ "#{p.name} (version #{p.version})", p.id ] }, { :include_blank => true } %>
+  </p>
+  <p>
+    <%= form.label :name, 'Experiment title' %>: <%= form.text_field :name, :style => "width: 250px" %>
+  </p>
+  <p>
+    <%= form.label :description, 'Description' %><br />
+    <%= form.text_area :description, :rows => 5, :style => "width: 350px" %>
+  </p>
+  <p>
+    <%= form.label :comments, 'Comments' %><br />
+    <%= form.text_area :comments, :rows => 5, :style => "width: 350px" %>
+  </p>
+</fieldset>
+
+<br />
+
+<fieldset style="width: 70%">
+  <legend>Analysis</legend>
+  <p>
+    <%= form.label :assigned_to_id, 'To be analyzed by' %> 
+    <%= form.select :assigned_to_id, User.find(:all, :order => 'login ASC').collect { |u| [ u.login, u.id ] }, :include_blank => true %>
+
+    <%= form.label :perform_on, 'on' %> 
+    <%= form.date_select :perform_on, :include_blank => true %>
+  </p>
+
+  <p>
+    <%= form.label :performed_by_id, 'Actually analyzed by' %> 
+    <%= form.select :performed_by_id, User.find(:all, :order => 'login ASC').collect { |u| [ u.login, u.id ] }, :include_blank => true %>
+
+    <%= form.label :performed_on, 'on' %> 
+    <%= form.date_select :performed_on, :include_blank => true %>
+  </p>  
+</fieldset>
+
+<br />
+
+<fieldset style="width: 70%">
+  <legend>Sample Details</legend>
+
+  <p>
+    <%= form.label :amount_used, 'Amount used for experiment' %>
+    <%= form.text_field :amount_used, :size => 5 %> 
+    <%= form.select :amount_used_unit, volume_unit_options, :include_blank => true %>
+  </p>
+
+</fieldset>

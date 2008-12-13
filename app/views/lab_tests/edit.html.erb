@@ -1,13 +1,13 @@
 <h1>Editing Lab Test</h1>
 
-<% form_for([@patient, @lab_test]) do |f| %>
+<% form_for([@patient, @lab_test]) do |form| %>
 
-  <%= render :partial => 'lab_test', :locals => {:f => f} %>
+  <%= render :partial => form %>
 
-  <%= f.error_messages %>
+  <%= form.error_messages %>
 
   <p>
-    <%= f.submit "Update" %>
+    <%= form.submit "Update" %>
   </p>
 <% end %>
 

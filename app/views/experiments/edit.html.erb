@@ -1,42 +1,9 @@
 <h1>Editing experiment</h1>
 
-<% form_for([@sample, @experiment]) do |f| %>
-  <%= f.error_messages %>
-
+<% form_for([@sample, @experiment]) do |form| %>
+  <%= render :partial => form %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-	<p>
-		<%= f.label :perform_on %><br />
-		<%= f.date_select :perform_on, :include_blank => true %>
-	</p>
-	<p>
-		<%= f.label :assigned_to_id, 'Assigned to' %><br />
-		<%= f.select :assigned_to_id, User.find(:all, :order => 'login ASC').collect { |u| [ u.login, u.id ] }, :include_blank => true %>
-	</p>
-  <p>
-    <%= f.label :performed_on %><br />
-    <%= f.date_select :performed_on, :include_blank => true %>
-  </p>
-  <p>
-    <%= f.label :performed_by_id, 'Performed by' %><br />
-    <%= f.select :performed_by_id, User.find(:all, :order => 'login ASC').collect { |u| [ u.login, u.id ] }, :include_blank => true %>
-  </p>
-  <p>
-    <%= f.label :amount_used %><br />
-    <%= f.text_field :amount_used %>
-  </p>
-  <p>
-    <%= f.label :amount_used_unit %><br />
-    <%= f.text_field :amount_used_unit %>
-  </p>
-  <p>
-    <%= f.label :protocol %><br />
-    <%= f.select :protocol_id, Protocol.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true } %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
+    <%= form.submit "Update" %>
   </p>
 <% end %>
 

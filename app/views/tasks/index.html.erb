@@ -4,10 +4,10 @@
   <tr>
     <th>Subject</th>
     <th>Description</th>
-    <th>Task status</th>
+    <th>Status</th>
     <th>Priority</th>
     <th>Assigned to</th>
-    <th>Task category</th>
+    <th>Category</th>
     <th>Start date</th>
     <th>Due date</th>
     <th>Estimated hours</th>
@@ -18,7 +18,7 @@
 <% for task in @tasks %>
 	<tr class="<%= cycle('odd', 'even') %>">
     <td><%=h task.subject %></td>
-    <td><%=h task.description %></td>
+    <td><%=h truncate(task.description) %></td>
     <td><%=h task.status.name if task.status %></td>
     <td><%=h task.priority.name if task.priority %></td>
     <td><%=h task.assigned_to.login if task.assigned_to %></td>
@@ -36,4 +36,7 @@
 
 <br />
 
-<%= new_link("task", new_task_path) %> | <%= link_to 'Gantt', gantt_tasks_path %> | <%= link_to 'Calendar', calendar_tasks_path %>
+<%= new_link("task", new_task_path) %> | 
+<%= link_to 'Gantt', gantt_tasks_path, :class => 'icon icon-report' %> | 
+<%= link_to 'Calendar', calendar_tasks_path, :class => 'icon icon-calendar' %>
+

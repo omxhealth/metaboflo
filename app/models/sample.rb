@@ -48,4 +48,12 @@ class Sample < ActiveRecord::Base
     end
     theoretical
   end
+  
+  def parent
+    self.patient || self.sample
+  end
+  
+  def aliquot?
+    return !self.sample.blank?
+  end
 end

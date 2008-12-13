@@ -150,7 +150,7 @@ class SamplesControllerTest < ActionController::TestCase
     
     # with sample_id
     get :edit, :sample_id => samples(:one), :id => samples(:four).id
-    assert_response :success
+    assert_response :success    
   end
   
   def test_should_not_get_edit
@@ -164,6 +164,11 @@ class SamplesControllerTest < ActionController::TestCase
     # sample_id from other site
     assert_raise ActiveRecord::RecordNotFound do
       get :edit, :sample_id => samples(:one), :id => samples(:four).id
+    end
+
+    # correct patient_id, but the sample is further down the tree (it is an aliquot)
+    assert_raise ActiveRecord::RecordNotFound do
+      get :edit, :patient_id => patients(:one), :id => samples(:four).id
     end
   end
 

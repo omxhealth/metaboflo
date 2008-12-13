@@ -1,37 +1,33 @@
-<% if @sample %>
-<h1>Experiments for Sample <%= @sample.id %></h1>
-<% else %>
-<h1>All Experiments</h1>
-<% end %>
+<h1><%= @sample.blank? ? 'Experiments' : "Experiments for sample #{@sample}" %></h1>
 
 <table class="list">
-	<tr>
-		<th>Name</th>
-		<th>Perform on</th>
-		<th>Assigned to</th>
-		<th>Performed on</th>
-		<th>Performed by</th>
-		<th>Data Files</th>
-		<th colspan="3">Actions</th>
-	</tr>
+  <tr>
+    <th>Title</th>
+    <th>To be analyzed by</th>
+    <th>To be analyzed on</th>
+    <th>Actually analyzed by</th>
+    <th>Actually analyzed on</th>
+    <th>Data Files</th>
+    <th colspan="3">Actions</th>
+  </tr>
 
-	<% for experiment in @experiments %>
-	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%=h experiment.name %></td>
-		<td><%=h experiment.perform_on %></td>
-		<td><%=h experiment.assigned_to %></td>
-		<td><%=h experiment.performed_on %></td>
-		<td><%=h experiment.performed_by %></td>
-		<td><%=h experiment.data_files.length %></td>
-		<td><%= show_link [experiment.sample, experiment] %></td>
-		<td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
-		<td><%= destroy_link [experiment.sample, experiment] %></td>
-	</tr>
-	<% end %>
+  <% for experiment in @experiments %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%=h experiment.name %></td>
+    <td><%=h experiment.assigned_to %></td>
+    <td><%=h experiment.perform_on %></td>
+    <td><%=h experiment.performed_by %></td>
+    <td><%=h experiment.performed_on %></td>
+    <td><%=h experiment.data_files.length %></td>
+    <td><%= show_link [experiment.sample, experiment] %></td>
+    <td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
+    <td><%= destroy_link [experiment.sample, experiment] %></td>
+  </tr>
+  <% end %>
 </table>
 
 <br />
 
-<% if @sample %>
+<% if !@sample.blank? %>
 <%= new_link 'experiment for this sample', new_sample_experiment_path(@sample) %>
 <% end %>
