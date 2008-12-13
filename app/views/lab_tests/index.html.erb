@@ -2,14 +2,14 @@
 
 <table class="list">
 	<tr>
-		<th>Number of Tests Performed</th>
+		<th>Tests Performed</th>
 		<th>Collected At</th>
 		<th colspan="3">Actions</th>
 	</tr>
 
 	<% for lab_test in @lab_tests %>
 	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%=h num_tests(lab_test) %></td>
+		<td>3</td>
 		<td><%=h lab_test.collected_at %></td>
 		<td><%= show_link patient_lab_test_path(@patient, lab_test) %></td>
 		<td><%= edit_link edit_patient_lab_test_path(@patient, lab_test) %></td>
