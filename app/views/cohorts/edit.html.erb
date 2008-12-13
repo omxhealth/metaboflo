@@ -16,5 +16,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', :action => 'show', :id => @cohort, :type => @type %> |
-<%= link_to 'Back', :action => 'index', :type => @type %>
+<%= show_link({:id => @cohort, :type => @type}) %>

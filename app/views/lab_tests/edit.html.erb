@@ -11,5 +11,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', patient_lab_test_path(@patient, @lab_test) %> |
-<%= link_to 'Back', patient_lab_tests_path(@patient) %>
+<%= show_link patient_lab_test_path(@patient, @lab_test) %>
