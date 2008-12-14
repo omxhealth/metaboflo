@@ -1,3 +1,9 @@
+<% if @user.user_picture %>
+  <p>
+    <%= large_picture(@user.user_picture) %><br />
+  </p>
+<% end %>
+
 <p>
 	<b>Login</b>
 	<%=h @user.login %>

@@ -6,6 +6,7 @@
 
 <table class="list">
 	<tr>
+	  <th>Picture</th>
 		<th>Login</th>
 		<th>Site</th>
 		<th>Email</th>
@@ -14,11 +15,18 @@
 
 	<% for user in @users %>
 	<tr class="<%= cycle('odd', 'even') %>">
+	  <td>
+	    <% if user.user_picture %>
+	      <%= small_picture(user.user_picture) %><br />
+      <% else %>
+        &nbsp;
+      <% end %>
+    </td>
 		<td><%=h user.login %></td>
 		<% if user.site %>
-		<td><%=h user.site.name %></td>
+		  <td><%=h user.site.name %></td>
 		<% else %>
-		<td>-</td>
+		  <td>-</td>
 		<% end %>
 		<td><%=h user.email %></td>
 		<td><%= show_link user %></td>

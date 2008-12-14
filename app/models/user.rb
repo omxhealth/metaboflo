@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
 
   belongs_to :site
+  
+  has_one :user_picture
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

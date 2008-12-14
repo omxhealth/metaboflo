@@ -4,6 +4,17 @@
 <% form_for(@user) do |f| -%>
 	<%= error_messages_for :user %>
 
+  <% if @user.user_picture %>
+    <p>
+      <%= large_picture(@user.user_picture) %><br />
+      <%= link_to 'Change Picture', edit_user_user_picture_path(@user, @user.user_picture) %>
+    </p>
+  <% else %>
+    <p>
+      <%= new_link 'picture for user', new_user_user_picture_path(@user) %>
+    </p>
+  <% end %>
+
 	<p>
 		<%= f.label :login %><br/>
 		<%= f.text_field :login %>
