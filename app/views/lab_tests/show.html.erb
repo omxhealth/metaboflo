@@ -1,32 +1,3 @@
-<p>
-  <b>Cholesterol value:</b>
-  <%=h @lab_test.cholesterol_value %>
-</p>
-
-<p>
-  <b>Cholesterol unit:</b>
-  <%=h @lab_test.cholesterol_unit %>
-</p>
-
-<p>
-  <b>Cholesterol tested at:</b>
-  <%=h @lab_test.cholesterol_tested_at %>
-</p>
-
-<p>
-  <b>Creatinine value:</b>
-  <%=h @lab_test.creatinine_value %>
-</p>
-
-<p>
-  <b>Creatinine unit:</b>
-  <%=h @lab_test.creatinine_unit %>
-</p>
-
-<p>
-  <b>Creatinine tested at:</b>
-  <%=h @lab_test.creatinine_tested_at %>
-</p>
 
 <p>
   <b>Patient:</b>
@@ -37,6 +8,26 @@
   <b>Collected at:</b>
   <%=h @lab_test.collected_at %>
 </p>
+
+<hr>
+
+<% for test in tests(@lab_test, true) %>
+  
+  <% name = test.gsub('_', ' ').capitalize() %>
+  <p>
+    <b><%= name %> value:</b>
+    <%=h @lab_test.send("#{test}_value") %>
+  </p>
+  <p>
+    <b><%= name %> unit:</b>
+    <%=h @lab_test.send("#{test}_unit") %>
+  </p>
+  <p>
+    <b><%= name %> tested at:</b>
+    <%=h @lab_test.send("#{test}_tested_at") %>
+  </p>
+  
+<% end %>
 
 
 <%= edit_link edit_patient_lab_test_path(@patient, @lab_test) %>

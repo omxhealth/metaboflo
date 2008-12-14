@@ -47,7 +47,7 @@ class LabTestsController < ApplicationController
 
     respond_to do |format|
       if @lab_test.save
-        flash[:notice] = 'LabTest was successfully created.'
+        flash[:notice] = 'Lab Test was successfully created.'
         format.html { redirect_to(patient_lab_test_url(@patient, @lab_test)) }
         format.xml  { render :xml => @lab_test, :status => :created, :location => @lab_test }
       else
@@ -64,7 +64,7 @@ class LabTestsController < ApplicationController
 
     respond_to do |format|
       if @lab_test.update_attributes(params[:lab_test])
-        flash[:notice] = 'LabTest was successfully updated.'
+        flash[:notice] = 'Lab Test was successfully updated.'
         format.html { redirect_to(patient_lab_test_url(@patient, @lab_test)) }
         format.xml  { head :ok }
       else

@@ -9,7 +9,18 @@
 
 	<% for lab_test in @lab_tests %>
 	<tr class="<%= cycle('odd', 'even') %>">
-		<td>3</td>
+		<td>
+      <% nonempty_tests = tests(lab_test) %>
+      <% if nonempty_tests.length > 0 %>
+      
+        <ul>
+		      <% for test in tests(lab_test) %>
+            <li><%= test.gsub('_', ' ') %>: <%= lab_test.send("#{test}_value") %> <%= lab_test.send("#{test}_unit") %></li>
+		      <% end %>
+	      </ul>
+	    
+		  <% end %>
+		</td>
 		<td><%=h lab_test.collected_at %></td>
 		<td><%= show_link patient_lab_test_path(@patient, lab_test) %></td>
 		<td><%= edit_link edit_patient_lab_test_path(@patient, lab_test) %></td>

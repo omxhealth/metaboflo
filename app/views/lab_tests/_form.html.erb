@@ -1,34 +1,24 @@
 <p>
-  <%= form.label :collected_at %><br />
+  <%= form.label :collected_at, 'Test completed at' %><br />
   <%= form.datetime_select :collected_at %>
 </p>
 
-<br /><hr /><br />
+<br /><hr><br />
 
-<p>
-  <%= form.label :cholesterol_value %><br />
-  <%= form.text_field :cholesterol_value %>
-</p>
-<p>
-  <%= form.label :cholesterol_unit %><br />
-  <%= form.text_field :cholesterol_unit %>
-</p>
-<p>
-  <%= form.label :cholesterol_tested_at %><br />
-  <%= form.datetime_select :cholesterol_tested_at %>
-</p>
+<% for test in tests(@lab_test, true) %>
+  
+  <fieldset style="width: 70%">
+    <legend><%= "#{test}".gsub('_', ' ').capitalize %></legend>
+    <p>
+      <%= form.label "#{test}_value".to_sym, "Level" %><br />
+      <%= form.text_field "#{test}_value".to_sym %> <%= form.select :"#{test}_unit".to_sym, clinical_unit_options, :include_blank => true %>
+    </p>
 
-<br /><hr /><br />
-
-<p>
-  <%= form.label :creatinine_value %><br />
-  <%= form.text_field :creatinine_value %>
-</p>
-<p>
-  <%= form.label :creatinine_unit %><br />
-  <%= form.text_field :creatinine_unit %>
-</p>
-<p>
-  <%= form.label :creatinine_tested_at %><br />
-  <%= form.datetime_select :creatinine_tested_at %>
-</p>
+    <p>
+      <%= form.label "#{test}_tested_at".to_sym, "Tested at" %><br />
+      <%= form.datetime_select "#{test}_tested_at".to_sym %>
+    </p>
+  </fieldset>
+  <br />
+  
+<% end %>

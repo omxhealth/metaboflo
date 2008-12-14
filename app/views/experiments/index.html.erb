@@ -18,7 +18,17 @@
     <td><%=h experiment.perform_on %></td>
     <td><%=h experiment.performed_by %></td>
     <td><%=h experiment.performed_on %></td>
-    <td><%=h experiment.data_files.length %></td>
+    <td>
+      <% if experiment.data_files.length > 0 %>
+        <ul>
+          <% for data_file in experiment.data_files %>
+          	<li><%= link_to h(data_file.filename), data_file.public_filename %></li>
+          <% end %>
+        </ul>
+      <% else %>
+      -
+      <% end %>
+    </td>
     <td><%= show_link [experiment.sample, experiment] %></td>
     <td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
     <td><%= destroy_link [experiment.sample, experiment] %></td>
