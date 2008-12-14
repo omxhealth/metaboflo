@@ -1,55 +1,12 @@
 <% if (@parent and @parent.kind_of?(Sample)) %>
-	<h1>New Aliquot of Sample <%= @parent.id %></h1>
+<h1>New Aliquot of Sample <%= @parent.id %></h1>
 <% else %>
-	<h1>New Sample</h1>
+<h1>New Sample</h1>
 <% end %>
 
-<% form_for([@parent, @sample]) do |f| %>
-  <%= f.error_messages %>
-	<%= f.hidden_field(:patient_id) if @sample.patient %>
-	<%= f.hidden_field(:parent_sample_id) if @sample.sample %>
-	<p>
-		<%= f.label :sample_type %><br />
-		<%= @parent_sample ? @parent_sample.sample_type : f.select(:sample_type, ['blood', 'CSF', 'urine']) %>
-	</p>
-	<p>
-    <%= f.label :original_amount %><br />
-    <%= f.text_field :original_amount %>
-  </p>
-  <p>
-    <%= f.label :original_unit %><br />
-    <%= f.select :original_unit, ['ml', 'g'], :include_blank => true %>
-  </p>
-  <p>
-    <%= f.label :actual_amount %><br />
-    <%= f.text_field :actual_amount %>
-  </p>
-  <p>
-    <%= f.label :actual_unit %><br />
-    <%= f.select :actual_unit, ['ml', 'g'], :include_blank => true %>
-  </p>
-  <p>
-    <%= f.label :barcode %><br />
-    <%= f.text_field :barcode %>
-  </p>
-  <p>
-		<%= f.label :storage_location %><br />
-		<%= f.text_area :storage_location %>
-	</p>
-  <p>
-    <%= f.label :collected_on %><br />
-    <%= f.date_select :collected_on %>
-  </p>
-  <p>
-    <%= f.label :collected_by %><br />
-    <%= f.text_field :collected_by %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <br />
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+<% form_for([@parent, @sample]) do |form| %>
+<%= render :partial => form -%>
+<p>
+  <%= form.submit "Create" %>
+</p>
 <% end %>

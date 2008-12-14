@@ -1,14 +1,14 @@
-<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(Patient)) ? "Samples for Patient #{@parent.code}" : 'All Samples' %></h1>
+<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(Patient)) ? "Samples for Patient #{@parent}" : 'Samples' %></h1>
 
 <table class="list">
   <tr>
 		<th>Type</th>
     <th>Amount Received</th>
 		<th>Actual amount</th>
-		<th>Theoretical amount</th>
+		<th>Amount remaining</th>
     <th>Barcode</th>
     <th><%= 'Patient' unless @patient %></th>
-		<th><%= 'Parent sample' unless @parent_sample %></th>
+		<th><%= 'Aliquoted from' unless @parent %></th>
     <th>Collected on</th>
     <th>Collected by</th>
 		<th>Experiments</th>
@@ -23,12 +23,12 @@
 		<td><%=h sample.theoretical_amount %> <%=h sample.original_unit %></td>
     <td><%=h sample.barcode %></td>
     <td><%= link_to(sample.patient.code, sample.patient) unless @patient || sample.patient.nil? %></td>
-		<td><%=h(sample.sample.id) unless @parent_sample || sample.sample.nil? %></td>
+		<td><%= link_to(sample.sample, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
     <td><%=h sample.collected_on %></td>
     <td><%=h sample.collected_by %></td>
 		<td>
 			<% sample.experiments.each do |experiment| -%>
-			<%= link_to experiment.name, [sample, experiment] %><br />
+			<%= link_to experiment, [sample, experiment] %><br />
 			<% end -%>
 		</td>
     <td><%= show_link sample.sample ? sample_sample_path(sample.sample, sample) : patient_sample_path(sample.patient, sample) %></td>

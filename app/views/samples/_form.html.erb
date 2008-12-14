@@ -1,0 +1,58 @@
+<%= form.error_messages %>
+
+<% if @sample.new_record? %>
+<%= form.hidden_field(:patient_id) if @sample.patient %>
+<%= form.hidden_field(:parent_sample_id) if @sample.sample %>
+<% end -%>
+
+<fieldset style="width: 70%">
+  <legend>Sample Identification</legend>
+  <p>
+    <%= form.label :sample_type %>: 
+    <%= @parent_sample ? @parent_sample.sample_type : form.select(:sample_type, ['blood', 'CSF', 'urine']) %>
+  </p>
+  <p>
+    <%= form.label :barcode %>: <%= form.text_field :barcode, :size => 30 %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br />
+    <%= form.text_area :description, :style => "width: 350px; height: 70px" %>
+  </p>
+</fieldset>
+
+<br />
+
+<fieldset style="width: 70%">
+  <legend>Collection Details</legend>
+
+  <p>
+    <%= form.label :original_amount, 'Amount received' %>
+    <%= form.text_field :original_amount, :size => 5 %> 
+    <%= form.select :original_unit, volume_unit_options, :include_blank => true %>
+  </p>
+
+  <p>
+    <%= form.label :actual_amount, 'Amount remaining' %>
+    <%= form.text_field :actual_amount, :size => 5 %> 
+    <%= form.select :actual_unit, volume_unit_options, :include_blank => true %>
+  </p>
+
+  <p>
+    <%= form.label :collected_by, 'Sample collected by' %> 
+    <%= form.text_field :collected_by, :size => 20 %>
+
+    <%= form.label :collected_on, 'on' %> 
+    <%= form.date_select :collected_on, :include_blank => true %>
+  </p>
+</fieldset>
+
+<br />
+
+<fieldset style="width: 70%">
+  <legend>Storage Details</legend>
+  <p>
+    <%= form.label :storage_location %><br />
+    <%= form.text_area :storage_location, :style => "width: 350px; height: 70px" %>
+  </p>
+</fieldset>

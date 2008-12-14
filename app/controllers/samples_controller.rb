@@ -111,7 +111,7 @@ class SamplesController < ApplicationController
     
     def find_parent_sample
       unless params[:sample_id].blank?
-        @parent = Sample.find(params[:sample_id])
+        @parent = @parent_sample = Sample.find(params[:sample_id])
         params[:patient_id] = @parent.root.id
         find_patient
       end

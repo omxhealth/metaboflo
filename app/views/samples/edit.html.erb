@@ -2,42 +2,11 @@
   Editing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : 'aliquot ' %> <%= @sample.parent %>
 </h1>
 
-<% form_for([@parent, @sample]) do |f| %>
-<%= f.error_messages %>
-
+<% form_for([@parent, @sample]) do |form| %>
+<%= render :partial => form -%>
 <p>
-  <%= f.label :actual_amount %><br />
-  <%= f.text_field :actual_amount %>
-</p>
-<p>
-  <%= f.label :actual_unit %><br />
-  <%= f.select :actual_unit, ['ml', 'g'], :include_blank => true %>
-</p>
-<p>
-  <%= f.label :barcode %><br />
-  <%= f.text_field :barcode %>
-</p>
-<p>
-  <%= f.label :storage_location %><br />
-  <%= f.text_area :storage_location %>
-</p>
-<p>
-  <%= f.label :collected_on %><br />
-  <%= f.date_select :collected_on %>
-</p>
-<p>
-  <%= f.label :collected_by %><br />
-  <%= f.text_field :collected_by %>
-</p>
-<p>
-  <%= f.label :description %><br />
-  <%= f.text_area :description %>
-</p>
-<p>
-  <%= f.submit "Update" %>
+  <%= form.submit "Update" %>
 </p>
 <% end %>
-
-<br />
 
 <%= show_link [@parent, @sample] %>
