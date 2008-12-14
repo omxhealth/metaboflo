@@ -2,7 +2,10 @@
 
 <table class="list">
   <tr>
+    <th>Patient</th>
+    <th>Sample</th>
     <th>Title</th>
+    <th>Description</th>
     <th>To be analyzed by</th>
     <th>To be analyzed on</th>
     <th>Actually analyzed by</th>
@@ -13,7 +16,10 @@
 
   <% for experiment in @experiments %>
   <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= experiment.sample.root %></td>
+    <td><%= experiment.sample %></td>
     <td><%=h experiment.name %></td>
+    <td><%=h experiment.short_description %></td>
     <td><%=h experiment.assigned_to %></td>
     <td><%=h experiment.perform_on %></td>
     <td><%=h experiment.performed_by %></td>

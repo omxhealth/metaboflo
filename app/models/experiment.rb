@@ -16,5 +16,13 @@ class Experiment < ActiveRecord::Base
   def to_s
     return self.name
   end
-
+  
+  def short_description(max_length = 50)
+    if (description and
+        description.length > max_length)
+      "#{description[0..max_length]}..."
+    else
+      description
+    end
+  end
 end
