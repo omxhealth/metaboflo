@@ -44,7 +44,7 @@ class UserPicturesControllerTest < ActionController::TestCase
     login_as :user
   
     put :update, :id => user_pictures(:one).id, :user_picture => { }, :user_id => users(:user).id
-    assert_redirected_to user_path(assigns(:user), assigns(:user_picture))
+    assert_redirected_to user_path(assigns(:user))
   end
 
   def test_should_destroy_user_picture
