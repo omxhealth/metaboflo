@@ -3,7 +3,7 @@ module ApplicationHelper
   VOLUME_UNITS = [ 'mL', 'L' ]
   WEIGHT_UNITS = [ 'g' ]
   CONCENTRATION_UNITS = [ 'mol/L' ]
-  CLINICAL_UNITS = ['mg/dL', 'mEq/L', 'g/dL', 'per cubic mm', 'g/L', 'mcg/mL']
+  CLINICAL_UNITS = ['mg/dL', 'mg/L', 'mEq/L', 'g/dL', 'per cubic mm', 'g/L', 'mcg/mL', 'mmol/L']
   
   def unit_options
     VOLUME_UNITS.concat(WEIGHT_UNITS).concat(CONCENTRATION_UNITS).sort

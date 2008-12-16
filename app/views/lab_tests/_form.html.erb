@@ -1,6 +1,6 @@
 <fieldset>
   <legend>Test Details</legend>
-  <p><%= form.datetime_select :collected_at, :label => 'Test completed at' %></p>
+  <p><%= form.datetime_select :collected_at, :label => 'Test completed at', :order => [:month, :day, :year], :include_blank => true %></p>
 </fieldset>
 
 <hr />
@@ -13,7 +13,7 @@
     <%= form.text_field "#{test}_value".to_sym, :label => 'Level' %> 
     <%= form.select :"#{test}_unit".to_sym, clinical_unit_options, :no_label => true, :include_blank => true %>
   </p>
-  <p><%= form.datetime_select "#{test}_tested_at".to_sym, :label => 'Tested at' %></p>
+  <p><%= form.datetime_select "#{test}_tested_at".to_sym, :label => 'Tested at', :order => [:month, :day, :year], :include_blank => true %></p>
 </fieldset>
 
 <% end %>
