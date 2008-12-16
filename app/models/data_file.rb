@@ -5,4 +5,9 @@ class DataFile < ActiveRecord::Base
   
   belongs_to :data_file_type
   belongs_to :experiment
+  
+  def root
+    experiment.root
+  end
+  
 end

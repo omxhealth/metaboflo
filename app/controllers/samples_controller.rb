@@ -9,15 +9,10 @@ class SamplesController < ApplicationController
   def index
     if @parent.blank?
       @all_samples = Sample.find(:all)
-      if current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
+      if can_view_all(current_user)
         @samples = @all_samples
       else
-        # remove samples where root patient is from another site
-        #TODO *** IS THERE A BETTER WAY TO IMPLEMENT THIS??? ***
-        @samples = []
-        @all_samples.each do |s|
-          @samples << s if s.root.site == current_user.site
-        end
+        @samples = find_for_site(@all_samples, current_user.site)
       end
     else
       @samples = @parent.samples

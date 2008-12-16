@@ -1,4 +1,8 @@
-<h1>Data files for Experiment <%= @experiment.id %></h1>
+<% if @experiment %>
+  <h1>Data files for Experiment <%= @experiment.id %></h1>
+<% else %>
+  <h1>Data files</h1>
+<% end %>
 
 <table class="list">
 	<tr>
@@ -13,12 +17,14 @@
 		<td><%= link_to h(data_file.filename), data_file.public_filename %></td>
 		<td><%=h number_to_human_size(data_file.size) %></td>
 		<td><%= link_to h(data_file.data_file_type.name), data_file_type_path(data_file.data_file_type) %></td>
-		<td><%= show_link experiment_data_file_path(@experiment, data_file) %></td>
-		<td><%= destroy_link experiment_data_file_path(@experiment, data_file) %></td>
+		<td><%= show_link experiment_data_file_path(data_file.experiment, data_file) %></td>
+		<td><%= destroy_link experiment_data_file_path(data_file.experiment, data_file) %></td>
 	</tr>
 	<% end %>
 </table>
 
 <br />
 
-<%= new_link 'data file for this experiment', new_experiment_data_file_path(@experiment) %>
+<% if @experiment %>
+  <%= new_link 'data file for this experiment', new_experiment_data_file_path(@experiment) %>
+<% end %>

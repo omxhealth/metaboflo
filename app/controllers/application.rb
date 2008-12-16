@@ -19,6 +19,21 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
+  # remove objects where root patient is from another site
+  def find_for_site(objects, site)
+    #TODO *** IS THERE A BETTER WAY TO IMPLEMENT THIS??? ***
+
+    site_objects = []
+    objects.each do |o|
+      site_objects << o if o.root.site == site
+    end
+    site_objects
+  end
+  
+  def can_view_all(user)
+    return (current_user.rank == 'Superuser' || current_user.rank == 'Administrator')
+  end
+
   protected
     def only_user?(redirect_path = root_path)
       redirect_to redirect_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'

@@ -25,4 +25,9 @@ class Experiment < ActiveRecord::Base
       description
     end
   end
+  
+  def root
+    sample.root
+  end
+  
 end

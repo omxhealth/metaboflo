@@ -1,7 +1,7 @@
 module PatientsHelper
 
   def patient_tree(patient)
-    Tree.new(:label => "Patient #{patient.code}", :icon_open => tree_icon('patient.png'), :image_path => image_path('tmp').gsub(/\/tmp/, '')) do |tree|
+    Tree.new(:label => "Patient #{patient.code}", :url => patient_path(patient), :icon_open => tree_icon('patient.png'), :image_path => image_path('tmp').gsub(/\/tmp/, '')) do |tree|
       tree << Node.new(:label => 'Medications', :url => patient_medications_path(patient), :icon_open => tree_icon('medicine.png'))
       tree << Node.new(:label => 'Lab Tests', :url => patient_lab_tests_path(patient), :icon_open => tree_icon('test.png'))
       tree << Node.new(:label => 'Patient Evaluations', :url => patient_patient_evaluations_path(patient), :icon_open => tree_icon('evaluation.png'))
