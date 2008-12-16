@@ -1,4 +1,3 @@
-<div class="form">
 <%= form.error_messages %>
 
 <% if @sample.new_record? %>
@@ -8,58 +7,31 @@
 
 <fieldset>
   <legend>Sample Identification</legend>
-  <p>
-    <%= form.label :sample_type %>: 
-    <%= @parent_sample ? @parent_sample.sample_type : form.select(:sample_type, ['blood', 'CSF', 'urine']) %>
-  </p>
-  <p>
-    <%= form.label :barcode %>: <%= form.text_field :barcode, :size => 30 %>
-  </p>
-  <p>
-    <%= form.label :description %><br />
-    <%= form.text_area :description, :style => "width: 350px; height: 70px" %>
-  </p>
+  <p><%= @parent_sample ? @parent_sample.sample_type : form.select(:sample_type, ['blood', 'CSF', 'urine']) %></p>
+  <p><%= form.text_field :barcode, :size => 30 %></p>
+  <p><%= form.label :description %><%= form.text_area :description %></p>
 </fieldset>
 
 <fieldset>
   <legend>Collection Details</legend>
   <p>
-    <%= form.label :original_amount, 'Amount received' %>
-    <%= form.text_field :original_amount, :size => 5 %> 
-    <%= form.select :original_unit, volume_unit_options, :include_blank => true %>
+    <%= form.text_field :original_amount, :label => 'Amount received', :size => 5 %> 
+    <%= form.select :original_unit, volume_unit_options, :include_blank => true, :no_label => true %>
   </p>
-
   <p>
-    <%= form.label :actual_amount, 'Amount remaining' %>
-    <%= form.text_field :actual_amount, :size => 5 %> 
-    <%= form.select :actual_unit, volume_unit_options, :include_blank => true %>
+    <%= form.text_field :actual_amount, :label => 'Amount remaining', :size => 5 %> 
+    <%= form.select :actual_unit, volume_unit_options, :include_blank => true, :no_label => true %>
   </p>
-
   <p>
-    <%= form.label :collected_by, 'Sample collected by' %> 
-    <%= form.text_field :collected_by, :size => 20 %>
-    <%= form.label :collected_on, 'on' %> 
-    <%= form.date_select :collected_on, :include_blank => true %>
+    <%= form.text_field :collected_by, :label => 'Sample collected by', :size => 20 %>
+    on <%= form.date_select :collected_on, :include_blank => true, :no_label => true %>
   </p>
 </fieldset>
 
 <fieldset>
   <legend>Storage Details</legend>
-  <p>
-    <%= form.label :site_id %>
-    <%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
-  </p>
-  <p>
-    <%= form.label :building %>
-    <%= form.text_field :building %>
-  </p>
-  <p>
-    <%= form.label :room %>
-    <%= form.text_field :room %>
-  </p>
-  <p>
-    <%= form.label :storage_location %><br />
-    <%= form.text_area :storage_location, :style => "width: 350px; height: 70px" %>
-  </p>
+  <p><%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %></p>
+  <p><%= form.text_field :building %></p>
+  <p><%= form.text_field :room %></p>
+  <p><%= form.text_area :storage_location %></p>
 </fieldset>
-</div>

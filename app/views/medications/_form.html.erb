@@ -3,8 +3,8 @@
 <fieldset>
   <legend>Medication Details</legend>
   <p><%= form.text_field :drug, :label => 'Drug name', :required => true %></p>
-  <p><%= form.date_select :started_on, :label => 'Treatment started on' %></p>
-  <p><%= form.date_select :stopped_on, :label => 'Treatment stopped on' %></p>
+  <p><%= form.date_select :started_on, :include_blank => true, :label => 'Treatment started on' %></p>
+  <p><%= form.date_select :stopped_on, :include_blank => true, :label => 'Treatment stopped on' %></p>
   <p><%= form.check_box :currently_taking, :label => 'Drug currently being taken?' %></p>
   <p><%= form.text_field :drugbank_reference, :label => 'DrugBank reference (drug ID number)', :size => 8, :maxlength => 7 %></p>
 </fieldset>

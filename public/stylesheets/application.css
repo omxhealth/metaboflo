@@ -405,7 +405,7 @@ div#content { margin: 2em; }
 
 /* Standard form */
 form.tabular { padding: 0.3em }
-form.tabular fieldset { background: white; margin-bottom: 1.2em; width: 70%; }
+form.tabular fieldset { background: white; margin-bottom: 1.2em; width: 70%; padding-bottom: 0.5em }
 form.tabular fieldset legend { margin-left: 0.5em; }
 form.tabular textarea { width: 350px; height: 70px; }
 
