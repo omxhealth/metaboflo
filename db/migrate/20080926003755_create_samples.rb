@@ -9,6 +9,9 @@ class CreateSamples < ActiveRecord::Migration
       t.float :actual_amount
       t.string :actual_unit
       t.string :barcode
+      t.references :site
+      t.string :building
+      t.string :room
       t.text :storage_location
       t.date :collected_on
       t.integer :collected_by

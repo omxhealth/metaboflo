@@ -10,6 +10,11 @@
 	</p>
 	
 	<p>
+    <%= f.label :site_id %><br />
+    <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
+  </p>
+  
+	<p>
 		<%= f.label :rank %><br />
 		<% if current_user.rank == 'Administrator' -%>
 		<%= f.select :rank, [ 'Administrator', 'Superuser', 'User' ], :include_blank => true %>
@@ -17,7 +22,7 @@
 		<% @user.rank = 'User' %><%= f.hidden_field :rank %>User
 		<% end -%>
 	</p>
-
+  
 	<p>
 		<%= f.label :email %><br/>
 		<%= f.text_field :email %>

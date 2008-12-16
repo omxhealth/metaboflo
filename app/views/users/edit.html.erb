@@ -20,6 +20,15 @@
 		<%= f.text_field :login %>
 	</p>
 
+  <p>
+    <%= f.label :site_id %><br />
+    <% if ['Administrator', 'Superuser'].include?(current_user.rank) -%>
+    <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
+    <% else -%>
+    <%=h(@user.site.name) unless @user.site.blank? %>
+    <% end -%>
+  </p>
+  
 	<p>
 		<%= f.label :rank %><br />
 		<% if current_user.rank == 'Administrator' -%>

@@ -40,6 +40,21 @@
 <% end %>
 
 <p>
+  <b>Site:</b>
+  <%=h(@sample.site.name) if @sample.site %>
+</p>
+
+<p>
+  <b>Building:</b>
+  <%=h @sample.building %>
+</p>
+
+<p>
+  <b>Room:</b>
+  <%=h @sample.room %>
+</p>
+
+<p>
 	<b>Storage location:</b>
 	<%=h @sample.storage_location %>
 </p>

@@ -1,6 +1,7 @@
 class Sample < ActiveRecord::Base
   belongs_to :patient
   belongs_to :sample
+  belongs_to :site
   
   has_many :samples, :dependent => :destroy
   has_many :experiments, :dependent => :destroy

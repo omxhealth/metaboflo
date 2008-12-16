@@ -52,6 +52,18 @@
 <fieldset style="width: 70%">
   <legend>Storage Details</legend>
   <p>
+    <%= form.label :site_id %>
+    <%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
+  </p>
+  <p>
+    <%= form.label :building %>
+    <%= form.text_field :building %>
+  </p>
+  <p>
+    <%= form.label :room %>
+    <%= form.text_field :room %>
+  </p>
+  <p>
     <%= form.label :storage_location %><br />
     <%= form.text_area :storage_location, :style => "width: 350px; height: 70px" %>
   </p>
