@@ -20,7 +20,7 @@ class UserPicturesControllerTest < ActionController::TestCase
     
     login_as :user
     assert_difference('UserPicture.count') do
-      post :create, :user_id => users(:user).id, :user_picture => {:uploaded_data => ActionController::TestUploadedFile.new(path, mimetype) }
+      post :create, :user_id => users(:user).id, :user_picture => { :uploaded_data => ActionController::TestUploadedFile.new(path, mimetype) }
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -42,8 +42,11 @@ class UserPicturesControllerTest < ActionController::TestCase
 
   def test_should_update_user_picture
     login_as :user
+    
+    path = "./public/images/rails.png" 
+    mimetype = "image/png"
   
-    put :update, :id => user_pictures(:one).id, :user_picture => { }, :user_id => users(:user).id
+    put :update, :id => user_pictures(:one).id, :user_picture => { :uploaded_data => ActionController::TestUploadedFile.new(path, mimetype) }, :user_id => users(:user).id
     assert_redirected_to user_path(assigns(:user))
   end
 

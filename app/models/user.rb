@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :site
   
   has_one :user_picture
+  has_many :tasks, :foreign_key => 'assigned_to_id'
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

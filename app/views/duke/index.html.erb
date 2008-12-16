@@ -1,22 +1,42 @@
+<h1>Welcome, <i><%= current_user.login %></i>!</h1>
 <p>
-	Welcome <%= current_user.login %>!!
+	Welcome to the Duke University SDMS. This site is a central repository for project management, clinical, and scientific information.<br>Please use the links in the toolbar above to navigate the site.
+	<br><br>
+	
+	<table class="list">
+	  <tr><th colspan=2>System Statistics</th></tr>
+  	<% for stat in @stats %>
+  	<tr class="<%= cycle('odd', 'even') %>">
+  	  <td><%= stat[0] %></td><td><%= stat[1] %></td>
+  	</tr>
+  	<% end %>
+  </table>
+  
+  <br><br>
+	You have <%= link_to "#{@incomplete_tasks.length} incomplete task(s)", user_tasks_path(current_user) %> (out of a total of <%= current_user.tasks.length %>)
 </p>
 
-<h1>Pending Experiments</h1>
-<table class="list">
-	<tr>
-		<th>Name</th>
-		<th>Perform on</th>
-		<th colspan="3">Actions</th>
-	</tr>
+<br /><br />
 
-	<% for experiment in @experiments %>
-	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%=h experiment.name %></td>
-		<td><%=h experiment.perform_on %></td>
-		<td><%= show_link [experiment.sample, experiment] %></td>
-		<td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
-		<td><%= destroy_link [experiment.sample, experiment] %></td>
-	</tr>
-	<% end %>
-</table>
+<h1>Pending Experiments</h1>
+<% if @experiments.length > 0 %>
+  <table class="list">
+  	<tr>
+  		<th>Name</th>
+  		<th>Perform on</th>
+  		<th colspan="3">Actions</th>
+  	</tr>
+
+  	<% for experiment in @experiments %>
+  	<tr class="<%= cycle('odd', 'even') %>">
+  		<td><%=h experiment.name %></td>
+  		<td><%=h experiment.perform_on %></td>
+  		<td><%= show_link [experiment.sample, experiment] %></td>
+  		<td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
+  		<td><%= destroy_link [experiment.sample, experiment] %></td>
+  	</tr>
+  	<% end %>
+  </table>
+<% else %>
+  No pending experiments at this time.
+<% end %>

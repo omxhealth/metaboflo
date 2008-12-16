@@ -2,7 +2,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.xml
   def index
-    @tasks = Task.find(:all)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @tasks = @user.tasks
+    else
+      @tasks = Task.find(:all)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
