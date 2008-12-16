@@ -1,62 +1,47 @@
 <h1>Edit user</h1>
 <% @user.password = @user.password_confirmation = nil %>
 
-<% form_for(@user) do |f| -%>
+<% if @user.user_picture %>
+  <p>
+    <%= large_picture(@user.user_picture) %><br />
+    <%= link_to 'Change Picture', edit_user_user_picture_path(@user, @user.user_picture) %>
+  </p>
+<% else %>
+  <p>
+    <%= new_link 'picture for user', new_user_user_picture_path(@user) %>
+  </p>
+<% end %>
+
+<% labelled_tabular_form_for(@user) do |f| -%>
 	<%= error_messages_for :user %>
 
-  <% if @user.user_picture %>
+  <fieldset style="width: 50%">
+    <legend>User Details</legend>
+    <p><%= f.label :login %><%= h(@user.login) %></p>
+    <p><%= f.text_field :email, :required => true %></p>
+  	<p><%= f.text_field :first_name %></p>
+  	<p><%= f.text_field :middle_name %></p>
+  	<p><%= f.text_field :last_name %></p>
+  </fieldset>
+
+  <fieldset style="width: 50%">
+    <legend>Access</legend>
     <p>
-      <%= large_picture(@user.user_picture) %><br />
-      <%= link_to 'Change Picture', edit_user_user_picture_path(@user, @user.user_picture) %>
+      <% if ['Administrator', 'Superuser'].include?(current_user.rank) -%>
+      <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
+      <% else -%>
+      <%=h(@user.site.name) unless @user.site.blank? %>
+      <% end -%>
     </p>
-  <% else %>
+
     <p>
-      <%= new_link 'picture for user', new_user_user_picture_path(@user) %>
+      <% if current_user.rank == 'Administrator' -%>
+      <%= f.select :rank, [ 'Administrator', 'Superuser', 'User' ], :include_blank => true %>
+      <% else -%>
+      <% @user.rank = 'User' %><%= f.hidden_field :rank %>User
+      <% end -%>
     </p>
-  <% end %>
-
-	<p>
-		<%= f.label :login %><br/>
-		<%= h(@user.login) %>
-	</p>
-
-  <p>
-    <%= f.label :site_id %><br />
-    <% if ['Administrator', 'Superuser'].include?(current_user.rank) -%>
-    <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
-    <% else -%>
-    <%=h(@user.site.name) unless @user.site.blank? %>
-    <% end -%>
-  </p>
-  
-	<p>
-		<%= f.label :rank %><br />
-		<% if current_user.rank == 'Administrator' -%>
-		<%= f.select :rank, [ 'Administrator', 'Superuser', 'User' ], :include_blank => true %>
-		<% else -%>
-		<% @user.rank = 'User' %><%= f.hidden_field :rank %>User
-		<% end -%>
-	</p>
+  </fieldset>
 	
-	<p>
-		<%= f.label :email %><br/>
-		<%= f.text_field :email %>
-	</p>
-	
-	<p>
-		<%= f.label :first_name %><br />
-		<%= f.text_field :first_name %>
-	</p>
-	
-	<p>
-		<%= f.label :middle_name %><br />
-		<%= f.text_field :middle_name %>
-	</p>
-	
-	<p>
-		<%= f.label :last_name %><br />
-		<%= f.text_field :last_name %>
-	</p>
-
 	<p><%= submit_tag 'Update' %></p>
 <% end -%>

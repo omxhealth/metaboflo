@@ -1,57 +1,35 @@
 <h1>Create a new user</h1>
 <% @user.password = @user.password_confirmation = nil %>
 
-<% form_for(@user) do |f| -%>
-	<%= error_messages_for :user %>
+<% labelled_tabular_form_for(@user) do |f| -%>
+<%= error_messages_for :user %>
 
-	<p>
-		<%= f.label :login %><br/>
-		<%= f.text_field :login %>
-	</p>
-	
-	<p>
-    <%= f.label :site_id %><br />
-    <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
+<fieldset style="width: 50%">
+  <legend>User Details</legend>
+  <p><%= f.text_field :login, :required => true %></p>
+  <p><%= f.text_field :email, :required => true %></p>
+  <p><%= f.text_field :first_name %></p>
+  <p><%= f.text_field :middle_name %></p>
+  <p><%= f.text_field :last_name %></p>
+</fieldset>
+
+<fieldset style="width: 50%">
+  <legend>Access</legend>
+  <p><%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %></p>
+
+  <p>
+    <% if current_user.rank == 'Administrator' -%>
+    <%= f.select :rank, [ 'Administrator', 'Superuser', 'User' ], :include_blank => true %>
+    <% else -%>
+    <% @user.rank = 'User' %><%= f.hidden_field :rank %>User
+    <% end -%>
   </p>
-  
-	<p>
-		<%= f.label :rank %><br />
-		<% if current_user.rank == 'Administrator' -%>
-		<%= f.select :rank, [ 'Administrator', 'Superuser', 'User' ], :include_blank => true %>
-		<% else -%>
-		<% @user.rank = 'User' %><%= f.hidden_field :rank %>User
-		<% end -%>
-	</p>
-  
-	<p>
-		<%= f.label :email %><br/>
-		<%= f.text_field :email %>
-	</p>
+</fieldset>
+<fieldset style="width: 50%">
+  <legend>Password</legend>
+  <p><%= f.password_field :password, :required => true %></p>
+  <p><%= f.password_field :password_confirmation, :label => 'Confirm Password', :required => true %></p>
+</fieldset>
 
-	<p>
-		<%= f.label :password %><br/>
-		<%= f.password_field :password %>
-	</p>
-
-	<p>
-		<%= f.label :password_confirmation, 'Confirm Password' %><br/>
-		<%= f.password_field :password_confirmation %>
-	</p>
-	
-	<p>
-		<%= f.label :first_name %><br />
-		<%= f.text_field :first_name %>
-	</p>
-	
-	<p>
-		<%= f.label :middle_name %><br />
-		<%= f.text_field :middle_name %>
-	</p>
-	
-	<p>
-		<%= f.label :last_name %><br />
-		<%= f.text_field :last_name %>
-	</p>
-
-	<p><%= submit_tag 'Create' %></p>
+<p><%= submit_tag 'Create' %></p>
 <% end -%>

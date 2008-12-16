@@ -1,27 +1,9 @@
 <h1>Editing protocol</h1>
 
-<% form_for(@protocol, :html => { :multipart => true }) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :version %><br />
-    <%= f.text_field :version %>
-  </p>
-  <p>
-    <%= f.label :comments %><br />
-    <%= f.text_field :comments %>
-  </p>
-  <p>
-    <%= f.label :uploaded_data, 'File' %><br />
-    <%= f.file_field :uploaded_data %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+<% labelled_tabular_form_for(@protocol, :html => { :multipart => true }) do |form| %>
+  <%= render :partial => form %>
+  
+  <p><%= form.submit "Update" %></p>
 <% end %>
 
 <%= show_link @protocol %>

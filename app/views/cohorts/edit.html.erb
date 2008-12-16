@@ -1,19 +1,9 @@
 <h1>Editing <%= @type %> cohort</h1>
 
-<% form_for(:cohort, @cohort, :url => { :action => "update", :type => @type }, :html => { :method => :put }) do |f| %>
-  <%= f.error_messages %>
+<% labelled_tabular_form_for(:cohort, @cohort, :url => { :action => "update", :type => @type }, :html => { :method => :put }) do |form| %>
+  <%= render :partial => form %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+  <p><%= form.submit "Update" %></p>
 <% end %>
 
 <%= show_link({:id => @cohort, :type => @type}) %>

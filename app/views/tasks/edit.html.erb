@@ -1,11 +1,9 @@
 <h1>Editing task</h1>
 
-<% form_for(@task) do |form| %>
+<% labelled_tabular_form_for(@task) do |form| %>
 	<%= render :partial => form %>
 	
-  <p>
-    <%= form.submit "Update" %>
-  </p>
+  <p><%= form.submit "Update" %></p>
 <% end %>
 
 <%= show_link @task %>

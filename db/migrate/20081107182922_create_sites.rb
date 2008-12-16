@@ -2,6 +2,8 @@ class CreateSites < ActiveRecord::Migration
   def self.up
     create_table :sites do |t|
       t.string :name
+      t.string :website
+      t.string :map_url
 
       t.timestamps
     end

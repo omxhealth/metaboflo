@@ -1,26 +1,17 @@
 <h1>Data File Upload</h1>
 
-<% form_for([@experiment, @data_file], :html => { :multipart => true }) do |f| %>
+<% labelled_tabular_form_for([@experiment, @data_file], :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label 'File to Upload' %><br />
-	<%= f.file_field :uploaded_data %>
-  </p>
-  <p>
-    <%= f.label :data_file_type %><br />
-    <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true } %>
-  </p>
+  
+  <fieldset>
+    <legend>Data File Details</legend>
+    <p><%= f.file_field :uploaded_data, :label => 'File to Upload', :required => true %></p>
+    <p><%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :required => true } %></p>
 
-  <br />
+    <br />
 
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
+    <p><%= f.text_area :description %></p>
+  </fieldset>
 
-  <br />
-
-  <p>
-    <%= f.submit "Upload" %>
-  </p>
+  <p><%= f.submit "Upload" %></p>
 <% end %>

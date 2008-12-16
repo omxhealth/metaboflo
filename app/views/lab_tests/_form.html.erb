@@ -1,6 +1,7 @@
 <fieldset>
   <legend>Test Details</legend>
   <p><%= form.datetime_select :collected_at, :label => 'Test completed at', :order => [:month, :day, :year], :include_blank => true %></p>
+  <p><%= form.text_area :notes %></p>
 </fieldset>
 
 <hr />

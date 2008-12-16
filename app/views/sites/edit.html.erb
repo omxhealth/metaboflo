@@ -1,15 +1,9 @@
 <h1>Editing site</h1>
 
-<% form_for(@site) do |f| %>
-  <%= f.error_messages %>
+<% labelled_tabular_form_for(@site) do |form| %>
+  <%= render :partial => form %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+  <p><%= form.submit "Update" %></p>
 <% end %>
 
 <%= show_link @site %>

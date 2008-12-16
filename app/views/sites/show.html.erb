@@ -3,5 +3,15 @@
   <%=h @site.name %>
 </p>
 
+<p>
+  <b>Website:</b>
+  <%= @site.website %>
+</p>
+
+<p>
+  <b>Google Maps Link:</b>
+  <%= @site.map_url %>
+</p>
+
 
 <%= edit_link edit_site_path(@site) %>

@@ -1,6 +1,6 @@
 <%= form.error_messages %>
 
-<p>
-  <%= form.label 'User Picture' %><br />
-  <%= form.file_field :uploaded_data %>
-</p>
+<fieldset style="width: 50%">
+  <legend>User Picture Details</legend>
+  <p><%= form.file_field :uploaded_data, :label => 'User Picture' %></p>
+</fieldset>

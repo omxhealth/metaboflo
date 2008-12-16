@@ -49,11 +49,11 @@ module ApplicationHelper
     return link_to("New #{name}", params, :class => 'icon icon-add' )
   end
   
-  def labelled_tabular_form_for(object, options={}, &proc)
+  def labelled_tabular_form_for(record_or_name_or_array, *args, &proc)
+    options = args.extract_options!
     options[:html] ||= {}
     options[:html][:class] = 'tabular' unless options[:html].has_key?(:class)
-    form_for(object, options.merge({ :builder => TabularFormBuilder }), &proc)
+    form_for(record_or_name_or_array, options.merge({ :builder => TabularFormBuilder }), &proc)
   end
-  
   
 end

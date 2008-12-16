@@ -44,7 +44,8 @@ class CreateLabTests < ActiveRecord::Migration
       
       t.references :patient
       t.datetime :collected_at
-
+      t.text :notes
+      
       t.timestamps
     end
   end

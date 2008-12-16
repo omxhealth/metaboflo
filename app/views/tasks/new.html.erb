@@ -1,10 +1,7 @@
 <h1>New task</h1>
 
-<% form_for(@task) do |form| %>
+<% labelled_tabular_form_for(@task) do |form| %>
 	<%= render :partial => form %>
 	
-	<p>
-	  <%= form.submit "Create" %>
-	</p>
-
+	<p><%= form.submit "Create" %></p>
 <% end %>
