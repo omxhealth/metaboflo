@@ -2,7 +2,7 @@
 
 <fieldset>
   <legend>Evaluation Details</legend>
-  <p><%= form.date_select :evaluated_on, :label => 'Evaluation date', :include_blank => true %></p>
+  <p><%= form.date_select :evaluated_on, :label => 'Evaluation date', :order => [ :month, :day, :year ], :include_blank => true %></p>
   <p><%= form.text_area :diagnosis %></p>
 </fieldset>
 

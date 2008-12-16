@@ -1,6 +1,6 @@
 require 'active_record/fixtures'
 
-@@all_models = [:sites, :users, :patients]
+@@all_models = [:sites, :users, :patients, :patient_evaluations]
 
 namespace :demo do
   desc 'Import demo data into database.'
