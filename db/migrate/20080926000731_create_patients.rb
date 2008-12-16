@@ -9,7 +9,6 @@ class CreatePatients < ActiveRecord::Migration
       t.date :birthdate
       t.string :blood_type
       t.string :gender
-      t.string :ethnicity
       t.string :race
       t.string :practitioner
       t.text :notes

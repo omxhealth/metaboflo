@@ -361,7 +361,7 @@
   created_at: 2008-12-16 01:49:38.928989 Z
 "29": 
   salt: a92706741018ae590185fbc59a5b5b8bce95e57e
-  updated_at: 2008-12-16 01:48:28.125265 Z
+  updated_at: 2008-12-16 01:48:28.125264 Z
   site_id: 995115194
   crypted_password: e8d13b6e2881d2c3f3760207615d8a7dfb7f279a
   remember_token_expires_at: 
@@ -373,7 +373,7 @@
   last_name: Mo
   middle_name: ""
   email: mlmo@ucsd.edu
-  created_at: 2008-12-16 01:48:28.125265 Z
+  created_at: 2008-12-16 01:48:28.125264 Z
 "18": 
   salt: 07bb7b473c6f4dcdfb93395060c70e7fd78b2962
   updated_at: 2008-12-16 01:41:01.398509 Z

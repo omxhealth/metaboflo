@@ -1,15 +1,20 @@
 require 'active_record/fixtures'
 
+@@all_models = [:sites, :users, :patients]
+
 namespace :demo do
   desc 'Import demo data into database.'
   task :load => [:environment] do |t|
-    load_fixture :sites
-    load_fixture :users
+    @@all_models.each do |models|
+      load_fixture models
+    end
   end
 
   desc 'Create demo data from data in database.'
   task :dump => [:environment] do |t|
-    dump_models :users
+    @@all_models.each do |models|
+      dump_models models
+    end
   end
 end
 

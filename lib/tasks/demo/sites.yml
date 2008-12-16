@@ -1,44 +1,76 @@
-one:
-  name: University of Alberta
-
-two:
-  name: Duke University Medical Center
-
-three:
-  name: University of California at Davis
-  
-four:
+--- 
+"1054583384": 
   name: North Carolina State University
-
-five:
-  name: Bedford VA Research Corporation, Inc.
-
-six:
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 1054583384
+  created_at: 2008-12-16 02:51:34 Z
+"986866124": 
   name: Harvard University
-
-seven:
-  name: Leiden University
-
-eight:
-  name: Mayo Clinic
-
-nine:
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 986866124
+  created_at: 2008-12-16 02:51:34 Z
+"866167485": 
   name: Thethys Bioscience, Inc.
-
-ten:
-  name: University of California - San Diego
-
-eleven:
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 866167485
+  created_at: 2008-12-16 02:51:34 Z
+"442820205": 
+  name: University of California at Davis
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 442820205
+  created_at: 2008-12-16 02:51:34 Z
+"357751860": 
+  name: Mayo Clinic
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 357751860
+  created_at: 2008-12-16 02:51:34 Z
+"53320508": 
   name: University of Louisville
-
-twelve:
-  name: Virginia Tech
-
-thirteen:
-  name: Washington University
-
-fourteen:
-  name: National Institutes of Health (NIH)
-
-fifteen:
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 53320508
+  created_at: 2008-12-16 02:51:34 Z
+"1025886481": 
   name: Children's Hospital Oakland Research Institute
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 1025886481
+  created_at: 2008-12-16 02:51:34 Z
+"953125641": 
+  name: University of Alberta
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 953125641
+  created_at: 2008-12-16 02:51:34 Z
+"995115194": 
+  name: University of California - San Diego
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 995115194
+  created_at: 2008-12-16 02:51:34 Z
+"430326217": 
+  name: Leiden University
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 430326217
+  created_at: 2008-12-16 02:51:34 Z
+"4491622": 
+  name: Washington University
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 4491622
+  created_at: 2008-12-16 02:51:34 Z
+"39858256": 
+  name: National Institutes of Health (NIH)
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 39858256
+  created_at: 2008-12-16 02:51:34 Z
+"827311906": 
+  name: Virginia Tech
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 827311906
+  created_at: 2008-12-16 02:51:34 Z
+"1003532957": 
+  name: Bedford VA Research Corporation, Inc.
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 1003532957
+  created_at: 2008-12-16 02:51:34 Z
+"996332877": 
+  name: Duke University Medical Center
+  updated_at: 2008-12-16 02:51:34 Z
+  id: 996332877
+  created_at: 2008-12-16 02:51:34 Z

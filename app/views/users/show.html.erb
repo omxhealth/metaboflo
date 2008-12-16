@@ -10,6 +10,11 @@
 </p>
 
 <p>
+  <b>Site</b>
+  <%=h(@user.site.name) unless @user.site.blank? %>
+</p>
+
+<p>
 	<b>Rank</b>
 	<%=h @user.rank %>
 </p>
