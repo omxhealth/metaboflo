@@ -1,0 +1,31 @@
+--- 
+"944538328": 
+  name: NMR
+  updated_at: 2008-12-16 07:14:37 Z
+  id: 944538328
+  description: All tasks involving NMR
+  created_at: 2008-12-16 07:14:37 Z
+"944538329": 
+  name: Bioinformatics
+  updated_at: 2008-12-16 07:18:48.505726 Z
+  id: 944538329
+  description: Tasks related to research and analysis of experiment results and metadata
+  created_at: 2008-12-16 07:18:48.505726 Z
+"944538330": 
+  name: Meeting
+  updated_at: 2008-12-16 07:25:28.191436 Z
+  id: 944538330
+  description: Scheduled meetings
+  created_at: 2008-12-16 07:25:28.191436 Z
+"944538331": 
+  name: Data Management
+  updated_at: 2008-12-16 07:32:43.585730 Z
+  id: 944538331
+  description: ""
+  created_at: 2008-12-16 07:32:43.585730 Z
+"159702397": 
+  name: Equipment
+  updated_at: 2008-12-16 07:14:37 Z
+  id: 159702397
+  description: All tasks involving lab equipment
+  created_at: 2008-12-16 07:14:37 Z

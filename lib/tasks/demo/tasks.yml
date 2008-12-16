@@ -1,0 +1,127 @@
+--- 
+"6": 
+  start_date: 2008-12-16
+  updated_at: 2008-12-16 07:33:57.230160 Z
+  estimated_hours: 
+  priority_id: 464995676
+  subject: Choose LIMS/SDMS
+  id: 6
+  description: ""
+  category_id: 944538331
+  due_date: 2008-12-31
+  done_ratio: 20
+  assigned_to_id: 3
+  status_id: 417306706
+  created_at: 2008-12-16 07:33:57.230160 Z
+"7": 
+  start_date: 2009-01-01
+  updated_at: 2008-12-16 07:35:23.430111 Z
+  estimated_hours: 80.0
+  priority_id: 464995676
+  subject: Initial LIMS/SDMS
+  id: 7
+  description: Get preliminary version of LIMS/SDMS into production
+  category_id: 944538331
+  due_date: 2009-01-31
+  done_ratio: 0
+  assigned_to_id: 26
+  status_id: 417306706
+  created_at: 2008-12-16 07:35:23.430111 Z
+"8": 
+  start_date: 2009-02-01
+  updated_at: 2008-12-16 07:36:37.536964 Z
+  estimated_hours: 80.0
+  priority_id: 464995676
+  subject: LIMS/SDMS feedback
+  id: 8
+  description: Generate feedback on LiMS/SDMS; get suggestions about additions/modifications
+  category_id: 944538331
+  due_date: 2009-02-28
+  done_ratio: 0
+  assigned_to_id: 
+  status_id: 417306706
+  created_at: 2008-12-16 07:36:37.536964 Z
+"9": 
+  start_date: 2009-03-01
+  updated_at: 2008-12-16 07:37:52.899661 Z
+  estimated_hours: 160.0
+  priority_id: 464995676
+  subject: LIMS/SDMS additions/modifications
+  id: 9
+  description: Make changes to LIMS/SDMS based on user feedback
+  category_id: 944538331
+  due_date: 2009-03-31
+  done_ratio: 0
+  assigned_to_id: 26
+  status_id: 417306706
+  created_at: 2008-12-16 07:37:52.899661 Z
+"1": 
+  start_date: 2008-12-16
+  updated_at: 2008-12-16 07:16:27.001035 Z
+  estimated_hours: 1.0
+  priority_id: 464995676
+  subject: Order test tubes
+  id: 1
+  description: Running low on standard test tubes. Get more.
+  category_id: 159702397
+  due_date: 2008-12-22
+  done_ratio: 0
+  assigned_to_id: 26
+  status_id: 417306706
+  created_at: 2008-12-16 07:16:27.001035 Z
+"2": 
+  start_date: 2009-01-02
+  updated_at: 2008-12-16 07:20:13.560246 Z
+  estimated_hours: 80.0
+  priority_id: 464995676
+  subject: Paper 77 Classifier
+  id: 2
+  description: Create classifier using patients from cohort 'Paper 77'
+  category_id: 944538329
+  due_date: 2009-03-31
+  done_ratio: 0
+  assigned_to_id: 26
+  status_id: 417306706
+  created_at: 2008-12-16 07:20:13.560246 Z
+"3": 
+  start_date: 2008-12-12
+  updated_at: 2008-12-16 07:24:04.784710 Z
+  estimated_hours: 6.0
+  priority_id: 927634277
+  subject: NMR on samples for UA001
+  id: 3
+  description: Run all remaining samples for UA001
+  category_id: 944538328
+  due_date: 2009-01-12
+  done_ratio: 20
+  assigned_to_id: 23
+  status_id: 417306706
+  created_at: 2008-12-16 07:23:45.513584 Z
+"4": 
+  start_date: 2008-12-16
+  updated_at: 2008-12-16 07:26:33.535256 Z
+  estimated_hours: 16.0
+  priority_id: 464995676
+  subject: R24 Annual Meeting
+  id: 4
+  description: Meeting in Bethesda
+  category_id: 944538330
+  due_date: 2008-12-17
+  done_ratio: 0
+  assigned_to_id: 
+  status_id: 417306706
+  created_at: 2008-12-16 07:26:33.535256 Z
+"5": 
+  start_date: 2008-12-14
+  updated_at: 2008-12-16 07:30:58.420919 Z
+  estimated_hours: 
+  priority_id: 927634277
+  subject: P=NP
+  id: 5
+  description: Provide a proof that P is indeed equal to NP
+  category_id: 
+  due_date: 2013-12-31
+  done_ratio: 0
+  assigned_to_id: 
+  status_id: 417306706
+  created_at: 2008-12-16 07:29:29.605562 Z
