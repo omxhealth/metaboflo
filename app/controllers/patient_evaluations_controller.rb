@@ -4,7 +4,7 @@ class PatientEvaluationsController < ApplicationController
   # GET /patient_evaluations
   # GET /patient_evaluations.xml
   def index
-    @patient_evaluations = @patient.patient_evaluations.find(:all)
+    @patient_evaluations = @patient.patient_evaluations.find(:all, :order => 'evaluated_on DESC')
 
     respond_to do |format|
       format.html # index.html.erb
