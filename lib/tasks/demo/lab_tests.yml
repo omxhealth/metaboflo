@@ -22,6 +22,7 @@
   white_cell_count_unit: ""
   sodium_tested_at: 2008-08-06 10:00:00 Z
   protein_tested_at: 2008-08-07 14:15:00 Z
+  notes: 
   id: 1
   glucose_tested_at: 2008-08-07 14:30:00 Z
   creatinine_unit: mg/dL
@@ -58,6 +59,7 @@
   white_cell_count_unit: ""
   sodium_tested_at: 2007-06-09 08:00:00 Z
   protein_tested_at: 2007-06-13 18:00:00 Z
+  notes: 
   id: 2
   glucose_tested_at: 2007-06-11 10:30:00 Z
   creatinine_unit: mg/dL
@@ -94,6 +96,7 @@
   white_cell_count_unit: ""
   sodium_tested_at: 2008-08-06 10:00:00 Z
   protein_tested_at: 2008-08-07 14:15:00 Z
+  notes: 
   id: 3
   glucose_tested_at: 2008-08-07 14:30:00 Z
   creatinine_unit: mg/dL
@@ -130,6 +133,7 @@
   white_cell_count_unit: ""
   sodium_tested_at: 2007-06-09 08:00:00 Z
   protein_tested_at: 2007-06-13 18:00:00 Z
+  notes: 
   id: 4
   glucose_tested_at: 2007-06-11 10:30:00 Z
   creatinine_unit: mg/dL

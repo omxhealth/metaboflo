@@ -37,6 +37,25 @@
   building: West Wing
   actual_amount: 25.0
   created_at: 2008-12-16 03:49:58 Z
+"2054534539": 
+  original_unit: mL
+  updated_at: 2008-12-16 04:52:17 Z
+  site_id: 827311906
+  patient_id: 
+  collected_on: 2007-03-18
+  actual_unit: mL
+  sample_type: blood
+  barcode: 2356-4
+  id: 2054534539
+  original_amount: 200.0
+  description: ""
+  collected_by_id: 1
+  storage_location: freezer
+  sample_id: 1054534399
+  room: "235"
+  building: Bio Sci
+  actual_amount: 200.0
+  created_at: 2008-12-16 04:52:17 Z
 "1054583387": 
   original_unit: mL
   updated_at: 2008-12-16 04:43:34 Z
@@ -75,6 +94,25 @@
   building: Biological Sciences
   actual_amount: 45.0
   created_at: 2008-12-16 03:54:25 Z
+"1054534399": 
+  original_unit: mL
+  updated_at: 2008-12-16 04:52:17 Z
+  site_id: 827311906
+  patient_id: 
+  collected_on: 2007-03-18
+  actual_unit: mL
+  sample_type: blood
+  barcode: 2356-9
+  id: 1054534399
+  original_amount: 400.0
+  description: ""
+  collected_by_id: 1
+  storage_location: freezer
+  sample_id: 1054534392
+  room: "235"
+  building: Bio Sci
+  actual_amount: 400.0
+  created_at: 2008-12-16 04:52:17 Z
 "1054583390": 
   original_unit: mL
   updated_at: 2008-12-16 04:49:30 Z
@@ -169,42 +207,4 @@
   room: "235"
   building: Bio Sci
   actual_amount: 500.0
-  created_at: 2008-12-16 04:52:17 Z
-"1054534399": 
-  original_unit: mL
-  updated_at: 2008-12-16 04:52:17 Z
-  site_id: 827311906
-  patient_id: 
-  collected_on: 2007-03-18
-  actual_unit: mL
-  sample_type: blood
-  barcode: 2356-9
-  id: 1054534399
-  original_amount: 400.0
-  description: ""
-  collected_by_id: 1
-  storage_location: freezer
-  sample_id: 1054534392
-  room: "235"
-  building: Bio Sci
-  actual_amount: 400.0
-  created_at: 2008-12-16 04:52:17 Z
-"10545345399": 
-  original_unit: mL
-  updated_at: 2008-12-16 04:52:17 Z
-  site_id: 827311906
-  patient_id: 
-  collected_on: 2007-03-18
-  actual_unit: mL
-  sample_type: blood
-  barcode: 2356-4
-  id: 10545345399
-  original_amount: 200.0
-  description: ""
-  collected_by_id: 1
-  storage_location: freezer
-  sample_id: 1054534399
-  room: "235"
-  building: Bio Sci
-  actual_amount: 200.0
   created_at: 2008-12-16 04:52:17 Z

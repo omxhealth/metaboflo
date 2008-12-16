@@ -344,6 +344,21 @@
   middle_name: ""
   email: info@gchelpdesk.ualberta.ca
   created_at: 2008-12-16 00:44:04.591152 Z
+"2": 
+  salt: 30903c46620c112e790788693d7b6d83f139417f
+  updated_at: 2008-12-16 01:16:17.399385 Z
+  site_id: 996332877
+  crypted_password: 091a4ff031a654b9450260c63b44fb50b9822d29
+  remember_token_expires_at: 
+  rank: User
+  id: 2
+  remember_token: 
+  first_name: Rima
+  login: rkaddurahdaouk
+  last_name: Kaddurah-Daouk
+  middle_name: ""
+  email: kaddu001@mc.duke.edu
+  created_at: 2008-12-16 01:09:11.474978 Z
 "30": 
   salt: ab4c67c5e60c712c214633faa2a1649c365050d1
   updated_at: 2008-12-16 01:49:38.928989 Z
@@ -361,7 +376,7 @@
   created_at: 2008-12-16 01:49:38.928989 Z
 "29": 
   salt: a92706741018ae590185fbc59a5b5b8bce95e57e
-  updated_at: 2008-12-16 01:48:28.125264 Z
+  updated_at: 2008-12-16 01:48:28.125263 Z
   site_id: 995115194
   crypted_password: e8d13b6e2881d2c3f3760207615d8a7dfb7f279a
   remember_token_expires_at: 
@@ -373,7 +388,7 @@
   last_name: Mo
   middle_name: ""
   email: mlmo@ucsd.edu
-  created_at: 2008-12-16 01:48:28.125264 Z
+  created_at: 2008-12-16 01:48:28.125263 Z
 "18": 
   salt: 07bb7b473c6f4dcdfb93395060c70e7fd78b2962
   updated_at: 2008-12-16 01:41:01.398509 Z
@@ -389,21 +404,6 @@
   middle_name: ""
   email: zeng@statgen.ncsu.edu
   created_at: 2008-12-16 01:41:01.398509 Z
-"2": 
-  salt: 30903c46620c112e790788693d7b6d83f139417f
-  updated_at: 2008-12-16 01:16:17.399385 Z
-  site_id: 996332877
-  crypted_password: 091a4ff031a654b9450260c63b44fb50b9822d29
-  remember_token_expires_at: 
-  rank: User
-  id: 2
-  remember_token: 
-  first_name: Rima
-  login: rkaddurahdaouk
-  last_name: Kaddurah-Daouk
-  middle_name: ""
-  email: kaddu001@mc.duke.edu
-  created_at: 2008-12-16 01:09:11.474978 Z
 "31": 
   salt: 604fbb09d07c22fcf77598934d1e3f249dd46b7f
   updated_at: 2008-12-16 01:51:52.554144 Z
