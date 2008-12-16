@@ -1,12 +1,10 @@
 <h1>Editing Patient Evaluation</h1>
 
-<% form_for([@patient, @patient_evaluation]) do |f| %>
-  <%= f.error_messages %>
-
-  <%= render :partial => 'patient_evaluation', :locals => {:f => f} %>
+<% labelled_tabular_form_for([@patient, @patient_evaluation]) do |form| %>
+  <%= render :partial => form %>
 
   <p>
-    <%= f.submit "Update" %>
+    <%= form.submit "Update" %>
   </p>
 <% end %>
 

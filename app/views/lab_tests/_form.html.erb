@@ -1,24 +1,19 @@
-<p>
-  <%= form.label :collected_at, 'Test completed at' %><br />
-  <%= form.datetime_select :collected_at %>
-</p>
+<fieldset>
+  <legend>Test Details</legend>
+  <p><%= form.datetime_select :collected_at, :label => 'Test completed at' %></p>
+</fieldset>
 
-<br /><hr><br />
+<hr />
 
 <% for test in tests(@lab_test, true) %>
-  
-  <fieldset style="width: 70%">
-    <legend><%= "#{test}".gsub('_', ' ').capitalize %></legend>
-    <p>
-      <%= form.label "#{test}_value".to_sym, "Level" %><br />
-      <%= form.text_field "#{test}_value".to_sym %> <%= form.select :"#{test}_unit".to_sym, clinical_unit_options, :include_blank => true %>
-    </p>
 
-    <p>
-      <%= form.label "#{test}_tested_at".to_sym, "Tested at" %><br />
-      <%= form.datetime_select "#{test}_tested_at".to_sym %>
-    </p>
-  </fieldset>
-  <br />
-  
+<fieldset style="width: 70%">
+  <legend><%= "#{test}".gsub('_', ' ').capitalize %></legend>
+  <p>
+    <%= form.text_field "#{test}_value".to_sym, :label => 'Level' %> 
+    <%= form.select :"#{test}_unit".to_sym, clinical_unit_options, :no_label => true, :include_blank => true %>
+  </p>
+  <p><%= form.datetime_select "#{test}_tested_at".to_sym, :label => 'Tested at' %></p>
+</fieldset>
+
 <% end %>

@@ -1,29 +1,8 @@
 <h1>New medication</h1>
 
-<% form_for([@patient, @medication]) do |f| %>
-  <%= f.error_messages %>
-
+<% labelled_tabular_form_for([@patient, @medication]) do |form| %>
+  <%= render :partial => form %>
   <p>
-    <%= f.label :drug %><br />
-    <%= f.text_field :drug %>
-  </p>
-  <p>
-    <%= f.label :started_on %><br />
-    <%= f.date_select :started_on %>
-  </p>
-  <p>
-    <%= f.label :stopped_on %><br />
-    <%= f.date_select :stopped_on %>
-  </p>
-	<p>
-		<%= f.label :currently_taking %><br />
-		<%= f.check_box :currently_taking %>
-	</p>
-	<p>
-		<%= f.label :drugbank_reference %><br />
-		<%= f.text_field :drugbank_reference %>
-	</p>
-  <p>
-    <%= f.submit "Create" %>
+    <%= form.submit "Create" %>
   </p>
 <% end %>

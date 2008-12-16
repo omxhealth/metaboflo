@@ -1,63 +1,11 @@
-<h1>Editing Patient <%=@patient.code%></h1>
+<h1>Editing Patient <%= @patient %></h1>
 
-<% form_for(@patient) do |f| %>
-  <%= f.error_messages %>
+<% labelled_tabular_form_for(@patient) do |form| %>
+<%= render :partial => form %>
 
-	 <p>
-	   <%= f.label :code %><br />
-	   <%= f.text_field :code %>
-	 </p>
-	<p>
-		<%= f.label :site_id %><br />
-		<%= f.select :site_id, Site.find(:all).collect { |s| [s.name, s.id] }, :allow_blank => true %>
-	</p>
-	  <p>
-	    <%= f.label :first_initial %><br />
-	    <%= f.text_field :first_initial %>
-	  </p>
-	  <p>
-	    <%= f.label :middle_initial %><br />
-	    <%= f.text_field :middle_initial %>
-	  </p>
-	  <p>
-	    <%= f.label :last_initial %><br />
-	    <%= f.text_field :last_initial %>
-	  </p>
-	 <p>
-	   <%= f.label :birthdate %><br />
-	   <%= f.date_select :birthdate, :order => [:day, :month, :year] %>
-	 </p>
-	<p>
-		<%= f.label :blood_type %><br />
-		<%= f.select :blood_type, ['A', 'B', 'O', 'AB'], :include_blank => true %>
-	</p>
-	 <p>
-	   <%= f.label :gender %><br />
-	   <%= f.select :gender, ['Male', 'Female'], :include_blank => true %>
-	 </p>
-	<p>
-		<%= f.label :ethnicity %><br />
-		<%= f.text_field :ethnicity %>
-	</p>
-	<p>
-		<%= f.label :race %><br />
-		<%= f.text_field :race %>
-	</p>
-
-	<p>
-		<%= f.label :practitioner %><br />
-		<%= f.text_field :practitioner %>
-	</p>
-	<p>
-		<%= f.label :notes %><br />
-		<%= f.text_area :notes %>
-	</p>
-  <br />
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+<p>
+	<%= form.submit "Update" %>
+</p>
 <% end %>
-
-<br />
 
 <%= show_link @patient %>

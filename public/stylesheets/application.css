@@ -60,13 +60,14 @@ div#flash p.error {
 }
 
 .fieldWithErrors label {
-	padding: 2px 4px;
-	background-color: #FF6A6A;
-	margin-bottom: 1px;
+/*	padding: 2px 4px;*/
+	color: red;
+/*	margin-bottom: 1px;*/
+	
 }
 
 .fieldWithErrors input, .fieldWithErrors select {
-	margin-top: 4px;
+/*	margin-top: 4px;*/
 	background-color: #ffdfdf;
 }
 
@@ -214,6 +215,10 @@ table.list tr.even {
 
 table.list tr.odd {
 	background: white;
+}
+
+table.list tr:hover {
+	background: #FFFCCF
 }
 
 table.list tr:first-child {
@@ -396,3 +401,65 @@ table.cal td.today {background:#ffffdd;}
 table.cal td.today p.day-num {font-weight: bold;}
 
 div#content { margin: 2em; }
+
+
+/* Standard form */
+form.tabular { padding: 0.3em }
+form.tabular fieldset { background: white; margin-bottom: 1.2em; width: 70%; }
+form.tabular fieldset legend { margin-left: 0.5em; }
+form.tabular textarea { width: 350px; height: 70px; }
+
+/***** Tabular forms ******/
+form.tabular p {
+	margin: 0;
+	padding: 5px 0 8px 0;
+	padding-left: 180px; /*width of left column containing the label elements*/
+	height: 1%;
+	clear:left;
+}
+
+html>body .tabular p {overflow:hidden;}
+
+form.tabular label {
+	font-weight: bold;
+	float: left;
+	text-align: right;
+	margin-left: -180px; /*width of left column*/
+	width: 175px; /*width of labels. Should be smaller than left column to create some right margin*/
+}
+
+form.tabular label.floating {
+	font-weight: normal;
+	margin-left: 0px;
+	text-align: left;
+	width: 270px;
+}
+
+form.tabular label.grouped {
+	font-weight: normal;
+	margin-left: 0px;
+	text-align: left;
+	width: auto;
+	float: none;
+}
+
+form.tabular table.checkbox-group {
+	border: none;
+	margin-left: 1em;
+}
+
+form.tabular table.checkbox-group td {
+	border: none;
+	padding: 0.1em 0.5em;
+}
+
+
+.required {color: #bb0000;}
+.summary {font-style: italic;}
+
+#attachments_fields input[type=text] {margin-left: 8px; }
+
+div.attachments { margin-top: 12px; }
+div.attachments p { margin:4px 0 2px 0; }
+div.attachments img { vertical-align: middle; }
+div.attachments span.author { font-size: 0.9em; color: #888; }

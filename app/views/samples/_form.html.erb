@@ -1,11 +1,12 @@
+<div class="form">
 <%= form.error_messages %>
 
 <% if @sample.new_record? %>
 <%= form.hidden_field(:patient_id) if @sample.patient %>
 <%= form.hidden_field(:parent_sample_id) if @sample.sample %>
-<% end -%>
+<% end %>
 
-<fieldset style="width: 70%">
+<fieldset>
   <legend>Sample Identification</legend>
   <p>
     <%= form.label :sample_type %>: 
@@ -14,18 +15,14 @@
   <p>
     <%= form.label :barcode %>: <%= form.text_field :barcode, :size => 30 %>
   </p>
-
   <p>
     <%= form.label :description %><br />
     <%= form.text_area :description, :style => "width: 350px; height: 70px" %>
   </p>
 </fieldset>
 
-<br />
-
-<fieldset style="width: 70%">
+<fieldset>
   <legend>Collection Details</legend>
-
   <p>
     <%= form.label :original_amount, 'Amount received' %>
     <%= form.text_field :original_amount, :size => 5 %> 
@@ -41,15 +38,12 @@
   <p>
     <%= form.label :collected_by, 'Sample collected by' %> 
     <%= form.text_field :collected_by, :size => 20 %>
-
     <%= form.label :collected_on, 'on' %> 
     <%= form.date_select :collected_on, :include_blank => true %>
   </p>
 </fieldset>
 
-<br />
-
-<fieldset style="width: 70%">
+<fieldset>
   <legend>Storage Details</legend>
   <p>
     <%= form.label :site_id %>
@@ -68,3 +62,4 @@
     <%= form.text_area :storage_location, :style => "width: 350px; height: 70px" %>
   </p>
 </fieldset>
+</div>

@@ -1,6 +1,6 @@
 <h1>Add Lab Test</h1>
 
-<% form_for([@patient, @lab_test]) do |form| %>
+<% labelled_tabular_form_for([@patient, @lab_test]) do |form| %>
 
   <%= render :partial => form %>
 
