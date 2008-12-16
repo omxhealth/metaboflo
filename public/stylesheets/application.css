@@ -3,7 +3,6 @@ body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
 	font-family: verdana, arial, helvetica, sans-serif;
-	line-height: 18px;
 }
 
 pre {
@@ -29,6 +28,7 @@ h1 {
 	padding: 0.2em;
 	border: 1px solid gray;
 	margin-bottom: 2em;
+	margin-top: 0.5em;
 }
 
 p { margin: 1em; }
