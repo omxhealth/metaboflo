@@ -14,7 +14,7 @@ class CreateSamples < ActiveRecord::Migration
       t.string :room
       t.text :storage_location
       t.date :collected_on
-      t.integer :collected_by
+      t.integer :collected_by_id
       t.text :description
 
       t.timestamps

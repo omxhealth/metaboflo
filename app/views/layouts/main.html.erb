@@ -40,10 +40,10 @@
 			<% if current_user %>
 			<div id="menu" style="font-size: xx-small">
 				<span style="float: right">
-				<%= link_to 'HMDB', 'http://hmdb.ca' %> 
-				<%= link_to 'DrugBank', 'http://drugbank.ca' %> 
-				<%= link_to 'PharmGKB', 'http://www.pharmgkb.org' %> 
-				<%= link_to 'Metabo-Analyst', 'http://www.hmdb.ca' %> 
+				<%= link_to 'HMDB', 'http://hmdb.ca', :popup => true %> 
+				<%= link_to 'DrugBank', 'http://drugbank.ca', :popup => true %> 
+				<%= link_to 'PharmGKB', 'http://www.pharmgkb.org', :popup => true %> 
+				<%= link_to 'Metabo-Analyst', 'http://www.metaboanalyst.ca', :popup => true %> 
 				</span>
 				<%= link_to 'Home', root_path %>
 				<%= link_to 'Patients', patients_path %> 

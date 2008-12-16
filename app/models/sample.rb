@@ -2,6 +2,7 @@ class Sample < ActiveRecord::Base
   belongs_to :patient
   belongs_to :sample
   belongs_to :site
+  belongs_to :collected_by, :class_name => 'User'
   
   has_many :samples, :dependent => :destroy
   has_many :experiments, :dependent => :destroy

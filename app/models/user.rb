@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   
   has_one :user_picture
   has_many :tasks, :foreign_key => 'assigned_to_id'
+  has_many :samples, :foreign_key => 'collected_by_id'
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
