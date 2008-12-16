@@ -1,0 +1,541 @@
+--- 
+"22": 
+  salt: b31e5766be28806db2ae6cb235991308db7655b5
+  updated_at: 2008-12-16 01:43:36.835115 Z
+  site_id: 1054583384
+  crypted_password: 395b6189b5334b2bbdc58c87be3340d4616ecf67
+  remember_token_expires_at: 
+  rank: User
+  id: 22
+  remember_token: 
+  first_name: Yan
+  login: yzheng
+  last_name: Zheng
+  middle_name: ""
+  email: yzheng5@ncsu.edu
+  created_at: 2008-12-16 01:43:36.835115 Z
+"11": 
+  salt: 9d80afaaa45a8e8a36df6db51344cc65ff975444
+  updated_at: 2008-12-16 01:32:34.480333 Z
+  site_id: 986866124
+  crypted_password: 14ac0d598b6fa841ea36ccc076b4c87cfae4e973
+  remember_token_expires_at: 
+  rank: User
+  id: 11
+  remember_token: 
+  first_name: Bruce
+  login: bkristal
+  last_name: Kristal
+  middle_name: ""
+  email: bkristal@partners.org
+  created_at: 2008-12-16 01:32:34.480333 Z
+"6": 
+  salt: 0c110a67ba9beb71ab7bc04570d5b45738cc5ed9
+  updated_at: 2008-12-16 01:21:07.820494 Z
+  site_id: 996332877
+  crypted_password: aeac468a37a3544b0c4a6782a318ab793ae06f91
+  remember_token_expires_at: 
+  rank: User
+  id: 6
+  remember_token: 
+  first_name: Lauren
+  login: lbayer
+  last_name: Bayer
+  middle_name: ""
+  email: lauren.bayer@duke.edu
+  created_at: 2008-12-16 01:21:07.820494 Z
+"33": 
+  salt: 1e5c0f8343a112497c4c6acb2f0482b1d161e871
+  updated_at: 2008-12-16 01:53:20.750816 Z
+  site_id: 53320508
+  crypted_password: b68c2e15be5bc1f8883b629245cf4b97a8b06a83
+  remember_token_expires_at: 
+  rank: User
+  id: 33
+  remember_token: 
+  first_name: Richard
+  login: rhigashi
+  last_name: Higashi
+  middle_name: ""
+  email: rick.higashi@louisville.edu
+  created_at: 2008-12-16 01:53:20.750816 Z
+"34": 
+  salt: aae3ec9adf9cdaa415b41b63cbda6ddfebbe3c9e
+  updated_at: 2008-12-16 01:54:02.330047 Z
+  site_id: 4491622
+  crypted_password: 9efcb59bd4874b8cb311e9036bdd7c264d4c634c
+  remember_token_expires_at: 
+  rank: User
+  id: 34
+  remember_token: 
+  first_name: Xianlin
+  login: xhan
+  last_name: Han
+  middle_name: ""
+  email: xianlin@wustl.edu
+  created_at: 2008-12-16 01:54:02.330047 Z
+"23": 
+  salt: 0f929dec6fb6654e750f7bc301737a3ec320c5fe
+  updated_at: 2008-12-16 01:44:23.997533 Z
+  site_id: 1054583384
+  crypted_password: fdc5865552e200f8465779b8f24a3803fd61ae0e
+  remember_token_expires_at: 
+  rank: User
+  id: 23
+  remember_token: 
+  first_name: Lexin
+  login: lli
+  last_name: Li
+  middle_name: ""
+  email: li@stat.ncsu.edu
+  created_at: 2008-12-16 01:44:23.997533 Z
+"12": 
+  salt: edcf9bdce72f0e40b3e09b4f16dcb6c21b773224
+  updated_at: 2008-12-16 01:33:50.319778 Z
+  site_id: 430326217
+  crypted_password: 801fbcad1a4ea684d820db5ff068c205106afa64
+  remember_token_expires_at: 
+  rank: User
+  id: 12
+  remember_token: 
+  first_name: Thomas
+  login: thankemeier
+  last_name: Hankemeier
+  middle_name: ""
+  email: hankemeier@lacdr.leidenuniv.nl
+  created_at: 2008-12-16 01:33:50.319778 Z
+"7": 
+  salt: a1c55be8dc5886e3a0adbc39b3ceb1bbc1292426
+  updated_at: 2008-12-16 01:21:33.762220 Z
+  site_id: 996332877
+  crypted_password: ed15df0ced29eb12d3f78e718937f669b52cd3ae
+  remember_token_expires_at: 
+  rank: User
+  id: 7
+  remember_token: 
+  first_name: Dorothy
+  login: dpeters
+  last_name: Peters
+  middle_name: ""
+  email: dorothy.peters@duke.edu
+  created_at: 2008-12-16 01:21:33.762220 Z
+"35": 
+  salt: 197934e58b5e3895f2fed69114aefcd0dbc020c1
+  updated_at: 2008-12-16 01:55:30.619905 Z
+  site_id: 39858256
+  crypted_password: affb413a8932e510b6007a92f86ce921943dde83
+  remember_token_expires_at: 
+  rank: User
+  id: 35
+  remember_token: 
+  first_name: Richard
+  login: rokita
+  last_name: Okita
+  middle_name: ""
+  email: okitar@nigms.nih.gov
+  created_at: 2008-12-16 01:55:30.619905 Z
+"24": 
+  salt: 09b9c5de9569ff49a8196c7497112534a644c779
+  updated_at: 2008-12-16 01:44:58.755821 Z
+  site_id: 866167485
+  crypted_password: 028b31056dfa3ecb358edd80479d306eb49a32af
+  remember_token_expires_at: 
+  rank: User
+  id: 24
+  remember_token: 
+  first_name: Steve
+  login: swatkins
+  last_name: Watkins
+  middle_name: ""
+  email: smwatkins@lipomics.com
+  created_at: 2008-12-16 01:44:58.755821 Z
+"13": 
+  salt: 1bfcc4d0efdb4a7a8272974fef8fbcfffd8f273e
+  updated_at: 2008-12-16 01:34:49.606136 Z
+  site_id: 357751860
+  crypted_password: 07bb3c279ed625a35b9cbca677f8b1a37c78caa7
+  remember_token_expires_at: 
+  rank: User
+  id: 13
+  remember_token: 
+  first_name: Richard
+  login: rweinshilboum
+  last_name: Weinshilboum
+  middle_name: ""
+  email: weinshilboum.richard@mayo.edu
+  created_at: 2008-12-16 01:34:49.606136 Z
+"8": 
+  salt: 24df99ee153f862014c275c5c581d695d61f9afd
+  updated_at: 2008-12-16 01:22:16.447712 Z
+  site_id: 996332877
+  crypted_password: d76b81671cbab3d36508c96899564c4398535c74
+  remember_token_expires_at: 
+  rank: User
+  id: 8
+  remember_token: 
+  first_name: Mariana
+  login: mmccready
+  last_name: McCready
+  middle_name: ""
+  email: maris006@gmail.com
+  created_at: 2008-12-16 01:22:16.447712 Z
+"36": 
+  salt: 4b4a21fbd42c48d9c3f4e34e95fa886727c1a146
+  updated_at: 2008-12-16 01:56:10.380131 Z
+  site_id: 39858256
+  crypted_password: 5ccdb63ea53624e2c26871d01ee4e5ee53f1ed0f
+  remember_token_expires_at: 
+  rank: User
+  id: 36
+  remember_token: 
+  first_name: Michael
+  login: mrogers
+  last_name: Rogers
+  middle_name: ""
+  email: rogersm@nigms.nih.gov
+  created_at: 2008-12-16 01:56:10.380131 Z
+"25": 
+  salt: 67e0ce9064f294f2fff2f0b3159ec9d37537b49f
+  updated_at: 2008-12-16 01:45:27.738831 Z
+  site_id: 953125641
+  crypted_password: 9f6b209cfd235234098da07322b9eeb2ea6a09e5
+  remember_token_expires_at: 
+  rank: User
+  id: 25
+  remember_token: 
+  first_name: David
+  login: dwishart
+  last_name: Wishart
+  middle_name: ""
+  email: david.wishart@ualberta.ca
+  created_at: 2008-12-16 01:45:27.738831 Z
+"14": 
+  salt: 4761c49ec057782a2e099a87609c3e1ecd1c3b06
+  updated_at: 2008-12-16 01:36:53.878724 Z
+  site_id: 357751860
+  crypted_password: 17b6db61f2dc3643002fe273c6ba56b770448622
+  remember_token_expires_at: 
+  rank: User
+  id: 14
+  remember_token: 
+  first_name: David
+  login: dmrazek
+  last_name: Mrazek
+  middle_name: ""
+  email: mrazek.david@mayo.edu
+  created_at: 2008-12-16 01:36:53.878724 Z
+"9": 
+  salt: 0a64d8e8acc7418052781274e18ff5e3945daa88
+  updated_at: 2008-12-16 01:27:03.574173 Z
+  site_id: 1003532957
+  crypted_password: 70156d36897867cbfebb2a9670b076d88e97feea
+  remember_token_expires_at: 
+  rank: User
+  id: 9
+  remember_token: 
+  first_name: Wayne
+  login: wmatson
+  last_name: Matson
+  middle_name: ""
+  email: wayne.matson@va.gov
+  created_at: 2008-12-16 01:27:03.574173 Z
+"26": 
+  salt: be53844afae91a14a7523c598744442621c418e7
+  updated_at: 2008-12-16 01:45:55.869949 Z
+  site_id: 953125641
+  crypted_password: 0896f8239f8441ba14f6d043379e9e91b2d41fe1
+  remember_token_expires_at: 
+  rank: User
+  id: 26
+  remember_token: 
+  first_name: Joseph
+  login: jcruz
+  last_name: Cruz
+  middle_name: ""
+  email: josephcruz@ualberta.ca
+  created_at: 2008-12-16 01:45:55.869949 Z
+"15": 
+  salt: bb80e689acfb0ef161b0fcfb1921e245f39dd5eb
+  updated_at: 2008-12-16 01:38:35.836644 Z
+  site_id: 357751860
+  crypted_password: 6c54b3e17647c2a025292ea2053bd37b482879fe
+  remember_token_expires_at: 
+  rank: User
+  id: 15
+  remember_token: 
+  first_name: Liewei
+  login: lwang
+  last_name: Wang
+  middle_name: ""
+  email: wang.liewei@mayo.edu
+  created_at: 2008-12-16 01:38:35.836644 Z
+"27": 
+  salt: 8aeda90de0133d9dcc30fd97264738405b4c3cbc
+  updated_at: 2008-12-16 01:46:41.468730 Z
+  site_id: 442820205
+  crypted_password: bf497ee69d03142137d701392804394d2c245b95
+  remember_token_expires_at: 
+  rank: User
+  id: 27
+  remember_token: 
+  first_name: Oliver
+  login: ofiehn
+  last_name: Fiehn
+  middle_name: ""
+  email: ofiehn@ucdavis.edu
+  created_at: 2008-12-16 01:46:41.468730 Z
+"16": 
+  salt: 210659aca2c2eb408814dd857afa21899819818c
+  updated_at: 2008-12-16 01:39:15.085478 Z
+  site_id: 357751860
+  crypted_password: 7db12352f3972e61dc0bbc6238dc4bd0deb9477a
+  remember_token_expires_at: 
+  rank: User
+  id: 16
+  remember_token: 
+  first_name: Susanna
+  login: sstevens
+  last_name: Stevens
+  middle_name: ""
+  email: stevens.susanna@mayo.edu
+  created_at: 2008-12-16 01:39:15.085478 Z
+"28": 
+  salt: 80ef50eb3789049a8a374fda3465d9788e468955
+  updated_at: 2008-12-16 01:47:37.527578 Z
+  site_id: 995115194
+  crypted_password: 20b0e858ff39613b7e79ab507538b52a2476adec
+  remember_token_expires_at: 
+  rank: User
+  id: 28
+  remember_token: 
+  first_name: Bernhard
+  login: bpalsson
+  last_name: Palsson
+  middle_name: ""
+  email: bpalsson@bioeng.ucsd.edu
+  created_at: 2008-12-16 01:47:37.527578 Z
+"17": 
+  salt: 3f4db8bf420c7ad77ca35b1f758e8fd5fcf3053c
+  updated_at: 2008-12-16 01:40:13.096305 Z
+  site_id: 357751860
+  crypted_password: df3924c410bcb3857db8c51f4e2558287a7d0603
+  remember_token_expires_at: 
+  rank: User
+  id: 17
+  remember_token: 
+  first_name: Joanna
+  login: jbiecrnacka
+  last_name: Biecrnacka
+  middle_name: ""
+  email: biernacka.joanna@mayo.edu
+  created_at: 2008-12-16 01:40:13.096305 Z
+"1": 
+  salt: d9187c11756e66c8978f302459098a07051c4a36
+  updated_at: 2008-12-16 01:16:29.380513 Z
+  site_id: 953125641
+  crypted_password: faf55a6a41ef47e0a26de53f62dc0654c8ae9eb6
+  remember_token_expires_at: 
+  rank: Administrator
+  id: 1
+  remember_token: 
+  first_name: ""
+  login: admin
+  last_name: ""
+  middle_name: ""
+  email: info@gchelpdesk.ualberta.ca
+  created_at: 2008-12-16 00:44:04.591152 Z
+"30": 
+  salt: ab4c67c5e60c712c214633faa2a1649c365050d1
+  updated_at: 2008-12-16 01:49:38.928989 Z
+  site_id: 995115194
+  crypted_password: 6c66d579beb73af991207cbe333e45007cba223a
+  remember_token_expires_at: 
+  rank: User
+  id: 30
+  remember_token: 
+  first_name: Ed
+  login: edennis
+  last_name: Dennis
+  middle_name: ""
+  email: edennis@ucsd.edu
+  created_at: 2008-12-16 01:49:38.928989 Z
+"29": 
+  salt: a92706741018ae590185fbc59a5b5b8bce95e57e
+  updated_at: 2008-12-16 01:48:28.125265 Z
+  site_id: 995115194
+  crypted_password: e8d13b6e2881d2c3f3760207615d8a7dfb7f279a
+  remember_token_expires_at: 
+  rank: User
+  id: 29
+  remember_token: 
+  first_name: Monica
+  login: mmo
+  last_name: Mo
+  middle_name: ""
+  email: mlmo@ucsd.edu
+  created_at: 2008-12-16 01:48:28.125265 Z
+"18": 
+  salt: 07bb7b473c6f4dcdfb93395060c70e7fd78b2962
+  updated_at: 2008-12-16 01:41:01.398509 Z
+  site_id: 1054583384
+  crypted_password: 21985d89f0bda8a56b9af1e1df4131b28d103eda
+  remember_token_expires_at: 
+  rank: User
+  id: 18
+  remember_token: 
+  first_name: Zhao-Bang
+  login: zbzeng
+  last_name: Zeng
+  middle_name: ""
+  email: zeng@statgen.ncsu.edu
+  created_at: 2008-12-16 01:41:01.398509 Z
+"2": 
+  salt: 30903c46620c112e790788693d7b6d83f139417f
+  updated_at: 2008-12-16 01:16:17.399385 Z
+  site_id: 996332877
+  crypted_password: 091a4ff031a654b9450260c63b44fb50b9822d29
+  remember_token_expires_at: 
+  rank: User
+  id: 2
+  remember_token: 
+  first_name: Rima
+  login: rkaddurahdaouk
+  last_name: Kaddurah-Daouk
+  middle_name: ""
+  email: kaddu001@mc.duke.edu
+  created_at: 2008-12-16 01:09:11.474978 Z
+"31": 
+  salt: 604fbb09d07c22fcf77598934d1e3f249dd46b7f
+  updated_at: 2008-12-16 01:51:52.554144 Z
+  site_id: 53320508
+  crypted_password: 935dc94deaa7349cba9088b1774d66c9e16c354d
+  remember_token_expires_at: 
+  rank: User
+  id: 31
+  remember_token: 
+  first_name: Teresa
+  login: tfan
+  last_name: Fan
+  middle_name: ""
+  email: twmfan@gmail.com
+  created_at: 2008-12-16 01:51:52.554144 Z
+"20": 
+  salt: 568219d9235dbe77f3a4bee10befca0ef89942b1
+  updated_at: 2008-12-16 01:42:19.434850 Z
+  site_id: 1054583384
+  crypted_password: 0b06f5ae9330bf5474958ba1fecbe0ffa05d89ea
+  remember_token_expires_at: 
+  rank: User
+  id: 20
+  remember_token: 
+  first_name: Lu
+  login: luwang
+  last_name: Wang
+  middle_name: ""
+  email: lwang9@ncsu.edu
+  created_at: 2008-12-16 01:42:19.434850 Z
+"19": 
+  salt: 8a4d9b6f1bf1ce3f8f0b971fc4bf021f4ba20942
+  updated_at: 2008-12-16 01:41:49.090006 Z
+  site_id: 1054583384
+  crypted_password: 19e3506f2516e4e4655a249653ae8ea113b0ce03
+  remember_token_expires_at: 
+  rank: User
+  id: 19
+  remember_token: 
+  first_name: Hongjie
+  login: hzhu
+  last_name: Zhu
+  middle_name: ""
+  email: zhuhj_2006@hotmail.com
+  created_at: 2008-12-16 01:41:49.090006 Z
+"3": 
+  salt: 5b8e595f97d66a7f2beb330c2fb4a798e2287125
+  updated_at: 2008-12-16 01:15:53.959463 Z
+  site_id: 996332877
+  crypted_password: fa33b2a1055b82ac52c15207a42091475ae26579
+  remember_token_expires_at: 
+  rank: Superuser
+  id: 3
+  remember_token: 
+  first_name: Ricardo
+  login: rpietrobon
+  last_name: Pietrobon
+  middle_name: ""
+  email: ricardo.pietrobon@researchonresearch.org
+  created_at: 2008-12-16 01:11:41.005841 Z
+"32": 
+  salt: 006b2f3b57299b92bddfba6b1d155a49ab0eee7f
+  updated_at: 2008-12-16 01:52:25.645053 Z
+  site_id: 53320508
+  crypted_password: b329cdb48e5b00d8958377f51f30c75f40e1c96d
+  remember_token_expires_at: 
+  rank: User
+  id: 32
+  remember_token: 
+  first_name: Andrew
+  login: alane
+  last_name: Lane
+  middle_name: ""
+  email: anlane01@gwise.louisville.edu
+  created_at: 2008-12-16 01:52:25.645053 Z
+"21": 
+  salt: 7216587725a7ecb8c0468954cbfc6f0221d7ba9c
+  updated_at: 2008-12-16 01:43:00.236423 Z
+  site_id: 1054583384
+  crypted_password: 49188e5cad6806caa5be0be4b50057ef150f7945
+  remember_token_expires_at: 
+  rank: User
+  id: 21
+  remember_token: 
+  first_name: Wenbin
+  login: wlu
+  last_name: Lu
+  middle_name: ""
+  email: lu@stat.ncsu.edu
+  created_at: 2008-12-16 01:43:00.236423 Z
+"10": 
+  salt: 7df63e986e3484b32b14d96c70e55f22861ea9cc
+  updated_at: 2008-12-16 01:30:52.541997 Z
+  site_id: 1025886481
+  crypted_password: 9cb97453008c170f8697eeba92e73359654ac175
+  remember_token_expires_at: 
+  rank: User
+  id: 10
+  remember_token: 
+  first_name: Ron
+  login: rkrauss
+  last_name: Krauss
+  middle_name: ""
+  email: rkrauss@chori.org
+  created_at: 2008-12-16 01:30:52.541997 Z
+"4": 
+  salt: a0e4b2b846a3ee03243659006afa95f0a326212b
+  updated_at: 2008-12-16 01:16:03.800312 Z
+  site_id: 996332877
+  crypted_password: 2c74b8c80360a696042198895ccb4c848144d164
+  remember_token_expires_at: 
+  rank: User
+  id: 4
+  remember_token: 
+  first_name: Maggie
+  login: mkutchibatla
+  last_name: Kutchibatla
+  middle_name: ""
+  email: mnk@geri.duke.edu
+  created_at: 2008-12-16 01:13:18.635241 Z
+"5": 
+  salt: d094bbda0fdfc8b1d7de9273bfcd05d390b3f28d
+  updated_at: 2008-12-16 01:20:21.095150 Z
+  site_id: 996332877
+  crypted_password: cce5d5f32d4b2b73040a8d2643fb79619fa37436
+  remember_token_expires_at: 
+  rank: User
+  id: 5
+  remember_token: 
+  first_name: Erik
+  login: echurchill
+  last_name: Churchill
+  middle_name: ""
+  email: erik.churchill@duke.edu
+  created_at: 2008-12-16 01:20:21.095150 Z
