@@ -71,3 +71,75 @@
   white_cell_count_tested_at: 
   sodium_unit: mEq/L
   created_at: 2008-12-16 04:32:18.398961 Z
+"3": 
+  sodium_value: 140.0
+  protein_unit: g/dL
+  hemoglobin_unit: g/dL
+  updated_at: 2008-12-16 04:26:14.269649 Z
+  potassium_tested_at: 2008-08-05 11:00:00 Z
+  creatinine_tested_at: 2008-08-07 16:00:00 Z
+  collected_at: 2008-08-08 15:00:00 Z
+  urea_unit: mg/dL
+  protein_value: 7.0
+  patient_id: 2
+  hemoglobin_value: 14.0
+  glucose_unit: mmol/L
+  cholesterol_unit: mg/dL
+  c_reactive_protein_unit: mg/L
+  urea_value: 10.0
+  glucose_value: 6.0
+  creatinine_value: 0.6
+  cholesterol_value: 150.0
+  c_reactive_protein_value: 2.5
+  white_cell_count_unit: ""
+  sodium_tested_at: 2008-08-06 10:00:00 Z
+  protein_tested_at: 2008-08-07 14:15:00 Z
+  id: 3
+  glucose_tested_at: 2008-08-07 14:30:00 Z
+  creatinine_unit: mg/dL
+  potassium_value: 4.0
+  potassium_unit: mEq/L
+  white_cell_count_value: 5.0
+  hemoglobin_tested_at: 2008-08-05 11:00:00 Z
+  urea_tested_at: 2008-08-06 10:00:00 Z
+  cholesterol_tested_at: 2008-08-06 15:30:00 Z
+  c_reactive_protein_tested_at: 2008-08-06 09:15:00 Z
+  white_cell_count_tested_at: 2008-08-06 09:00:00 Z
+  sodium_unit: mEq/L
+  created_at: 2008-12-16 04:25:51.569837 Z
+"4": 
+  sodium_value: 135.0
+  protein_unit: g/dL
+  hemoglobin_unit: g/dL
+  updated_at: 2008-12-16 04:32:18.398961 Z
+  potassium_tested_at: 2007-06-11 08:00:00 Z
+  creatinine_tested_at: 2007-06-12 09:30:00 Z
+  collected_at: 2007-06-13 10:00:00 Z
+  urea_unit: mg/dL
+  protein_value: 6.8
+  patient_id: 2
+  hemoglobin_value: 13.7
+  glucose_unit: mmol/L
+  cholesterol_unit: mg/dL
+  c_reactive_protein_unit: mg/L
+  urea_value: 10.2
+  glucose_value: 6.3
+  creatinine_value: 0.62
+  cholesterol_value: 145.0
+  c_reactive_protein_value: 2.4
+  white_cell_count_unit: ""
+  sodium_tested_at: 2007-06-09 08:00:00 Z
+  protein_tested_at: 2007-06-13 18:00:00 Z
+  id: 4
+  glucose_tested_at: 2007-06-11 10:30:00 Z
+  creatinine_unit: mg/dL
+  potassium_value: 4.0
+  potassium_unit: mEq/L
+  white_cell_count_value: 
+  hemoglobin_tested_at: 2007-06-12 13:00:00 Z
+  urea_tested_at: 2007-06-11 16:45:00 Z
+  cholesterol_tested_at: 2007-06-10 11:00:00 Z
+  c_reactive_protein_tested_at: 2007-06-11 13:00:00 Z
+  white_cell_count_tested_at: 
+  sodium_unit: mEq/L
+  created_at: 2008-12-16 04:32:18.398961 Z
