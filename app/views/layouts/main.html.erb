@@ -66,8 +66,16 @@
             <li class="yuimenubaritem">
               <%= link_to 'Experiments', experiments_path, :class => 'yuimenubaritemlabel' %>
             </li>
-            <li class="yuimenubaritem">
-              <%= link_to 'Cohorts', patient_cohorts_path, :class => 'yuimenubaritemlabel' %>
+            <li class="yuimenubaritem"><%= link_to 'Cohorts', patient_cohorts_path, :class => 'yuimenubaritemlabel' %>
+              <div id="cohorts" class="yuimenu">
+                <div class="bd">                    
+                  <ul>
+                    <li class="yuimenuitem"><%= link_to 'Patient Cohorts', patient_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'Sample Cohorts', sample_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'Experiment Cohorts', experiment_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                  </ul>                    
+                </div>
+              </div>                                        
             </li>
             <li class="yuimenubaritem">
               <%= link_to 'Protocols', protocols_path, :class => 'yuimenubaritemlabel' %>
@@ -78,8 +86,17 @@
             <li class="yuimenubaritem">
               <%= link_to 'Data Files', data_files_path, :class => 'yuimenubaritemlabel' %>
             </li>
-            <li class="yuimenubaritem">
-              <%= link_to 'Planning', tasks_path, :class => 'yuimenubaritemlabel' %>
+            <li class="yuimenubaritem"><%= link_to 'Planning', tasks_path, :class => 'yuimenubaritemlabel' %>
+              <div id="tasks" class="yuimenu">
+                <div class="bd">                    
+                  <ul>
+                    <li class="yuimenuitem"><%= link_to 'Tasks', tasks_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'My Tasks', user_tasks_path(current_user), :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'Gantt Chart', gantt_tasks_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'Calendar', calendar_tasks_path, :class => 'yuimenuitemlabel' %></li>
+                  </ul>                    
+                </div>
+              </div>                                        
             </li>
             <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#tools">Tools</a>
               <div id="tools" class="yuimenu">

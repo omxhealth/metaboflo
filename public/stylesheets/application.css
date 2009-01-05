@@ -16,11 +16,6 @@ a, a:link, a:visited{ color: #2A5685; text-decoration: none; }
 a:hover, a:active{ color: #c61a1a; text-decoration: underline;}
 a img{ border: 0; }
 
-/*a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
-*/
-
 h1 {
 	color: #004D4D;
 	font-size: 16px;
@@ -28,7 +23,7 @@ h1 {
 	padding: 0.2em;
 	border: 1px solid gray;
 	margin-bottom: 2em;
-	margin-top: 0.5em;
+	margin-top: 5px;
 }
 
 p { margin: 1em; }
@@ -37,9 +32,13 @@ em { font-style: italic; }
 fieldset { border: 1px solid #e4e4e4; margin:0; background: white; }
 legend { color: #484848; }
 
+/*.yuimenubar { background: url(../images/menu_bg.png) repeat-x 0 0 !important ; }
+.yuimenubaritemlabel { color: #CDCDB4 !important; }
+*/
+
+.yuimenubaritemlabel { cursor: pointer !important; }
 
 /* Content elements */
-
 div#doc3 {
 	min-width: 1030px;
 }
@@ -178,6 +177,7 @@ div#sidebar h2 {
 	background: white;
 	font-weight: bold;
 	margin-bottom: 0.8em; 
+	margin-top: 5px;
 	padding: 0.3em;
 }
 
@@ -356,41 +356,13 @@ div.issue img.gravatar {
 	padding: 5px;
 }
 
-div.issue table img.gravatar {
-	height: 14px;
-	width: 14px;
-	padding: 2px;
-	float: left;
-	margin: 0 0.5em 0 0;
-}
-
-#history img.gravatar {
-	padding: 3px;
-	margin: 0 1.5em 1em 0;
-	float: left;
-}
-
-td.username img.gravatar {
-	float: left;
-	margin: 0 1em 0 0;
-}
-
-#activity dt img.gravatar {
-	float: left;
-	margin: 0 1em 1em 0;
-}
-
-#activity dt,
-.journal {
-	clear: left;
-}
 
 h2 img { vertical-align:middle; }
 
 fieldset#date-range { padding: 0.7em; margin-bottom: 8px; }
 
 /***** Calendar *****/
-table.cal {border-collapse: collapse; width: 100%; margin: 0px 0 6px 0;border: 1px solid #d7d7d7;}
+table.cal { border-collapse: collapse; width: 100%; margin: 0px 0 6px 0;border: 1px solid #d7d7d7; }
 table.cal thead th {width: 14%;}
 table.cal tbody tr {height: 100px;}
 table.cal th { background-color:#EEEEEE; padding: 4px; }
@@ -453,13 +425,4 @@ form.tabular table.checkbox-group td {
 	padding: 0.1em 0.5em;
 }
 
-
 .required {color: #bb0000;}
-.summary {font-style: italic;}
-
-#attachments_fields input[type=text] {margin-left: 8px; }
-
-div.attachments { margin-top: 12px; }
-div.attachments p { margin:4px 0 2px 0; }
-div.attachments img { vertical-align: middle; }
-div.attachments span.author { font-size: 0.9em; color: #888; }

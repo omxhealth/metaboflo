@@ -2,8 +2,8 @@
 
 <fieldset>
   <legend>Patient Identification</legend>
-  <p><%= form.text_field :code %></p>
-  <p><%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :include_blank => true %></p>
+  <p><%= form.text_field :code, :required => true %></p>
+  <p><%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :required => true, :include_blank => true %></p>
 </fieldset>
 
 <fieldset>

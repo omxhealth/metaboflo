@@ -32,12 +32,12 @@
 
 <fieldset>
   <legend>Past medical history</legend>
-  <p><%= form.check_box_group(:past_medical, medical_history_list, :per_row => 4) %></p>
+  <p><%= form.check_box_group(:past_medical, medical_history_list.sort, :per_row => 4) %></p>
 </fieldset>
 
 <fieldset>
   <legend>Symptoms</legend>
-  <p><%= form.check_box_group(:symptoms, symptoms_list, :per_row => 2) %></p>
+  <p><%= form.check_box_group(:symptoms, symptoms_list.sort, :per_row => 2) %></p>
 </fieldset>
 
 <fieldset>
