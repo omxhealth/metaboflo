@@ -33,7 +33,7 @@ class CohortsControllerTest < ActionController::TestCase
       end
       assert assigns(:cohort)
       assert assigns(:cohort).class.to_s == "#{type}Cohort"
-      assert_redirected_to cohort_path(assigns(:cohort))
+      assert_redirected_to assigns(:cohort)
     end
   end
 

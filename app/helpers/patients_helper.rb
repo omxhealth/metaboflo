@@ -2,7 +2,7 @@ module PatientsHelper
 
   def patient_tree(patient)
     Tree.new(:label => "Patient #{patient.code}", :url => patient_path(patient), :icon_open => tree_icon('patient.png'), :image_path => image_path('tmp').gsub(/\/tmp/, '')) do |tree|
-      tree << Node.new(:label => 'Medications', :link_to_remote => { :base => @controller, :controller => 'patients', :url => patient_medications_path(patient), :update => 'main' }, :icon_open => tree_icon('medicine.png'))
+      tree << Node.new(:label => 'Medications', :url => patient_medications_path(patient), :icon_open => tree_icon('medicine.png'))
       tree << Node.new(:label => 'Lab Tests', :url => patient_lab_tests_path(patient), :icon_open => tree_icon('test.png'))
       tree << Node.new(:label => 'Patient Evaluations', :url => patient_patient_evaluations_path(patient), :icon_open => tree_icon('evaluation.png'))
 
@@ -10,13 +10,6 @@ module PatientsHelper
       tree << cohort_sub_tree(patient) # Add the cohorts for this patient
     end
   end
-  
-  # :link_to_remote => {
-  #             :base =&gt; @controller,
-  #             :controller =&gt; "usuarios",
-  #             :update =&gt; "id_do_div",
-  #             :url =&gt;{ :action =&gt; 'adicionar', :c=&gt; 'variavel C', :a =&gt; 'variavel A'}
-  #           }
 
   protected
 

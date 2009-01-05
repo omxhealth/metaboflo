@@ -65,7 +65,7 @@ class ExperimentsControllerTest < ActionController::TestCase
       post :create, :sample_id => samples(:one), :experiment => {:name => 'test'}
     end
 
-    assert_redirected_to experiment_path(assigns(:experiment))
+    assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
   end
   
   def test_should_create_experiment_superuser
@@ -74,7 +74,7 @@ class ExperimentsControllerTest < ActionController::TestCase
       post :create, :sample_id => samples(:one), :experiment => {:name => 'test'}
     end
 
-    assert_redirected_to experiment_path(assigns(:experiment))
+    assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
   end
   
   def test_should_create_experiment_user
@@ -83,7 +83,7 @@ class ExperimentsControllerTest < ActionController::TestCase
       post :create, :sample_id => samples(:one), :experiment => {:name => 'test'}
     end
 
-    assert_redirected_to experiment_path(assigns(:experiment))
+    assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
   end
   
   def test_should_not_create_experiment
@@ -167,19 +167,19 @@ class ExperimentsControllerTest < ActionController::TestCase
   def test_should_update_experiment_administrator
     login_as :admin
     put :update, :sample_id => samples(:one), :id => experiments(:one).id, :experiment => { }
-    assert_redirected_to experiment_path(assigns(:experiment))
+    assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
   end
   
   def test_should_update_experiment_superuser
     login_as :superuser
     put :update, :sample_id => samples(:one), :id => experiments(:one).id, :experiment => { }
-    assert_redirected_to experiment_path(assigns(:experiment))
+    assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
   end
   
   def test_should_update_experiment_user
     login_as :user
     put :update, :sample_id => samples(:one), :id => experiments(:one).id, :experiment => { }
-    assert_redirected_to experiment_path(assigns(:experiment))
+    assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
   end
   
   def test_should_not_update_experiment

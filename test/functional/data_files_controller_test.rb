@@ -25,7 +25,7 @@ class DataFilesControllerTest < ActionController::TestCase
       post :create, :experiment_id => experiments(:one).id, :data_file => {:uploaded_data => ActionController::TestUploadedFile.new(path, mimetype), :data_file_type_id => data_file_types(:one).id }
     end
 
-    assert_redirected_to data_file_path(assigns(:data_file))
+    assert_redirected_to experiment_data_file_path(experiments(:one), assigns(:data_file))
   end
 
   def test_should_show_data_file
@@ -50,6 +50,6 @@ class DataFilesControllerTest < ActionController::TestCase
       delete :destroy, :id => data_files(:one).id, :experiment_id => experiments(:one).id
     end
 
-    assert_redirected_to data_files_path
+    assert_redirected_to experiment_data_files_path(experiments(:one))
   end
 end

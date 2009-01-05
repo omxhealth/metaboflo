@@ -90,6 +90,7 @@ class SamplesController < ApplicationController
   def destroy
     @sample.destroy
 
+    flash[:notice] = 'Sample was successfully deleted.'
     respond_to do |format|
       format.html { redirect_to(@parent.kind_of?(Sample) ? sample_samples_url(@parent) : patient_samples_url(@patient)) }
       format.xml  { head :ok }

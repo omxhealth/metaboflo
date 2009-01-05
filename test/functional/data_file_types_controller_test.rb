@@ -103,10 +103,11 @@ class DataFileTypesControllerTest < ActionController::TestCase
     assert_redirected_to data_file_types_path
   end
 
-  def test_should_update_data_file_type
+  def test_should_not_update_data_file_type_not_permitted
     login_as :user
     put :update, :id => data_file_types(:one).id, :data_file_type => { }
-    assert_redirected_to data_file_type_path(assigns(:data_file_type))
+    assert !assigns(:data_file_type)
+    assert_redirected_to data_file_types_path
   end
   
   def test_should_update_data_file_type_administrator

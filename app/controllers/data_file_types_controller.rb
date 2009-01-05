@@ -64,7 +64,7 @@ class DataFileTypesController < ApplicationController
 
     respond_to do |format|
       if @data_file_type.update_attributes(params[:data_file_type])
-        flash[:notice] = 'DataFileType was successfully updated.'
+        flash[:notice] = 'Data file type was successfully updated.'
         format.html { redirect_to(@data_file_type) }
         format.xml  { head :ok }
       else

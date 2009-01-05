@@ -206,11 +206,12 @@ class SamplesControllerTest < ActionController::TestCase
     login_as :user
     
     # no patient_id or sample_id
+    parent = samples(:one).parent
     assert_difference('Sample.count', -2) do
       delete :destroy, :id => samples(:one).id
     end
     
-    assert_redirected_to samples_path
+    assert_redirected_to patient_samples_path(parent)
   end
   
   def test_should_destroy_sample_patient_id
