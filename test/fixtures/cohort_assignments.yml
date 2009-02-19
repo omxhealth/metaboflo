@@ -2,22 +2,22 @@
 
 one:
   assignable: one
-  assignable_type: Patient
+  assignable_type: Animal
   cohort: one
 
 two:
   assignable: two
-  assignable_type: Patient
+  assignable_type: Animal
   cohort: one
 
 three:
   assignable: one
-  assignable_type: Patient
+  assignable_type: Animal
   cohort: two
   
 four:
   assignable: one
-  assignable_type: Patient
+  assignable_type: Animal
   cohort: three
 
 five:

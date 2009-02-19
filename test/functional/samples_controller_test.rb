@@ -25,8 +25,8 @@ class SamplesControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 3, assigns(:samples).size
     
-    # only samples for patient
-    get :index, :patient_id => patients(:one)
+    # only samples for animal
+    get :index, :animal_id => animals(:one)
     assert_equal 2, assigns(:samples).size
     
     # only samples (fractiosn) for sample
@@ -37,8 +37,8 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_get_new
     login_as :user
     
-    # with patient_id
-    get :new, :patient_id => patients(:one)
+    # with animal_id
+    get :new, :animal_id => animals(:one)
     assert_response :success
     
     # with sample_id
@@ -49,13 +49,13 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_not_get_new
     login_as :user
     
-    # no patient_id or sample_id
+    # no animal_id or sample_id
     get :new
     assert_redirected_to samples_path
     
-    # patient_id from other site
+    # animal_id from other site
     assert_raise ActiveRecord::RecordNotFound do
-      get :new, :patient_id => patients(:two)
+      get :new, :animal_id => animals(:two)
     end
     
     # sample_id from other site
@@ -67,12 +67,12 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_create_sample
     login_as :user
     
-    # with patient_id
+    # with animal_id
     assert_difference('Sample.count') do
-      post :create, :patient_id => patients(:one), :sample => { }
+      post :create, :animal_id => animals(:one), :sample => { }
     end
 
-    assert_redirected_to patient_sample_path(assigns(:parent), assigns(:sample))
+    assert_redirected_to animal_sample_path(assigns(:parent), assigns(:sample))
     
     # with sample_id
     assert_difference('Sample.count') do
@@ -85,7 +85,7 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_not_create_sample
     login_as :user
     
-    # no patient_id or sample_id
+    # no animal_id or sample_id
     assert_no_difference('Sample.count') do
       post :create, :sample => { }
     end
@@ -93,12 +93,12 @@ class SamplesControllerTest < ActionController::TestCase
 
     # invalid sample
     assert_no_difference('Sample.count') do
-      post :create, :sample => { :original_amount => '24fs' }, :patient_id => patients(:one).id
+      post :create, :sample => { :original_amount => '24fs' }, :animal_id => animals(:one).id
     end
     
-    # patient_id from other site
+    # animal_id from other site
     assert_raise ActiveRecord::RecordNotFound do
-      post :create, :patient_id => patients(:two), :sample => { }
+      post :create, :animal_id => animals(:two), :sample => { }
     end
     
     # sample_id from other site
@@ -110,12 +110,12 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_show_sample
     login_as :user
     
-    # no patient_id or sample_id
+    # no animal_id or sample_id
     get :show, :id => samples(:one)
     assert_response :success
     
-    # with patient_id
-    get :show, :patient_id => patients(:one), :id => samples(:one).id
+    # with animal_id
+    get :show, :animal_id => animals(:one), :id => samples(:one).id
     assert_response :success
     
     # with sample_id
@@ -126,9 +126,9 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_not_show_sample
     login_as :user2
     
-    # patient_id from other site
+    # animal_id from other site
     assert_raise ActiveRecord::RecordNotFound do
-      get :show, :patient_id => patients(:one), :id => samples(:one).id
+      get :show, :animal_id => animals(:one), :id => samples(:one).id
     end
     
     # sample_id from other site
@@ -140,12 +140,12 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_get_edit
     login_as :user
     
-    # no patient_id or sample_id
+    # no animal_id or sample_id
     get :edit, :id => samples(:one)
     assert_response :success
     
-    # with patient_id
-    get :edit, :patient_id => patients(:one), :id => samples(:one).id
+    # with animal_id
+    get :edit, :animal_id => animals(:one), :id => samples(:one).id
     assert_response :success
     
     # with sample_id
@@ -156,9 +156,9 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_not_get_edit
     login_as :user2
     
-    # patient_id from other site
+    # animal_id from other site
     assert_raise ActiveRecord::RecordNotFound do
-      get :edit, :patient_id => patients(:one), :id => samples(:one).id
+      get :edit, :animal_id => animals(:one), :id => samples(:one).id
     end
     
     # sample_id from other site
@@ -166,22 +166,22 @@ class SamplesControllerTest < ActionController::TestCase
       get :edit, :sample_id => samples(:one), :id => samples(:four).id
     end
 
-    # correct patient_id, but the sample is further down the tree (it is an aliquot)
+    # correct animal_id, but the sample is further down the tree (it is an aliquot)
     assert_raise ActiveRecord::RecordNotFound do
-      get :edit, :patient_id => patients(:one), :id => samples(:four).id
+      get :edit, :animal_id => animals(:one), :id => samples(:four).id
     end
   end
 
   def test_should_update_sample
     login_as :user
     
-    # no patient_id or sample_id
+    # no animal_id or sample_id
     put :update, :id => samples(:one).id, :sample => { }
-    assert_redirected_to patient_sample_path(assigns(:patient), assigns(:sample))
+    assert_redirected_to animal_sample_path(assigns(:animal), assigns(:sample))
     
-    # with patient_id
-    put :update, :patient_id => patients(:one), :id => samples(:one).id, :sample => { }
-    assert_redirected_to patient_sample_path(assigns(:parent), assigns(:sample))
+    # with animal_id
+    put :update, :animal_id => animals(:one), :id => samples(:one).id, :sample => { }
+    assert_redirected_to animal_sample_path(assigns(:parent), assigns(:sample))
     
     # with sample_id
     put :update, :sample_id => samples(:one), :id => samples(:four).id, :sample => { }
@@ -191,9 +191,9 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_not_update_sample
     login_as :user2
     
-    # patient_id from other site
+    # animal_id from other site
     assert_raise ActiveRecord::RecordNotFound do
-      put :update, :patient_id => patients(:one), :id => samples(:one).id, :sample => { }
+      put :update, :animal_id => animals(:one), :id => samples(:one).id, :sample => { }
     end
     
     # sample_id from other site
@@ -205,24 +205,24 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_destroy_sample
     login_as :user
     
-    # no patient_id or sample_id
+    # no animal_id or sample_id
     parent = samples(:one).parent
     assert_difference('Sample.count', -2) do
       delete :destroy, :id => samples(:one).id
     end
     
-    assert_redirected_to patient_samples_path(parent)
+    assert_redirected_to animal_samples_path(parent)
   end
   
-  def test_should_destroy_sample_patient_id
+  def test_should_destroy_sample_animal_id
     login_as :user
     
-    # with patient_id
+    # with animal_id
     assert_difference('Sample.count', -2) do
-      delete :destroy, :patient_id => patients(:one).id, :id => samples(:one).id
+      delete :destroy, :animal_id => animals(:one).id, :id => samples(:one).id
     end
 
-    assert_redirected_to patient_samples_path(assigns(:patient))
+    assert_redirected_to animal_samples_path(assigns(:animal))
   end
   
   def test_should_destroy_sample_sample_id
@@ -239,14 +239,14 @@ class SamplesControllerTest < ActionController::TestCase
   def test_should_not_destroy_sample
     login_as :user2
     
-    # no patient_id or sample_id
+    # no animal_id or sample_id
     assert_raise ActiveRecord::RecordNotFound do
       delete :destroy, :id => samples(:one).id
     end
     
-    # with patient_id
+    # with animal_id
     assert_raise ActiveRecord::RecordNotFound do
-      delete :destroy, :patient_id => patients(:one).id, :id => samples(:one).id
+      delete :destroy, :animal_id => animals(:one).id, :id => samples(:one).id
     end
     
     # with sample_id

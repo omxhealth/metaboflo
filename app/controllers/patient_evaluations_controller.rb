@@ -1,96 +1,96 @@
-class PatientEvaluationsController < ApplicationController
-  before_filter :find_patient
+class AnimalEvaluationsController < ApplicationController
+  before_filter :find_animal
 
-  # GET /patient_evaluations
-  # GET /patient_evaluations.xml
+  # GET /animal_evaluations
+  # GET /animal_evaluations.xml
   def index
-    @patient_evaluations = @patient.patient_evaluations.find(:all, :order => 'evaluated_on DESC')
+    @animal_evaluations = @animal.animal_evaluations.find(:all, :order => 'evaluated_on DESC')
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @patient_evaluations }
+      format.xml  { render :xml => @animal_evaluations }
     end
   end
 
-  # GET /patient_evaluations/1
-  # GET /patient_evaluations/1.xml
+  # GET /animal_evaluations/1
+  # GET /animal_evaluations/1.xml
   def show
-    @patient_evaluation = @patient.patient_evaluations.find(params[:id])
+    @animal_evaluation = @animal.animal_evaluations.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @patient_evaluation }
+      format.xml  { render :xml => @animal_evaluation }
     end
   end
 
-  # GET /patient_evaluations/new
-  # GET /patient_evaluations/new.xml
+  # GET /animal_evaluations/new
+  # GET /animal_evaluations/new.xml
   def new
-    @patient_evaluation = PatientEvaluation.new
+    @animal_evaluation = AnimalEvaluation.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @patient_evaluation }
+      format.xml  { render :xml => @animal_evaluation }
     end
   end
 
-  # GET /patient_evaluations/1/edit
+  # GET /animal_evaluations/1/edit
   def edit
-    @patient_evaluation = @patient.patient_evaluations.find(params[:id])
+    @animal_evaluation = @animal.animal_evaluations.find(params[:id])
   end
 
-  # POST /patient_evaluations
-  # POST /patient_evaluations.xml
+  # POST /animal_evaluations
+  # POST /animal_evaluations.xml
   def create
-    @patient_evaluation = PatientEvaluation.new(params[:patient_evaluation])
+    @animal_evaluation = AnimalEvaluation.new(params[:animal_evaluation])
 
-    @patient_evaluation.patient = @patient
+    @animal_evaluation.animal = @animal
 
     respond_to do |format|
-      if @patient_evaluation.save
-        flash[:notice] = 'PatientEvaluation was successfully created.'
-        format.html { redirect_to(patient_patient_evaluation_url(@patient, @patient_evaluation)) }
-        format.xml  { render :xml => @patient_evaluation, :status => :created, :location => @patient_evaluation }
+      if @animal_evaluation.save
+        flash[:notice] = 'AnimalEvaluation was successfully created.'
+        format.html { redirect_to(animal_animal_evaluation_url(@animal, @animal_evaluation)) }
+        format.xml  { render :xml => @animal_evaluation, :status => :created, :location => @animal_evaluation }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @patient_evaluation.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @animal_evaluation.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /patient_evaluations/1
-  # PUT /patient_evaluations/1.xml
+  # PUT /animal_evaluations/1
+  # PUT /animal_evaluations/1.xml
   def update
-    @patient_evaluation = @patient.patient_evaluations.find(params[:id])
+    @animal_evaluation = @animal.animal_evaluations.find(params[:id])
 
     #Check if symptoms and past_medical is empty
     if !params.has_key?(:symptoms)
-      @patient_evaluation.symptoms = []
+      @animal_evaluation.symptoms = []
     end
     if !params.has_key?(:past_medical)
-      @patient_evaluation.past_medical = []
+      @animal_evaluation.past_medical = []
     end
 
     respond_to do |format|
-      if @patient_evaluation.update_attributes(params[:patient_evaluation])
-        flash[:notice] = 'PatientEvaluation was successfully updated.'
-        format.html { redirect_to(patient_patient_evaluation_url(@patient, @patient_evaluation)) }
+      if @animal_evaluation.update_attributes(params[:animal_evaluation])
+        flash[:notice] = 'AnimalEvaluation was successfully updated.'
+        format.html { redirect_to(animal_animal_evaluation_url(@animal, @animal_evaluation)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @patient_evaluation.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @animal_evaluation.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /patient_evaluations/1
-  # DELETE /patient_evaluations/1.xml
+  # DELETE /animal_evaluations/1
+  # DELETE /animal_evaluations/1.xml
   def destroy
-    @patient_evaluation = @patient.patient_evaluations.find(params[:id])
-    @patient_evaluation.destroy
+    @animal_evaluation = @animal.animal_evaluations.find(params[:id])
+    @animal_evaluation.destroy
 
     respond_to do |format|
-      format.html { redirect_to(patient_patient_evaluations_url(@patient)) }
+      format.html { redirect_to(animal_animal_evaluations_url(@animal)) }
       format.xml  { head :ok }
     end
   end

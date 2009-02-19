@@ -1,7 +1,7 @@
 class CreateMedications < ActiveRecord::Migration
   def self.up
     create_table :medications do |t|
-      t.references :patient
+      t.references :animal
       t.string :drug
       t.date :started_on
       t.date :stopped_on

@@ -8,16 +8,16 @@ class SampleTest < ActiveSupport::TestCase
   
   def test_taken_on
     #Birthdate == taken_on
-    sample = Sample.new(:collected_on => patients(:one).birthdate, :patient => patients(:one))
+    sample = Sample.new(:collected_on => animals(:one).birthdate, :animal => animals(:one))
     assert sample.valid?
     
     #Birthdate > taken_on
-    sample.collected_on = patients(:one).birthdate - 1
+    sample.collected_on = animals(:one).birthdate - 1
     assert !sample.valid?
     assert sample.errors.invalid?(:collected_on)
 
     #Birthdate < taken_on
-    sample.collected_on = patients(:one).birthdate + 1
+    sample.collected_on = animals(:one).birthdate + 1
     assert sample.valid?
 
 
@@ -26,21 +26,21 @@ class SampleTest < ActiveSupport::TestCase
     sample.valid?
     assert !sample.errors.invalid?(:collected_on)
 
-    sample.patient = patients(:one)
+    sample.animal = animals(:one)
     sample.valid?
     assert !sample.errors.invalid?(:collected_on)
 
-    sample.collected_on = patients(:one).birthdate
+    sample.collected_on = animals(:one).birthdate
     
     #When birthdate is nil, still valid
-    sample.patient.birthdate = nil
+    sample.animal.birthdate = nil
     sample.valid?
     assert !sample.errors.invalid?(:collected_on)
   end
   
   def test_root
-    assert_equal patients(:one), samples(:one).root
-    assert_equal patients(:one), samples(:four).root
+    assert_equal animals(:one), samples(:one).root
+    assert_equal animals(:one), samples(:four).root
   end
   
   def test_theoretical_amount

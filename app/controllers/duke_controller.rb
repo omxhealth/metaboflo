@@ -16,7 +16,7 @@ class DukeController < ApplicationController
     @stats = []
     
     @stats << ["Number of Users", User.count]
-    @stats << ["Number of Patients", Patient.count]
+    @stats << ["Number of Animals", Animal.count]
     @stats << ["Number of Samples", Sample.count]
     @stats << ["Number of Experiments", Experiment.count]
   end

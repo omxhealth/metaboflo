@@ -34,7 +34,7 @@ one:
   c_reactive_protein_value: 
   c_reactive_protein_unit: 
   c_reactive_protein_tested_at: 
-  patient: one
+  animal: one
   collected_at: 2008-11-26 17:29:19
 
 two:
@@ -71,7 +71,7 @@ two:
   c_reactive_protein_value: 
   c_reactive_protein_unit: 
   c_reactive_protein_tested_at:
-  patient: one
+  animal: one
   collected_at: 2008-11-26 17:29:19
 
 three:
@@ -105,5 +105,5 @@ three:
   c_reactive_protein_value: 2.42
   c_reactive_protein_unit: mcg/mL
   c_reactive_protein_tested_at: 2008-11-26 17:29:19
-  patient: two
+  animal: two
   collected_at: 2008-11-26 17:29:19

@@ -1,7 +1,7 @@
 <%= form.error_messages %>
 
 <% if @sample.new_record? %>
-<%= form.hidden_field(:patient_id) if @sample.patient %>
+<%= form.hidden_field(:animal_id) if @sample.animal %>
 <%= form.hidden_field(:parent_sample_id) if @sample.sample %>
 <% end %>
 

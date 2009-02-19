@@ -76,7 +76,7 @@
   priority_id: 464995676
   subject: Paper 77 Classifier
   id: 2
-  description: Create classifier using patients from cohort 'Paper 77'
+  description: Create classifier using animals from cohort 'Paper 77'
   category_id: 944538329
   due_date: 2009-03-31
   done_ratio: 0

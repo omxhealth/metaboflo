@@ -1,6 +1,6 @@
-class CreatePatients < ActiveRecord::Migration
+class CreateAnimals < ActiveRecord::Migration
   def self.up
-    create_table :patients do |t|
+    create_table :animals do |t|
       t.references :site
       t.string :code
       t.string :first_initial
@@ -18,6 +18,6 @@ class CreatePatients < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :patients
+    drop_table :animals
   end
 end

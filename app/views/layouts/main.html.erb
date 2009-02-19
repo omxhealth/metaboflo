@@ -27,7 +27,7 @@
   </script>
 </head>
 <body class="yui-skin-sam">
-  <% sidebar = !@patient.nil? && !@patient.new_record? %>
+  <% sidebar = !@animal.nil? && !@animal.new_record? %>
 
   <div id="doc3" <%= 'class="yui-t3"' if sidebar %>> 
     <div id="hd"><!-- header -->
@@ -58,7 +58,7 @@
               <%= link_to 'Home', root_path, :class => 'yuimenubaritemlabel' %>
             </li>
             <li class="yuimenubaritem">
-              <%= link_to 'Patients', patients_path, :class => 'yuimenubaritemlabel' %>
+              <%= link_to 'Animals', animals_path, :class => 'yuimenubaritemlabel' %>
             </li>
             <li class="yuimenubaritem">
               <%= link_to 'Samples', samples_path, :class => 'yuimenubaritemlabel' %>
@@ -66,11 +66,11 @@
             <li class="yuimenubaritem">
               <%= link_to 'Experiments', experiments_path, :class => 'yuimenubaritemlabel' %>
             </li>
-            <li class="yuimenubaritem"><%= link_to 'Cohorts', patient_cohorts_path, :class => 'yuimenubaritemlabel' %>
+            <li class="yuimenubaritem"><%= link_to 'Cohorts', animal_cohorts_path, :class => 'yuimenubaritemlabel' %>
               <div id="cohorts" class="yuimenu">
                 <div class="bd">                    
                   <ul>
-                    <li class="yuimenuitem"><%= link_to 'Patient Cohorts', patient_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'Animal Cohorts', animal_cohorts_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Sample Cohorts', sample_cohorts_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Experiment Cohorts', experiment_cohorts_path, :class => 'yuimenuitemlabel' %></li>
                   </ul>                    
@@ -134,8 +134,8 @@
       <div class="yui-b"><!-- Navigation block -->
         <% if sidebar -%>
         <div id="sidebar">
-          <h2>Patient Summary</h2>
-          <%= patient_tree(@patient) %>
+          <h2>Animal Summary</h2>
+          <%= animal_tree(@animal) %>
         </div>
         <% end %>
       </div>

@@ -1,5 +1,5 @@
 class LabTest < ActiveRecord::Base
-  belongs_to :patient
+  belongs_to :animal
   
-  validates_presence_of :patient_id
+  validates_presence_of :animal_id
 end

@@ -1,7 +1,7 @@
-class PatientEvaluation < ActiveRecord::Base
-  belongs_to :patient
+class AnimalEvaluation < ActiveRecord::Base
+  belongs_to :animal
   
-  validates_presence_of :patient_id
+  validates_presence_of :animal_id
   
   serialize :past_medical, Array
   serialize :symptoms, Array

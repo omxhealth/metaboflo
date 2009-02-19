@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  # map.resources :patient_evaluations
+  # map.resources :animal_evaluations
 
   #  map.resources :medications
 
@@ -33,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :samples, :has_many => [ :samples, :experiments, :cohort_assignments ]
 
-  map.resources :patients, :has_many => [ :samples, :cohort_assignments, :lab_tests, :medications, :patient_evaluations ]
+  map.resources :animals, :has_many => [ :samples, :cohort_assignments, :lab_tests, :medications, :animal_evaluations ]
 
   map.resources :cohorts, :has_many => [ :cohort_assignments ]
   

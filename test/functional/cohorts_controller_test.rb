@@ -39,7 +39,7 @@ class CohortsControllerTest < ActionController::TestCase
 
   def test_should_show_cohort
     login_as :user
-    get :show, :id => cohorts(:one).id # Patient Cohort
+    get :show, :id => cohorts(:one).id # Animal Cohort
     assert_response :success
 
     get :show, :id => cohorts(:five).id # Experiment Cohort

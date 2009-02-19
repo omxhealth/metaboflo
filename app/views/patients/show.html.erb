@@ -1,51 +1,51 @@
-<h1>Showing patient <%= @patient %></h1>
+<h1>Showing animal <%= @animal %></h1>
 
 <p>
   <b>Code:</b>
-  <%=h @patient.code %>
+  <%=h @animal.code %>
 </p>
 
 <p>
 	<b>Site:</b>
-	<%=h @patient.site.name %>
+	<%=h @animal.site.name %>
 </p>
 
 <p>
   <b>Initials:</b>
-  <%=h @patient.first_initial %><%=h @patient.middle_initial %> <%=h @patient.last_initial %>
+  <%=h @animal.first_initial %><%=h @animal.middle_initial %> <%=h @animal.last_initial %>
 </p>
 
 <p>
   <b>Birthdate:</b>
-  <%=h @patient.birthdate %>
+  <%=h @animal.birthdate %>
 </p>
 
 <p>
 	<b>Blood type:</b>
-	<%=h @patient.blood_type %>
+	<%=h @animal.blood_type %>
 </p>
 
 <p>
   <b>Gender:</b>
-  <%=h @patient.gender %>
+  <%=h @animal.gender %>
 </p>
 
 <p>
 	<b>Race:</b>
-	<%=h @patient.race %>
+	<%=h @animal.race %>
 </p>
 
 <p>
 	<b>Practitioner:</b>
-	<%=h @patient.practitioner %>
+	<%=h @animal.practitioner %>
 </p>
 
 <p>
 	<b>Notes:</b>
-	<%=h @patient.notes %>
+	<%=h @animal.notes %>
 </p>
 
 
 <br />
 
-<%= edit_link edit_patient_path(@patient) %>
+<%= edit_link edit_animal_path(@animal) %>

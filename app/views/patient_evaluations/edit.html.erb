@@ -1,6 +1,6 @@
-<h1>Editing Patient Evaluation</h1>
+<h1>Editing Animal Evaluation</h1>
 
-<% labelled_tabular_form_for([@patient, @patient_evaluation]) do |form| %>
+<% labelled_tabular_form_for([@animal, @animal_evaluation]) do |form| %>
   <%= render :partial => form %>
 
   <p>
@@ -8,4 +8,4 @@
   </p>
 <% end %>
 
-<%= show_link patient_patient_evaluation_path(@patient, @patient_evaluation) %>
+<%= show_link animal_animal_evaluation_path(@animal, @animal_evaluation) %>

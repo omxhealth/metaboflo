@@ -1,4 +1,4 @@
-class Patient < ActiveRecord::Base
+class Animal < ActiveRecord::Base
   belongs_to :site
   
   has_many :samples, :dependent => :destroy
@@ -7,7 +7,7 @@ class Patient < ActiveRecord::Base
   has_many :cohorts, :through => :cohort_assignments
   
   has_many :medications, :dependent => :destroy
-  has_many :patient_evaluations, :dependent => :destroy
+  has_many :animal_evaluations, :dependent => :destroy
   has_many :lab_tests, :order => 'collected_at ASC', :dependent => :destroy
   
   validates_presence_of :code, :site_id
@@ -21,7 +21,7 @@ class Patient < ActiveRecord::Base
     "#{self.first_initial} #{self.middle_initial} #{self.last_initial}".gsub(/\s+/, " ").strip
   end
   
-  # Required so that Experiments, Samples, and Patients can be displayed in cohorts
+  # Required so that Experiments, Samples, and Animals can be displayed in cohorts
   def to_s
     return "#{self.code} (initials: #{self.name})"
   end

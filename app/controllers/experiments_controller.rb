@@ -89,8 +89,8 @@ class ExperimentsController < ApplicationController
   def find_sample
     if action_name != 'index' || !params[:sample_id].blank?
       @sample = Sample.find(params[:sample_id])
-      params[:patient_id] = @sample.root.id
-      find_patient
+      params[:animal_id] = @sample.root.id
+      find_animal
     end
   end
 
@@ -98,8 +98,8 @@ class ExperimentsController < ApplicationController
     @experiment = Experiment.find(params[:id])
     @sample = @experiment.sample
     current_sample = @sample
-    while @patient.nil?
-      @patient = current_sample.patient
+    while @animal.nil?
+      @animal = current_sample.animal
       current_sample = current_sample.sample
     end
   end

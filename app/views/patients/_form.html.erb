@@ -1,13 +1,13 @@
 <%= form.error_messages %>
 
 <fieldset>
-  <legend>Patient Identification</legend>
+  <legend>Animal Identification</legend>
   <p><%= form.text_field :code, :required => true %></p>
   <p><%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :required => true, :include_blank => true %></p>
 </fieldset>
 
 <fieldset>
-  <legend>Patient Personal Details</legend>
+  <legend>Animal Personal Details</legend>
   <p>
     <%= form.text_field :first_initial, :size => 2, :maxlength => 1, :label => 'Initials' %> 
     <%= form.text_field :middle_initial, :size => 2, :maxlength => 1, :no_label => true %> 

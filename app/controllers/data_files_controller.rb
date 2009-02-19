@@ -80,7 +80,7 @@ class DataFilesController < ApplicationController
     if params[:experiment_id]
       @experiment = Experiment.find(params[:experiment_id])
       @sample = @experiment.sample
-      @patient = @sample.patient
+      @animal = @sample.animal
     end
   end  
 end

@@ -1,26 +1,26 @@
 require 'test_helper'
 
-class PatientEvaluationsControllerTest < ActionController::TestCase
+class AnimalEvaluationsControllerTest < ActionController::TestCase
   def test_should_get_index_administrator
     login_as :admin
-    get :index, :patient_id => patients(:one)
+    get :index, :animal_id => animals(:one)
     assert_response :success
-    assert_equal 2, assigns(:patient_evaluations).size
+    assert_equal 2, assigns(:animal_evaluations).size
   end
   
   def test_should_get_index_superuser
     login_as :superuser
-    get :index, :patient_id => patients(:one)
+    get :index, :animal_id => animals(:one)
     assert_response :success
-    assert_equal 2, assigns(:patient_evaluations).size
+    assert_equal 2, assigns(:animal_evaluations).size
   end
   
   def test_should_get_index_user
     login_as :user
     
-    get :index, :patient_id => patients(:one)
+    get :index, :animal_id => animals(:one)
     assert_response :success
-    assert_equal 2, assigns(:patient_evaluations).size
+    assert_equal 2, assigns(:animal_evaluations).size
   end
   
   def test_should_not_get_index
@@ -28,217 +28,217 @@ class PatientEvaluationsControllerTest < ActionController::TestCase
     
     # wrong site
     assert_raise ActiveRecord::RecordNotFound do
-      get :index, :patient_id => patients(:two)
+      get :index, :animal_id => animals(:two)
     end
   end
 
   def test_should_get_new_administrator
     login_as :admin
-    get :new, :patient_id => patients(:one)
+    get :new, :animal_id => animals(:one)
     assert_response :success
   end
   
   def test_should_get_new_superuser
     login_as :superuser
-    get :new, :patient_id => patients(:one)
+    get :new, :animal_id => animals(:one)
     assert_response :success
   end
   
   def test_should_get_new_user
     login_as :user
-    get :new, :patient_id => patients(:one)
+    get :new, :animal_id => animals(:one)
     assert_response :success
   end
   
   def test_should_not_get_new_user
     login_as :user
     
-    # # no patient_id
+    # # no animal_id
     # assert_raise ActiveRecord::RecordNotFound do
     #   get :new
     # end
     
     # wrong site
     assert_raise ActiveRecord::RecordNotFound do
-      get :new, :patient_id => patients(:two)
+      get :new, :animal_id => animals(:two)
     end
   end
 
-  def test_should_create_patient_evaluation_administrator
+  def test_should_create_animal_evaluation_administrator
     login_as :admin
-    assert_difference('PatientEvaluation.count') do
-      post :create, :patient_id => patients(:one)
+    assert_difference('AnimalEvaluation.count') do
+      post :create, :animal_id => animals(:one)
     end
 
-    assert_redirected_to patient_patient_evaluation_path(assigns(:patient), assigns(:patient_evaluation))
+    assert_redirected_to animal_animal_evaluation_path(assigns(:animal), assigns(:animal_evaluation))
   end
   
-  def test_should_create_patient_evaluation_superuser
+  def test_should_create_animal_evaluation_superuser
     login_as :superuser
-    assert_difference('PatientEvaluation.count') do
-      post :create, :patient_id => patients(:one)
+    assert_difference('AnimalEvaluation.count') do
+      post :create, :animal_id => animals(:one)
     end
 
-    assert_redirected_to patient_patient_evaluation_path(assigns(:patient), assigns(:patient_evaluation))
+    assert_redirected_to animal_animal_evaluation_path(assigns(:animal), assigns(:animal_evaluation))
   end
   
-  def test_should_create_patient_evaluation_user
+  def test_should_create_animal_evaluation_user
     login_as :user
-    assert_difference('PatientEvaluation.count') do
-      post :create, :patient_id => patients(:one)
+    assert_difference('AnimalEvaluation.count') do
+      post :create, :animal_id => animals(:one)
     end
 
-    assert_redirected_to patient_patient_evaluation_path(assigns(:patient), assigns(:patient_evaluation))
+    assert_redirected_to animal_animal_evaluation_path(assigns(:animal), assigns(:animal_evaluation))
   end
   
-  def test_should_not_create_patient_evaluation
+  def test_should_not_create_animal_evaluation
     login_as :user
     
-    # # no patient_id
+    # # no animal_id
     # assert_raise ActiveRecord::RecordNotFound do
     #   post :create
     # end
     
     # wrong site
     assert_raise ActiveRecord::RecordNotFound do
-      post :create, :patient_id => patients(:two)
+      post :create, :animal_id => animals(:two)
     end
   end
   
-  def test_should_show_patient_evaluation_administrator
+  def test_should_show_animal_evaluation_administrator
     login_as :admin
-    get :show, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    get :show, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     assert_response :success
   end
   
-  def test_should_show_patient_evaluation_superuser
+  def test_should_show_animal_evaluation_superuser
     login_as :superuser
-    get :show, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    get :show, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     assert_response :success
   end
   
-  def test_should_show_patient_evaluation_user
+  def test_should_show_animal_evaluation_user
     login_as :user
-    get :show, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    get :show, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     assert_response :success
   end
   
-  def test_should_not_show_patient_evaluation
+  def test_should_not_show_animal_evaluation
     login_as :user
     
-    # # no patient id
+    # # no animal id
     # assert_raise ActiveRecord::RecordNotFound do
-    #   get :show, :id => patient_evaluations(:one).id
+    #   get :show, :id => animal_evaluations(:one).id
     # end
     
     # wrong site
     assert_raise ActiveRecord::RecordNotFound do
-      get :show, :patient_id => patients(:two), :id => patient_evaluations(:two).id
+      get :show, :animal_id => animals(:two), :id => animal_evaluations(:two).id
     end
   end
 
   def test_should_get_edit_admin
     login_as :admin
-    get :edit, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    get :edit, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     assert_response :success
   end
   
   def test_should_get_edit_superuser
     login_as :superuser
-    get :edit, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    get :edit, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     assert_response :success
   end
   
   def test_should_get_edit_user
     login_as :user
-    get :edit, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    get :edit, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     assert_response :success
   end
   
   def test_should_not_get_edit
     login_as :user
     
-    # # no patient id
+    # # no animal id
     # assert_raise ActiveRecord::RecordNotFound do
-    #   get :edit, :id => patient_evaluations(:one).id
+    #   get :edit, :id => animal_evaluations(:one).id
     # end
     
     # wrong site
     assert_raise ActiveRecord::RecordNotFound do
-      get :edit, :patient_id => patients(:two), :id => patient_evaluations(:two).id
+      get :edit, :animal_id => animals(:two), :id => animal_evaluations(:two).id
     end
   end
 
-  def test_should_update_patient_evaluation_administrator
+  def test_should_update_animal_evaluation_administrator
     login_as :admin
-    put :update, :patient_id => patients(:one), :id => patient_evaluations(:one).id, :patient_evaluation => { }
-    assert_redirected_to patient_patient_evaluation_path(assigns(:patient), assigns(:patient_evaluation))
+    put :update, :animal_id => animals(:one), :id => animal_evaluations(:one).id, :animal_evaluation => { }
+    assert_redirected_to animal_animal_evaluation_path(assigns(:animal), assigns(:animal_evaluation))
   end
   
-  def test_should_update_patient_evaluation_superuser
+  def test_should_update_animal_evaluation_superuser
     login_as :superuser
-    put :update, :patient_id => patients(:one), :id => patient_evaluations(:one).id, :patient_evaluation => { }
-    assert_redirected_to patient_patient_evaluation_path(assigns(:patient), assigns(:patient_evaluation))
+    put :update, :animal_id => animals(:one), :id => animal_evaluations(:one).id, :animal_evaluation => { }
+    assert_redirected_to animal_animal_evaluation_path(assigns(:animal), assigns(:animal_evaluation))
   end
   
-  def test_should_update_patient_evaluation_user
+  def test_should_update_animal_evaluation_user
     login_as :user
-    put :update, :patient_id => patients(:one), :id => patient_evaluations(:one).id, :patient_evaluation => { }
-    assert_redirected_to patient_patient_evaluation_path(assigns(:patient), assigns(:patient_evaluation))
+    put :update, :animal_id => animals(:one), :id => animal_evaluations(:one).id, :animal_evaluation => { }
+    assert_redirected_to animal_animal_evaluation_path(assigns(:animal), assigns(:animal_evaluation))
   end
   
-  def test_should_not_update_patient_evaluation_user
+  def test_should_not_update_animal_evaluation_user
     login_as :user
     
-    # # no patient_id
+    # # no animal_id
     # assert_raise ActiveRecord::RecordNotFound do
-    #   put :update, :id => patient_evaluations(:one).id, :patient_evaluation => { }
+    #   put :update, :id => animal_evaluations(:one).id, :animal_evaluation => { }
     # end
     
     # wrong site
     assert_raise ActiveRecord::RecordNotFound do
-      put :update, :patient_id => patients(:two), :id => patient_evaluations(:two).id, :patient_evaluation => { }
+      put :update, :animal_id => animals(:two), :id => animal_evaluations(:two).id, :animal_evaluation => { }
     end
   end
 
-  def test_should_destroy_patient_evaluation_administrator
+  def test_should_destroy_animal_evaluation_administrator
     login_as :admin
-    assert_difference('PatientEvaluation.count', -1) do
-      delete :destroy, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    assert_difference('AnimalEvaluation.count', -1) do
+      delete :destroy, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     end
 
-    assert_redirected_to patient_patient_evaluations_path(assigns(:patient))
+    assert_redirected_to animal_animal_evaluations_path(assigns(:animal))
   end
   
-  def test_should_destroy_patient_evaluation_superuser
+  def test_should_destroy_animal_evaluation_superuser
     login_as :superuser
-    assert_difference('PatientEvaluation.count', -1) do
-      delete :destroy, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    assert_difference('AnimalEvaluation.count', -1) do
+      delete :destroy, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     end
 
-    assert_redirected_to patient_patient_evaluations_path(assigns(:patient))
+    assert_redirected_to animal_animal_evaluations_path(assigns(:animal))
   end
   
-  def test_should_destroy_patient_evaluation_user
+  def test_should_destroy_animal_evaluation_user
     login_as :user
-    assert_difference('PatientEvaluation.count', -1) do
-      delete :destroy, :patient_id => patients(:one), :id => patient_evaluations(:one).id
+    assert_difference('AnimalEvaluation.count', -1) do
+      delete :destroy, :animal_id => animals(:one), :id => animal_evaluations(:one).id
     end
 
-    assert_redirected_to patient_patient_evaluations_path(assigns(:patient))
+    assert_redirected_to animal_animal_evaluations_path(assigns(:animal))
   end
   
-  def test_should_not_destroy_patient_evaluation
+  def test_should_not_destroy_animal_evaluation
     login_as :user
 
-    # # no patient_id
+    # # no animal_id
     # assert_raise ActiveRecord::RecordNotFound do
-    #   delete :destroy, :id => patient_evaluations(:one).id
+    #   delete :destroy, :id => animal_evaluations(:one).id
     # end
     
     # wrong site
     assert_raise ActiveRecord::RecordNotFound do
-      delete :destroy, :patient_id => patients(:two), :id => patient_evaluations(:two).id
+      delete :destroy, :animal_id => animals(:two), :id => animal_evaluations(:two).id
     end
   end
 end

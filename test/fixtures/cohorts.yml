@@ -2,18 +2,18 @@
 
 one:
   name: Cancer Study 2A
-  type: PatientCohort
+  type: AnimalCohort
   description: A study of cancer
 
 two:
   name: Metabolomics Study
-  type: PatientCohort
-  description: Group of patients
+  type: AnimalCohort
+  description: Group of animals
 
 three:
   name: Heart Disease Study
-  type: PatientCohort
-  description: Group of patients
+  type: AnimalCohort
+  description: Group of animals
 
 four:
   name: Soylent Green Samples

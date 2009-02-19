@@ -7,7 +7,7 @@
 </fieldset>
 
 <fieldset>
-  <legend>Patient Personal Details</legend>
+  <legend>Animal Personal Details</legend>
   <p><%= form.text_field :education %></p>
   <p><%= form.select :marital_status, ['Single', 'Married', 'Separated', 'Divorced', 'Widowed'], :include_blank => true %></p>
   <p><%= form.text_field :num_children, :size => 5, :label => 'Number of children' %></p>
@@ -22,12 +22,12 @@
   <legend>Health Profile</legend>
   <p><%= form.text_field :height, :size => 5 %> inches</p>
   <p><%= form.text_field :weight, :size => 5 %> lbs</p>
-  <p><%= form.check_box :current_smoker, :label => 'Patient is a smoker?', :onclick => "$('smoker_length').toggle()" %></p>
+  <p><%= form.check_box :current_smoker, :label => 'Animal is a smoker?', :onclick => "$('smoker_length').toggle()" %></p>
   <p id="smoker_length"><%= form.text_field :past_smoker, :size => 4, :label => 'If quit, how long ago?' %> years</p>
   <p><%= form.text_field :drinking_weekly, :size => 4, :label => 'Average alcohol intake' %> drinks per week</p>
   <p><%= form.text_field :exercise_weekly, :size => 4, :label => 'Average level of excercise' %> days per week</p>
   <p><%= form.text_field :hours_sleep, :size => 4, :label => 'Average sleep' %> hours per night</p>
-  <p><%= form.check_box :enough_sleep, :label => 'Patient feels they get enough sleep?' %></p>
+  <p><%= form.check_box :enough_sleep, :label => 'Animal feels they get enough sleep?' %></p>
 </fieldset>
 
 <fieldset>
@@ -44,7 +44,7 @@
   <legend>Family History</legend>
 
   <% ['father', 'mother'].each do |parent| %>
-  <% living = @patient_evaluation.send("#{parent}_death_age").blank? %>
+  <% living = @animal_evaluation.send("#{parent}_death_age").blank? %>
   <p>
     <%= label_tag "#{parent}_living", "#{parent.titlecase} is alive?" %>
     <%= check_box_tag "#{parent}_living", nil, living, :onclick => "$('#{parent}_living_inputs').toggle(); $('#{parent}_dead_inputs').toggle()" %>

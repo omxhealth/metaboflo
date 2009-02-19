@@ -42,7 +42,7 @@ class CreateLabTests < ActiveRecord::Migration
       t.string :c_reactive_protein_unit
       t.datetime :c_reactive_protein_tested_at
       
-      t.references :patient
+      t.references :animal
       t.datetime :collected_at
       t.text :notes
       

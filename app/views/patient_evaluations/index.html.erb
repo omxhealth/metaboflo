@@ -1,15 +1,15 @@
-<h1>All Patient Evaluations for Patient '<%= @patient.code %>'</h1>
+<h1>All Animal Evaluations for Animal '<%= @animal.code %>'</h1>
 
-<% for patient_evaluation in @patient_evaluations %>
+<% for animal_evaluation in @animal_evaluations %>
   <table class="summary">
 
-    <tr><td><%= h patient_evaluation.evaluated_on %></td><td><%= show_link patient_patient_evaluation_path(@patient, patient_evaluation) %> | <%= edit_link edit_patient_patient_evaluation_path(@patient, patient_evaluation) %> | <%= destroy_link patient_patient_evaluation_path(@patient, patient_evaluation) %></td></tr>
+    <tr><td><%= h animal_evaluation.evaluated_on %></td><td><%= show_link animal_animal_evaluation_path(@animal, animal_evaluation) %> | <%= edit_link edit_animal_animal_evaluation_path(@animal, animal_evaluation) %> | <%= destroy_link animal_animal_evaluation_path(@animal, animal_evaluation) %></td></tr>
 
-  	<tr><td>Diagnosis:</td><td><%=h patient_evaluation.diagnosis %></td></tr>
+  	<tr><td>Diagnosis:</td><td><%=h animal_evaluation.diagnosis %></td></tr>
   	
-  	<tr><td>BMI:</td><td><%=h BMI(patient_evaluation.height, patient_evaluation.weight) %></td></tr>
+  	<tr><td>BMI:</td><td><%=h BMI(animal_evaluation.height, animal_evaluation.weight) %></td></tr>
   	
-  	<tr><td>Symptoms:</td><td><%=h patient_evaluation.symptoms.join(', ') %></td></tr>
+  	<tr><td>Symptoms:</td><td><%=h animal_evaluation.symptoms.join(', ') %></td></tr>
   	
   </table>
   <br>
@@ -17,4 +17,4 @@
 
 <br />
 
-<%= new_link 'patient evaluation', new_patient_patient_evaluation_path(@patient) %>
+<%= new_link 'animal evaluation', new_animal_animal_evaluation_path(@animal) %>

@@ -1,5 +1,5 @@
 class Sample < ActiveRecord::Base
-  belongs_to :patient
+  belongs_to :animal
   belongs_to :sample
   belongs_to :site
   belongs_to :collected_by, :class_name => 'User'
@@ -17,14 +17,14 @@ class Sample < ActiveRecord::Base
 
   # belongs_to :collected_by, :class_name => 'User', :foreign_key => 'collected_by_id'
   
-  # Required so that Experiments, Samples, and Patients can be displayed in cohorts
+  # Required so that Experiments, Samples, and Animals can be displayed in cohorts
   def to_s
     return "#{self.barcode} (#{sample_type} - #{original_amount} #{original_unit})"
   end
   
   def validate
-    if (patient and patient.birthdate and collected_on and patient.birthdate > collected_on)
-      errors.add(:collected_on, "The sample cannot be taken before the patient's birth date")
+    if (animal and animal.birthdate and collected_on and animal.birthdate > collected_on)
+      errors.add(:collected_on, "The sample cannot be taken before the animal's birth date")
     end
   end
 
@@ -34,10 +34,10 @@ class Sample < ActiveRecord::Base
   
   def root
     current_sample = self
-    while current_sample.patient.nil?
+    while current_sample.animal.nil?
       current_sample = current_sample.sample
     end
-    current_sample.patient
+    current_sample.animal
   end
 
   # calculates the theoretical amount of this sample = original amount - sum(original amount of each child)
@@ -52,7 +52,7 @@ class Sample < ActiveRecord::Base
   end
   
   def parent
-    self.patient || self.sample
+    self.animal || self.sample
   end
   
   def aliquot?

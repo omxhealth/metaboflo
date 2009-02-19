@@ -1,92 +1,92 @@
-class PatientsController < ApplicationController
-  before_filter :find_patient, :only => [ :show, :edit, :update, :destroy ]
+class AnimalsController < ApplicationController
+  before_filter :find_animal, :only => [ :show, :edit, :update, :destroy ]
 
-  # GET /patients
-  # GET /patients.xml
+  # GET /animals
+  # GET /animals.xml
   def index
-    @patients = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-    Patient.find(:all) :
-    Patient.find(:all, :conditions => [ 'site_id=?', current_user.site ])
+    @animals = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+    Animal.find(:all) :
+    Animal.find(:all, :conditions => [ 'site_id=?', current_user.site ])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @patients }
+      format.xml  { render :xml => @animals }
     end
   end
 
-  # GET /patients/1
-  # GET /patients/1.xml
+  # GET /animals/1
+  # GET /animals/1.xml
   def show
 
-    # @tree = patient_tree(@patient)
+    # @tree = animal_tree(@animal)
 
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @patient }
+      format.xml  { render :xml => @animal }
     end
   end
 
-  # GET /patients/new
-  # GET /patients/new.xml
+  # GET /animals/new
+  # GET /animals/new.xml
   def new
-    @patient = Patient.new
+    @animal = Animal.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @patient }
+      format.xml  { render :xml => @animal }
     end
   end
 
-  # GET /patients/1/edit
+  # GET /animals/1/edit
   def edit
   end
 
-  # POST /patients
-  # POST /patients.xml
+  # POST /animals
+  # POST /animals.xml
   def create
-    @patient = Patient.new(params[:patient])
+    @animal = Animal.new(params[:animal])
 
     respond_to do |format|
-      if @patient.save
-        flash[:notice] = 'Patient was successfully created.'
-        format.html { redirect_to(@patient) }
-        format.xml  { render :xml => @patient, :status => :created, :location => @patient }
+      if @animal.save
+        flash[:notice] = 'Animal was successfully created.'
+        format.html { redirect_to(@animal) }
+        format.xml  { render :xml => @animal, :status => :created, :location => @animal }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @patient.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @animal.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /patients/1
-  # PUT /patients/1.xml
+  # PUT /animals/1
+  # PUT /animals/1.xml
   def update
     respond_to do |format|
-      if @patient.update_attributes(params[:patient])
-        flash[:notice] = 'Patient was successfully updated.'
-        format.html { redirect_to(@patient) }
+      if @animal.update_attributes(params[:animal])
+        flash[:notice] = 'Animal was successfully updated.'
+        format.html { redirect_to(@animal) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @patient.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @animal.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /patients/1
-  # DELETE /patients/1.xml
+  # DELETE /animals/1
+  # DELETE /animals/1.xml
   def destroy
-    @patient.destroy
+    @animal.destroy
 
     respond_to do |format|
-      format.html { redirect_to(patients_url) }
+      format.html { redirect_to(animals_url) }
       format.xml  { head :ok }
     end
   end
 
   protected
-  def find_patient(param_name = :id)
+  def find_animal(param_name = :id)
     super
   end
 end
