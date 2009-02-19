@@ -42,7 +42,7 @@
   login: lbayer
   last_name: Bayer
   middle_name: ""
-  email: lauren.bayer@duke.edu
+  email: lauren.bayer@bovine.edu
   created_at: 2008-12-16 01:21:07.820494 Z
 "33": 
   salt: 1e5c0f8343a112497c4c6acb2f0482b1d161e871
@@ -117,7 +117,7 @@
   login: dpeters
   last_name: Peters
   middle_name: ""
-  email: dorothy.peters@duke.edu
+  email: dorothy.peters@bovine.edu
   created_at: 2008-12-16 01:21:33.762220 Z
 "35": 
   salt: 197934e58b5e3895f2fed69114aefcd0dbc020c1
@@ -357,7 +357,7 @@
   login: rkaddurahdaouk
   last_name: Kaddurah-Daouk
   middle_name: ""
-  email: kaddu001@mc.duke.edu
+  email: kaddu001@mc.bovine.edu
   created_at: 2008-12-16 01:09:11.474978 Z
 "30": 
   salt: ab4c67c5e60c712c214633faa2a1649c365050d1
@@ -522,7 +522,7 @@
   login: mkutchibatla
   last_name: Kutchibatla
   middle_name: ""
-  email: mnk@geri.duke.edu
+  email: mnk@geri.bovine.edu
   created_at: 2008-12-16 01:13:18.635241 Z
 "5": 
   salt: d094bbda0fdfc8b1d7de9273bfcd05d390b3f28d
@@ -537,5 +537,5 @@
   login: echurchill
   last_name: Churchill
   middle_name: ""
-  email: erik.churchill@duke.edu
+  email: erik.churchill@bovine.edu
   created_at: 2008-12-16 01:20:21.095150 Z

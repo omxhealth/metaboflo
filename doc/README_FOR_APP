@@ -2,7 +2,7 @@ Use this README file to introduce your application and point to useful places in
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
 
 Instructions for running on server:
-Start: ruby -S mongrel_rails start -p 3007 --prefix=/duke -d
+Start: ruby -S mongrel_rails start -p 3007 --prefix=/bovine -d
 Stop:  ruby -S mongrel_rails stop
 
 

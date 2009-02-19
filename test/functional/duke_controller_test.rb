@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DukeControllerTest < ActionController::TestCase
+class BovineControllerTest < ActionController::TestCase
   def test_index
     login_as :user2
     get :index

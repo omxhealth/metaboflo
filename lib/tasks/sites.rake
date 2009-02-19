@@ -4,7 +4,7 @@ namespace :db do
     task :initialize => [:environment] do |t|
       Site.destroy_all
 
-      [ 'The University of Alberta', 'Duke University' ].each do |name|
+      [ 'The University of Alberta', 'Bovine University' ].each do |name|
         site = Site.new(:name => name)
         site.save!
       end

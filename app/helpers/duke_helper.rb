@@ -1,2 +1,2 @@
-module DukeHelper
+module BovineHelper
 end
