@@ -16,4 +16,8 @@ class Animal < ActiveRecord::Base
     "Cow #{code}"
   end
   
+  def to_s
+    self.code.to_s
+  end
+  
 end
