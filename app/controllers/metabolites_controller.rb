@@ -2,7 +2,7 @@ class MetabolitesController < ApplicationController
   # GET /metabolites
   # GET /metabolites.xml
   def index
-    @metabolites = Metabolite.all
+    @metabolites = Metabolite.paginate(:page => params[:page], :order => 'hmdb_id')
 
     respond_to do |format|
       format.html # index.html.erb

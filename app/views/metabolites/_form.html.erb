@@ -1,53 +1,68 @@
 <%= form.error_messages %>
 
-<p>
-  <%= form.text_field :name %>
-</p>
-<p>
-  <%= form.text_field :hmdb_id %>
-</p>
-<p>
-  <%= form.text_area :description %>
-</p>
-<p>
-  <%= form.text_area :iupac_name %>
-</p>
-<p>
-  <%= form.text_field :formula %>
-</p>
-<p>
-  <%= form.text_field :mono_mass %>
-</p>
-<p>
-  <%= form.text_field :average_mass %>
-</p>
-<p>
-  <%= form.text_area :smiles %>
-</p>
-<p>
-  <%= form.text_field :cas %>
-</p>
-<p>
-  <%= form.text_area :inchi_identifier %>
-</p>
-<p>
-  <%= form.text_field :melting_point %>
-</p>
-<p>
-  <%= form.text_field :state %>
-</p>
-<p>
-  <%= form.text_field :kegg_compound_id %>
-</p>
-<p>
-  <%= form.text_field :pubchem_compound_id %>
-</p>
-<p>
-  <%= form.text_field :chebi_id %>
-</p>
-<p>
-  <%= form.text_field :wikipedia_name %>
-</p>
-<p>
-  <%= form.text_area :comments %>
-</p>
+<fieldset>
+  <legend>Metabolite Identification</legend>
+  <p>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.text_field :cas, :label => 'CAS number' %>
+  </p>
+  <p>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.text_field :iupac_name, :label => 'IUPAC name', :size => 50 %>
+  </p>
+  <p>
+    <%= form.text_field :formula, :label => 'Chemical formula' %>
+  </p>
+  <p>
+    <%= form.text_field :mono_mass, :label => 'Monoisotopic mass' %>
+  </p>
+  <p>
+    <%= form.text_field :average_mass %>
+  </p>
+  <p>
+    <%= form.text_area :smiles, :label => 'SMILES (isomeric)' %>
+  </p>
+  <p>
+    <%= form.text_area :inchi_identifier, :label => 'InChI identifier' %>
+  </p>
+</fieldset>
+
+<fieldset>
+  <legend>Metabolite Properties</legend>
+  <p>
+    <%= form.text_field :melting_point %>
+  </p>
+  <p>
+    <%= form.select :state, ['Solid', 'Liquid', 'Gas'], :include_blank => true %>
+  </p>
+</fieldset>
+
+<fieldset>
+  <legend>External Links</legend>
+  <p>
+    <%= form.text_field :hmdb_id, :label => 'HMDB ID' %>
+  </p>
+  <p>
+    <%= form.text_field :kegg_compound_id, :label => 'KEGG compound ID' %>
+  </p>
+  <p>
+    <%= form.text_field :pubchem_compound_id, :label => 'PubChem compound ID' %>
+  </p>
+  <p>
+    <%= form.text_field :chebi_id, :label => 'ChEBI ID' %>
+  </p>
+  <p>
+    <%= form.text_field :wikipedia_name, :label => 'Wikipedia entry' %>
+  </p>
+</fieldset>
+  
+<fieldset>
+  <legend>Other/Meta Data</legend>
+  <p>
+    <%= form.text_area :comments %>
+  </p>
+</fieldset>

@@ -3,10 +3,6 @@
   <%=h @metabolite.name %>
 </p>
 
-<p>
-  <b>Hmdb:</b>
-  <%=h @metabolite.hmdb_id %>
-</p>
 
 <p>
   <b>Description:</b>
@@ -14,17 +10,17 @@
 </p>
 
 <p>
-  <b>Iupac name:</b>
+  <b>IUPAC name:</b>
   <%=h @metabolite.iupac_name %>
 </p>
 
 <p>
-  <b>Formula:</b>
+  <b>Chemical formula:</b>
   <%=h @metabolite.formula %>
 </p>
 
 <p>
-  <b>Mono mass:</b>
+  <b>Monoisotopic mass:</b>
   <%=h @metabolite.mono_mass %>
 </p>
 
@@ -34,17 +30,17 @@
 </p>
 
 <p>
-  <b>Smiles:</b>
+  <b>SMILES (isomeric):</b>
   <%=h @metabolite.smiles %>
 </p>
 
 <p>
-  <b>Cas:</b>
+  <b>CAS number:</b>
   <%=h @metabolite.cas %>
 </p>
 
 <p>
-  <b>Inchi identifier:</b>
+  <b>InChI identifier:</b>
   <%=h @metabolite.inchi_identifier %>
 </p>
 
@@ -59,23 +55,28 @@
 </p>
 
 <p>
-  <b>Kegg compound:</b>
-  <%=h @metabolite.kegg_compound_id %>
+  <b>HMDB ID:</b>
+  <%= link_out @metabolite, :hmdb_id %>
 </p>
 
 <p>
-  <b>Pubchem compound:</b>
-  <%=h @metabolite.pubchem_compound_id %>
+  <b>KEGG compound ID:</b>
+  <%= link_out @metabolite, :kegg_compound_id %>
 </p>
 
 <p>
-  <b>Chebi:</b>
-  <%=h @metabolite.chebi_id %>
+  <b>PubChem compound ID:</b>
+  <%= link_out @metabolite, :pubchem_compound_id %>
 </p>
 
 <p>
-  <b>Wikipedia name:</b>
-  <%=h @metabolite.wikipedia_name %>
+  <b>ChEBI ID:</b>
+  <%= link_out @metabolite, :chebi_id %>
+</p>
+
+<p>
+  <b>Wikipedia entry:</b>
+  <%= link_out @metabolite, :wikipedia_name %>
 </p>
 
 <p>
@@ -83,6 +84,6 @@
   <%=h @metabolite.comments %>
 </p>
 
-
-<%= link_to 'Edit', edit_metabolite_path(@metabolite) %> |
-<%= link_to 'Back', metabolites_path %>
+<br />
+<%= edit_link edit_metabolite_path(@metabolite) %> | 
+<%= link_to 'Back', :back %>

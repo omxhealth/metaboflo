@@ -56,4 +56,30 @@ module ApplicationHelper
     form_for(record_or_name_or_array, options.merge({ :builder => TabularFormBuilder }), &proc)
   end
   
+  # Create a link to external sites based on the given object and column.  If a name is given,
+  # it will be used as the link content (<a href="x">name</a>")
+  def link_out(object, column, name=nil, html_options={})
+    html_options[:class] = 'link-out' if html_options[:class].blank?
+    html_options[:target] = '_blank' if html_options[:target].blank?
+
+    id = "#{object.send(column).to_s}"
+    return '' if id.blank?
+    name = "#{id}" if name.blank?
+
+    url = case column.to_sym
+      when :pubchem_compound_id then "http://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid=" << id
+      when :chebi_id            then "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=" << id
+      when :pubmed_id           then "http://www.ncbi.nlm.nih.gov/pubmed/#{id}"                    
+      when :hmdb_id             then "http://www.hmdb.ca/metabolites/#{id}"
+      when :cas                 then "http://www.nlm.nih.gov/cgi/mesh/2006/MB_cgi?rn=1&term=#{id}"
+      when :kegg_compound_id    then "http://www.genome.jp/dbget-bin/www_bget?cpd:" << id   
+      when :wikipedia_name      then "http://en.wikipedia.org/wiki/" << id   
+      else                      nil
+    end
+    return id if url.blank?
+
+    name << " " << image_tag('link_out.png', :class => 'link')
+    return link_to(name, url, html_options)
+  end
+  
 end

@@ -1,0 +1,17 @@
+<div class="pagination">
+  <% unless defined?(skip_page_info) && skip_page_info %>
+  <div class="page_info">
+    <%= page_entries_info collection %>
+  </div>
+  <% end -%>
+  <%= will_paginate collection, :container => false %>
+
+  <% unless defined?(skip_page_jump) && skip_page_jump %>
+  <div class="page_jump" style="float: right">
+    <% form_tag request.request_uri, :method => :get do -%>
+    <%= text_field_tag :page, nil, :size => 3 %>
+    <%= submit_tag 'Jump to Page' %>
+    <% end -%>
+  </div>
+  <% end -%>
+</div>

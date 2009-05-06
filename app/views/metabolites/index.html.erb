@@ -1,52 +1,30 @@
-<h1>Listing metabolites</h1>
+<h1>Metabolites</h1>
 
-<table>
+<table class="list" style="width: 100%">
   <tr>
     <th>Name</th>
-    <th>Hmdb</th>
-    <th>Description</th>
-    <th>Iupac name</th>
+    <th>CAS Number</th>
+    <th>HMDB ID</th>
     <th>Formula</th>
-    <th>Mono mass</th>
-    <th>Average mass</th>
-    <th>Smiles</th>
-    <th>Cas</th>
-    <th>Inchi identifier</th>
-    <th>Melting point</th>
-    <th>State</th>
-    <th>Kegg compound</th>
-    <th>Pubchem compound</th>
-    <th>Chebi</th>
-    <th>Wikipedia name</th>
-    <th>Comments</th>
+    <th>Mono Mass</th>
+    <th colspan="3">Actions</th>
   </tr>
 
-<% @metabolites.each do |metabolite| %>
-  <tr>
-    <td><%=h metabolite.name %></td>
-    <td><%=h metabolite.hmdb_id %></td>
-    <td><%=h metabolite.description %></td>
-    <td><%=h metabolite.iupac_name %></td>
+  <% @metabolites.each do |metabolite| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><strong><%=h metabolite.name %></strong></td>
+    <td><%=h metabolite.cas %></td>
+    <td><%= link_out metabolite, :hmdb_id %></td>
     <td><%=h metabolite.formula %></td>
     <td><%=h metabolite.mono_mass %></td>
-    <td><%=h metabolite.average_mass %></td>
-    <td><%=h metabolite.smiles %></td>
-    <td><%=h metabolite.cas %></td>
-    <td><%=h metabolite.inchi_identifier %></td>
-    <td><%=h metabolite.melting_point %></td>
-    <td><%=h metabolite.state %></td>
-    <td><%=h metabolite.kegg_compound_id %></td>
-    <td><%=h metabolite.pubchem_compound_id %></td>
-    <td><%=h metabolite.chebi_id %></td>
-    <td><%=h metabolite.wikipedia_name %></td>
-    <td><%=h metabolite.comments %></td>
-    <td><%= link_to 'Show', metabolite %></td>
-    <td><%= link_to 'Edit', edit_metabolite_path(metabolite) %></td>
-    <td><%= link_to 'Destroy', metabolite, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= show_link metabolite %></td>
+    <td><%= edit_link edit_metabolite_path(metabolite) %></td>
+    <td><%= destroy_link metabolite %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
+<%= render :partial => "shared/paginate", :locals => { :collection => @metabolites } %>
 <br />
 
-<%= link_to 'New metabolite', new_metabolite_path %>
+<%= new_link 'metabolite', new_metabolite_path %>
