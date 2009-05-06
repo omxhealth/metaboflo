@@ -6,7 +6,7 @@
   <% end -%>
   <%= will_paginate collection, :container => false %>
 
-  <% unless (defined?(skip_page_jump) && skip_page_jump) || collection.total_pages >= 1 %>
+  <% unless (defined?(skip_page_jump) && skip_page_jump) || collection.total_pages.to_i <= 1 %>
   <div class="page_jump" style="float: right">
     <% form_tag request.request_uri, :method => :get do -%>
     <%= text_field_tag :page, nil, :size => 3 %>
