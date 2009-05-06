@@ -1,0 +1,12 @@
+<h1>Editing metabolite</h1>
+
+<% labelled_tabular_form_for(@metabolite) do |f| %>
+<%= render :partial => f %>
+
+<p>
+  <%= f.submit 'Update' %>
+</p>
+<% end %>
+
+<%= link_to 'Show', @metabolite %> |
+<%= link_to 'Back', metabolites_path %>

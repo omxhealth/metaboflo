@@ -1,0 +1,88 @@
+<p>
+  <b>Name:</b>
+  <%=h @metabolite.name %>
+</p>
+
+<p>
+  <b>Hmdb:</b>
+  <%=h @metabolite.hmdb_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @metabolite.description %>
+</p>
+
+<p>
+  <b>Iupac name:</b>
+  <%=h @metabolite.iupac_name %>
+</p>
+
+<p>
+  <b>Formula:</b>
+  <%=h @metabolite.formula %>
+</p>
+
+<p>
+  <b>Mono mass:</b>
+  <%=h @metabolite.mono_mass %>
+</p>
+
+<p>
+  <b>Average mass:</b>
+  <%=h @metabolite.average_mass %>
+</p>
+
+<p>
+  <b>Smiles:</b>
+  <%=h @metabolite.smiles %>
+</p>
+
+<p>
+  <b>Cas:</b>
+  <%=h @metabolite.cas %>
+</p>
+
+<p>
+  <b>Inchi identifier:</b>
+  <%=h @metabolite.inchi_identifier %>
+</p>
+
+<p>
+  <b>Melting point:</b>
+  <%=h @metabolite.melting_point %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @metabolite.state %>
+</p>
+
+<p>
+  <b>Kegg compound:</b>
+  <%=h @metabolite.kegg_compound_id %>
+</p>
+
+<p>
+  <b>Pubchem compound:</b>
+  <%=h @metabolite.pubchem_compound_id %>
+</p>
+
+<p>
+  <b>Chebi:</b>
+  <%=h @metabolite.chebi_id %>
+</p>
+
+<p>
+  <b>Wikipedia name:</b>
+  <%=h @metabolite.wikipedia_name %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%=h @metabolite.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_metabolite_path(@metabolite) %> |
+<%= link_to 'Back', metabolites_path %>

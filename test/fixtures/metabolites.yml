@@ -1,0 +1,39 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: 1-Methylhistidine
+  hmdb_id: HMDB00001
+  description: MyText
+  iupac_name: "(2S)-2-amino-3-(1-methylimidazol-4-yl)propanoic acid"
+  formula: C7H11N3O2
+  mono_mass: 1.5
+  average_mass: 1.5
+  smiles: "CN1C=NC(C[C@H](N)C(O)=O)=C1"
+  cas: 332-80-9
+  inchi_identifier: "InChI=1/C7H11N3O2/c1-10-3-5(9-4-10)2-6(8)7(11)12/h3-4,6H,2,8H2,1H3,(H,11,12)/t6-/m0/s1"
+  melting_point: 246-248
+  state: Solid
+  kegg_compound_id: C01152
+  pubchem_compound_id: 92105
+  chebi_id: 50599
+  wikipedia_name: MyString
+  comments: MyText
+
+two:
+  name: Deoxyuridine
+  hmdb_id: HMDB00012
+  description: MyText
+  iupac_name: "1-[4-hydroxy-5-(hydroxymethyl)oxolan-2-yl]pyrimidine-2,4-dione"
+  formula: C9H12N2O5
+  mono_mass: 228.074615
+  average_mass: 228.201996
+  smiles: "OC[C@H]1O[C@H](C[C@@H]1O)N1C=CC(=O)NC1=O"
+  cas: "951-78-0"
+  inchi_identifier: "InChI=1/C9H12N2O5/c12-4-6-5(13)3-8(16-6)11-2-1-7(14)10-9(11)15/h1-2,5-6,8,12-13H,3-4H2,(H,10,14,15)/t5-,6+,8+/m0/s1"
+  melting_point: 167
+  state: Solid
+  kegg_compound_id: C00526
+  pubchem_compound_id: 13712
+  chebi_id: 16450
+  wikipedia_name: Deoxyuridine
+  comments: MyText

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :metabolites
+
   map.resources :ingredients
 
   map.resources :diets
