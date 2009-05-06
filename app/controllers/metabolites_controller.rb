@@ -2,6 +2,7 @@ class MetabolitesController < ApplicationController
   # GET /metabolites
   # GET /metabolites.xml
   def index
+    params[:page] = 1 if params[:page].to_i <= 0
     @metabolites = Metabolite.paginate(:page => params[:page], :order => 'hmdb_id')
 
     respond_to do |format|
