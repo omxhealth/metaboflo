@@ -3,6 +3,43 @@
   <%=h @diet.name %>
 </p>
 
+<fieldset>
+	<legend>Ingredients</legend>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Amount (%)</th>
+		</tr>
+		
+		<% @diet.diet_ingredients.each do |diet_ingredient| -%>
+		<tr>
+			<td><%= diet_ingredient.ingredient.name %></td>
+			<td><%= diet_ingredient.amount %></td>
+		</tr>
+		<% end -%>
+	</table>
+</fieldset>
+
+<br />
+
+<fieldset>
+	<legend>Nutrient Composition</legend>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Amount</th>
+		</tr>
+		
+		<% @diet.compositions.each do |composition| -%>
+		<tr>
+			<td><%= composition.nutrient.name %></td>
+			<td><%= composition.amount %></td>
+		</tr>
+		<% end -%>
+	</table>
+</fieldset>
+
+<br />
 
 <%= link_to 'Edit', edit_diet_path(@diet) %> |
 <%= link_to 'Back', diets_path %>

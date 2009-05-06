@@ -1,7 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: Ingredient one
+  diet: one
+  nutrient: one
+  amount: 5.5
 
 two:
-  name: Ingredient two
+  diet: two
+  nutrient: two
+  amount: 2.2
