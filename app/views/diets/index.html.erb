@@ -1,16 +1,17 @@
 <h1>Listing diets</h1>
 
-<table>
+<table class="list">
   <tr>
     <th>Name</th>
+		<th colspan="3">Actions</th>
   </tr>
 
 <% for diet in @diets %>
   <tr>
     <td><%=h diet.name %></td>
-    <td><%= link_to 'Show', diet %></td>
-    <td><%= link_to 'Edit', edit_diet_path(diet) %></td>
-    <td><%= link_to 'Destroy', diet, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= show_link diet %></td>
+    <td><%= edit_link edit_diet_path(diet) %></td>
+    <td><%= destroy_link diet %></td>
   </tr>
 <% end %>
 </table>

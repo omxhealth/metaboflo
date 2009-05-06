@@ -1,16 +1,17 @@
 <h1>Listing nutrients</h1>
 
-<table>
+<table class="list">
   <tr>
     <th>Name</th>
+		<th colspan="3">Actions</th>
   </tr>
 
 <% @nutrients.each do |nutrient| %>
   <tr>
     <td><%=h nutrient.name %></td>
-    <td><%= link_to 'Show', nutrient %></td>
-    <td><%= link_to 'Edit', edit_nutrient_path(nutrient) %></td>
-    <td><%= link_to 'Destroy', nutrient, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= show_link nutrient %></td>
+    <td><%= edit_link edit_nutrient_path(nutrient) %></td>
+    <td><%= destroy_link nutrient %></td>
   </tr>
 <% end %>
 </table>
