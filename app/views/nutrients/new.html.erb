@@ -3,13 +3,9 @@
 <% form_for(@nutrient) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
+  <%= render :partial => f %>
+
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-
-<%= link_to 'Back', nutrients_path %>

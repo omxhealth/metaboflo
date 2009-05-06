@@ -1,48 +1,11 @@
 <h1>New diet</h1>
 
-<% form_for(setup_diet(@diet)) do |f| %>
+<% labelled_tabular_form_for(setup_diet(@diet)) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-
-	<fieldset>
-		<legend>Ingredients</legend>
-	  <% count = 1 %>
-	  <% f.fields_for :diet_ingredients do |diet_ingredient_form| -%>
-	  <p>
-	    <%= diet_ingredient_form.select :ingredient_id, Ingredient.all.collect { |i| [ i.name, i.id ] }, :include_blank => true %>
-	    <%= diet_ingredient_form.label :amount %>
-	    <%= diet_ingredient_form.text_field :amount, :size => 10 %> %
-	  <% unless diet_ingredient_form.object.new_record? %>
-	    <%= diet_ingredient_form.check_box '_delete' %>
-	    <%= diet_ingredient_form.label '_delete', 'Remove' %>
-	  <% end %>
-		</p>
-	  <% end -%>  
-	</fieldset>
-	
-	<fieldset>
-		<legend>Nutrient Compositions</legend>
-	  <% count = 1 %>
-	  <% f.fields_for :compositions do |composition_form| -%>
-	  <p>
-	    <%= composition_form.select :nutrient_id, Nutrient.all.collect { |n| [ n.name, n.id ] }, :include_blank => true %>
-	    <%= composition_form.label :amount %>
-	    <%= composition_form.text_field :amount, :size => 10 %>
-	  <% unless composition_form.object.new_record? %>
-	    <%= composition_form.check_box '_delete' %>
-	    <%= composition_form.label '_delete', 'Remove' %>
-	  <% end %>
-		</p>
-	  <% end -%>  
-	</fieldset>
+	<%= render :partial => f %>
 	
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
-
-<%= link_to 'Back', diets_path %>

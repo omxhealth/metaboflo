@@ -3,6 +3,4 @@
   <%=h @ingredient.name %>
 </p>
 
-
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+<%= edit_link edit_ingredient_path(@ingredient) %>

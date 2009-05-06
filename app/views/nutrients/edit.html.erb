@@ -1,16 +1,13 @@
 <h1>Editing nutrient</h1>
 
-<% form_for(@nutrient) do |f| %>
+<% labelled_tabular_form_for(@nutrient) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
+  <%= render :partial => f %>
+
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @nutrient %> |
-<%= link_to 'Back', nutrients_path %>
+<%= show_link @nutrient %>

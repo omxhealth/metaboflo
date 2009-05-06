@@ -1,0 +1,33 @@
+<p>
+  <%= form.text_field :name, :required => true %>
+</p>
+
+<fieldset>
+	<legend>Ingredients</legend>
+  <% count = 1 %>
+  <% form.fields_for :diet_ingredients do |diet_ingredient_form| -%>
+  <p>
+    <%= diet_ingredient_form.select :ingredient_id, Ingredient.all.collect { |i| [ i.name, i.id ] }, :include_blank => true %><br />
+    <%= diet_ingredient_form.text_field :amount, :size => 10 %> %
+  <% unless diet_ingredient_form.object.new_record? %>
+		<br />
+    <%= diet_ingredient_form.check_box '_delete', :label => 'Remove' %>
+  <% end %>
+	</p>
+  <% end -%>  
+</fieldset>
+
+<fieldset>
+	<legend>Nutrient Compositions</legend>
+  <% count = 1 %>
+  <% form.fields_for :compositions do |composition_form| -%>
+  <p>
+    <%= composition_form.select :nutrient_id, Nutrient.all.collect { |n| [ n.name, n.id ] }, :include_blank => true %><br />
+    <%= composition_form.text_field :amount, :size => 10 %>
+  <% unless composition_form.object.new_record? %>
+		<br />
+    <%= composition_form.check_box '_delete', :label => 'Remove' %>
+  <% end %>
+	</p>
+  <% end -%>  
+</fieldset>

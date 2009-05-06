@@ -10,4 +10,7 @@ class Diet < ActiveRecord::Base
   
   # Allow the form for diets to update/create/delete compositions
   accepts_nested_attributes_for :compositions, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  
+  validates_presence_of :name
+  validates_uniqueness_of :name, :allow_blank => true
 end
