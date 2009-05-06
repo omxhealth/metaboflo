@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :ingredients
+
+  map.resources :diets
+
   map.resources :task_categories
 
   map.resources :task_priorities

@@ -1,0 +1,16 @@
+<h1>Editing diet</h1>
+
+<% form_for(@diet) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @diet %> |
+<%= link_to 'Back', diets_path %>

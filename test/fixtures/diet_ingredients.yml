@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  diet: one
+  ingredient: two
+  amount: 1.5
+
+two:
+  diet: two
+  ingredient: one
+  amount: 1.5
