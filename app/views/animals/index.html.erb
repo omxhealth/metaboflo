@@ -3,22 +3,16 @@
 <table class="list">
 	<tr>
 		<th>Code</th>
-		<th>Initials</th>
-		<th>Site</th>
+		<th>Birthdate</th>
 		<th>Number of Samples</th>
-		<th>Practitioner</th>
-    <th>Notes</th>
 		<th colspan="3">Actions</th>
 	</tr>
 
 	<% for animal in @animals %>
 	<tr class="<%= cycle('odd', 'even') %>">
 		<td><%=h animal.code %></td>
-		<td><%=h animal.name %></td>
-		<td><%=h animal.site.name %></td>
+		<td><%=h animal.birthdate %></td>
 		<td><%= animal.samples.length %> (<%= link_to 'display', animal_samples_path(animal) %>)</td>
-    <td><%= animal.practitioner %></td>
-    <td><%= truncate(animal.notes) %></td>
 		<td><%= show_link animal %></td>
 		<td><%= edit_link edit_animal_path(animal) %></td>
 		<td><%= destroy_link animal %></td>

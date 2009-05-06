@@ -1,50 +1,54 @@
 <h1>Showing animal <%= @animal %></h1>
 
 <p>
-  <b>Code:</b>
+  <b>Animal Code:</b>
   <%=h @animal.code %>
 </p>
 
 <p>
-	<b>Site:</b>
-	<%=h @animal.site.name %>
+  <b>Breed:</b>
+  <%=h @animal.breed %>
 </p>
 
 <p>
-  <b>Initials:</b>
-  <%=h @animal.first_initial %><%=h @animal.middle_initial %> <%=h @animal.last_initial %>
+	<b>Birth date:</b>
+	<%=h @animal.birthdate %>
 </p>
 
 <p>
-  <b>Birthdate:</b>
-  <%=h @animal.birthdate %>
+	<b>Calving date:</b>
+	<%=h @animal.calving_date %>
 </p>
 
 <p>
-	<b>Blood type:</b>
-	<%=h @animal.blood_type %>
+	<b>Lactation Number:</b>
+	<%=h @animal.lactation_number %>
 </p>
 
 <p>
-  <b>Gender:</b>
-  <%=h @animal.gender %>
+	<b>Experiment start date:</b>
+	<%=h @animal.experiment_start_date %>
 </p>
 
 <p>
-	<b>Race:</b>
-	<%=h @animal.race %>
+	<b>DIM at start:</b>
+	<%=h @animal.days_in_milk_at_start %>
 </p>
 
 <p>
-	<b>Practitioner:</b>
-	<%=h @animal.practitioner %>
+	<b>Experiment end date:</b>
+	<%=h @animal.experiment_end_date %>
+</p>
+
+<p>
+	<b>DIM at end:</b>
+	<%=h @animal.days_in_milk_at_end %>
 </p>
 
 <p>
 	<b>Notes:</b>
 	<%=h @animal.notes %>
 </p>
-
 
 <br />
 

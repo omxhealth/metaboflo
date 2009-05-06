@@ -7,20 +7,22 @@
 </fieldset>
 
 <fieldset>
-  <legend>Animal Personal Details</legend>
-  <p>
-    <%= form.text_field :first_initial, :size => 2, :maxlength => 1, :label => 'Initials' %> 
-    <%= form.text_field :middle_initial, :size => 2, :maxlength => 1, :no_label => true %> 
-    <%= form.text_field :last_initial, :size => 2, :maxlength => 1, :no_label => true %>
-  </p>
-  <p><%= form.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-100, :end_year => Time.now.year %></p>
-  <p><%= form.select :blood_type, ['A', 'B', 'O', 'AB'], :include_blank => true %></p>
-  <p><%= form.select :gender, ['Male', 'Female'], :include_blank => true %></p>
-  <p><%= form.select :race, ['Caucasian (White)', 'Black', 'Hispanic', 'Asian', 'Native Indian', 'Multiracial', 'Unknown', 'Not available'], :include_blank => true %></p>
+  <legend>Animal Details</legend>
+  <p><%= form.text_field :breed %></p>
+  <p><%= form.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
+  <p><%= form.date_select :calving_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
+  <p><%= form.text_field :lactation_number %>
 </fieldset>
 
 <fieldset>
-  <legend>Practitioner Notes</legend>
-  <p><%= form.text_field :practitioner %></p>
-  <p><%= form.text_area :notes %></p>
+  <legend>Experiment Details</legend>
+  <p><%= form.date_select :experiment_start_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
+  <p><%= form.text_field :days_in_milk_at_start %>
+  <p><%= form.date_select :experiment_end_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
+  <p><%= form.text_field :days_in_milk_at_end %>
+</fieldset>
+
+<fieldset>
+  <legend>Miscellaneous</legend>
+  <p><%= form.text_field :notes %>
 </fieldset>

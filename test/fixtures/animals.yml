@@ -1,64 +1,78 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  code: ABC123
+  code: 2010
   site: one
-  first_initial: J
-  middle_initial: F
-  last_initial: S
   birthdate: 2000-09-25
-  gender: Male
+  calving_date: 2003-09-25
+  lactation_number: 3
+  experiment_start_date: 2004-08-04
+  days_in_milk_at_start: 44
+  experiment_end_date: 2004-08-04
+  days_in_milk_at_end: 104
 
 two:
-  code: AB456
+  code: 2011
   site: two
-  first_initial: J
-  middle_initial: P
-  last_initial: D
-  birthdate: 1954-08-22
-  gender: Female
+  birthdate: 2000-09-25
+  calving_date: 2003-09-25
+  lactation_number: 3
+  experiment_start_date: 2004-08-04
+  days_in_milk_at_start: 44
+  experiment_end_date: 2004-08-04
+  days_in_milk_at_end: 104
 
 three:
-  code: AB4563
-  site: two
-  first_initial: S
-  middle_initial: 
-  last_initial: H
-  birthdate: 1954-08-22
-  gender: Male
+  code: 2012
+  site: one
+  birthdate: 2000-09-25
+  calving_date: 2003-09-25
+  lactation_number: 3
+  experiment_start_date: 2004-08-04
+  days_in_milk_at_start: 44
+  experiment_end_date: 2004-08-04
+  days_in_milk_at_end: 104
   
 four:
-  code: AB452
-  site: two
-  first_initial: S
-  middle_initial: 
-  last_initial: D
-  birthdate: 1955-08-22
-  gender: Male
+  code: 2013
+  site: one
+  birthdate: 2000-09-25
+  calving_date: 2003-09-25
+  lactation_number: 3
+  experiment_start_date: 2004-08-04
+  days_in_milk_at_start: 44
+  experiment_end_date: 2004-08-04
+  days_in_milk_at_end: 104
   
 five:
-  code: AB453
+  code: 2014
   site: one
-  first_initial: G
-  middle_initial: 
-  last_initial: D
-  birthdate: 1955-08-22
-  gender: Male
+  birthdate: 2000-09-25
+  calving_date: 2003-09-25
+  lactation_number: 3
+  experiment_start_date: 2004-08-04
+  days_in_milk_at_start: 44
+  experiment_end_date: 2004-08-04
+  days_in_milk_at_end: 104
   
 six:
-  code: AB454
+  code: 2015
   site: one
-  first_initial: J
-  middle_initial: 
-  last_initial: L
-  birthdate: 1955-08-22
-  gender: Male
+  birthdate: 2000-09-25
+  calving_date: 2003-09-25
+  lactation_number: 3
+  experiment_start_date: 2004-08-04
+  days_in_milk_at_start: 44
+  experiment_end_date: 2004-08-04
+  days_in_milk_at_end: 104
   
 seven:
-  code: AB451
+  code: 2016
   site: one
-  first_initial: E
-  middle_initial: 
-  last_initial: M
-  birthdate: 1955-08-22
-  gender: Male
+  birthdate: 2000-09-25
+  calving_date: 2003-09-25
+  lactation_number: 3
+  experiment_start_date: 2004-08-04
+  days_in_milk_at_start: 44
+  experiment_end_date: 2004-08-04
+  days_in_milk_at_end: 104
