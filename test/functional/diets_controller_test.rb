@@ -17,7 +17,7 @@ class DietsControllerTest < ActionController::TestCase
   test "should create diet" do
     login_as :admin
     assert_difference('Diet.count') do
-      post :create, :diet => { }
+      post :create, :diet => { :name => 'new diet' }
     end
 
     assert_redirected_to diet_path(assigns(:diet))

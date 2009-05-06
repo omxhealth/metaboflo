@@ -17,7 +17,7 @@ class NutrientsControllerTest < ActionController::TestCase
   test "should create nutrient" do
     login_as :admin
     assert_difference('Nutrient.count') do
-      post :create, :nutrient => { }
+      post :create, :nutrient => { :name => 'new nutrient' }
     end
 
     assert_redirected_to nutrient_path(assigns(:nutrient))

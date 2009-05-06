@@ -17,7 +17,7 @@ class IngredientsControllerTest < ActionController::TestCase
   test "should create ingredient" do
     login_as :admin
     assert_difference('Ingredient.count') do
-      post :create, :ingredient => { }
+      post :create, :ingredient => { :name => 'new ingredient' }
     end
 
     assert_redirected_to ingredient_path(assigns(:ingredient))
