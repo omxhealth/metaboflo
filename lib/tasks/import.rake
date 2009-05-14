@@ -6,30 +6,41 @@ require 'active_record/fixtures'
 namespace :import do
   desc 'Import data into the database'
 
-  task :all => [:environment, :sites, :animals]
+  task :all => [:environment, :users, :sites, :animals]
+
+  desc 'Destroy all existing users and load initial users.'
+  task :users => [:environment] do |t|
+    puts 'Importing users...'
+    User.transaction do
+      User.destroy_all
+
+      admin = User.new(:login => 'admin', :email => 'info@insiliflo.com', :password => 'ruminal', :password_confirmation => 'ruminal', :rank => 'Administrator')
+      admin.save!
+    end
+  end
 
   desc 'Import sites into database'
   task :sites => [:environment] do 
     puts 'Importing sites...'
-    s = Site.new
-    s.name = 'Dairy Research and Technology Centre (DRTC) - University of Alberta'
-    s.save!
-    @@site = s
+    Site.transaction do
+      Site.destroy_all
+      
+      s = Site.new
+      s.name = 'Dairy Research and Technology Centre (DRTC) - University of Alberta'
+      s.save!
+      @@site = s
+    end
   end
-  
-  # desc 'Import animals into database'
-  # task :animals => [:environment] do
-  #   puts "Importing animals..."
-  #   import_models(Animal) 
-  # end
   
   desc 'Import animals into database'
   task :animals => [:environment] do
     puts "Importing animals..."
-    import_models(Animal) do |entity, row|
-  
-      entity.site = @@site
-      true
+    Animal.transaction do
+      Animal.destroy_all
+      import_models(Animal) do |entity, row|
+        entity.site = @@site
+        true
+      end
     end
   end
 

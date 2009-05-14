@@ -1,0 +1,27 @@
+<h1>Listing meals for animal <%= @animal.code %></h1>
+
+<table>
+  <tr>
+    <th>Animal</th>
+    <th>Diet</th>
+    <th>Amount (kg)</th>
+    <th>Consumed On</th>
+  </tr>
+
+<% @meals.each do |meal| %>
+  <tr>
+    <td><%= link_to meal.animal.code, animal_path(meal.animal) %></td>
+    <td><%= link_to meal.diet.name, diet_path(meal.diet) %></td>
+    <td><%= meal.amount %></td>
+    <td><%= meal.consumed_on %></td>
+    <td><%= show_link animal_meal_path(@animal, meal) %></td>
+    <td><%= edit_link edit_animal_meal_path(@animal, meal) %></td>
+    <td><%= destroy_link animal_meal_path(@animal, meal) %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= new_link "meal for animal #{@animal.code}", new_animal_meal_path(@animal) %>

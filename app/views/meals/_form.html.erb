@@ -1,0 +1,11 @@
+<p>
+  <%= form.text_field :amount %> kgs
+</p>
+
+<p>
+  <%= form.select :diet_id, Diet.all.collect { |d| [ d.name, d.id ] }, :include_blank => false %><br />
+</p>
+
+<p>
+  <%= form.date_select :consumed_on, :start_year => 1990 %>
+</p>

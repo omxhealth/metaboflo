@@ -1,0 +1,24 @@
+<h1>Meal for animal <%= @animal.code %></h1>
+
+<p>
+	<b>Animal:</b>
+	<%= link_to h(@meal.animal.code), animal_path(@meal.animal) %>
+</p>
+
+<p>
+	<b>Diet:</b>
+	<%= link_to h(@meal.diet.name), diet_path(@meal.diet) %>
+</p>
+
+<p>
+	<b>Amount:</b>
+	<%=h @meal.amount %> kg
+</p>
+
+<p>
+	<b>Consumed On:</b>
+	<%=h @meal.consumed_on %>
+</p>
+
+
+<%= edit_link edit_animal_meal_path(@animal, @meal) %>

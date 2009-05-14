@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  animal: one
+  diet: one
+  amount: 33
+  consumed_on: 2008-09-25
+
+two:
+  animal: one
+  diet: one
+  amount: 45
+  consumed_on: 2008-09-26
+  

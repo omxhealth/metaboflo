@@ -10,6 +10,9 @@ class Animal < ActiveRecord::Base
   has_many :animal_evaluations, :dependent => :destroy
   has_many :lab_tests, :order => 'collected_at ASC', :dependent => :destroy
   
+  has_many :meals, :order => 'consumed_on DESC', :dependent => :destroy
+  has_many :diets, :through => :meals
+  
   validates_presence_of :code, :site_id
   
   def name

@@ -20,6 +20,7 @@ class AnimalsController < ApplicationController
 
     # @tree = animal_tree(@animal)
 
+    @meals = @animal.meals
 
     respond_to do |format|
       format.html # show.html.erb

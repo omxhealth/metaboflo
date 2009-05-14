@@ -1,0 +1,13 @@
+<h1>Editing meal for animal <%= @animal.code %></h1>
+
+<% form_for([@animal, @meal]) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => f %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= show_link animal_meal_path(@animal, @meal) %>
