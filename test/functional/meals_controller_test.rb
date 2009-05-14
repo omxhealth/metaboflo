@@ -54,6 +54,6 @@ class MealsControllerTest < ActionController::TestCase
       delete :destroy, :animal_id => animals(:one).id, :id => meals(:one).id      
     end
 
-    #assert_redirected_to animal_meals_path(assigns(:animal))
+    assert_redirected_to animal_meals_path(assigns(:animal))
   end
 end

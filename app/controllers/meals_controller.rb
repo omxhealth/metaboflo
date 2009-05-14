@@ -83,7 +83,7 @@ class MealsController < ApplicationController
     @meal.destroy
 
     respond_to do |format|
-      format.html { redirect_to(meals_url) }
+      format.html { redirect_to(animal_meals_url(@animal)) }
       format.xml  { head :ok }
     end
   end
