@@ -1,6 +1,6 @@
-class CreateAnimals < ActiveRecord::Migration
+class CreateTestSubjects < ActiveRecord::Migration
   def self.up
-    create_table :animals do |t|
+    create_table :test_subjects do |t|
       t.string :code
       t.text :subspecies
       t.date :birthdate
@@ -18,6 +18,6 @@ class CreateAnimals < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :animals
+    drop_table :test_subjects
   end
 end

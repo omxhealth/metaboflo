@@ -1,5 +1,5 @@
 class SamplesController < ApplicationController
-  before_filter :find_animal
+  before_filter :find_test_subject
   before_filter :find_parent_sample
   before_filter :find_sample, :only => [ :show, :edit, :update, :destroy ]
   before_filter :no_parent?, :only => [ :new, :create ]
@@ -52,8 +52,8 @@ class SamplesController < ApplicationController
   # POST /samples.xml
   def create
     @sample = Sample.new(params[:sample])
-    if @parent.kind_of?(Animal)
-      @sample.animal = @parent
+    if @parent.kind_of?(TestSubject)
+      @sample.test_subject = @parent
     else
       @sample.sample = @parent
     end
@@ -92,31 +92,31 @@ class SamplesController < ApplicationController
 
     flash[:notice] = 'Sample was successfully deleted.'
     respond_to do |format|
-      format.html { redirect_to(@parent.kind_of?(Sample) ? sample_samples_url(@parent) : animal_samples_url(@animal)) }
+      format.html { redirect_to(@parent.kind_of?(Sample) ? sample_samples_url(@parent) : test_subject_samples_url(@test_subject)) }
       format.xml  { head :ok }
     end
   end
   
   protected
-    def find_animal
-      unless params[:animal_id].blank?
+    def find_test_subject
+      unless params[:test_subject_id].blank?
         super
-        @parent = @animal if @parent.blank?
+        @parent = @test_subject if @parent.blank?
       end
     end
     
     def find_parent_sample
       unless params[:sample_id].blank?
         @parent = @parent_sample = Sample.find(params[:sample_id])
-        params[:animal_id] = @parent.root.id
-        find_animal
+        params[:test_subject_id] = @parent.root.id
+        find_test_subject
       end
     end
     
     def find_sample
       @sample = @parent.blank? ? Sample.find(params[:id]) : @parent.samples.find(params[:id])
-      params[:animal_id] = @sample.root.id
-      find_animal
+      params[:test_subject_id] = @sample.root.id
+      find_test_subject
     end
     
     def no_parent?

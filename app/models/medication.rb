@@ -1,5 +1,5 @@
 class Medication < ActiveRecord::Base
-  belongs_to :animal
+  belongs_to :test_subject
   
-  validates_presence_of :animal_id, :drug
+  validates_presence_of :test_subject_id, :drug
 end

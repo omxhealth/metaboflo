@@ -1,10 +1,10 @@
 class LabTestsController < ApplicationController
-  before_filter :find_animal
+  before_filter :find_test_subject
   
   # GET /lab_tests
   # GET /lab_tests.xml
   def index
-    @lab_tests = @animal.lab_tests
+    @lab_tests = @test_subject.lab_tests
     
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class LabTestsController < ApplicationController
   # GET /lab_tests/1
   # GET /lab_tests/1.xml
   def show
-    @lab_test = @animal.lab_tests.find(params[:id])
+    @lab_test = @test_subject.lab_tests.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,19 +36,19 @@ class LabTestsController < ApplicationController
 
   # GET /lab_tests/1/edit
   def edit
-    @lab_test = @animal.lab_tests.find(params[:id])
+    @lab_test = @test_subject.lab_tests.find(params[:id])
   end
 
   # POST /lab_tests
   # POST /lab_tests.xml
   def create
     @lab_test = LabTest.new(params[:lab_test])
-    @lab_test.animal = @animal
+    @lab_test.test_subject = @test_subject
 
     respond_to do |format|
       if @lab_test.save
         flash[:notice] = 'Lab Test was successfully created.'
-        format.html { redirect_to(animal_lab_test_url(@animal, @lab_test)) }
+        format.html { redirect_to(test_subject_lab_test_url(@test_subject, @lab_test)) }
         format.xml  { render :xml => @lab_test, :status => :created, :location => @lab_test }
       else
         format.html { render :action => "new" }
@@ -60,12 +60,12 @@ class LabTestsController < ApplicationController
   # PUT /lab_tests/1
   # PUT /lab_tests/1.xml
   def update
-    @lab_test = @animal.lab_tests.find(params[:id])
+    @lab_test = @test_subject.lab_tests.find(params[:id])
 
     respond_to do |format|
       if @lab_test.update_attributes(params[:lab_test])
         flash[:notice] = 'Lab Test was successfully updated.'
-        format.html { redirect_to(animal_lab_test_url(@animal, @lab_test)) }
+        format.html { redirect_to(test_subject_lab_test_url(@test_subject, @lab_test)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -77,11 +77,11 @@ class LabTestsController < ApplicationController
   # DELETE /lab_tests/1
   # DELETE /lab_tests/1.xml
   def destroy
-    @lab_test = @animal.lab_tests.find(params[:id])
+    @lab_test = @test_subject.lab_tests.find(params[:id])
     @lab_test.destroy
 
     respond_to do |format|
-      format.html { redirect_to(animal_lab_tests_url(@animal)) }
+      format.html { redirect_to(test_subject_lab_tests_url(@test_subject)) }
       format.xml  { head :ok }
     end
   end

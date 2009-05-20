@@ -1,7 +1,7 @@
-class CreateAnimalEvaluations < ActiveRecord::Migration
+class CreateTestSubjectEvaluations < ActiveRecord::Migration
   def self.up
-    create_table :animal_evaluations do |t|
-      t.references :animal
+    create_table :test_subject_evaluations do |t|
+      t.references :test_subject
       t.text :diagnosis
       t.float :height
       t.float :weight
@@ -39,6 +39,6 @@ class CreateAnimalEvaluations < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :animal_evaluations
+    drop_table :test_subject_evaluations
   end
 end

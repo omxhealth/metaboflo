@@ -50,7 +50,7 @@ class CohortAssignmentsController < ApplicationController
       if @cohort_assignment.save
         format.html { 
           flash[:notice] = "#{@cohort_assignment.assignable.class} was successfully added to the cohort."
-          redirect_to(:controller => @assignable_type.downcase.pluralize, :action => 'show', :id => @assignable) 
+          redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable) 
         }
         format.js { @successful = true } # Render create.rjs 
         format.xml  { render :xml => @cohort_assignment, :status => :created, :location => @cohort_assignment }
@@ -71,7 +71,7 @@ class CohortAssignmentsController < ApplicationController
     respond_to do |format|
       format.html { 
         flash[:notice] = "#{@cohort_assignment.assignable.class} was successfully removed from the cohort."
-        redirect_to(:controller => @assignable_type.downcase.pluralize, :action => 'show', :id => @assignable)   
+        redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable)   
       }
       format.js { @successful = true } # Render create.rjs 
       format.xml  { head :ok }
@@ -85,10 +85,10 @@ class CohortAssignmentsController < ApplicationController
 
   def find_assignable
     Cohort.valid_types.each do |assignable_type|
-      if !params["#{assignable_type.downcase}_id"].blank?
+      if !params["#{assignable_type.tableize.singularize}_id"].blank?
         @assignable_type = assignable_type
-        @entity = @assignable = assignable_type.constantize.find(params["#{assignable_type.downcase}_id"])
-        @animal = @entity if @entity.class == Animal
+        @entity = @assignable = assignable_type.constantize.find(params["#{assignable_type.tableize.singularize}_id"])
+        @test_subject = @entity if @entity.class == TestSubject
       end
     end
   end

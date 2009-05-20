@@ -2,35 +2,35 @@
 "1": 
   name: Male
   updated_at: 2008-12-16 06:14:46.680602 Z
-  type: AnimalCohort
+  type: TestSubjectCohort
   id: 1
-  description: All male animals
+  description: All male test_subjects
   created_at: 2008-12-16 06:14:46.680602 Z
 "2": 
   name: Female
   updated_at: 2008-12-16 06:15:52.381897 Z
-  type: AnimalCohort
+  type: TestSubjectCohort
   id: 2
-  description: All female animals
+  description: All female test_subjects
   created_at: 2008-12-16 06:15:52.381897 Z
 "3": 
   name: Older than 45 years
   updated_at: 2008-12-16 06:17:02.683873 Z
-  type: AnimalCohort
+  type: TestSubjectCohort
   id: 3
-  description: Animal older than 45 years of age as of Dec. 14, 2008
+  description: TestSubject older than 45 years of age as of Dec. 14, 2008
   created_at: 2008-12-16 06:17:02.683873 Z
 "4": 
   name: Male under 30 years
   updated_at: 2008-12-16 06:18:40.174536 Z
-  type: AnimalCohort
+  type: TestSubjectCohort
   id: 4
-  description: All male animals under 30 years of age as of Dec. 14, 2008
+  description: All male test_subjects under 30 years of age as of Dec. 14, 2008
   created_at: 2008-12-16 06:18:40.174536 Z
 "5": 
   name: Paper 77
   updated_at: 2008-12-16 06:19:48.230700 Z
-  type: AnimalCohort
+  type: TestSubjectCohort
   id: 5
-  description: Animals used in analysis for paper 77
+  description: TestSubjects used in analysis for paper 77
   created_at: 2008-12-16 06:19:48.230700 Z

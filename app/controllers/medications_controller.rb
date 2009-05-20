@@ -1,10 +1,10 @@
 class MedicationsController < ApplicationController
-  before_filter :find_animal
+  before_filter :find_test_subject
 
   # GET /medications
   # GET /medications.xml
   def index
-    @medications = @animal.medications.find(:all)
+    @medications = @test_subject.medications.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class MedicationsController < ApplicationController
   # GET /medications/1
   # GET /medications/1.xml
   def show
-    @medication = @animal.medications.find(params[:id])
+    @medication = @test_subject.medications.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,19 +36,19 @@ class MedicationsController < ApplicationController
 
   # GET /medications/1/edit
   def edit
-    @medication = @animal.medications.find(params[:id])
+    @medication = @test_subject.medications.find(params[:id])
   end
 
   # POST /medications
   # POST /medications.xml
   def create
     @medication = Medication.new(params[:medication])
-    @medication.animal = @animal
+    @medication.test_subject = @test_subject
     
     respond_to do |format|
       if @medication.save
         flash[:notice] = 'Medication was successfully created.'
-        format.html { redirect_to(animal_medication_url(@animal, @medication)) }
+        format.html { redirect_to(test_subject_medication_url(@test_subject, @medication)) }
         format.xml  { render :xml => @medication, :status => :created, :location => @medication }
       else
         format.html { render :action => "new" }
@@ -60,12 +60,12 @@ class MedicationsController < ApplicationController
   # PUT /medications/1
   # PUT /medications/1.xml
   def update
-    @medication = @animal.medications.find(params[:id])
+    @medication = @test_subject.medications.find(params[:id])
 
     respond_to do |format|
       if @medication.update_attributes(params[:medication])
         flash[:notice] = 'Medication was successfully updated.'
-        format.html { redirect_to(animal_medication_url(@animal, @medication)) }
+        format.html { redirect_to(test_subject_medication_url(@test_subject, @medication)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -77,11 +77,11 @@ class MedicationsController < ApplicationController
   # DELETE /medications/1
   # DELETE /medications/1.xml
   def destroy
-    @medication = @animal.medications.find(params[:id])
+    @medication = @test_subject.medications.find(params[:id])
     @medication.destroy
 
     respond_to do |format|
-      format.html { redirect_to(animal_medications_url(@animal)) }
+      format.html { redirect_to(test_subject_medications_url(@test_subject)) }
       format.xml  { head :ok }
     end
   end

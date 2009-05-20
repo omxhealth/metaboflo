@@ -1,5 +1,5 @@
 <h1>
-  Showing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : 'animal ' %> <%= @sample.parent %>
+  Showing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : 'test_subject ' %> <%= @sample.parent %>
 </h1>
 
 <p>
@@ -28,8 +28,8 @@
 </p>
 
 <p>
-  <b>Animal:</b>
-  <%= link_to(@sample.root.to_s, animal_path(@sample.root)) %>
+  <b>Test Subject:</b>
+  <%= link_to(@sample.root.to_s, test_subject_path(@sample.root)) %>
 </p>
 
 <% if @sample.aliquot? %>
@@ -76,4 +76,4 @@
 
 <br />
 
-<%= edit_link @sample.aliquot? ? edit_sample_sample_path(@parent, @sample) : edit_animal_sample_path(@animal, @sample) %>
+<%= edit_link @sample.aliquot? ? edit_sample_sample_path(@parent, @sample) : edit_test_subject_sample_path(@test_subject, @sample) %>

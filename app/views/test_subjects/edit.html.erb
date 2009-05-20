@@ -1,0 +1,11 @@
+<h1>Editing Test Subject <%= @test_subject %></h1>
+
+<% labelled_tabular_form_for(@test_subject) do |form| %>
+<%= render :partial => form %>
+
+<p>
+	<%= form.submit "Update" %>
+</p>
+<% end %>
+
+<%= show_link @test_subject %>

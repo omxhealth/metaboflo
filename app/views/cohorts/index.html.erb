@@ -28,4 +28,4 @@
 
 <br />
 
-<%= new_link("#{@type.downcase()} cohort", {:action => 'new', :type => @type}) %>
+<%= new_link("#{@type.tableize.singularize} cohort", {:action => 'new', :type => @type}) %>

@@ -1,8 +1,8 @@
-<h1>Meal for animal <%= @animal.code %></h1>
+<h1>Meal for test_subject <%= @test_subject.code %></h1>
 
 <p>
-	<b>Animal:</b>
-	<%= link_to h(@meal.animal.code), animal_path(@meal.animal) %>
+	<b>Test Subject:</b>
+	<%= link_to h(@meal.test_subject.code), test_subject_path(@meal.test_subject) %>
 </p>
 
 <p>
@@ -26,4 +26,4 @@
 </p>
 
 
-<%= edit_link edit_animal_meal_path(@animal, @meal) %>
+<%= edit_link edit_test_subject_meal_path(@test_subject, @meal) %>

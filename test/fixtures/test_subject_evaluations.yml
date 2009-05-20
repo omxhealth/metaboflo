@@ -1,8 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  animal: one
-  diagnosis: Animal is surly
+  test_subject: one
+  diagnosis: TestSubject is surly
   current_smoker: false
   past_smoker: 1.5
   drinking_weekly: 1.5
@@ -27,8 +27,8 @@ one:
   weight: 190
 
 two:
-  animal: two
-  diagnosis: Animal is improving
+  test_subject: two
+  diagnosis: TestSubject is improving
   current_smoker: false
   past_smoker: 1.5
   drinking_weekly: 1
@@ -53,8 +53,8 @@ two:
   weight: 110
   
 three:
-  animal: one
-  diagnosis: Animal is perfectly healthy...except he smokes 3 packs a day
+  test_subject: one
+  diagnosis: TestSubject is perfectly healthy...except he smokes 3 packs a day
   current_smoker: true
   past_smoker: -1
   drinking_weekly: 1.5

@@ -16,7 +16,7 @@ class BovineController < ApplicationController
     @stats = []
     
     @stats << ["Number of Users", User.count]
-    @stats << ["Number of Animals", Animal.count]
+    @stats << ["Number of Test Subjects", TestSubject.count]
     @stats << ["Number of Samples", Sample.count]
     @stats << ["Number of Experiments", Experiment.count]
   end

@@ -6,7 +6,7 @@ require 'active_record/fixtures'
 namespace :import do
   desc 'Import data into the database'
 
-  task :all => [:environment, :users, :sites, :animals, :diets, :meals]
+  task :all => [:environment, :users, :sites, :test_subjects, :diets, :meals]
 
   desc 'Destroy all existing users and load initial users.'
   task :users => [:environment] do |t|
@@ -32,12 +32,12 @@ namespace :import do
     end
   end
   
-  desc 'Import animals into database'
-  task :animals => [:environment] do
-    puts "Importing animals..."
-    Animal.transaction do
-      Animal.destroy_all
-      import_models(Animal) do |entity, row|
+  desc 'Import test_subjects into database'
+  task :test_subjects => [:environment] do
+    puts "Importing test_subjects..."
+    TestSubject.transaction do
+      TestSubject.destroy_all
+      import_models(TestSubject) do |entity, row|
         entity.site = @@site
         true
       end
@@ -141,8 +141,8 @@ namespace :import do
         vals.each_pair do |k, v|
           matches = k.match(/^Day (\d+)$/)
           day = matches[1]
-          a = Animal.find(:first, :conditions => "code = '#{cow_id}'")
-          f = Meal.new(:amount => v, :animal => a, 
+          a = TestSubject.find(:first, :conditions => "code = '#{cow_id}'")
+          f = Meal.new(:amount => v, :test_subject => a, 
                        :diet => diet, :consumed_during_period => period,
                        :consumed_on_day => day)
           

@@ -1,4 +1,4 @@
-<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(Animal)) ? "Samples for Animal #{@parent}" : 'Samples' %></h1>
+<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(TestSubject)) ? "Samples for TestSubject #{@parent}" : 'Samples' %></h1>
 
 <table class="list">
   <tr>
@@ -7,7 +7,7 @@
 		<th>Actual amount</th>
 		<th>Amount remaining</th>
     <th>Barcode</th>
-    <th><%= 'Animal' unless @animal %></th>
+    <th><%= 'Test Subject' unless @test_subject %></th>
 		<th><%= 'Aliquoted from' unless @parent %></th>
     <th>Collected on</th>
     <th>Collected by</th>
@@ -22,7 +22,7 @@
 		<td><%=h sample.actual_amount %> <%=h sample.actual_unit %></td>
 		<td><%=h sample.theoretical_amount %> <%=h sample.original_unit %></td>
     <td><%=h sample.barcode %></td>
-    <td><%= link_to(sample.animal.code, sample.animal) unless @animal || sample.animal.nil? %></td>
+    <td><%= link_to(sample.test_subject.code, sample.test_subject) unless @test_subject || sample.test_subject.nil? %></td>
 		<td><%= link_to(sample.sample, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
     <td><%=h sample.collected_on %></td>
     <td><%=h sample.collected_by %></td>
@@ -31,9 +31,9 @@
 			<%= link_to experiment, [sample, experiment] %><br />
 			<% end -%>
 		</td>
-    <td><%= show_link sample.sample ? sample_sample_path(sample.sample, sample) : animal_sample_path(sample.animal, sample) %></td>
-    <td><%= edit_link sample.sample ? edit_sample_sample_path(sample.sample, sample) : edit_animal_sample_path(sample.animal, sample) %></td>
-    <td><%= destroy_link sample.sample ? sample_sample_path(sample.sample, sample) : animal_sample_path(sample.animal, sample) %></td>
+    <td><%= show_link sample.sample ? sample_sample_path(sample.sample, sample) : test_subject_sample_path(sample.test_subject, sample) %></td>
+    <td><%= edit_link sample.sample ? edit_sample_sample_path(sample.sample, sample) : edit_test_subject_sample_path(sample.test_subject, sample) %></td>
+    <td><%= destroy_link sample.sample ? sample_sample_path(sample.sample, sample) : test_subject_sample_path(sample.test_subject, sample) %></td>
   </tr>
 <% end %>
 </table>
@@ -42,6 +42,6 @@
 
 <% if (@parent and @parent.kind_of?(Sample)) %>
 <%= new_link "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent) %>
-<% elsif (@parent and @parent.kind_of?(Animal)) %>
-<%= new_link "sample for animal #{@parent.code}", new_animal_sample_path(@parent) %>
+<% elsif (@parent and @parent.kind_of?(TestSubject)) %>
+<%= new_link "sample for test_subject #{@parent.code}", new_test_subject_sample_path(@parent) %>
 <% end %>

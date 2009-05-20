@@ -1,14 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  animal: one
+  test_subject: one
   diet: one
   amount: 33
   consumed_during_period: 1
   consumed_on_day: 1
 
 two:
-  animal: one
+  test_subject: one
   diet: one
   amount: 45
   consumed_during_period: 1

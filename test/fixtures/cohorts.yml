@@ -2,18 +2,18 @@
 
 one:
   name: Cancer Study 2A
-  type: AnimalCohort
+  type: TestSubjectCohort
   description: A study of cancer
 
 two:
   name: Metabolomics Study
-  type: AnimalCohort
-  description: Group of animals
+  type: TestSubjectCohort
+  description: Group of test_subjects
 
 three:
   name: Heart Disease Study
-  type: AnimalCohort
-  description: Group of animals
+  type: TestSubjectCohort
+  description: Group of test_subjects
 
 four:
   name: Soylent Green Samples

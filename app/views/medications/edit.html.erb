@@ -1,10 +1,10 @@
 <h1>Editing medication</h1>
 
-<% labelled_tabular_form_for([@animal, @medication]) do |form| %>
+<% labelled_tabular_form_for([@test_subject, @medication]) do |form| %>
   <%= render :partial => form %>
   <p>
     <%= form.submit "Update" %>
   </p>
 <% end %>
 
-<%= show_link animal_medication_path(@animal, @medication) %>
+<%= show_link test_subject_medication_path(@test_subject, @medication) %>

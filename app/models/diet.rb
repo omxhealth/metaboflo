@@ -6,7 +6,7 @@ class Diet < ActiveRecord::Base
   has_many :nutrients, :through => :compositions
   
   has_many :meals
-  has_many :animals, :through => :meals
+  has_many :test_subjects, :through => :meals
   
   # Allow the form for diets to update/create/delete diet_ingredients
   accepts_nested_attributes_for :diet_ingredients, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }

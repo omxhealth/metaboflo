@@ -9,11 +9,11 @@
 <% for cohort_assignment in @cohort_assignments %>
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%=h cohort_assignment.cohort.name %></td>
-    <td><%= link_to 'Remove', { :action => 'destroy', :id => cohort_assignment, "#{@assignable_type.downcase}_id" => @assignable }, { :confirm => 'Are you sure?', :method => :delete } %></td>
+    <td><%= link_to 'Remove', { :action => 'destroy', :id => cohort_assignment, "#{@assignable_type.tableize.singularize}_id" => @assignable }, { :confirm => 'Are you sure?', :method => :delete } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to "Add #{@assignable_type} to Cohort", { :action => 'new', "#{@assignable_type.downcase}_id" => @assignable }, :class => 'icon icon-add' %>
+<%= link_to "Add #{@assignable_type} to Cohort", { :action => 'new', "#{@assignable_type.tableize.singularize}_id" => @assignable }, :class => 'icon icon-add' %>

@@ -1,7 +1,7 @@
 class CreateSamples < ActiveRecord::Migration
   def self.up
     create_table :samples do |t|
-      t.references :animal
+      t.references :test_subject
       t.references :sample
       t.string :sample_type
       t.float :original_amount

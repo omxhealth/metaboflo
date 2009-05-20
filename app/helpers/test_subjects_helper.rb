@@ -1,28 +1,28 @@
-module AnimalsHelper
+module TestSubjectsHelper
 
-  def animal_tree(animal)
-    Tree.new(:label => "Animal #{animal.code}", :url => animal_path(animal), :icon_open => tree_icon('animal.png'), :image_path => image_path('tmp').gsub(/\/tmp/, '')) do |tree|
-      tree << Node.new(:label => 'Medications', :url => animal_medications_path(animal), :icon_open => tree_icon('medicine.png'))
-      tree << Node.new(:label => 'Lab Tests', :url => animal_lab_tests_path(animal), :icon_open => tree_icon('test.png'))
-      tree << Node.new(:label => 'Animal Evaluations', :url => animal_animal_evaluations_path(animal), :icon_open => tree_icon('evaluation.png'))
+  def test_subject_tree(test_subject)
+    Tree.new(:label => "Test Subject #{test_subject.code}", :url => test_subject_path(test_subject), :icon_open => tree_icon('test_subject.png'), :image_path => image_path('tmp').gsub(/\/tmp/, '')) do |tree|
+      tree << Node.new(:label => 'Medications', :url => test_subject_medications_path(test_subject), :icon_open => tree_icon('medicine.png'))
+      tree << Node.new(:label => 'Lab Tests', :url => test_subject_lab_tests_path(test_subject), :icon_open => tree_icon('test.png'))
+      tree << Node.new(:label => 'Test Subject Evaluations', :url => test_subject_test_subject_evaluations_path(test_subject), :icon_open => tree_icon('evaluation.png'))
 
-      tree << sample_sub_tree(animal, animal) # Add the samples for this animal
-      tree << cohort_sub_tree(animal) # Add the cohorts for this animal
+      tree << sample_sub_tree(test_subject, test_subject) # Add the samples for this test_subject
+      tree << cohort_sub_tree(test_subject) # Add the cohorts for this test_subject
     end
   end
 
   protected
 
-  def sample_sub_tree(parent, animal)
-    samples_url = parent.kind_of?(Animal) ? animal_samples_path(parent) : sample_samples_path(parent)
-    label = parent.kind_of?(Animal) ? 'Samples' : 'Aliquots'
+  def sample_sub_tree(parent, test_subject)
+    samples_url = parent.kind_of?(TestSubject) ? test_subject_samples_path(parent) : sample_samples_path(parent)
+    label = parent.kind_of?(TestSubject) ? 'Samples' : 'Aliquots'
 
     tree = Node.new(:label => label, :url => samples_url) do |node|
       parent.samples.each do |sample|
-        sample_url = sample.sample ? sample_sample_path(sample.sample, sample) : animal_sample_path(animal, sample)
+        sample_url = sample.sample ? sample_sample_path(sample.sample, sample) : test_subject_sample_path(test_subject, sample)
         sample_label = sample.sample ? "Aliquot #{sample.id}" : "Sample #{sample.id}"
         sub_samples = Node.new(:label => sample_label, :url => sample_url) do |sub_node|
-          sub_node << sample_sub_tree(sample, animal)
+          sub_node << sample_sub_tree(sample, test_subject)
           sub_node << experiment_sub_tree(sample) # Add the experiments for this sample
         end
         sub_samples.icon = sub_samples.icon_open = sample.sample ? tree_icon('aliquot.png') : tree_icon('sample.png')
@@ -57,9 +57,9 @@ module AnimalsHelper
     return tree
   end
 
-  def cohort_sub_tree(animal)
-    tree = Node.new(:label => 'Cohorts', :url => animal_cohort_assignments_path(animal)) do |node|
-      animal.cohort_assignments.each do |cohort_assignment|
+  def cohort_sub_tree(test_subject)
+    tree = Node.new(:label => 'Cohorts', :url => test_subject_cohort_assignments_path(test_subject)) do |node|
+      test_subject.cohort_assignments.each do |cohort_assignment|
         node << Node.new(:label => cohort_assignment.cohort.name, :url => cohort_path(cohort_assignment.cohort), :icon_open => tree_icon('cohort.png'))
       end
     end

@@ -1,6 +1,6 @@
 <h1>Editing Lab Test</h1>
 
-<% labelled_tabular_form_for([@animal, @lab_test]) do |form| %>
+<% labelled_tabular_form_for([@test_subject, @lab_test]) do |form| %>
 
   <%= render :partial => form %>
 
@@ -11,4 +11,4 @@
   </p>
 <% end %>
 
-<%= show_link animal_lab_test_path(@animal, @lab_test) %>
+<%= show_link test_subject_lab_test_path(@test_subject, @lab_test) %>

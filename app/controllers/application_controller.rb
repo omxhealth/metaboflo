@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  # remove objects where root animal is from another site
+  # remove objects where root test_subject is from another site
   def find_for_site(objects, site)
     #TODO *** IS THERE A BETTER WAY TO IMPLEMENT THIS??? ***
 
@@ -43,9 +43,9 @@ class ApplicationController < ActionController::Base
       redirect_to redirect_path unless current_user.rank == 'Administrator'
     end
   
-    def find_animal(param_name = :animal_id)
-      @animal = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-                  Animal.find(params[param_name]) :
-                  Animal.find(params[param_name], :conditions => [ 'site_id=?', current_user.site ])
+    def find_test_subject(param_name = :test_subject_id)
+      @test_subject = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+                  TestSubject.find(params[param_name]) :
+                  TestSubject.find(params[param_name], :conditions => [ 'site_id=?', current_user.site ])
     end
 end

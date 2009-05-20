@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  # map.resources :animal_evaluations
+  # map.resources :test_subject_evaluations
 
   #  map.resources :medications
 
@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :samples, :has_many => [ :samples, :experiments, :cohort_assignments ]
 
-  map.resources :animals, :has_many => [ :meals, :samples, :cohort_assignments, :lab_tests, :medications, :animal_evaluations ]
+  map.resources :test_subjects, :has_many => [ :meals, :samples, :cohort_assignments, :lab_tests, :medications, :test_subject_evaluations ]
 
   map.resources :cohorts, :has_many => [ :cohort_assignments ]
   
@@ -49,7 +49,7 @@ ActionController::Routing::Routes.draw do |map|
   
   # Add routes to direct the cohort types to the correct place
   Cohort.valid_types.each do |cohort_type|
-    map.resources "#{cohort_type.downcase}_cohorts", :controller => 'cohorts', :requirements => { :type => cohort_type } 
+    map.resources "#{cohort_type.tableize.singularize}_cohorts", :controller => 'cohorts', :requirements => { :type => cohort_type } 
   end
 
 

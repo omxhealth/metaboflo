@@ -16,7 +16,7 @@
   current_smoker: false
   symptoms: []
 
-  animal_id: 1
+  test_subject_id: 1
   mother_age: 58
   relative_relationship: ""
   past_medical: []
@@ -55,7 +55,7 @@
   symptoms: 
   - agitation
   - difficulty staying asleep
-  animal_id: 2
+  test_subject_id: 2
   mother_age: 58
   relative_relationship: ""
   past_medical: 
@@ -95,7 +95,7 @@
   symptoms: 
   - fatigue
   - agitation
-  animal_id: 2
+  test_subject_id: 2
   mother_age: 56
   relative_relationship: ""
   past_medical: 
@@ -134,7 +134,7 @@
   current_smoker: false
   symptoms: 
   - fatigue
-  animal_id: 2
+  test_subject_id: 2
   mother_age: 57
   relative_relationship: ""
   past_medical: 
@@ -173,7 +173,7 @@
   current_smoker: false
   symptoms: 
   - fatigue
-  animal_id: 2
+  test_subject_id: 2
   mother_age: 58
   relative_relationship: ""
   past_medical: 
@@ -213,7 +213,7 @@
   symptoms: 
   - pain in chest
   - dizziness
-  animal_id: 1
+  test_subject_id: 1
   mother_age: 56
   relative_relationship: ""
   past_medical: []
@@ -251,7 +251,7 @@
   current_smoker: false
   symptoms: 
   - difficulty staying asleep
-  animal_id: 1
+  test_subject_id: 1
   mother_age: 57
   relative_relationship: ""
   past_medical: []

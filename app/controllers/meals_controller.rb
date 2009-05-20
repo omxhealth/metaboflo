@@ -1,11 +1,11 @@
 class MealsController < ApplicationController
   
-  before_filter :find_animal
+  before_filter :find_test_subject
   
   # GET /meals
   # GET /meals.xml
   def index
-    @meals = Animal.find(@animal.id).meals.all
+    @meals = TestSubject.find(@test_subject.id).meals.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,12 +45,12 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(params[:meal])
 
-    @meal.animal = @animal
+    @meal.test_subject = @test_subject
 
     respond_to do |format|
       if @meal.save
         flash[:notice] = 'Meal was successfully created.'
-        format.html { redirect_to(@animal) }
+        format.html { redirect_to(@test_subject) }
         format.xml  { render :xml => @meal, :status => :created, :location => @meal }
       else
         format.html { render :action => "new" }
@@ -67,7 +67,7 @@ class MealsController < ApplicationController
     respond_to do |format|
       if @meal.update_attributes(params[:meal])
         flash[:notice] = 'Meal was successfully updated.'
-        format.html { redirect_to([@animal, @meal]) }
+        format.html { redirect_to([@test_subject, @meal]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -83,7 +83,7 @@ class MealsController < ApplicationController
     @meal.destroy
 
     respond_to do |format|
-      format.html { redirect_to(animal_meals_url(@animal)) }
+      format.html { redirect_to(test_subject_meals_url(@test_subject)) }
       format.xml  { head :ok }
     end
   end

@@ -9,7 +9,7 @@
   collected_at: 2008-08-08 15:00:00 Z
   urea_unit: mg/dL
   protein_value: 7.0
-  animal_id: 1
+  test_subject_id: 1
   hemoglobin_value: 14.0
   glucose_unit: mmol/L
   cholesterol_unit: mg/dL
@@ -46,7 +46,7 @@
   collected_at: 2007-06-13 10:00:00 Z
   urea_unit: mg/dL
   protein_value: 6.8
-  animal_id: 1
+  test_subject_id: 1
   hemoglobin_value: 13.7
   glucose_unit: mmol/L
   cholesterol_unit: mg/dL
@@ -83,7 +83,7 @@
   collected_at: 2008-08-08 15:00:00 Z
   urea_unit: mg/dL
   protein_value: 7.0
-  animal_id: 2
+  test_subject_id: 2
   hemoglobin_value: 14.0
   glucose_unit: mmol/L
   cholesterol_unit: mg/dL
@@ -120,7 +120,7 @@
   collected_at: 2007-06-13 10:00:00 Z
   urea_unit: mg/dL
   protein_value: 6.8
-  animal_id: 2
+  test_subject_id: 2
   hemoglobin_value: 13.7
   glucose_unit: mmol/L
   cholesterol_unit: mg/dL

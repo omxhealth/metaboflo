@@ -3,7 +3,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:43:06 Z
   site_id: 1025886481
-  animal_id: 1
+  test_subject_id: 1
   collected_on: 2008-08-03
   actual_unit: mL
   sample_type: blood
@@ -22,7 +22,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:43:24 Z
   site_id: 1025886481
-  animal_id: 
+  test_subject_id: 
   collected_on: 2008-11-13
   actual_unit: mL
   sample_type: blood
@@ -41,7 +41,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
-  animal_id: 
+  test_subject_id: 
   collected_on: 2007-03-18
   actual_unit: mL
   sample_type: blood
@@ -60,7 +60,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:43:34 Z
   site_id: 953125641
-  animal_id: 2
+  test_subject_id: 2
   collected_on: 2007-04-16
   actual_unit: mL
   sample_type: CSF
@@ -79,7 +79,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:44:20 Z
   site_id: 996332877
-  animal_id: 2
+  test_subject_id: 2
   collected_on: 2007-12-25
   actual_unit: mL
   sample_type: urine
@@ -98,7 +98,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
-  animal_id: 
+  test_subject_id: 
   collected_on: 2007-03-18
   actual_unit: mL
   sample_type: blood
@@ -117,7 +117,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:49:30 Z
   site_id: 357751860
-  animal_id: 
+  test_subject_id: 
   collected_on: 2006-04-05
   actual_unit: mL
   sample_type: urine
@@ -136,7 +136,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:48:10 Z
   site_id: 866167485
-  animal_id: 
+  test_subject_id: 
   collected_on: 2008-09-18
   actual_unit: mL
   sample_type: CSF
@@ -155,7 +155,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:51:08 Z
   site_id: 995115194
-  animal_id: 1
+  test_subject_id: 1
   collected_on: 2006-03-16
   actual_unit: mL
   sample_type: blood
@@ -174,7 +174,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
-  animal_id: 
+  test_subject_id: 
   collected_on: 2007-03-18
   actual_unit: mL
   sample_type: blood
@@ -193,7 +193,7 @@
   original_unit: mL
   updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
-  animal_id: 
+  test_subject_id: 
   collected_on: 2007-03-18
   actual_unit: mL
   sample_type: blood

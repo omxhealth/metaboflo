@@ -127,7 +127,7 @@ dTree.prototype.node = function(node, nodeId) {
 		if (!node.icon) node.icon = (this.root.id == node.pid) ? this.icon.root : ((node._hc) ? this.icon.folder : this.icon.node);
 		if (!node.iconOpen) node.iconOpen = (node._hc) ? this.icon.folderOpen : this.icon.node;
 		if (this.root.id == node.pid) {
-			// These seem to disable the ability to set the root icon to a animal icon, so disable:
+			// These seem to disable the ability to set the root icon to a test_subject icon, so disable:
 			// node.icon = this.icon.root;
 			// node.iconOpen = this.icon.root;
 		}

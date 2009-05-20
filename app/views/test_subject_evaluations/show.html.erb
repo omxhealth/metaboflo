@@ -1,0 +1,179 @@
+<!--
+TODO: relatives / conditions
+TODO: Past medical history
+-->
+
+<p>
+    <b>Height:</b>
+    <%=h @test_subject_evaluation.height %> inches
+</p>
+
+<p>
+    <b>Weight:</b>
+    <%=h @test_subject_evaluation.weight %> lbs
+</p>
+
+<p>
+    <b>BMI:</b>
+    <%=h BMI(@test_subject_evaluation.height, @test_subject_evaluation.weight) %>
+</p>
+
+<p>
+	<b>Education:</b>
+	<%=h @test_subject_evaluation.education %>
+</p>
+
+<p>
+	<b>Marital status:</b>
+	<%=h @test_subject_evaluation.marital_status %>
+</p>
+
+<p>
+	<b>Address:</b>
+	<%=h @test_subject_evaluation.address %>
+</p>
+
+<p>
+	<b>Address 2:</b>
+	<%=h @test_subject_evaluation.address_2 %>
+</p>
+
+<p>
+	<b>City:</b>
+	<%=h @test_subject_evaluation.city %>
+</p>
+
+<p>
+	<b>Province/State:</b>
+	<%=h @test_subject_evaluation.province_state %>
+</p>
+
+<p>
+	<b>Country:</b>
+	<%=h @test_subject_evaluation.country %>
+</p>
+
+<p>
+	<b>Postal/Zip code:</b>
+	<%=h @test_subject_evaluation.postal_zip_code %>
+</p>
+
+<hr>
+
+<p>
+  <b>Diagnosis:</b>
+  <%=h @test_subject_evaluation.diagnosis %>
+</p>
+
+<p>
+  <b>Current smoker:</b>
+  <%=h boolean_to_english(@test_subject_evaluation.current_smoker) %>
+</p>
+
+<% if !@test_subject_evaluation.current_smoker and @test_subject_evaluation.past_smoker != -1 %>
+	<p>
+  		<b>Quit smoking:</b>
+  		<%=h @test_subject_evaluation.past_smoker %> years ago
+	</p>
+<% end %>
+
+<p>
+  <b>Alcoholic drinks per week:</b>
+  <%=h @test_subject_evaluation.drinking_weekly %>
+</p>
+
+<p>
+  <b>Weekly exercise amount:</b>
+  <%=h @test_subject_evaluation.exercise_weekly %>
+</p>
+
+<p>
+  <b>Hours of sleep nightly:</b>
+  <%=h @test_subject_evaluation.hours_sleep %>
+</p>
+
+<p>
+  <b>Feels that they get enough sleep nightly:</b>
+  <%=h boolean_to_english(@test_subject_evaluation.enough_sleep) %>
+</p>
+
+<p>
+  <b>Past medical history:</b>
+  <%=h @test_subject_evaluation.past_medical.join(', ') %>
+</p>
+
+<p>
+  <b>Symptoms:</b>
+  <%=h @test_subject_evaluation.symptoms.join(', ') %>
+</p>
+
+<hr>
+
+<% if @test_subject_evaluation.father_death_age == nil %>
+	<p>
+	  <b>Father's age:</b>
+	  <%=h @test_subject_evaluation.father_age %>
+	</p>
+
+	<p>
+	  <b>Father's health:</b>
+	  <%=h @test_subject_evaluation.father_health %>
+	</p>
+<% else %>
+	<p>
+	  <b>Father's age at death:</b>
+	  <%=h @test_subject_evaluation.father_death_age %>
+	</p>
+
+	<p>
+	  <b>Father's cause of death:</b>
+	  <%=h @test_subject_evaluation.father_death_cause %>
+	</p>
+<% end %>
+
+<% if @test_subject_evaluation.mother_death_age == nil %>
+	<p>
+	  <b>Mother's age:</b>
+	  <%=h @test_subject_evaluation.mother_age %>
+	</p>
+
+	<p>
+	  <b>Mother's health:</b>
+	  <%=h @test_subject_evaluation.mother_health %>
+	</p>
+<% else %>
+	<p>
+	  <b>Mother's age at death:</b>
+	  <%=h @test_subject_evaluation.mother_death_age %>
+	</p>
+
+	<p>
+	  <b>Mother's cause of death:</b>
+	  <%=h @test_subject_evaluation.mother_death_cause %>
+	</p>
+<% end %>
+
+
+<p>
+  <b>Number of children:</b>
+  <%=h @test_subject_evaluation.num_children %>
+</p>
+
+<p>
+  <b>Relative condition:</b>
+  <%=h @test_subject_evaluation.relative_condition %>
+</p>
+
+<p>
+  <b>Relative relationship:</b>
+  <%=h @test_subject_evaluation.relative_relationship %>
+</p>
+
+<p>
+  <b>Evaluation performed on:</b>
+  <%=h @test_subject_evaluation.evaluated_on %>
+</p>
+
+<br>
+
+<%= edit_link edit_test_subject_test_subject_evaluation_path(@test_subject, @test_subject_evaluation) %>

@@ -1,0 +1,94 @@
+<h1>Showing test_subject <%= @test_subject %></h1>
+
+<p>
+  <b>Test Subject Code:</b>
+  <%=h @test_subject.code %>
+</p>
+
+<p>
+  <b>Subspecies:</b>
+  <%=h @test_subject.subspecies %>
+</p>
+
+<p>
+	<b>Birth date:</b>
+	<%=h @test_subject.birthdate %>
+</p>
+
+<p>
+	<b>Calving date:</b>
+	<%=h @test_subject.calving_date %>
+</p>
+
+<p>
+	<b>Lactation Number:</b>
+	<%=h @test_subject.lactation_number %>
+</p>
+
+<p>
+	<b>Experiment start date:</b>
+	<%=h @test_subject.experiment_start_date %>
+</p>
+
+<p>
+	<b>Days in Milk at start:</b>
+	<%=h @test_subject.days_in_milk_at_start %>
+</p>
+
+<p>
+	<b>Experiment end date:</b>
+	<%=h @test_subject.experiment_end_date %>
+</p>
+
+<p>
+	<b>Days in Milk at end:</b>
+	<%=h @test_subject.days_in_milk_at_end %>
+</p>
+
+<p>
+	<b>Notes:</b>
+	<%=h @test_subject.notes %>
+</p>
+
+<br />
+
+<%= edit_link edit_test_subject_path(@test_subject) %>
+
+<br />
+<br />
+
+<fieldset>
+  <legend>Feeding Information</legend>
+  
+  <% if @meals.length > 0 %>
+    <table>
+      <tr>
+        <th>Test Subject</th>
+        <th>Diet</th>
+        <th>Amount (kg)</th>
+        <th>Period</th>
+        <th>Day</th>
+      </tr>
+
+    <% @meals.each do |meal| %>
+      <tr>
+        <td><%= link_to meal.test_subject.code, test_subject_path(meal.test_subject) %></td>
+        <td><%= link_to meal.diet.name, diet_path(meal.diet) %></td>
+        <td><%= meal.amount %></td>
+        <td><%= meal.consumed_during_period %></td>
+        <td><%= meal.consumed_on_day %></td>
+        <td><%= show_link test_subject_meal_path(@test_subject, meal) %></td>
+        <td><%= edit_link edit_test_subject_meal_path(@test_subject, meal) %></td>
+        <td><%= destroy_link test_subject_meal_path(@test_subject, meal) %></td>
+      </tr>
+    <% end %>
+    </table>
+    
+    <br />
+    
+    <%= new_link "meal for test_subject #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
+  <% else %>
+    No current feeding information.
+  <% end %>
+</fieldset>
+  

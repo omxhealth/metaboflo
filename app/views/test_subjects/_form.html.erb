@@ -1,13 +1,13 @@
 <%= form.error_messages %>
 
 <fieldset>
-  <legend>Animal Identification</legend>
+  <legend>Test Subject Identification</legend>
   <p><%= form.text_field :code, :required => true %></p>
   <p><%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :required => true, :include_blank => true %></p>
 </fieldset>
 
 <fieldset>
-  <legend>Animal Details</legend>
+  <legend>Test Subject Details</legend>
   <p><%= form.text_field :subspecies %></p>
   <p><%= form.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
   <p><%= form.date_select :calving_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>

@@ -172,7 +172,7 @@
   birthdate: 1979-10-06
   first_initial: J
   practitioner: Dr. Smith
-  notes: Animal is a half-man, half-amazing.
+  notes: TestSubject is a half-man, half-amazing.
   id: 1
   gender: Male
   middle_initial: A
@@ -187,7 +187,7 @@
   birthdate: 1979-10-01
   first_initial: R
   practitioner: Dr. Johnson
-  notes: Animal is allergic to small diamonds
+  notes: TestSubject is allergic to small diamonds
   id: 2
   gender: Female
   middle_initial: J

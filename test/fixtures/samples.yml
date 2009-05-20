@@ -7,7 +7,7 @@ one:
   actual_amount: 5.2
   actual_unit: ml
   barcode: 12346
-  animal: one
+  test_subject: one
   collected_on: 2008-09-25
   collected_by: 
       
@@ -18,7 +18,7 @@ two:
   actual_amount: 500
   actual_unit: g
   barcode: 12345
-  animal: two
+  test_subject: two
   collected_on: 2008-09-25
   collected_by: 
       
@@ -29,7 +29,7 @@ three:
   actual_amount: 150.3
   actual_unit: ml
   barcode: 12347
-  animal: one
+  test_subject: one
   collected_on: 2008-09-25
   collected_by: 
       

@@ -1,4 +1,4 @@
-<h1>Listing Lab Tests for Animal '<%= @animal.code %>'</h1>
+<h1>Listing Lab Tests for Test Subject '<%= @test_subject.code %>'</h1>
 
 <table class="list">
 	<tr>
@@ -22,12 +22,12 @@
 		  <% end %>
 		</td>
 		<td><%=h lab_test.collected_at %></td>
-		<td><%= show_link animal_lab_test_path(@animal, lab_test) %></td>
-		<td><%= edit_link edit_animal_lab_test_path(@animal, lab_test) %></td>
-		<td><%= destroy_link animal_lab_test_path(@animal, lab_test) %></td>
+		<td><%= show_link test_subject_lab_test_path(@test_subject, lab_test) %></td>
+		<td><%= edit_link edit_test_subject_lab_test_path(@test_subject, lab_test) %></td>
+		<td><%= destroy_link test_subject_lab_test_path(@test_subject, lab_test) %></td>
 	</tr>
 	<% end %>
 </table>
 
 <br />
-<%= new_link 'lab test', new_animal_lab_test_path(@animal) %>
+<%= new_link 'lab test', new_test_subject_lab_test_path(@test_subject) %>

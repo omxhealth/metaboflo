@@ -1,4 +1,4 @@
-module AnimalEvaluationsHelper
+module TestSubjectEvaluationsHelper
   
   def medical_history_list
     ['Cancer', 'Heart problems', 'Asthma', 'Goiter', 'Leukemia', 'Stroke', 'Cataracts', 'Diabetes', 'Epilepsy', 'Nervous breakdown','Stomach ulcers','Rheumatic fever','Bad headaches','Jaundice','Colitis','Kidney disease','Pneumonia','Psoriasis','Anemia','HIV/AIDS','High Blood Pressure','Emphysema','Glaucoma','Tuberculosis']

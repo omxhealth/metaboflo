@@ -1,19 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  animal: one
+  test_subject: one
   drug: Acetaminophen
   started_on: 2008-10-19
   stopped_on: 2008-10-19
 
 two:
-  animal: two
+  test_subject: two
   drug: Ibuprofen
   started_on: 2008-10-19
   stopped_on: 2008-10-19
 
 three:
-  animal: one
+  test_subject: one
   drug: Ibuprofen
   started_on: 2008-10-19
   stopped_on: 2008-10-19

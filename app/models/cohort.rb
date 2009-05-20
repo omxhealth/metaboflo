@@ -14,7 +14,7 @@ class Cohort < ActiveRecord::Base
     
   # Get a list of possible cohort subclasses
   def Cohort.valid_types
-    return ['Animal', 'Sample', 'Experiment']
+    return ['TestSubject', 'Sample', 'Experiment']
     # Use the object space to get the subclasses and remove the Cohort itself)
     # klasses = ObjectSpace.enum_for(:each_object, class << self; self; end).to_a - [ self ]
     # klasses.collect { |klass| klass.to_s }.sort
@@ -22,9 +22,9 @@ class Cohort < ActiveRecord::Base
   
 end
 
-class AnimalCohort < Cohort
-  has_many :assignables, :through => :cohort_assignments, :source_type => 'Animal'
-  alias_method :animals, :assignables
+class TestSubjectCohort < Cohort
+  has_many :assignables, :through => :cohort_assignments, :source_type => 'TestSubject'
+  alias_method :test_subjects, :assignables
 end
 
 class SampleCohort < Cohort
