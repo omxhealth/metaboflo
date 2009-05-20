@@ -8,7 +8,7 @@
 
 <fieldset>
   <legend>Animal Details</legend>
-  <p><%= form.text_field :breed %></p>
+  <p><%= form.text_field :subspecies %></p>
   <p><%= form.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
   <p><%= form.date_select :calving_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
   <p><%= form.text_field :lactation_number %>

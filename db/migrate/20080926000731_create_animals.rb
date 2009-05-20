@@ -2,7 +2,7 @@ class CreateAnimals < ActiveRecord::Migration
   def self.up
     create_table :animals do |t|
       t.string :code
-      t.text :breed
+      t.text :subspecies
       t.date :birthdate
       t.date :calving_date
       t.integer :lactation_number

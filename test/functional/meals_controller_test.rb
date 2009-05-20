@@ -20,7 +20,7 @@ class MealsControllerTest < ActionController::TestCase
     login_as :admin
     
     assert_difference('Meal.count') do
-      post :create, :animal_id => animals(:one).id, :meal => { :diet_id => diets(:one).id, :amount => 45, :consumed_on => '2008-09-26' }      
+      post :create, :animal_id => animals(:one).id, :meal => { :diet_id => diets(:one).id, :amount => 45, :consumed_during_period => 1, :consumed_on_day => 3 }      
     end
 
     assert_redirected_to animal_path(assigns(:animal))

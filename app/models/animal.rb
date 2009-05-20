@@ -10,13 +10,13 @@ class Animal < ActiveRecord::Base
   has_many :animal_evaluations, :dependent => :destroy
   has_many :lab_tests, :order => 'collected_at ASC', :dependent => :destroy
   
-  has_many :meals, :order => 'consumed_on DESC', :dependent => :destroy
+  has_many :meals, :order => 'consumed_during_period DESC, consumed_on_day DESC', :dependent => :destroy
   has_many :diets, :through => :meals
   
   validates_presence_of :code, :site_id
   
   def name
-    "Cow #{code}"
+    "Test Subject #{code}"
   end
   
   def to_s

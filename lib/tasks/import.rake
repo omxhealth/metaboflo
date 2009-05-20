@@ -6,7 +6,7 @@ require 'active_record/fixtures'
 namespace :import do
   desc 'Import data into the database'
 
-  task :all => [:environment, :users, :sites, :animals]
+  task :all => [:environment, :users, :sites, :animals, :diets, :meals]
 
   desc 'Destroy all existing users and load initial users.'
   task :users => [:environment] do |t|
@@ -40,6 +40,115 @@ namespace :import do
       import_models(Animal) do |entity, row|
         entity.site = @@site
         true
+      end
+    end
+  end
+  
+  desc 'Import diets, ingredients, and nutrients into database'
+  task :diets => [:environment] do
+    puts "Importing diets / ingredients / nutrients..."
+    Diet.transaction do
+      Diet.destroy_all
+      Ingredient.destroy_all
+      Nutrient.destroy_all
+      
+      headers = Hash.new
+      @@diets = Hash.new
+      nutrients = false
+
+      FasterCSV.foreach("#{@@data_path}/diets.csv", :headers => true, :return_headers => true) do |row|
+        # Get the indices for the header rows
+        if row.header_row?
+          headers = get_headers(row)
+        
+          headers.values.each do |v|
+            if v != 'Ingredients'
+              @@diets[v] = Diet.new(:name => v) #Create each diet
+            end
+          end
+        
+          next
+        end
+
+        if row[0] == 'Nutrient composition' #We've entered the Nutrient subsection
+          nutrients = true
+          next
+        end
+      
+        vals = Hash.new
+        name = ''
+        row.each do |k, v|
+          if k == 'Ingredients'
+            name = v.strip()
+          else
+            vals[k] = v.strip()
+          end
+        end
+      
+        if not nutrients
+          i = Ingredient.new(:name => name)
+          i.save!
+          
+          #Save each ingredient / diet pair for this ingredient
+          vals.each_pair do |k, v|
+            diet = @@diets[k]
+            di = DietIngredient.new(:amount => v, :diet => diet, :ingredient => i)
+            di.save!
+          end
+        
+        else
+          n = Nutrient.new(:name => name)
+          n.save!
+        
+          #Save each nutrient / diet pair for this ingredient
+          vals.each_pair do |k, v|
+            diet = @@diets[k]
+            c = Composition.new(:amount => v, :diet => diet, :nutrient => n)
+            c.save!
+          end
+        end
+      end
+    end
+  end
+  
+  desc 'Import meals into database'
+  task :meals => [:environment] do
+    puts "Importing meals..."
+    Meal.transaction do
+      Meal.destroy_all
+      
+      headers = Hash.new
+
+      FasterCSV.foreach("#{@@data_path}/feed.csv", :headers => true, :return_headers => true) do |row|
+        if row.header_row?
+          next
+        end
+
+        vals = Hash.new
+        cow_id = diet = period = ''
+        row.each do |k, v|
+          if k == 'Cow'
+            cow_id = v.strip()
+          elsif k == 'Diet'
+            diet = @@diets[v.strip()]
+          elsif k == 'Period'
+            period = v.strip()
+          else
+            vals[k.strip()] = v.strip()
+          end
+        end
+        
+        vals.each_pair do |k, v|
+          matches = k.match(/^Day (\d+)$/)
+          day = matches[1]
+          a = Animal.find(:first, :conditions => "code = '#{cow_id}'")
+          f = Meal.new(:amount => v, :animal => a, 
+                       :diet => diet, :consumed_during_period => period,
+                       :consumed_on_day => day)
+          
+          f.save!
+        end
+        
       end
     end
   end

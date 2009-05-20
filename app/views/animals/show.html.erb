@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <b>Breed:</b>
-  <%=h @animal.breed %>
+  <b>Subspecies:</b>
+  <%=h @animal.subspecies %>
 </p>
 
 <p>
@@ -31,7 +31,7 @@
 </p>
 
 <p>
-	<b>DIM at start:</b>
+	<b>Days in Milk at start:</b>
 	<%=h @animal.days_in_milk_at_start %>
 </p>
 
@@ -41,7 +41,7 @@
 </p>
 
 <p>
-	<b>DIM at end:</b>
+	<b>Days in Milk at end:</b>
 	<%=h @animal.days_in_milk_at_end %>
 </p>
 
@@ -66,7 +66,8 @@
         <th>Animal</th>
         <th>Diet</th>
         <th>Amount (kg)</th>
-        <th>Consumed On</th>
+        <th>Period</th>
+        <th>Day</th>
       </tr>
 
     <% @meals.each do |meal| %>
@@ -74,7 +75,8 @@
         <td><%= link_to meal.animal.code, animal_path(meal.animal) %></td>
         <td><%= link_to meal.diet.name, diet_path(meal.diet) %></td>
         <td><%= meal.amount %></td>
-        <td><%= meal.consumed_on %></td>
+        <td><%= meal.consumed_during_period %></td>
+        <td><%= meal.consumed_on_day %></td>
         <td><%= show_link animal_meal_path(@animal, meal) %></td>
         <td><%= edit_link edit_animal_meal_path(@animal, meal) %></td>
         <td><%= destroy_link animal_meal_path(@animal, meal) %></td>

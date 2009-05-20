@@ -4,7 +4,8 @@ class CreateMeals < ActiveRecord::Migration
       t.float :amount
       t.references :animal
       t.references :diet
-      t.date :consumed_on
+      t.integer :consumed_during_period
+      t.integer :consumed_on_day
       
       t.timestamps
     end

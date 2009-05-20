@@ -4,11 +4,13 @@ one:
   animal: one
   diet: one
   amount: 33
-  consumed_on: 2008-09-25
+  consumed_during_period: 1
+  consumed_on_day: 1
 
 two:
   animal: one
   diet: one
   amount: 45
-  consumed_on: 2008-09-26
+  consumed_during_period: 1
+  consumed_on_day: 2
   
