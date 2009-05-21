@@ -1,4 +1,4 @@
-<h1>Showing test_subject <%= @test_subject %></h1>
+<h1>Showing test subject <%= @test_subject %></h1>
 
 <p>
   <b>Test Subject Code:</b>
@@ -61,9 +61,8 @@
   <legend>Feeding Information</legend>
   
   <% if @meals.length > 0 %>
-    <table>
+    <table class="list">
       <tr>
-        <th>Test Subject</th>
         <th>Diet</th>
         <th>Amount (kg)</th>
         <th>Period</th>
@@ -71,8 +70,7 @@
       </tr>
 
     <% @meals.each do |meal| %>
-      <tr>
-        <td><%= link_to meal.test_subject.code, test_subject_path(meal.test_subject) %></td>
+      <tr class="<%= cycle('odd', 'even') %>">
         <td><%= link_to meal.diet.name, diet_path(meal.diet) %></td>
         <td><%= meal.amount %></td>
         <td><%= meal.consumed_during_period %></td>
@@ -86,7 +84,7 @@
     
     <br />
     
-    <%= new_link "meal for test_subject #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
+    <%= new_link "meal for test subject #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
   <% else %>
     No current feeding information.
   <% end %>

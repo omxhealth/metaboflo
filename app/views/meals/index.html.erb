@@ -1,6 +1,6 @@
-<h1>Listing meals for test_subject <%= @test_subject.code %></h1>
+<h1>Listing meals for test subject <%= @test_subject.code %></h1>
 
-<table>
+<table class="list">
   <tr>
     <th>Test Subject</th>
     <th>Diet</th>
@@ -10,7 +10,7 @@
   </tr>
 
 <% @meals.each do |meal| %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%= link_to meal.test_subject.code, test_subject_path(meal.test_subject) %></td>
     <td><%= link_to meal.diet.name, diet_path(meal.diet) %></td>
     <td><%= meal.amount %></td>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= new_link "meal for test_subject #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
+<%= new_link "meal for test subject #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
