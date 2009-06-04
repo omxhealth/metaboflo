@@ -3,11 +3,11 @@
 one:
   concentration_value: 1.5
   concentration_units: MyString
-  data_file: 
-  metabolite: 
+  data_file: one
+  metabolite: one
 
 two:
   concentration_value: 1.5
   concentration_units: MyString
-  data_file: 
-  metabolite: 
+  data_file: one
+  metabolite: two

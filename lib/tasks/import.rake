@@ -29,6 +29,10 @@ namespace :import do
       s.name = 'Dairy Research and Technology Centre (DRTC) - University of Alberta'
       s.save!
       @@site = s
+      
+      s = Site.new
+      s.name = 'University of Alberta'
+      s.save!
     end
   end
   

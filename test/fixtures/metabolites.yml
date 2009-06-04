@@ -37,3 +37,22 @@ two:
   chebi_id: 16450
   wikipedia_name: Deoxyuridine
   comments: MyText
+
+three:
+  name: Citric Acid
+  hmdb_id: HMDB00094
+  description: MyText
+  iupac_name: MyText
+  formula: MyText
+  mono_mass: MyText
+  average_mass: MyText
+  smiles: MyText
+  cas: MyText
+  inchi_identifier: MyText
+  melting_point: 999
+  state: MyText
+  kegg_compound_id: MyText
+  pubchem_compound_id: 13712
+  chebi_id: 16450
+  wikipedia_name: Deoxyuridine
+  comments: MyText

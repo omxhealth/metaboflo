@@ -12,7 +12,10 @@ class CreateSamples < ActiveRecord::Migration
       t.references :site
       t.string :building
       t.string :room
-      t.text :storage_location
+      t.string :freezer
+      t.string :shelf
+      t.string :box
+      t.string :box_position
       t.date :collected_on
       t.integer :collected_by_id
       t.text :description
