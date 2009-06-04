@@ -11,3 +11,9 @@ two:
   concentration_units: MyString
   data_file: one
   metabolite: two
+
+three:
+  concentration_value: 1.2
+  concentration_units: MyString
+  data_file: one
+  metabolite: two

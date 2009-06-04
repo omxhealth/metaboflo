@@ -3,7 +3,7 @@ class MetabolitesController < ApplicationController
   # GET /metabolites.xml
   def index
     params[:page] = 1 if params[:page].to_i <= 0
-    @metabolites = Metabolite.paginate(:page => params[:page], :order => 'hmdb_id')
+    @metabolites = Metabolite.paginate(:page => params[:page], :order => 'hmdb_id', :joins => [ :concentrations ], :select => 'DISTINCT metabolites.*')
 
     respond_to do |format|
       format.html # index.html.erb
