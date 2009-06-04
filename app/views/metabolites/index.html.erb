@@ -3,24 +3,35 @@
 <table class="list" style="width: 100%">
   <tr>
     <th>Name</th>
-    <th>CAS Number</th>
-    <th>HMDB ID</th>
-    <th>Formula</th>
-    <th>Mono Mass</th>
-    <th colspan="3">Actions</th>
+    <th>Test Subject</th>
+    <th>Data file</th>
+    <th>Concentration</th>
+    <th>Experiment</th>
+    <th>Sample Collected On</th>
+    <th>Sample Type</th>
+    <th>Condition</th>
+    <th>Cohort</th>
   </tr>
 
   <% @metabolites.each do |metabolite| %>
-  <tr class="<%= cycle('odd', 'even') %>">
-    <td><strong><%=h metabolite.name %></strong></td>
-    <td><%=h metabolite.cas %></td>
-    <td><%= link_out metabolite, :hmdb_id %></td>
-    <td><%=h metabolite.formula %></td>
-    <td><%=h metabolite.mono_mass %></td>
-    <td><%= show_link metabolite %></td>
-    <td><%= edit_link edit_metabolite_path(metabolite) %></td>
-    <td><%= destroy_link metabolite %></td>
-  </tr>
+    <% concentrations = metabolite.concentrations %>
+    <% first = true %>
+    <% concentrations.each do |concentration| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <% if first %>
+          <td rowspan=<%= [concentrations.length, 1].max %>><%= link_out metabolite, :hmdb_id, h(metabolite.name) %></td>
+          <% first = false %>
+        <% end %>
+        <td><%= link_to concentration.data_file.experiment.sample.test_subject.name, test_subject_path(concentration.data_file.experiment.sample.test_subject) %></td>
+        <td><%= link_to concentration.data_file.filename, experiment_data_file_path(concentration.data_file.experiment, concentration.data_file) %></td>
+        <td><%=h concentration.concentration_value %></td>
+        <td><%= link_to concentration.data_file.experiment.name, sample_experiment_path(concentration.data_file.experiment.sample, concentration.data_file.experiment) %></td>
+        <td><%=h concentration.data_file.experiment.sample.collected_on %></td>
+        <td><%= link_to concentration.data_file.experiment.sample.sample_type, sample_path(concentration.data_file.experiment.sample) %></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    <% end%>
   <% end %>
 </table>
 

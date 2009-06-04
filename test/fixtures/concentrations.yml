@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  concentration_value: 1.5
+  concentration_units: MyString
+  data_file: 
+  metabolite: 
+
+two:
+  concentration_value: 1.5
+  concentration_units: MyString
+  data_file: 
+  metabolite: 

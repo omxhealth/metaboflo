@@ -73,6 +73,21 @@
             <li class="yuimenubaritem">
               <%= link_to 'Metabolites', metabolites_path, :class => 'yuimenubaritemlabel' %>
             </li>
+            
+            <li class="yuimenubaritem">
+              <%= link_to 'Feeding', diets_path, :class => 'yuimenubaritemlabel' %>
+              <div id="administration" class="yuimenu">
+                <div class="bd">                    
+                  <ul>
+                    <li class="yuimenuitem"><%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %></li>
+										<li class="yuimenuitem"><%= link_to 'Ingredients', ingredients_path, :class => 'yuimenuitemlabel' %></li>
+										<li class="yuimenuitem"><%= link_to 'Nutrients', nutrients_path, :class => 'yuimenuitemlabel' %></li>
+                  </ul>
+                </div>
+              </div>                    
+            </li>
+            
+            
             <li class="yuimenubaritem"><%= link_to 'Cohorts', test_subject_cohorts_path, :class => 'yuimenubaritemlabel' %>
               <div id="cohorts" class="yuimenu">
                 <div class="bd">                    
@@ -117,9 +132,6 @@
                   <ul>
                     <li class="yuimenuitem"><%= link_to 'Sites', sites_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Data file types', data_file_types_path, :class => 'yuimenuitemlabel' %></li>
-										<li class="yuimenuitem"><%= link_to 'Ingredients', ingredients_path, :class => 'yuimenuitemlabel' %></li>
-										<li class="yuimenuitem"><%= link_to 'Nutrients', nutrients_path, :class => 'yuimenuitemlabel' %></li>
-										<li class="yuimenuitem"><%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Users', users_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Protocols', protocols_path, :class => 'yuimenuitemlabel' %></li>
                   </ul>

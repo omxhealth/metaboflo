@@ -17,3 +17,7 @@
   <b>Description:</b>
   <%=h @data_file.description %>
 </p>
+
+<% if @data_file.has_concentrations %>
+  <strong><%= @data_file.concentrations.length %> Concentrations were successfully imported from this file</strong>
+<% end%>
