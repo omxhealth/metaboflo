@@ -2,8 +2,8 @@
 
 <% unless params[:query].nil? %>
 <p>
-<%= @metabolites.size %> metabolites found for the search term '<%= params[:query] %>'
-<%= link_to 'Export', "#{search_metabolites_path(:format => :csv, :query => params[:query])}", :method => :post %>
+<%= @metabolites.size %> metabolites found for the search term '<%= params[:query] %>'<br />
+<strong><%= link_to 'Export Metabolites', "#{search_metabolites_path(:format => :csv, :query => params[:query])}", :method => :post %></strong>
 </p>
 <% end %>
 

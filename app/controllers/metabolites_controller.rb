@@ -107,21 +107,29 @@ class MetabolitesController < ApplicationController
   private
     def format_csv
       csv_string = FasterCSV.generate do |csv|
-          columns = ["id", "name", "hmdb_id", "description", "iupac_name", "formula", "mono_mass", "average_mass", "smiles", "cas", "inchi_identifier", "melting_point", "state", "kegg_compound_id", "pubchem_compound_id", "chebi_id", "wikipedia_name", "comments", "created_at", "updated_at"]
+        columns = [ 'Name', 'Test Subject', 'Concentration', 'Experiment', 'Sample Collected On', 'Sample Type', 'Condition', 'Cohort' ]
 
-          # header row
-          csv << columns
+        # header row
+        csv << columns
 
-          # data row
-          @metabolites.each do |metabolite|
+        # data row
+        @metabolites.each do |metabolite|
+          metabolite.concentrations.each do |concentration|
             values = []
-            columns.each do |c|
-              values << metabolite.send(c)
-            end
+            values << metabolite.name
+            values << concentration.data_file.experiment.sample.test_subject.name
+            values << concentration.concentration_value
+            values << concentration.data_file.experiment.name
+            values << concentration.data_file.experiment.sample.collected_on
+            values << concentration.data_file.experiment.sample.sample_type
+            values << '-'
+            values << '-'
+            
             csv << values
           end
         end
+      end
 
-        send_data csv_string, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => 'attachment; filename=metabolites.csv'
+      send_data csv_string, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => 'attachment; filename=metabolites.csv'
     end
 end
