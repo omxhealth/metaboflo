@@ -1,5 +1,12 @@
 <h1>Quantified Metabolites</h1>
 
+<% unless params[:query].nil? %>
+<p>
+<%= @metabolites.size %> metabolites found for the search term '<%= params[:query] %>'
+<%= link_to 'Export', "#{search_metabolites_path(:format => :csv, :query => params[:query])}", :method => :post %>
+</p>
+<% end %>
+
 <table class="list" style="width: 100%">
   <tr>
     <th>Name</th>
@@ -35,7 +42,7 @@
   <% end %>
 </table>
 
-<%= render :partial => "shared/paginate", :locals => { :collection => @metabolites } %>
+<%= render(:partial => "shared/paginate", :locals => { :collection => @metabolites }) if params[:query].nil? %>
 <br />
 
 <%= new_link 'metabolite', new_metabolite_path %>

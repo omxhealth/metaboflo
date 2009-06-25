@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :nutrients
 
-  map.resources :metabolites
+  map.resources :metabolites, :collection => { :search => :post }
 
   map.resources :ingredients
 

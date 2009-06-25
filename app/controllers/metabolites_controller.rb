@@ -1,6 +1,7 @@
 class MetabolitesController < ApplicationController
   # GET /metabolites
   # GET /metabolites.xml
+  # GET /metabolites.csv
   def index
     params[:page] = 1 if params[:page].to_i <= 0
     @metabolites = Metabolite.paginate(:page => params[:page], :order => 'hmdb_id', :joins => [ :concentrations ], :select => 'DISTINCT metabolites.*')
@@ -8,6 +9,7 @@ class MetabolitesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @metabolites }
+      format.csv  { format_csv }
     end
   end
 
@@ -83,4 +85,43 @@ class MetabolitesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # POST /metabolites/search
+  # POST /metabolites/search.xml
+  # POST /metabolites/search.csv
+  def search
+    @query = "%#{params[:query]}%"
+
+    search_fields = ["name", "hmdb_id", "description", "iupac_name", "formula", "smiles", "cas", "inchi_identifier", "melting_point", "state", "wikipedia_name", "comments"]
+    conditions_arg = search_fields.collect { |sf| "#{sf} LIKE :query" }.join(" OR ")
+
+    @metabolites = Metabolite.all(:joins => [ :concentrations ], :select => 'DISTINCT metabolites.*', :conditions => [ conditions_arg, { :query => @query } ])
+
+    respond_to do |format|
+      format.html { render :action => 'index' } # index.html.erb
+      format.xml  { render :xml => @metabolites }
+      format.csv  { format_csv }
+    end
+  end
+
+  private
+    def format_csv
+      csv_string = FasterCSV.generate do |csv|
+          columns = ["id", "name", "hmdb_id", "description", "iupac_name", "formula", "mono_mass", "average_mass", "smiles", "cas", "inchi_identifier", "melting_point", "state", "kegg_compound_id", "pubchem_compound_id", "chebi_id", "wikipedia_name", "comments", "created_at", "updated_at"]
+
+          # header row
+          csv << columns
+
+          # data row
+          @metabolites.each do |metabolite|
+            values = []
+            columns.each do |c|
+              values << metabolite.send(c)
+            end
+            csv << values
+          end
+        end
+
+        send_data csv_string, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => 'attachment; filename=metabolites.csv'
+    end
 end
