@@ -10,6 +10,7 @@ one:
   amount_used_unit: ml
   sample: one
   protocol: one
+  experiment_type: one
 
 two:
   name: Random Experiment
@@ -21,6 +22,7 @@ two:
   amount_used_unit: ml
   sample: two
   protocol: one
+  experiment_type: two
 
 three:
   name: Random Experiment 2
@@ -32,3 +34,4 @@ three:
   amount_used_unit: ml
   sample: one
   protocol: two
+  experiment_type: two

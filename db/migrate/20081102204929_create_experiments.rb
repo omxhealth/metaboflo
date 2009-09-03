@@ -11,6 +11,7 @@ class CreateExperiments < ActiveRecord::Migration
       t.string :amount_used_unit
       t.references :sample
       t.references :protocol
+      t.references :experiment_type
       t.text :comments
 
       t.timestamps

@@ -1,49 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: GC MS
-  description: A Data file for GC MS
+  name: Spectrum Image
+  description: Image file of a Spectrum
 
 two:
-  name: Direct Injection Mass Spec
-  description: A Data file for Direct Injection Mass Spec
-
+  name: FIDS
+  description: Free Induction Decay file
+  
 three:
-  name: HPLC
-  description: A Data file for High Performance Liquid Chromatography
-
+  name: CSV
+  description: A comma-separated value file
+  
 four:
-  name: LC MS
-  description: A Data file for LC MS
-
-five:
-  name: LC MS/MS
-  description: A Data file for LC MS/MS
-
-six:
-  name: 1D Proton NMR
-  description: A Data file for 1D Proton NMR
-
-seven:
-  name: 1D Carbon NMR
-  description: A Data file for 1D Carbon NMR
-
-eight:
-  name: 2D Proton NMR
-  description: A Data file for 2D Proton NMR
-
-nine:
-  name: 2D HSQC NMR
-  description: A Data file for 2D HSQC NMR
-
-ten:
-  name: HPLC/UV
-  description: A Data file for HPLC/UV
-
-eleven:
-  name: HPLC Electrochemical
-  description: A Data file for HPLC Electrochemical
-
-twelve:
-  name: HPLC Fluorescence
-  description: A Data file for HPLC Fluorescence
+  name: Other
+  description: A Miscellaneous file

@@ -63,7 +63,7 @@
   test_subject_id: 2
   collected_on: 2007-04-16
   actual_unit: mL
-  sample_type: CSF
+  sample_type: milk
   barcode: "125667"
   id: 1054583387
   original_amount: 5.0
@@ -139,7 +139,7 @@
   test_subject_id: 
   collected_on: 2008-09-18
   actual_unit: mL
-  sample_type: CSF
+  sample_type: milk
   barcode: "3566"
   id: 1054583389
   original_amount: 1.0

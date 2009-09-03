@@ -7,7 +7,7 @@
     <legend>Data File Details</legend>
     <p><%= f.file_field :uploaded_data, :label => 'File to Upload', :required => true %></p>
     <p><%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :required => true } %></p>
-    <p><%= f.check_box :has_concentrations, :label => 'This file contains concentration data in CSV format' %>
+    <p><%= f.check_box :has_concentrations, :label => 'This file contains concentration data in CSV format that should be imported into the LIMS' %>
 
     <br />
 

@@ -12,7 +12,7 @@ one:
   collected_by: 
       
 two:
-  sample_type: CSF
+  sample_type: milk
   original_amount: 500
   original_unit: g
   actual_amount: 500

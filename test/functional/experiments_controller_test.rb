@@ -62,7 +62,7 @@ class ExperimentsControllerTest < ActionController::TestCase
   def test_should_create_experiment_administrator
     login_as :admin
     assert_difference('Experiment.count') do
-      post :create, :sample_id => samples(:one), :experiment => {:name => 'test'}
+      post :create, :sample_id => samples(:one), :experiment => {:name => 'test', :experiment_type_id => experiment_types(:one).id}
     end
 
     assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
@@ -71,7 +71,7 @@ class ExperimentsControllerTest < ActionController::TestCase
   def test_should_create_experiment_superuser
     login_as :superuser
     assert_difference('Experiment.count') do
-      post :create, :sample_id => samples(:one), :experiment => {:name => 'test'}
+      post :create, :sample_id => samples(:one), :experiment => {:name => 'test', :experiment_type_id => experiment_types(:one).id}
     end
 
     assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))
@@ -80,7 +80,7 @@ class ExperimentsControllerTest < ActionController::TestCase
   def test_should_create_experiment_user
     login_as :user
     assert_difference('Experiment.count') do
-      post :create, :sample_id => samples(:one), :experiment => {:name => 'test'}
+      post :create, :sample_id => samples(:one), :experiment => {:name => 'test', :experiment_type_id => experiment_types(:one).id}
     end
 
     assert_redirected_to sample_experiment_path(samples(:one), assigns(:experiment))

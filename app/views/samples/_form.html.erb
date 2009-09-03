@@ -7,7 +7,7 @@
 
 <fieldset>
   <legend>Sample Identification</legend>
-  <p><%= @parent_sample ? @parent_sample.sample_type : form.select(:sample_type, ['ruminal', 'blood', 'CSF', 'urine']) %></p>
+  <p><%= @parent_sample ? @parent_sample.sample_type : form.select(:sample_type, ['ruminal', 'blood', 'milk', 'urine', 'feces']) %></p>
   <p><%= form.text_field :barcode, :size => 30 %></p>
   <p><%= form.label :description %><%= form.text_area :description %></p>
 </fieldset>
