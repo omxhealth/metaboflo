@@ -19,5 +19,17 @@
 </p>
 
 <% if @data_file.has_concentrations %>
-  <strong><%= @data_file.concentrations.length %> Concentrations were successfully imported from this file</strong>
+  <strong><%= @data_file.concentrations.length %> Concentration(s) were successfully imported from this file:</strong>
+  <br />
+  <% @data_file.concentrations.each do |c| %>
+    <%= c.metabolite.name %><br />
+  <% end %>
+  <br /><br />
+  <% if @data_file.mapping_errors != nil %>
+    <strong><%= @data_file.mapping_errors.length %> Concentration(s) were not imported because they were not recognized:</strong>
+    <br />
+    <% @data_file.mapping_errors.each do |e| %>
+      <%= e %><br/>
+    <% end %>
+  <% end %>
 <% end%>

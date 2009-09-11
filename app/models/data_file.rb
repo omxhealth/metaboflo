@@ -8,15 +8,19 @@ class DataFile < ActiveRecord::Base
   
   has_many :concentrations
   
+  serialize :mapping_errors, Array
+  
   def root
     experiment.root
   end
   
   def after_save
-    if has_concentrations    
+    if has_concentrations and self.mapping_errors == nil
+      self.mapping_errors = Array.new
       FasterCSV.foreach("#{Rails.root.to_s}/public#{public_filename}", :headers => false) do |row|
         add_concentration(row[0], row[1]) #Each row is a concentration
       end
+      self.save!
     end
   end
   
@@ -28,12 +32,12 @@ class DataFile < ActiveRecord::Base
       if met != nil
         c = Concentration.new()
         c.concentration_value = value
+        c.concentration_units = self.has_concentration_units
         c.metabolite = met
         c.data_file = self
         c.save!
       else
-        #TODO: Do something here to show the user the error
-        puts "METABOLITE NOT FOUND! #{name}"
+        self.mapping_errors << name
       end
     end   
   end

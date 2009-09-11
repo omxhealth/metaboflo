@@ -6,6 +6,8 @@ class CreateDataFiles < ActiveRecord::Migration
       t.string :filename
       t.text :description
       t.boolean :has_concentrations
+      t.string :has_concentration_units
+      t.string :mapping_errors
       t.references :data_file_type
       t.references :experiment
 
