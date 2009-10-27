@@ -5,7 +5,9 @@ namespace :hmdb do
   desc "Read metabolites from HMDB database and export to import fixtures"
   task :import => [ :environment ] do
 
-    dbh = Mysql.new('129.128.185.111', 'readonly', 'tardis', 'labm')
+    #BMDB: 129.128.246.14
+    #HMDB: 129.128.185.111
+    dbh = Mysql.new('129.128.246.14', 'readonly', 'tardis', 'labm')
     rs = dbh.query('SELECT * FROM tbl_chemical INNER JOIN tbl_link ON tbl_chemical.id=tbl_link.id WHERE tbl_chemical.export_hmdb="Yes" AND tbl_chemical.trash="No"')
 
     # TODO: Replace the code below with a more robust solution
