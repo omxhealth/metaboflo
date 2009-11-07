@@ -2,7 +2,7 @@
 
 one:
   name: 1-Methylhistidine
-  hmdb_id: HMDB00001
+  bmdb_id: BMDB00001
   description: MyText
   iupac_name: "(2S)-2-amino-3-(1-methylimidazol-4-yl)propanoic acid"
   formula: C7H11N3O2
@@ -21,7 +21,7 @@ one:
 
 two:
   name: Deoxyuridine
-  hmdb_id: HMDB00012
+  bmdb_id: BMDB00012
   description: MyText
   iupac_name: "1-[4-hydroxy-5-(hydroxymethyl)oxolan-2-yl]pyrimidine-2,4-dione"
   formula: C9H12N2O5
@@ -40,7 +40,7 @@ two:
 
 three:
   name: Citric Acid
-  hmdb_id: HMDB00094
+  bmdb_id: BMDB00094
   description: MyText
   iupac_name: MyText
   formula: MyText

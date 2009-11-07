@@ -1,14 +1,13 @@
 require "rubygems"
 require "mysql"
 
-namespace :hmdb do
-  desc "Read metabolites from HMDB database and export to import fixtures"
+namespace :bmdb do
+  desc "Read metabolites from BMDB database and export to import fixtures"
   task :import => [ :environment ] do
 
-    #BMDB: 129.128.246.14
-    #HMDB: 129.128.185.111
     dbh = Mysql.new('129.128.246.14', 'readonly', 'tardis', 'labm')
-    rs = dbh.query('SELECT * FROM tbl_chemical INNER JOIN tbl_link ON tbl_chemical.id=tbl_link.id WHERE tbl_chemical.export_hmdb="Yes" AND tbl_chemical.trash="No"')
+    rs = dbh.query('SELECT * FROM tbl_chemical INNER JOIN tbl_link ON tbl_chemical.id=tbl_link.id WHERE (tbl_chemical.export_hmdb="Yes" OR tbl_chemical.export_hmdb="Fozia") AND tbl_chemical.trash="No"')
+    #'export_hmdb' can be 'Fozia'
 
     # TODO: Replace the code below with a more robust solution
     rs.each_hash do |row|
@@ -16,8 +15,9 @@ namespace :hmdb do
         metabolite = Metabolite.new
 
         metabolite.name = row['common_name']
-        metabolite.hmdb_id = row['id']      
-        metabolite.description = row['description']      
+        metabolite.bmdb_id = row['id']      
+        metabolite.description = row['description'] 
+        metabolite.synonyms = row['synonyms']    
         metabolite.iupac_name = row['iupac']      
         metabolite.formula = row['chemical_formula']      
         metabolite.mono_mass = row['molecular_weight']      

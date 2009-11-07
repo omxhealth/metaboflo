@@ -26,7 +26,7 @@
     <% concentrations.each do |concentration| %>
       <tr class="<%= cycle('odd', 'even') %>">
         <% if first %>
-          <td rowspan=<%= [concentrations.length, 1].max %>><%= link_out metabolite, :hmdb_id, h(metabolite.name) %></td>
+          <td rowspan=<%= [concentrations.length, 1].max %>><%= link_out metabolite, :bmdb_id, h(metabolite.name) %></td>
           <% first = false %>
         <% end %>
         <td><%= link_to concentration.data_file.experiment.sample.test_subject.name, test_subject_path(concentration.data_file.experiment.sample.test_subject) %></td>
