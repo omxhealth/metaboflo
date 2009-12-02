@@ -32,25 +32,17 @@ class DataFile < ActiveRecord::Base
       if met == nil
         #If we couldn't find it by name, attempt to find it by synonyms
         potential_matches = Metabolite.find(:all, :conditions => "synonyms like '%#{name}%'")
-        puts "Searching for #{name} found #{potential_matches.length}"
         found_met = nil
         potential_matches.each do |match|
           match.synonyms.split(';').each do |syn|
             syn = syn.strip.downcase.gsub(/-/,'')
-            if name == 'Isobutyrate'
-              puts "CHECKING METABOLITE #{match.name}"
-              #puts "CHECKING: #{syn} for #{name.strip.downcase}"
-            end
             if syn == name.strip.downcase
               found_met = match
             end
           end
         end
         
-        puts "FOUND? #{found_met != nil}"
-        
         if not found_met.nil?
-          puts "FOUND! #{found_met.name}"
           met = found_met
         end
       end
