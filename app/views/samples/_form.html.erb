@@ -23,7 +23,7 @@
     <%= form.select :actual_unit, volume_unit_options, :include_blank => true, :no_label => true %>
   </p>
   <p>
-    <%= form.select :collected_by_id, User.all.collect {|u| [ "#{u.login}", u.id ] }, { }, { :include_blank => true } %></p>
+    <%= form.select :collected_by_id, User.all.collect {|u| [ "#{u.login}", u.id ] }, { }, { :include_blank => true } %>
     on <%= form.date_select :collected_on, :include_blank => true, :no_label => true %>
   </p>
 </fieldset>

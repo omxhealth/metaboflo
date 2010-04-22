@@ -1,5 +1,5 @@
 <h1>
-  Showing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : 'test_subject ' %> <%= @sample.parent %>
+  Showing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : "#{TestSubject.title.downcase} " %> <%= @sample.parent %>
 </h1>
 
 <p>
@@ -28,7 +28,7 @@
 </p>
 
 <p>
-  <b>Test Subject:</b>
+  <b><%= TestSubject.title %>:</b>
   <%= link_to(@sample.root.to_s, test_subject_path(@sample.root)) %>
 </p>
 

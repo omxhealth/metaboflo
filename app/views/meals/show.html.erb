@@ -1,7 +1,7 @@
-<h1>Meal for test_subject <%= @test_subject.code %></h1>
+<h1>Meal for <%= TestSubject.title %> <%= @test_subject.code %></h1>
 
 <p>
-	<b>Test Subject:</b>
+	<b><%= TestSubject.title %>:</b>
 	<%= link_to h(@meal.test_subject.code), test_subject_path(@meal.test_subject) %>
 </p>
 

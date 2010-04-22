@@ -1,20 +1,4 @@
-
-<p>
-  Amount Consumed:
-  <%= form.text_field :amount %> kg
-</p>
-
-<p>
-  Diet:
-  <%= form.select :diet_id, Diet.all.collect { |d| [ d.name, d.id ] }, :include_blank => false %><br />
-</p>
-
-<p>
-  Consumed During Period: 
-  <%= form.text_field :consumed_during_period %>
-</p>
-
-<p>
-  Consumed on Day:
-  <%= form.text_field :consumed_on_day %>
-</p>
+<p><%= form.text_field :amount, :label => 'Amount consumed' %> kg</p>
+<p><%= form.select :diet_id, Diet.all.collect { |d| [ d.name, d.id ] }, :include_blank => false %></p>
+<p><%= form.text_field :consumed_during_period %></p>
+<p><%= form.text_field :consumed_on_day %></p>

@@ -107,7 +107,7 @@ class MetabolitesController < ApplicationController
   private
     def format_csv
       csv_string = FasterCSV.generate do |csv|
-        columns = [ 'Name', 'Test Subject', 'Concentration', 'Experiment', 'Sample Collected On', 'Sample Type', 'Condition', 'Cohort' ]
+        columns = [ 'Name', TestSubject.title, 'Concentration', 'Experiment', 'Sample Collected On', 'Sample Type', 'Condition', 'Cohort' ]
 
         # header row
         csv << columns

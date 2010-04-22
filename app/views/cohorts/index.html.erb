@@ -1,8 +1,8 @@
-<h1><%= @type %> Cohorts</h1>
+<h1><%= humanized_type @type %> Cohorts</h1>
 
 <div class="submenu" style="margin: 1em 0em">
 	<% Cohort.valid_types.each do |cohort_type| %>
-	<%= link_to "#{cohort_type} Cohorts", :type => cohort_type %>&nbsp;
+	<%= link_to "#{humanized_type cohort_type} Cohorts", :type => cohort_type %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<% end %>
 </div>
 
@@ -10,7 +10,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-		<th># of <%= @type.pluralize %></th>
+		<th>Size</th>
 		<th colspan="3">Actions</th>
   </tr>
 
@@ -28,4 +28,4 @@
 
 <br />
 
-<%= new_link("#{@type.tableize.singularize} cohort", {:action => 'new', :type => @type}) %>
+<%= new_link("#{humanized_type(@type).downcase} cohort", {:action => 'new', :type => @type}) %>

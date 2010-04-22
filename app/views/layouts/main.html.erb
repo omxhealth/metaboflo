@@ -36,7 +36,7 @@
     <div id="hd"><!-- header -->
 
       <div id="headerbar">
-        <%= image_tag 'dna_blend.png', :style => 'padding: 0em; float: right;' %>
+
         <div id="headerbar-right">
           <% if current_user %>
           <div id="logged-in">Logged in as <em><%= current_user.login %></em> | <%= link_to 'Logout', logout_path %></div>
@@ -48,10 +48,7 @@
           <% end %>
           <div id="version">Version <%= APPLICATION_VERSION %></div>
         </div>
-        <h1 style="color: #B7C8B6; background: transparent; border: none; font-size: 12px; padding-bottom: 0; margin-bottom: 0">&nbsp;Welcome to the University of Alberta</h1>
-        <h1 style="color: #B7C8B6; background: transparent; border: none; font-size: 28px; padding-top: 0; margin-top: 0; line-height: 1em; font-weight: bold">Bovine Metabolome LIMS</h1>
-        <!-- <%= image_tag 'bovine_logo.png', :style => 'padding: 1em; float: left;' %>
-        <%= image_tag 'title.png', :style => 'padding-left: 1em; float: left;' %> -->
+        <%= image_tag 'logo.png', :style => 'float: left; margin-right: 2em;' %>
       </div>
 
       <% if current_user %>
@@ -62,7 +59,7 @@
               <%= link_to 'Home', root_path, :class => 'yuimenubaritemlabel' %>
             </li>
             <li class="yuimenubaritem">
-              <%= link_to 'Test Subjects', test_subjects_path, :class => 'yuimenubaritemlabel' %>
+              <%= link_to TestSubject.title.pluralize, test_subjects_path, :class => 'yuimenubaritemlabel' %>
             </li>
             <li class="yuimenubaritem">
               <%= link_to 'Samples', samples_path, :class => 'yuimenubaritemlabel' %>
@@ -92,7 +89,7 @@
               <div id="cohorts" class="yuimenu">
                 <div class="bd">                    
                   <ul>
-                    <li class="yuimenuitem"><%= link_to 'Test Subject Cohorts', test_subject_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to "#{TestSubject.title} Cohorts", test_subject_cohorts_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Sample Cohorts', sample_cohorts_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Experiment Cohorts', experiment_cohorts_path, :class => 'yuimenuitemlabel' %></li>
                   </ul>                    
@@ -150,7 +147,7 @@
       <div class="yui-b"><!-- Navigation block -->
         <% if sidebar -%>
         <div id="sidebar">
-          <h2>Test Subject Summary</h2>
+          <h2><%= TestSubject.title %> Summary</h2>
           <%= test_subject_tree(@test_subject) %>
         </div>
         <% end %>

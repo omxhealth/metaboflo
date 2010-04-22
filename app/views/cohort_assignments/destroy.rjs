@@ -1,8 +1,6 @@
 if @successful
   page.replace_html "assignable-associations", :partial => 'cohort_assignment', :collection => @cohort.cohort_assignments, :locals => { :from => 'cohort' }
-  page.replace_html 'flash', "<p class=\"notice\">Removed test_subject from cohort successfully</p>"
+  page.replace_html 'flash', "<p class=\"notice\">Removed #{humanized_type(@cohort.assignable_type).downcase} from cohort successfully</p>"
 else
-  page.replace_html 'flash', "<p class=\"error\">Error removing test_subject to cohort</p>"
+  page.replace_html 'flash', "<p class=\"error\">Error removing #{humanized_type(@cohort.assignable_type).downcase} to cohort</p>"
 end
-
-# page.visual_effect :highlight, "drug_categorization-association-#{@drug_categorization.id}", :duration => 1      

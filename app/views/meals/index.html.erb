@@ -1,8 +1,8 @@
-<h1>Listing meals for test subject <%= @test_subject.code %></h1>
+<h1>Listing meals for <%= TestSubject.title %> <%= @test_subject.code %></h1>
 
 <table class="list">
   <tr>
-    <th>Test Subject</th>
+    <th><%= TestSubject.title %></th>
     <th>Diet</th>
     <th>Amount (kg)</th>
     <th>Period</th>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= new_link "meal for test subject #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
+<%= new_link "meal for #{TestSubject.title} #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>

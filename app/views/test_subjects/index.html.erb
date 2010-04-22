@@ -1,4 +1,4 @@
-<h1>Test Subjects</h1>
+<h1><%= TestSubject.title.pluralize %></h1>
 
 <table class="list">
 	<tr>
@@ -21,4 +21,4 @@
 </table>
 <br />
 
-<%= new_link 'test_subject', new_test_subject_path %>
+<%= new_link TestSubject.title.downcase, new_test_subject_path %>

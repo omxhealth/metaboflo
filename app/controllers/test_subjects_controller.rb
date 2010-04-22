@@ -50,7 +50,7 @@ class TestSubjectsController < ApplicationController
 
     respond_to do |format|
       if @test_subject.save
-        flash[:notice] = 'Test Subject was successfully created.'
+        flash[:notice] = "#{TestSubject.title} was successfully created."
         format.html { redirect_to(@test_subject) }
         format.xml  { render :xml => @test_subject, :status => :created, :location => @test_subject }
       else
@@ -65,7 +65,7 @@ class TestSubjectsController < ApplicationController
   def update
     respond_to do |format|
       if @test_subject.update_attributes(params[:test_subject])
-        flash[:notice] = 'Test Subject was successfully updated.'
+        flash[:notice] = "#{TestSubject.title} was successfully updated."
         format.html { redirect_to(@test_subject) }
         format.xml  { head :ok }
       else

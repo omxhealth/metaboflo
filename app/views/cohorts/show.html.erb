@@ -1,3 +1,5 @@
+<h1>Showing <%= humanized_type(@type).downcase %> cohort "<%=h @cohort.name %>"</h1>
+
 <p>
 	<b>Name:</b>
 	<%=h @cohort.name %>
@@ -8,13 +10,13 @@
 	<%=h @cohort.description %>
 </p>
 
-<h2><%= @cohort.assignable_type.pluralize %> in this cohort</h2>
+<h2><%= humanized_type(@type).pluralize %> in this cohort:</h2>
 
 <div class="association">
 	<table class="list">
 		<thead>
 			<tr>
-				<th><%= @cohort.assignable_type %></th>
+				<th><%= humanized_type(@type) %></th>
 				<th>Remove</th>		
 			</tr>
 		</thead>

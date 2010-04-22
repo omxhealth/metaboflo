@@ -48,7 +48,7 @@ class TestSubjectEvaluationsController < ApplicationController
 
     respond_to do |format|
       if @test_subject_evaluation.save
-        flash[:notice] = 'Test Subject Evaluation was successfully created.'
+        flash[:notice] = "#{TestSubject.title} Evaluation was successfully created."
         format.html { redirect_to(test_subject_test_subject_evaluation_url(@test_subject, @test_subject_evaluation)) }
         format.xml  { render :xml => @test_subject_evaluation, :status => :created, :location => @test_subject_evaluation }
       else
@@ -73,7 +73,7 @@ class TestSubjectEvaluationsController < ApplicationController
 
     respond_to do |format|
       if @test_subject_evaluation.update_attributes(params[:test_subject_evaluation])
-        flash[:notice] = 'Test Subject Evaluation was successfully updated.'
+        flash[:notice] = "#{TestSubject.title} Evaluation was successfully updated."
         format.html { redirect_to(test_subject_test_subject_evaluation_url(@test_subject, @test_subject_evaluation)) }
         format.xml  { head :ok }
       else

@@ -1,4 +1,6 @@
 class TestSubject < ActiveRecord::Base
+  TITLE = 'Animal'
+  
   belongs_to :site
   
   has_many :samples, :dependent => :destroy
@@ -16,11 +18,14 @@ class TestSubject < ActiveRecord::Base
   validates_presence_of :code, :site_id
   
   def name
-    "Test Subject #{code}"
+    "#{TITLE} #{code}"
   end
   
   def to_s
     self.code.to_s
   end
   
+  def TestSubject.title
+    TITLE
+  end
 end

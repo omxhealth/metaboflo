@@ -1,4 +1,4 @@
-<h1>All Test Subject Evaluations for Test Subject '<%= @test_subject.code %>'</h1>
+<h1>All <%= TestSubject.title %> Evaluations for <%= TestSubject.title %> '<%= @test_subject.code %>'</h1>
 
 <% for test_subject_evaluation in @test_subject_evaluations %>
   <table class="summary">
@@ -17,4 +17,4 @@
 
 <br />
 
-<%= new_link 'test_subject evaluation', new_test_subject_test_subject_evaluation_path(@test_subject) %>
+<%= new_link "#{TestSubject.title.downcase} evaluation", new_test_subject_test_subject_evaluation_path(@test_subject) %>

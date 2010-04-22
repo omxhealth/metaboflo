@@ -1,4 +1,4 @@
-<h1>Cohort to which <%= @assignable_type %> <%= @assignable.name %> belongs</h1>
+<h1>Cohort to which <%= @assignable.name %> belongs</h1>
 
 <table class="list">
   <tr>
@@ -16,4 +16,4 @@
 
 <br />
 
-<%= link_to "Add #{@assignable_type} to Cohort", { :action => 'new', "#{@assignable_type.tableize.singularize}_id" => @assignable }, :class => 'icon icon-add' %>
+<%= link_to "Add #{humanized_type @assignable_type} to Cohort", { :action => 'new', "#{@assignable_type.tableize.singularize}_id" => @assignable }, :class => 'icon icon-add' %>

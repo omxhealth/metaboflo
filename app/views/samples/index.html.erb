@@ -1,4 +1,4 @@
-<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(TestSubject)) ? "Samples for TestSubject #{@parent}" : 'Samples' %></h1>
+<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(TestSubject)) ? "Samples for #{TestSubject.title.downcase} #{@parent}" : 'Samples' %></h1>
 
 <table class="list">
   <tr>
@@ -7,7 +7,7 @@
 		<th>Actual amount</th>
 		<th>Amount remaining</th>
     <th>Barcode</th>
-    <th><%= 'Test Subject' unless @test_subject %></th>
+    <th><%= TestSubject.title unless @test_subject %></th>
 		<th><%= 'Aliquoted from' unless @parent %></th>
     <th>Collected on</th>
     <th>Collected by</th>
@@ -43,5 +43,5 @@
 <% if (@parent and @parent.kind_of?(Sample)) %>
 <%= new_link "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent) %>
 <% elsif (@parent and @parent.kind_of?(TestSubject)) %>
-<%= new_link "sample for test_subject #{@parent.code}", new_test_subject_sample_path(@parent) %>
+<%= new_link "sample for #{TestSubject.title.downcase} #{@parent.code}", new_test_subject_sample_path(@parent) %>
 <% end %>
