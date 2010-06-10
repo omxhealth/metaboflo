@@ -29,14 +29,14 @@ namespace(:customs) do
   # Create the config directory in shared and create an empty database.yml file
   task :setup_config, :roles => :app do
     run <<-CMD
-      if ![ -d #{shared_path}/config ]; then mkdir #{shared_path}/config; fi && touch #{shared_path}/config/database.yml
+      if [ ! -d #{shared_path}/config ]; then mkdir #{shared_path}/config; fi && touch #{shared_path}/config/database.yml
     CMD
   end
 
   # Create the public directory in shared and create an empty .htaccess file
   task :setup_htaccess, :roles => :app do
     run <<-CMD
-      if ![ -d #{shared_path}/public ]; then mkdir #{shared_path}/public; fi && touch #{shared_path}/public/.htaccess
+      if [ ! -d #{shared_path}/public ]; then mkdir #{shared_path}/public; fi && touch #{shared_path}/public/.htaccess
     CMD
   end
 
