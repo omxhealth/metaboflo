@@ -9,13 +9,25 @@ namespace :bmdb do
     rs = dbh.query('SELECT * FROM tbl_chemical INNER JOIN tbl_link ON tbl_chemical.id=tbl_link.id WHERE (tbl_chemical.export_hmdb="Yes" OR tbl_chemical.export_hmdb="Fozia") AND tbl_chemical.trash="No"')
     #'export_hmdb' can be 'Fozia'
 
+    Metabolite.destroy_all
+
     # TODO: Replace the code below with a more robust solution
     rs.each_hash do |row|
       begin
         metabolite = Metabolite.new
 
+        id = row['id']
+
+        if id =~ /[^\d]+(\d+)/
+          idnum = $1.to_i
+        else
+          $stderr.write("Error! Invalid ID: #{id}\n")
+          exit(1)
+        end
+
+        metabolite.id = idnum
         metabolite.name = row['common_name']
-        metabolite.bmdb_id = row['id']      
+        metabolite.bmdb_id = id     
         metabolite.description = row['description'] 
         metabolite.synonyms = row['synonyms']    
         metabolite.iupac_name = row['iupac']      
