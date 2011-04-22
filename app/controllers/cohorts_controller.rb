@@ -88,7 +88,7 @@ class CohortsController < ApplicationController
 
   private 
   def find_type
-    Cohort.valid_types
+    Cohort #Required to load all Cohort types
     @type = params[:type]
   end
 

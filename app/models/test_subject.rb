@@ -1,5 +1,5 @@
 class TestSubject < ActiveRecord::Base
-  TITLE = 'Subject'
+  TITLE = 'Test Subject'
   
   belongs_to :site
   

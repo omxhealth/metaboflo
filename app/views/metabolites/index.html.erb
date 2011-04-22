@@ -27,10 +27,10 @@
     <% concentrations.each do |concentration| %>
       <tr class="<%= cycle('odd', 'even') %>">
         <% if first %>
-          <td rowspan=<%= [concentrations.length, 1].max %>><%= link_out metabolite, :bmdb_id, h(metabolite.name) %></td>
+          <td rowspan=<%= [concentrations.length, 1].max %>><%= link_out metabolite, :hmdb_id, h(metabolite.name) %></td>
           <td rowspan=<%= [concentrations.length, 1].max %>>
-            <% if metabolite.bmdb_id.present? %>
-            <%= image_tag "http://hmdb.ca/labm/servlet/labm.mlims.show?ctrl=chemical_structure_thumb&hmdb_id=#{metabolite.bmdb_id.sub(/BMDB/, 'HMDB')}" %>
+            <% if metabolite.hmdb_id.present? %>
+            <%= image_tag "http://hmdb.ca/labm/servlet/labm.mlims.show?ctrl=chemical_structure_thumb&hmdb_id=#{metabolite.hmdb_id}" %>
             <% else -%>
             <span syle="color: silver">Not Available</span>
             <% end -%>

@@ -3,7 +3,7 @@ class CreateMetabolites < ActiveRecord::Migration
     create_table :metabolites do |t|
       t.string :name
       t.text :synonyms
-      t.string :bmdb_id
+      t.string :hmdb_id
       t.text :description
       t.text :iupac_name
       t.string :formula

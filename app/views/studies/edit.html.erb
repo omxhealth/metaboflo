@@ -1,0 +1,9 @@
+<h1>Editing Study</h1>
+
+<% labelled_tabular_form_for(:study, @study, :url => { :action => "update" }, :html => { :method => :put }) do |form| %>
+  <%= render :partial => form %>
+
+  <p><%= form.submit "Update" %></p>
+<% end %>
+
+<%= show_link({:id => @study}) %>
