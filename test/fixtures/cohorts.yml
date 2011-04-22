@@ -25,3 +25,7 @@ five:
   type: ExperimentCohort
   description: Group of Experiments
 
+study:
+  name: Cancer Study
+  type: Study
+  description: Looking at Cancer vs Normal Patients

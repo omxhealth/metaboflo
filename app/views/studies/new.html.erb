@@ -1,0 +1,7 @@
+<h1>New Study</h1>
+
+<% labelled_tabular_form_for :study, @study, :url => { :action => "create" } do |form| %>
+  <%= render :partial => form %>
+
+  <p><%= form.submit "Create" %></p>
+<% end %>

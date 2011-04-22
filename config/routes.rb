@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :protocols
 
   map.resources :lab_tests
+  
+  map.resources :studies
 
   map.resources :sites, :has_many => [ :users ]
 

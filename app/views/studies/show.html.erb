@@ -1,0 +1,35 @@
+<h1>Showing Study "<%=h @study.name %>"</h1>
+
+<p>
+	<b>Name:</b>
+	<%=h @study.name %>
+</p>
+
+<p>
+	<b>Description:</b>
+	<%=h @study.description %>
+</p>
+
+<h2>Cohorts in this study:</h2>
+
+<div class="association">
+	<table class="list">
+		<thead>
+			<tr>
+				<th>Cohort</th>
+				<th>Label</th>
+				<th>Remove</th>
+			</tr>
+		</thead>
+		<tbody id="assignable-associations">
+			<%= render :partial => '/cohort_assignments/cohort_assignment', :collection => @study.cohort_assignments, :locals => { :from => 'study' } %>
+		</tbody>
+	</table>
+	<br /><br />
+	<div class="new-association">
+		<%= render :partial => '/cohort_assignments/add_assignable_form', :locals => { :from => 'study' } %>
+	</div>
+	<br />
+</div>
+
+<%= edit_link({:action => 'edit'}) %>
