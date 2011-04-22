@@ -25,6 +25,10 @@ class TestSubject < ActiveRecord::Base
     self.code.to_s
   end
   
+  def features
+    return {'1-methylhistidine' => 0.43, 'urea' => 455.215}
+  end
+  
   def TestSubject.title
     TITLE
   end

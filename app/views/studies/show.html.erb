@@ -10,6 +10,10 @@
 	<%=h @study.description %>
 </p>
 
+<% if @study.cohort_assignments.length > 1 %>
+  <%= link_to 'Export for Analysis', export_study_path(@study) %>
+<% end %>
+
 <h2>Cohorts in this study:</h2>
 
 <div class="association">
