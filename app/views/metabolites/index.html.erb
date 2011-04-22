@@ -10,6 +10,7 @@
 <table class="list" style="width: 100%">
   <tr>
     <th>Name</th>
+    <th>Structure</th>
     <th><%= TestSubject.title %></th>
     <th>Data file</th>
     <th>Concentration</th>
@@ -27,6 +28,13 @@
       <tr class="<%= cycle('odd', 'even') %>">
         <% if first %>
           <td rowspan=<%= [concentrations.length, 1].max %>><%= link_out metabolite, :bmdb_id, h(metabolite.name) %></td>
+          <td rowspan=<%= [concentrations.length, 1].max %>>
+            <% if metabolite.bmdb_id.present? %>
+            <%= image_tag "http://hmdb.ca/labm/servlet/labm.mlims.show?ctrl=chemical_structure_thumb&hmdb_id=#{metabolite.bmdb_id.sub(/BMDB/, 'HMDB')}" %>
+            <% else -%>
+            <span syle="color: silver">Not Available</span>
+            <% end -%>
+          </td>
           <% first = false %>
         <% end %>
         <td><%= link_to concentration.data_file.experiment.sample.test_subject.name, test_subject_path(concentration.data_file.experiment.sample.test_subject) %></td>
