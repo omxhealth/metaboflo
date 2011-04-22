@@ -50,7 +50,7 @@ module TestSubjectsHelper
   def data_file_sub_tree(experiment)
     tree = Node.new(:label => 'Data Files', :url => experiment_data_files_path(experiment)) do |node|
       experiment.data_files.each do |data_file|
-        node << Node.new(:label => data_file.filename, :url => experiment_data_file_path(experiment, data_file), :icon_open => tree_icon('file.png'))
+        node << Node.new(:label => "#{data_file.filename} (#{data_file.data_file_type.name})", :url => experiment_data_file_path(experiment, data_file), :icon_open => tree_icon('file.png'))
       end
     end
     tree.icon = tree.icon_open = tree_icon('folder.png')
