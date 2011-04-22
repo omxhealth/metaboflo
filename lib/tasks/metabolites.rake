@@ -1,12 +1,13 @@
 require "rubygems"
 require "mysql"
 
-namespace :bmdb do
-  desc "Read metabolites from BMDB database and export to import fixtures"
+namespace :metabolites do
+  desc "Read metabolites from HMDB database and export to import fixtures"
   task :import => [ :environment ] do
 
-    dbh = Mysql.new('129.128.246.14', 'readonly', 'tardis', 'labm')
-    rs = dbh.query('SELECT * FROM tbl_chemical INNER JOIN tbl_link ON tbl_chemical.id=tbl_link.id WHERE (tbl_chemical.export_hmdb="Yes" OR tbl_chemical.export_hmdb="Fozia") AND tbl_chemical.trash="No"')
+    #dbh = Mysql.new('129.128.246.14', 'readonly', 'tardis', 'labm')
+    dbh = Mysql.new('hmp.biology.ualberta.ca', 'readonly', 'tardis', 'labm')
+    rs = dbh.query('SELECT * FROM tbl_chemical INNER JOIN tbl_link ON tbl_chemical.id=tbl_link.id WHERE tbl_chemical.export_hmdb="Yes" AND tbl_chemical.trash="No"')
     #'export_hmdb' can be 'Fozia'
 
     Metabolite.destroy_all
@@ -27,7 +28,7 @@ namespace :bmdb do
 
         metabolite.id = idnum
         metabolite.name = row['common_name']
-        metabolite.bmdb_id = id     
+        metabolite.hmdb_id = id     
         metabolite.description = row['description'] 
         metabolite.synonyms = row['synonyms']    
         metabolite.iupac_name = row['iupac']      

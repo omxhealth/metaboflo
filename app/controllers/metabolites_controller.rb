@@ -4,7 +4,7 @@ class MetabolitesController < ApplicationController
   # GET /metabolites.csv
   def index
     params[:page] = 1 if params[:page].to_i <= 0
-    @metabolites = Metabolite.paginate(:page => params[:page], :order => 'bmdb_id', :joins => [ :concentrations ], :select => 'DISTINCT metabolites.*')
+    @metabolites = Metabolite.paginate(:page => params[:page], :order => 'hmdb_id', :joins => [ :concentrations ], :select => 'DISTINCT metabolites.*')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -92,7 +92,7 @@ class MetabolitesController < ApplicationController
   def search
     @query = "%#{params[:query]}%"
 
-    search_fields = ["name", "bmdb_id", "description", "iupac_name", "formula", "smiles", "cas", "inchi_identifier", "melting_point", "state", "wikipedia_name", "comments"]
+    search_fields = ["name", "hmdb_id", "description", "iupac_name", "formula", "smiles", "cas", "inchi_identifier", "melting_point", "state", "wikipedia_name", "comments"]
     conditions_arg = search_fields.collect { |sf| "#{sf} LIKE :query" }.join(" OR ")
 
     @metabolites = Metabolite.all(:joins => [ :concentrations ], :select => 'DISTINCT metabolites.*', :conditions => [ conditions_arg, { :query => @query } ])

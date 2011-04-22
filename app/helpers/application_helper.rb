@@ -70,7 +70,7 @@ module ApplicationHelper
       when :pubchem_compound_id then "http://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid=" << id
       when :chebi_id            then "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=" << id
       when :pubmed_id           then "http://www.ncbi.nlm.nih.gov/pubmed/#{id}"                    
-      when :bmdb_id             then "http://www.cowmetdb.ca/cgi-bin/show_metabolite.cgi?METABOCARD=#{id}"
+      when :hmdb_id             then "http://hmdb.ca/metabolites/#{id}"
       when :cas                 then "http://www.nlm.nih.gov/cgi/mesh/2006/MB_cgi?rn=1&term=#{id}"
       when :kegg_compound_id    then "http://www.genome.jp/dbget-bin/www_bget?cpd:" << id   
       when :wikipedia_name      then "http://en.wikipedia.org/wiki/" << id   

@@ -17,7 +17,7 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: bovine_development
+  database: metaboflo_development
   username: root
   password:
   socket: /tmp/mysql.sock
@@ -28,7 +28,7 @@ development:
 test:
   adapter: mysql
   encoding: utf8
-  database: bovine_test
+  database: metaboflo_test
   username: root
   password:
   socket: /tmp/mysql.sock
@@ -36,7 +36,7 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: bovine_production
+  database: metaboflo_production
   username: root
   password: 
   socket: /tmp/mysql.sock
