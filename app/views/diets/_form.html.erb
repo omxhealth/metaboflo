@@ -11,7 +11,7 @@
     <%= diet_ingredient_form.text_field :amount, :size => 10 %> %
   <% unless diet_ingredient_form.object.new_record? %>
 		<br />
-    <%= diet_ingredient_form.check_box '_delete', :label => 'Remove' %>
+    <%= diet_ingredient_form.check_box '_destroy', :label => 'Remove' %>
   <% end %>
 	</p>
   <% end -%>  
@@ -26,7 +26,7 @@
     <%= composition_form.text_field :amount, :size => 10 %>
   <% unless composition_form.object.new_record? %>
 		<br />
-    <%= composition_form.check_box '_delete', :label => 'Remove' %>
+    <%= composition_form.check_box '_destroy', :label => 'Remove' %>
   <% end %>
 	</p>
   <% end -%>  
