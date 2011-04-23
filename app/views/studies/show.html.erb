@@ -11,7 +11,13 @@
 </p>
 
 <% if @study.cohort_assignments.length > 1 %>
-  <%= link_to 'Export for Analysis', export_study_path(@study) %>
+  <fieldset>
+    <legend>Export Study For Analysis</legend>
+    This study is eligible for export to comma-seperated-value (CSV) format. Exporting a study will create a CSV file in a format accepted by many data analysis programs (for example, <%= link_to 'Metaboanalyst', 'http://www.metaboanalyst.ca', :target => '_blank' %>). Each row in the file will be a labelled test subject from the database, annotated with identified metabolites.
+    <br />
+    <br />
+    <%= link_to 'Export', export_study_path(@study) %>
+  </fieldset>
 <% end %>
 
 <h2>Cohorts in this study:</h2>

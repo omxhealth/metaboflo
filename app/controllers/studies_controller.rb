@@ -25,7 +25,6 @@ class StudiesController < ApplicationController
 
     filename = @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv"
     send_data(csv_string, :type => 'text/csv; charset=utf-8; header=present', :filename => filename)
-
     #iso-8859-1
   end
 
@@ -122,7 +121,7 @@ class StudiesController < ApplicationController
       end
       
       csv << ["Sample", "Label"] + feature_names
-      
+            
       #Now create the rows (using the feature_names array to order each feature vector)
       data.each do |d|
         features = Array.new

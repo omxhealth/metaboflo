@@ -25,8 +25,26 @@ class TestSubject < ActiveRecord::Base
     self.code.to_s
   end
   
+  #Return a representative data file.
+  def data_file
+    files = DataFile.find(:all, :select => 'DISTINCT data_files.*', :conditions => ["data_files.has_concentrations = ? AND test_subjects.id = ?", true, self.id], :joins => { :experiment => { :sample => :test_subject  } })
+    return files[0] #For now just return the first one
+  end
+  
+  #Return features representing this test subject.
   def features
-    return {'1-methylhistidine' => 0.43, 'urea' => 455.215}
+    df = self.data_file
+    if df.nil?
+      return Hash.new
+    else
+      feats = Hash.new
+      df.concentrations.each do |c|
+        if not c.metabolite.nil?
+          feats[c.metabolite.name] = c.concentration_value
+        end
+      end
+      return feats
+    end
   end
   
   def TestSubject.title

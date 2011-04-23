@@ -2,6 +2,12 @@ require 'test_helper'
 
 class StudiesControllerTest < ActionController::TestCase
 
+  def test_export
+    login_as :user
+    
+    assert test_subjects(:one).features.length == 2
+  end
+
   def test_should_get_index
     login_as :user
     

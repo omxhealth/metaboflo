@@ -29,3 +29,14 @@ six:
   assignable: two
   assignable_type: Sample
   cohort: four
+
+study1:
+  assignable: one
+  assignable_type: TestSubjectCohort
+  cohort: study
+  
+study2:
+  assignable: two
+  assignable_type: TestSubjectCohort
+  cohort: study
+  
