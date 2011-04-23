@@ -3,8 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 
 class ActiveSupport::TestCase
-  include AuthenticatedTestHelper
-  
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
   # test database remains unchanged so your fixtures don't have to be reloaded
@@ -37,4 +35,20 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def login(user=nil)
+    user ||= User.first
+    sign_in :user, user
+  end
+  
+  def login_admin
+    login(users(:admin))
+  end
+  
+  def login_as(user)
+    login(users(user))
+  end
+end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
 end

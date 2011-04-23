@@ -11,7 +11,7 @@
 
 <fieldset>
   <legend>Analysis</legend>
-  <% user_options = User.find(:all, :order => 'login ASC').collect { |u| [ u.login, u.id ] } %>
+  <% user_options = User.find(:all, :order => 'name ASC').collect { |u| [ u.name, u.id ] } %>
   <p>
     <%= form.select :assigned_to_id, user_options, :label => 'To be analyzed by', :include_blank => true %> 
     on <%= form.date_select :perform_on, :no_label => true, :include_blank => true %>

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.devise_for :users
+
   map.resources :nutrients
 
   map.resources :metabolites, :collection => { :search => :post }
@@ -22,10 +24,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sites, :has_many => [ :users ]
 
   map.admin 'admin', :controller => 'administrators', :action => 'index'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
+  # map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  # map.login '/login', :controller => 'sessions', :action => 'new'
+  # map.register '/register', :controller => 'users', :action => 'create'
+  # map.signup '/signup', :controller => 'users', :action => 'new'
   
   map.resources :users, :has_many => [ :user_pictures, :tasks ]
 

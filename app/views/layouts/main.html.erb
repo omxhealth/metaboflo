@@ -39,7 +39,7 @@
 
         <div id="headerbar-right">
           <% if current_user %>
-          <div id="logged-in">Logged in as <em><%= current_user.login %></em> | <%= link_to 'Logout', logout_path %></div>
+          <div id="logged-in">Logged in as <em><%= current_user.to_s %></em> | <%= link_to 'Logout', destroy_user_session_path %></div>
 
           <% form_tag search_metabolites_path, :style => 'margin: 0em; padding: 0em;' do %>
             Quick Search: <%= text_field_tag 'query', nil, :value => params[:query] %>

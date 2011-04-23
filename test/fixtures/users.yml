@@ -1,65 +1,41 @@
-
 quentin:
-  id:                        1
-  login:                     quentin
-  email:                     quentin@example.com
-  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
-  crypted_password:          ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
-  created_at:                <%= 5.days.ago.to_s :db  %>
-  remember_token_expires_at: <%= 1.days.from_now.to_s :db %>
-  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+  email: quentin@example.com
+  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
+  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
       
 aaron:
-  id:                        2
-  login:                     aaron
-  email:                     aaron@example.com
-  salt:                      da4b9237bacccdf19c0760cab7aec4a8359010b0 # SHA1('1')
-  crypted_password:          ed8576fb8cd7ece10ef5f9c4cb8b9e7aa5dc2c14 # 'monkey'
-  created_at:                <%= 1.days.ago.to_s :db %>
-  remember_token_expires_at: 
-  remember_token:            
-
+  email: aaron@example.com
+  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
+  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
 
 old_password_holder:
-  id:                        3
-  login:                     old_password_holder
-  email:                     salty_dog@example.com
-  salt:                      7e3041ebc2fc05a40c60028e2c4901a81035d3cd
-  crypted_password:          00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  created_at:                <%= 1.days.ago.to_s :db %>
-
+  email: salty_dog@example.com
+  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
+  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
 
 user:
-  login: user
   email: user@example.com
   site: one
-  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
-  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
+  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
   rank: User
-  created_at: <%= 5.days.ago.to_s :db %>
 
 user2:
-  login: user2
   email: user2@example.com
   site: two
-  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
-  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
+  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
   rank: User
-  created_at: <%= 5.days.ago.to_s :db %>
   
 superuser:
-  login: superuser
   site: two
   email: superuser@example.com
-  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
-  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
+  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
   rank: Superuser
-  created_at: <%= 5.days.ago.to_s :db %>
   
 admin:
-  login: admin
-  email: notadmin@example.com
-  salt: 356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
-  crypted_password: ece4f9c183a49004203ae6e8bf25deb04932f53d # 'monkey'
+  email: admin@test.com
+  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
+  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
   rank: Administrator
-  created_at: <%= 5.days.ago.to_s :db %>
