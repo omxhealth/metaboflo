@@ -1,13 +1,17 @@
 <% if from == 'study' %>
-<tr>
-	<td><%=h cohort_assignment.assignable %></td>
-	<td><%=h cohort_assignment.label %></td>
-	<td><%= link_to_remote "Remove", :url => cohort_cohort_assignment_path(cohort_assignment.cohort, cohort_assignment), :method => :delete, :confirm => 'Are you sure?' %></td>
-</tr>
+
+  <tr>
+  	<td><%=h cohort_assignment.assignable %></td>
+  	<td><%=h cohort_assignment.label %></td>
+  	<td><%= link_to_remote "Remove", :url => cohort_cohort_assignment_path(cohort_assignment.cohort, cohort_assignment), :method => :delete, :confirm => 'Are you sure?' %></td>
+  </tr>
+  
 <% elsif from == 'cohort' %>
-<tr>
-	<td><%=h cohort_assignment.assignable %></td>
-	<td><%= link_to_remote "Remove", :url => cohort_cohort_assignment_path(cohort_assignment.cohort, cohort_assignment), :method => :delete, :confirm => 'Are you sure?' %></td>
-</tr>
+
+  <tr>
+  	<td><%=h cohort_assignment.assignable %></td>
+  	<td><%= link_to_remote "Remove", :url => cohort_cohort_assignment_path(cohort_assignment.cohort, cohort_assignment), :method => :delete, :confirm => 'Are you sure?' %></td>
+  </tr>
+  
 <% end %>
 

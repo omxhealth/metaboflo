@@ -8,7 +8,7 @@
       	<%= ca_fields.hidden_field :assignable_type %>
       	<%= humanized_type(@study.assignable_type) %>: <%= ca_fields.select(:assignable_id, @study.assignable_type.constantize.all.collect {|p| [ p.to_s, p.id ] }, { :include_blank => true } ) %>
         <br /><br />
-        <%= ca_fields.text_field :label %>
+        <%= ca_fields.label :label %> <%= ca_fields.text_field :label %>
         <br /><br />
       	<%= submit_tag "Add #{humanized_type @study.assignable_type}" %>
     	<% end %>

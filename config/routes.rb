@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :lab_tests
   
-  map.resources :studies
+  map.resources :studies, :member => { :export => :get }
 
   map.resources :sites, :has_many => [ :users ]
 
