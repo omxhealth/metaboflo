@@ -43,3 +43,16 @@ study_cohort_assignment_one:
   type: StudyCohortAssignment
   label: Truancy
 
+study1:
+  assignable: one
+  assignable_type: TestSubjectCohort
+  cohort: study
+  type: StudyCohortAssignment
+  label: Truancy Extreeeme!1
+  
+study2:
+  assignable: two
+  assignable_type: TestSubjectCohort
+  cohort: study
+  type: StudyCohortAssignment
+  label: Truancy mild
