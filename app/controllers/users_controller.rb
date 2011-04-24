@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :find_site
   before_filter :find_user, :only => [ :show, :edit, :update, :destroy ]
+  before_filter :authorize
   
   # GET /users
   # GET /users.xml
@@ -87,46 +88,34 @@ class UsersController < ApplicationController
   end
   
   protected
-    def find_site
-      @site = Site.find(params[:site_id]) unless params[:site_id].blank?
-    end
-    
-    def find_user
-      @user = @site.blank? ? User.find(params[:id]) : @site.users.find(params[:id])
-    end
-    
-    def authorized?(action = action_name, resource = nil)
-      if super
-        case action
-        when 'new', 'create'
-          if current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
-            return true
-          else
-            flash[:notice] = 'You are not authorized to create users.'
-            return false
-          end
-        when 'edit', 'update'
-          if current_user.rank == 'Superuser' || current_user.rank == 'Administrator' || current_user.id == params[:id].to_i
-            return true
-          else
-            flash[:notice] = 'You are not authorized to edit the user.'
-            return false
-          end
-        when 'destroy'
-          if current_user.id == params[:id].to_i
-            flash[:notice] = 'You cannot delete yourself.'
-            return false
-          elsif current_user.rank == 'Administrator'
-            return true
-          else
-            flash[:notice] = 'You are not authorized to delete users.'
-            return false
-          end
-        else
-          return true
+  def find_site
+    @site = Site.find(params[:site_id]) unless params[:site_id].blank?
+  end
+
+  def find_user
+    @user = @site.blank? ? User.find(params[:id]) : @site.users.find(params[:id])
+  end
+
+  def authorize
+    case self.action_name
+      when 'new', 'create'
+        if !(current_user.rank == 'Superuser' || current_user.rank == 'Administrator')
+          flash[:notice] = 'You are not authorized to create users.'
+          redirect_to root_path
         end
-      else
-        return false
-      end
+      when 'edit', 'update'
+        if !(current_user.rank == 'Superuser' || current_user.rank == 'Administrator' || current_user.id == params[:id].to_i)
+          flash[:notice] = 'You are not authorized to edit the user.'
+          redirect_to root_path
+        end
+      when 'destroy'
+        if current_user.id == params[:id].to_i
+          flash[:notice] = 'You cannot delete yourself.'
+          redirect_to root_path
+        elsif current_user.rank != 'Administrator'
+          flash[:notice] = 'You are not authorized to delete users.'
+          redirect_to root_path
+        end
     end
+  end
 end

@@ -24,18 +24,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sites, :has_many => [ :users ]
 
   map.admin 'admin', :controller => 'administrators', :action => 'index'
-  # map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  # map.login '/login', :controller => 'sessions', :action => 'new'
-  # map.register '/register', :controller => 'users', :action => 'create'
-  # map.signup '/signup', :controller => 'users', :action => 'new'
   
   map.resources :users, :has_many => [ :user_pictures, :tasks ]
-
-  map.resource :session
-
-  # map.resources :test_subject_evaluations
-
-  #  map.resources :medications
 
   map.resources :data_file_types
 
@@ -47,9 +37,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :test_subjects, :has_many => [ :meals, :samples, :cohort_assignments, :lab_tests, :medications, :test_subject_evaluations ]
 
-  map.resources :cohorts, :has_many => [ :cohort_assignments ]
-  
-  map.resources :passwords, :methods => [ :edit, :update ]
+  map.resources :cohorts, :has_many => [ :cohort_assignments, :study_cohort_assignments ]
   
   # Add routes to direct the cohort types to the correct place
   Cohort.valid_types.each do |cohort_type|

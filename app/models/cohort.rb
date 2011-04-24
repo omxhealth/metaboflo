@@ -4,11 +4,7 @@ class Cohort < ActiveRecord::Base
   validates_presence_of :name, :type
 
   def assignable_type
-    if self.class == Study
-      'TestSubjectCohort'
-    else
-      self.class.to_s.sub(/Cohort$/, '')
-    end
+    self.class.to_s.sub(/Cohort$/, '')
   end
   
   def self.factory(type, params = nil)
@@ -45,8 +41,13 @@ class ExperimentCohort < Cohort
   alias_method :experiments, :assignables
 end
 
-#Study is a bit of a special case since it is a cohort of cohorts (head asplode)
+# Study is a bit of a special case since it is a cohort of cohorts (head asplode)
 class Study < Cohort
-  has_many :assignables, :through => :cohort_assignments, :source_type => 'TestSubjectCohort'
-  alias_method :cohorts, :assignables
+  has_many :study_cohort_assignments, :dependent => :destroy, :foreign_key => 'cohort_id'
+  has_many :assignables, :through => :study_cohort_assignments, :source_type => 'Cohort'
+  alias_method :test_subjects, :assignables
+  
+  def assignable_type
+    'TestSubjectCohort'
+  end
 end

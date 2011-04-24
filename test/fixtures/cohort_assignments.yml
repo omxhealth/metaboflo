@@ -4,28 +4,42 @@ one:
   assignable: one
   assignable_type: TestSubject
   cohort: one
+  type: CohortAssignment
 
 two:
   assignable: two
   assignable_type: TestSubject
   cohort: one
+  type: CohortAssignment
 
 three:
   assignable: one
   assignable_type: TestSubject
   cohort: two
+  type: CohortAssignment
   
 four:
   assignable: one
   assignable_type: TestSubject
   cohort: three
+  type: CohortAssignment
 
 five:
   assignable: one
   assignable_type: Sample
   cohort: four
+  type: CohortAssignment
 
 six:
   assignable: two
   assignable_type: Sample
   cohort: four
+  type: CohortAssignment
+
+study_cohort_assignment_one:
+  assignable: one
+  assignable_type: TestSubject
+  cohort: study
+  type: StudyCohortAssignment
+  label: Truancy
+

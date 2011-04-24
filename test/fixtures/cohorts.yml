@@ -1,17 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: Cancer Study 2A
+  name: Cancer Group 2A
   type: TestSubjectCohort
   description: A study of cancer
 
 two:
-  name: Metabolomics Study
+  name: Metabolomics Group 1
   type: TestSubjectCohort
   description: Group of test_subjects
 
 three:
-  name: Heart Disease Study
+  name: Heart Disease Group 2
   type: TestSubjectCohort
   description: Group of test_subjects
 

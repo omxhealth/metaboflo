@@ -1,7 +1,7 @@
 module TestSubjectsHelper
 
   def test_subject_tree(test_subject)
-    Tree.new(:label => "#{TestSubject.title} #{test_subject.code}", :url => test_subject_path(test_subject), :icon_open => tree_icon('test_subject.png'), :image_path => image_path('tmp').gsub(/\/tmp/, '')) do |tree|
+    tree = Tree.new(:label => "#{TestSubject.title} #{test_subject.code}", :url => test_subject_path(test_subject), :icon_open => tree_icon('test_subject.png'), :image_path => image_path('tmp').gsub(/\/tmp/, '')) do |tree|
       tree << Node.new(:label => 'Medications', :url => test_subject_medications_path(test_subject), :icon_open => tree_icon('medicine.png'))
       tree << Node.new(:label => 'Lab Tests', :url => test_subject_lab_tests_path(test_subject), :icon_open => tree_icon('test.png'))
       tree << Node.new(:label => "#{TestSubject.title} Evaluations", :url => test_subject_test_subject_evaluations_path(test_subject), :icon_open => tree_icon('evaluation.png'))
@@ -9,6 +9,8 @@ module TestSubjectsHelper
       tree << sample_sub_tree(test_subject, test_subject) # Add the samples for this test_subject
       tree << cohort_sub_tree(test_subject) # Add the cohorts for this test_subject
     end
+    
+    tree.to_s.html_safe
   end
 
   protected

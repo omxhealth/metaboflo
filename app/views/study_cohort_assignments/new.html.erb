@@ -1,0 +1,14 @@
+<h1>Add <%= humanized_type @assignable_type %> to a study</h1>
+
+<% form_for([@assignable, @study_cohort_assignment]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :cohort_id %><br />
+    <%= f.select :cohort_id, "#{@assignable_type}Cohort".constantize.all.collect { |c| [ c.name, c.id ] } %>
+  </p>
+	
+  <p>
+    <%= f.submit "Add to Study" %>
+  </p>
+<% end %>

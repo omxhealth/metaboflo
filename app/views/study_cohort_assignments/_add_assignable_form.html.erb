@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>Add</legend>
+  <% form_remote_tag :url => cohort_study_cohort_assignments_path(@study) do %>
+  	<% fields_for :study_cohort_assignment, StudyCohortAssignment.new(:assignable_type => @study.assignable_type) do |ca_fields| %>
+    	<%= ca_fields.hidden_field :assignable_type %>
+    	<%= humanized_type(@study.assignable_type) %>: <%= ca_fields.select(:assignable_id, @study.assignable_type.constantize.all.collect {|p| [ p.to_s, p.id ] }, { :include_blank => true } ) %>
+      <br /><br />
+      <%= ca_fields.label :label, 'Label (required)' %> <%= ca_fields.text_field :label %>
+      <br /><br />
+    	<%= submit_tag "Add #{humanized_type @study.assignable_type}" %>
+  	<% end %>
+  <% end %>
+</fieldset>

@@ -26,12 +26,12 @@
 			</tr>
 		</thead>
 		<tbody id="assignable-associations">
-			<%= render :partial => '/cohort_assignments/cohort_assignment', :collection => @study.cohort_assignments, :locals => { :from => 'study' } %>
+			<%= render :partial => '/study_cohort_assignments/study_cohort_assignment', :collection => @study.study_cohort_assignments %>
 		</tbody>
 	</table>
 	<br /><br />
 	<div class="new-association">
-		<%= render :partial => '/cohort_assignments/add_assignable_form', :locals => { :from => 'study' } %>
+		<%= render :partial => '/study_cohort_assignments/add_assignable_form' %>
 	</div>
 	<br />
 </div>

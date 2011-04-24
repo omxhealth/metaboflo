@@ -1,41 +1,48 @@
 quentin:
   email: quentin@example.com
-  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
-  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
+  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
+  password_salt: "kXoztsu11lYTJmqnBTiO"
+  name: Quentin
       
 aaron:
   email: aaron@example.com
-  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
-  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
+  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
+  password_salt: "kXoztsu11lYTJmqnBTiO"
+  name: Aaron
 
 old_password_holder:
   email: salty_dog@example.com
-  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
-  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
+  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
+  password_salt: "kXoztsu11lYTJmqnBTiO"
+  name: OldPasswordHolder
 
 user:
   email: user@example.com
   site: one
-  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
-  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
+  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
+  password_salt: "kXoztsu11lYTJmqnBTiO"
   rank: User
+  name: User
 
 user2:
   email: user2@example.com
   site: two
-  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
-  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
+  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
+  password_salt: "kXoztsu11lYTJmqnBTiO"
   rank: User
+  name: User2
   
 superuser:
   site: two
   email: superuser@example.com
-  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
-  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
+  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
+  password_salt: "kXoztsu11lYTJmqnBTiO"
   rank: Superuser
+  name: Superuser
   
 admin:
   email: admin@test.com
-  encrypted_password: $2a$10$LYNznUbINWsxTJIeL/a2Leutb5OD51mtx6DmvFp8qABXqlMJMhUZi # monkey
-  password_salt: $2a$10$jsACLrNqcHabDjddSjP.G.
+  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
+  password_salt: "kXoztsu11lYTJmqnBTiO"
   rank: Administrator
+  name: Administrator

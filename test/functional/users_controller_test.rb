@@ -44,13 +44,13 @@ class UsersControllerTest < ActionController::TestCase
   def test_should_not_get_new_not_permitted
     login_as :user
     get :new
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   def test_should_create_user_administrator
     login_as :admin
     assert_difference('User.count') do
-      post :create, :user => { :login => 'new_user', :email => 'new@example.com', :password => 'password', :password_confirmation => 'password', :site_id => sites(:one) }
+      post :create, :user => { :email => 'new@example.com', :password => 'password', :password_confirmation => 'password', :site_id => sites(:one) }
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -68,10 +68,10 @@ class UsersControllerTest < ActionController::TestCase
   def test_should_not_create_user_not_permitted
     login_as :user
     assert_no_difference('User.count') do
-      post :create, :user => { :login => 'new_user', :email => 'new@example.com', :password => 'password', :password_confirmation => 'password', :site_id => sites(:one) }
+      post :create, :user => { :email => 'new@example.com', :password => 'password', :password_confirmation => 'password', :site_id => sites(:one) }
     end
 
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   def test_should_show_user
@@ -101,7 +101,7 @@ class UsersControllerTest < ActionController::TestCase
   def test_should_not_get_edit_not_permitted
     login_as :user2
     get :edit, :id => users(:user).id
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   def test_should_update_user_administrator
@@ -125,7 +125,7 @@ class UsersControllerTest < ActionController::TestCase
   def test_should_not_update_user_not_permitted
     login_as :user2
     put :update, :id => users(:user).id, :user => { }
-    assert_redirected_to login_path
+    assert_redirected_to root_path
   end
 
   def test_should_destroy_user_administrator
@@ -137,45 +137,44 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to users_path
   end
   
-  def test_should_not_destroy_user_superuser
+  test "ensure can't delete own account from superuser" do
     login_as :superuser
     assert_no_difference('User.count') do
-      delete :destroy, :id => users(:user).id
+      delete :destroy, :id => users(:admin).id
     end
   end
-  
-  def test_should_not_destroy_user_user
+
+  test "ensure can't delete own account from user" do
     login_as :user
     assert_no_difference('User.count') do
-      delete :destroy, :id => users(:user).id
+      delete :destroy, :id => users(:admin).id
     end
   end
   
-  def test_should_not_destroy_user_self
+  test "ensure can't delete own account from admin" do
     login_as :admin
     assert_no_difference('User.count') do
       delete :destroy, :id => users(:admin).id
     end
   end
   
-  
-  def test_should_allow_signup_superuser
+  test "allow creation of user from superuser account" do
     login_as :superuser
     assert_difference 'User.count' do
       create_user
       assert_response :redirect
     end
   end
-
-  def test_should_allow_signup_admin
+  
+  test "allow creation of user from admin account" do
     login_as :admin
     assert_difference 'User.count' do
       create_user
       assert_response :redirect
     end
   end
-  
-  def test_should_not_allow_signup
+
+  test "don't allow creation of user from user account" do
     login_as :user
     assert_no_difference 'User.count' do
       create_user
@@ -183,48 +182,9 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
-  def test_should_require_login_on_signup
-    login_as :superuser
-    assert_no_difference 'User.count' do
-      create_user(:login => nil)
-      assert assigns(:user).errors.on(:login)
-      assert_response :success
-    end
-  end
-
-  def test_should_require_password_on_signup
-    login_as :superuser
-    assert_no_difference 'User.count' do
-      create_user(:password => nil)
-      assert assigns(:user).errors.on(:password)
-      assert_response :success
-    end
-  end
-
-  def test_should_require_password_confirmation_on_signup
-    login_as :superuser
-    assert_no_difference 'User.count' do
-      create_user(:password_confirmation => nil)
-      assert assigns(:user).errors.on(:password_confirmation)
-      assert_response :success
-    end
-  end
-
-  def test_should_require_email_on_signup
-    login_as :superuser
-    assert_no_difference 'User.count' do
-      create_user(:email => nil)
-      assert assigns(:user).errors.on(:email)
-      assert_response :success
-    end
-  end
-  
-
-  
-
   protected
     def create_user(options = {})
-      post :create, :user => { :login => 'quire', :email => 'quire@example.com',
+      post :create, :user => { :email => 'quire@example.com',
         :password => 'quire69', :password_confirmation => 'quire69' }.merge(options)
     end
 end
