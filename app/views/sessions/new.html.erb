@@ -1,0 +1,36 @@
+<h1>Welcome - Please Log In</h1>
+
+<div class="subcontainer" style="float: left; margin-right: 1.5em;">
+  <% form_for resource_name, resource, :url => session_path(resource_name) do |f| %>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email, :style => 'height: 20px; font-size: larger' %>
+    </p>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password, :style => 'height: 20px; font-size: larger' %>
+    </p>
+    <% if devise_mapping.rememberable? -%>
+    <p>
+      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    </p>
+    <% end -%>
+    <p>
+      <%= f.submit "Sign in" %> &nbsp; &nbsp; <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+    </p>
+  <% end %>
+</div>
+
+<p style="font-size: larger;">
+	Welcome to the Bovine Metabolome Laboratory Information Management System (LIMS). The Bovine LIMS is a central repository for laboratory management, animal, and scientific	information.  It is a secure, fast, intuitive web-application developed by <%= link_to 'In Siliflo Data Management & Analysis', 'http://insiliflo.com' %>.
+</p>
+<p style="font-size: larger;">
+	If you would like further information on this project or other In Siliflo projects, please 
+	<%= link_to 'contact us', 'http://insiliflo.com/contact' %>.
+</p>
+<br />
+<div id="login-logos">
+	<%= image_tag 'blood_sample.png' %>
+	<%= image_tag 'test_subject.png' %>
+	<%= image_tag 'dna.png' %>
+</p>
