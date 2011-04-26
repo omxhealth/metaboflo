@@ -1,15 +1,17 @@
 class TestSubjectsController < ApplicationController
+  VIEW_PATH = "subjects/#{SUBJECT_CONFIG[:name]}"
+  
   before_filter :find_test_subject, :only => [ :show, :edit, :update, :destroy ]
 
   # GET /test_subjects
   # GET /test_subjects.xml
   def index
     @test_subjects = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-    TestSubject.find(:all) :
-    TestSubject.find(:all, :conditions => [ 'site_id=?', current_user.site ])
+                      TestSubject.find(:all) :
+                      TestSubject.find(:all, :conditions => [ 'site_id=?', current_user.site ])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :action => "#{VIEW_PATH}/index" }
       format.xml  { render :xml => @test_subjects }
     end
   end
@@ -23,7 +25,7 @@ class TestSubjectsController < ApplicationController
     @meals = @test_subject.meals
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :action => "#{VIEW_PATH}/show" }
       format.xml  { render :xml => @test_subject }
     end
   end

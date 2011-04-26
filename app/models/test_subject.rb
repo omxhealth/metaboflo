@@ -1,6 +1,4 @@
 class TestSubject < ActiveRecord::Base
-  TITLE = 'Test Subject'
-  
   belongs_to :site
   
   has_many :samples, :dependent => :destroy
@@ -18,7 +16,7 @@ class TestSubject < ActiveRecord::Base
   validates_presence_of :code, :site_id
   
   def name
-    "#{TITLE} #{code}"
+    "#{TestSubject.title} #{code}"
   end
   
   def to_s
@@ -48,6 +46,6 @@ class TestSubject < ActiveRecord::Base
   end
   
   def TestSubject.title
-    TITLE
+    SUBJECT_CONFIG[:title]
   end
 end

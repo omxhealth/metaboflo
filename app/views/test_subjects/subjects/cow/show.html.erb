@@ -58,7 +58,7 @@
 <br />
 
 <fieldset>
-  <legend>Feeding Information</legend>
+  <legend>Diet Information</legend>
   
   <% if @meals.length > 0 %>
     <table class="list">
@@ -86,7 +86,7 @@
     
     <%= new_link "meal for #{TestSubject.title.downcase} #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
   <% else %>
-    No current feeding information.
+    No current diet information.
   <% end %>
 </fieldset>
   

@@ -48,7 +48,7 @@
           <% end %>
           <div id="version">Version <%= APPLICATION_VERSION %></div>
         </div>
-        <%= image_tag 'logo.png', :style => 'float: left; margin-right: 2em;' %>
+        <%= image_tag "subjects/#{SUBJECT_CONFIG[:logo_image]}", :style => 'float: left; margin-right: 2em;' %>
       </div>
 
       <% if current_user %>
@@ -72,8 +72,8 @@
             </li>
             
             <li class="yuimenubaritem">
-              <%= link_to 'Feeding', diets_path, :class => 'yuimenubaritemlabel' %>
-              <div id="feeding" class="yuimenu">
+              <%= link_to 'Diets', diets_path, :class => 'yuimenubaritemlabel' %>
+              <div id="diets" class="yuimenu">
                 <div class="bd">                    
                   <ul>
                     <li class="yuimenuitem"><%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %></li>
