@@ -17,7 +17,7 @@ class Experiment < ActiveRecord::Base
   
   # Required so that Experiments, Samples, and TestSubjects can be displayed in cohorts
   def to_s
-    return self.name
+    return "#{self.name} (#{self.experiment_type.name})"
   end
   
   def short_description(max_length = 50)

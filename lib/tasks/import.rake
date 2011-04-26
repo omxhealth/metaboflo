@@ -14,7 +14,7 @@ namespace :import do
     User.transaction do
       User.destroy_all
 
-      admin = User.new(:login => 'admin', :email => 'info@insiliflo.com', :password => 'ruminal', :password_confirmation => 'ruminal', :rank => 'Administrator')
+      admin = User.new(:email => 'info@insiliflo.com', :password => 'ruminal', :password_confirmation => 'ruminal', :rank => 'Administrator')
       admin.save!
     end
   end

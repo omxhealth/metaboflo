@@ -41,7 +41,7 @@
 <br />
 
 <% if (@parent and @parent.kind_of?(Sample)) %>
-<%= new_link "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent) %>
+  <%= new_link "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent) %>
 <% elsif (@parent and @parent.kind_of?(TestSubject)) %>
-<%= new_link "sample for #{TestSubject.title.downcase} #{@parent.code}", new_test_subject_sample_path(@parent) %>
+  <%= new_link "sample for #{TestSubject.title.downcase} #{@parent.code}", new_test_subject_sample_path(@parent) %>
 <% end %>

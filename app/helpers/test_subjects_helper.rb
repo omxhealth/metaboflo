@@ -39,7 +39,7 @@ module TestSubjectsHelper
   def experiment_sub_tree(sample)
     tree = Node.new(:label => 'Experiments', :url => sample_experiments_path(sample)) do |node|
       sample.experiments.each do |experiment|
-        experiment_node = Node.new(:label => experiment.name, :url => sample_experiment_path(experiment.sample, experiment))
+        experiment_node = Node.new(:label => "#{experiment.name} (#{experiment.experiment_type.name})", :url => sample_experiment_path(experiment.sample, experiment))
         experiment_node.icon = experiment_node.icon_open = tree_icon('experiment.png')
         experiment_node << data_file_sub_tree(experiment)
         node << experiment_node
