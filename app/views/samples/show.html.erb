@@ -8,21 +8,6 @@
 </p>
 
 <p>
-  <b>Original amount:</b>
-  <%=h @sample.original_amount %> <%=h @sample.original_unit %>
-</p>
-
-<p>
-  <b>Actual amount:</b>
-  <%=h @sample.actual_amount %> <%=h @sample.actual_unit %>
-</p>
-
-<p>
-	<b>Theoretical amount:</b>
-	<%=h @sample.theoretical_amount %> <%=h @sample.original_unit %>
-</p>
-
-<p>
   <b>Barcode:</b>
   <%=h @sample.barcode %>
 </p>
@@ -32,62 +17,96 @@
   <%= link_to(@sample.root.to_s, test_subject_path(@sample.root)) %>
 </p>
 
-<% if @sample.aliquot? %>
-<p>
-	<b>Source sample:</b>
-	<%= link_to(@sample.sample, sample_path(@sample.sample)) %>
-</p>
-<% end %>
+<br />
 
-<p>
-  <b>Site:</b>
-  <%=h(@sample.site.name) if @sample.site %>
-</p>
+<%= new_link "Aliquot", new_sample_sample_path(@sample) %> | <%= new_link 'Experiment', new_sample_experiment_path(@sample) %><br />
 
-<p>
-  <b>Building:</b>
-  <%=h @sample.building %>
-</p>
+<br />
 
-<p>
-  <b>Room:</b>
-  <%=h @sample.room %>
-</p>
+<fieldset>
+  <legend>Volume Information</legend>
+  <p>
+    <b>Original amount:</b>
+    <%=h @sample.original_amount %> <%=h @sample.original_unit %>
+  </p>
 
-<p>
-	<b>Freezer:</b>
-	<%=h @sample.freezer %>
-</p>
+  <p>
+    <b>Actual amount:</b>
+    <%=h @sample.actual_amount %> <%=h @sample.actual_unit %>
+  </p>
 
-<p>
-	<b>Shelf:</b>
-	<%=h @sample.shelf %>
-</p>
+  <p>
+  	<b>Theoretical amount:</b>
+  	<%=h @sample.theoretical_amount %> <%=h @sample.original_unit %>
+  </p>
+</fieldset>
 
-<p>
-	<b>Box:</b>
-	<%=h @sample.box %>
-</p>
+<br />
 
-<p>
-	<b>Box Position:</b>
-	<%=h @sample.box_position %>
-</p>
+<fieldset>
+  <legend>Storage Location</legend>
+  <p>
+    <b>Site:</b>
+    <%=h(@sample.site.name) if @sample.site %>
+  </p>
 
-<p>
-  <b>Collected on:</b>
-  <%=h @sample.collected_on %>
-</p>
+  <p>
+    <b>Building:</b>
+    <%=h @sample.building %>
+  </p>
 
-<p>
-  <b>Collected by:</b>
-  <%=h @sample.collected_by %>
-</p>
+  <p>
+    <b>Room:</b>
+    <%=h @sample.room %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @sample.description %>
-</p>
+  <p>
+  	<b>Freezer:</b>
+  	<%=h @sample.freezer %>
+  </p>
+
+  <p>
+  	<b>Shelf:</b>
+  	<%=h @sample.shelf %>
+  </p>
+
+  <p>
+  	<b>Box:</b>
+  	<%=h @sample.box %>
+  </p>
+
+  <p>
+  	<b>Box Position:</b>
+  	<%=h @sample.box_position %>
+  </p>
+</fieldset>
+
+<br />
+
+<fieldset>
+  <legend>Collection Details</legend>
+  <% if @sample.aliquot? %>
+  <p>
+  	<b>Source sample:</b>
+  	<%= link_to(@sample.sample, sample_path(@sample.sample)) %>
+  </p>
+  <% end %>
+  
+  <p>
+    <b>Collected on:</b>
+    <%=h @sample.collected_on %>
+  </p>
+
+  <p>
+    <b>Collected by:</b>
+    <%=h @sample.collected_by %>
+  </p>
+
+  <p>
+    <b>Description:</b>
+    <%=h @sample.description %>
+  </p>
+</fieldset>
 
 <br />
 
