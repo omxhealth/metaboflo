@@ -23,7 +23,7 @@ h1 {
 	padding: 0.2em;
 	border: 1px solid gray;
 	margin-bottom: 2em;
-	margin-top: 5px;
+	margin-top: 0.2em;
 }
 
 h2 {
@@ -127,9 +127,19 @@ div#headerbar div#headerbar-right {
 	margin-right: 2em;
 }
 
-div#logged-in {
-  text-align: right;
-	clear: both;
+div#logged-in {  
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  background: #B9D3EE;
+  padding: 0.3em 0.4em;
+  border-radius: 5px;
+  border: 1px solid #FFEBCD;
+  font-size: 12px;
+}
+
+div#logged-in a {
+  text-decoration: underline;
 }
 
 div#menu {
