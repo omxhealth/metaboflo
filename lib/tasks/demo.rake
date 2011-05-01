@@ -26,7 +26,7 @@ end
 def load_data_files
   TestSubject.all.each do |ts|
     s = ts.samples.first || ts.samples.create!
-    e = s.experiments.first || s.experiment.create!(:name => "Experiment for #{ts.id}", :experiment_type => ExperimentType.first)
+    e = s.experiments.first || s.experiments.create!(:name => "Experiment for #{ts.id}", :experiment_type => ExperimentType.first)
     
     csv = "#{ts.id}.csv"
     path = File.join(File.dirname(__FILE__), "demo", "data_files", csv)
@@ -38,7 +38,7 @@ def load_data_files
       define_method(:size) { File.size(path) }
     end
           
-    data_file = e.data_files.create!(:uploaded_data => f, :data_file_type => DataFileType.find_by_name('CSV')
+    data_file = e.data_files.create!(:uploaded_data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true)
   end
 end
 
