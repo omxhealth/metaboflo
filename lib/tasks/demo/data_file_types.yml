@@ -1,0 +1,15 @@
+spectrum:
+  name: Spectrum Image
+  description: Image file of a Spectrum
+
+fids:
+  name: FIDS
+  description: Free Induction Decay file
+  
+csv:
+  name: CSV
+  description: A comma-separated value file
+  
+misc:
+  name: Other
+  description: A Miscellaneous file
