@@ -1,51 +1,51 @@
-<h1>Showing patient <%= @patient %></h1>
+<h1>Showing patient <%= @test_subject %></h1>
 
 <p>
   <b>Code:</b>
-  <%=h @patient.code %>
+  <%=h @test_subject.code %>
 </p>
 
 <p>
 	<b>Site:</b>
-	<%=h @patient.site.name %>
+	<%=h @test_subject.site.name %>
 </p>
 
 <p>
   <b>Initials:</b>
-  <%=h @patient.first_initial %><%=h @patient.middle_initial %> <%=h @patient.last_initial %>
+  <%=h @test_subject.first_initial %><%=h @test_subject.middle_initial %> <%=h @test_subject.last_initial %>
 </p>
 
 <p>
   <b>Birthdate:</b>
-  <%=h @patient.birthdate %>
+  <%=h @test_subject.birthdate %>
 </p>
 
 <p>
 	<b>Blood type:</b>
-	<%=h @patient.blood_type %>
+	<%=h @test_subject.blood_type %>
 </p>
 
 <p>
   <b>Gender:</b>
-  <%=h @patient.gender %>
+  <%=h @test_subject.gender %>
 </p>
 
 <p>
 	<b>Race:</b>
-	<%=h @patient.race %>
+	<%=h @test_subject.race %>
 </p>
 
 <p>
 	<b>Practitioner:</b>
-	<%=h @patient.practitioner %>
+	<%=h @test_subject.practitioner %>
 </p>
 
 <p>
 	<b>Notes:</b>
-	<%=h @patient.notes %>
+	<%=h @test_subject.notes %>
 </p>
 
 
 <br />
 
-<%= edit_link edit_patient_path(@patient) %>
+<%= edit_link edit_test_subject_path(@test_subject) %>
