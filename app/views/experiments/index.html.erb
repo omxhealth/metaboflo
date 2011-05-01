@@ -20,7 +20,7 @@
     <td><%= experiment.sample.root %></td>
     <td><%= experiment.sample %></td>
     <td><%=h experiment.name %></td>
-    <td><%=h experiment.experiment_type.name %></td>
+    <td><%=h experiment.experiment_type.name unless experiment.experiment_type.nil? %></td>
     <td><%=h experiment.short_description %></td>
     <td><%=h experiment.assigned_to %></td>
     <td><%=h experiment.perform_on %></td>
