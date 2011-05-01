@@ -1,6 +1,6 @@
 roman: 
   updated_at: 2008-12-16 01:40:13.096305 Z
-  site_id: 357751860
+  site_id: 986866124
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"  
   rank: User
@@ -11,7 +11,7 @@ roman:
   
 craig: 
   updated_at: 2008-12-16 01:40:13.096305 Z
-  site_id: 357751860
+  site_id: 53320508
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"  
   rank: User
@@ -22,7 +22,7 @@ craig:
   
 joseph: 
   updated_at: 2008-12-16 01:40:13.096305 Z
-  site_id: 357751860
+  site_id: 1054583384
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"  
   rank: User
@@ -33,7 +33,7 @@ joseph:
   
 admin: 
   updated_at: 2008-12-16 01:16:29.380513 Z
-  site_id: 953125641
+  site_id: 996332877
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"
   rank: Administrator

@@ -1,127 +1,116 @@
---- 
 "6": 
-  start_date: 2008-12-16
-  updated_at: 2008-12-16 07:33:57.230160 Z
-  estimated_hours: 
+  estimated_hours: 10.0
   priority_id: 464995676
-  subject: Choose LIMS/SDMS
+  subject: Research LIMS solutions
   id: 6
-  description: ""
+  description: In Siliflo seems to be the best so far
   category_id: 944538331
-  due_date: 2008-12-31
+  start_date: <%= Date.today - 1.days %>
+  due_date: <%= Date.today + 1.days %>
   done_ratio: 20
-  assigned_to_id: 3
+  assigned_to: admin
   status_id: 417306706
-  created_at: 2008-12-16 07:33:57.230160 Z
+
 "7": 
-  start_date: 2009-01-01
-  updated_at: 2008-12-16 07:35:23.430111 Z
   estimated_hours: 80.0
   priority_id: 464995676
-  subject: Initial LIMS/SDMS
+  subject: Upload NMR analyses to LIMS
   id: 7
-  description: Get preliminary version of LIMS/SDMS into production
+  description: Upload all concentration data from NMR to their respective samples
   category_id: 944538331
-  due_date: 2009-01-31
-  done_ratio: 0
-  assigned_to_id: 26
+  start_date: <%= Date.today - 5.days %>
+  due_date: <%= Date.today %>
+  done_ratio: 50
+  assigned_to: admin
   status_id: 417306706
-  created_at: 2008-12-16 07:35:23.430111 Z
+
 "8": 
-  start_date: 2009-02-01
-  updated_at: 2008-12-16 07:36:37.536964 Z
   estimated_hours: 80.0
   priority_id: 464995676
-  subject: LIMS/SDMS feedback
+  subject: Finish poster for Metabolomics conference
   id: 8
-  description: Generate feedback on LiMS/SDMS; get suggestions about additions/modifications
+  description: The poster for the Metabolomics conference needs to be finished up
   category_id: 944538331
-  due_date: 2009-02-28
-  done_ratio: 0
-  assigned_to_id: 
+  start_date: <%= Date.today - 3.days %>
+  due_date: <%= Date.today + 2.days%>
+  done_ratio: 25
+  assigned_to: admin
   status_id: 417306706
-  created_at: 2008-12-16 07:36:37.536964 Z
+
 "9": 
-  start_date: 2009-03-01
-  updated_at: 2008-12-16 07:37:52.899661 Z
   estimated_hours: 160.0
   priority_id: 464995676
-  subject: LIMS/SDMS additions/modifications
+  subject: Give feedback on Bioinformatics paper
   id: 9
-  description: Make changes to LIMS/SDMS based on user feedback
+  description: Final revisions need to come back for the paper
   category_id: 944538331
-  due_date: 2009-03-31
-  done_ratio: 0
-  assigned_to_id: 26
+  start_date: <%= Date.today - 15.days %>
+  due_date: <%= Date.today - 10.days %>
+  done_ratio: 100
+  assigned_to: admin
   status_id: 417306706
-  created_at: 2008-12-16 07:37:52.899661 Z
+
 "1": 
-  start_date: 2008-12-16
-  updated_at: 2008-12-16 07:16:27.001035 Z
   estimated_hours: 1.0
   priority_id: 464995676
-  subject: Order test tubes
+  subject: Order lab equipment
   id: 1
-  description: Running low on standard test tubes. Get more.
+  description: Running low on standard test tubes and flasks, make an order for more
   category_id: 159702397
-  due_date: 2008-12-22
-  done_ratio: 0
-  assigned_to_id: 26
+  start_date: <%= Date.today - 5.days %>
+  due_date: <%= Date.today %>
+  done_ratio: 25
+  assigned_to: roman
   status_id: 417306706
-  created_at: 2008-12-16 07:16:27.001035 Z
+
 "2": 
-  start_date: 2009-01-02
-  updated_at: 2008-12-16 07:20:13.560246 Z
   estimated_hours: 80.0
   priority_id: 464995676
-  subject: Paper 77 Classifier
+  subject: Cancer Classifier
   id: 2
-  description: Create classifier using test_subjects from cohort 'Paper 77'
+  description: Create classifier using Patients from cohorts 'Cancer' and 'Normals'
   category_id: 944538329
-  due_date: 2009-03-31
+  start_date: <%= Date.today - 5.days %>
+  due_date: <%= Date.today + 10.days%>
   done_ratio: 0
-  assigned_to_id: 26
+  assigned_to: roman
   status_id: 417306706
-  created_at: 2008-12-16 07:20:13.560246 Z
+
 "3": 
-  start_date: 2008-12-12
-  updated_at: 2008-12-16 07:24:04.784710 Z
   estimated_hours: 6.0
   priority_id: 927634277
   subject: NMR on samples for UA001
   id: 3
   description: Run all remaining samples for UA001
   category_id: 944538328
-  due_date: 2009-01-12
+  start_date: <%= Date.today - 5.days %>
+  due_date: <%= Date.today + 1.days%>
   done_ratio: 20
-  assigned_to_id: 23
+  assigned_to: joseph
   status_id: 417306706
-  created_at: 2008-12-16 07:23:45.513584 Z
+
 "4": 
-  start_date: 2008-12-16
-  updated_at: 2008-12-16 07:26:33.535256 Z
   estimated_hours: 16.0
   priority_id: 464995676
-  subject: R24 Annual Meeting
+  subject: Annual Meeting
   id: 4
-  description: Meeting in Bethesda
+  description: Meeting at Head Office
   category_id: 944538330
-  due_date: 2008-12-17
+  start_date: <%= Date.today - 5.days %>
+  due_date: <%= Date.today + 1.days%>
   done_ratio: 0
-  assigned_to_id: 
+  assigned_to: joseph
   status_id: 417306706
-  created_at: 2008-12-16 07:26:33.535256 Z
+
 "5": 
-  start_date: 2008-12-14
-  updated_at: 2008-12-16 07:30:58.420919 Z
-  estimated_hours: 
+  estimated_hours: 2.0
   priority_id: 927634277
-  subject: P=NP
+  subject: Run PCA on Patients from Cancer study
   id: 5
-  description: Provide a proof that P is indeed equal to NP
+  description: Examine sources of variation for cancer patients
   category_id: 
-  due_date: 2013-12-31
+  start_date: <%= Date.today - 5.days %>
+  due_date: <%= Date.today + 10.days%>
   done_ratio: 0
-  assigned_to_id: 
+  assigned_to: admin
   status_id: 417306706
-  created_at: 2008-12-16 07:29:29.605562 Z

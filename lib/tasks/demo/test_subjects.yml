@@ -12,7 +12,7 @@
   gender: Female
   middle_initial: E
   last_initial: G
-  race: Native Indian
+  race: Asian
   created_at: 2008-12-16 03:20:05.057476 Z
 "6": 
   updated_at: 2008-12-16 03:06:38.554715 Z
@@ -42,7 +42,7 @@
   gender: Female
   middle_initial: C
   last_initial: D
-  race: Caucasian (White)
+  race: Caucasian
   created_at: 2008-12-16 03:21:27.160384 Z
 "7": 
   updated_at: 2008-12-16 03:07:37.407959 Z
@@ -102,7 +102,7 @@
   gender: Female
   middle_initial: I
   last_initial: P
-  race: Caucasian (White)
+  race: Caucasian
   created_at: 2008-12-16 03:25:21.665477 Z
 "9": 
   updated_at: 2008-12-16 03:17:19.472920 Z
@@ -112,7 +112,7 @@
   birthdate: 1986-01-30
   first_initial: I
   practitioner: Dr. Allen
-  notes: Really likes dogs
+  notes: Patient is a former alcoholic
   id: 9
   gender: Female
   middle_initial: T
@@ -157,7 +157,7 @@
   birthdate: 1908-05-16
   first_initial: O
   practitioner: Dr. Jones
-  notes: Getting up in age
+  notes: ""
   id: 17
   gender: Female
   middle_initial: M
@@ -172,7 +172,7 @@
   birthdate: 1979-10-06
   first_initial: J
   practitioner: Dr. Smith
-  notes: TestSubject is a half-man, half-amazing.
+  notes: Patient has a history of low blood pressure
   id: 1
   gender: Male
   middle_initial: A
@@ -187,7 +187,7 @@
   birthdate: 1979-10-01
   first_initial: R
   practitioner: Dr. Johnson
-  notes: TestSubject is allergic to small diamonds
+  notes: Allergic to eggs
   id: 2
   gender: Female
   middle_initial: J
@@ -207,7 +207,7 @@
   gender: Male
   middle_initial: A
   last_initial: K
-  race: Caucasian (White)
+  race: Caucasian
   created_at: 2008-12-16 03:00:44.173958 Z
 "10": 
   updated_at: 2008-12-16 03:18:40.860069 Z
@@ -230,13 +230,13 @@
   code: UA004
   blood_type: AB
   birthdate: 1980-12-01
-  first_initial: L
+  first_initial: R
   practitioner: Dr. Johnson
-  notes: Plays basketball better than her husband
+  notes: Family history of cancer
   id: 4
   gender: Female
   middle_initial: ""
-  last_initial: E
+  last_initial: L
   race: Asian
   created_at: 2008-12-16 03:01:50.417411 Z
 "5": 
@@ -252,5 +252,5 @@
   gender: Male
   middle_initial: ""
   last_initial: E
-  race: Caucasian (White)
+  race: Caucasian
   created_at: 2008-12-16 03:03:34.577365 Z

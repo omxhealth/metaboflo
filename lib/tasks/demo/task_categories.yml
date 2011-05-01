@@ -1,9 +1,9 @@
 --- 
 "944538328": 
-  name: NMR
+  name: Metabolomics
   updated_at: 2008-12-16 07:14:37 Z
   id: 944538328
-  description: All tasks involving NMR
+  description: All tasks involving metabolomics
   created_at: 2008-12-16 07:14:37 Z
 "944538329": 
   name: Bioinformatics
@@ -18,10 +18,10 @@
   description: Scheduled meetings
   created_at: 2008-12-16 07:25:28.191436 Z
 "944538331": 
-  name: Data Management
+  name: Data Analysis
   updated_at: 2008-12-16 07:32:43.585730 Z
   id: 944538331
-  description: ""
+  description: Analysing data sets
   created_at: 2008-12-16 07:32:43.585730 Z
 "159702397": 
   name: Equipment
