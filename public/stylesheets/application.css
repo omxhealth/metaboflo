@@ -110,23 +110,10 @@ div#flash p.error {
 
 /* Layout CSS */
 div#headerbar {
-	vertical-align: middle;
-	line-height: 40px;
-	height: 100px;
-	background-color: #082680;
+  background: #609db3; height: 125px;
 }
 
 /* Layout CSS */
-div#headerbar div#headerbar-right {
-	margin-top: 1em; 
-	float: right; 
-	color: silver; 
-	font-size: smaller; 
-	text-align: right; 
-	line-height: 2em;
-	margin-right: 2em;
-}
-
 div#logged-in {  
   position: absolute;
   top: 5px;
