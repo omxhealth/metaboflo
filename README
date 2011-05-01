@@ -1,3 +1,7 @@
 To initialize, run:
 
 rake metabolites:import
+
+For demo data:
+
+rake demo:load

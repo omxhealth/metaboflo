@@ -1,5 +1,4 @@
 roman: 
-  updated_at: 2008-12-16 01:40:13.096305 Z
   site_id: 986866124
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"  
@@ -7,10 +6,8 @@ roman:
   remember_token: 
   name: Roman Eisner
   email: reisner@insiliflo.com
-  created_at: 2008-12-16 01:40:13.096305 Z
   
 craig: 
-  updated_at: 2008-12-16 01:40:13.096305 Z
   site_id: 53320508
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"  
@@ -18,10 +15,8 @@ craig:
   remember_token: 
   name: Craig Knox
   email: cknox@insiliflo.com
-  created_at: 2008-12-16 01:40:13.096305 Z
   
 joseph: 
-  updated_at: 2008-12-16 01:40:13.096305 Z
   site_id: 1054583384
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"  
@@ -29,10 +24,8 @@ joseph:
   remember_token: 
   name: Joseph Cruz
   email: jcruz@insiliflo.com
-  created_at: 2008-12-16 01:40:13.096305 Z
   
 admin: 
-  updated_at: 2008-12-16 01:16:29.380513 Z
   site_id: 996332877
   encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
   password_salt: "kXoztsu11lYTJmqnBTiO"
@@ -40,4 +33,3 @@ admin:
   remember_token: 
   name: Administrator
   email: info@insiliflo.com
-  created_at: 2008-12-16 00:44:04.591152 Z
