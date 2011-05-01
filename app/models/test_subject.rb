@@ -37,7 +37,7 @@ class TestSubject < ActiveRecord::Base
     else
       feats = Hash.new
       df.concentrations.each do |c|
-        if not c.metabolite.nil?
+        if !c.metabolite.nil?
           feats[c.metabolite.name] = c.concentration_value
         end
       end

@@ -34,21 +34,9 @@
 
   <div id="doc3" <%= 'class="yui-t3"' if sidebar %>> 
     <div id="hd"><!-- header -->
-
-      <div id="headerbar">
-
-        <div id="headerbar-right">
-          <% if current_user %>
-          <div id="logged-in">Logged in as <em><%= current_user.to_s %></em> | <%= link_to 'Logout', destroy_user_session_path %></div>
-
-          <% form_tag search_metabolites_path, :style => 'margin: 0em; padding: 0em;' do %>
-            Quick Search: <%= text_field_tag 'query', nil, :value => params[:query] %>
-            <%= submit_tag 'Go' %>
-          <% end %>
-          <% end %>
-          <div id="version">Version <%= APPLICATION_VERSION %></div>
-        </div>
-        <%= image_tag "subjects/#{SUBJECT_CONFIG[:logo_image]}", :style => 'float: left; margin-right: 2em;' %>
+      <div id="headerbar" style="background: #126EB5; height: 125px;">
+        <%= image_tag "banner_left.png", :style => 'float: left' %>
+        <%= image_tag "banner_right.png", :style => 'float: right' %>
       </div>
 
       <% if current_user %>
@@ -150,6 +138,10 @@
     <div id="bd"><!-- body -->
 
       <div class="yui-b"><!-- Navigation block -->
+        <% if current_user %>
+        <div id="logged-in">Logged in as <em><%= current_user.to_s %></em> | <%= link_to 'Logout', destroy_user_session_path %></div>
+        <% end -%>
+        
         <% if sidebar -%>
         <div id="sidebar">
           <h2><%= TestSubject.title %> Summary</h2>
@@ -164,8 +156,8 @@
             <div id="flash">
               <% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end %>
               <% if flash[:error] %><p class="error"><%= flash[:error] %></p><% end %>
+              <% if flash[:alert] %><p class="error"><%= flash[:alert] %></p><% end %>
             </div>
-
             <%= yield  %>
           </div>
 

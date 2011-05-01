@@ -127,18 +127,9 @@ div#headerbar div#headerbar-right {
 	margin-right: 2em;
 }
 
-div#headerbar div#headerbar-right div#logged-in {
-	font-size: larger; 
-	margin-bottom: 1em;
-}
-
-div#headerbar div#headerbar-right div#logged-in a {
-	color: white;
-}
-
-div#headerbar div#headerbar-right div#version {
-	font-size: smaller; 
-	margin-top: 0.8em;
+div#logged-in {
+  text-align: right;
+	clear: both;
 }
 
 div#menu {
@@ -169,7 +160,7 @@ div#main, div#sidebar {
 div#main {
 	height: 100%;
 	margin-left: 0em;
-	background: #FAFAFA url(../images/body_bg.gif) repeat-x;
+
 }
 
 div#sidebar {
