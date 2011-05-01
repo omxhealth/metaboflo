@@ -1,4 +1,4 @@
-<tr>
+<tr class="<%= cycle('even', 'odd') %>">
 	<td><%=h study_cohort_assignment.assignable %></td>
 	<td><%=h study_cohort_assignment.label %></td>
 	<td><%= link_to_remote "Remove", :url => cohort_study_cohort_assignment_path(study_cohort_assignment.cohort, study_cohort_assignment), :method => :delete, :confirm => 'Are you sure?' %></td>
