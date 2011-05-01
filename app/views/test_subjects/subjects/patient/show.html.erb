@@ -1,0 +1,51 @@
+<h1>Showing patient <%= @patient %></h1>
+
+<p>
+  <b>Code:</b>
+  <%=h @patient.code %>
+</p>
+
+<p>
+	<b>Site:</b>
+	<%=h @patient.site.name %>
+</p>
+
+<p>
+  <b>Initials:</b>
+  <%=h @patient.first_initial %><%=h @patient.middle_initial %> <%=h @patient.last_initial %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%=h @patient.birthdate %>
+</p>
+
+<p>
+	<b>Blood type:</b>
+	<%=h @patient.blood_type %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%=h @patient.gender %>
+</p>
+
+<p>
+	<b>Race:</b>
+	<%=h @patient.race %>
+</p>
+
+<p>
+	<b>Practitioner:</b>
+	<%=h @patient.practitioner %>
+</p>
+
+<p>
+	<b>Notes:</b>
+	<%=h @patient.notes %>
+</p>
+
+
+<br />
+
+<%= edit_link edit_patient_path(@patient) %>

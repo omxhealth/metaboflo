@@ -12,7 +12,6 @@
   original_amount: 200.0
   description: ""
   collected_by_id: 6
-  storage_location: freezer 4, shelf 8
   sample_id: 
   room: 3-27
   building: West Wing
@@ -31,7 +30,6 @@
   original_amount: 25.0
   description: ""
   collected_by_id: 20
-  storage_location: freezer 5, shelf 9
   sample_id: 1054583385
   room: 3-27
   building: West Wing
@@ -50,7 +48,6 @@
   original_amount: 200.0
   description: ""
   collected_by_id: 1
-  storage_location: freezer
   sample_id: 1054534399
   room: "235"
   building: Bio Sci
@@ -69,7 +66,6 @@
   original_amount: 5.0
   description: ""
   collected_by_id: 19
-  storage_location: freezer 8, shelf 2
   sample_id: 
   room: w203
   building: Biological Sciences
@@ -88,7 +84,6 @@
   original_amount: 50.0
   description: ""
   collected_by_id: 1
-  storage_location: freezer shelf 3
   sample_id: 
   room: "345"
   building: Biological Sciences
@@ -107,7 +102,6 @@
   original_amount: 400.0
   description: ""
   collected_by_id: 1
-  storage_location: freezer
   sample_id: 1054534392
   room: "235"
   building: Bio Sci
@@ -126,7 +120,6 @@
   original_amount: 33.0
   description: ""
   collected_by_id: 1
-  storage_location: Fridge, bottom shelf
   sample_id: 1054583388
   room: 3-53
   building: Medical Sciences
@@ -145,7 +138,6 @@
   original_amount: 1.0
   description: ""
   collected_by_id: 18
-  storage_location: Fridge, Top shelf
   sample_id: 1054583387
   room: "456"
   building: East Wing
@@ -164,7 +156,6 @@
   original_amount: 1200.0
   description: ""
   collected_by_id: 1
-  storage_location: freezer
   sample_id: 
   room: "225"
   building: Med Sci
@@ -183,7 +174,6 @@
   original_amount: 800.0
   description: ""
   collected_by_id: 1
-  storage_location: freezer
   sample_id: 1054583391
   room: "235"
   building: Bio Sci
@@ -202,7 +192,6 @@
   original_amount: 500.0
   description: ""
   collected_by_id: 1
-  storage_location: freezer
   sample_id: 1054583392
   room: "235"
   building: Bio Sci
