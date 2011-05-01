@@ -17,8 +17,6 @@
     <th>Experiment</th>
     <th>Sample Collected On</th>
     <th>Sample Type</th>
-    <th>Condition</th>
-    <th>Cohort</th>
   </tr>
 
   <% @metabolites.each do |metabolite| %>
@@ -43,8 +41,6 @@
         <td><%= link_to concentration.data_file.experiment.name, sample_experiment_path(concentration.data_file.experiment.sample, concentration.data_file.experiment) %></td>
         <td><%=h concentration.data_file.experiment.sample.collected_on %></td>
         <td><%= link_to concentration.data_file.experiment.sample.sample_type, sample_path(concentration.data_file.experiment.sample) %></td>
-        <td>-</td>
-        <td>-</td>
       </tr>
     <% end%>
   <% end %>

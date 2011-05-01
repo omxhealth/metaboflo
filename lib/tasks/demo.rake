@@ -25,7 +25,7 @@ end
 
 def load_data_files
   TestSubject.all.each do |ts|
-    s = ts.samples.first || ts.samples.create!
+    s = ts.samples.first || ts.samples.create(:collected_on => Date.today)!
     e = s.experiments.first || s.experiments.create!(:name => "Experiment for #{ts.id}", :experiment_type => ExperimentType.first)
     
     csv = "#{ts.id}.csv"
