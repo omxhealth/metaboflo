@@ -7,7 +7,7 @@
 <table class="list">
   <tr>
     <th>Subject</th>
-    <th>Description</th>
+    <th>Set completed</th>
     <th>Status</th>
     <th>Priority</th>
     <th>Assigned to</th>
@@ -21,8 +21,8 @@
 
 <% for task in @tasks %>
 	<tr class="<%= cycle('odd', 'even') %>">
-    <td><%=h task.subject %></td>
-    <td><%=h truncate(task.description) %></td>
+    <td><span title="<%=h task.description %>"><%=h task.subject %></span></td>
+    <td><%= link_to('Set completed', complete_task_path(task), :confirm => 'Set task to complete and close?', :method => :put) unless task.done_ratio == 100 %></td>
     <td><%=h task.status.name if task.status %></td>
     <td><%=h task.priority.name if task.priority %></td>
     <td><%=h task.assigned_to.name if task.assigned_to %></td>
@@ -31,9 +31,9 @@
     <td><%=h task.due_date %></td>
     <td><%=h task.estimated_hours %></td>
     <td><%=h task.done_ratio %></td>
-	<td><%= show_link task %></td>
-	<td><%= edit_link edit_task_path(task) %></td>
-	<td><%= destroy_link task %></td>
+	  <td><%= show_link task %></td>
+	  <td><%= edit_link edit_task_path(task) %></td>
+	  <td><%= destroy_link task %></td>
   </tr>
 <% end %>
 </table>

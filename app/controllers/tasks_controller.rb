@@ -133,4 +133,16 @@ class TasksController < ApplicationController
     
   end
 
+  # PUT /tasks/1/complete
+  # PUT /tasks/1/complete.xml
+  def complete
+    @task = Task.find(params[:id])
+    @task.complete!
+    
+    respond_to do |format|
+      flash[:notice] = 'Task has been completed.'
+      format.html { redirect_to(@task) }
+      format.xml  { head :ok }
+    end
+  end
 end

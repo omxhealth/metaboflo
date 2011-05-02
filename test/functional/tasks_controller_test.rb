@@ -56,4 +56,14 @@ class TasksControllerTest < ActionController::TestCase
 
     assert_redirected_to tasks_path
   end
+  
+  test "should complete task" do
+    login_as :superuser
+    
+    put :complete, :id => tasks(:one).id
+    assert_redirected_to task_path(assigns(:task))
+    
+    assert_equal TaskStatus.find_by_name('Closed'), assigns(:task).status
+    assert_equal 100, assigns(:task).done_ratio
+  end
 end

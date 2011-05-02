@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :task_priorities
 
-  map.resources :tasks, :collection => { :gantt => :get, :calendar => :get }
+  map.resources :tasks, :collection => { :gantt => :get, :calendar => :get }, :member => { :complete => :put }
 
   map.resources :protocols
 
