@@ -24,7 +24,7 @@ class Sample < ActiveRecord::Base
   
   def validate
     if (test_subject and test_subject.birthdate and collected_on and test_subject.birthdate > collected_on)
-      errors.add(:collected_on, "The sample cannot be taken before the test_subject's birth date")
+      errors.add(:collected_on, "The sample cannot be taken before the #{TestSubject.title}'s birth date")
     end
   end
 
