@@ -8,6 +8,12 @@ class Task < ActiveRecord::Base
   validates_numericality_of :done_ratio, :allow_blank => true
   validates_numericality_of :estimated_hours, :allow_blank => true
   
+  def complete!
+    self.status = TaskStatus.find_by_name('Closed')
+    self.done_ratio = 100
+    self.save! unless self.new_record?
+  end
+  
   # Returns the due date or the target due date if any
   # Used on gantt chart
   def due_before
@@ -25,5 +31,4 @@ class Task < ActiveRecord::Base
   def to_s
     "#{subject} ##{id}"
   end
-
 end

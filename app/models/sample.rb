@@ -44,9 +44,9 @@ class Sample < ActiveRecord::Base
   #
   # assumes that original_unit for this sample and all children are the same
   def theoretical_amount
-    theoretical = self.original_amount.to_i
+    theoretical = self.original_amount.to_f
     self.samples.each do |child|
-      theoretical -= child.original_amount.to_i
+      theoretical -= child.original_amount.to_f
     end
     theoretical
   end
