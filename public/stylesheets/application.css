@@ -213,6 +213,10 @@ table.list tr.odd {
 	background: white;
 }
 
+table.list tr.header {
+	background: white !important;
+}
+
 table.list tr:hover {
 	background: #FFFCCF
 }
@@ -483,4 +487,10 @@ div#login-logos img {
 	box-shadow: 3px 3px 3px #666;	
 	margin-left: 0em; 
 	margin-right: 4em
+}
+
+/* Home page stats */
+table.stats {
+  margin: 1em 0 2em 1.5em;
+  width: 300px;
 }

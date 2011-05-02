@@ -17,10 +17,10 @@
   <%= link_to 'Export', export_study_path(@study), :style => 'font-weight: bold' %>
 </fieldset>
 
-<h2>Cohorts in this study:</h2>
+<h2><%= TestSubject.title %> cohorts in this study:</h2>
 
 <div class="association">
-	<table class="list">
+	<table class="list" style="width: 400px">
 		<thead>
 			<tr>
 				<th>Cohort</th>

@@ -1,4 +1,4 @@
-<h1>Welcome - Please Log In</h1>
+<h1>Welcome to Metaboflo - Please Login</h1>
 
 <div class="subcontainer" style="float: left; margin-right: 1.5em;">
   <% form_for resource_name, resource, :url => session_path(resource_name) do |f| %>
@@ -16,21 +16,21 @@
     </p>
     <% end -%>
     <p>
-      <%= f.submit "Sign in" %> &nbsp; &nbsp; <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+      <%= f.submit "Login" %> &nbsp; &nbsp; <%= link_to "Forgot your password?", new_password_path(resource_name) %>
     </p>
   <% end %>
 </div>
 
 <p style="font-size: larger;">
-	Welcome to the Bovine Metabolome Laboratory Information Management System (LIMS). The Bovine LIMS is a central repository for laboratory management, animal, and scientific	information.  It is a secure, fast, intuitive web-application developed by <%= link_to 'In Siliflo Data Management & Analysis', 'http://insiliflo.com' %>.
+	Welcome to Metaboflo&trade;, the metabolomics Laboratory Information Management System (LIMS). Metaboflo is a central, web-based LIMS designed to streamline metabolomics studies from study design all the way to data analysis and integration. Metaboflo&trade; is a secure, fast, and complete metabolomics solution developed by <%= link_to 'In Siliflo Data Management & Analysis', 'http://insiliflo.com', :style => 'font-style:italic' %>.
 </p>
 <p style="font-size: larger;">
-	If you would like further information on this project or other In Siliflo projects, please 
+	If you would like further information on Metaboflo&trade; or other <%= link_to 'In Siliflo', 'http://insiliflo.com', :style => 'font-style:italic' %> projects, please 
 	<%= link_to 'contact us', 'http://insiliflo.com/contact' %>.
 </p>
-<br />
+
 <div id="login-logos">
 	<%= image_tag 'blood_sample.png' %>
 	<%= image_tag 'test_subject.png' %>
 	<%= image_tag 'dna.png' %>
-</p>
+</div>

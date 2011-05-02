@@ -1,23 +1,27 @@
-<h1>Welcome, <i><%= current_user.name %></i>!</h1>
+<h1>Welcome to Metaboflo, <i><%= current_user.name %></i>!</h1>
 <p>
-	Welcome to the Bovine Metabolome Laboratory Information Management System (LIMS). 
-	This site is a central repository for project management and scientific information.<br />
-	Please use the links in the toolbar above to navigate the site.<br /><br />
-		
-	<table class="list">
-	  <tr><th colspan=2>System Statistics</th></tr>
-  	<% for stat in @stats %>
-  	<tr class="<%= cycle('odd', 'even') %>">
-  	  <td><%= stat[0] %></td><td><%= stat[1] %></td>
-  	</tr>
-  	<% end %>
-  </table>
-  
-  <br><br>
-	You have <%= link_to "#{@incomplete_tasks.length} incomplete task(s)", user_tasks_path(current_user) %> (out of a total of <%= current_user.tasks.length %>)
+	Welcome to the Metaboflo Laboratory Information Management System (LIMS). 
+	Metaboflo is a central repository for study management and metabolomics scientific information.<br />
 </p>
+		
+<table class="list stats">
+  <tr class="header">
+    <th colspan="2">General Statistics</th>
+  </tr>
+  <% @stats.each do |stat| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= stat.first %></td>
+    <td><%= stat.last %></td>
+  </tr>
+  <% end %>
+</table>
 
-<br /><br />
+<% if @incomplete_tasks.length > 0 %>
+<p>
+	<strong>You have <%= link_to "#{@incomplete_tasks.length} incomplete task(s)", user_tasks_path(current_user) %> (out of a total of <%= current_user.tasks.length %>)</strong>
+</p>
+<% end -%>
+<br />
 
 <h1>Pending Experiments</h1>
 <% if @experiments.length > 0 %>
@@ -28,7 +32,7 @@
   		<th colspan="3">Actions</th>
   	</tr>
 
-  	<% for experiment in @experiments %>
+  	<% @experiments.each do |experiment| %>
   	<tr class="<%= cycle('odd', 'even') %>">
   		<td><%=h experiment.name %></td>
   		<td><%=h experiment.perform_on %></td>
