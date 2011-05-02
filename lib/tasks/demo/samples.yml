@@ -1,4 +1,3 @@
---- 
 "1054583385": 
   original_unit: mL
   updated_at: 2008-12-16 04:43:06 Z
@@ -12,7 +11,7 @@
   original_amount: 200.0
   description: ""
   collected_by_id: 6
-  sample_id: 
+  sample_id: 1054583385
   room: 3-27
   building: West Wing
   actual_amount: 150.0
@@ -60,7 +59,7 @@
   test_subject_id: 2
   collected_on: 2007-04-16
   actual_unit: mL
-  sample_type: milk
+  sample_type: urine
   barcode: "125667"
   id: 1054583387
   original_amount: 5.0
@@ -132,7 +131,7 @@
   test_subject_id: 
   collected_on: 2008-09-18
   actual_unit: mL
-  sample_type: milk
+  sample_type: CSF
   barcode: "3566"
   id: 1054583389
   original_amount: 1.0
