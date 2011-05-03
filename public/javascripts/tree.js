@@ -12,7 +12,7 @@
 | Updated: 17.04.2003                               |
 |--------------------------------------------------*/
 
-function Node(id, pid, name, url, event_name, title, target, icon, iconOpen, open) {
+function Node(id, pid, name, url, event_name, title, target, icon, iconOpen, open, css_class) {
 	this.id = id;
 	this.pid = pid;
 	this.name = name;
@@ -28,6 +28,7 @@ function Node(id, pid, name, url, event_name, title, target, icon, iconOpen, ope
 	this._hc = false;
 	this._ai = 0;
 	this._p;
+	this.css_class = css_class;
 };
 
 // Tree object
@@ -69,8 +70,8 @@ function dTree(objName, image_path) {
 };
 
 // Adds a new node to the node array
-dTree.prototype.add = function(id, pid, name, url, event_name, title, target, icon, iconOpen, open) {
-	this.aNodes[this.aNodes.length] = new Node(id, pid, name, url,event_name, title, target, icon, iconOpen, open);
+dTree.prototype.add = function(id, pid, name, url, event_name, title, target, icon, iconOpen, open, css_class) {
+	this.aNodes[this.aNodes.length] = new Node(id, pid, name, url,event_name, title, target, icon, iconOpen, open, css_class);
 };
 
 // Open/close all nodes
@@ -134,7 +135,7 @@ dTree.prototype.node = function(node, nodeId) {
             		str += '<img id="i' + this.obj + nodeId + '" src="' + ((node._io) ? node.iconOpen : node.icon) + '" alt="" />';
             	}
             	if (node.url) {
-            		str += '<a id="s' + this.obj + nodeId + '" class="' + ((this.config.useSelection) ? ((node._is ? 'nodeSel' : 'node')) : 'node') + '" '+node.event_name+'="' + node.url + '"'; 
+            		str += '<a id="s' + this.obj + nodeId + '" class="' + ((this.config.useSelection) ? ((node._is ? 'nodeSel' : 'node')) : 'node') + ((node.css_class) ? (' ' + node.css_class) : '') + '" '+node.event_name+'="' + node.url + '"'; 
             		if (node.title) str += ' title="' + node.title + '"';
             		if (node.target) str += ' target="' + node.target + '"';
             		if (this.config.useStatusText) str += ' onmouseover="window.status=\'' + node.name + '\';return true;" onmouseout="window.status=\'\';return true;" ';

@@ -49,7 +49,7 @@ class Tree < Node
 
    
   def append(n)
-    @buffer_nodes+="d.add(#{n.id},#{n.parent},'#{n.label}',\"#{n.url}\",'#{n.event_name}','#{n.title}','#{n.target}','#{n.icon}','#{n.icon_open}',#{n.open});\n"
+    @buffer_nodes+="d.add(#{n.id},#{n.parent},'#{n.label}',\"#{n.url}\",'#{n.event_name}','#{n.title}','#{n.target}','#{n.icon}','#{n.icon_open}',#{n.open},'#{n.css_class}');\n"
   end
   
   def Tree.for(path)

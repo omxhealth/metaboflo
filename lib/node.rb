@@ -13,7 +13,8 @@ class Node
     :parent => '',
     :id => '',
     :link_to_remote => nil,
-    :link_to => nil
+    :link_to => nil,
+    :css_class => ''
   }
    
   include ActionView::Helpers::UrlHelper

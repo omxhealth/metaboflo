@@ -494,3 +494,8 @@ table.stats {
   margin: 1em 0 2em 1.5em;
   width: 300px;
 }
+
+.node-selected {
+	font-weight: bold;
+	background-color: #cdcdcd;
+}
