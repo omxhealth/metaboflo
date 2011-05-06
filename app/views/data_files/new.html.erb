@@ -1,6 +1,6 @@
 <h1>Data File Upload</h1>
 
-<% labelled_tabular_form_for([@experiment, @data_file], :html => { :multipart => true }) do |f| %>
+<%= labelled_tabular_form_for([@experiment, @data_file], :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
   
   <fieldset>

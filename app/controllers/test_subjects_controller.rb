@@ -1,5 +1,5 @@
 class TestSubjectsController < ApplicationController
-  VIEW_PATH = "subjects/#{SUBJECT_CONFIG[:name]}"
+  VIEW_PATH = "test_subjects/subjects/#{SUBJECT_CONFIG[:name]}"
   
   before_filter :find_test_subject, :only => [ :show, :edit, :update, :destroy ]
 

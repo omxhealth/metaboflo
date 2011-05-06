@@ -1,6 +1,6 @@
 <h1>New site</h1>
 
-<% labelled_tabular_form_for(@site) do |form| %>
+<%= labelled_tabular_form_for(@site) do |form| %>
   <%= render :partial => form %>
   <p><%= form.submit "Create" %></p>
 <% end %>

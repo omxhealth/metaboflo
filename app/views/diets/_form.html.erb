@@ -5,7 +5,7 @@
 <fieldset>
 	<legend>Ingredients</legend>
   <% count = 1 %>
-  <% form.fields_for :diet_ingredients do |diet_ingredient_form| -%>
+  <%= form.fields_for :diet_ingredients do |diet_ingredient_form| -%>
   <p>
     <%= diet_ingredient_form.select :ingredient_id, Ingredient.all.collect { |i| [ i.name, i.id ] }, :include_blank => true %><br />
     <%= diet_ingredient_form.text_field :amount, :size => 10 %> %
@@ -20,7 +20,7 @@
 <fieldset>
 	<legend>Nutrient Compositions</legend>
   <% count = 1 %>
-  <% form.fields_for :compositions do |composition_form| -%>
+  <%= form.fields_for :compositions do |composition_form| -%>
   <p>
     <%= composition_form.select :nutrient_id, Nutrient.all.collect { |n| [ n.name, n.id ] }, :include_blank => true %><br />
     <%= composition_form.text_field :amount, :size => 10 %>

@@ -1,6 +1,6 @@
 <h1>Editing medication</h1>
 
-<% labelled_tabular_form_for([@test_subject, @medication]) do |form| %>
+<%= labelled_tabular_form_for([@test_subject, @medication]) do |form| %>
   <%= render :partial => form %>
   <p>
     <%= form.submit "Update" %>

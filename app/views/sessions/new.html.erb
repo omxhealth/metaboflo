@@ -1,7 +1,7 @@
 <h1>Welcome to Metaboflo - Please Login</h1>
 
 <div class="subcontainer" style="float: left; margin-right: 1.5em;">
-  <% form_for resource_name, resource, :url => session_path(resource_name) do |f| %>
+  <%= form_for resource_name, resource, :url => session_path(resource_name) do |f| %>
     <p>
       <%= f.label :email %><br />
       <%= f.text_field :email, :style => 'height: 20px; font-size: larger' %>

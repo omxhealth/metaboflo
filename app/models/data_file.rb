@@ -10,11 +10,13 @@ class DataFile < ActiveRecord::Base
   
   serialize :mapping_errors, Array
   
+  after_save :save_concentrations
+  
   def root
     experiment.root
   end
   
-  def after_save
+  def save_concentrations
     if has_concentrations and self.mapping_errors == nil
       self.mapping_errors = Array.new
       FasterCSV.foreach("#{Rails.root.to_s}/public#{public_filename}", :headers => false) do |row|

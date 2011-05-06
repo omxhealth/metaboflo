@@ -1,5 +1,5 @@
 require "rubygems"
-require "mysql"
+#require "mysql"
 
 namespace :metabolites do
   desc "Read metabolites from HMDB database and export to import fixtures"

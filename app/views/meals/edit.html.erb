@@ -1,6 +1,6 @@
 <h1>Editing meal for <%= TestSubject.title %> <%= @test_subject.code %></h1>
 
-<% labelled_tabular_form_for([@test_subject, @meal]) do |f| %>
+<%= labelled_tabular_form_for([@test_subject, @meal]) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => f %>

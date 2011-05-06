@@ -1,6 +1,6 @@
 <h1>New experiment for Sample <%= @sample %></h1>
 
-<% labelled_tabular_form_for([@sample, @experiment]) do |form| %>
+<%= labelled_tabular_form_for([@sample, @experiment]) do |form| %>
   <%= render :partial => form %>
 
   <p>

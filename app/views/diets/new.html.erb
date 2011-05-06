@@ -1,6 +1,6 @@
 <h1>New diet</h1>
 
-<% labelled_tabular_form_for(setup_diet(@diet)) do |f| %>
+<%= labelled_tabular_form_for(setup_diet(@diet)) do |f| %>
   <%= f.error_messages %>
 
 	<%= render :partial => f %>

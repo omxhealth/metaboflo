@@ -14,7 +14,7 @@ class SampleTest < ActiveSupport::TestCase
     #Birthdate > taken_on
     sample.collected_on = test_subjects(:one).birthdate - 1
     assert !sample.valid?
-    assert sample.errors.invalid?(:collected_on)
+    assert sample.errors[:collected_on].any?
 
     #Birthdate < taken_on
     sample.collected_on = test_subjects(:one).birthdate + 1
@@ -24,18 +24,18 @@ class SampleTest < ActiveSupport::TestCase
     #When taken_on is nil, still valid
     sample = Sample.new
     sample.valid?
-    assert !sample.errors.invalid?(:collected_on)
+    assert !sample.errors[:collected_on].any?
 
     sample.test_subject = test_subjects(:one)
     sample.valid?
-    assert !sample.errors.invalid?(:collected_on)
+    assert !sample.errors[:collected_on].any?
 
     sample.collected_on = test_subjects(:one).birthdate
     
     #When birthdate is nil, still valid
     sample.test_subject.birthdate = nil
     sample.valid?
-    assert !sample.errors.invalid?(:collected_on)
+    assert !sample.errors[:collected_on].any?
   end
   
   def test_root

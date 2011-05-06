@@ -44,6 +44,8 @@ function dTree(objName, image_path) {
 		closeSameLevel	: false,
 		inOrder					: false
 	}
+	image_path = image_path || '/images'
+	
 	this.icon = {
 		root				: image_path + '/tree/base.gif',
 		folder			: image_path + '/tree/folder.gif',

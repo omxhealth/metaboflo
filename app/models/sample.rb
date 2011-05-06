@@ -4,6 +4,8 @@ class Sample < ActiveRecord::Base
   belongs_to :site
   belongs_to :collected_by, :class_name => 'User'
   
+  before_validation :assign_parent_type
+  
   has_many :samples, :dependent => :destroy
   has_many :experiments, :dependent => :destroy
   
@@ -15,6 +17,8 @@ class Sample < ActiveRecord::Base
   validates_numericality_of :actual_amount, :greater_than_or_equal => 0, :allow_blank => true
   # validates_inclusion_of :actual_unit, :in => ['ml', 'g'], :allow_blank => true
 
+  validate :sample_chronology
+
   # belongs_to :collected_by, :class_name => 'User', :foreign_key => 'collected_by_id'
   
   # Required so that Experiments, Samples, and TestSubjects can be displayed in cohorts
@@ -22,13 +26,13 @@ class Sample < ActiveRecord::Base
     return "#{self.barcode} (#{sample_type} - #{original_amount} #{original_unit})"
   end
   
-  def validate
+  def sample_chronology
     if (test_subject and test_subject.birthdate and collected_on and test_subject.birthdate > collected_on)
       errors.add(:collected_on, "The sample cannot be taken before the #{TestSubject.title}'s birth date")
     end
   end
 
-  def before_validation
+  def assign_parent_type
     self.sample_type = self.sample.sample_type if self.sample
   end
   

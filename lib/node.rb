@@ -23,6 +23,8 @@ class Node
   include ERB::Util
   include InstanceOptions  
   
+  attr_accessor :image_path
+  
   def initialize(options={},html_options={},&block)
     @nodes=[]
     @options=options

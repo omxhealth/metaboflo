@@ -1,6 +1,6 @@
 <h1>Editing picture for user <%= @user.to_s %></h1>
 
-<% labelled_tabular_form_for([@user, @user_picture], :html => { :multipart => true }) do |form| %>
+<%= labelled_tabular_form_for([@user, @user_picture], :html => { :multipart => true }) do |form| %>
 
   <%= render :partial => form %>
 

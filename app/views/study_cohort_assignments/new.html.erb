@@ -1,6 +1,6 @@
 <h1>Add <%= humanized_type @assignable_type %> to a study</h1>
 
-<% form_for([@assignable, @study_cohort_assignment]) do |f| %>
+<%= form_for([@assignable, @study_cohort_assignment]) do |f| %>
   <%= f.error_messages %>
 
   <p>
