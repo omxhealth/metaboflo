@@ -5,7 +5,7 @@
   test_subject_id: 1
   collected_on: 2008-08-03
   actual_unit: mL
-  sample_type: blood
+  sample_type: CSF
   barcode: "12345"
   id: 1054583385
   original_amount: 200.0
@@ -23,7 +23,7 @@
   test_subject_id: 
   collected_on: 2008-11-13
   actual_unit: mL
-  sample_type: blood
+  sample_type: CSF
   barcode: 12345-2
   id: 1054583386
   original_amount: 25.0
@@ -131,7 +131,7 @@
   test_subject_id: 
   collected_on: 2008-09-18
   actual_unit: mL
-  sample_type: CSF
+  sample_type: urine
   barcode: "3566"
   id: 1054583389
   original_amount: 1.0

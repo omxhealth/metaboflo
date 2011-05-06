@@ -1,47 +1,47 @@
-one:
+gcms:
   name: GC MS
   description: Gas Cromatography-Mass Spectrometry
 
-two:
+dims:
   name: Direct Injection Mass Spec
   description: Direct Injection Mass Spectrometry
 
-three:
+hplc:
   name: HPLC
   description: High Performance Liquid Chromatography
 
-four:
+lcms:
   name: LC MS
   description: Liquid Cromatography-Mass Spectrometry
 
-five:
+lcmsms:
   name: LC MS/MS
   description: Liquid Cromatography-tandem-Mass Spectrometry
 
-six:
+1dpnmr:
   name: 1D Proton NMR
   description: 1 dimensional proton Nuclear Magnetic Resonance
 
-seven:
+1dcnmr:
   name: 1D Carbon NMR
   description: 1 dimensional carbon Nuclear Magnetic Resonance
 
-eight:
+2dpnmr:
   name: 2D Proton NMR
   description: 2 dimensional proton Nuclear Magnetic Resonance
 
-nine:
+2dhsqc:
   name: 2D HSQC NMR
   description: 2 dimensional Heteronuclear Single Quantum Coherence Nuclear Magnetic Resonance
 
-ten:
+hplcuv:
   name: HPLC/UV
   description: High-Pressure Liquid Chromatography with UV Detector
 
-eleven:
+hplcec:
   name: HPLC Electrochemical
   description: High-Pressure Liquid Chromatography with Electrochemical Detector
 
-twelve:
+hplcf:
   name: HPLC Fluorescence
   description: High-Pressure Liquid Chromatography with Fluorescence Detector
