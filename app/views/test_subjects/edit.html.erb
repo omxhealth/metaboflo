@@ -1,7 +1,7 @@
 <h1>Editing <%= TestSubject.title %> <%= @test_subject %></h1>
 
 <%= labelled_tabular_form_for(@test_subject) do |form| %>
-<%= render :partial => "test_subjects/#{TestSubjectsController::VIEW_PATH}/form", :locals => { :form => form } %>
+<%= render :partial => "#{TestSubjectsController::VIEW_PATH}/form", :locals => { :form => form } %>
 
 <p>
 	<%= form.submit "Update" %>

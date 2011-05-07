@@ -5,6 +5,8 @@ module ApplicationHelper
   CONCENTRATION_UNITS = [ 'mol/L' ]
   CLINICAL_UNITS = ['mg/dL', 'mg/L', 'mEq/L', 'g/dL', 'per cubic mm', 'g/L', 'mcg/mL', 'mmol/L']
   
+  require 'tabular_form_builder'
+  
   def unit_options
     VOLUME_UNITS.concat(WEIGHT_UNITS).concat(CONCENTRATION_UNITS).sort
   end

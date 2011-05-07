@@ -21,6 +21,7 @@ class DataFilesControllerTest < ActionController::TestCase
     mimetype = "image/png" 
     
     login_as :user
+    
     assert_difference('DataFile.count') do
       post :create, :experiment_id => experiments(:one).id, :data_file => {:uploaded_data => ActionController::TestUploadedFile.new(path, mimetype), :data_file_type_id => data_file_types(:one).id }
     end
