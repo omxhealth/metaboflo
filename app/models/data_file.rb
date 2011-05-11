@@ -1,6 +1,7 @@
 class DataFile < ActiveRecord::Base
-  has_attachment :storage => :file_system, :path_prefix => 'public/files', :max_size => 200.megabytes
-  validates_as_attachment
+  belongs_to :experiment
+  has_attached_file :data, :url => "/system/:attachment/:id/:filename", :path => ":rails_root/public/system/:attachment/:id/:filename"
+  
   validates_presence_of :data_file_type_id
   
   belongs_to :data_file_type
@@ -19,7 +20,7 @@ class DataFile < ActiveRecord::Base
   def save_concentrations
     if has_concentrations and self.mapping_errors == nil
       self.mapping_errors = Array.new
-      FasterCSV.foreach("#{Rails.root.to_s}/public#{public_filename}", :headers => false) do |row|
+      FasterCSV.foreach(self.data.path, :headers => false) do |row|
         add_concentration(row[0], row[1]) #Each row is a concentration
       end
       self.save!

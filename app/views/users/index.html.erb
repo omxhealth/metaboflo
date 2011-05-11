@@ -16,8 +16,8 @@
 	<% @users.each do |user| %>
 	<tr class="<%= cycle('odd', 'even') %>">
 	  <td>
-	    <% if user.user_picture %>
-	      <%= small_picture(user.user_picture) %><br />
+	    <% if user.photo_file %>
+	      <%= image_tag(user.photo_file.attachment.url(:thumb)) %><br />
       <% else %>
         &nbsp;
       <% end %>

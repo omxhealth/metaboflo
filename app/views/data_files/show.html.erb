@@ -1,16 +1,16 @@
 <p>
   <b>Size:</b>
-  <%=h number_to_human_size(@data_file.size) %>
+  <%=h number_to_human_size(@data_file.data_file_size) %>
 </p>
 
 <p>
   <b>Content type:</b>
-  <%=h @data_file.content_type %>
+  <%=h @data_file.data_content_type %>
 </p>
 
 <p>
   <b>File:</b>
-  <%= link_to h(@data_file.filename), @data_file.public_filename %>
+  <%= link_to h(@data_file.data_file_name), @data_file.data.url %>
 </p>
 
 <p>

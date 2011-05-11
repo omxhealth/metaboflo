@@ -30,15 +30,10 @@ def load_data_files
     
     csv = "#{ts.id}.csv"
     path = File.join(File.dirname(__FILE__), "demo", "data_files", csv)
+    
     f = File.new(path, "r")
-    (class << f; self; end).class_eval do
-      alias local_path path
-      define_method(:original_filename) {csv}
-      define_method(:content_type) {"text/plain"}
-      define_method(:size) { File.size(path) }
-    end
           
-    data_file = e.data_files.create!(:uploaded_data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true)
+    data_file = e.data_files.create!(:data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true)
   end
 end
 

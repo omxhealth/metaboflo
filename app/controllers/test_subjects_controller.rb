@@ -11,7 +11,7 @@ class TestSubjectsController < ApplicationController
                       TestSubject.find(:all, :conditions => [ 'site_id=?', current_user.site ])
 
     respond_to do |format|
-      format.html { render :action => "#{VIEW_PATH}/index" }
+      format.html { render :template => "#{VIEW_PATH}/index" }
       format.xml  { render :xml => @test_subjects }
     end
   end
@@ -25,7 +25,7 @@ class TestSubjectsController < ApplicationController
     @meals = @test_subject.meals
 
     respond_to do |format|
-      format.html { render :action => "#{VIEW_PATH}/show" }
+      format.html { render :template => "#{VIEW_PATH}/show" }
       format.xml  { render :xml => @test_subject }
     end
   end

@@ -1,31 +1,31 @@
 --- 
 "1": 
   name: NMR Experiment Protocol
-  content_type: application/pdf
+  storage_content_type: application/pdf
   updated_at: 2008-12-16 06:02:07.525480 Z
-  size: 85642
+  storage_file_size: 85642
   comments: ""
   id: 1
   version: "1.0"
-  filename: versioning_instructions.pdf
+  storage_file_name: versioning_instructions.pdf
   created_at: 2008-12-16 06:02:07.525480 Z
 "2": 
   name: Buffered NMR Protocol
-  content_type: application/pdf
+  storage_content_type: application/pdf
   updated_at: 2008-12-16 06:03:04.502105 Z
-  size: 1378050
+  storage_file_size: 1378050
   comments: ""
   id: 2
   version: "1.1"
-  filename: instructions.pdf
+  storage_file_name: instructions.pdf
   created_at: 2008-12-16 06:03:04.502105 Z
 "3": 
   name: MS Experiment
-  content_type: application/pdf
+  storage_content_type: application/pdf
   updated_at: 2008-12-16 06:03:43.281827 Z
-  size: 433291
+  storage_file_size: 433291
   comments: ""
   id: 3
   version: "2.0"
-  filename: merlin.pdf
+  storage_file_name: merlin.pdf
   created_at: 2008-12-16 06:03:43.281827 Z

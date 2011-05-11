@@ -63,6 +63,9 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     orm_adapter (0.0.4)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -100,5 +103,6 @@ DEPENDENCIES
   devise (= 1.2.1)
   fastercsv (= 1.5.4)
   mysql2 (= 0.2.7)
+  paperclip (= 2.3.8)
   rails (= 3.0.5)
   will_paginate (= 3.0.pre2)

@@ -1,6 +1,6 @@
-<% if @user.user_picture %>
+<% if @user.photo_file %>
   <p>
-    <%= large_picture(@user.user_picture) %><br />
+    <%= image_tag(@user.photo_file.attachment.url, :style => 'vertical-align: top;') unless @user.photo_file.nil? %><br />
   </p>
 <% end %>
 

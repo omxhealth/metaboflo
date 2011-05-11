@@ -71,8 +71,8 @@
 
     	<% for data_file in @experiment.data_files %>
     	<tr class="<%= cycle('odd', 'even') %>">
-    		<td><%= link_to h(data_file.filename), data_file.public_filename %></td>
-    		<td><%=h number_to_human_size(data_file.size) %></td>
+    		<td><%= link_to h(data_file.data_file_name), data_file.data.url %></td>
+    		<td><%=h number_to_human_size(data_file.data_file_size) %></td>
     		<td><%= link_to h(data_file.data_file_type.name), data_file_type_path(data_file.data_file_type) %></td>
     		<td><%= show_link experiment_data_file_path(@experiment, data_file) %></td>
     		<td><%= destroy_link experiment_data_file_path(@experiment, data_file) %></td>

@@ -59,7 +59,7 @@ class UsersControllerTest < ActionController::TestCase
   def test_should_create_user_superuser
     login_as :superuser
     assert_difference('User.count') do
-      post :create, :user => { :login => 'new_user', :email => 'new@example.com', :password => 'password', :password_confirmation => 'password', :site_id => sites(:one) }
+      post :create, :user => { :email => 'new@example.com', :password => 'password', :password_confirmation => 'password', :site_id => sites(:one) }
     end
 
     assert_redirected_to user_path(assigns(:user))

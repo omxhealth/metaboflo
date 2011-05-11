@@ -1,4 +1,9 @@
 module UsersHelper
+  def setup_user(user)
+    user.tap do |u|
+      u.build_photo_file if u.photo_file.nil?
+    end
+  end
   
   #
   # Use this to wrap view elements that the user can't access.

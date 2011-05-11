@@ -17,13 +17,12 @@ class DataFilesControllerTest < ActionController::TestCase
 
   def test_should_create_data_file
     
-    path = "./public/images/rails.png" 
-    mimetype = "image/png" 
+    path = "./public/images/rails.png"
     
     login_as :user
     
     assert_difference('DataFile.count') do
-      post :create, :experiment_id => experiments(:one).id, :data_file => {:uploaded_data => ActionController::TestUploadedFile.new(path, mimetype), :data_file_type_id => data_file_types(:one).id }
+      post :create, :experiment_id => experiments(:one).id, :data_file => { :data => File.new(path), :data_file_type_id => data_file_types(:one).id }
     end
 
     assert_redirected_to experiment_data_file_path(experiments(:one), assigns(:data_file))

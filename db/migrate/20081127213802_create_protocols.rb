@@ -4,9 +4,10 @@ class CreateProtocols < ActiveRecord::Migration
       t.string :name
       t.string :version
       t.string :comments
-      t.integer :size
-      t.string :content_type
-      t.string :filename
+      t.string :storage_file_name
+      t.string :storage_content_type
+      t.integer :storage_file_size
+      t.datetime :data_updated_at
 
       t.timestamps
     end

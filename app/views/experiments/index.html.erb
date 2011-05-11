@@ -30,7 +30,7 @@
       <% if experiment.data_files.length > 0 %>
         <ul>
           <% for data_file in experiment.data_files %>
-          	<li><%= link_to h(data_file.filename), data_file.public_filename %></li>
+          	<li><%= link_to h(data_file.data_file_name), data_file.data.url %></li>
           <% end %>
         </ul>
       <% else %>

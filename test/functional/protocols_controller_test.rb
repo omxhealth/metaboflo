@@ -20,7 +20,7 @@ class ProtocolsControllerTest < ActionController::TestCase
     login_as :user
     
     assert_difference('Protocol.count') do
-      post :create, :protocol => { :name => 'TEST', :uploaded_data => ActionController::TestUploadedFile.new("./public/images/rails.png", "image/png") }
+      post :create, :protocol => { :name => 'TEST', :storage => File.new("./public/images/rails.png") }
     end
 
     assert_redirected_to protocol_path(assigns(:protocol))

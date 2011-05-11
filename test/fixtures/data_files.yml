@@ -1,16 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  size: 1
-  content_type: MyString
-  filename: MS File
+  data_file_size: 1
+  data_content_type: MyString
+  data_file_name: MS File
   experiment: one
   data_file_type: one
   has_concentrations: true
 
 two:
-  size: 1
-  content_type: MyString
-  filename: NMR File
+  data_file_size: 1
+  data_content_type: MyString
+  data_file_name: NMR File
   experiment: one
   data_file_type: two

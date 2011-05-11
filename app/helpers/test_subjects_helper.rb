@@ -59,7 +59,7 @@ module TestSubjectsHelper
   def data_file_sub_tree(experiment)
     tree = Node.new(:label => 'Data Files', :url => experiment_data_files_path(experiment), :css_class => (controller_name == 'data_files' && action_name == 'index' && params[:experiment_id] == experiment.to_param ? 'node-selected' : nil)) do |node|
       experiment.data_files.each do |data_file|
-        node << Node.new(:label => "#{data_file.filename} (#{data_file.data_file_type.name})", :url => experiment_data_file_path(experiment, data_file), :icon_open => tree_icon('file.png'), :css_class => (controller_name == 'data_files' && action_name == 'show' && params[:id] == data_file.to_param ? 'node-selected' :nil))
+        node << Node.new(:label => "#{data_file.data_file_name} (#{data_file.data_file_type.name})", :url => experiment_data_file_path(experiment, data_file), :icon_open => tree_icon('file.png'), :css_class => (controller_name == 'data_files' && action_name == 'show' && params[:id] == data_file.to_param ? 'node-selected' :nil))
       end
     end
     tree.icon = tree.icon_open = tree_icon('folder.png')

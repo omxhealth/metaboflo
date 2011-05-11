@@ -1,17 +1,6 @@
 <h1>Edit user</h1>
 
-<% if @user.user_picture %>
-  <p>
-    <%= large_picture(@user.user_picture) %><br />
-    <%= link_to 'Change Picture', edit_user_user_picture_path(@user, @user.user_picture) %>
-  </p>
-<% else %>
-  <p>
-    <%= new_link 'picture for user', new_user_user_picture_path(@user) %>
-  </p>
-<% end %>
-
-<%= labelled_tabular_form_for(@user) do |f| -%>
+<%= labelled_tabular_form_for(setup_user(@user), :html => { :multipart => true }) do |f| -%>
 	<%= error_messages_for :user %>
 
   <fieldset style="width: 50%">
@@ -38,6 +27,19 @@
       <% end -%>
     </p>
   </fieldset>
+  
+  <%= f.fields_for :photo_file do |file_form| %>
+    <div class="field">
+      <%= f.label :photo_file %>
+      <%= file_form.file_field :attachment %>
+    </div>
+    <div class="field-no-label">
+      <% unless file_form.object.new_record? || file_form.object.attachment_file_name.blank? %>
+        <%= link_to file_form.object.attachment_file_name, file_form.object.attachment.url %>
+        <%= file_form.check_box '_destroy' %>Remove
+      <% end %>
+    </div>
+  <% end %>
 	
 	<p><%= submit_tag 'Update' %></p>
 <% end -%>
