@@ -26,6 +26,7 @@ gem 'capistrano-ext', '1.2.1'
 gem 'devise', '1.2.1'
 gem 'fastercsv', '1.5.4'
 gem 'paperclip', '2.3.8'
+gem 'mysql', :group => :development
 gem 'will_paginate', '3.0.pre2'
 
 # Bundle gems for the local environment. Make sure to
