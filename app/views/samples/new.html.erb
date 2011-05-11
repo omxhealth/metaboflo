@@ -5,7 +5,7 @@
 <% end %>
 
 <%= labelled_tabular_form_for([@parent, @sample]) do |form| %>
-<%= render :partial => form -%>
+<%= render :partial => 'form', :locals => { :form => form } %>
 <p>
   <%= form.submit "Create" %>
 </p>

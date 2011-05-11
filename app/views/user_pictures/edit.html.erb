@@ -2,7 +2,7 @@
 
 <%= labelled_tabular_form_for([@user, @user_picture], :html => { :multipart => true }) do |form| %>
 
-  <%= render :partial => form %>
+  <%= render :partial => 'form', :locals => { :form => form } %>
 
   <p>
     <%= form.submit "Update" %>

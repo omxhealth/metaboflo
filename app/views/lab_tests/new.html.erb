@@ -2,7 +2,7 @@
 
 <%= labelled_tabular_form_for([@test_subject, @lab_test]) do |form| %>
 
-  <%= render :partial => form %>
+  <%= render :partial => 'form', :locals => { :form => form } %>
 
   <%= form.error_messages %>
 

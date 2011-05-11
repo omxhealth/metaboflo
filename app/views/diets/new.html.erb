@@ -3,7 +3,7 @@
 <%= labelled_tabular_form_for(setup_diet(@diet)) do |f| %>
   <%= f.error_messages %>
 
-	<%= render :partial => f %>
+	<%= render :partial => 'form', :locals => { :form => f } %>
 	
   <p>
     <%= f.submit "Create" %>

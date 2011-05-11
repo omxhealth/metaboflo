@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :encryptable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :encryptable, :encryptor => :sha1
  
   # Setup accessible attributes
   attr_accessible :email, :password, :password_confirmation, :name, :site_id, :rank

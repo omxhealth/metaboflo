@@ -1,7 +1,7 @@
 <h1>Editing <%= humanized_type @type %> cohort</h1>
 
 <%= labelled_tabular_form_for(:cohort, @cohort, :url => { :action => "update", :type => @type }, :html => { :method => :put }) do |form| %>
-  <%= render :partial => form %>
+  <%= render :partial => 'form', :locals => { :form => form } %>
 
   <p><%= form.submit "Update" %></p>
 <% end %>

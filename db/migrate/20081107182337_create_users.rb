@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration
       t.recoverable
       t.rememberable
       t.trackable
+      
+      t.encryptable
       t.lockable
 
       # Custom columns
