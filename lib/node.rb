@@ -21,9 +21,7 @@ class Node
   include ActionView::Helpers::PrototypeHelper
   include ActionView::Helpers::JavaScriptHelper 
   include ERB::Util
-  include InstanceOptions  
-  
-  attr_accessor :image_path
+  include InstanceOptions
   
   def initialize(options={},html_options={},&block)
     @nodes=[]
