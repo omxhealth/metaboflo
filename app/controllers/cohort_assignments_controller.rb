@@ -52,12 +52,12 @@ class CohortAssignmentsController < ApplicationController
           flash[:notice] = "#{@cohort_assignment.assignable.class} was successfully added to the cohort."
           redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable) 
         }
-        format.js { @successful = true } # Render create.rjs 
+        format.js { @successful = true } # Render create.js.erb
         format.xml  { render :xml => @cohort_assignment, :status => :created, :location => @cohort_assignment }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @cohort_assignment.errors, :status => :unprocessable_cohort }
-        format.js { @successful = false } # Render create.rjs 
+        format.js { @successful = false } # Render create.js.erb
       end
     end
   end
@@ -73,7 +73,7 @@ class CohortAssignmentsController < ApplicationController
         flash[:notice] = "#{@cohort_assignment.assignable.class} was successfully removed from the cohort."
         redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable)   
       }
-      format.js { @successful = true } # Render create.rjs 
+      format.js { @successful = true } # Render destroy.js.erb
       format.xml  { head :ok }
     end
   end

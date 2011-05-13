@@ -28,6 +28,7 @@
     oMenuBar.render();
   });
   </script>
+  <%= csrf_meta_tag %>
 </head>
 <body class="yui-skin-sam">
   <% sidebar = !@test_subject.nil? && !@test_subject.new_record? %>
