@@ -44,51 +44,78 @@
         <div class="bd">
           <ul class="first-of-type">
             <li class="yuimenubaritem first-of-type">
-              <%= link_to 'Home', root_path, :class => 'yuimenubaritemlabel' %>
+              <%= link_to 'Home', root_path, :class => 'yuimenuitemlabel' %>
             </li>
             <li class="yuimenubaritem">
               <%= link_to TestSubject.title.pluralize, test_subjects_path, :class => 'yuimenubaritemlabel' %>
-            </li>
-            <li class="yuimenubaritem">
-              <%= link_to 'Samples', samples_path, :class => 'yuimenubaritemlabel' %>
-            </li>
-            <li class="yuimenubaritem">
-              <%= link_to 'Experiments', experiments_path, :class => 'yuimenubaritemlabel' %>
-            </li>
-            <li class="yuimenubaritem">
-              <%= link_to 'Metabolites', metabolites_path, :class => 'yuimenubaritemlabel' %>
-            </li>
-            
-            <li class="yuimenubaritem">
-              <%= link_to 'Diets', diets_path, :class => 'yuimenubaritemlabel' %>
-              <div id="diets" class="yuimenu">
-                <div class="bd">                    
+              <div id="test-subject" class="yuimenu">
+                <div class="bd">
                   <ul>
-                    <li class="yuimenuitem"><%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %></li>
-										<li class="yuimenuitem"><%= link_to 'Ingredients', ingredients_path, :class => 'yuimenuitemlabel' %></li>
-										<li class="yuimenuitem"><%= link_to 'Nutrients', nutrients_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to "All #{TestSubject.title.pluralize}", test_subjects_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem">
+                      <%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %>
+                      <div id="diets3" class="yuimenu">
+                        <div class="bd">
+                          <ul>
+                            <li class="yuimenuitem"><%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %></li>
+  										      <li class="yuimenuitem"><%= link_to 'Ingredients', ingredients_path, :class => 'yuimenuitemlabel' %></li>
+  										      <li class="yuimenuitem"><%= link_to 'Nutrients', nutrients_path, :class => 'yuimenuitemlabel' %></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+            </li>
+            <li class="yuimenubaritem">
+              <%= link_to 'Wet lab', samples_path, :class => 'yuimenubaritemlabel' %>
+              <div id="wet-lab" class="yuimenu">
+                <div class="bd">
+                  <ul>
+                    <li class="yuimenuitem"><%= link_to 'Samples', samples_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'Experiments', experiments_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem"><%= link_to 'Data Files', data_files_path, :class => 'yuimenuitemlabel' %></li>
                   </ul>
                 </div>
-              </div>                    
+              </div>
             </li>
-            
             <li class="yuimenubaritem">
-              <%= link_to 'Studies', studies_path, :class => 'yuimenubaritemlabel' %>
-            </li>
-            
-            <li class="yuimenubaritem"><%= link_to 'Cohorts', test_subject_cohorts_path, :class => 'yuimenubaritemlabel' %>
-              <div id="cohorts" class="yuimenu">
-                <div class="bd">                    
+              <%= link_to 'Analysis', studies_path, :class => 'yuimenubaritemlabel' %>
+              <div id="analysis" class="yuimenu">
+                <div class="bd">
                   <ul>
-                    <li class="yuimenuitem"><%= link_to "#{TestSubject.title} Cohorts", test_subject_cohorts_path, :class => 'yuimenuitemlabel' %></li>
-                    <li class="yuimenuitem"><%= link_to 'Sample Cohorts', sample_cohorts_path, :class => 'yuimenuitemlabel' %></li>
-                    <li class="yuimenuitem"><%= link_to 'Experiment Cohorts', experiment_cohorts_path, :class => 'yuimenuitemlabel' %></li>
-                  </ul>                    
+                    <li class="yuimenuitem"><%= link_to 'Studies', studies_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem">
+                      <%= link_to 'Cohorts', test_subject_cohorts_path, :class => 'yuimenuitemlabel' %>
+                      <div id="cohorts" class="yuimenu">
+                        <div class="bd">                    
+                          <ul>
+                            <li class="yuimenuitem"><%= link_to "#{TestSubject.title} Cohorts", test_subject_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'Sample Cohorts', sample_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'Experiment Cohorts', experiment_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="yuimenuitem"><a class="yuimenuitemlabel" href="#tools">Tools</a>
+                      <div id="tools" class="yuimenu">
+                        <div class="bd">                    
+                          <ul>
+                            <li class="yuimenuitem"><%= link_to 'HMDB', 'http://www.hmdb.ca/', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'DrugBank', 'http://drugbank.ca', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'Metabo-Analyst', 'http://www.metaboanalyst.ca', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'PolySearch', 'http://wishart.biology.ualberta.ca/polysearch/', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'BioSpider', 'http://biospider.ca', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
+                          </ul>                    
+                        </div>
+                      </div>                                        
+                    </li>
+                  </ul>
                 </div>
-              </div>                                        
+              </div>
             </li>
             <li class="yuimenubaritem">
-              <%= link_to 'Data Files', data_files_path, :class => 'yuimenubaritemlabel' %>
+              <%= link_to 'Metabolites', metabolites_path, :class => 'yuimenuitemlabel' %>
             </li>
             <li class="yuimenubaritem"><%= link_to 'Planning', tasks_path, :class => 'yuimenubaritemlabel' %>
               <div id="tasks" class="yuimenu">
@@ -98,19 +125,6 @@
                     <li class="yuimenuitem"><%= link_to 'My Tasks', user_tasks_path(current_user), :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Gantt Chart', gantt_tasks_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Calendar', calendar_tasks_path, :class => 'yuimenuitemlabel' %></li>
-                  </ul>                    
-                </div>
-              </div>                                        
-            </li>
-            <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#tools">Tools</a>
-              <div id="tools" class="yuimenu">
-                <div class="bd">                    
-                  <ul>
-                    <li class="yuimenuitem"><%= link_to 'HMDB', 'http://www.hmdb.ca/', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
-                    <li class="yuimenuitem"><%= link_to 'DrugBank', 'http://drugbank.ca', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
-                    <li class="yuimenuitem"><%= link_to 'Metabo-Analyst', 'http://www.metaboanalyst.ca', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
-                    <li class="yuimenuitem"><%= link_to 'PolySearch', 'http://wishart.biology.ualberta.ca/polysearch/', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
-                    <li class="yuimenuitem"><%= link_to 'BioSpider', 'http://biospider.ca', :target => '_blank', :class => 'yuimenuitemlabel' %></li>
                   </ul>                    
                 </div>
               </div>                                        
