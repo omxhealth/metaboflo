@@ -1,0 +1,13 @@
+<% if @successful %>
+  $("#study_cohort_assignment_label").val(""); // Clear the label text input
+  $("#study_cohort_assignment_assignable_id").val(""); // Clear the cohort select box
+  
+  <% if @cohort.study_cohort_assignments.size == 1 %>
+    $("#export-info").appear(); // Clear the cohort select box
+  <% end -%>
+  
+  $("#assignable-associations").html("<%= escape_javascript(render :partial => 'study_cohort_assignment', :collection => @cohort.study_cohort_assignments) %>");
+  $("#flash").html("<p class=\"notice\">Added <%= humanized_type(@cohort.assignable_type).downcase %> to study successfully</p>");
+<% else %>
+  $("#flash").html("<p class=\"error\">Error adding <%= humanized_type(@cohort.assignable_type).downcase %> to study</p>");
+<% end -%>

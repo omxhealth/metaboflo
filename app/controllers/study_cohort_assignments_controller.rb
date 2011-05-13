@@ -52,12 +52,12 @@ class StudyCohortAssignmentsController < ApplicationController
           flash[:notice] = "#{@study_cohort_assignment.assignable.class} was successfully added to the study."
           redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable) 
         }
-        format.js { @successful = true } # Render create.rjs 
+        format.js { @successful = true } # Render create.js.erb 
         format.xml  { render :xml => @study_cohort_assignment, :status => :created, :location => @study_cohort_assignment }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @study_cohort_assignment.errors, :status => :unprocessable_cohort }
-        format.js { @successful = false } # Render create.rjs 
+        format.js { @successful = false } # Render create.js.erb 
       end
     end
   end

@@ -1,7 +1,0 @@
-if @successful
-  page.replace_html "assignable-associations", :partial => 'cohort_assignment', :collection => @cohort.cohort_assignments
-  page.replace_html 'flash', "<p class=\"notice\">Added #{humanized_type(@cohort.assignable_type).downcase} to cohort successfully</p>"
-else
-  page.replace_html 'flash', "<p class=\"error\">Error adding #{humanized_type(@cohort.assignable_type).downcase} to cohort</p>"
-end
-
