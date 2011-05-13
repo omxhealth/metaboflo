@@ -1,20 +1,16 @@
 <h1>Showing Study "<%=h @study.name %>"</h1>
 
 <p>
-	<b>Name:</b>
-	<%=h @study.name %>
-</p>
-
-<p>
 	<b>Description:</b>
 	<%=h @study.description %>
 </p>
 
 <fieldset id="export-info" style="display: <%= @study.study_cohort_assignments.length > 0 ? 'block' : 'none' %>">
-  <legend>Export Study For Analysis</legend>
-  This study is eligible for export to comma-seperated-value (CSV) format. Exporting a study will create a CSV file in a format accepted by many data analysis programs (for example, <%= link_to 'Metaboanalyst', 'http://www.metaboanalyst.ca', :target => '_blank' %>). Each row in the file will be a labelled <%= TestSubject.title %> from the database, annotated with identified metabolites.
+  <legend>Data Analysis</legend>
+  This study is eligible for analysis. You may export the study to comma-seperated-value (CSV) format. Exporting a study will create a CSV file in a format accepted by many data analysis programs (for example, <%= link_to 'Metaboanalyst', 'http://www.metaboanalyst.ca', :target => '_blank' %>). Each row in the file will be a labelled <%= TestSubject.title %> from the database, annotated with identified metabolites. You may also run basic PCA and Correlation analysis.
   <br /><br />
-  <%= link_to 'Export', export_study_path(@study), :style => 'font-weight: bold' %>
+  <%= link_to 'Run Analysis', analysis_study_path(@study), :style => 'font-weight: bold' %> | <%= link_to 'Export', export_study_path(@study), :style => 'font-weight: bold' %>
+  
 </fieldset>
 
 <h2><%= TestSubject.title %> cohorts in this study:</h2>

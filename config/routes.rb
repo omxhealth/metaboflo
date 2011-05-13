@@ -26,6 +26,7 @@ Metaboflo::Application.routes.draw do
   resources :studies do
     member do
       get :export
+      get :analysis
     end
   end
 

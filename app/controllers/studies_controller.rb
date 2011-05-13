@@ -2,30 +2,26 @@ class StudiesController < ApplicationController
   before_filter :load_cohorts
 
   require 'faster_csv'
-
+  include Analysis
+  
+  def analysis
+    @study = Study.find(params[:id])
+    
+    data = study_data(@study)
+    csv_string = generate_csv(data)
+    
+    @pca_image = pca(csv_string)
+    @corr_image = corr(csv_string)
+  end
+  
   def export
     @study = Study.find(params[:id])
 
-    data = Array.new
-    
-    #For each cohort (label)
-    @study.cohort_assignments.each do |ca|
-      curr_label = ca.label
-      c = ca.assignable
-      
-      #For each instance in this cohort (label)
-      c.cohort_assignments.each do |ca|
-        instance = ca.assignable
-        #Create the data array for processing
-        data << {:label => curr_label, :features => instance.features, :id => instance.code}
-      end
-    end
-    
+    data = study_data(@study)
     csv_string = generate_csv(data)
 
     filename = @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv"
     send_data(csv_string, :type => 'text/csv; charset=utf-8; header=present', :filename => filename)
-    #iso-8859-1
   end
 
 
@@ -107,6 +103,23 @@ class StudiesController < ApplicationController
     Cohort #Required to load all Cohort types
   end
   
+  def study_data(study)
+    data = Array.new
+    #For each cohort (label)
+    study.cohort_assignments.each do |ca|
+      curr_label = ca.label
+      c = ca.assignable
+      
+      #For each instance in this cohort (label)
+      c.cohort_assignments.each do |ca|
+        instance = ca.assignable
+        #Create the data array for processing
+        data << {:label => curr_label, :features => instance.features, :id => instance.code}
+      end
+    end
+    return(data)
+  end
+  
   # Passed an array of instances, represented by hashes
   def generate_csv(data)
     csv_string = FasterCSV.generate do |csv|
@@ -120,7 +133,7 @@ class StudiesController < ApplicationController
         end
       end
       
-      csv << ["Sample", "Label"] + feature_names
+      csv << ["ID", "Label"] + feature_names
             
       #Now create the rows (using the feature_names array to order each feature vector)
       data.each do |d|
