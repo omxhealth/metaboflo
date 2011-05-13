@@ -32,7 +32,7 @@
 <body class="yui-skin-sam">
   <% sidebar = !@test_subject.nil? && !@test_subject.new_record? %>
 
-  <div id="doc3" <%= 'class="yui-t3"' if sidebar %>> 
+  <div id="doc3" <%= 'class="yui-t3"'.html_safe if sidebar %>> 
     <div id="hd"><!-- header -->
       <div id="headerbar">
         <%= image_tag "banner_left.png", :style => 'float: left' %>
