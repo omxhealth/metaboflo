@@ -35,7 +35,7 @@
           </td>
           <% first = false %>
         <% end %>
-        <td><%= link_to concentration.data_file.experiment.sample.test_subject.name, test_subject_path(concentration.data_file.experiment.sample.test_subject) %></td>
+        <td><%= link_to concentration.data_file.experiment.sample.root.name, test_subject_path(concentration.data_file.experiment.sample.root) %></td>
         <td><%= link_to concentration.data_file.data_file_name, experiment_data_file_path(concentration.data_file.experiment, concentration.data_file) %></td>
         <td><%=h concentration.concentration_value %> <%=h concentration.concentration_units %></td>
         <td><%= link_to concentration.data_file.experiment.name, sample_experiment_path(concentration.data_file.experiment.sample, concentration.data_file.experiment) %></td>

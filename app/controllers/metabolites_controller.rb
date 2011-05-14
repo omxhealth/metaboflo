@@ -117,7 +117,7 @@ class MetabolitesController < ApplicationController
           metabolite.concentrations.each do |concentration|
             values = []
             values << metabolite.name
-            values << concentration.data_file.experiment.sample.test_subject.name
+            values << concentration.data_file.experiment.sample.root.name
             values << concentration.concentration_value
             values << concentration.data_file.experiment.name
             values << concentration.data_file.experiment.sample.collected_on

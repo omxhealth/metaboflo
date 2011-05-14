@@ -98,10 +98,7 @@ class ExperimentsController < ApplicationController
     @experiment = Experiment.find(params[:id])
     @sample = @experiment.sample
     current_sample = @sample
-    while @test_subject.nil?
-      @test_subject = current_sample.test_subject
-      current_sample = current_sample.sample
-    end
+    @test_subject = current_sample.root
   end
 
 end
