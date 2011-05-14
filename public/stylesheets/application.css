@@ -113,6 +113,10 @@ div#headerbar {
   background: #609db3; height: 125px;
 }
 
+div#analysis {
+	float: left
+}
+
 /* Layout CSS */
 div#logged-in {  
   position: absolute;

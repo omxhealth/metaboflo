@@ -1,9 +1,9 @@
 <h1>Showing Analysis For Study "<%=h @study.name %>"</h1>
 
-<h2>PCA Analysis:</h2>
+<div id="analysis">
+  <%= image_tag(@pca_image, :height => 500) %>
+</div>
 
-<%= image_tag(@pca_image, :height => 500) %>
-
-<h2>Correlation Analysis:</h2>
-
-<%= image_tag(@corr_image, :height => 500) %>
+<div id="analysis">
+  <%= image_tag(@corr_image, :height => 500) %>
+</div>

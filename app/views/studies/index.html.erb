@@ -10,19 +10,19 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-		<th>Size</th>
+		<th>Cohorts</th>
 		<th colspan="3">Actions</th>
   </tr>
 
 <% @studies.each do |study| %>
-<tr class="<%= cycle('odd', 'even') %>">
-  <td><%= study.name %></td>
-  <td><%= study.description %></td>
-  <td><%= study.assignables.count %></td>
-  <td><%= show_link({:action => 'show', :id => study}) %></td>
-  <td><%= edit_link({:action => 'edit', :id => study}) %></td>
-  <td><%= destroy_link({:action => 'destroy', :id => study}) %></td>
-</tr>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= study.name %></td>
+    <td><%= short_description(study.description) %></td>
+  	<td><%= study.study_cohort_assignments.length %></td>
+  	<td><%= show_link({:action => 'show', :id => study}) %></td>
+  	<td><%= edit_link({:action => 'edit', :id => study}) %></td>
+  	<td><%= destroy_link({:action => 'destroy', :id => study}) %></td>
+  </tr>
 <% end %>
 </table>
 
