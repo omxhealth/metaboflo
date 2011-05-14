@@ -75,12 +75,13 @@ class DataFilesController < ApplicationController
     end
   end
   
-  private 
+  private
   def find_experiment
     if params[:experiment_id]
       @experiment = Experiment.find(params[:experiment_id])
       @sample = @experiment.sample
-      @test_subject = @sample.test_subject
+      @test_subject = @sample.root
     end
   end  
+
 end

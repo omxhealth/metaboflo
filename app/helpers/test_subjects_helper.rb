@@ -48,7 +48,7 @@ module TestSubjectsHelper
       sample.experiments.each do |experiment|
         experiment_node = Node.new(:label => "#{experiment.name} (#{experiment.experiment_type.name})", :url => sample_experiment_path(experiment.sample, experiment), :css_class => (controller_name == 'experiments' && action_name == 'show' && params[:id] == experiment.to_param ? 'node-selected' : nil))
         experiment_node.icon = experiment_node.icon_open = tree_icon('experiment.png')
-        experiment_node << data_file_sub_tree(experiment)
+        #experiment_node << data_file_sub_tree(experiment)
         node << experiment_node
       end
     end

@@ -34,7 +34,7 @@
 		<td><%= sample.sample_type %></td>
 		<td><%= sample.barcode %></td>
     <td><%= sample.original_amount %> <%=h sample.original_unit %><br />(<%= sample.theoretical_amount %> <%=h sample.original_unit %> remaining)</td>
-    <td><%= link_to(sample.root.code, sample.test_subject) %></td>
+    <td><%= link_to(sample.root.code, sample.root) %></td>
 		<td><%= link_to(sample.sample.barcode, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
     <td><%= sample.collected_on %></td>
     <td><%= sample.collected_by.present? ? sample.collected_by.name : '' %></td>
