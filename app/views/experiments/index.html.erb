@@ -19,13 +19,13 @@
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= experiment.sample.root %></td>
     <td><%= experiment.sample %></td>
-    <td><%=h experiment.name %></td>
-    <td><%=h experiment.experiment_type.name unless experiment.experiment_type.nil? %></td>
-    <td><%=h experiment.short_description %></td>
-    <td><%=h experiment.assigned_to %></td>
-    <td><%=h experiment.perform_on %></td>
-    <td><%=h experiment.performed_by %></td>
-    <td><%=h experiment.performed_on %></td>
+    <td><%= experiment.name %></td>
+    <td><%= experiment.experiment_type.name unless experiment.experiment_type.nil? %></td>
+    <td><%= short_description(experiment.description) %></td>
+    <td><%= experiment.assigned_to %></td>
+    <td><%= experiment.perform_on %></td>
+    <td><%= experiment.performed_by %></td>
+    <td><%= experiment.performed_on %></td>
     <td>
       <% if experiment.data_files.length > 0 %>
         <ul>
