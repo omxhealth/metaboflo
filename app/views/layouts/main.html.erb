@@ -52,13 +52,13 @@
               <div id="test-subject" class="yuimenu">
                 <div class="bd">
                   <ul>
-                    <li class="yuimenuitem"><%= link_to "All #{TestSubject.title.pluralize}", test_subjects_path, :class => 'yuimenuitemlabel' %></li>
+                    <li class="yuimenuitem first-of-type"><%= link_to "All #{TestSubject.title.pluralize}", test_subjects_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem">
                       <%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %>
-                      <div id="diets3" class="yuimenu">
+                      <div id="diets" class="yuimenu">
                         <div class="bd">
-                          <ul>
-                            <li class="yuimenuitem"><%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %></li>
+                          <ul class="first-of-type">
+                            <li class="yuimenuitem first-of-type"><%= link_to 'Diets', diets_path, :class => 'yuimenuitemlabel' %></li>
   										      <li class="yuimenuitem"><%= link_to 'Ingredients', ingredients_path, :class => 'yuimenuitemlabel' %></li>
   										      <li class="yuimenuitem"><%= link_to 'Nutrients', nutrients_path, :class => 'yuimenuitemlabel' %></li>
                           </ul>
@@ -66,14 +66,15 @@
                       </div>
                     </li>
                   </ul>
+                </div>
               </div>
             </li>
             <li class="yuimenubaritem">
               <%= link_to 'Wet lab', samples_path, :class => 'yuimenubaritemlabel' %>
               <div id="wet-lab" class="yuimenu">
                 <div class="bd">
-                  <ul>
-                    <li class="yuimenuitem"><%= link_to 'Samples', samples_path, :class => 'yuimenuitemlabel' %></li>
+                  <ul class="first-of-type">
+                    <li class="yuimenuitem first-of-type"><%= link_to 'Samples', samples_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Experiments', experiments_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem"><%= link_to 'Data Files', data_files_path, :class => 'yuimenuitemlabel' %></li>
                   </ul>
