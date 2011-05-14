@@ -1,4 +1,6 @@
 class StudiesController < ApplicationController
+  ALLOWED_EXPORT_KINDS = [ :metaboanalyst, :umetrics ]
+
   before_filter :load_cohorts
 
   require 'faster_csv'
@@ -13,17 +15,6 @@ class StudiesController < ApplicationController
     @pca_image = pca(csv_string)
     @corr_image = corr(csv_string)
   end
-  
-  def export
-    @study = Study.find(params[:id])
-
-    data = study_data(@study)
-    csv_string = generate_csv(data)
-
-    filename = @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv"
-    send_data(csv_string, :type => 'text/csv; charset=utf-8; header=present', :filename => filename)
-  end
-
 
   def index
     @studies = Study.all
@@ -48,7 +39,15 @@ class StudiesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @study }
+      format.xml { render :xml => @study }
+      format.csv { 
+        csv_string = generate_csv( study_data(@study), :kind => :metaboanalyst )
+        send_data csv_string, :filename => @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv"
+      }
+      format.umetrics { 
+        csv_string = generate_csv( study_data(@study), :kind => :umetrics )
+        send_data csv_string, :filename => @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv"
+      }
     end
   end
 
@@ -120,20 +119,27 @@ class StudiesController < ApplicationController
     return(data)
   end
   
-  # Passed an array of instances, represented by hashes
-  def generate_csv(data)
+  # Passed an array of instances, represented by hashes. Takes an options hash which includes
+  # a :kind which indicates :umetrics or :metaboanalyst
+  def generate_csv(data, options={})
+    raise ArgumentError unless ALLOWED_EXPORT_KINDS.includes?(options[:kind])
+  
     csv_string = FasterCSV.generate do |csv|
       #Do first pass of the data to get a list of feature names:
       feature_names = []
       data.each do |d|
         d[:features].keys.each do |fname|
-          if not feature_names.include?(fname)
+          if !feature_names.include?(fname)
             feature_names << fname
           end
         end
       end
       
-      csv << ["subjectID", "Label"] + feature_names
+      if options[:kind] == :metaboanalyst
+        csv << ["subjectID", "Label"] + feature_names
+      elsif options[:kind] == :umetrics
+        csv << ["subjectID"] + feature_names + [ "Label" ]
+      end
             
       #Now create the rows (using the feature_names array to order each feature vector)
       data.each do |d|
@@ -147,11 +153,14 @@ class StudiesController < ApplicationController
           end
         end
         
-        csv << [d[:id], d[:label]] + features
+        if options[:kind] == :metaboanalyst
+          csv << [d[:id], d[:label]] + features
+        elsif options[:kind] == :umetrics
+          csv << [d[:id]] + features + [d[:label]]
+        end
       end
     end
     
     return(csv_string)
-  end
-  
+  end  
 end
