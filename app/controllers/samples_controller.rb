@@ -7,12 +7,14 @@ class SamplesController < ApplicationController
   # GET /samples
   # GET /samples.xml
   def index
+    @search = Sample.search(params[:search])
+  
     if @parent.blank?
-      @all_samples = Sample.find(:all)
+      @all_samples = @search.all
       if can_view_all(current_user)
         @samples = @all_samples
       else
-        @samples = find_for_site(@all_samples, current_user.site)
+        @samples = find_for_site(@all_samples.all, current_user.site)
       end
     else
       @samples = @parent.samples

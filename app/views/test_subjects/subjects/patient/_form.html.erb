@@ -8,11 +8,6 @@
 
 <fieldset>
   <legend>Patient Personal Details</legend>
-  <p>
-    <%= form.text_field :first_initial, :size => 2, :maxlength => 1, :label => 'Initials' %> 
-    <%= form.text_field :middle_initial, :size => 2, :maxlength => 1, :no_label => true %> 
-    <%= form.text_field :last_initial, :size => 2, :maxlength => 1, :no_label => true %>
-  </p>
   <p><%= form.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-100, :end_year => Time.now.year %></p>
   <p><%= form.select :blood_type, ['A', 'B', 'O', 'AB'], :include_blank => true %></p>
   <p><%= form.select :gender, ['Male', 'Female'], :include_blank => true %></p>

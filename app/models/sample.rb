@@ -62,4 +62,11 @@ class Sample < ActiveRecord::Base
   def aliquot?
     return !self.sample.blank?
   end
+  
+  # Return a list of all used sample types
+  def Sample.sample_types
+    self.select('DISTINCT sample_type').order(:sample_type).all.collect { |s| s.sample_type }
+  end
+  
+  
 end
