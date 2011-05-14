@@ -1,4 +1,12 @@
 Metaboflo::Application.routes.draw do
+  namespace :workflows do
+    resources :experiments, :except => [:new, :create]
+    resources :samples, :only => [] do
+      resources :experiments, :only => [:new, :create]
+    end
+    resources :patients, :only => [:new, :create]
+  end
+  
   devise_for :users
   resources :nutrients
   resources :metabolites do

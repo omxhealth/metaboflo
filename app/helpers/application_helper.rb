@@ -7,6 +7,10 @@ module ApplicationHelper
   
   require 'tabular_form_builder'
   
+  def required
+    '<span class="required">*</span>'
+  end
+  
   def unit_options
     VOLUME_UNITS.concat(WEIGHT_UNITS).concat(CONCENTRATION_UNITS).sort
   end

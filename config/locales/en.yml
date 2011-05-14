@@ -2,4 +2,16 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      data_file:
+        data: 'File to upload'
+        has_concentrations: 'This file contains concentration data in CSV format that should be imported into the LIMS'
+        has_concentration_units: 'Units'
+      experiment:
+        amount_used: 'Amount used for experiment'
+        assigned_to_id: 'To be analyzed by'
+        name: 'Experiment title'
+        performed_by_id: 'Actually analyzed by'
+        protocol_id: 'Experiment protocol'
+      

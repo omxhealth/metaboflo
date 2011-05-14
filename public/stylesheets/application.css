@@ -433,9 +433,30 @@ form.tabular table.checkbox-group td {
 	padding: 0.1em 0.5em;
 }
 
+/* Standard form */
+form { padding: 0.3em; }
+form fieldset { border: 1px solid #484848; background: #f0f0f0; margin-bottom: 1.2em; width: 70%; padding-bottom: 0.5em; min-width: 800px; }
+form fieldset legend { color: #484848; margin-left: 0.5em; }
+form textarea { width: 350px; height: 70px; }
+
+.field, .field-checkbox { white-space: nowrap; text-align: left; padding: 0.3em; }
+.field br, .field-checkbox br { display: none; }
+.field label { width: 20em; display: inline-block; text-align: right; vertical-align: top; font-weight: bold; }
+.field input, textarea, select { vertical-align: bottom; margin: 0.2em; }
+.field-checkbox, .field-no-label { padding-left: 20.5em; }
+.field-checkbox label { font-weight: bold; margin: 0.2em; }
+.field label.grouped { font-weight: normal; margin-left: 0px; text-align: left; width: auto; float: none; }
+
 .required {color: #bb0000;}
 
-
+.box{
+	padding:6px;
+	margin-bottom: 10px;
+	background-color:#f6f6f6;
+	color:#505050;
+	line-height:1.5em;
+	border: 1px solid #e4e4e4;
+}
 
 /* Pagination style */
 .pagination {

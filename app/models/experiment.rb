@@ -3,10 +3,13 @@ class Experiment < ActiveRecord::Base
   belongs_to :performed_by, :class_name => 'User'
   
   belongs_to :sample
+  accepts_nested_attributes_for :sample
+  
   belongs_to :protocol
   belongs_to :experiment_type
 
   has_many :data_files, :dependent => :destroy
+  accepts_nested_attributes_for :data_files, :allow_destroy => true, :reject_if => :all_blank
   
   has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments
