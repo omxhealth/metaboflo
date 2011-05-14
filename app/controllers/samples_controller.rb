@@ -10,7 +10,7 @@ class SamplesController < ApplicationController
     @search = Sample.search(params[:search])
   
     if @parent.blank?
-      @all_samples = @search.all
+      @all_samples = @search.includes(:experiments, :sample, :test_subject).all
       if can_view_all(current_user)
         @samples = @all_samples
       else
