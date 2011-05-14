@@ -133,7 +133,7 @@ class StudiesController < ApplicationController
         end
       end
       
-      csv << ["ID", "Label"] + feature_names
+      csv << ["subjectID", "Label"] + feature_names
             
       #Now create the rows (using the feature_names array to order each feature vector)
       data.each do |d|

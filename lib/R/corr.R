@@ -1,12 +1,9 @@
-# ! /usr/bin/R
-
-
 ############################################################
 # 
 # Run Correlation Analysis on a data set.
 #
 # Data format: 
-# ID column labelled "ID"
+# ID column labelled "subjectID"
 # Label column labelled "Label" (Currently works best for 2 labels)
 # Remaining data should be real-valued
 # 
@@ -18,13 +15,13 @@ debug = FALSE
 plot.corr = function(orig_data, label.points=TRUE) {
 	
 	#Get IDs and Labels
-	ids = orig_data$ID
+	ids = orig_data$subjectID
 	labels = orig_data$Label
 
 	classes = levels(as.factor(labels))
 
 	#Remove ID & Label from data matrix:
-	data = orig_data[,-match('ID', names(orig_data))]
+	data = orig_data[,-match('subjectID', names(orig_data))]
 	data = data[,-match('Label', names(data))]
 
 	#Run Correlation Analysis:
@@ -35,43 +32,36 @@ plot.corr = function(orig_data, label.points=TRUE) {
 		name = names(data)[i]
 		col = data[,i]
 		corrval = cor(col, num_classes)
-		#corrs = append(corrs, corrval)
-		corrs = rbind(corrs, data.frame(label=names(data)[i], cc=corrval))
+		corrs = rbind(corrs, data.frame(label=names(data)[i], cc=abs(corrval)))
 	}
-	#names(corrs) = names(data)
-	
-	#corrs = rev(sort(corrs))
-	#corrs = corrs[with(corrs, order(cc)), ]
 
-	corrs <- within(corrs, label <- factor(label, levels=names(sort(table(label),  decreasing=TRUE))))
+	#Sort by correlation coefficient:
+	corrs$label = factor(corrs$label, levels=rev(as.character(corrs[with(corrs, order(cc)),]$label)))
+	print(num_classes)
+	class.str = paste(classes[1], 'vs', classes[2])
 
 	library(ggplot2)
-	#barplot(corrs)
-	print(corrs)
-	qplot(label, data=corrs, geom="bar", weight=cc, binwidth=0.1)
-	#p <- ggplot(corrs, aes(y=cc, x=label)) 
-	#p <- p + geom_bar(position="dodge", stat="identity") 
-	#p <- p + opts(axis.text.x = theme_text(angle = 45, hjust=1))
-	#plot(p)
-}
-
-#Color points based on their label
-label.color = function(label) {
-	classes = levels(label)
-	if (label == classes[1]) {
-		return('blue')
-	} else {
-		return('red')
-	}
+	p = ggplot(corrs, aes(y=cc, x=label, fill=label)) 
+	p = p + geom_bar(position="dodge", stat="identity")
+	p = p + opts(title=paste('Correlation between Metabolite Concentration and', class.str), 
+							 axis.text.x = theme_text(angle = 90, hjust=1), legend.position="none", 
+							 panel.background = theme_rect(colour = "black"))
+	p = p + xlab('Metabolites')
+	p = p + ylab('aPearson Correlation Coefficient Magnitude')
+	p
 }
 
 # ---------------------------------
 
 #Get command line arguments:
 args = commandArgs(trailingOnly = TRUE)
+if (debug) {
+	cat(paste('Found', length(args), "arguments\n"))
+}
+
 #if (length(args) == 2) {
-	file_path = '/Users/eisner/insiliflo/code/metaboflo/tempcorr.csv'#args[1]
-	output_image = '/Users/eisner/Desktop/test.png'#args[2]
+	file_path = args[1]
+	output_image = args[2]
 
 	#Read Data:
 	if (debug) {

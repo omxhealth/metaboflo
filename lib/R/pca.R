@@ -1,12 +1,9 @@
-# ! /usr/bin/R
-
-
 ############################################################
 # 
 # Run PCA Analysis on a data set.
 #
 # Data format: 
-# ID column labelled "ID"
+# ID column labelled "subjectID"
 # Label column labelled "Label" (Currently works best for 2 labels)
 # Remaining data should be real-valued
 # 
@@ -18,13 +15,13 @@ debug = FALSE
 plot.pca = function(orig_data, label.points=TRUE) {
 	
 	#Get IDs and Labels
-	ids = orig_data$ID
+	ids = orig_data$subjectID
 	labels = orig_data$Label
 
 	classes = levels(as.factor(labels))
 
 	#Remove ID & Label from data matrix:
-	data = orig_data[,-match('ID', names(orig_data))]
+	data = orig_data[,-match('subjectID', names(orig_data))]
 	data = data[,-match('Label', names(data))]
 
 	#Run PCA:
