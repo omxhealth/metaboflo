@@ -15,15 +15,15 @@
   </tr>
   <% if @parent.blank? %>
   <tr class="table-search">
-		<th><%= f.select :sample_type_contains, Sample.sample_types %></th>
+		<th><%= f.select :sample_type_contains, Sample.sample_types, :include_blank => true %></th>
     <th><%= f.text_field :original_amount_gte, :size => 6 %></th>
     <th><%= f.text_field :barcode_contains, :size => 10 %></th>
     <th><%= f.text_field :test_subject_code_contains, :size => 10 %></th>
     <th><%= f.text_field :sample_barcode_contains, :size => 10 %></th>
     <th><%= f.text_field :collected_on_gte, :size => 8 %></th>
     <th><%= f.select :collected_by_id_equals, User.users.order(:name).all.collect { |s| [ s.name, s.id ] }, :include_blank => true %></th>
-    <th><%= f.text_field :experiments_name_contains, :size => 15 %></th>
-		<th colspan="3"><%= f.submit 'Search' %> | <%= link_to 'Clear', test_subjects_path %></th>
+    <th><%= f.text_field :experiments_experiment_type_name_contains, :size => 15 %></th>
+		<th colspan="3"><%= f.submit 'Search' %> | <%= link_to 'Clear', samples_path %></th>
 	</tr>
 	<% end -%>
 	
@@ -35,7 +35,7 @@
     <td><%= link_to(sample.root.code, sample.test_subject) %></td>
 		<td><%= link_to(sample.sample.barcode, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
     <td><%= sample.collected_on %></td>
-    <td><%= sample.collected_by %></td>
+    <td><%= sample.collected_by.present? ? sample.collected_by.name : '' %></td>
 		<td>
 			<% sample.experiments.each do |experiment| -%>
 			  <%= link_to experiment.experiment_type.name, [sample, experiment] %><br />
