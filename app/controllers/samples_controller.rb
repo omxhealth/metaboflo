@@ -10,11 +10,11 @@ class SamplesController < ApplicationController
     @search = Sample.search(params[:search])
   
     if @parent.blank?
-      @all_samples = @search.all
+      @all_samples = @search.includes(:sample, :test_subject, :experiments => [ :experiment_type ]).all
       if can_view_all(current_user)
         @samples = @all_samples
       else
-        @samples = find_for_site(@all_samples.all, current_user.site)
+        @samples = find_for_site(@all_samples, current_user.site)
       end
     else
       @samples = @parent.samples

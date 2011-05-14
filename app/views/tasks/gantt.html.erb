@@ -3,19 +3,19 @@
 		<legend>Date range</legend>
 		<p style="float:right; margin:0px;">
 			<%= if @gantt.zoom < 4
-				link_to_remote image_tag('zoom_in.png'), {:url => @gantt.params.merge(:zoom => (@gantt.zoom+1)), :update => 'main', :method => :get}, {:href => url_for(@gantt.params.merge(:zoom => (@gantt.zoom+1)))}
+				link_to image_tag('zoom_in.png'), @gantt.params.merge(:zoom => (@gantt.zoom + 1))
 			else
 				image_tag 'zoom_in_g.png'
 			end %>
 			&nbsp;
 			<%= if @gantt.zoom > 1
-				link_to_remote image_tag('zoom_out.png'), {:url => @gantt.params.merge(:zoom => (@gantt.zoom-1)), :update => 'main', :method => :get}, {:href => url_for(@gantt.params.merge(:zoom => (@gantt.zoom-1)))}
+        link_to image_tag('zoom_out.png'), @gantt.params.merge(:zoom => (@gantt.zoom - 1))
 			else
 				image_tag 'zoom_out_g.png'
 			end %>
 		</p>
 
-		<% form_remote_tag :update => 'main', :method => :get do %>
+		<%= form_tag nil, :method => :get do %>
 		<%= text_field_tag 'months', @gantt.months, :size => 2 %>
 		months from
 		<%= select_month(@gantt.month_from, :prefix => "month", :discard_type => true) %>
@@ -23,7 +23,7 @@
 		<%= hidden_field_tag 'zoom', @gantt.zoom %>
 
 		<%= submit_tag 'Apply' %> &nbsp;
-		<%= link_to_remote 'Today', {:url => @gantt.params.merge(:month => nil, :year => nil), :update => 'main', :method => :get}, { :href => url_for(@gantt.params.merge(:month => nil, :year => nil)), :class => 'icon icon-home' } %>
+		<%= link_to 'Today', @gantt.params.merge(:month => nil, :year => nil), :method => :get, :class => 'icon icon-home' %>
 		<% end %>
 	</fieldset>
 		
@@ -180,7 +180,7 @@
 						</div>
 						<div class="tooltip" style="position: absolute;top:<%= top %>px;left:<%= i_left %>px;width:<%= i_width %>px;height:12px;">
 							<span class="tip">
-								<%= render_task_tooltip i %>
+								<%== render_task_tooltip i %>
 							</span>
 						</div>
 						<% top = top + 20
@@ -201,8 +201,8 @@
 
 	<table width="100%">
 		<tr>
-			<td align="left"><%= link_to_remote ('&#171; ' + 'Previous'), {:url => @gantt.params_previous, :update => 'main', :complete => 'window.scrollTo(0,0)', :method => :get}, {:href => url_for(@gantt.params_previous)} %></td>
-			<td align="right"><%= link_to_remote ('Next' + ' &#187;'), {:url => @gantt.params_next, :update => 'main', :complete => 'window.scrollTo(0,0)', :method => :get}, {:href => url_for(@gantt.params_next)} %></td>
+			<td align="left"><%= link_to '&#171; Previous'.html_safe, @gantt.params_previous, :method => :get %></td>
+			<td align="right"><%= link_to 'Next &#187;'.html_safe, @gantt.params_next, :method => :get %></td>
 		</tr>
 	</table>
 </div>
