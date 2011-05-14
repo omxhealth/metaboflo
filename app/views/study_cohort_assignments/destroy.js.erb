@@ -4,6 +4,14 @@
     $('#export-info').fadeOut(); // Clear the cohort select box
   <% end %>
 
+  <% if @cohort.study_cohort_assignments.size < 1 %>
+    $('#export-info').fadeOut(); // Clear the export box
+  <% end %>
+
+  <% if @cohort.study_cohort_assignments.size < 2 %>
+    $('#run-analysis').fadeOut(); // Clear the analysis box
+  <% end %>
+
   $("#assignable-associations").html("<%= escape_javascript(render :partial => 'study_cohort_assignment', :collection => @cohort.cohort_assignments) %>");
   $("#flash").html("<p class=\"notice\">Removed <%= humanized_type(@cohort.assignable_type).downcase %> from study successfully</p>")
 <% else %>

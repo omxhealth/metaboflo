@@ -10,6 +10,11 @@
     $('#export-info').fadeIn(); 
   <% end %>
   
+	// Show the analysis panel
+  <% if @cohort.study_cohort_assignments.size == 2 %>
+		$('#run-analysis').fadeIn();
+  <% end %>
+
 <% else %>
   $("#flash").html("<p class=\"error\">Error adding <%= humanized_type(@cohort.assignable_type).downcase %> to study</p>");
 <% end -%>
