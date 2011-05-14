@@ -12,6 +12,9 @@ class Sample < ActiveRecord::Base
   has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments
   
+  scope :location_contains, lambda {|name| where(['building like ? or room like ?', "%#{name}%", "%#{name}%"])}
+  search_methods :location_contains
+  
   validates_numericality_of :original_amount, :greater_than_or_equal => 0, :allow_blank => true
   # validates_inclusion_of :original_unit, :in => ['ml', 'g'], :allow_blank => true
   validates_numericality_of :actual_amount, :greater_than_or_equal => 0, :allow_blank => true
