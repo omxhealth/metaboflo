@@ -3,7 +3,7 @@ gcms:
   description: Gas Cromatography-Mass Spectrometry
 
 dims:
-  name: Direct Injection Mass Spec
+  name: DIMS
   description: Direct Injection Mass Spectrometry
 
 hplc:
@@ -39,9 +39,9 @@ hplcuv:
   description: High-Pressure Liquid Chromatography with UV Detector
 
 hplcec:
-  name: HPLC Electrochemical
+  name: HPLC-E
   description: High-Pressure Liquid Chromatography with Electrochemical Detector
 
 hplcf:
-  name: HPLC Fluorescence
+  name: HPLC-F
   description: High-Pressure Liquid Chromatography with Fluorescence Detector

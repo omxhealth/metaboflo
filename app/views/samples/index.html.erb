@@ -1,12 +1,10 @@
-<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(TestSubject)) ? "Samples for #{TestSubject.title.downcase} #{@parent}" : 'Samples' %></h1>
+<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(TestSubject)) ? "Samples for #{TestSubject.title.downcase} #{@parent}" : 'Sample Tracking' %></h1>
 
 <%= form_for @search, :url => samples_path, :html => { :method => :get } do |f| %>
 <table class="list">
   <tr class="header">
 		<th>Type</th>
     <th>Amount Received</th>
-		<th>Actual amount</th>
-		<th>Amount remaining</th>
     <th>Barcode</th>
     <th><%= TestSubject.title unless @test_subject %></th>
 		<th><%= 'Aliquoted from' unless @parent %></th>
@@ -19,8 +17,6 @@
   <tr class="table-search">
 		<th><%= f.select :sample_type_contains, Sample.sample_types %></th>
     <th><%= f.text_field :original_amount_gte, :size => 6 %></th>
-    <th><%= f.text_field :actual_amount_gte, :size => 6 %></th>
-		<th></th>
     <th><%= f.text_field :barcode_contains, :size => 10 %></th>
     <th><%= f.text_field :test_subject_code_contains, :size => 10 %></th>
     <th><%= f.text_field :sample_barcode_contains, :size => 10 %></th>
@@ -34,17 +30,15 @@
 <% @samples.each do |sample| %>
   <tr class="<%= cycle('odd', 'even') %>">
 		<td><%= sample.sample_type %></td>
-    <td><%= sample.original_amount %> <%=h sample.original_unit %></td>
-		<td><%= sample.actual_amount %> <%=h sample.actual_unit %></td>
-		<td><%= sample.theoretical_amount %> <%=h sample.original_unit %></td>
+    <td><%= sample.original_amount %> <%=h sample.original_unit %><br />(<%= sample.theoretical_amount %> <%=h sample.original_unit %> remaining)</td>
     <td><%= sample.barcode %></td>
-    <td><%= link_to(sample.test_subject.code, sample.test_subject) unless @test_subject || sample.test_subject.nil? %></td>
-		<td><%= link_to(sample.sample, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
+    <td><%= link_to(sample.root.code, sample.test_subject) %></td>
+		<td><%= link_to(sample.sample.barcode, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
     <td><%= sample.collected_on %></td>
     <td><%= sample.collected_by %></td>
 		<td>
 			<% sample.experiments.each do |experiment| -%>
-			<%= link_to experiment, [sample, experiment] %><br />
+			  <%= link_to experiment.experiment_type.name, [sample, experiment] %><br />
 			<% end -%>
 		</td>
     <td><%= show_link sample.sample ? sample_sample_path(sample.sample, sample) : test_subject_sample_path(sample.test_subject, sample) %></td>
