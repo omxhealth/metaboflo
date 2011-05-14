@@ -11,9 +11,9 @@
   <tr>
     <th>Name</th>
     <th>Structure</th>
+    <th>Concentration</th>
     <th><%= TestSubject.title %></th>
     <th>Data file</th>
-    <th>Concentration</th>
     <th>Experiment</th>
     <th>Sample Collected On</th>
     <th>Sample Type</th>
@@ -25,21 +25,33 @@
     <% concentrations.each do |concentration| %>
       <tr class="<%= cycle('odd', 'even') %>">
         <% if first %>
-          <td rowspan=<%= [concentrations.length, 1].max %>><%= link_out metabolite, :hmdb_id, h(metabolite.name) %></td>
+          <td rowspan=<%= [concentrations.length, 1].max %>>
+            <%= link_out metabolite, :hmdb_id, h(metabolite.name) %>
+            <br /><br />
+            <div style="float: left; width: 50; padding: 1em; background: #B9D3EE">
+              <%= metabolite.mono_mass %> g/mol
+              <%= metabolite.formula %><br />
+              <%= metabolite.concentrations.length %> Concentrations
+              <% aggregates = metabolite.concentration_statistics %>
+              <% aggregates.each do |a| %>
+                <br /><%= a.html_safe %>
+              <% end %>
+            </div>
+          </td>
           <td rowspan=<%= [concentrations.length, 1].max %>>
             <% if metabolite.hmdb_id.present? %>
-            <%= image_tag "http://hmdb.ca/labm/servlet/labm.mlims.show?ctrl=chemical_structure_thumb&hmdb_id=#{metabolite.hmdb_id}" %>
+            <%= image_tag "http://structures.wishartlab.com/molecules/#{metabolite.hmdb_id}/structure", :style => "border: 1px solid silver; margin-top: 2em" %>
             <% else -%>
-            <span syle="color: silver">Not Available</span>
+            <span style="color: silver">Not Available</span>
             <% end -%>
           </td>
           <% first = false %>
         <% end %>
+        <td><%= concentration.concentration_value %> <%= concentration.concentration_units %></td>
         <td><%= link_to concentration.data_file.experiment.sample.root.name, test_subject_path(concentration.data_file.experiment.sample.root) %></td>
         <td><%= link_to concentration.data_file.data_file_name, experiment_data_file_path(concentration.data_file.experiment, concentration.data_file) %></td>
-        <td><%=h concentration.concentration_value %> <%=h concentration.concentration_units %></td>
         <td><%= link_to concentration.data_file.experiment.name, sample_experiment_path(concentration.data_file.experiment.sample, concentration.data_file.experiment) %></td>
-        <td><%=h concentration.data_file.experiment.sample.collected_on %></td>
+        <td><%= concentration.data_file.experiment.sample.collected_on %></td>
         <td><%= link_to concentration.data_file.experiment.sample.sample_type, sample_path(concentration.data_file.experiment.sample) %></td>
       </tr>
     <% end%>
