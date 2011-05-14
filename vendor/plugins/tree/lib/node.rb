@@ -13,14 +13,15 @@ class Node
     :parent => '',
     :id => '',
     :link_to_remote => nil,
-    :link_to => nil
+    :link_to => nil,
+    :css_class => ''
   }
    
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::PrototypeHelper
   include ActionView::Helpers::JavaScriptHelper 
   include ERB::Util
-  include InstanceOptions  
+  include InstanceOptions
   
   def initialize(options={},html_options={},&block)
     @nodes=[]

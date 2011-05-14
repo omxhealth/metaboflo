@@ -1,20 +1,27 @@
 <h1>Patients</h1>
 
-<table class="list">
-	<tr>
+<%= form_for @search, :url => test_subjects_path, :html => { :method => :get } do |f| %>
+<table class="list" style="width: 100%">
+	<tr class="header">
 		<th>Code</th>
-		<th>Initials</th>
 		<th>Site</th>
-		<th>Number of Samples</th>
+		<th># of samples</th>
 		<th>Practitioner</th>
     <th>Notes</th>
 		<th colspan="3">Actions</th>
 	</tr>
+	<tr class="table-search">
+		<th><%= f.text_field :code_contains, :size => 12 %></th>
+		<th><%= f.select :site_id_equals, Site.order(:name).all.collect { |s| [ s.name, s.id ] }, :include_blank => true %></th>
+		<th></th>
+		<th><%= f.text_field :practitioner_contains, :size => 15 %></th>
+    <th><%= f.text_field :notes_contains %></th>
+		<th colspan="3"><%= f.submit 'Search' %> | <%= link_to 'Clear', test_subjects_path %></th>
+	</tr>
 
-	<% for patient in @test_subjects %>
+	<% @test_subjects.each do |patient| %>
 	<tr class="<%= cycle('odd', 'even') %>">
 		<td><%= link_to(patient.code, patient) %></td>
-		<td><%= patient.name %></td>
 		<td><%= patient.site.name %></td>
 		<td><%= patient.samples.length %> (<%= link_to 'display', test_subject_samples_path(patient) %>)</td>
     <td><%= patient.practitioner %></td>
@@ -25,6 +32,7 @@
 	</tr>
 	<% end %>
 </table>
-<br />
+<% end %>
 
+<br />
 <%= new_link 'patient', new_test_subject_path %>

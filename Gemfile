@@ -29,6 +29,7 @@ gem 'paperclip', '2.3.8'
 gem 'mysql', :group => :development
 gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails', '0.2.7'
+gem 'meta_search', '1.0.3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

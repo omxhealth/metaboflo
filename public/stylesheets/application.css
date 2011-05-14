@@ -233,6 +233,14 @@ table.list h2.sub {
 	background: #EEE9E9;
 }
 
+table.list tr.table-search {
+  background: #F7F7F7;
+  vertical-align: middle;
+}
+
+table.list tr.table-search th {
+  vertical-align: middle;
+}
 
 /***** Gantt chart *****/
 .gantt_hdr {

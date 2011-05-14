@@ -15,6 +15,8 @@ class TestSubject < ActiveRecord::Base
   
   validates_presence_of :code, :site_id
   
+  scope :with_site, lambda { |site_id| where(:site_id => site_id) } # Return all test subjects with the given site id
+  
   def name
     "#{TestSubject.title} #{code}"
   end
