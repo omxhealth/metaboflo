@@ -33,7 +33,6 @@ Metaboflo::Application.routes.draw do
   resources :lab_tests
   resources :studies do
     member do
-      get :export
       get :analysis
     end
   end

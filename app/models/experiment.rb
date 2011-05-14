@@ -23,15 +23,6 @@ class Experiment < ActiveRecord::Base
     return "#{self.name} (#{self.experiment_type.name})"
   end
   
-  def short_description(max_length = 50)
-    if (description and
-        description.length > max_length)
-      "#{description[0..max_length]}..."
-    else
-      description
-    end
-  end
-  
   def root
     sample.root
   end

@@ -11,6 +11,15 @@ module ApplicationHelper
     '<span class="required">*</span>'
   end
   
+  def short_description(str, max_length = 50)
+    if (str and
+        str.length > max_length)
+      "#{str[0..max_length]}..."
+    else
+      str
+    end
+  end
+  
   def unit_options
     VOLUME_UNITS.concat(WEIGHT_UNITS).concat(CONCENTRATION_UNITS).sort
   end

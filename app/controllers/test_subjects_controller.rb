@@ -6,11 +6,11 @@ class TestSubjectsController < ApplicationController
   # GET /test_subjects
   # GET /test_subjects.xml
   def index
-    @search = TestSubject.search(params[:search])
-    @test_subjects = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-                      @search.includes(:samples, :site).all :
-                      @search.with_site(current_user.site).includes(:samples, :site).all
-
+    @search = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+              TestSubject.search(params[:search]) :
+              TestSubject.with_site(current_user.site).search(params[:search])
+    @test_subjects = @search.includes(:samples, :site).all
+  
     respond_to do |format|
       format.html { render :template => "#{VIEW_PATH}/index" }
       format.xml  { render :xml => @test_subjects }
