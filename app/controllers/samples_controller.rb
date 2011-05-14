@@ -14,7 +14,7 @@ class SamplesController < ApplicationController
       if can_view_all(current_user)
         @samples = @all_samples
       else
-        @samples = find_for_site(@all_samples.all, current_user.site)
+        @samples = find_for_site(@all_samples, current_user.site)
       end
     else
       @samples = @parent.samples
