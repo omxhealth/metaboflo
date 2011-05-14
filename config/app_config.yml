@@ -1,11 +1,8 @@
 development:
   domain: localhost:3000
-  r_home: '/Library/Frameworks/R.framework/Resources'
 
 test:
   domain: test.host
-  r_home: '/Library/Frameworks/R.framework/Resources'
 
 production:
   domain: example.com
-  r_home: '/Library/Frameworks/R.framework/Resources'

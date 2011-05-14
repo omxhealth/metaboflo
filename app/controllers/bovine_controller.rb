@@ -20,15 +20,4 @@ class BovineController < ApplicationController
     @stats << ["Number of Samples", Sample.count]
     @stats << ["Number of Experiments", Experiment.count]
   end
-  
-  def show_image
-    # next 6 lines use R to plot a histogram
-    @r = RSRuby.instance
-    puts "R instance = #{@r.object_id}"
-    @r.source("#{Rails.root}/lib/R/test.R")
-    # then read the png file and deliver it to the browser
-    @g = File.open("/tmp/plot.png", "rb") {|@f| @f.read}
-    send_data @g, :type=>"image/png", :disposition=>'inline'
-  end
-  
 end
