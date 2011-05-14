@@ -1,3 +1,12 @@
+*** INSTALLATION ***
+
+- Install [R]: http://cran.r-project.org/mirrors.html
+
+- run "sudo R" and then issue the following commands:
+  - install.packages("ggplot2", dependencies = TRUE)
+
+------------
+
 To initialize, run:
 
 rake metabolites:import
@@ -5,3 +14,5 @@ rake metabolites:import
 For demo data:
 
 rake demo:load
+
+
