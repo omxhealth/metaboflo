@@ -1,0 +1,101 @@
+<h1>New Experiment</h1>
+
+<%= form_for [:workflows, @sample, setup_workflow_experiment(@experiment)], :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  
+  <fieldset>
+    <legend>Sample Details</legend>
+    <%= f.fields_for :sample do |sample_form| %>
+      <div class="field">
+        <%= sample_form.label :sample_type %>
+        <%= sample_form.select :sample_type, ['ruminal', 'blood', 'milk', 'urine', 'feces'], :include_blank => true %>
+      </div>
+      <div class="field">
+        <%= sample_form.label :barcode %>
+        <%= sample_form.text_field :barcode, :size => 30 %>
+      </div>
+      <div class="field">
+        <%= sample_form.label :original_amount %>
+        <%= sample_form.text_field :original_amount, :label => 'Amount received', :size => 5 %> 
+        <%= sample_form.select :original_unit, volume_unit_options, :include_blank => true, :no_label => true %>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :amount_used %>
+      <%= f.text_field :amount_used, :size => 5 %> 
+      <%= f.select :amount_used_unit, volume_unit_options, :include_blank => true %>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Experiment Description</legend>
+    <div class="field">
+      <%= f.label :name, "#{Experiment.human_attribute_name(:name)}#{required}".html_safe %>
+      <%= f.text_field :name, :style => "width: 250px" %>
+    </div>
+    <div class="field">
+      <%= f.label :protocol %>
+      <%= f.select :protocol_id, Protocol.all.collect {|p| [ "#{p.name} (version #{p.version})", p.id ] }, :include_blank => true %>
+    </div>
+    <div class="field">
+      <%= f.label :experiment_type_id, "#{Experiment.human_attribute_name(:experiment_type_id)}#{required}".html_safe %>
+      <%= f.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :style => "width: 350px; height: 70px" %>
+    </div>
+    <div class="field">
+      <%= f.label :comments %><br />
+      <%= f.text_area :comments, :style => "width: 350px; height: 70px" %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Analysis</legend>
+    <% user_options = User.find(:all, :order => 'name ASC').collect { |u| [ u.name, u.id ] } %>
+    <div class="field">
+      <%= f.label :assigned_to_id %>
+      <%= f.select :assigned_to_id, user_options, :include_blank => true %> 
+      on <%= f.date_select :perform_on, :include_blank => true %>
+    </p>
+    <div class="field">
+      <%= f.label :performed_by_id %>
+      <%= f.select :performed_by_id, user_options, :include_blank => true %>
+      on <%= f.date_select :performed_on, :no_label => true, :include_blank => true %>
+    </div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Data files</legend>
+    <%= f.fields_for :data_files do |data_file_form| %>
+      <div class="box">
+        <div class="field">
+          <%= data_file_form.label :data, "#{DataFile.human_attribute_name(:data)}#{required}".html_safe %>
+          <%= data_file_form.file_field :data %>
+        </div>
+        <div class="field">
+          <%= data_file_form.label :data_file_type_id, "#{DataFile.human_attribute_name(:data_file_type_id)}#{required}".html_safe %>
+          <%= data_file_form.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
+        </div>
+        <div class="field">
+          <%= data_file_form.label :has_concentrations %>
+        </div>
+        <div class="field-checkbox">
+          <%= data_file_form.check_box :has_concentrations %>
+          (<%= link_to 'File Format Information', '/file_format.html', :target => '_blank' %>)
+        </div>
+        <div class="field">
+          <%= data_file_form.label :has_concentration_units %>
+          <%= data_file_form.select :has_concentration_units, ["uM", "mmol / mol creatinine"], :include_blank => true %>
+        </div>
+        <div class="field">
+          <%= data_file_form.label :description %><br />
+          <%= data_file_form.text_area :description, :style => "width: 350px; height: 70px" %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+  
+  <%= f.submit %>
+<% end %>

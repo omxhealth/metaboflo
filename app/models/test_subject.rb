@@ -2,6 +2,7 @@ class TestSubject < ActiveRecord::Base
   belongs_to :site
   
   has_many :samples, :dependent => :destroy
+  accepts_nested_attributes_for :samples, :allow_destroy => true
   
   has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments

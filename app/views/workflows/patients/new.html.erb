@@ -1,0 +1,13 @@
+<h1>Create new patient</h1>
+
+<%= labelled_tabular_form_for [:workflow, @test_subject], :url => workflows_patients_path do |f| %>
+  <%= f.error_messages %>
+
+  <fieldset>
+    <legend>Patient Identification</legend>
+    <p><%= f.text_field :code, :required => true %></p>
+    <p><%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :required => true, :include_blank => true %></p>
+  </fieldset>
+  
+  <%= f.submit 'Next' %>
+<% end %>
