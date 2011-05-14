@@ -3,4 +3,4 @@
 # and setting display:inline has a bug in Safari.
 
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance|
-"<span class=\"fieldWithErrors\">#{html_tag}</span>" }
+"<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe }

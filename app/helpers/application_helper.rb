@@ -7,6 +7,10 @@ module ApplicationHelper
   
   require 'tabular_form_builder'
   
+  def required
+    '<span class="required">*</span>'
+  end
+  
   def short_description(str, max_length = 50)
     if (str and
         str.length > max_length)

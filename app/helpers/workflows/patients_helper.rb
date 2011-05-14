@@ -1,0 +1,2 @@
+module Workflows::PatientsHelper
+end
