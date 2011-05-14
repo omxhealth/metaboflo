@@ -9,7 +9,9 @@
   <legend>Data Analysis</legend>
   This study is eligible for analysis. You may export the study to comma-seperated-value (CSV) format. Exporting a study will create a CSV file in a format accepted by many data analysis programs (for example, <%= link_to 'Metaboanalyst', 'http://www.metaboanalyst.ca', :target => '_blank' %>). Each row in the file will be a labelled <%= TestSubject.title %> from the database, annotated with identified metabolites. You may also run basic PCA and Correlation analysis if you have at least two cohorts in your study.
   <br /><br />
-  <%= link_to 'Run Analysis', analysis_study_path(@study), :style => "font-weight: bold; display: #{ @study.study_cohort_assignments.length > 1 ? 'block' : 'none'}", :id => 'run-analysis' %><br /><%= link_to 'Export', export_study_path(@study), :style => 'font-weight: bold' %>
+  <%= link_to 'Run Analysis', analysis_study_path(@study), :style => "font-weight: bold; display: #{ @study.study_cohort_assignments.length > 1 ? 'block' : 'none'}", :id => 'run-analysis' %><br />
+  <%= link_to 'Export to MetaboAnalyst', study_path(@study, :format => :metaboanalyst), :style => 'font-weight: bold' %> | 
+  <%= link_to 'Export to Umetrics', study_path(@study, :format => :umetrics), :style => 'font-weight: bold' %>
 </fieldset>
 
 <h2><%= TestSubject.title %> cohorts in this study:</h2>

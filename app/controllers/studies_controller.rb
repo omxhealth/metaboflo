@@ -10,7 +10,7 @@ class StudiesController < ApplicationController
     @study = Study.find(params[:id])
     
     data = study_data(@study)
-    csv_string = generate_csv(data)
+    csv_string = generate_csv(data, :kind => :metaboanalyst)
     
     @pca_image = pca(csv_string)
     @corr_image = corr(csv_string)
@@ -40,13 +40,13 @@ class StudiesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @study }
-      format.csv { 
+      format.metaboanalyst { 
         csv_string = generate_csv( study_data(@study), :kind => :metaboanalyst )
-        send_data csv_string, :filename => @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv"
+        send_data( csv_string, :filename => @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv" )
       }
       format.umetrics { 
         csv_string = generate_csv( study_data(@study), :kind => :umetrics )
-        send_data csv_string, :filename => @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv"
+        send_data( csv_string, :filename => @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv" )
       }
     end
   end
@@ -122,7 +122,7 @@ class StudiesController < ApplicationController
   # Passed an array of instances, represented by hashes. Takes an options hash which includes
   # a :kind which indicates :umetrics or :metaboanalyst
   def generate_csv(data, options={})
-    raise ArgumentError unless ALLOWED_EXPORT_KINDS.includes?(options[:kind])
+    raise ArgumentError unless ALLOWED_EXPORT_KINDS.include?(options[:kind])
   
     csv_string = FasterCSV.generate do |csv|
       #Do first pass of the data to get a list of feature names:
