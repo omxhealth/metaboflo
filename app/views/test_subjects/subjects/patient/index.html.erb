@@ -13,9 +13,9 @@
 
 	<% for patient in @test_subjects %>
 	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%=h patient.code %></td>
-		<td><%=h patient.name %></td>
-		<td><%=h patient.site.name %></td>
+		<td><%= link_to(patient.code, patient) %></td>
+		<td><%= patient.name %></td>
+		<td><%= patient.site.name %></td>
 		<td><%= patient.samples.length %> (<%= link_to 'display', test_subject_samples_path(patient) %>)</td>
     <td><%= patient.practitioner %></td>
     <td><%= truncate(patient.notes) %></td>
