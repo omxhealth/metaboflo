@@ -1,4 +1,6 @@
 class Sample < ActiveRecord::Base
+  SAMPLE_TYPES = ['ruminal', 'blood', 'milk', 'urine', 'feces']
+  
   belongs_to :test_subject
   belongs_to :sample
   belongs_to :site
@@ -26,7 +28,15 @@ class Sample < ActiveRecord::Base
   
   # Required so that Experiments, Samples, and TestSubjects can be displayed in cohorts
   def to_s
-    return "#{self.barcode} (#{sample_type} - #{original_amount} #{original_unit})"
+    return "#{self.barcode.blank? ? 'No barcode' : self.barcode} (#{sample_type.blank? ? 'No sample type' : sample_type} - #{original_amount.blank? ? 'Unknown amount' : "#{original_amount} #{original_unit}"})"
+  end
+  
+  def test_subject_code
+    self.test_subject.code if self.test_subject
+  end
+
+  def test_subject_code=(code)
+    self.test_subject = TestSubject.find_by_code(code) unless code.blank?
   end
   
   def sample_chronology

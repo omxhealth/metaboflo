@@ -2,8 +2,6 @@ class DataFile < ActiveRecord::Base
   belongs_to :experiment
   has_attached_file :data, :url => "/system/:attachment/:id/:filename", :path => ":rails_root/public/system/:attachment/:id/:filename"
   
-  validates_presence_of :data_file_type_id
-  
   belongs_to :data_file_type
   belongs_to :experiment
   

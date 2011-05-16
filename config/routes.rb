@@ -1,10 +1,10 @@
 Metaboflo::Application.routes.draw do
   namespace :workflows do
-    resources :experiments, :except => [:new, :create]
-    resources :samples, :only => [] do
-      resources :experiments, :only => [:new, :create]
+    resources :experiments
+    resources :patients, :only => [:index, :new, :create] do
+      resources :samples, :only => [:show, :new, :create]
     end
-    resources :patients, :only => [:new, :create]
+    resources :samples, :only => [:index, :show]
   end
   
   devise_for :users
@@ -39,7 +39,7 @@ Metaboflo::Application.routes.draw do
 
   # Add routes to direct the cohort types to the correct place
   Cohort.valid_types.each do |cohort_type|
-    resources "#{cohort_type.tableize.singularize}_cohorts", :controller => 'cohorts', :requirements => { :type => cohort_type } 
+    resources "#{cohort_type.tableize.singularize}_cohorts", :controller => 'cohorts', :defaults => { :type => cohort_type } 
   end
 
   resources :sites do

@@ -7,6 +7,10 @@ module ApplicationHelper
   
   require 'tabular_form_builder'
   
+  def error_message(attribute, errors)
+    "<span class=\"field-error\">#{attribute} #{errors.first}</span>".html_safe unless errors.empty?
+  end
+  
   def required
     '<span class="required">*</span>'
   end
@@ -97,4 +101,37 @@ module ApplicationHelper
     return link_to(name, url, html_options)
   end
   
+  # association
+  def add_link_for_new_fields_for(form_builder, model_name)
+    association = model_name.to_s.underscore.pluralize
+    link_to_function "Add #{model_name.to_s.underscore.humanize.downcase}" do |page|
+      form_builder.fields_for(association.to_sym, model_name.to_s.camelize.constantize.new, :child_index => 'NEW_RECORD') do |f|
+        html = render(:partial => model_name.to_s.underscore, :locals => { :f => f })
+        page << "$('##{association}').append('#{escape_javascript(html)}'.replace(/NEW_RECORD/g, new Date().getTime())); if( $('##{association}').css('display') == 'none' ) { $('##{association}').toggle('blind'); }"
+      end
+    end
+  end
+  
+  def new_child_fields(form_builder, method, options = {})
+    options[:object] ||= form_builder.object.class.reflect_on_association(method).klass.new
+    options[:partial] ||= method.to_s.singularize
+    options[:form_builder_local] ||= :f
+    form_builder.fields_for(method, options[:object], :child_index => "new_#{method}") do |f|
+      render(:partial => options[:partial], :locals => { options[:form_builder_local] => f })
+    end
+  end
+
+  # Display the remove link for a child form
+  def remove_fields_for(form_builder, model_name)
+    if form_builder.object.new_record?
+      # If the object is a new record, we can just remove the div from the dom
+      link_to_function('Remove', "$(this).parent('.fields').remove();")
+    else
+      # However if it's a "real" record it has to be deleted from the database,
+      # for this reason the new fields_for, accepts_nested_attributes_for helpers give us _delete,
+      # a virtual attribute that tells rails to delete the child record
+      form_builder.hidden_field(:_destroy) +
+      link_to_function('Remove', "$(this).parent('.fields').fade(); $(this).siblings(':last').val('1')")
+    end
+  end
 end

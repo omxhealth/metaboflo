@@ -1,0 +1,2 @@
+module Workflows::SamplesHelper
+end

@@ -1,0 +1,8 @@
+$('#experiment_sample_id').html("<option value=\"\"></option>" + '<%= @samples.collect { |s| "<option value=\"#{s.id}\">#{s.to_s}</option>" }.join('').html_safe %>');
+
+<% if @samples.empty? %>
+	$('#workflow-sample').html("You must choose a valid patient first");
+<% else %>
+	<% patient = @samples.first.test_subject %>
+	$.ajax("<%= new_workflows_patient_sample_path patient, :format => :js %>");
+<% end %>

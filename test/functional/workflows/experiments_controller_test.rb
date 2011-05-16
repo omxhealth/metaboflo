@@ -9,17 +9,17 @@ class Workflows::ExperimentsControllerTest < ActionController::TestCase
 
   test "should get new" do
     login_as :admin
-    get :new, :sample_id => samples(:one).to_param
+    get :new, :patient_id => test_subjects(:one).to_param
     assert_response :success
   end
 
   test "should create experiment" do
     login_as :admin
     assert_difference('Experiment.count') do
-      post :create, :experiment => { :name => 'new experiment', :experiment_type_id => experiment_types(:one).id }, :sample_id => samples(:one).to_param
+      post :create, :experiment => { :sample_id => samples(:one).id, :name => 'new experiment', :experiment_type_id => experiment_types(:one).id }, :patient_id => samples(:one).test_subject.to_param
     end
 
-    assert_redirected_to sample_experiment_path(assigns(:sample), assigns(:experiment))
+    assert_redirected_to [samples(:one), assigns(:experiment)]
   end
 
   test "should show experiment" do
@@ -37,7 +37,7 @@ class Workflows::ExperimentsControllerTest < ActionController::TestCase
   test "should update experiment" do
     login_as :admin
     put :update, :id => experiments(:one).to_param, :experiment => { }
-    assert_redirected_to workflows_experiment_path(assigns(:experiment))
+    assert_redirected_to [:workflows, assigns(:experiment)]
   end
 
   test "should destroy experiment" do
