@@ -1,0 +1,67 @@
+<%= form_for [:workflow, setup_workflow_patient(@test_subject)], :url => workflows_patients_path, :remote => true do |f| %>
+  <h2>Patient Identification</h2>
+  <div class="field">
+    <%= f.label :code, "#{TestSubject.human_attribute_name(:code)}#{required}".html_safe %>
+    <%= f.text_field :code %>
+    <%= error_message(TestSubject.human_attribute_name(:code), @test_subject.errors[:code]) %>
+  </div>
+  <div class="field">
+    <%= f.label :site_id, "#{TestSubject.human_attribute_name(:site_id)}#{required}".html_safe %>
+    <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :required => true, :include_blank => true %>
+    <%= error_message(TestSubject.human_attribute_name(:site_id), @test_subject.errors[:site_id]) %>
+  </div>
+  
+  <h2>Sample Information</h2>
+  <%= f.fields_for :samples do |sample_form| %>
+    <div class="field">
+      <%= sample_form.label :sample_type %>
+      <%= sample_form.select :sample_type, Sample::SAMPLE_TYPES, :include_blank => true %>
+    </div>
+    <div class="field">
+      <%= sample_form.label :barcode %>
+      <%= sample_form.text_field :barcode, :size => 30 %>
+    </div>
+    <div class="field">
+      <%= sample_form.label :original_amount %>
+      <%= sample_form.text_field :original_amount, :size => 5 %> 
+      <%= sample_form.select :original_unit, volume_unit_options, :include_blank => true, :no_label => true %>
+    </div>
+  <% end %>
+
+  <div id="patient-more" style="display: none;">
+    <h2>Patient Personal Details</h2>
+    <div class="field">
+      <%= f.label :birthdate %>
+      <%= f.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-100, :end_year => Time.now.year %>
+    </div>
+    <div class="field">
+      <%= f.label :blood_type %>
+      <%= f.select :blood_type, ['A', 'B', 'O', 'AB'], :include_blank => true %>
+    </div>
+    <div class="field">
+      <%= f.label :gender %>
+      <%= f.select :gender, ['Male', 'Female'], :include_blank => true %>
+    </div>
+    <div class="field">
+      <%= f.label :race %>
+      <%= f.select :race, ['Caucasian (White)', 'Black', 'Hispanic', 'Asian', 'Native Indian', 'Multiracial', 'Unknown', 'Not available'], :include_blank => true %>
+    </div>
+  
+    <h2>Practitioner Notes</h2>
+    <div class="field">
+      <%= f.label :practitioner %>
+      <%= f.text_field :practitioner %>
+      <%= error_message(TestSubject.human_attribute_name(:practitioner), @test_subject.errors[:practitioner]) %>
+    </div>
+    <div class="field">
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </div>
+  </div>
+  
+  <div class="field-no-label">
+    <%= f.submit 'Create Patient' %>
+  </div>
+  
+  <%= link_to 'Show/Hide other patient fields', '#', :onclick => "$('#patient-more').toggle('blind'); return false;" %></legend>
+<% end %>

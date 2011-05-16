@@ -1,25 +1,90 @@
+<% content_for :css do %>
+  <style type="text/css">
+    .ui-dialog {
+      border: 1px solid black;
+    }
+    
+    .ui-dialog-titlebar {
+      background-color: #cdcdcd;
+      border-bottom: 1px solid black;
+      padding: 1em;
+      text-align: left;
+    }
+    
+    .ui-dialog-title {
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+    
+    .ui-dialog-titlebar-close {
+      float: right;
+    }
+    
+    .ui-dialog-content {
+      background-color: #efefef;
+    }
+    
+    #workflow-patient h2, #workflow-patient .field-no-label {
+      text-align: left;
+    }
+    
+    #workflow-patient a, #workflow-patient a:hover {
+      text-align: left;
+    }
+  </style>
+<% end %>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    function find_samples(code) {
+      $.ajax("<%= workflows_samples_path :format => :js %>?code=" + code);
+    }
+    
+    function new_patient() {
+      $('#workflow-patient').dialog({ position: 'center', modal: true, title: 'Create New Patient', minHeight: 300, minWidth: 800 });
+    }
+    
+    function new_sample() {
+      $('#workflow-sample').dialog({ position: 'center', modal: true, title: 'Create New Sample', minHeight: 300, minWidth: 800 });
+    }
+    
+    $().ready(function() {
+      $.ajax("<%= new_workflows_patient_path :format => :js %>");
+      
+      $('#experiment_sample_attributes_test_subject_code').autocomplete('<%= workflows_patients_path %>', {
+        selectFirst: false
+      });
+      $('#experiment_sample_attributes_test_subject_code').result(function(event, data, formatted) {
+        find_samples(formatted);
+      });
+      $('#experiment_sample_attributes_test_subject_code').change(function() {
+        find_samples($('#experiment_sample_attributes_test_subject_code').val());
+      });
+    });
+  </script>
+<% end %>
+
 <h1>New Experiment</h1>
 
-<%= form_for [:workflows, @sample, setup_workflow_experiment(@experiment)], :html => { :multipart => true } do |f| %>
+<%= form_for [:workflows, setup_workflow_experiment(@experiment)], :html => { :multipart => true, :autocomplete => false } do |f| %>
   <%= f.error_messages %>
   
   <fieldset>
     <legend>Sample Details</legend>
     <%= f.fields_for :sample do |sample_form| %>
       <div class="field">
-        <%= sample_form.label :sample_type %>
-        <%= sample_form.select :sample_type, ['ruminal', 'blood', 'milk', 'urine', 'feces'], :include_blank => true %>
-      </div>
-      <div class="field">
-        <%= sample_form.label :barcode %>
-        <%= sample_form.text_field :barcode, :size => 30 %>
-      </div>
-      <div class="field">
-        <%= sample_form.label :original_amount %>
-        <%= sample_form.text_field :original_amount, :label => 'Amount received', :size => 5 %> 
-        <%= sample_form.select :original_unit, volume_unit_options, :include_blank => true, :no_label => true %>
+        <%= sample_form.label :test_subject_code %>
+        <%= sample_form.text_field :test_subject_code %>
+        <%= link_to 'New patient', '#', :onclick => 'javascript:new_patient(); return false;' %>
       </div>
     <% end %>
+    <div id="workflow-patient" style="display: none;"></div>
+    <div class="field">
+      <%= f.label :sample_id %>
+      <%= f.select :sample_id, (@experiment.sample.test_subject.nil? ? [] : @experiment.sample.test_subject.samples.collect { |ts| [ts.to_s, ts.id] }), :include_blank => true %>
+      <%= link_to 'New sample', '#', :onclick => 'javascript:new_sample(); return false;' %>
+    </div>
+    <div id="workflow-sample" style="display: none;">You must choose a valid patient first</div>
     <div class="field">
       <%= f.label :amount_used %>
       <%= f.text_field :amount_used, :size => 5 %> 
@@ -66,35 +131,15 @@
     </div>
   </fieldset>
   
-  <fieldset>
-    <legend>Data files</legend>
+  <fieldset id="data_files" class="fields-for">
+    <legend>Data files</legend>  
+    <div class="actions">
+      <%= add_link_for_new_fields_for f, :data_file %>
+    </div>
+
     <%= f.fields_for :data_files do |data_file_form| %>
-      <div class="box">
-        <div class="field">
-          <%= data_file_form.label :data, "#{DataFile.human_attribute_name(:data)}#{required}".html_safe %>
-          <%= data_file_form.file_field :data %>
-        </div>
-        <div class="field">
-          <%= data_file_form.label :data_file_type_id, "#{DataFile.human_attribute_name(:data_file_type_id)}#{required}".html_safe %>
-          <%= data_file_form.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
-        </div>
-        <div class="field">
-          <%= data_file_form.label :has_concentrations %>
-        </div>
-        <div class="field-checkbox">
-          <%= data_file_form.check_box :has_concentrations %>
-          (<%= link_to 'File Format Information', '/file_format.html', :target => '_blank' %>)
-        </div>
-        <div class="field">
-          <%= data_file_form.label :has_concentration_units %>
-          <%= data_file_form.select :has_concentration_units, ["uM", "mmol / mol creatinine"], :include_blank => true %>
-        </div>
-        <div class="field">
-          <%= data_file_form.label :description %><br />
-          <%= data_file_form.text_area :description, :style => "width: 350px; height: 70px" %>
-        </div>
-      </div>
-    <% end %>
+			<%= render :partial => 'data_file', :locals => { :f => data_file_form } %>
+ 		<% end %>
   </fieldset>
   
   <%= f.submit %>

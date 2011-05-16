@@ -1,5 +1,4 @@
 class Workflows::ExperimentsController < ApplicationController
-  before_filter :find_sample, :only => [ :new, :create ]
   before_filter :find_experiment, :except => [ :index, :new, :create ]
 
   # GET /workflows/experiments
@@ -16,10 +15,10 @@ class Workflows::ExperimentsController < ApplicationController
     end
   end
 
-  # GET /workflows/samples/1/experiments/new
-  # GET /workflows/samples/1/experiments/new.xml
+  # GET /workflows/experiments/new
+  # GET /workflows/experiments/new.xml
   def new
-    @experiment = Experiment.new(:sample => @sample)
+    @experiment = Experiment.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -31,15 +30,15 @@ class Workflows::ExperimentsController < ApplicationController
   def edit
   end
 
-  # POST /workflows/samples/1/experiments
-  # POST /workflows/samples/1/experiments.xml
+  # POST /workflows/experiments
+  # POST /workflows/experiments.xml
   def create
-    @experiment = Experiment.new(params[:experiment].merge(:sample => @sample))
+    @experiment = Experiment.new(params[:experiment])
 
     respond_to do |format|
       if @experiment.save
         flash[:notice] = 'Experiment was successfully created.'
-        format.html { redirect_to([@sample, @experiment]) }
+        format.html { redirect_to([@experiment.sample, @experiment]) }
         format.xml  { render :xml => @experiment, :status => :created, :location => @experiment }
       else
         format.html { render :action => "new" }
@@ -75,10 +74,6 @@ class Workflows::ExperimentsController < ApplicationController
   end
 
   private
-    def find_sample
-      @sample = Sample.find(params[:sample_id])
-    end
-    
     def find_experiment
       @experiment = Experiment.find(params[:id])
     end

@@ -1,0 +1,10 @@
+$("#workflow-sample").dialog("close");
+
+$('#experiment_sample_id').append("<option value=\"<%= @sample.id %>\" selected=\"selected\"><%= @sample.to_s %></option>");
+
+<% if flash[:notice] %>
+	$("#flash").html("<p class=\"notice\"><%= flash[:notice] %></p>");
+<% end %>
+
+<% @sample = @sample.test_subject.samples.new %>
+$("#workflow-sample").html("<%= escape_javascript(render :partial => 'form') %>");

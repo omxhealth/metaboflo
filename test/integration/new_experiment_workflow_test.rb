@@ -12,20 +12,22 @@ class NewExperimentWorkflowTest < ActionDispatch::IntegrationTest
     assert_equal root_path, path
     
     # start new experiment workflow
-    get workflows_experiments_path
+    get new_workflows_experiment_path
     assert_response :success
     
     # new patient form
-    get new_workflows_patient_path
+    get new_workflows_patient_path, :format => :js
     assert_response :success
     
     # create patient
-    post_via_redirect workflows_patients_path, :test_subject => { :code => 'NEW007', :site_id => users(:user).site_id }
-    sample_id = TestSubject.find_by_code('NEW007').samples.first.to_param
-    assert_equal new_workflows_sample_experiment_path(sample_id), path
+    post_via_redirect workflows_patients_path, :test_subject => { :code => 'NEW007', :site_id => users(:user).site_id, :samples_attributes => { 0 => { :sample_type => 'milk' } } }, :format => :js
+    patient = TestSubject.find_by_code('NEW007')
+    assert_equal 1, patient.samples.count
+    assert_response :success
     
     # create experiment
-    post_via_redirect workflows_sample_experiments_path(sample_id), :experiment => { :sample_id => sample_id, :name => 'Workflow experiment', :experiment_type_id => experiment_types(:one).id }
-    assert_equal sample_experiment_path(sample_id, Experiment.find_by_name('Workflow experiment')), path
+    post_via_redirect workflows_experiments_path, :experiment => { :sample_id => patient.samples.first.id, :name => 'Workflow experiment', :experiment_type_id => experiment_types(:one).id }
+    experiment = Experiment.find_by_name('Workflow experiment')
+    assert_equal sample_experiment_path(experiment.sample, experiment), path
   end
 end

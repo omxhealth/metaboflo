@@ -1,0 +1,22 @@
+<%= form_for [:workflow, @sample.test_subject, @sample], :url => workflows_patient_samples_path, :remote => true do |f| %>
+
+  <h2>Patient <%= @patient.code %></h2>
+  
+  <div class="field">
+    <%= f.label :sample_type %>
+    <%= f.select :sample_type, Sample::SAMPLE_TYPES, :include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode %>
+    <%= f.text_field :barcode, :size => 30 %>
+  </div>
+  <div class="field">
+    <%= f.label :original_amount %>
+    <%= f.text_field :original_amount, :size => 5 %> 
+    <%= f.select :original_unit, volume_unit_options, :include_blank => true, :no_label => true %>
+  </div>
+  
+  <div class="field-no-label">
+    <%= f.submit %>
+  </div>
+<% end %>
