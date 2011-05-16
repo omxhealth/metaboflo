@@ -1,53 +1,10 @@
 <% content_for :css do %>
-  <style type="text/css">
-    .ui-dialog {
-      border: 1px solid black;
-    }
-    
-    .ui-dialog-titlebar {
-      background-color: #cdcdcd;
-      border-bottom: 1px solid black;
-      padding: 1em;
-      text-align: left;
-    }
-    
-    .ui-dialog-title {
-      font-size: 1.4em;
-      font-weight: bold;
-    }
-    
-    .ui-dialog-titlebar-close {
-      float: right;
-    }
-    
-    .ui-dialog-content {
-      background-color: #efefef;
-    }
-    
-    #workflow-patient h2, #workflow-patient .field-no-label {
-      text-align: left;
-    }
-    
-    #workflow-patient a, #workflow-patient a:hover {
-      text-align: left;
-    }
-  </style>
+  <%= stylesheet_link_tag 'workflows' %>
 <% end %>
 
 <% content_for :javascript do %>
+  <%= javascript_include_tag 'workflows' %>
   <script type="text/javascript">
-    function find_samples(code) {
-      $.ajax("<%= workflows_samples_path :format => :js %>?code=" + code);
-    }
-    
-    function new_patient() {
-      $('#workflow-patient').dialog({ position: 'center', modal: true, title: 'Create New Patient', minHeight: 300, minWidth: 800 });
-    }
-    
-    function new_sample() {
-      $('#workflow-sample').dialog({ position: 'center', modal: true, title: 'Create New Sample', minHeight: 300, minWidth: 800 });
-    }
-    
     $().ready(function() {
       $.ajax("<%= new_workflows_patient_path :format => :js %>");
       
@@ -55,10 +12,10 @@
         selectFirst: false
       });
       $('#experiment_sample_attributes_test_subject_code').result(function(event, data, formatted) {
-        find_samples(formatted);
+        find_samples("<%= workflows_samples_path :format => :js %>", formatted);
       });
       $('#experiment_sample_attributes_test_subject_code').change(function() {
-        find_samples($('#experiment_sample_attributes_test_subject_code').val());
+        find_samples("<%= workflows_samples_path :format => :js %>", $('#experiment_sample_attributes_test_subject_code').val());
       });
     });
   </script>
