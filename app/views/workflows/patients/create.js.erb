@@ -1,13 +1,10 @@
-$("#workflow-patient").dialog("close");
-
-$('#experiment_sample_attributes_test_subject_code').val("<%= @test_subject.code %>");
+close_patient_dialog();
+set_patient_code("<%= @test_subject.code %>");
 
 <% sample = @test_subject.samples.first %>
-$('#experiment_sample_id').html("<option value=\"\"></option><option value=\"<%= sample.id %>\" selected=\"selected\"><%= sample.to_s %></option>");
+reset_sample_options('<%= options_for_select([['', ''], [sample.to_s, sample.id]], sample.id).gsub(/\n/, '') %>');
 
-<% if flash[:notice] %>
-	$("#flash").html("<p class=\"notice\"><%= flash[:notice] %></p>");
-<% end %>
+<% if flash[:notice] %>set_flash('notice', "<%= flash[:notice] %>");<% end %>
 
 <% @test_subject = TestSubject.new %>
-$("#workflow-patient").html("<%= escape_javascript(render :partial => 'form') %>");
+new_patient_form("<%= escape_javascript(render :partial => 'form') %>");

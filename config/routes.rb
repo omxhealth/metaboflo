@@ -2,7 +2,7 @@ Metaboflo::Application.routes.draw do
   namespace :workflows do
     resources :experiments
     resources :patients, :only => [:index, :new, :create] do
-      resources :samples, :only => [:show, :new, :create]
+      resources :samples, :only => [:new, :create]
     end
     resources :samples, :only => [:index, :show]
   end

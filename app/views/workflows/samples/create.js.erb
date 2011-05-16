@@ -1,10 +1,8 @@
-$("#workflow-sample").dialog("close");
+close_sample_dialog();
 
-$('#experiment_sample_id').append("<option value=\"<%= @sample.id %>\" selected=\"selected\"><%= @sample.to_s %></option>");
+add_new_selected_sample_option("<%= @sample.id %>", "<%= @sample.to_s %>");
 
-<% if flash[:notice] %>
-	$("#flash").html("<p class=\"notice\"><%= flash[:notice] %></p>");
-<% end %>
+<% if flash[:notice] %>set_flash('notice', "<%= flash[:notice] %>");<% end %>
 
 <% @sample = @sample.test_subject.samples.new %>
-$("#workflow-sample").html("<%= escape_javascript(render :partial => 'form') %>");
+new_sample_form("<%= escape_javascript(render :partial => 'form') %>");

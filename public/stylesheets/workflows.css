@@ -1,27 +1,3 @@
-.ui-dialog {
-  border: 1px solid black;
-}
-
-.ui-dialog-titlebar {
-  background-color: #cdcdcd;
-  border-bottom: 1px solid black;
-  padding: 1em;
-  text-align: left;
-}
-
-.ui-dialog-title {
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-.ui-dialog-titlebar-close {
-  float: right;
-}
-
-.ui-dialog-content {
-  background-color: #efefef;
-}
-
 #workflow-patient h2, #workflow-patient .field-no-label {
   text-align: left;
 }

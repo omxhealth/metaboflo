@@ -7,6 +7,12 @@ module ApplicationHelper
   
   require 'tabular_form_builder'
   
+  def date_picker(id)
+    javascript_tag do
+      "$(function() { $('##{id}').datepicker(); });"
+    end.html_safe
+	end
+	
   def error_message(attribute, errors)
     "<span class=\"field-error\">#{attribute} #{errors.first}</span>".html_safe unless errors.empty?
   end
