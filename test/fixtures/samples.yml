@@ -40,6 +40,7 @@ four:
   actual_amount: 10.3
   actual_amount: ml
   barcode: 12348
+  test_subject: one
   sample: one
   collected_on: 2008-09-25
   collected_by: 

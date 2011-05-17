@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class TestSubjectTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  test "samples vs child_samples" do
+    assert_equal 3, test_subjects(:one).samples.count
+    assert_equal 2, test_subjects(:one).child_samples.count
   end
 end

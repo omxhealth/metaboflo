@@ -1,9 +1,26 @@
 require 'test_helper'
 
 class SampleTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  test "set_test_subject_id" do
+    parent_sample = Sample.new(:test_subject => test_subjects(:one))
+    sample = Sample.new
+    assert sample.test_subject_id.blank?
+    sample.sample = parent_sample
+    sample.valid?
+    assert_not_nil sample.test_subject_id
+    assert_equal parent_sample.test_subject_id, sample.test_subject_id
+  end
+  
+  test "test_subject_id equal to test_subject_id of parent sample" do
+    parent_sample = Sample.new(:test_subject => test_subjects(:one))
+    sample = Sample.new(:test_subject => test_subjects(:two), :sample => parent_sample)
+    assert !sample.valid?
+    
+    sample.test_subject = test_subjects(:one)
+    assert sample.valid?
+    
+    sample.sample.test_subject = test_subjects(:two)
+    assert !sample.valid?
   end
   
   def test_taken_on

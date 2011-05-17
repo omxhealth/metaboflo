@@ -4,6 +4,8 @@ class TestSubject < ActiveRecord::Base
   has_many :samples, :dependent => :destroy
   accepts_nested_attributes_for :samples, :allow_destroy => true
   
+  has_many :child_samples, :conditions => 'sample_id IS NULL', :class_name => 'Sample'
+  
   has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
   has_many :cohorts, :through => :cohort_assignments
   

@@ -16,5 +16,4 @@ class Workflows::PatientsControllerTest < ActionController::TestCase
     assert_equal 1, assigns(:test_subject).samples.count
     assert_redirected_to new_workflows_experiment_path
   end
-  
 end
