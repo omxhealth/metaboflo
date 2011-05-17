@@ -2,6 +2,8 @@ close_sample_dialog();
 
 add_new_selected_sample_option("<%= @sample.id %>", "<%= @sample.to_s %>");
 
+set_sample_readonly("<%= escape_javascript(render :partial => 'show') %>", <%= @sample.id %>);
+
 <% if flash[:notice] %>set_flash('notice', "<%= flash[:notice] %>");<% end %>
 
 <% @sample = @sample.test_subject.samples.new %>

@@ -7,16 +7,16 @@
   <%= javascript_tag do %>
     $().ready(function() {
       $.ajax("<%= new_workflows_patient_path :format => :js %>");
-      new_sample_form();
+      new_sample_form(<%= new_sample_form_for_test_subject(@experiment.test_subject_code) %>);
       
-      $('#experiment_sample_attributes_test_subject_code').autocomplete('<%= workflows_patients_path %>', {
+      $('#experiment_test_subject_code').autocomplete('<%= workflows_patients_path %>', {
         selectFirst: false
       });
-      $('#experiment_sample_attributes_test_subject_code').result(function(event, data, formatted) {
+      $('#experiment_test_subject_code').result(function(event, data, formatted) {
         find_samples("<%= workflows_samples_path :format => :js %>", formatted);
       });
-      $('#experiment_sample_attributes_test_subject_code').change(function() {
-        find_samples("<%= workflows_samples_path :format => :js %>", $('#experiment_sample_attributes_test_subject_code').val());
+      $('#experiment_test_subject_code').change(function() {
+        find_samples("<%= workflows_samples_path :format => :js %>", $('#experiment_test_subject_code').val());
       });
     });
   <% end %>
@@ -25,28 +25,35 @@
 <h1>New Experiment</h1>
 
 <%= form_for [:workflows, setup_workflow_experiment(@experiment)], :html => { :multipart => true, :autocomplete => false } do |f| %>
-  <%= f.error_messages %>
+  <% flash.now[:error] = "#{pluralize(@experiment.errors.count, "error")} prohibited this experiment from being saved" if @experiment.errors.any? %>
   
   <fieldset>
     <legend>Sample Details</legend>
-    <%= f.fields_for :sample do |sample_form| %>
-      <div class="field">
-        <%= sample_form.label :test_subject_code %>
-        <%= sample_form.text_field :test_subject_code %>
-        <%= link_to 'New patient', '#', :onclick => 'javascript:new_patient_dialog(); return false;' %>
-      </div>
-    <% end %>
-    <div id="workflow-patient" style="display: none;"></div>
-    <div class="field">
-      <%= f.label :sample_id %>
-      <%= f.select :sample_id, (@experiment.sample.test_subject.nil? ? [] : @experiment.sample.test_subject.samples.collect { |ts| [ts.to_s, ts.id] }), :include_blank => true %>
-      <%= link_to 'New sample', '#', :onclick => 'javascript:new_sample_dialog(); return false;' %>
+    <div id="sample-information">
+      <% if @experiment.sample %>
+        <% @sample = @experiment.sample %>
+        <%= render :partial => '/workflows/samples/show' %>
+        <%= f.hidden_field :sample_id %>
+      <% else %>
+        <div class="field">
+          <%= f.label :test_subject_code %>
+          <%= f.text_field :test_subject_code %>
+          <%= link_to 'New patient', '#', :onclick => 'javascript:new_patient_dialog(); return false;' %>
+        </div>
+        <div id="workflow-patient" style="display: none;"></div>
+        <div class="field">
+          <%= f.label :sample_id %>
+          <%= f.select :sample_id, options_for_workflow_sample(@experiment.test_subject_code), :include_blank => true %>
+          <%= link_to 'New sample', '#', :onclick => 'javascript:new_sample_dialog(); return false;' %>
+        </div>
+      <% end %>
     </div>
     <div id="workflow-sample" style="display: none;"></div>
     <div class="field">
       <%= f.label :amount_used %>
       <%= f.text_field :amount_used, :size => 5 %> 
       <%= f.select :amount_used_unit, volume_unit_options, :include_blank => true %>
+      <%= error_message(Experiment.human_attribute_name(:amount_used_unit), f.object.errors[:amount_used_unit]) %>
     </div>
   </fieldset>
   
@@ -55,22 +62,27 @@
     <div class="field">
       <%= f.label :name, "#{Experiment.human_attribute_name(:name)}#{required}".html_safe %>
       <%= f.text_field :name, :style => "width: 250px" %>
+      <%= error_message(Experiment.human_attribute_name(:name), f.object.errors[:name]) %>
     </div>
     <div class="field">
       <%= f.label :protocol %>
       <%= f.select :protocol_id, Protocol.all.collect {|p| [ "#{p.name} (version #{p.version})", p.id ] }, :include_blank => true %>
+      <%= error_message(Experiment.human_attribute_name(:protocol_id), f.object.errors[:protocol_id]) %>
     </div>
     <div class="field">
       <%= f.label :experiment_type_id, "#{Experiment.human_attribute_name(:experiment_type_id)}#{required}".html_safe %>
       <%= f.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
+      <%= error_message(Experiment.human_attribute_name(:experiment_type_id), f.object.errors[:experiment_type_id]) %>
     </div>
     <div class="field">
       <%= f.label :description %><br />
       <%= f.text_area :description, :style => "width: 350px; height: 70px" %>
+      <%= error_message(Experiment.human_attribute_name(:description), f.object.errors[:description]) %>
     </div>
     <div class="field">
       <%= f.label :comments %><br />
       <%= f.text_area :comments, :style => "width: 350px; height: 70px" %>
+      <%= error_message(Experiment.human_attribute_name(:comments), f.object.errors[:comments]) %>
     </div>
   </fieldset>
 

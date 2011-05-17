@@ -31,14 +31,6 @@ class Sample < ActiveRecord::Base
     return "#{self.barcode.blank? ? 'No barcode' : self.barcode} (#{sample_type.blank? ? 'No sample type' : sample_type} - #{original_amount.blank? ? 'Unknown amount' : "#{original_amount} #{original_unit}"})"
   end
   
-  def test_subject_code
-    self.test_subject.code if self.test_subject
-  end
-
-  def test_subject_code=(code)
-    self.test_subject = TestSubject.find_by_code(code) unless code.blank?
-  end
-  
   def sample_chronology
     if (test_subject and test_subject.birthdate and collected_on and test_subject.birthdate > collected_on)
       errors.add(:collected_on, "The sample cannot be taken before the #{TestSubject.title}'s birth date")

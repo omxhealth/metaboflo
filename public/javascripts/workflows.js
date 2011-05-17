@@ -39,3 +39,8 @@ function new_sample_form(html) {
 		$('#workflow-sample').html("You must choose a valid patient first") :
 		$("#workflow-sample").html(html)
 }
+
+function set_sample_readonly(html, id) {
+	$('#sample-information').html(html);
+	$('#sample-information').append('<input type="hidden" id="experiment_sample_id" name="experiment[sample_id]" value="' + id + '" />');
+}

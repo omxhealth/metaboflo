@@ -1,0 +1,20 @@
+<div class="field">
+  <%= label_tag Sample.human_attribute_name(:test_subject_id) %>
+  <%= @sample.root.code %>
+</div>
+
+<div class="field">
+  <%= label_tag Sample.human_attribute_name(:sample_type) %>
+  <%= @sample.sample_type %>
+</div>
+
+<div class="field">
+  <%= label_tag Sample.human_attribute_name(:barcode) %>
+  <%= @sample.barcode %>
+</div>
+
+<div class="field">
+  <%= label_tag Sample.human_attribute_name(:original_amount) %>
+  <%= @sample.original_amount %>
+  <%= @sample.original_unit %>
+</div>
