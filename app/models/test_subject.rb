@@ -1,8 +1,10 @@
 class TestSubject < ActiveRecord::Base
   belongs_to :site
   
-  has_many :samples, :dependent => :destroy
+  has_many :samples, :dependent => :destroy, :order => 'sample_id ASC, id ASC'
   accepts_nested_attributes_for :samples, :allow_destroy => true
+  
+  has_many :experiments, :through => :samples
   
   has_many :child_samples, :conditions => 'sample_id IS NULL', :class_name => 'Sample'
   

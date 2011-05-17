@@ -66,13 +66,14 @@ Metaboflo::Application.routes.draw do
     resources :cohort_assignments
   end
   
-  resources :test_subjects do 
+  resources :test_subjects do
     resources :meals
     resources :samples
     resources :cohort_assignments
     resources :lab_tests
     resources :medications
     resources :test_subject_evaluations
+    resources :experiments
   end
   
   resources :cohorts do 
