@@ -31,5 +31,5 @@ admin:
   password_salt: "kXoztsu11lYTJmqnBTiO"
   rank: Administrator
   remember_token: 
-  name: Administrator
+  name: Demo Account
   email: info@insiliflo.com
