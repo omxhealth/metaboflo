@@ -28,7 +28,7 @@ class DataFile < ActiveRecord::Base
   private
   def add_concentration(name, value)
     if name.length > 0
-      met = Metabolite.find(:first, :conditions => "name = '#{name}'")
+      met = Metabolite.find(:first, :conditions => "name = '#{name}' OR name = '#{name.gsub(/-/,'')}'")
 
       if met == nil
         #If we couldn't find it by name, attempt to find it by synonyms
@@ -36,8 +36,9 @@ class DataFile < ActiveRecord::Base
         found_met = nil
         potential_matches.each do |match|
           match.synonyms.split(';').each do |syn|
-            syn = syn.strip.downcase.gsub(/-/,'')
-            if syn == name.strip.downcase
+            syncleaned = syn.strip.downcase
+            namecleaned = name.strip.downcase
+            if syncleaned.gsub(/-/,'') == namecleaned or syncleaned == namecleaned
               found_met = match
             end
           end
@@ -53,12 +54,13 @@ class DataFile < ActiveRecord::Base
         c.concentration_value = value
         c.concentration_units = self.has_concentration_units
         c.metabolite = met
+        c.identified_as = name
         c.data_file = self
         c.save!
       else
         self.mapping_errors << name
       end
-    end   
+    end
   end
   
 end

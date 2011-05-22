@@ -1,14 +1,14 @@
 "1": 
-  name: Cancer
+  name: Cachexia
   type: TestSubjectCohort
   id: 1
-  description: Cancer patients
+  description: Cancer patients exhibiting Cachexia symptoms
 
 "2": 
-  name: Normals
+  name: Controls
   type: TestSubjectCohort
   id: 2
-  description: Normal patients for the cancer study
+  description: Cancer patients not exhibiting Cachexia symptoms
 
 "3": 
   name: Older than 45 years

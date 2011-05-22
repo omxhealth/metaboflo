@@ -52,7 +52,7 @@ plot.pca = function(orig_data, label.points=TRUE) {
 	p = p + opts(title = title, panel.background = theme_rect(colour = "black"))
 	p = p + xlab('Principal Component 1')	
 	p = p + ylab('Principal Component 2')
-	p = p + geom_point(size = 3)
+	p = p + geom_point(size = 4)
 	p = p + opts(legend.position='right')
   
 	if (label.points) {

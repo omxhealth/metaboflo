@@ -9,7 +9,7 @@ class Metabolite < ActiveRecord::Base
       group('concentration_units')
     
     results.each do |r|
-      stats << "#{r.average_concentration.round(2)} &#177; #{r.std_concentration.round(2)} #{r.concentration_units}"
+      stats << "<strong>Average:</strong> #{r.average_concentration.round(1)} #{r.concentration_units} (&sigma;=#{r.std_concentration.round(1)})"
     end
     stats
   end

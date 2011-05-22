@@ -33,7 +33,7 @@ def load_data_files
     
     f = File.new(path, "r")
           
-    data_file = e.data_files.create!(:data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true)
+    data_file = e.data_files.create!(:data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true, :has_concentration_units => 'uM')
   end
 end
 

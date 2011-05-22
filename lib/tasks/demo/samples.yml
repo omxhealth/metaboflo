@@ -10,7 +10,7 @@
   id: 1054583385
   original_amount: 200.0
   description: ""
-  collected_by_id: 6
+  collected_by: roman
   sample_id: 
   room: 3-27
   building: West Wing
@@ -28,7 +28,7 @@
   id: 1054583386
   original_amount: 25.0
   description: ""
-  collected_by_id: 20
+  collected_by: craig
   sample_id: 1054583385
   room: 3-27
   building: West Wing
@@ -46,7 +46,7 @@
   id: 2054534539
   original_amount: 200.0
   description: ""
-  collected_by_id: 1
+  collected_by: joseph
   sample_id: 1054534399
   room: "235"
   building: Bio Sci
@@ -64,7 +64,7 @@
   id: 1054583387
   original_amount: 5.0
   description: ""
-  collected_by_id: 19
+  collected_by: roman
   sample_id: 
   room: w203
   building: Biological Sciences
@@ -82,7 +82,7 @@
   id: 1054583388
   original_amount: 50.0
   description: ""
-  collected_by_id: 1
+  collected_by: craig
   sample_id: 
   room: "345"
   building: Biological Sciences
@@ -100,7 +100,7 @@
   id: 1054534399
   original_amount: 400.0
   description: ""
-  collected_by_id: 1
+  collected_by: joseph
   sample_id: 1054534392
   room: "235"
   building: Bio Sci
@@ -118,7 +118,7 @@
   id: 1054583390
   original_amount: 33.0
   description: ""
-  collected_by_id: 1
+  collected_by: joseph
   sample_id: 1054583388
   room: 3-53
   building: Medical Sciences
@@ -136,7 +136,7 @@
   id: 1054583389
   original_amount: 1.0
   description: ""
-  collected_by_id: 18
+  collected_by: craig
   sample_id: 1054583387
   room: "456"
   building: East Wing
@@ -154,7 +154,7 @@
   id: 1054583391
   original_amount: 1200.0
   description: ""
-  collected_by_id: 1
+  collected_by: joseph
   sample_id: 
   room: "225"
   building: Med Sci
@@ -172,7 +172,7 @@
   id: 1054583392
   original_amount: 800.0
   description: ""
-  collected_by_id: 1
+  collected_by: roman
   sample_id: 1054583391
   room: "235"
   building: Bio Sci
@@ -190,7 +190,7 @@
   id: 1054534392
   original_amount: 500.0
   description: ""
-  collected_by_id: 1
+  collected_by: craig
   sample_id: 1054583392
   room: "235"
   building: Bio Sci

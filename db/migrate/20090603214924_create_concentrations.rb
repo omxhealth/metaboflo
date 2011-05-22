@@ -1,6 +1,7 @@
 class CreateConcentrations < ActiveRecord::Migration
   def self.up
     create_table :concentrations do |t|
+      t.string :identified_as
       t.float :concentration_value
       t.string :concentration_units
       t.boolean :is_experimental, :default => true
