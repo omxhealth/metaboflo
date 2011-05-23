@@ -24,7 +24,7 @@
     <td><%= short_description(experiment.description) %></td>
     <td><%= link_to(experiment.assigned_to.name, experiment.assigned_to) %></td>
     <td><%= experiment.perform_on %></td>
-    <td><% if experiment.performed_by %><%= link_to(experiment.performed_by, experiment.performed_by) %><% else %>&nbsp;<% end %></td>
+    <td><% if experiment.performed_by %><%= link_to(experiment.performed_by.name, experiment.performed_by) %><% else %>&nbsp;<% end %></td>
     <td><% if experiment.performed_on %><%= experiment.performed_on %><% else %>&nbsp;<% end %></td>
     <td>
       <% if experiment.data_files.length > 0 %>
