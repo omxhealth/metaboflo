@@ -24,16 +24,25 @@ def load_fixture(models)
 end
 
 def load_data_files
+  counter = 0
   TestSubject.all.each do |ts|
-    s = ts.samples.first || ts.samples.create!(:sample_type => 'urine', :collected_on => Date.today)
-    e = s.experiments.first || s.experiments.create!(:name => "Experiment for #{ts.id}", :experiment_type => ExperimentType.first)
+    counter += 1
+    user = User.find(:first)
+    exptype = ExperimentType.first
+    s = ts.samples.first || ts.samples.create!(:sample_type => 'urine', :collected_on => Date.today, :barcode => "673#{counter}",
+                                               :original_amount => 100.0, :original_unit => 'mL', :building => 'Bio Sci', :room => '235',
+                                               :collected_by_id => user.id)
+    e = s.experiments.first || s.experiments.create!(:name => "Experiment for #{ts.id}", :experiment_type => exptype,
+                                                     :description => "#{exptype.name} Experiment -- Batch upload of Cachexia data.",
+                                                     :assigned_to => user, :perform_on => Date.today, :performed_on => Date.today, 
+                                                     :performed_by => user)
     
     csv = "#{ts.id}.csv"
     path = File.join(File.dirname(__FILE__), "demo", "data_files", csv)
     
     f = File.new(path, "r")
           
-    data_file = e.data_files.create!(:data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true)
+    data_file = e.data_files.create!(:data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true, :has_concentration_units => 'uM')
   end
 end
 

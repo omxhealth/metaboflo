@@ -14,10 +14,13 @@ class BovineController < ApplicationController
     
     #Get system statistics:
     @stats = []
-    
     @stats << ["Number of Users", User.count]
     @stats << ["Number of #{TestSubject.title.pluralize}", TestSubject.count]
     @stats << ["Number of Samples", Sample.count]
     @stats << ["Number of Experiments", Experiment.count]
+    @stats << ["Number of Metabolite Concentrations", Concentration.count]
+    @stats << ["Number of Tasks", Task.count]
+    @stats << ["Number of Unfinished Tasks", Task.find(:all, :conditions => ['done_ratio<100']).count]
+    
   end
 end

@@ -3,13 +3,13 @@ class CreateSamples < ActiveRecord::Migration
     create_table :samples do |t|
       t.references :test_subject
       t.references :sample
+      t.references :site
       t.string :sample_type
       t.float :original_amount
       t.string :original_unit
       t.float :actual_amount
       t.string :actual_unit
       t.string :barcode
-      t.references :site
       t.string :building
       t.string :room
       t.string :freezer

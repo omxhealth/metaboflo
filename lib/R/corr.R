@@ -67,7 +67,7 @@ if (debug) {
 	if (debug) {
 		cat(paste("Using data in: ", file_path, "\n"))
 	}
-	orig_data <- read.csv(file_path, header=TRUE, strip.white=TRUE, sep=',')
+	orig_data <- read.csv(file_path, header=TRUE, strip.white=TRUE, sep=',', check.names=FALSE)
 
 	#Create plot:
 	png(output_image, width = 800, height = 800, res = 120)

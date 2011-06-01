@@ -14,19 +14,13 @@
 <% for test in tests(@lab_test, true) %>
   
   <% name = test.gsub('_', ' ').capitalize() %>
-  <p>
-    <b><%= name %> value:</b>
-    <%=h @lab_test.send("#{test}_value") %>
-  </p>
-  <p>
-    <b><%= name %> unit:</b>
-    <%=h @lab_test.send("#{test}_unit") %>
-  </p>
-  <p>
-    <b><%= name %> tested at:</b>
-    <%=h @lab_test.send("#{test}_tested_at") %>
-  </p>
-  
+  <% if not @lab_test.send("#{test}_value").nil? %>
+    <p>
+      <b><%= name %>:</b>
+      <%= @lab_test.send("#{test}_value") %> <%= @lab_test.send("#{test}_unit") %> (<%= @lab_test.send("#{test}_tested_at") %>)
+    </p>
+  <% end %>
+
 <% end %>
 
 

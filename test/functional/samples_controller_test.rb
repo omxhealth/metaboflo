@@ -27,7 +27,7 @@ class SamplesControllerTest < ActionController::TestCase
     
     # only samples for test_subject
     get :index, :test_subject_id => test_subjects(:one)
-    assert_equal 2, assigns(:samples).size
+    assert_equal 3, assigns(:samples).size
     
     # only samples (fractiosn) for sample
     get :index, :sample_id => samples(:one)

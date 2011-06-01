@@ -23,12 +23,12 @@
 <% end -%>
 <br />
 
-<h1>Pending Experiments</h1>
+<h1>Pending Experiments Assigned to <i><%= current_user.name %></i></h1>
 <% if @experiments.length > 0 %>
   <table class="list">
   	<tr>
   		<th>Name</th>
-  		<th>Perform on</th>
+  		<th>Due date</th>
   		<th colspan="3">Actions</th>
   	</tr>
 

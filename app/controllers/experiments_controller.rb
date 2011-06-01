@@ -1,5 +1,6 @@
 class ExperimentsController < ApplicationController
   before_filter :find_sample
+  before_filter :find_test_subject, :only => [ :index ]
   before_filter :find_experiment, :only => [ :show, :edit, :update, :destroy ]
 
   # GET /experiments
@@ -7,6 +8,8 @@ class ExperimentsController < ApplicationController
   def index
     if @sample
       @experiments = @sample.experiments
+    elsif @test_subject
+      @experiments = @test_subject.experiments
     else
       @experiments = Experiment.find(:all)
     end
@@ -92,6 +95,10 @@ class ExperimentsController < ApplicationController
       params[:test_subject_id] = @sample.root.id
       find_test_subject
     end
+  end
+  
+  def find_test_subject
+    super unless params[:test_subject_id].nil?
   end
 
   def find_experiment

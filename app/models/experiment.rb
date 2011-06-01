@@ -1,9 +1,10 @@
 class Experiment < ActiveRecord::Base
+  attr_accessor :test_subject_code
+  
   belongs_to :assigned_to, :class_name => 'User'
   belongs_to :performed_by, :class_name => 'User'
   
   belongs_to :sample
-  accepts_nested_attributes_for :sample
   
   belongs_to :protocol
   belongs_to :experiment_type
@@ -26,7 +27,7 @@ class Experiment < ActiveRecord::Base
   end
   
   def root
-    sample.root
+    sample.root if sample
   end
   
 end

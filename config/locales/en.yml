@@ -15,6 +15,7 @@ en:
         performed_by_id: 'Actually analyzed by'
         protocol_id: 'Experiment protocol'
       sample:
+        collected_on: 'Collection date'
         original_amount: 'Amount received'
         test_subject_code: 'Patient'
         test_subject_id: 'Patient'

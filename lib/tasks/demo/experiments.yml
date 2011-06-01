@@ -1,97 +1,91 @@
---- 
 "6": 
   experiment_type: hplc
-  perform_on: 2008-09-08
+  perform_on: <%= Date.today %>
   name: HPLC on subsample
   updated_at: 2008-12-16 06:08:12.981978 Z
-  performed_on: 2008-09-09
+  performed_on: <%= Date.today %>
   comments: ""
   amount_used_unit: mL
   amount_used: 4.0
   id: 6
   protocol_id: 2
   description: Experiment on only portion of original sample
-  assigned_to_id: 26
-  performed_by_id: 25
+  assigned_to: roman
+  performed_by: roman
   sample_id: 1054583389
   created_at: 2008-12-16 06:08:12.981978 Z
+  
 "1": 
   experiment_type: 1dpnmr
-  perform_on: 2009-01-01
+  perform_on: <%= Date.today + 2.weeks %>
   name: NMR Experiment
   updated_at: 2008-12-16 06:04:59.969000 Z
-  performed_on: 
   comments: ""
   amount_used_unit: ""
   amount_used: 
   id: 1
   protocol_id: 1
   description: Standard NMR experiment
-  assigned_to_id: 26
-  performed_by_id: 
+  assigned_to: roman
   sample_id: 1054583385
   created_at: 2008-12-16 06:04:59.969000 Z
+  
 "2": 
   experiment_type: lcms
-  perform_on: 2008-12-16
+  perform_on: <%= Date.today + 1.month %>
   name: Preliminary LC/MS Experiment
   updated_at: 2008-12-16 06:06:15.127317 Z
-  performed_on: 2008-12-15
   comments: ""
   amount_used_unit: mL
   amount_used: 5.0
   id: 2
   protocol_id: 3
   description: First MS experiment for this sample
-  assigned_to_id: 23
-  performed_by_id: 23
+  assigned_to: admin
   sample_id: 1054583385
   created_at: 2008-12-16 06:06:15.127317 Z
+  
 "3": 
   experiment_type: dims
-  perform_on: 2008-09-08
+  perform_on: <%= Date.today + 1.week %>
   name: Direct Injection MS experiment on subsample
   updated_at: 2008-12-16 06:08:12.981978 Z
-  performed_on: 2008-09-09
   comments: ""
   amount_used_unit: mL
   amount_used: 4.0
   id: 3
   protocol_id: 2
   description: Experiment on only portion of original sample
-  assigned_to_id: 26
-  performed_by_id: 25
+  assigned_to: admin
   sample_id: 1054583386
   created_at: 2008-12-16 06:08:12.981978 Z
+  
 "4": 
   experiment_type: 2dhsqc
-  perform_on: 2009-01-01
+  perform_on: <%= Date.today + 3.weeks %>
   name: HSQC Experiment 1a
   updated_at: 2008-12-16 07:05:35.138940 Z
-  performed_on: 
   comments: ""
   amount_used_unit: ""
   amount_used: 
   id: 4
   protocol_id: 1
   description: Standard HSQC NMR experiment
-  assigned_to_id: 26
-  performed_by_id: 
+  assigned_to: joseph
   sample_id: 1054583387
   created_at: 2008-12-16 06:04:59.969000 Z
+  
 "5": 
   experiment_type: lcmsms
-  perform_on: 2008-12-16
+  perform_on: <%= Date.today + 12.days %>
   name: Preliminary LC/MS-MS Experiment
   updated_at: 2008-12-16 06:06:15.127317 Z
-  performed_on: 2008-12-15
   comments: ""
   amount_used_unit: mL
   amount_used: 5.0
   id: 5
   protocol_id: 3
   description: First experiment for this sample
-  assigned_to_id: 23
-  performed_by_id: 23
+  assigned_to: craig
   sample_id: 1054583387
   created_at: 2008-12-16 06:06:15.127317 Z

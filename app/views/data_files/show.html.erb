@@ -22,7 +22,7 @@
   <strong><%= @data_file.concentrations.length %> Concentration(s) were successfully imported from this file:</strong>
   <br />
   <% @data_file.concentrations.each do |c| %>
-    <%= c.metabolite.name %><br />
+    <%= c.identified_as %> (<%= link_out c.metabolite, :hmdb_id, h(c.metabolite.name) %>)<br />
   <% end %>
   <br /><br />
   <% if @data_file.mapping_errors != nil %>

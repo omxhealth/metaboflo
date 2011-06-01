@@ -16,9 +16,9 @@ plot.pca = function(orig_data, label.points=TRUE) {
 	
 	#Get IDs and Labels
 	ids = orig_data$subjectID
-	labels = orig_data$Label
+	Labels = orig_data$Label
 
-	classes = levels(as.factor(labels))
+	classes = levels(as.factor(Labels))
 
 	#Remove ID & Label from data matrix:
 	data = orig_data[,-match('subjectID', names(orig_data))]
@@ -34,23 +34,31 @@ plot.pca = function(orig_data, label.points=TRUE) {
 	
 	#Plot the first two principal components:
 	title = paste('PCA Analysis -', classes[1], 'vs', classes[2])
-	colors = sapply(labels, label.color)
+	colors = sapply(Labels, label.color)
 	ymin = min(y_points)
 	ymax = max(y_points)
 	xmin = min(x_points)
 	xmax = max(x_points)
 	xrange = abs(xmax - xmin)
 	yrange = abs(ymax - ymin)
-	pm = 0.15 #Percent margin to extend the axis ranges
-	plot(x_points, y_points, col=colors, main=title,
-			 xlab="Principal Component 1",ylab="Principal Component 2",#yaxt='n',xaxt='n',
-			 ylim=c(ymin-yrange*pm, ymax+yrange*pm), xlim=c(xmin-xrange*pm, xmax+xrange*pm))
-	legend('topright', title='Labels', classes, fill = c('blue', 'red'), horiz = TRUE)
-
-	#Add IDs to points:
+	
+	pm = 0.1 #Margin to extend the axis ranges
+		
+	print(nrow(data))
+	library(ggplot2)
+	data = data.frame(x=x_points,y=y_points,id=ids)
+	#p = qplot(data$x, data$y, data=data, colour=Labels, label=id, ylim=c(ymin-ymin*pm, ymax+ymax*pm), xlim=c(xmin-xmin*pm, xmax+xmax*pm))
+	p = qplot(data$x, data$y, data=data, colour=Labels, label=id)
+	p = p + opts(title = title, panel.background = theme_rect(colour = "black"))
+	p = p + xlab('Principal Component 1')	
+	p = p + ylab('Principal Component 2')
+	p = p + geom_point(size = 4)
+	p = p + opts(legend.position='right')
+  
 	if (label.points) {
-		text(x_points, y_points, ids, cex=0.7, pos=4, col=colors)
+		p = p + geom_text(size = 2, hjust=0, vjust=0, color='black')
 	}
+	p
 }
 
 #Color points based on their label
@@ -67,7 +75,7 @@ label.color = function(label) {
 
 #Get command line arguments:
 args = commandArgs(trailingOnly = TRUE)
-if (length(args) == 2) {
+# if (length(args) == 2) {
 	file_path = args[1]
 	output_image = args[2]
 
@@ -84,6 +92,6 @@ if (length(args) == 2) {
 		cat(paste("Saving image to: ", output_image, "\n"))
 	}
 	invisible(dev.off())
-} else {
-	cat("Invalid usage! Use: Rscript pca.R <input_file_path> <output_image_file_path>\n")
-}
+# } else {
+# 	cat("Invalid usage! Use: Rscript pca.R <input_file_path> <output_image_file_path>\n")
+# }

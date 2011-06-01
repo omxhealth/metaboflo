@@ -21,11 +21,4 @@ class Workflows::SamplesControllerTest < ActionController::TestCase
 
     assert_response :success
   end
-  
-  test "should get show" do
-    login_as :admin
-    get :show, :id => samples(:one).to_param, :format => :js
-    assert_response :success
-  end
-
 end

@@ -10,15 +10,6 @@ class Workflows::SamplesController < ApplicationController
     end
   end
   
-  # GET /workflows/samples/1.js
-  def show
-    @sample = Sample.find(params[:id])
-    
-    respond_to do |format|
-      format.js # show.js.erb
-    end
-  end
-  
   # GET /workflows/patients/1/samples/new.js
   def new
     @sample = @patient.samples.new
