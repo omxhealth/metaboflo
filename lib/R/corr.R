@@ -47,7 +47,8 @@ plot.corr = function(orig_data, label.points=TRUE) {
 							 axis.text.x = theme_text(angle = 90, hjust=1), legend.position="none", 
 							 panel.background = theme_rect(colour = "black"))
 	p = p + xlab('Metabolites')
-	p = p + ylab('Pearson Correlation Coefficient Magnitude')
+	#p = p + ylab('Pearson Correlation Coefficient Magnitude')
+	p = p + ylab('Metabolite Importance')
 	p
 }
 
