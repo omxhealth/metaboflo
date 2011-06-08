@@ -17,13 +17,16 @@ a:hover, a:active{ color: #c61a1a; text-decoration: underline;}
 a img{ border: 0; }
 
 h1 {
-	color: #004D4D;
-	font-size: 16px;
-	background: #CDC9C9;
-	padding: 0.2em;
-	border: 1px solid gray;
-	margin-bottom: 2em;
-	margin-top: 0.2em;
+  margin-top: 0.4em;
+  margin-bottom: 1em;
+  color: #4c545a;
+  font-size: medium;
+  background: #E8E8E8;
+  padding: 0.3em 0.5em;
+  text-align: left;
+  text-shadow: 0px 0px 0.05px white;
+  letter-spacing: 1px;
+  border-radius: 8px;
 }
 
 h2 {
@@ -172,10 +175,11 @@ div#sidebar {
 }
 
 div#sidebar h2 {
-	/*	background: #CDCDC1; */
+  text-shadow: 0px 0px 0.05px white;
+  border-radius: 8px;
 	border: 1px solid #CDCDC1;
 	background: white;
-	font-weight: bold;
+  font-weight: normal;
 	margin-bottom: 0.8em; 
 	margin-top: 5px;
 	padding: 0.3em;

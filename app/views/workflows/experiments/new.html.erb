@@ -36,7 +36,7 @@
         <%= f.hidden_field :sample_id %>
       <% else %>
         <div class="field">
-          <%= f.label :test_subject_code %>
+          <%= f.label :test_subject_code, "#{TestSubject.title} Code" %>
           <%= f.text_field :test_subject_code %>
           <%= link_to 'New patient', '#', :onclick => 'javascript:new_patient_dialog(); return false;' %>
         </div>

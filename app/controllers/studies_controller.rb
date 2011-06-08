@@ -1,5 +1,5 @@
 class StudiesController < ApplicationController
-  ALLOWED_EXPORT_KINDS = [ :metaboanalyst, :umetrics ]
+  ALLOWED_CSV_EXPORT_KINDS = [ :metaboanalyst, :umetrics ]
 
   before_filter :load_cohorts
 
@@ -122,7 +122,7 @@ class StudiesController < ApplicationController
   # Passed an array of instances, represented by hashes. Takes an options hash which includes
   # a :kind which indicates :umetrics or :metaboanalyst
   def generate_csv(data, options={})
-    raise ArgumentError unless ALLOWED_EXPORT_KINDS.include?(options[:kind])
+    raise ArgumentError unless ALLOWED_CSV_EXPORT_KINDS.include?(options[:kind])
   
     csv_string = FasterCSV.generate do |csv|
       #Do first pass of the data to get a list of feature names:
