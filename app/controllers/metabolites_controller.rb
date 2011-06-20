@@ -3,8 +3,12 @@ class MetabolitesController < ApplicationController
   # GET /metabolites.xml
   # GET /metabolites.csv
   def index
-    params[:page] = 1 if params[:page].to_i <= 0
-    @metabolites = Metabolite.paginate(:page => params[:page], :order => 'hmdb_id', :joins => [ :concentrations ], :select => 'DISTINCT metabolites.*')
+    include_levels = { :concentrations => 
+                        [ :data_file => 
+                            [ :experiment => [ :experiment_type => [], :sample => [ :test_subject ] ] ]
+                        ]
+                      }
+    @metabolites = Metabolite.select('DISTINCT metabolites.*').order(:hmdb_id).joins(:concentrations).includes(include_levels).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -107,7 +111,7 @@ class MetabolitesController < ApplicationController
   private
     def format_csv
       csv_string = FasterCSV.generate do |csv|
-        columns = [ 'Name', TestSubject.title, 'Concentration', 'Experiment', 'Sample Collected On', 'Sample Type', 'Condition', 'Cohort' ]
+        columns = [ 'Name', TestSubject.title, 'Concentration', 'Experiment', 'Sample Collected On', 'Sample Type', 'Condition', 'Grouping' ]
 
         # header row
         csv << columns

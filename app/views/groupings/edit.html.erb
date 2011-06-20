@@ -1,0 +1,9 @@
+<h1>Editing <%= humanized_type @type %> group</h1>
+
+<%= labelled_tabular_form_for(:grouping, @grouping, :url => { :action => "update", :type => @type }, :html => { :method => :put }) do |form| %>
+  <%= render :partial => 'form', :locals => { :form => form } %>
+
+  <p><%= form.submit "Update" %></p>
+<% end %>
+
+<%= show_link({:id => @grouping, :type => @type}) %>

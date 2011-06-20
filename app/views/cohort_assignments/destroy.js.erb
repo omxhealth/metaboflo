@@ -1,6 +1,0 @@
-<% if @successful %>
-  $("#assignable-associations").html("<%= escape_javascript(render :partial => 'cohort_assignment', :collection => @cohort.cohort_assignments) %>");
-  $("#flash").html("<p class=\"notice\">Removed <%= humanized_type(@cohort.assignable_type).downcase %> from cohort successfully</p>")
-<% else %>
-  $("#flash").html("<p class=\"error\">Error removing <%= humanized_type(@cohort.assignable_type).downcase %> from cohort</p>")
-<% end -%>

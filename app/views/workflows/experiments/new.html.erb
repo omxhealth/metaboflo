@@ -24,6 +24,11 @@
 
 <h1>New Experiment</h1>
 
+<p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  The experiment workflow allows you to enter all the information for an experiment. You can attach raw data files or concentration data, assign this experiment to a particular individual, and enter the protocol used to perform the analysis.
+</p>
+
 <%= form_for [:workflows, setup_workflow_experiment(@experiment)], :html => { :multipart => true, :autocomplete => false } do |f| %>
   <% flash.now[:error] = "#{pluralize(@experiment.errors.count, "error")} prohibited this experiment from being saved" if @experiment.errors.any? %>
   

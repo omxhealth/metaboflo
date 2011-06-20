@@ -1,0 +1,38 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  assignable: one
+  assignable_type: TestSubject
+  grouping: one
+  type: GroupingAssignment
+
+two:
+  assignable: two
+  assignable_type: TestSubject
+  grouping: one
+  type: GroupingAssignment
+
+three:
+  assignable: one
+  assignable_type: TestSubject
+  grouping: two
+  type: GroupingAssignment
+  
+four:
+  assignable: one
+  assignable_type: TestSubject
+  grouping: three
+  type: GroupingAssignment
+
+five:
+  assignable: one
+  assignable_type: Sample
+  grouping: four
+  type: GroupingAssignment
+
+six:
+  assignable: two
+  assignable_type: Sample
+  grouping: four
+  type: GroupingAssignment
+

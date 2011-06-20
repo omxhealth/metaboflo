@@ -54,7 +54,8 @@ div#doc3 {
 
 div#flash p.notice, div#flash p.error {
 	margin: 0.2em 0em 1em 0em;
-	padding: 0.5em;
+	padding: 0.8em;
+	border-radius: 10px;
 }
 
 div#flash p.notice {
@@ -443,7 +444,7 @@ form.tabular table.checkbox-group td {
 
 /* Standard form */
 form { padding: 0.3em; }
-form fieldset { border: 1px solid #484848; background: #f0f0f0; margin-bottom: 1.2em; width: 70%; padding-bottom: 0.5em; min-width: 800px; }
+form fieldset { border: 1px solid #858585; background: #f0f0f0; margin-bottom: 1.2em; width: 70%; padding-bottom: 0.5em; min-width: 800px; }
 form fieldset legend { color: #484848; margin-left: 0.5em; }
 form textarea { width: 350px; height: 70px; }
 
@@ -540,4 +541,94 @@ table.stats {
 .node-selected {
 	font-weight: bold;
 	background-color: #cdcdcd;
+}
+
+/* Metabolites list */
+div.metabolite-summary {
+  float: left; 
+  width: 150px; 
+  padding: 1em; 
+  background: #CBE3EC;
+  border-radius: 10px;
+}
+
+img.structure {
+  border: 1px solid #CECFDC;
+  margin-top: 2em;
+}
+
+span.not-available {
+  color: silver;
+}
+
+/* Study Analysis */
+#export-info {
+  padding: 1em;
+  border: 3px solid #E0EEE0;
+  border-radius: 5px;
+  -moz-box-shadow: 3px 3px 10px silver;
+  -webkit-box-shadow: 0px 0px 10px silver;
+  margin: 0.5em;
+}
+#export-info img.analysis {
+  float: right;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+#export-info h2 {
+  margin: 0 0 1em 0;
+}
+
+#export-info a {
+  font-weight: bold;
+}
+
+#export-info #run-container {
+  margin: 2em auto;
+  text-align: center;
+}
+
+#export-info #export-container {
+  margin: 1em auto;
+  text-align: center;
+}
+
+#export-info a#run-analysis {
+  background: #E0EEE0;
+  padding: 0.3em 3em;
+  font-size: larger;
+  border-radius: 5px;
+  text-align: center;
+  margin: auto;
+}
+
+.info {
+  background: #FFFCCF;
+  padding: 0.5em 0.8em;
+  border: 1px solid silver;
+  border-radius: 5px;
+  min-height: 60px;
+  font-size: 15px;
+  margin: 0.5em 0;
+}
+
+img.info-logo {
+  float: left;
+  margin-right: 1.5em;
+}
+
+/* Groupings */
+#grouping-links {
+  padding: 1em 0;
+  border-radius: 5px;
+  margin: 1em 0em;
+}
+
+#grouping-links a {
+  background: #E0EEE0;
+  padding: 0.3em 1.3em;
+  font-size: larger;
+  border-radius: 5px;
+  margin-right: 2em;
+
 }

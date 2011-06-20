@@ -1,13 +1,11 @@
 <h1>Studies</h1>
 
-<p>
-  Studies allow users to analyze samples at a phenotypic level. <%= SUBJECT_CONFIG[:title] %> cohorts are added to the study, and associated with <em>labels</em> (i.e. phenotypic conditions of interest). This allows the export of <%= SUBJECT_CONFIG[:name].pluralize %> and directed analysis with respect to the labels.
-</p>
+<p class="info"><%= render :partial => "info" %></p>
 
 <br />
 
 <table class="list">
-  <tr>
+  <tr class="header">
     <th>Name</th>
     <th>Description</th>
 		<th>Cohorts</th>
@@ -18,8 +16,8 @@
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= study.name %></td>
     <td><%= short_description(study.description) %></td>
-  	<td><%= study.study_cohort_assignments.length %></td>
-  	<td><%= show_link({:action => 'show', :id => study}) %></td>
+  	<td><%= study.cohorts.count %></td>
+  	<td><%= show_link({:action => 'show', :id => study}, 'show/analyze') %></td>
   	<td><%= edit_link({:action => 'edit', :id => study}) %></td>
   	<td><%= destroy_link({:action => 'destroy', :id => study}) %></td>
   </tr>

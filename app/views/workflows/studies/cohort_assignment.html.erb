@@ -1,0 +1,131 @@
+<style>
+h1 { padding: .2em; margin: 0; }
+#subjects { float:right; width: 450px; margin: 1.5em 2em; }
+.cohort { width: 500px; margin: 1.5em; }
+/* style the list to maximize the droppable hitarea */
+.cohort ol { margin: 0; padding: 1em; }
+.placeholder { color: grey; background: transparent !important; }
+.subject-container li { cursor: move; margin-bottom: 0.5em; background: #B4D7BF; padding: 0.3em; }
+.remove-subject { float: right; cursor: pointer; }
+.subject-zoomer { float: right; cursor: pointer; }
+div.subject-zoomed { margin: 1em; background: #DBE6E0; padding: 0.4em; border-radius: 5px }
+
+</style>
+<script>
+$(function() {
+  $( "#site" ).accordion({ autoHeight: false });
+  $( "#site li" ).draggable({
+    appendTo: "body",
+    helper: "clone",
+    revert: "invalid",
+    cursor: "move",
+    cancel: "a.ui-icon"
+  });
+  
+  $( "#cohorts li" ).draggable({
+    appendTo: "body",
+    helper: "clone",
+    revert: "invalid",
+    cursor: "move",
+    cancel: "a.ui-icon"
+  });
+  
+  $( ".cohort ol" ).droppable({
+    activeClass: "ui-state-default",
+    hoverClass: "ui-state-hover",
+    drop: function( event, ui ) {
+      addToCohort( ui.draggable, $(this) );
+    }
+  });
+  
+  // resolve the icons behavior with event delegation
+  $( ".subject-container > li" ).click(function( event ) {
+    var $item = $( this ), $target = $( event.target );
+
+    if ( $target.is( "a.ui-icon-closethick" ) ) {
+      removeFromCohort( $item, $item.parents(".cohort") );
+    }
+    else if ( $target.is( "a.ui-icon-circle-zoomin" ) ) {
+      zoomSubject( $item );
+    }
+
+    return false;
+  });
+
+  // adding a subject to a cohort
+  // var remove_icon = '<a title="Remove from cohort" class="ui-icon ui-icon-closethick remove-subject">Remove from cohort</a>';
+  function addToCohort( $draggable, $droppable ) {
+    var $cohort_id = $droppable.parents(".cohort").attr('data-cohort');
+    var $subject_id = $draggable.attr('data-subject');
+    
+    // var $far = $droppable.children("li[data-subject="+$cohort_id+"]")
+    // alert($far);
+    // alert("[data-subject="+$cohort_id+"]");
+    if($droppable.children("[data-subject="+$cohort_id+"]").length) {
+      // alert('fuck..');
+    }
+
+    $.post( '<%= add_to_cohort_workflows_study_path(@study) %>', { cohort_id: $cohort_id, test_subject_id: $subject_id } );
+    $droppable.find( ".placeholder" ).hide(); // Remove the placeholder list item
+    $draggable.find( "a.ui-icon-closethick" ).show(); // Show the "remove" icon
+    $draggable.appendTo( $droppable ); // Add the subject element to the cohort list
+  }
+  
+  // Removing a subject from a cohort. Return it to it's original position in the sites list.
+  function removeFromCohort( $draggable, $from ) {
+    var $cohort_id = $from.attr('data-cohort');
+    var $subject_id = $draggable.attr('data-subject');
+    
+    $.post( '<%= remove_from_cohort_workflows_study_path(@study) %>', { cohort_id: $cohort_id, test_subject_id: $subject_id } );
+    $draggable.find( "a.ui-icon-closethick" ).hide();
+    $site = $( "#site-" + $draggable.attr("data-site") );
+    $draggable.fadeOut(function() {
+      $draggable.appendTo($site).fadeIn();
+    });
+  }
+  
+  function zoomSubject( $subject ) {
+    $subject.children('.subject-zoomed').toggle('blind');
+  }
+});
+
+</script>
+
+<h1><%= TestSubject.title.pluralize %> in the <%= @study.name %> study</h1>
+
+<div id="subjects">
+  <h1 class="ui-widget-header"><%= TestSubject.title.pluralize %></h1>	
+  <div id="site">
+    <% Site.order(:name).includes(:test_subjects).all.each do |site| %>
+    <% subjects = site.test_subjects.reject { |ts| @assigned_test_subjects.include? ts } %>
+    <% next if site.test_subjects.blank? %>
+    <h3><a href="#"><%= site.name %> (<%= subjects.size %>)</a></h3>
+    <div>
+      <ul class="subject-container" id="site-<%= site.id %>">
+        <% site.test_subjects.each do |ts| %>
+        <% next if @assigned_test_subjects.include? ts %>
+        <%= render :partial => "test_subject", :locals => { :test_subject => ts } %>
+        <% end -%>
+      </ul>
+    </div>
+    <% end -%>
+  </div>
+</div>
+
+<div id="cohorts">
+<% @study.cohorts.each do |cohort| %>
+<div class="cohort" data-cohort="<%= cohort.id %>">
+  <h1 class="ui-widget-header"><%= cohort.label %> Cohort</h1>
+  <div class="ui-widget-content">
+    <p>Control?: <strong><%= cohort.control %></strong></p>
+    <ol class="subject-container">
+      <% if cohort.test_subjects.blank? %>
+      <li class="placeholder">Drag <%= TestSubject.title.pluralize.downcase %> here</li>
+      <% else -%>
+        <%= render :partial => "test_subject", :collection => cohort.test_subjects, :locals => { :cohort => cohort } %>
+      <% end -%>
+    </ol>
+  </div>
+</div>
+<% end -%>
+</div>

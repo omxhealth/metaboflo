@@ -1,0 +1,34 @@
+<h1>Showing <%= humanized_type(@type).downcase %> group "<%= @grouping.name %>"</h1>
+
+<p>
+	<b>Name:</b>
+	<%= @grouping.name %>
+</p>
+
+<p>
+	<b>Description:</b>
+	<%= @grouping.description %>
+</p>
+
+<h2><%= @grouping.assignables.length %> <%= humanized_type(@type).pluralize %> in this group:</h2>
+
+<div class="association">
+	<table class="list">
+		<thead>
+			<tr>
+				<th><%= humanized_type(@type) %></th>
+				<th>Remove</th>		
+			</tr>
+		</thead>
+		<tbody id="assignable-associations">
+			<%= render :partial => '/grouping_assignments/grouping_assignment', :collection => @grouping.grouping_assignments, :locals => { :from => 'grouping' } %>
+		</tbody>
+	</table>
+	<br />
+	<div class="new-association">
+		<%= render :partial => '/grouping_assignments/add_assignable_form', :locals => { :from => 'grouping' } %>
+	</div>
+	<br />
+</div>
+
+<%= edit_link({:action => 'edit', :type => @type}) %>

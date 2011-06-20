@@ -6,11 +6,11 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Metaboflo - <%= controller.controller_name %>: <%= controller.action_name %></title>
 
-  <%= stylesheet_link_tag 'yui', 'menu', 'application', 'tree', 'jquery-ui-1.8.12.custom', 'jquery.autocomplete' %>
+  <%= stylesheet_link_tag 'yui', 'menu', 'application', 'tree', 'jquery-ui-1.8.13.custom' %>
   <%= yield :css %>
   
   <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'yahoo-dom-event', 'container_core', 'menu', 'tree', 'jquery-ui-1.8.12.custom.min', 'jquery.autocomplete.min' %>
+  <%= javascript_include_tag 'yahoo-dom-event', 'container_core', 'menu', 'tree', 'jquery-ui-1.8.13.custom.min' %>
 	
 	<!-- Include YUI patches to fix scrolling issue -->
   <%= javascript_include_tag 'overlay_patch', 'menu_patch' %>
@@ -80,19 +80,22 @@
               <%= link_to 'Run Experiment', new_workflows_experiment_path, :class => 'yuimenuitemlabel' %>
             </li>
             <li class="yuimenubaritem">
+              <%= link_to 'Create Study', new_workflows_study_path, :class => 'yuimenuitemlabel' %>
+            </li>
+            <li class="yuimenubaritem">
               <%= link_to 'Analysis', studies_path, :class => 'yuimenubaritemlabel' %>
               <div id="analysis" class="yuimenu">
                 <div class="bd">
                   <ul>
                     <li class="yuimenuitem"><%= link_to 'Studies', studies_path, :class => 'yuimenuitemlabel' %></li>
                     <li class="yuimenuitem">
-                      <%= link_to 'Cohorts', test_subject_cohorts_path, :class => 'yuimenuitemlabel' %>
-                      <div id="cohorts" class="yuimenu">
+                      <%= link_to 'Groups', test_subject_groupings_path, :class => 'yuimenuitemlabel' %>
+                      <div id="groupings" class="yuimenu">
                         <div class="bd">                    
                           <ul>
-                            <li class="yuimenuitem"><%= link_to "#{TestSubject.title} Cohorts", test_subject_cohorts_path, :class => 'yuimenuitemlabel' %></li>
-                            <li class="yuimenuitem"><%= link_to 'Sample Cohorts', sample_cohorts_path, :class => 'yuimenuitemlabel' %></li>
-                            <li class="yuimenuitem"><%= link_to 'Experiment Cohorts', experiment_cohorts_path, :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to "#{TestSubject.title} Groups", test_subject_groupings_path, :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'Sample Groups', sample_groupings_path, :class => 'yuimenuitemlabel' %></li>
+                            <li class="yuimenuitem"><%= link_to 'Experiment Groups', experiment_groupings_path, :class => 'yuimenuitemlabel' %></li>
                           </ul>
                         </div>
                       </div>

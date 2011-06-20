@@ -12,8 +12,8 @@ class Sample < ActiveRecord::Base
   has_many :samples, :dependent => :destroy
   has_many :experiments, :dependent => :destroy
   
-  has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
-  has_many :cohorts, :through => :cohort_assignments
+  has_many :grouping_assignments, :as => :assignable, :dependent => :destroy
+  has_many :groupings, :through => :grouping_assignments
   
   before_validation :assign_parent_type
   before_validation :set_test_subject_id
@@ -24,7 +24,7 @@ class Sample < ActiveRecord::Base
   validate :sample_chronology
   validate :same_parent?
   
-  # Required so that Experiments, Samples, and TestSubjects can be displayed in cohorts
+  # Required so that Experiments, Samples, and TestSubjects can be displayed in groupings
   def to_s
     return "#{self.barcode.blank? ? 'No barcode' : self.barcode} (#{sample_type.blank? ? 'No sample type' : sample_type} - #{original_amount.blank? ? 'Unknown amount' : "#{original_amount} #{original_unit}"})"
   end

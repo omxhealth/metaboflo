@@ -5,6 +5,13 @@ Metaboflo::Application.routes.draw do
       resources :samples, :only => [:new, :create]
     end
     resources :samples, :only => [:index, :show]
+    resources :studies, :only => [:new, :create] do
+      member do
+        get :cohort_assignment
+        post :add_to_cohort
+        post :remove_from_cohort
+      end
+    end
   end
   
   devise_for :users
@@ -37,9 +44,9 @@ Metaboflo::Application.routes.draw do
     end
   end
 
-  # Add routes to direct the cohort types to the correct place
-  Cohort.valid_types.each do |cohort_type|
-    resources "#{cohort_type.tableize.singularize}_cohorts", :controller => 'cohorts', :defaults => { :type => cohort_type } 
+  # Add routes to direct the grouping types to the correct place
+  Grouping.valid_types.each do |grouping_type|
+    resources "#{grouping_type.tableize.singularize}_groupings", :controller => 'groupings', :defaults => { :type => grouping_type } 
   end
 
   resources :sites do
@@ -57,28 +64,28 @@ Metaboflo::Application.routes.draw do
   resources :data_files
   resources :experiments do
     resources :data_files
-    resources :cohort_assignments
+    resources :grouping_assignments
   end
 
   resources :samples do
     resources :samples
     resources :experiments
-    resources :cohort_assignments
+    resources :grouping_assignments
   end
   
   resources :test_subjects do
     resources :meals
     resources :samples
-    resources :cohort_assignments
+    resources :grouping_assignments
     resources :lab_tests
     resources :medications
     resources :test_subject_evaluations
     resources :experiments
   end
   
-  resources :cohorts do 
-    resources :cohort_assignments
-    resources :study_cohort_assignments
+  resources :groupings do 
+    resources :grouping_assignments
+    resources :study_grouping_assignments
   end
   
   #match '/' => 'bovine#index'

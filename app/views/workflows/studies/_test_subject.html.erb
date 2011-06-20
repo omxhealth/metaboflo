@@ -1,0 +1,13 @@
+<% cohort_id = defined?(cohort).nil? ? nil : cohort.id # Check if the cohort was given %>
+<li class="ui-corner-all" data-site="<%= test_subject.site_id %>" data-subject="<%= test_subject.id %>" data-cohort="<%= cohort_id %>">
+  <%= link_to 'Remove', '#', :title => 'Remove', :class => 'ui-icon ui-icon-closethick remove-subject', :style => "display: #{cohort_id.present? ? 'block' : 'none'}" %>
+  <%= test_subject.name %>
+
+  <%= link_to 'More Info', '#', :title => 'More Info', :class => 'ui-icon ui-icon-circle-zoomin subject-zoomer' %>  
+  <div class="subject-zoomed" style="display: none">
+    Site: <strong><%= test_subject.site.name %></strong><br />
+    Code: <strong><%= test_subject.code %></strong><br />
+    Practitioner: <strong><%= test_subject.practitioner %></strong><br />
+    Number of samples: <strong><%= test_subject.samples.count %></strong>
+  </div>
+</li>

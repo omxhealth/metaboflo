@@ -1,6 +1,6 @@
 require 'active_record/fixtures'
 
-@@all_models = [:sites, :users, :protocols, :test_subjects, :cohorts, :cohort_assignments, :lab_tests, :test_subject_evaluations, :samples, :experiment_types, :experiments, :data_file_types, :data_files, :task_statuses, :task_categories, :task_priorities, :tasks]
+@@all_models = [:sites, :users, :protocols, :test_subjects, :groupings, :grouping_assignments, :lab_tests, :test_subject_evaluations, :samples, :experiment_types, :experiments, :data_file_types, :data_files, :task_statuses, :task_categories, :task_priorities, :tasks]
 
 namespace :demo do
   desc 'Import demo data into database.'

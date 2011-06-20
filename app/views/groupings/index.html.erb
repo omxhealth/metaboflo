@@ -1,0 +1,39 @@
+<h1><%= humanized_type @type %> Groups</h1>
+
+<p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  Groups allow you to make arbitrary collections of <%= TestSubject.title.pluralize.downcase %>, samples and experiments.
+  You can organize your data into groups that can later be exported, watched for changes, or used in cohort studies.
+</p>
+  
+<div id="grouping-links">
+	<% Grouping.valid_types.each do |grouping_type| %>
+	<%= link_to "#{humanized_type grouping_type} Groups", :type => grouping_type %>
+	<% end %>
+</div>
+
+<% if @groupings.present? %>
+<table class="list">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Size</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+  <% @groupings.each do |grouping| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= grouping.name %></td>
+    <td><%= grouping.description %></td>
+    <td><%= grouping.assignables.count %></td>
+    <td><%= show_link({:action => 'show', :id => grouping, :type => @type}) %></td>
+    <td><%= edit_link({:action => 'edit', :id => grouping, :type => @type}) %></td>
+    <td><%= destroy_link({:action => 'destroy', :id => grouping, :type => @type}) %></td>
+  </tr>
+  <% end %>
+</table>
+<% end -%>
+
+<br />
+
+<%= new_link("#{humanized_type(@type).downcase} group", {:action => 'new', :type => @type}) %>

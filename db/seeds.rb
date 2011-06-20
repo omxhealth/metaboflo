@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+require 'active_record/fixtures'
+
+# Load default data file types
+Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "defaults" ), :data_file_types)
+
+# Load default experiment types
+Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "defaults" ), :experiment_types)

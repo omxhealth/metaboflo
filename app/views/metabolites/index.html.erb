@@ -8,7 +8,7 @@
 <% end %>
 
 <table class="list" style="width: 100%">
-  <tr>
+  <tr class="header">
     <th>Name</th>
     <th>Structure</th>
     <th>Concentration</th>
@@ -26,25 +26,26 @@
     <% concentrations.each do |concentration| %>
       <tr class="<%= cycle('odd', 'even') %>">
         <% if first %>
-          <td rowspan=<%= [concentrations.length, 1].max %>>
-            <%= link_out metabolite, :hmdb_id, h(metabolite.name) %>
+          <td rowspan="<%= [concentrations.length, 1].max %>">
+            <strong><%= link_out metabolite, :hmdb_id, metabolite.name %></strong>
             <% if metabolite.concentrations.length > 5 %>
               <br /><br />
-              <div style="float: left; width: 50; padding: 1em; background: #B9D3EE">
+              <div class="metabolite-summary">
                 <strong>Mass:</strong> <%= metabolite.mono_mass %> g/mol<br />
                 <strong><%= metabolite.concentrations.length %> Concentrations</strong>
                 <% aggregates = metabolite.concentration_statistics %>
                 <% aggregates.each do |a| %>
                   <br /><%= a.html_safe %>
                 <% end %>
+                <br><br><%= link_to 'show more', metabolite %>
               </div>
             <% end %>
           </td>
-          <td rowspan=<%= [concentrations.length, 1].max %>>
+          <td rowspan="<%= [concentrations.length, 1].max %>">
             <% if metabolite.hmdb_id.present? %>
-            <%= image_tag "http://structures.wishartlab.com/molecules/#{metabolite.hmdb_id}/structure", :style => "border: 1px solid silver; margin-top: 2em" %>
+            <%= structure_thumb(metabolite.hmdb_id) %>
             <% else -%>
-            <span style="color: silver">Not Available</span>
+            <span class="not-available">Not Available</span>
             <% end -%>
           </td>
           <% first = false %>

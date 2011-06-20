@@ -1,37 +1,14 @@
 class StudiesController < ApplicationController
   ALLOWED_CSV_EXPORT_KINDS = [ :metaboanalyst, :umetrics ]
 
-  before_filter :load_cohorts
-
-  require 'faster_csv'
   include Analysis
   
-  def analysis
-    @study = Study.find(params[:id])
-    
-    data = study_data(@study)
-    csv_string = generate_csv(data, :kind => :metaboanalyst)
-    
-    @pca_image = pca(csv_string)
-    @corr_image = corr(csv_string)
-  end
-
   def index
     @studies = Study.all
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @studies }
-    end
   end
   
   def new
     @study = Study.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @study }
-    end
   end
   
   def show
@@ -39,7 +16,6 @@ class StudiesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml { render :xml => @study }
       format.metaboanalyst { 
         csv_string = generate_csv( study_data(@study), :kind => :metaboanalyst )
         send_data( csv_string, :filename => @study.name.downcase.gsub(/[^0-9a-z]/, "_") + ".csv" )
@@ -58,30 +34,22 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(params[:study])
 
-    respond_to do |format|
-      if @study.save
-        flash[:notice] = 'Study was successfully created.'
-        format.html { redirect_to(@study) }
-        format.xml  { render :xml => @study, :status => :created, :location => @study }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @study.errors, :status => :unprocessable_entity }
-      end
+    if @study.save
+      flash[:notice] = 'Study was successfully created.'
+      redirect_to(@study)
+    else
+      render :action => "new"
     end
   end
 
   def update
     @study = Study.find(params[:id])
 
-    respond_to do |format|
-      if @study.update_attributes(params[:study])
-        flash[:notice] = 'Study was successfully updated.'
-        format.html { redirect_to(:action => 'show', :id => @study) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @study.errors, :status => :unprocessable_entity }
-      end
+    if @study.update_attributes(params[:study])
+      flash[:notice] = 'Study was successfully updated.'
+      redirect_to(:action => 'show', :id => @study)
+    else
+      render :action => "edit"
     end
   end
 
@@ -89,34 +57,34 @@ class StudiesController < ApplicationController
     @study = Study.find(params[:id])
     @study.destroy
 
-    respond_to do |format|
-      flash[:notice] = 'Study was successfully deleted.'
-      format.html { redirect_to(:action => 'index') }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = 'Study was successfully deleted.'
+    redirect_to(:action => 'index')
   end  
   
-  private 
-  
-  def load_cohorts
-    Cohort #Required to load all Cohort types
+  def analysis
+    @study = Study.find(params[:id])
+    
+    data = study_data(@study)
+    csv_string = generate_csv(data, :kind => :metaboanalyst)
+    
+    @pca_image = pca(csv_string)
+    @corr_image = corr(csv_string)
   end
   
+  private 
+    
   def study_data(study)
     data = Array.new
-    #For each cohort (label)
-    study.cohort_assignments.each do |ca|
-      curr_label = ca.label
-      c = ca.assignable
-      
-      #For each instance in this cohort (label)
-      c.cohort_assignments.each do |ca|
-        instance = ca.assignable
-        #Create the data array for processing
-        data << {:label => curr_label, :features => instance.features, :id => instance.code}
+
+    # For each cohort (label)
+    study.cohorts.each do |cohort|
+      # For each instance in this cohort (label)
+      cohort.test_subjects.each do |test_subject|
+        # Create the data array for processing
+        data << {:label => cohort.label, :features => test_subject.features, :id => test_subject.code}
       end
     end
-    return(data)
+    data
   end
   
   # Passed an array of instances, represented by hashes. Takes an options hash which includes

@@ -7,7 +7,7 @@ module TestSubjectsHelper
       tree << Node.new(:label => "#{TestSubject.title} Evaluations", :url => test_subject_test_subject_evaluations_path(test_subject), :icon_open => tree_icon('evaluation.png'), :css_class => (controller_name == 'test_subject_evaluations' && params[:test_subject_id] == test_subject.to_param ? 'node-selected' : nil))
       tree << all_experiments(test_subject)
       tree << all_samples(test_subject)
-      tree << cohort_sub_tree(test_subject) # Add the cohorts for this test_subject
+      tree << grouping_sub_tree(test_subject) # Add the groupings for this test_subject
     end
     
     tree.to_s.html_safe
@@ -46,10 +46,10 @@ module TestSubjectsHelper
       return tree
     end
     
-    def cohort_sub_tree(test_subject)
-      tree = Node.new(:label => 'Cohorts', :url => test_subject_cohort_assignments_path(test_subject), :css_class => (controller_name == 'cohort_assignments' && action_name == 'index' && params[:test_subject_id] == test_subject.to_param ? 'node-selected' : nil)) do |node|
-        test_subject.cohort_assignments.each do |cohort_assignment|
-          node << Node.new(:label => cohort_assignment.cohort.name, :url => cohort_path(cohort_assignment.cohort), :icon_open => tree_icon('cohort.png'))
+    def grouping_sub_tree(test_subject)
+      tree = Node.new(:label => 'Groups', :url => test_subject_grouping_assignments_path(test_subject), :css_class => (controller_name == 'grouping_assignments' && action_name == 'index' && params[:test_subject_id] == test_subject.to_param ? 'node-selected' : nil)) do |node|
+        test_subject.grouping_assignments.each do |grouping_assignment|
+          node << Node.new(:label => grouping_assignment.grouping.name, :url => grouping_path(grouping_assignment.grouping), :icon_open => tree_icon('grouping.png'))
         end
       end
       tree.icon = tree.icon_open = tree_icon('folder.png')

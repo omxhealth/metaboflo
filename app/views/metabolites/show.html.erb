@@ -1,89 +1,91 @@
-<p>
-  <b>Name:</b>
-  <%=h @metabolite.name %>
-</p>
-
-
-<p>
-  <b>Description:</b>
-  <%=h @metabolite.description %>
-</p>
+<h1>Metabolite Synopsis</h1>
+<div style="float: right; margin-left: 2em; margin-right: 1em">
+  <%= structure_thumb(@metabolite.hmdb_id) %>
+</div>
 
 <p>
-  <b>IUPAC name:</b>
-  <%=h @metabolite.iupac_name %>
+  <strong>Name:</strong>
+  <%= @metabolite.name %>
 </p>
 
 <p>
-  <b>Chemical formula:</b>
-  <%=h @metabolite.formula %>
+  <strong>Description:</strong>
+  <%= @metabolite.description %>
 </p>
 
-<p>
-  <b>Monoisotopic mass:</b>
-  <%=h @metabolite.mono_mass %>
-</p>
+<h2>External Links</h2>
+<table class="list" style="width: 900px; margin-left: 2em;">
+  <tr>
+    <th style="width: 160px">Resource</th>
+    <th>Link</th>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>CAS number</td>
+    <td><%= @metabolite.cas %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>HMDB</td>
+    <td><%= link_out @metabolite, :hmdb_id %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>KEGG Compound</td>
+    <td><%= link_out @metabolite, :kegg_compound_id %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>PubChem Compound</td>
+    <td><%= link_out @metabolite, :pubchem_compound_id %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>ChEBI</td>
+    <td><%= link_out @metabolite, :chebi_id %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>Wikipedia</td>
+    <td><%= link_out @metabolite, :wikipedia_name %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Average mass:</b>
-  <%=h @metabolite.average_mass %>
-</p>
+<h2>Properties</h2>
+<table class="list" style="width: 900px; margin-left: 2em;">
+  <tr>
+    <th style="width: 160px">Property</th>
+    <th>Value</th>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>IUPAC name</td>
+    <td><%= @metabolite.iupac_name %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>Formula</td>
+    <td><%= html_formula(@metabolite.formula) %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>Monoisotopic mass</td>
+    <td><%= @metabolite.mono_mass %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>Average mass</td>
+    <td><%= @metabolite.average_mass %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>SMILES</td>
+    <td><%= @metabolite.smiles %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>Standard InChI</td>
+    <td><%= @metabolite.inchi_identifier %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>Melting point</td>
+    <td><%= @metabolite.melting_point %></td>
+  </tr>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>State</td>
+    <td><%= @metabolite.state %></td>
+  </tr> 
+</table>
 
-<p>
-  <b>SMILES (isomeric):</b>
-  <%=h @metabolite.smiles %>
-</p>
-
-<p>
-  <b>CAS number:</b>
-  <%=h @metabolite.cas %>
-</p>
-
-<p>
-  <b>InChI identifier:</b>
-  <%=h @metabolite.inchi_identifier %>
-</p>
-
-<p>
-  <b>Melting point:</b>
-  <%=h @metabolite.melting_point %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%=h @metabolite.state %>
-</p>
-
-<p>
-  <b>HMDB ID:</b>
-  <%= link_out @metabolite, :hmdb_id %>
-</p>
-
-<p>
-  <b>KEGG compound ID:</b>
-  <%= link_out @metabolite, :kegg_compound_id %>
-</p>
-
-<p>
-  <b>PubChem compound ID:</b>
-  <%= link_out @metabolite, :pubchem_compound_id %>
-</p>
-
-<p>
-  <b>ChEBI ID:</b>
-  <%= link_out @metabolite, :chebi_id %>
-</p>
-
-<p>
-  <b>Wikipedia entry:</b>
-  <%= link_out @metabolite, :wikipedia_name %>
-</p>
-
-<p>
-  <b>Comments:</b>
-  <%=h @metabolite.comments %>
-</p>
 
 <br />
-<%= edit_link edit_metabolite_path(@metabolite) %> | 
+
 <%= link_to 'Back', :back %>

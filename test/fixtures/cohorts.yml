@@ -1,31 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: Cancer Group 2A
-  type: TestSubjectCohort
-  description: A study of cancer
+  study: one
+  label: MyString
+  control: MyString
 
 two:
-  name: Metabolomics Group 1
-  type: TestSubjectCohort
-  description: Group of test_subjects
-
-three:
-  name: Heart Disease Group 2
-  type: TestSubjectCohort
-  description: Group of test_subjects
-
-four:
-  name: Soylent Green Samples
-  type: SampleCohort
-  description: Group of Samples
-
-five:
-  name: Grad Study Experiments
-  type: ExperimentCohort
-  description: Group of Experiments
-
-study:
-  name: Cancer Study
-  type: Study
-  description: Looking at Cancer vs Normal Patients
+  study: one
+  label: MyString
+  control: MyString

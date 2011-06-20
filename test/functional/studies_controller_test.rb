@@ -37,27 +37,27 @@ class StudiesControllerTest < ActionController::TestCase
 
   def test_should_show_study
     login_as :user
-    get :show, :id => cohorts(:study).id
+    get :show, :id => studies(:one).id
     assert_response :success
   end
 
   def test_should_get_edit
     login_as :user
-    get :edit, :id => cohorts(:study).id
+    get :edit, :id => studies(:one).id
     assert_response :success
   end
 
   def test_should_update_study
     login_as :user
     
-    put :update, :id => cohorts(:study).id, :study => { }
+    put :update, :id => studies(:one).id, :study => { }
     assert_redirected_to study_path(assigns(:study))
   end
 
   def test_should_destroy_study
     login_as :user
     assert_difference('Study.count', -1) do
-      delete :destroy, :id => cohorts(:study).id
+      delete :destroy, :id => studies(:one).id
     end
 
     assert_redirected_to studies_path

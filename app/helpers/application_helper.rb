@@ -59,15 +59,15 @@ module ApplicationHelper
   end
   
   def destroy_link(params)
-    return link_to('Delete', params, {:confirm => 'Are you sure?', :method => :delete, :class => 'icon icon-del'} )
+    return link_to('delete', params, {:confirm => 'Are you sure you want to delete this entry?', :method => :delete, :class => 'icon icon-del', :title => 'Delete Entry'} )
   end
   
   def edit_link(params)
-    return link_to('Edit', params, :class => 'icon icon-edit' )
+    return link_to('edit', params, :class => 'icon icon-edit', :title => 'Edit Entry' )
   end
   
-  def show_link(params)
-    return link_to('Show', params, :class => 'icon icon-show' )
+  def show_link(params, name='show')
+    return link_to(name, params, :class => 'icon icon-show', :title => 'Show Entry' )
   end
   
   def new_link(name, params)
@@ -104,7 +104,7 @@ module ApplicationHelper
     return id if url.blank?
 
     name << " " << image_tag('link_out.png', :class => 'link')
-    return link_to(name, url, html_options)
+    return link_to(name.html_safe, url, html_options)
   end
   
   # association

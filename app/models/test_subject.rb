@@ -8,8 +8,8 @@ class TestSubject < ActiveRecord::Base
   
   has_many :child_samples, :conditions => 'sample_id IS NULL', :class_name => 'Sample'
   
-  has_many :cohort_assignments, :as => :assignable, :dependent => :destroy
-  has_many :cohorts, :through => :cohort_assignments
+  has_many :grouping_assignments, :as => :assignable, :dependent => :destroy
+  has_many :groupings, :through => :grouping_assignments
   
   has_many :medications, :dependent => :destroy
   has_many :test_subject_evaluations, :dependent => :destroy
@@ -17,6 +17,9 @@ class TestSubject < ActiveRecord::Base
   
   has_many :meals, :order => 'consumed_during_period ASC, consumed_on_day ASC', :dependent => :destroy
   has_many :diets, :through => :meals
+  
+  has_many :cohorts_test_subjects, :dependent => :destroy
+  has_many :cohorts, :through => :cohorts_test_subjects
   
   validates_presence_of :code, :site_id
   

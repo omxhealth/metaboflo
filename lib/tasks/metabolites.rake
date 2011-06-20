@@ -26,24 +26,25 @@ namespace :metabolites do
           exit(1)
         end
 
-        metabolite.id = idnum
-        metabolite.name = row['common_name']
-        metabolite.hmdb_id = id     
-        metabolite.description = row['description'] 
-        metabolite.synonyms = row['synonyms']    
-        metabolite.iupac_name = row['iupac']      
-        metabolite.formula = row['chemical_formula']      
-        metabolite.mono_mass = row['molecular_weight']      
-        metabolite.average_mass = row['avg_molecular_weight']      
-        metabolite.smiles = row['smiles_isomeric']      
-        metabolite.cas = row['cas']      
-        metabolite.inchi_identifier = row['InChi']      
-        metabolite.melting_point = row['melting_point']      
-        metabolite.state = row['state']      
-        metabolite.kegg_compound_id = row['kegg_id']      
+        metabolite.id                  = idnum
+        metabolite.name                = row['common_name']
+        metabolite.hmdb_id             = id     
+        metabolite.description         = row['description'] 
+        metabolite.synonyms            = row['synonyms']    
+        metabolite.iupac_name          = row['iupac']      
+        metabolite.formula             = row['chemical_formula']      
+        metabolite.mono_mass           = row['molecular_weight']      
+        metabolite.average_mass        = row['avg_molecular_weight']      
+        metabolite.smiles              = row['smiles_isomeric']      
+        metabolite.cas                 = row['cas']      
+        metabolite.inchi_identifier    = row['InChi']      
+        metabolite.melting_point       = row['melting_point']      
+        metabolite.state               = row['state']      
+        metabolite.kegg_compound_id    = row['kegg_id']      
         metabolite.pubchem_compound_id = row['pubchem_cid']      
-        metabolite.chebi_id = row['chebi_id']      
-        metabolite.wikipedia_name = row['wiki_id']      
+        metabolite.chebi_id            = row['chebi_id']      
+        metabolite.wikipedia_name      = row['wiki_id']      
+        
         if !metabolite.save
           puts "Skipping invalid metabolite: #{metabolite.full_error_messages}"
         end

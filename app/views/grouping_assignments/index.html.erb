@@ -1,0 +1,21 @@
+<h1>Group to which <%= @assignable.name %> belongs</h1>
+
+<table class="list">
+  <tr>
+    <th>Group</th>
+    <th>Size</th>
+		<th colspan="3">Actions</th>
+  </tr>
+
+<% for grouping_assignment in @grouping_assignments %>
+  <tr class="<%= cycle('odd', 'even') %>">
+    <td><%= link_to(grouping_assignment.grouping.name, grouping_assignment.grouping) %></td>
+    <td><%= grouping_assignment.grouping.assignables.length %></td>
+    <td><%= link_to 'Remove', { :action => 'destroy', :id => grouping_assignment, "#{@assignable_type.tableize.singularize}_id" => @assignable }, { :confirm => 'Are you sure?', :method => :delete } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to "Add #{humanized_type @assignable_type} to Group", { :action => 'new', "#{@assignable_type.tableize.singularize}_id" => @assignable }, :class => 'icon icon-add' %>

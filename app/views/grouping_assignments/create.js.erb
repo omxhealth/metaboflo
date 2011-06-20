@@ -1,0 +1,7 @@
+<% if @successful %>
+  $("#assignable-associations").html("<%= escape_javascript(render :partial => 'grouping_assignment', :collection => @grouping.grouping_assignments) %>");
+  $("#flash").html("<p class=\"notice\">Added <%= humanized_type(@grouping.assignable_type).downcase %> to group successfully</p>")
+<% else %>
+  $("#flash").html("<p class=\"error\">Error adding <%= humanized_type(@grouping.assignable_type).downcase %> to group</p>")
+<% end -%>
+

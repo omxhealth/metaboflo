@@ -1,0 +1,12 @@
+<fieldset>
+  <legend>Add</legend>
+  
+  <%= form_tag grouping_grouping_assignments_path(@grouping), :remote => true do %>
+  	<% fields_for :grouping_assignment, GroupingAssignment.new(:assignable_type => @grouping.assignable_type) do |ca_fields| %>
+    	<%= ca_fields.hidden_field :assignable_type %>
+    	<%= humanized_type(@grouping.assignable_type) %>: <%= ca_fields.select(:assignable_id, @grouping.assignable_type.constantize.all.collect {|p| [ p.to_s, p.id ] }, { :include_blank => true } ) %>
+
+    	<%= submit_tag "Add #{humanized_type @grouping.assignable_type}" %>
+  	<% end %>
+  <% end %>
+</fieldset>
