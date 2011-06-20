@@ -607,8 +607,8 @@ span.not-available {
   padding: 0.5em 0.8em;
   border: 1px solid silver;
   border-radius: 5px;
-  min-height: 60px;
-  font-size: 15px;
+  min-height: 40px;
+  font-size: 14px;
   margin: 0.5em 0;
 }
 

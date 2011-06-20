@@ -1,6 +1,6 @@
 <style>
 h1 { padding: .2em; margin: 0; }
-#subjects { float:right; width: 450px; margin: 1.5em 2em; }
+#subjects { float:right; width: 450px; margin: 0.95em 2em; }
 .cohort { width: 500px; margin: 1.5em; }
 /* style the list to maximize the droppable hitarea */
 .cohort ol { margin: 0; padding: 1em; }
@@ -93,6 +93,12 @@ $(function() {
 
 <h1><%= TestSubject.title.pluralize %> in the <%= @study.name %> study</h1>
 
+<p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  You can organize <%= TestSubject.title.pluralize.downcase %> involved in this study by dragging them to the appropriate cohort.
+  You can also drag <%= TestSubject.title.pluralize.downcase %> between cohorts.
+</p>
+
 <div id="subjects">
   <h1 class="ui-widget-header"><%= TestSubject.title.pluralize %></h1>	
   <div id="site">
@@ -118,7 +124,7 @@ $(function() {
   <h1 class="ui-widget-header"><%= cohort.label %> Cohort</h1>
   <div class="ui-widget-content">
     <p>Control?: <strong><%= cohort.control %></strong></p>
-    <ol class="subject-container">
+    <ol class="subject-container" style="min-height: 100px">
       <% if cohort.test_subjects.blank? %>
       <li class="placeholder">Drag <%= TestSubject.title.pluralize.downcase %> here</li>
       <% else -%>
