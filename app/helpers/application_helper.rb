@@ -83,7 +83,7 @@ module ApplicationHelper
   
   # Create a link to external sites based on the given object and column.  If a name is given,
   # it will be used as the link content (<a href="x">name</a>")
-  def link_out(object, column, name=nil, html_options={})
+  def link_out_old(object, column, name=nil, html_options={})
     html_options[:class] = 'link-out' if html_options[:class].blank?
     html_options[:target] = '_blank' if html_options[:target].blank?
 

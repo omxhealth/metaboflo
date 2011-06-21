@@ -1,7 +1,20 @@
 class Metabolite < ActiveRecord::Base
   has_many :concentrations
   
-  #Return an array of statistics describing concentrations for this metabolite
+  # Parse and collect the pathways for this metabolite as an array of hashes
+  def pathways
+    return nil if self.pathways_before_type_cast.blank?
+    
+    results = Array.new
+    self.pathways_before_type_cast.split(/\|/).each do |pw|
+      if vals = pw.split(/:/)
+        results << { :smpdb_id => vals[0], :name => vals[1] }
+      end
+    end
+    results
+  end
+  
+  # Return an array of statistics describing concentrations for this metabolite
   def concentration_statistics
     stats = Array.new
     

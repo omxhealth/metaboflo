@@ -1,5 +1,5 @@
 <h1>Metabolite Synopsis</h1>
-<div style="float: right; margin-left: 2em; margin-right: 1em">
+<div style="float: right; margin-left: 2em; margin-right: 163px">
   <%= structure_thumb(@metabolite.hmdb_id) %>
 </div>
 
@@ -13,42 +13,43 @@
   <%= @metabolite.description %>
 </p>
 
+<p>
+  <strong>CAS Number:</strong>
+  <%= @metabolite.cas %>
+</p>
+
 <h2>External Links</h2>
-<table class="list" style="width: 900px; margin-left: 2em;">
+<table class="list metabolite-info">
   <tr>
-    <th style="width: 160px">Resource</th>
+    <th style="width: 250px">Resource</th>
     <th>Link</th>
   </tr>
   <tr class="<%= cycle('even', 'odd') %>">
-    <td>CAS number</td>
-    <td><%= @metabolite.cas %></td>
-  </tr>
-  <tr class="<%= cycle('even', 'odd') %>">
     <td>HMDB</td>
-    <td><%= link_out @metabolite, :hmdb_id %></td>
+    <td><%= link_out :hmdb, @metabolite.hmdb_id %></td>
   </tr>
   <tr class="<%= cycle('even', 'odd') %>">
     <td>KEGG Compound</td>
-    <td><%= link_out @metabolite, :kegg_compound_id %></td>
+    <td><%= link_out :kegg_compound, @metabolite.kegg_compound_id %></td>
   </tr>
   <tr class="<%= cycle('even', 'odd') %>">
     <td>PubChem Compound</td>
-    <td><%= link_out @metabolite, :pubchem_compound_id %></td>
+    <td><%= link_out :pubchem_compound, @metabolite.pubchem_compound_id %></td>
   </tr>
   <tr class="<%= cycle('even', 'odd') %>">
     <td>ChEBI</td>
-    <td><%= link_out @metabolite, :chebi_id %></td>
+    <td><%= link_out :chebi, @metabolite.chebi_id %></td>
   </tr>
   <tr class="<%= cycle('even', 'odd') %>">
     <td>Wikipedia</td>
-    <td><%= link_out @metabolite, :wikipedia_name %></td>
+    <td><%= link_out :wikipedia, @metabolite.wikipedia_name %></td>
   </tr>
 </table>
 
 <h2>Properties</h2>
-<table class="list" style="width: 900px; margin-left: 2em;">
+<table class="list metabolite-info">
   <tr>
-    <th style="width: 160px">Property</th>
+    <th style="width: 250px">Property</th>
     <th>Value</th>
   </tr>
   <tr class="<%= cycle('even', 'odd') %>">
@@ -85,6 +86,27 @@
   </tr> 
 </table>
 
+<% if @metabolite.pathways.present? %>
+<h2>Pathways</h2>
+<table class="list metabolite-info">
+  <tr>
+    <th style="width: 250px">SMPDB Entry</th>
+    <th>Name</th>
+  </tr>
+  <% @metabolite.pathways.each do |pathway| %>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td>
+      <%= 
+      link_to url_out(:smpdb, pathway[:smpdb_id]) do 
+        image_tag url_out(:smpdb_thumb, pathway[:smpdb_id]), :class => 'pathway-thumb'
+      end
+      %>
+      </td>
+    <td><%= pathway[:name] %><br /><%= link_out :smpdb, pathway[:smpdb_id] %></td>
+  </tr>
+  <% end -%>
+</table>
+<% end -%>
 
 <br />
 

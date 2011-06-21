@@ -543,7 +543,7 @@ table.stats {
 	background-color: #cdcdcd;
 }
 
-/* Metabolites list */
+/* Metabolites list and show */
 div.metabolite-summary {
   float: left; 
   width: 150px; 
@@ -561,6 +561,17 @@ span.not-available {
   color: silver;
 }
 
+img.pathway-thumb {
+  margin: 0.4em;
+  border: 1px solid silver;
+  padding: 4px;
+}
+
+table.metabolite-info {
+  width: 85%;
+  margin-left: 1em;
+}
+
 /* Study Analysis */
 #export-info {
   padding: 1em;
@@ -574,6 +585,7 @@ span.not-available {
   float: right;
   margin-left: 2em;
   margin-right: 2em;
+  margin-top: 0;
 }
 #export-info h2 {
   margin: 0 0 1em 0;
@@ -586,6 +598,7 @@ span.not-available {
 #export-info #run-container {
   margin: 2em auto;
   text-align: center;
+  clear: both;
 }
 
 #export-info #export-container {

@@ -1,28 +1,28 @@
 <p>
   <b>Size:</b>
-  <%=h number_to_human_size(@data_file.data_file_size) %>
+  <%= number_to_human_size(@data_file.data_file_size) %>
 </p>
 
 <p>
   <b>Content type:</b>
-  <%=h @data_file.data_content_type %>
+  <%= @data_file.data_content_type %>
 </p>
 
 <p>
   <b>File:</b>
-  <%= link_to h(@data_file.data_file_name), @data_file.data.url %>
+  <%= link_to @data_file.data_file_name, @data_file.data.url %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%=h @data_file.description %>
+  <%= @data_file.description %>
 </p>
 
 <% if @data_file.has_concentrations %>
   <strong><%= @data_file.concentrations.length %> Concentration(s) were successfully imported from this file:</strong>
   <br />
   <% @data_file.concentrations.each do |c| %>
-    <%= c.identified_as %> (<%= link_out c.metabolite, :hmdb_id, h(c.metabolite.name) %>)<br />
+    <%= c.identified_as %> (<%= link_out :hmdb, c.metabolite.hmdb_id, c.metabolite.name %>)<br />
   <% end %>
   <br /><br />
   <% if @data_file.mapping_errors != nil %>

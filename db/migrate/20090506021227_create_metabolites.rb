@@ -18,6 +18,7 @@ class CreateMetabolites < ActiveRecord::Migration
       t.string :pubchem_compound_id
       t.string :chebi_id
       t.string :wikipedia_name
+      t.string :pathways
       t.text :comments
 
       t.timestamps

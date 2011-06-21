@@ -27,7 +27,7 @@
       <tr class="<%= cycle('odd', 'even') %>">
         <% if first %>
           <td rowspan="<%= [concentrations.length, 1].max %>">
-            <strong><%= link_out metabolite, :hmdb_id, metabolite.name %></strong>
+            <strong><%= link_out :hmdb, metabolite.hmdb_id, metabolite.name %></strong>
             <% if metabolite.concentrations.length > 5 %>
               <br /><br />
               <div class="metabolite-summary">
