@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Metaboflo - <%= controller.controller_name %>: <%= controller.action_name %></title>
+  <title>Metaboflo: <%= yield(:title) %></title>
 
-  <%= stylesheet_link_tag 'yui', 'menu', 'application', 'tree', 'jquery-ui-1.8.13.custom' %>
+  <%= stylesheet_link_tag 'yui', 'menu', 'application', 'tree', 'application-demo', 'jquery-ui-1.8.13.custom' %>
   <%= yield :css %>
   
   <%= javascript_include_tag :defaults %>
