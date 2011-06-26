@@ -38,14 +38,17 @@ plot.corr = function(orig_data, label.points=TRUE) {
 	#Sort by correlation coefficient:
 	corrs$label = factor(corrs$label, levels=rev(as.character(corrs[with(corrs, order(cc)),]$label)))
 	print(num_classes)
-	class.str = paste(classes[1], 'vs', classes[2])
+	class.str = paste(classes[1], 'and', classes[2])
 
 	library(ggplot2)
 	p = ggplot(corrs, aes(y=cc, x=label, fill=label)) 
 	p = p + geom_bar(position="dodge", stat="identity")
-	p = p + opts(title=paste('Correlation between Metabolite Concentration and', class.str), 
-							 axis.text.x = theme_text(angle = 90, hjust=1), legend.position="none", 
+	p = p + opts(axis.text.x = theme_text(angle = 90, hjust=1), legend.position="none", 
 							 panel.background = theme_rect(colour = "black"))
+	# p = p + opts(title=paste('Metabolite Importance between', class.str), 
+	# 						 axis.text.x = theme_text(angle = 90, hjust=1), legend.position="none", 
+	# 						 panel.background = theme_rect(colour = "black"))
+							
 	p = p + xlab('Metabolites')
 	#p = p + ylab('Pearson Correlation Coefficient Magnitude')
 	p = p + ylab('Metabolite Importance')

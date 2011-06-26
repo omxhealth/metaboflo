@@ -1,22 +1,20 @@
-<div class="fields box">
+<div class="fields box files">
   <div class="field">
     <%= f.label :data, "#{DataFile.human_attribute_name(:data)}#{required}".html_safe %>
     <%= f.file_field :data %>
   </div>
   <div class="field">
     <%= f.label :data_file_type_id, "#{DataFile.human_attribute_name(:data_file_type_id)}#{required}".html_safe %>
-    <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
+    <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true }, :class => "file-type-select" %>
   </div>
-  <div class="field">
-    <%= f.label :has_concentrations %>
-  </div>
-  <div class="field-checkbox">
+  <div class="field-checkbox" class="import-data" style="display: none">
     <%= f.check_box :has_concentrations %>
+    <%= f.label :has_concentrations, 'Import concentration data?' %>
     (<%= link_to 'File Format Information', '/file_format.html', :target => '_blank' %>)
   </div>
   <div class="field">
     <%= f.label :has_concentration_units %>
-    <%= f.select :has_concentration_units, ["uM", "mmol / mol creatinine"], :include_blank => true %>
+    <%= f.select :has_concentration_units, ["uM", "mmol / mol creatinine"] %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

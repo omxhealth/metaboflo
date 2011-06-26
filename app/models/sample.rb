@@ -1,5 +1,5 @@
 class Sample < ActiveRecord::Base
-  SAMPLE_TYPES = ['ruminal', 'blood', 'milk', 'urine', 'feces']
+  SAMPLE_TYPES = SUBJECT_CONFIG[:sample_types]
   
   scope :location_contains, lambda {|name| where(['building like ? or room like ?', "%#{name}%", "%#{name}%"])}
   search_methods :location_contains
@@ -41,6 +41,11 @@ class Sample < ActiveRecord::Base
   def root
     self.test_subject
   end
+  
+  # Returns true if this sample contains at least one sample location value
+  def location_information?
+    [ :site, :building, :room, :freezer, :shelf, :box, :box_position ].detect { |l| self.send(l).present? }
+  end  
   
   # calculates the theoretical amount of this sample = original amount - sum(original amount of each child)
   #

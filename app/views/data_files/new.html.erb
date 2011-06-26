@@ -7,8 +7,8 @@
     <legend>Data File Details</legend>
     <p><%= f.file_field :data, :label => 'File to Upload', :required => true %></p>
     <p><%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :required => true } %></p>
-    <p><%= f.check_box :has_concentrations, :label => 'This file contains concentration data in CSV format that should be imported into the LIMS' %> (<%= link_to 'File Format Information', '/file_format.html', :target => '_blank' %>)
-    <p><%= f.select :has_concentration_units, ["uM", "mmol / mol creatinine"], :include_blank => false, :label => 'Units' %></p>
+    <p><%= f.check_box :has_concentrations, :label => 'This file contains concentration data in CSV format that should be imported' %> (<%= link_to 'File Format Information', '/file_format.html', :target => '_blank' %>)
+    <p><%= f.select :has_concentration_units, ["uM", "mmol / mol creatinine"], :label => 'Units' %></p>
     
     <br />
 

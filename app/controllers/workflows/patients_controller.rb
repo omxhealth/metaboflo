@@ -1,10 +1,10 @@
 class Workflows::PatientsController < ApplicationController
   # GET /workflows/patients.js
   def index
-    @test_subjects = TestSubject.where(['id=? OR lower(code) LIKE ?', params[:q].to_i, "%#{params[:q].to_s.downcase}%"])
+    @test_subjects = TestSubject.where(['id=? OR lower(code) LIKE ?', params[:term].to_i, "%#{params[:term].to_s.downcase}%"])
     
     respond_to do |format|
-      format.js # index.js.erb
+      format.js { render :json => @test_subjects.collect { |ts| ts.code } }
     end
   end
   

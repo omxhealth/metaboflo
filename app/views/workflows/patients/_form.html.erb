@@ -15,7 +15,7 @@
   <%= f.fields_for :samples do |sample_form| %>
     <div class="field">
       <%= sample_form.label :sample_type %>
-      <%= sample_form.select :sample_type, Sample::SAMPLE_TYPES, :include_blank => true %>
+      <%= sample_form.select :sample_type, Sample::SAMPLE_TYPES %>
     </div>
     <div class="field">
       <%= sample_form.label :barcode %>
@@ -24,7 +24,7 @@
     <div class="field">
       <%= sample_form.label :original_amount %>
       <%= sample_form.text_field :original_amount, :size => 5 %> 
-      <%= sample_form.select :original_unit, volume_unit_options, :include_blank => true, :no_label => true %>
+      <%= sample_form.select :original_unit, volume_unit_options, :no_label => true %>
     </div>
   <% end %>
 
@@ -63,5 +63,5 @@
     <%= f.submit 'Create Patient' %>
   </div>
   
-  <%= link_to 'Show/Hide other patient fields', '#', :onclick => "$('#patient-more').toggle('blind'); return false;" %></legend>
+  <%= link_to 'Show/Hide other patient fields', '#', :id => 'patient-more-toggle' %>
 <% end %>

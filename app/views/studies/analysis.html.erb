@@ -1,9 +1,11 @@
-<h1>Showing Analysis For Study "<%=h @study.name %>"</h1>
+<h1><%= title "Showing Analysis For Study '#{@study.name}'" %></h1>
 
-<div id="analysis">
-  <%= image_tag(@pca_image, :height => 500) %>
+<div class="analysis">
+  <h2>PCA Analysis: <%= @study.cohorts.collect { |c| c.label }.join(' vs ') %></h2>
+  <%= image_tag(@pca_image) %>
 </div>
 
-<div id="analysis">
-  <%= image_tag(@corr_image, :height => 500) %>
+<div class="analysis">
+  <h2>Metabolite Importance between <%= @study.cohorts.collect { |c| c.label }.join(', ') %></h2>
+  <%= image_tag(@corr_image) %>
 </div>

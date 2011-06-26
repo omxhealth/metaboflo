@@ -7,6 +7,13 @@ module ApplicationHelper
   
   require 'tabular_form_builder'
   
+  # Set the given title for the current page. Returns the given title so you can use it in your
+  # page as a header, for example: <h1><%= title('Welcome') %></h1>
+  def title(page_title)
+    content_for(:title) { strip_tags(page_title.to_s) }
+    page_title.html_safe
+  end
+  
   def date_picker(id)
     javascript_tag do
       "$(function() { $('##{id}').datepicker(); });"
@@ -35,7 +42,7 @@ module ApplicationHelper
   end
 
   def volume_unit_options
-    VOLUME_UNITS.sort
+    VOLUME_UNITS
   end
 
   def weight_unit_options
@@ -59,19 +66,20 @@ module ApplicationHelper
   end
   
   def destroy_link(params)
-    return link_to('delete', params, {:confirm => 'Are you sure you want to delete this entry?', :method => :delete, :class => 'icon icon-del', :title => 'Delete Entry'} )
+    link_to('delete', params, {:confirm => 'Are you sure you want to delete this entry?', :method => :delete, :class => 'icon icon-del', :title => 'Delete Entry'} )
   end
   
   def edit_link(params)
-    return link_to('edit', params, :class => 'icon icon-edit', :title => 'Edit Entry' )
+    link_to('edit', params, :class => 'icon icon-edit', :title => 'Edit Entry' )
   end
   
   def show_link(params, name='show')
-    return link_to(name, params, :class => 'icon icon-show', :title => 'Show Entry' )
+    link_to(name, params, :class => 'icon icon-show', :title => 'Show Entry' )
   end
   
   def new_link(name, params)
-    return link_to("New #{name}", params, :class => 'icon icon-add' )
+    name ||= 'new'
+    link_to(name, params, :class => 'icon icon-add' )
   end
   
   def labelled_tabular_form_for(record_or_name_or_array, *args, &proc)

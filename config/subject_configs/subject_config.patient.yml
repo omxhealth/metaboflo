@@ -1,3 +1,4 @@
 title: 'Patient'
 name: 'patient'
 tree_image: 'patient.png'
+sample_types: [ "blood", "urine", "plasma", "CSF", "breast milk" ]

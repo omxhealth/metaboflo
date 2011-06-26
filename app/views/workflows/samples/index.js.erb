@@ -1,5 +1,8 @@
-reset_sample_options('<%= options_for_select([['', '']] + @samples.collect { |s| [s.to_s, s.id] }).gsub(/\n/, '') %>');
+// Set the options in the sample select box
+<% select_options = @samples.blank? ? [['No Samples', '']] : [['Select Sample', '']] + @samples.collect { |s| [s.to_s, s.id] } %>
+reset_sample_options('<%= options_for_select(select_options).gsub(/\n/, '') %>');
 
+// Create a new sample form based on whether a sample exists
 <% if @samples.empty? %>
 	new_sample_form();
 <% else %>

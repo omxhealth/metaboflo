@@ -1,7 +1,7 @@
 <style>
 h1 { padding: .2em; margin: 0; }
-#subjects { float:right; width: 450px; margin: 0.95em 2em; }
-.cohort { width: 500px; margin: 1.5em; }
+#subjects { float:right; width: 750px; margin: 0.95em 2em; }
+.cohort { width: 800px; margin: 1.5em; }
 /* style the list to maximize the droppable hitarea */
 .cohort ol { margin: 0; padding: 1em; }
 .placeholder { color: grey; background: transparent !important; }
@@ -91,7 +91,7 @@ $(function() {
 
 </script>
 
-<h1><%= TestSubject.title.pluralize %> in the <%= @study.name %> study</h1>
+<h1><%= title "#{@study.name} Organization and Analysis" %></h1>
 <br />
 <div id="export-info" style="display: <%= @study.cohorts.count > 0 ? 'block' : 'none' %>">
   <h2>Data Analysis</h2>

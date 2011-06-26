@@ -4,25 +4,98 @@
 
 <% content_for :javascript do %>
   <%= javascript_include_tag 'workflows' %>
-  <%= javascript_tag do %>
-    $().ready(function() {
-      $.ajax("<%= new_workflows_patient_path :format => :js %>");
-      new_sample_form(<%= new_sample_form_for_test_subject(@experiment.test_subject_code) %>);
-      
-      $('#experiment_test_subject_code').autocomplete('<%= workflows_patients_path %>', {
-        selectFirst: false
-      });
-      $('#experiment_test_subject_code').result(function(event, data, formatted) {
-        find_samples("<%= workflows_samples_path :format => :js %>", formatted);
-      });
-      $('#experiment_test_subject_code').change(function() {
-        find_samples("<%= workflows_samples_path :format => :js %>", $('#experiment_test_subject_code').val());
-      });
-    });
-  <% end %>
 <% end %>
 
-<h1>New Experiment</h1>
+<style>
+.ui-menu-item { text-align: left; }
+a#patient-more-toggle, a#patient-more-toggle:hover {
+  display: block;
+  margin: 2em auto 0.3em auto;
+  text-align: center;
+  background: #E0EEE0;
+  padding: 0.3em 1.3em;
+  font-size: larger;
+  border-radius: 5px;
+}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+
+$.ajax("<%= new_workflows_patient_path :format => :js %>");  
+new_sample_form(<%= new_sample_form_for_test_subject(@experiment.test_subject_code) %>);
+
+// Update the list of samples based on the selected code in the patient box
+function updateSamples(item) {
+  $("#experiment_sample_id").html('');
+  var $code = item ? item.value : $("#test-subject-ac").val();
+  $.ajax({
+    url: '<%= workflows_samples_path %>', 
+    data: ({ code: $code }),
+    success: function(html) {
+      $("#experiment_sample_id").html(html).effect('highlight', 500);
+    }
+  })
+}
+
+// Apply autocomplete to the patient code text field
+$(function() {
+  $( "#test-subject-ac" ).autocomplete({
+    source: $( "#test-subject-ac" ).attr('data-source'),
+    autoFocus: true,
+    change: function(event, ui) { updateSamples(ui.item) },
+    close: function(event, ui) { updateSamples(ui.item) }
+  });
+})
+
+// Load the new patient dialog window when user clicks "Add Patient"
+$(function() {
+  $("#new-patient").click(function() {
+    new_patient_dialog();
+    return false;
+  })
+})
+
+// Load the new sample dialog window when user clicks "Add Sample"
+$(function() {
+  $("#new-sample").click(function() {
+    new_sample_dialog(); 
+    return false;
+  })
+})
+
+// Slide the patient form down to input more information after clicking "Add Patient"
+$(function($) {
+  $("#patient-more-toggle").live('click', function() {
+    $('#patient-more').toggle('blind');
+    return false;
+  });
+});
+
+$(function($) {
+  $('#experiment_test_subject_code').change(function() {
+    find_samples("<%= workflows_samples_path :format => :js %>", $('#experiment_test_subject_code').val())
+  });
+})
+
+// Show/hide the concentration import checkbox based on whether the user has selected the CSV file type
+// for a data file.
+$(function($) {
+  $('.file-type-select').change(function() {
+    var $item = $(this).parent().next(); // Grab the next div below this one.
+
+    if( $(this).find("option:selected").text() == 'CSV' ) {
+      $item.fadeIn();
+    }
+    else {
+      $item.fadeOut();
+    }
+  });
+})
+
+</script>
+
+
+<h1><%= title 'New Experiment' %></h1>
 
 <p class="info">
   <%= image_tag 'info.png', :class => 'info-logo' %>
@@ -42,14 +115,14 @@
       <% else %>
         <div class="field">
           <%= f.label :test_subject_code, "#{TestSubject.title} Code" %>
-          <%= f.text_field :test_subject_code %>
-          <%= link_to 'New patient', '#', :onclick => 'javascript:new_patient_dialog(); return false;' %>
+          <%= f.text_field :test_subject_code, :id => 'test-subject-ac', 'data-source' => workflows_patients_path, :style => 'width: 150px' %>
+          <%= link_to 'New patient', '#', :id => 'new-patient' %>
         </div>
         <div id="workflow-patient" style="display: none;"></div>
         <div class="field">
           <%= f.label :sample_id %>
-          <%= f.select :sample_id, options_for_workflow_sample(@experiment.test_subject_code), :include_blank => true %>
-          <%= link_to 'New sample', '#', :onclick => 'javascript:new_sample_dialog(); return false;' %>
+          <%= f.select :sample_id, options_for_workflow_sample(@experiment.test_subject_code), { :include_blank => true }, :style => 'width: 153px' %>
+          <%= link_to 'New sample', '#', :id => 'new-sample' %>
         </div>
       <% end %>
     </div>
@@ -57,7 +130,7 @@
     <div class="field">
       <%= f.label :amount_used %>
       <%= f.text_field :amount_used, :size => 5 %> 
-      <%= f.select :amount_used_unit, volume_unit_options, :include_blank => true %>
+      <%= f.select :amount_used_unit, volume_unit_options %>
       <%= error_message(Experiment.human_attribute_name(:amount_used_unit), f.object.errors[:amount_used_unit]) %>
     </div>
   </fieldset>

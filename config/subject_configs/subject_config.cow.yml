@@ -1,3 +1,4 @@
 title: 'Cow'
 name: 'cow'
 tree_image: 'cow.png'
+sample_types: ['ruminal', 'blood', 'milk', 'urine', 'feces']

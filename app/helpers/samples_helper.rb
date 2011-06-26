@@ -1,3 +1,2 @@
 module SamplesHelper
-
 end

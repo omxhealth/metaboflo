@@ -22,15 +22,15 @@
     <td><%= experiment.name %></td>
     <td><%= experiment.experiment_type.name unless experiment.experiment_type.nil? %></td>
     <td><%= short_description(experiment.description) %></td>
-    <td><%= link_to(experiment.assigned_to.name, experiment.assigned_to) %></td>
+    <td><%= link_to(experiment.assigned_to.name, experiment.assigned_to) if experiment.assigned_to.present? %></td>
     <td><%= experiment.perform_on %></td>
     <td><% if experiment.performed_by %><%= link_to(experiment.performed_by.name, experiment.performed_by) %><% else %>&nbsp;<% end %></td>
     <td><% if experiment.performed_on %><%= experiment.performed_on %><% else %>&nbsp;<% end %></td>
     <td>
       <% if experiment.data_files.length > 0 %>
         <ul>
-          <% for data_file in experiment.data_files %>
-          	<li><%= link_to h(data_file.data_file_name), data_file.data.url %></li>
+          <% experiment.data_files.each do |data_file| %>
+          	<li><%= link_to data_file.data_file_name, data_file.data.url %></li>
           <% end %>
         </ul>
       <% else %>
