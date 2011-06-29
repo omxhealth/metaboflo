@@ -16,7 +16,7 @@ module Analysis
   end
   
   def corr(csv_string)
-    image_path = "corr.png"
+    image_path = "corr"
     temp_file = "#{Rails.root}/tempcorr.csv"
     corr_path = "#{Rails.root}/lib/R/corr.R"
     
@@ -27,7 +27,7 @@ module Analysis
     command = "Rscript #{corr_path} #{temp_file} #{Rails.root}/public/images/#{image_path}"
     system(command)
     
-    return(image_path)
+    return("#{image_path}.png")
   end
   
 end

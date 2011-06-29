@@ -66,7 +66,13 @@ class StudiesController < ApplicationController
     
     data = study_data(@study)
     csv_string = generate_csv(data, :kind => :metaboanalyst)
-    puts csv_string
+
+    labelh = Hash.new
+    data.each do |d|
+      labelh[d[:label]] = ''
+    end
+    @labels = labelh.keys().sort()
+    
     @pca_image = pca(csv_string)
     @corr_image = corr(csv_string)
   end

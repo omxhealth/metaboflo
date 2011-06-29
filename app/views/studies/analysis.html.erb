@@ -5,7 +5,17 @@
   <%= image_tag(@pca_image) %>
 </div>
 
-<div class="analysis">
-  <h2>Metabolite Importance between <%= @study.cohorts.collect { |c| c.label }.join(', ') %></h2>
-  <%= image_tag(@corr_image) %>
-</div>
+<% if @labels.length == 2%>
+  <div class="analysis">
+    <h2>Metabolite Importance between <%= @study.cohorts.collect { |c| c.label }.join(' and ') %></h2>
+    <%= image_tag(@corr_image) %>
+  </div>
+<% else %>
+  <% @labels.each_with_index do |label, index| %>
+    <div class="analysis">
+      <h2>Metabolite Importance for <%= label %></h2>
+      <% image = @corr_image.gsub(/corr/, "corr#{index+1}") %>
+      <%= image_tag(image) %>
+    </div>
+  <% end %>
+<% end %>

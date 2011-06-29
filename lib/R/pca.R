@@ -4,7 +4,7 @@
 #
 # Data format: 
 # ID column labelled "subjectID"
-# Label column labelled "Label" (Currently works best for 2 labels)
+# Label column labelled "Label" (Works for 2 or more classes)
 # Remaining data should be real-valued
 # 
 ############################################################
