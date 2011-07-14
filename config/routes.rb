@@ -77,14 +77,25 @@ Metaboflo::Application.routes.draw do
   end
 
   resources :samples do
-    resources :samples
+    resources :samples do
+      member do
+        post :finish
+      end
+    end
     resources :experiments
     resources :grouping_assignments
+    member do
+      post :finish
+    end
   end
   
   resources :test_subjects do
     resources :meals
-    resources :samples
+    resources :samples do
+      member do
+        post :finish
+      end
+    end
     resources :grouping_assignments
     resources :lab_tests
     resources :medications

@@ -23,7 +23,7 @@
   <% else %>
     <p><%= form.select :client_id, Client.all(:order => :name).collect { |c| [c.name, c.id] }, :include_blank => true %></p>
   <% end %>
-  <p><%= form.select :status, ['Submitted', 'Queued', 'Processing', 'Finished'], :include_blank => true %></p>
+  <p><%= form.select :status, ['Submitted', 'Queued', 'In Progress', 'Finished'], :include_blank => true %></p>
   <% first = true %>
   <%= form.fields_for :stored_files, :no_label => true do |stored_file_form| %>
     <p>

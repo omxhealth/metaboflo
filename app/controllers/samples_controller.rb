@@ -1,7 +1,7 @@
 class SamplesController < ApplicationController
   before_filter :find_test_subject
   before_filter :find_parent_sample
-  before_filter :find_sample, :only => [ :show, :edit, :update, :destroy ]
+  before_filter :find_sample, :only => [ :show, :edit, :update, :destroy, :finish ]
   before_filter :no_parent?, :only => [ :new, :create ]
   
   # GET /samples
@@ -96,6 +96,24 @@ class SamplesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(@parent.kind_of?(Sample) ? sample_samples_url(@parent) : test_subject_samples_url(@test_subject)) }
       format.xml  { head :ok }
+    end
+  end
+  
+  # POST /samples/1/finish
+  def finish
+    respond_to do |format|
+      if @sample.update_attributes(:status => 'Finished')
+        if @sample.root_sample.client.blank?
+          flash[:notice] = 'Sample is now finished.'
+        else
+          SampleMailer.finished_notification(@sample).deliver
+          flash[:notice] = 'Sample is now finished and a notification has been sent to the client.'          
+        end
+        
+        format.html { redirect_to([@parent, @sample]) }
+      else
+        format.html { render :action => "edit" }
+      end
     end
   end
   

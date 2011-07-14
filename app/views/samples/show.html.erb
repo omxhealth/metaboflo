@@ -32,7 +32,10 @@
 
   <p>
     <b>Status:</b>
-    <%= @sample.status %>
+    <%= @sample.status %>&nbsp;&nbsp;
+    <% unless @sample.client.nil? %>
+      <%= link_to (@sample.status == 'Finished' ? 'Notify client' : 'Mark finished'), finish_sample_path(@sample), :method => :post, :confirm => 'A notification will be sent to the client. Proceed?' %>
+    <% end %>
   </p>
   
   <p>

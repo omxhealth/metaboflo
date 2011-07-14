@@ -1,8 +1,14 @@
 development:
   domain: localhost:3000
+  sample:
+    from: 'In Siliflo <noreply@insiliflo.com>'
 
 test:
   domain: test.host
+  sample:
+    from: 'In Siliflo <noreply@insiliflo.com>'
 
 production:
   domain: example.com
+  sample:
+    from: 'In Siliflo <noreply@insiliflo.com>'
