@@ -1,10 +1,10 @@
 <div class="fields box files">
   <div class="field">
-    <%= f.label :data, "#{DataFile.human_attribute_name(:data)}#{required}".html_safe %>
+    <%= f.label :data, :required => true %>
     <%= f.file_field :data %>
   </div>
   <div class="field">
-    <%= f.label :data_file_type_id, "#{DataFile.human_attribute_name(:data_file_type_id)}#{required}".html_safe %>
+    <%= f.label :data_file_type_id, :required => true %>
     <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true }, :class => "file-type-select" %>
   </div>
   <div class="field-checkbox" class="import-data" style="display: none">

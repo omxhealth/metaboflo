@@ -7,9 +7,39 @@
 
 <fieldset>
   <legend>Sample Identification</legend>
-  <p><%= @parent_sample ? @parent_sample.sample_type : form.select(:sample_type, ['ruminal', 'blood', 'milk', 'urine', 'feces']) %></p>
+  <% if @parent_sample %>
+    <p><%= form.label :sample_type %> <%= @parent_sample.sample_type %></p>
+  <% else %>
+    <p><%= form.select :sample_type, ['ruminal', 'blood', 'milk', 'urine', 'feces'] %></p>
+  <% end %>
   <p><%= form.text_field :barcode, :size => 30 %></p>
   <p><%= form.label :description %><%= form.text_area :description %></p>
+</fieldset>
+
+<fieldset>
+  <legend>Client-related Information</legend>
+  <% if @parent_sample %>
+    <p><%= form.label :client_id %><%= @sample.root_sample.client.to_s %></p>
+  <% else %>
+    <p><%= form.select :client_id, Client.all(:order => :name).collect { |c| [c.name, c.id] }, :include_blank => true %></p>
+  <% end %>
+  <p><%= form.select :status, ['Submitted', 'Queued', 'Processing', 'Finished'], :include_blank => true %></p>
+  <% first = true %>
+  <%= form.fields_for :stored_files, :no_label => true do |stored_file_form| %>
+    <p>
+      <% if first %>
+        <%= form.label 'Reports' %>
+        <% first = false %>
+      <% end %>
+      <% if stored_file_form.object.new_record? %>
+        <%= stored_file_form.file_field :attachment, :no_label => true %>
+      <% else %>
+        <%= link_to stored_file_form.object.attachment_file_name, stored_file_form.object.attachment.url %>
+        <%= stored_file_form.check_box '_destroy', :no_label => true %>
+        <%= stored_file_form.label '_destroy', 'Remove', :class => 'grouped' %>
+      <% end %>
+    </p>
+  <% end %>
 </fieldset>
 
 <fieldset>

@@ -156,6 +156,10 @@
       <div id="logged-in">
         Logged in as <em><%= current_user.to_s %></em> | <%= link_to 'Logout', destroy_user_session_path %>
       </div>
+      <% elsif current_client %>
+      <div id="logged-in">
+        Logged in as <em><%= current_client.to_s %></em> | <%= link_to 'Logout', destroy_client_session_path %>
+      </div>
       <% end -%>
 
       <div class="yui-b"><!-- Navigation block -->

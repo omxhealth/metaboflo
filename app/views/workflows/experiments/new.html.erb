@@ -138,7 +138,7 @@ $(function($) {
   <fieldset>
     <legend>Experiment Description</legend>
     <div class="field">
-      <%= f.label :name, "#{Experiment.human_attribute_name(:name)}#{required}".html_safe %>
+      <%= f.label :name, :required => true %>
       <%= f.text_field :name, :style => "width: 250px" %>
       <%= error_message(Experiment.human_attribute_name(:name), f.object.errors[:name]) %>
     </div>
@@ -148,7 +148,7 @@ $(function($) {
       <%= error_message(Experiment.human_attribute_name(:protocol_id), f.object.errors[:protocol_id]) %>
     </div>
     <div class="field">
-      <%= f.label :experiment_type_id, "#{Experiment.human_attribute_name(:experiment_type_id)}#{required}".html_safe %>
+      <%= f.label :experiment_type_id, :required => true %>
       <%= f.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
       <%= error_message(Experiment.human_attribute_name(:experiment_type_id), f.object.errors[:experiment_type_id]) %>
     </div>

@@ -1,0 +1,26 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'clients' %>
+<% end %>
+
+<h1><%= @client.name %></h1>
+
+<p class="actions">
+  <%= link_to 'Edit', edit_client_path(@client) %>
+  <%= link_to 'Back to Clients', clients_path %>
+</p>
+
+<div class="box">
+  <p>
+    <b><%= Client.human_attribute_name(:email) %>:</b>
+    <%= @client.email %>
+  </p>
+  <p>
+    <b><%= Client.human_attribute_name(:name) %>:</b>
+    <%= @client.name %>
+  </p>
+</div>
+
+<p class="actions">
+  <%= link_to 'Edit', edit_client_path(@client) %>
+  <%= link_to 'Back to Clients', clients_path %>
+</p>

@@ -1,0 +1,22 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'clients' %>
+<% end %>
+
+<%= form_for(@client) do |f| %>
+  <%= f.error_messages %>
+  
+  <div class="field">
+    <%= f.label :email, :required => true %><br />
+    <%= f.text_field :email %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :name, :required => true %><br />
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="actions field-no-label">
+    <%= f.submit %>
+    <%= link_to 'Cancel', (@client.new_record? ? clients_path : @client) %>
+  </div>
+<% end %>

@@ -4,6 +4,7 @@ class Sample < ActiveRecord::Base
   scope :location_contains, lambda {|name| where(['building like ? or room like ?', "%#{name}%", "%#{name}%"])}
   search_methods :location_contains
   
+  belongs_to :client
   belongs_to :test_subject
   belongs_to :sample
   belongs_to :site
@@ -15,6 +16,9 @@ class Sample < ActiveRecord::Base
   has_many :grouping_assignments, :as => :assignable, :dependent => :destroy
   has_many :groupings, :through => :grouping_assignments
   
+  has_many :stored_files, :as => :attachable
+  accepts_nested_attributes_for :stored_files, :allow_destroy => true
+  
   before_validation :assign_parent_type
   before_validation :set_test_subject_id
   
@@ -23,6 +27,7 @@ class Sample < ActiveRecord::Base
 
   validate :sample_chronology
   validate :same_parent?
+  validate :client_blank?
   
   # Required so that Experiments, Samples, and TestSubjects can be displayed in groupings
   def to_s
@@ -36,6 +41,10 @@ class Sample < ActiveRecord::Base
   
   def aliquot?
     return !self.sample.blank?
+  end
+  
+  def root_sample
+    return aliquot? ? self.sample.root_sample : self
   end
   
   def root
@@ -83,5 +92,9 @@ class Sample < ActiveRecord::Base
       if self.sample && self.sample.test_subject_id != self.test_subject_id
         errors.add(:test_subject_id, "is not the same as that of parent sample")
       end
+    end
+    
+    def client_blank?
+      errors.add(:client_id, "cannot be set for aliquots") if !self.sample_id.blank? && !self.client_id.blank?
     end
 end

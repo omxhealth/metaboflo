@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class SampleTest < ActiveSupport::TestCase
+  test "aliquot cannot have client" do
+    sample = Sample.new(:sample => samples(:one), :client => clients(:one))
+    sample.valid?
+    assert sample.errors[:client_id].any?
+  end
+  
   test "set_test_subject_id" do
     parent_sample = Sample.new(:test_subject => test_subjects(:one))
     sample = Sample.new
@@ -23,7 +29,7 @@ class SampleTest < ActiveSupport::TestCase
     assert !sample.valid?
   end
   
-  def test_taken_on
+  test "taken_on" do
     #Birthdate == taken_on
     sample = Sample.new(:collected_on => test_subjects(:one).birthdate, :test_subject => test_subjects(:one))
     assert sample.valid?
@@ -55,12 +61,12 @@ class SampleTest < ActiveSupport::TestCase
     assert !sample.errors[:collected_on].any?
   end
   
-  def test_root
+  test "root" do
     assert_equal test_subjects(:one), samples(:one).root
     assert_equal test_subjects(:one), samples(:four).root
   end
   
-  def test_theoretical_amount
+  test "theoretical_amount" do
     parent = Sample.new(:original_amount => 10.5, :original_unit => 'ml')
     parent.samples << Sample.new(:original_amount => 5.4, :original_unit => 'ml')
     parent.samples << Sample.new(:original_amount => 4.1, :original_unit => 'ml')

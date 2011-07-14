@@ -24,6 +24,28 @@
 <br />
 
 <fieldset>
+  <legend>Client-related Information</legend>
+  <p>
+    <b>Client:</b>
+    <%= @sample.client.name unless @sample.client.blank? %>
+  </p>
+
+  <p>
+    <b>Status:</b>
+    <%= @sample.status %>
+  </p>
+  
+  <p>
+    <b>Reports:</b><br />
+    <% @sample.stored_files.each do |stored_file| %>
+      <%= link_to stored_file.attachment_file_name, stored_file.attachment.url %>
+    <% end %>
+  </p>
+</fieldset>
+
+<br />
+
+<fieldset>
   <legend>Volume Information</legend>
   <p>
     <b>Original amount:</b>
@@ -110,4 +132,4 @@
 
 <br />
 
-<%= edit_link @sample.aliquot? ? edit_sample_sample_path(@parent, @sample) : edit_test_subject_sample_path(@test_subject, @sample) %>
+<%= edit_link @sample.aliquot? ? edit_sample_sample_path(@sample.sample, @sample) : edit_test_subject_sample_path(@test_subject, @sample) %>

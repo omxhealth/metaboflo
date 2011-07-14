@@ -1,4 +1,13 @@
 Metaboflo::Application.routes.draw do
+  devise_for :clients do
+    match 'clients/samples' => 'clients/samples#index', :as => :client_root
+  end
+  namespace :clients do
+    resources :samples, :only => [:index, :show]
+  end
+  
+  resources :clients
+
   namespace :workflows do
     resources :experiments
     resources :patients, :only => [:index, :new, :create] do

@@ -1,0 +1,33 @@
+<h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(TestSubject)) ? "Samples for #{TestSubject.title.downcase} #{@parent}" : 'Sample Tracking' %></h1>
+
+<table class="list">
+  <tr class="header">
+		<th>Type</th>
+    <th>Amount Received</th>
+    <th>Collected on</th>
+    <th>Collected by</th>
+		<th>Experiments</th>
+		<th>Status</th>
+		<th>Reports</th>
+  </tr>
+	
+<% @samples.each do |sample| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+		<td><%= sample.sample_type %></td>
+    <td><%= sample.original_amount %> <%=h sample.original_unit %><br />(<%= sample.theoretical_amount %> <%=h sample.original_unit %> remaining)</td>
+    <td><%= sample.collected_on %></td>
+    <td><%= sample.collected_by.present? ? sample.collected_by.name : '' %></td>
+		<td>
+			<% sample.experiments.each do |experiment| %>
+			  <%= experiment.experiment_type.name %><br />
+			<% end %>
+		</td>
+		<td><%= sample.status %></td>
+		<td>
+		  <% sample.stored_files.each do |stored_file| %>
+        <%= link_to stored_file.attachment_file_name, stored_file.attachment.url %><br />
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
