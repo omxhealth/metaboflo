@@ -1,0 +1,30 @@
+/* Metabolites list and show */
+div.metabolite-summary {
+  float: left; 
+  width: 150px; 
+  padding: 1em; 
+  background: #CBE3EC;
+  border-radius: 10px;
+}
+
+img.structure {
+  border: 1px solid #CECFDC;
+  padding: 0.5em;
+  background: #fff;
+  margin-top: 2em;
+}
+
+span.not-available {
+  color: silver;
+}
+
+img.pathway-thumb {
+  margin: 0.4em;
+  border: 1px solid silver;
+  padding: 4px;
+}
+
+table.metabolite-info {
+  width: 85%;
+  margin-left: 1em;
+}

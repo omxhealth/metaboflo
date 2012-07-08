@@ -1,0 +1,22 @@
+/* Home page images */
+div#login-logos {
+	text-align: center;
+}
+div#login-logos img {
+	-moz-box-shadow: 3px 3px 3px #666; 
+	-webkit-box-shadow: 3px 3px 3px #666;
+	box-shadow: 3px 3px 3px #666;	
+	margin-left: 0em; 
+	margin-right: 4em
+}
+
+/* Home page stats */
+table.stats {
+  margin: 1em 0 2em 1.5em;
+  width: 300px;
+}
+
+.node-selected {
+	font-weight: bold;
+	background-color: #cdcdcd;
+}

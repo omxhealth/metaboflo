@@ -1,0 +1,240 @@
+// Error Messages
+div.error-explanation {
+  background: #fbe3e4; 
+  color: #8a1f11;
+  border: 1px solid #fbc2c4;
+  $shadow: 0 0 3px silver;
+  -moz-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+  padding: 0.3em 0.8em;
+  border-radius: 8px;
+
+  h2 { font-size: 17px }
+  ul { margin: 0.8em; }
+}
+
+@mixin field-inputs {
+  input[type="text"], input[type="password"], input[type="email"], textarea { 
+    margin-top: 0;
+    vertical-align: top;
+    $text_shadow: 0px 1px 0px #fff;
+    text-shadow: $text_shadow;
+    -webkit-text-shadow: $text_shadow;
+    -moz-text-shadow: $text_shadow;
+    outline: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), to(#ffffff));
+    background: -moz-linear-gradient(top,  #F0F0F0,  #ffffff);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #717171;
+    -webkit-box-shadow: 1px 1px 0px #efefef;
+    -moz-box-shadow: 1px 1px 0px #efefef;
+    box-shadow:  1px 1px 0px #efefef;
+    font-size: inherit;
+  }
+  input[type="text"]:focus, textarea:focus {
+    -webkit-box-shadow: 0px 0px 5px #007eff;
+    -moz-box-shadow: 0px 0px 5px #007eff;
+    box-shadow: 0px 0px 5px #007eff;
+  }
+  select {
+    font-size: inherit;
+    margin-top: 0;
+    line-height: 22px;
+    vertical-align: middle;
+  }
+  textarea { 
+    width: 500px; 
+    height: 80px; 
+    font-size: smaller;
+  }
+}
+
+@mixin inner-group {
+  .inner-group-field {
+    .inner-group {
+      display: inline-block; 
+      vertical-align: top;
+      margin-bottom: 1em;
+      background: white;
+      padding: .8em;
+      border: 1px solid silver;
+      border-radius: 0.3em;
+      label { 
+        font-size: 85%;
+        font-weight: normal; 
+        margin: 0;
+        margin-right: 1em; 
+        text-align: left; 
+        width: auto; 
+      }
+      .actions { 
+        margin: 0;
+        display: inline;
+      }
+      .nested-remove {
+        float: right;
+        margin: 0 0;
+        clear: both;
+        a {
+          max-height: 1.9em;
+          padding: 0;
+          font-size: 40%;
+        }
+      }
+      .nested-add-holder {
+        font-size: 90%;
+        .add_child { margin-top: 1em }
+      }
+      .nested-removed {
+        background: silver;
+        opacity: 0.5;
+      }       
+    }
+  }
+}
+
+
+@mixin full-group {
+  .full-group-field {
+    display: block;
+    .full-group .nested-field { 
+      vertical-align: top;
+      font-size: 14px;
+      margin: 0.8em 2em;
+      background: white;
+      padding: 1em 0 1em 1em;
+      border: 1px solid silver;
+      border-radius: 0.3em;
+    }
+    .nested-remove {
+      float: right;
+      margin-right: 1em;
+    }
+    .nested-add {
+      margin-left: 2em;
+    }
+    .nested-removed {
+      background: silver !important;
+      opacity: 0.5;
+      input, textarea, select {
+        background: gray;
+        color: silver;
+        text-shadow: none;
+      }
+    }       
+    
+  }
+}
+
+@mixin checkbox-group {
+  .checkbox-group {
+    display: inline-block; 
+    vertical-align: top;
+    label, input {
+      vertical-align: middle;
+    }
+    label { 
+      font-size: 85%;
+      font-weight: normal; 
+      margin: 0;
+      margin-right: 1em; 
+      text-align: left; 
+      width: auto; 
+    }
+    input { 
+      margin-right: 0.5em;
+    }
+  }
+}
+
+
+/* Standard form */
+form.standard {
+  font-size: 15px;
+  .submit-actions {
+    text-align: center;
+    margin: auto;
+    padding: 1em;
+  }
+  .error-msg {
+    font-style: italic;
+    margin-bottom: 0;
+    margin-top: -10px;
+    padding: 0;
+    font-size: 85%;
+  }
+  .datepicker {
+    width: 6.5em;
+  }
+  .field_with_errors {
+    display: inline;
+  }
+  fieldset { 
+    min-width: 1000px;
+    background: #E0EBEA;
+    font-size: inherit;
+    border-radius: 5px;
+    margin: 2em 2em;
+    padding-top: 1em;
+    a { font-size: 90% }
+    legend {
+      background: white;
+      border: 1px solid silver;
+      padding: 0 0.5em;
+      border-radius: 3px;
+      font-size: 90%;
+    }
+    div {
+      &.field, &.actions {
+        margin-bottom: 0.6em; 
+      } 
+    }
+  
+    .field-holder {
+      margin-bottom: 0.2em;
+      white-space: nowrap; 
+      width: 100%;
+      .left-label {
+        display: inline-block; 
+        $text_shadow: 0px 1px 0px #fff;
+        text-shadow: $text_shadow;
+        -webkit-text-shadow: $text_shadow;
+        -moz-text-shadow: $text_shadow;
+        text-align: right; 
+        font-weight: bold; 
+        margin-right: 0.5em; 
+        vertical-align: top;
+        font-size: 90%;
+        color: #383838;
+        .field_with_errors {
+          label { color: #8A3324; }
+        }
+      }
+      .field {
+        display: inline-block;
+        white-space: nowrap; 
+        text-align: left; 
+        padding: 0; 
+        .nested-remove { float: right; }
+        @include field-inputs;
+        .field_with_errors {
+          input, textarea, select { background: #EED5D2 }
+        }
+        .textile-hint {
+          text-align: right;
+          clear: both;
+          font-size: 12px;
+        }
+        .textile-editor {
+          font-size: smaller;
+        }
+      }
+      @include checkbox-group;
+      @include full-group;
+      @include inner-group;
+    }
+  }
+}
