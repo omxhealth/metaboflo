@@ -1,3 +1,4 @@
+# Module that handles the graphs and plots
 module Analysis  
 
   def pca(csv_string)
