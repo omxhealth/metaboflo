@@ -5,6 +5,5 @@
  *= require_self
  *= require jquery.ui.all
  *= require jquery-ui/cupertino
- *= require jqtree
  *= require_tree . 
 */

@@ -1,11 +1,3 @@
 <h1>New meal for <%= TestSubject.title %> <%= @test_subject.code %></h1>
 
-<%= labelled_tabular_form_for([@test_subject, @meal]) do |f| %>
-  <%= f.error_messages %>
-
-  <%= render :partial => 'form', :locals => { :form => f } %>
-
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<%= render :partial => 'form' %>

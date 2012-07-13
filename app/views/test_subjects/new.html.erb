@@ -1,9 +1,3 @@
 <h1>New <%= TestSubject.title %></h1>
 
-<%= labelled_tabular_form_for(@test_subject) do |form| %>
-<%= render :partial => "#{TestSubjectsController::VIEW_PATH}/form", :locals => { :form => form } %>
-
-<p>
-  <%= form.submit "Create" %>
-</p>
-<% end %>
+<%= render :partial => "#{TestSubjectsController::VIEW_PATH}/form" %>

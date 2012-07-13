@@ -1,24 +1,12 @@
-<div class="fields box files">
-  <div class="field">
-    <%= f.label :data, :required => true %>
-    <%= f.file_field :data %>
-  </div>
-  <div class="field">
-    <%= f.label :data_file_type_id, :required => true %>
-    <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true }, :class => "file-type-select" %>
-  </div>
-  <div class="field-checkbox" class="import-data" style="display: none">
-    <%= f.check_box :has_concentrations %>
-    <%= f.label :has_concentrations, 'Import concentration data?' %>
+<div class="nested-field" style="display: <%= f.object.send('_destroy') ? 'none' : 'block' %>">
+  <%= remove_child_link "remove", f %>
+  <%= f.file_field :data %>
+  <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true }, 
+                :class => "file-type-select" %>
+  <div class="has-concentrations" style="display:none">
+    <%= f.check_box :has_concentrations, :label => 'Import concentration data?' %>
     (<%= link_to 'File Format Information', '/file_format.html', :target => '_blank' %>)
+    <%= f.select :has_concentration_units, [ "uM", "mmol / mol creatinine" ] %>
   </div>
-  <div class="field">
-    <%= f.label :has_concentration_units %>
-    <%= f.select :has_concentration_units, ["uM", "mmol / mol creatinine"] %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :style => "width: 350px; height: 70px" %>
-  </div>
-  <%= remove_fields_for f, :data_file %>
+  <%= f.text_area :description %>
 </div>

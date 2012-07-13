@@ -1,7 +1,6 @@
 roman: 
   site_id: 986866124
-  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
-  password_salt: "kXoztsu11lYTJmqnBTiO"  
+  encrypted_password: "$2a$10$2aM4yJ53QUc/g/8WFMvY3OKm11kmnVm6OpZaoUiZqNgZOfYtfymNS" # monkey
   rank: User
   remember_token: 
   name: Roman Eisner
@@ -9,8 +8,7 @@ roman:
   
 craig: 
   site_id: 53320508
-  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
-  password_salt: "kXoztsu11lYTJmqnBTiO"  
+  encrypted_password: "$2a$10$2aM4yJ53QUc/g/8WFMvY3OKm11kmnVm6OpZaoUiZqNgZOfYtfymNS" # monkey
   rank: User
   remember_token: 
   name: Craig Knox
@@ -18,8 +16,7 @@ craig:
   
 joseph: 
   site_id: 1054583384
-  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
-  password_salt: "kXoztsu11lYTJmqnBTiO"  
+  encrypted_password: "$2a$10$2aM4yJ53QUc/g/8WFMvY3OKm11kmnVm6OpZaoUiZqNgZOfYtfymNS" # monkey
   rank: User
   remember_token: 
   name: Joseph Cruz
@@ -27,8 +24,7 @@ joseph:
   
 admin: 
   site_id: 996332877
-  encrypted_password: "d795a256f3a2a94ae358c48af2b3c3dcf7e8961b" # monkey
-  password_salt: "kXoztsu11lYTJmqnBTiO"
+  encrypted_password: "$2a$10$2aM4yJ53QUc/g/8WFMvY3OKm11kmnVm6OpZaoUiZqNgZOfYtfymNS" # monkey
   rank: Administrator
   remember_token: 
   name: Demo Account

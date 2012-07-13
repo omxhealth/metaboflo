@@ -1,9 +1,11 @@
 <h1>Editing Study</h1>
 
-<%= labelled_tabular_form_for(:study, @study, :url => { :action => "update" }, :html => { :method => :put }) do |form| %>
-  <%= render :partial => 'form', :locals => { :form => form } %>
+<%= knoxy_form_for(@study, :as => :study, :url => { :action => "update" }, :html => { :method => :put }) do |form| %>
+  <%= render :partial => 'form', :locals => { :f => form } %>
 
-  <p><%= form.submit "Update" %></p>
+  <div class="field-no-label actions">
+    <%= form.submit %>
+  </div>
 <% end %>
 
 <%= show_link({:id => @study}) %>

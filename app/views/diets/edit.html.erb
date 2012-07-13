@@ -1,13 +1,5 @@
 <h1>Editing diet</h1>
 
-<%= labelled_tabular_form_for(setup_diet(@diet)) do |f| %>
-  <%= f.error_messages %>
-
-  <%= render :partial => 'form', :locals => { :form => f } %>
+<%= render :partial => 'form' %>
 	
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
-
 <%= show_link @diet %>

@@ -13,8 +13,22 @@ class DeviseCreateClients < ActiveRecord::Migration
 
       # Custom columns
       t.string :name
-
-
+      t.string :affiliation
+      t.string :phone
+      t.string :address
+      t.string :city
+      t.string :province_state
+      t.string :country
+      t.string :postal_zip_code
+      t.text :notes
+      
+      t.string :primary_name
+      t.string :primary_email
+      t.string :primary_phone
+      t.string :secondary_name
+      t.string :secondary_email
+      t.string :secondary_phone
+      
       t.timestamps
     end
 

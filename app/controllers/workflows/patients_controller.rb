@@ -1,23 +1,28 @@
 class Workflows::PatientsController < ApplicationController
   # GET /workflows/patients.js
   def index
-    @test_subjects = TestSubject.where(['id=? OR lower(code) LIKE ?', params[:term].to_i, "%#{params[:term].to_s.downcase}%"])
-    
     respond_to do |format|
-      format.js { render :json => @test_subjects.collect { |ts| ts.code } }
+      format.json { 
+        term = "#{params[:term]}%"
+        @patients = TestSubject.where('id=? OR code LIKE ?', term.to_i, term).select('id, code')
+        render :json => @patients.as_json(:methods => :to_label)
+      }
     end
   end
   
   # GET /workflows/patients/new
   # GET /workflows/patients/new.js
-  # GET /workflows/patients/new.xml
   def new
     @test_subject = TestSubject.new
-
+    
     respond_to do |format|
-      format.html # new.html.erb
-      format.js # new.js.erb
-      format.xml  { render :xml => @test_subject }
+      format.html do
+        if request.xhr?
+          render :partial => 'form', :layout => false
+        else
+          render :new
+        end
+      end
     end
   end
 
@@ -29,14 +34,22 @@ class Workflows::PatientsController < ApplicationController
 
     respond_to do |format|
       if @test_subject.save
-        flash[:notice] = "#{TestSubject.title} was successfully created."
-        format.html { redirect_to(new_workflows_experiment_url) }
-        format.js # create.js.erb
-        format.xml  { render :xml => @test_subject, :status => :created, :location => @test_subject }
+        format.html do
+          if request.xhr?
+            render :json => @test_subject.as_json(:methods => [ :to_label, :last_sample_id ]), :status => :created
+          else
+            flash[:notice] = "#{TestSubject.title} was successfully created."
+            redirect_to(new_workflows_experiment_url)
+          end
+        end
       else
-        format.html { render :action => "new" }
-        format.js { render :action => "new" }
-        format.xml  { render :xml => @test_subject.errors, :status => :unprocessable_entity }
+        format.html do
+          if request.xhr?
+            render :json => @test_subject.errors, :status => :unprocessable_entity
+          else
+            render :action => :new, :status => :unprocessable_entity
+          end
+        end
       end
     end
   end

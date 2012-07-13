@@ -1,4 +1,14 @@
-<p><%= form.text_field :amount, :label => 'Amount consumed' %> kg</p>
-<p><%= form.select :diet_id, Diet.all.collect { |d| [ d.name, d.id ] }, :include_blank => false %></p>
-<p><%= form.text_field :consumed_during_period %></p>
-<p><%= form.text_field :consumed_on_day %></p>
+<%= knoxy_form_for( [ @test_subject, @meal ] ) do |f| %>
+  <%= f.error_messages %>
+
+  <fieldset>
+    <%= f.text_field :amount, :label => 'Amount consumed (kg)' %> 
+    <%= f.select :diet_id, Diet.all.collect { |d| [ d.name, d.id ] }, :include_blank => false %>
+    <%= f.text_field :consumed_during_period %>
+    <%= f.text_field :consumed_on_day %>
+  </fieldset>
+  
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

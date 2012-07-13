@@ -1,28 +1,28 @@
-<%= form.error_messages %>
+<%= knoxy_form_for @test_subject do |f| %>
+  <fieldset>
+    <legend><%= TestSubject.title %> Identification</legend>
+    <%= form.text_field :code, :required => true %>
+    <%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :required => true, :include_blank => true %>
+  </fieldset>
 
-<fieldset>
-  <legend><%= TestSubject.title %> Identification</legend>
-  <p><%= form.text_field :code, :required => true %></p>
-  <p><%= form.select :site_id, Site.find(:all, :order => 'name ASC').collect { |s| [s.name, s.id] }, :required => true, :include_blank => true %></p>
-</fieldset>
+  <fieldset>
+    <legend><%= TestSubject.title %> Details</legend>
+    <%= form.text_field :subspecies %>
+    <%= form.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %>
+    <%= form.date_select :calving_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %>
+    <%= form.text_field :lactation_number %>
+  </fieldset>
 
-<fieldset>
-  <legend><%= TestSubject.title %> Details</legend>
-  <p><%= form.text_field :subspecies %></p>
-  <p><%= form.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
-  <p><%= form.date_select :calving_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
-  <p><%= form.text_field :lactation_number %>
-</fieldset>
+  <fieldset>
+    <legend>Experiment Details</legend>
+    <%= form.date_select :experiment_start_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %>
+    <%= form.text_field :days_in_milk_at_start %>
+    <%= form.date_select :experiment_end_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %>
+    <%= form.text_field :days_in_milk_at_end %>
+  </fieldset>
 
-<fieldset>
-  <legend>Experiment Details</legend>
-  <p><%= form.date_select :experiment_start_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
-  <p><%= form.text_field :days_in_milk_at_start %>
-  <p><%= form.date_select :experiment_end_date, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-20, :end_year => Time.now.year %></p>
-  <p><%= form.text_field :days_in_milk_at_end %>
-</fieldset>
-
-<fieldset>
-  <legend>Miscellaneous</legend>
-  <p><%= form.text_field :notes %>
-</fieldset>
+  <fieldset>
+    <legend>Miscellaneous</legend>
+    <%= form.text_field :notes %>
+  </fieldset>
+<% end -%>

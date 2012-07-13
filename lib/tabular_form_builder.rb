@@ -53,17 +53,6 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
     #               :for => (@object_name.to_s + "_" + field.to_s))
     (label + super).html_safe
   end
-
-  def country_select(field, priority_countries = nil, options = {}, html_options = {}) 
-    return super.html_safe if options.delete :no_label
-    label_text = options[:label] if options[:label]
-    label_text ||= field.to_s.gsub(/\_id$/, "").humanize + (options.delete(:required) ? @template.content_tag("span", " *", :class => "required"): "")
-    label = self.label(field, label_text.html_safe)
-    # label = @template.content_tag("label", label_text, 
-    #               :class => (@object && @object.errors[field] ? "error" : nil), 
-    #               :for => (@object_name.to_s + "_" + field.to_s))
-    (label + super).html_safe
-  end
   
   def check_box_group(field, choices, options= {}, html_option = {})
     count = 0

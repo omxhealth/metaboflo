@@ -1,7 +1,7 @@
 class TestSubjectsController < ApplicationController
   VIEW_PATH = "test_subjects/subjects/#{SUBJECT_CONFIG[:name]}"
   
-  before_filter :find_test_subject, :only => [ :show, :edit, :update, :destroy ]
+  before_filter :find_test_subject, :only => [ :tree, :show, :edit, :update, :destroy ]
 
   # GET /test_subjects
   # GET /test_subjects.xml
@@ -87,6 +87,11 @@ class TestSubjectsController < ApplicationController
       format.html { redirect_to(test_subjects_url) }
       format.xml  { head :ok }
     end
+  end
+
+  # GET /test_subjects/1.json
+  def tree
+    
   end
 
   protected

@@ -1,0 +1,19 @@
+<p>
+  <b><%= Sample.human_attribute_name(:test_subject_id) %>:</b>
+  <%= @sample.root.code %>
+</p>
+
+<p>
+  <b><%= Sample.human_attribute_name(:sample_type) %>:</b>
+  <%= @sample.sample_type %>
+</p>
+
+<p>
+  <b><%= Sample.human_attribute_name(:barcode) %>:</b>
+  <%= @sample.barcode %>
+</p>
+
+<p>
+  <b><%= Sample.human_attribute_name(:original_amount) %>:</b>
+  <%= @sample.original_amount %> <%= @sample.original_unit %>
+</p>

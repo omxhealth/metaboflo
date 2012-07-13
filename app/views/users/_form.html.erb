@@ -1,0 +1,50 @@
+<%= knoxy_form_for(setup_user(@user), :html => { :multipart => true }) do |f| -%>
+  <%= error_messages_for :user %>
+
+  <fieldset>
+    <legend>User Details</legend>
+    <%= f.text_field :name, :required => true %>
+    <%= f.text_field :email, :required => true %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Access</legend>
+    
+    <% if ['Administrator', 'Superuser'].include?(current_user.rank) -%>
+      <%= f.select :site_id, Site.order('name asc').collect { |site| [site.name, site.id] }, :include_blank => true %>
+    <% else -%>
+      <%= @user.site.name unless @user.site.blank? %>
+    <% end -%>
+
+    <% if current_user.rank == 'Administrator' -%>
+      <%= f.select :rank, [ 'Administrator', 'Superuser', 'User' ], :include_blank => true %>
+    <% else -%>
+      <% @user.rank = 'User' %><%= f.hidden_field :rank %>User
+    <% end -%>  
+  </fieldset>
+
+  <% if @user.new_record? %>
+    <fieldset>
+      <legend>Password</legend>
+      <p><%= f.password_field :password, :required => true %></p>
+      <p><%= f.password_field :password_confirmation, :label => 'Confirm Password', :required => true %></p>
+    </fieldset>
+  <% end -%>
+  
+  <fieldset>
+    <legend>Photo</legend>
+    <%= f.inner_field :photo_file do %>
+      <%= f.fields_for :photo_file do |file_form| %>
+        <%= file_form.file_field :attachment, :label => 'Profile Photo', :inner => true %>
+        <% if !@user.new_record? && @user.photo_file.present? %>
+          <%= link_to file_form.object.attachment_file_name, file_form.object.attachment.url %>&nbsp;&nbsp;
+          <%= file_form.check_box '_destroy', :inner => true %> remove?
+        <% end %>
+      <% end -%>
+    <% end -%>
+  </fieldset>
+  
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

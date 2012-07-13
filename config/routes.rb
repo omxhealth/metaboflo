@@ -10,10 +10,8 @@ Metaboflo::Application.routes.draw do
 
   namespace :workflows do
     resources :experiments
-    resources :patients, :only => [:index, :new, :create] do
-      resources :samples, :only => [:new, :create]
-    end
-    resources :samples, :only => [:index, :show]
+    resources :patients, :only => [:index, :new, :create]
+    resources :samples, :only => [:index, :show, :new, :create]
     resources :studies, :only => [:new, :create] do
       member do
         get :cohort_assignment
@@ -90,6 +88,9 @@ Metaboflo::Application.routes.draw do
   end
   
   resources :test_subjects do
+    member do
+      get :tree
+    end
     resources :meals
     resources :samples do
       member do
@@ -107,7 +108,7 @@ Metaboflo::Application.routes.draw do
     resources :grouping_assignments
     resources :study_grouping_assignments
   end
-  
+
   #match '/' => 'bovine#index'
   root :to => 'bovine#index'
 end

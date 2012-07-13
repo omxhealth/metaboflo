@@ -1,65 +1,91 @@
-<%= form.error_messages %>
+<%= knoxy_form_for([@test_subject, @test_subject_evaluation]) do |f| %>
+  <%= f.error_messages %>
 
-<fieldset>
-  <legend>Evaluation Details</legend>
-  <p><%= form.date_select :evaluated_on, :label => 'Evaluation date', :order => [ :month, :day, :year ], :include_blank => true %></p>
-  <p><%= form.text_area :diagnosis %></p>
-</fieldset>
+  <fieldset>
+    <legend>Evaluation Details</legend>
+    <%= f.text_field :evaluated_on, :label => 'Evaluation date', :class => 'datepicker' %>
+    <%= f.text_area :diagnosis %>
+  </fieldset>
 
-<fieldset>
-  <legend><%= TestSubject.title %> Personal Details</legend>
-  <p><%= form.text_field :education %></p>
-  <p><%= form.select :marital_status, ['Single', 'Married', 'Separated', 'Divorced', 'Widowed'], :include_blank => true %></p>
-  <p><%= form.text_field :num_children, :size => 5, :label => 'Number of children' %></p>
-  <p><%= form.text_field :address, :style => 'margin-bottom: 0.5em' %><br /><%= form.text_field :address_2, :no_label => true %></p>
-  <p><%= form.text_field :city %></p>
-  <p><%= form.text_field :province_state, :size => 8 %></p>
-  <p><%= form.country_select :country, ['Canada', 'United States'], :include_blank => true %></p>
-  <p><%= form.text_field :postal_zip_code, :label => 'Postal/Zip code' %></p>
-</fieldset>
+  <fieldset>
+    <legend><%= TestSubject.title %> Personal Details</legend>
+    <%= f.text_field :education %>
+    <%= f.select :marital_status, ['Single', 'Married', 'Separated', 'Divorced', 'Widowed'], :include_blank => true %>
+    <%= f.text_field :num_children, :size => 5, :label => 'Number of children' %>
+    <%= f.text_field :address, :label => 'Address 1' %>
+    <%= f.text_field :address_2 %>
+    <%= f.text_field :city %>
+    <%= f.text_field :province_state, :size => 8 %>
+    <%= f.inner_field :country_select, :label => 'Country' do %>
+      <%= f.country_select :country, ['Canada', 'United States'], :include_blank => true %>
+    <% end -%>
+    <%= f.text_field :postal_zip_code, :label => 'Postal/Zip code' %>
+  </fieldset>
 
-<fieldset>
-  <legend>Health Profile</legend>
-  <p><%= form.text_field :height, :size => 5 %> inches</p>
-  <p><%= form.text_field :weight, :size => 5 %> lbs</p>
-  <p><%= form.check_box :current_smoker, :label => "#{TestSubject.title} is a smoker?", :onclick => "$('smoker_length').toggle()" %></p>
-  <p id="smoker_length"><%= form.text_field :past_smoker, :size => 4, :label => 'If quit, how long ago?' %> years</p>
-  <p><%= form.text_field :drinking_weekly, :size => 4, :label => 'Average alcohol intake' %> drinks per week</p>
-  <p><%= form.text_field :exercise_weekly, :size => 4, :label => 'Average level of excercise' %> days per week</p>
-  <p><%= form.text_field :hours_sleep, :size => 4, :label => 'Average sleep' %> hours per night</p>
-  <p><%= form.check_box :enough_sleep, :label => "#{TestSubject.title} feels they get enough sleep?" %></p>
-</fieldset>
+  <fieldset>
+    <legend>Health Profile</legend>
+    <%= f.inner_field :height, :label => 'Height' do %>
+      <%= f.text_field :height, :size => 5, :inner => true %> inches
+    <% end -%>
+    <%= f.inner_field :weight, :label => 'Weight' do %>
+      <%= f.text_field :weight, :size => 5, :inner => true %> lbs
+    <% end -%>
 
-<fieldset>
-  <legend>Past medical history</legend>
-  <p><%= form.check_box_group(:past_medical, medical_history_list.sort, :per_row => 4) %></p>
-</fieldset>
+    <%= f.check_box :current_smoker, :label => "#{TestSubject.title} is a smoker?" %>
+    
+    <%= f.inner_field :past_smoker, :label => 'If quit, how long ago?' do %>
+      <%= f.text_field :past_smoker, :size => 4, :inner => true  %> years
+    <% end -%>
 
-<fieldset>
-  <legend>Symptoms</legend>
-  <p><%= form.check_box_group(:symptoms, symptoms_list.sort, :per_row => 2) %></p>
-</fieldset>
+    <%= f.inner_field :drinking_weekly, :label => 'Average alcohol intake' do %>
+      <%= f.text_field :drinking_weekly, :size => 4, :inner => true %> drinks per week
+    <% end -%>
 
-<fieldset>
-  <legend>Family History</legend>
+    <%= f.inner_field :exercise_weekly, :label => 'Average level of excercise' do %>
+      <%= f.text_field :exercise_weekly, :size => 4, :inner => true %> days per week
+    <% end -%>
 
-  <% ['father', 'mother'].each do |parent| %>
-  <% living = @test_subject_evaluation.send("#{parent}_death_age").blank? %>
-  <p>
-    <%= label_tag "#{parent}_living", "#{parent.titlecase} is alive?" %>
-    <%= check_box_tag "#{parent}_living", nil, living, :onclick => "$('#{parent}_living_inputs').toggle(); $('#{parent}_dead_inputs').toggle()" %>
-  </p>
+    <%= f.inner_field :hours_sleep, :label => 'Average sleep' do %>
+      <%= f.text_field :hours_sleep, :size => 4, :inner => true %> hours per night
+    <% end -%>
 
-  <div id="<%= parent %>_living_inputs" style="display: <%= living ? 'block' : 'none' %> ">
-    <p><%= form.text_field "#{parent}_age", :label => 'Age' %></p>
-    <p><%= form.text_field "#{parent}_health", :label => 'Health status' %></p>
+    <%= f.check_box :enough_sleep, :label => "#{TestSubject.title} feels they get enough sleep?" %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Past medical history</legend>
+    <%= f.check_box_group(:past_medical, medical_history_list.sort, :per_row => 4) %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Symptoms</legend>
+    <%= f.check_box_group(:symptoms, symptoms_list.sort, :per_row => 2) %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Family History</legend>
+
+    <%= f.inner_field_group :parents do -%>
+      <% ['father', 'mother'].each do |parent| %>
+        <% living = @test_subject_evaluation.send("#{parent}_death_age").blank? %>
+          <%= label_tag "#{parent}_living", "#{parent.titlecase} is alive?" %>
+          <%= check_box_tag "#{parent}_living", nil, living, :onclick => "$('#{parent}_living_inputs').toggle(); $('#{parent}_dead_inputs').toggle()" %>
+
+        <div id="<%= parent %>_living_inputs" style="display: <%= living ? 'block' : 'none' %> ">
+          <%= f.text_field "#{parent}_age", :label => 'Age' %>
+          <%= f.text_field "#{parent}_health", :label => 'Health status' %>
+        </div>
+        <div id="<%= parent %>_dead_inputs" style="display: <%= !living ? 'block' : 'none' %>;">
+          <%= f.text_field "#{parent}_death_age", :label => "Age at death" %>
+          <%= f.text_field "#{parent}_death_cause", :label => "Cause of death" %>
+        </div>
+      <% end %>
+    <% end -%>
+    <%= f.text_field :relative_condition %>
+    <%= f.text_field :relative_relationship %>
+  </fieldset>
+
+  <div class="field-no-label actions">
+    <%= f.submit %>
   </div>
-  <div id="<%= parent %>_dead_inputs" style="display: <%= !living ? 'block' : 'none' %>;">
-    <p><%= form.text_field "#{parent}_death_age", :label => "Age at death" %></p>
-    <p><%= form.text_field "#{parent}_death_cause", :label => "Cause of death" %></p>
-  </div>
-  <% end %>
-
-  <p><%= form.text_field :relative_condition %></p>
-  <p><%= form.text_field :relative_relationship %></p>
-</fieldset>
+<% end -%>

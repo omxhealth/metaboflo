@@ -1,10 +1,5 @@
 <h1>Editing Data File Type</h1>
 
-<%= labelled_tabular_form_for(@data_file_type) do |form| %>
-  <%= render :partial => 'form', :locals => { :form => form } %>
-  <p><%= form.submit "Update" %></p>
-<% end %>
-
-<br />
+<%= render :partial => 'form' %>
 
 <%= show_link @data_file_type %>

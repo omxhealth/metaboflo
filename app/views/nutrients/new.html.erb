@@ -1,11 +1,3 @@
 <h1>New nutrient</h1>
 
-<%= form_for(@nutrient) do |f| %>
-  <%= f.error_messages %>
-
-  <%= render :partial => 'form', :locals => { :form => f } %>
-
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<%= render :partial => 'form' %>

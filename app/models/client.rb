@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable, :encryptable, :encryptor => :sha1
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable
  
   # Setup accessible attributes
   # attr_accessible :email, :password, :password_confirmation, :name, :site_id, :rank

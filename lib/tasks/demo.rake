@@ -20,7 +20,7 @@ namespace :demo do
 end
 
 def load_fixture(models)
-  Fixtures.create_fixtures(File.join(File.dirname(__FILE__), 'demo'), models.to_sym)
+   ActiveRecord::Fixtures.create_fixtures(File.join(File.dirname(__FILE__), 'demo'), models.to_sym)
 end
 
 def load_data_files

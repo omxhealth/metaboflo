@@ -33,6 +33,10 @@ class Sample < ActiveRecord::Base
   def to_s
     return "#{self.barcode.blank? ? 'No barcode' : self.barcode} (#{sample_type.blank? ? 'No sample type' : sample_type} - #{original_amount.blank? ? 'Unknown amount' : "#{original_amount} #{original_unit}"})"
   end
+
+  def to_label
+    self.to_s
+  end
   
   # sample takes precedence over test subject
   def parent

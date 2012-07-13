@@ -1,10 +1,16 @@
-<%= form.error_messages %>
+<%= knoxy_form_for([@test_subject, @medication]) do |f| %>
+  <%= f.error_messages %>
 
-<fieldset>
-  <legend>Medication Details</legend>
-  <p><%= form.text_field :drug, :label => 'Drug name', :required => true %></p>
-  <p><%= form.date_select :started_on, :include_blank => true, :label => 'Treatment started on' %></p>
-  <p><%= form.date_select :stopped_on, :include_blank => true, :label => 'Treatment stopped on' %></p>
-  <p><%= form.check_box :currently_taking, :label => 'Drug currently being taken?' %></p>
-  <p><%= form.text_field :drugbank_reference, :label => 'DrugBank reference (drug ID number)', :size => 8, :maxlength => 7 %></p>
-</fieldset>
+  <fieldset>
+    <legend>Medication Details</legend>
+    <p><%= f.text_field :drug, :label => 'Drug name', :required => true %></p>
+    <p><%= f.text_field :started_on, :label => 'Treatment started on', :class => 'datepicker' %></p>
+    <p><%= f.text_field :stopped_on, :label => 'Treatment stopped on', :class => 'datepicker' %></p>
+    <p><%= f.check_box :currently_taking, :label => 'Drug currently being taken?' %></p>
+    <p><%= f.text_field :drugbank_reference, :label => 'DrugBank reference (drug ID number)', :size => 8, :maxlength => 7 %></p>
+  </fieldset>
+
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

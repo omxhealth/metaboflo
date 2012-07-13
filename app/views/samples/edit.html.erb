@@ -2,11 +2,8 @@
   Editing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : 'aliquot ' %> <%= @sample.parent %>
 </h1>
 
-<%= labelled_tabular_form_for([@parent, setup_sample(@sample)], :html => { :multipart => true }) do |form| %>
-<%= render :partial => 'form', :locals => { :form => form } %>
-<p>
-  <%= form.submit "Update" %>
-</p>
+<%= knoxy_form_for([@parent, setup_sample(@sample)], :html => { :multipart => true }) do |form| %>
+  <%= render :partial => 'form', :locals => { :f => form } %>
 <% end %>
 
 <%= show_link [@parent, @sample] %>

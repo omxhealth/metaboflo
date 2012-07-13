@@ -15,7 +15,7 @@
 <% @studies.each do |study| %>
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= study.name %></td>
-    <td><%= short_description(study.description) %></td>
+    <td><%= truncate(study.description, :length => 50) %></td>
   	<td><%= study.cohorts.count %></td>
   	<td><%= show_link({:action => 'show', :id => study}, 'show/analyze') %></td>
   	<td><%= edit_link({:action => 'edit', :id => study}) %></td>

@@ -1,31 +1,38 @@
-<%= form.error_messages %>
+<%= knoxy_form_for( [@sample, @experiment] ) do |f| %>
 
-<fieldset>
-  <legend>Experiment Description</legend>
-  <p><%= form.text_field :name, :label => 'Experiment title', :style => "width: 250px", :required => true %></p>
-  <p><%= form.select :protocol_id, Protocol.all.collect {|p| [ "#{p.name} (version #{p.version})", p.id ] }, { :label => 'Experiment protocol' }, { :include_blank => true } %></p>
-  <p><%= form.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :required => true } %></p>
-  <p><%= form.text_area :description, :style => "width: 350px; height: 70px" %></p>
-  <p><%= form.text_area :comments, :style => "width: 350px; height: 70px" %></p>
-</fieldset>
+  <%= f.error_messages %>
 
-<fieldset>
-  <legend>Analysis</legend>
-  <% user_options = User.find(:all, :order => 'name ASC').collect { |u| [ u.name, u.id ] } %>
-  <p>
-    <%= form.select :assigned_to_id, user_options, :label => 'To be analyzed by', :include_blank => true %> 
-    on <%= form.date_select :perform_on, :no_label => true, :include_blank => true %>
-  </p>
-  <p>
-    <%= form.select :performed_by_id, user_options, :label => 'Actually analyzed by', :include_blank => true %>
-    on <%= form.date_select :performed_on, :no_label => true, :include_blank => true %>
-  </p>
-</fieldset>
+  <fieldset>
+    <legend>Experiment Description</legend>
+    <%= f.text_field :name, :label => 'Experiment title', :style => "width: 250px", :required => true %>
+    <%= f.select :protocol_id, Protocol.all.collect {|p| [ p.to_label, p.id ] }, { :label => 'Experiment protocol' }, { :include_blank => true } %>
+    <%= f.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :required => true } %>
+    <%= f.text_area :description, :style => "width: 350px; height: 70px" %>
+    <%= f.text_area :comments, :style => "width: 350px; height: 70px" %>
+  </fieldset>
 
-<fieldset>
-  <legend>Sample Details</legend>
-  <p>
-    <%= form.text_field :amount_used, :label => 'Amount used for experiment', :size => 5 %> 
-    <%= form.select :amount_used_unit, volume_unit_options, :no_label => true, :include_blank => true %>
-  </p>
-</fieldset>
+  <fieldset>
+    <legend>Analysis</legend>
+    <% user_options = User.order('name ASC').collect { |u| [ u.name, u.id ] } %>
+    <%= f.inner_field :assigned_to_id do %>
+      <%= f.select :assigned_to_id, user_options, { :inner => true }, :include_blank => true %> 
+      on <%= f.text_field :perform_on, :inner => true, :class => 'datepicker' %>
+    <% end -%>
+    <%= f.inner_field :performed_by_id do %>
+      <%= f.select :performed_by_id, user_options, { :inner => true }, :include_blank => true %>
+      on <%= f.text_field :performed_on, :inner => true, :class => 'datepicker' %>
+    <% end -%>
+  </fieldset>
+
+  <fieldset>
+    <legend>Sample Details</legend>
+    <%= f.inner_field :amount_used do %>
+      <%= f.text_field :amount_used, :label => 'Amount used for experiment', :inner => true, :size => 5 %> 
+      <%= f.select :amount_used_unit, volume_unit_options, :inner => true, :include_blank => true %>
+    <% end -%>
+  </fieldset>
+
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

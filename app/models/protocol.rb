@@ -3,4 +3,8 @@ class Protocol < ActiveRecord::Base
   
   has_many :experiments
   validates_presence_of :name
+
+  def to_label
+    "#{self.name} (version #{self.version})"
+  end
 end

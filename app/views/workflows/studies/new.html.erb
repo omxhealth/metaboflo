@@ -2,32 +2,29 @@
 
 <p class="info"><%= render :partial => "/studies/info" %></p>
 
-<%= form_for [:workflows, setup_workflow_study(@study)], :html => { :autocomplete => false } do |f| %>
-  <%= f.error_messages %>
+<%= knoxy_form_for [ :workflows, setup_workflow_study(@study) ], :html => { :autocomplete => false } do |f| %>
   <fieldset>
     <legend>Study Details</legend>
     
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_area :description %>
-    </div>
+    <%= f.text_field :name %>
+    <%= f.text_area :description %>
   </fieldset>
+  
   <fieldset id="cohorts" class="fields-for">
     <legend>Cohorts</legend>  
-    <div class="actions">
-      <%= add_link_for_new_fields_for f, :cohort %>
-    </div>
 
-    <%= f.fields_for :cohorts do |cohort_form| %>
-  		<%= render :partial => 'cohort', :locals => { :f => cohort_form } %>
-  	<% end %>
+    <%= f.full_field_group :cohorts do %>
+      <% count = 1 %>
+      <%= f.fields_for :cohorts do |cohort_form| %>
+        <%= render :partial => 'cohort', :locals => { :f => cohort_form,  :count => count } %>
+        <% count += 1 %>
+      <% end %>
+      <div><%= add_child_link f, :cohorts, :partial => 'cohort', :name => 'Add Cohort' %></div>
+    <% end -%>
   </fieldset>
 
+<div class="field-no-label actions">
   <%= f.submit %>
+</div>
 <% end %>
 

@@ -1,8 +1,14 @@
-<%= form.error_messages %>
+<%= knoxy_form_for(@site) do |f| %>
+  <%= f.error_messages %>
 
-<fieldset style="width: 50%">
-  <legend>Site Details</legend>
-  <p><%= form.text_field :name, :size => 40 %></p>
-  <p><%= form.text_field :website, :size => 50 %></p>
-  <p><%= form.text_field :map_url, :label => 'Google Map Link', :size => 50 %></p>
-</fieldset>
+  <fieldset style="width: 50%">
+    <legend>Site Details</legend>
+    <%= f.text_field :name, :size => 40 %>
+    <%= f.text_field :website, :size => 50 %>
+    <%= f.text_field :map_url, :label => 'Google Map Link', :size => 50 %>
+  </fieldset>
+
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

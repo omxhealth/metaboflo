@@ -1,9 +1,5 @@
 <h1>Editing protocol</h1>
 
-<%= labelled_tabular_form_for(@protocol, :html => { :multipart => true }) do |form| %>
-  <%= render :partial => 'form', :locals => { :form => form } %>
-  
-  <p><%= form.submit "Update" %></p>
-<% end %>
+<%= render :partial => 'form' %>
 
 <%= show_link @protocol %>

@@ -37,7 +37,7 @@ create.plot = function(orig_data, output_image='corr.csv', label.points=TRUE) {
 	corrs$label = factor(corrs$label, levels=rev(as.character(corrs[with(corrs, order(cc)),]$label)))
 
 	#Create plot:
-	png(output_image, width = 800, height = 800, res = 120)
+	png(output_image, width = 700, height = 600, res = 120)
 	
 	library(ggplot2)
 	p = ggplot(corrs, aes(y=cc, x=label, fill=label)) 

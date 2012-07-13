@@ -1,0 +1,5 @@
+class Cow < TestSubject
+
+
+end
+

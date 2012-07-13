@@ -1,3 +1,10 @@
-<p>
-  <%= form.text_field :name, :required => true %>
-</p>
+<%= knoxy_form_for(@ingredient) do |f| %>
+  <%= f.error_messages %>
+  <fieldset>
+    <%= f.text_field :name, :required => true %>
+  </fieldset>
+
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

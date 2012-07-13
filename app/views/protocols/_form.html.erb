@@ -1,9 +1,15 @@
-<%= form.error_messages %>
+<%= knoxy_form_for(@protocol, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
 
-<fieldset style="width: 50%">
-  <legend>Protocol Details</legend>
-  <p><%= form.text_field :name, :required => true %></p>
-  <p><%= form.text_field :version, :size => 5 %></p>
-  <p><%= form.text_area :comments %></p>
-  <p><%= form.file_field :storage, :label => 'File', :required => true %></p>
-</fieldset>
+  <fieldset style="width: 50%">
+    <legend>Protocol Details</legend>
+    <%= f.text_field :name, :required => true %>
+    <%= f.text_field :version, :size => 5 %>
+    <%= f.text_area :comments %>
+    <%= f.file_field :storage, :label => 'File', :required => true %>
+  </fieldset>
+
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
+<% end -%>

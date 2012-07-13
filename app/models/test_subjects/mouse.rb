@@ -1,0 +1,5 @@
+class Mouse < TestSubject
+
+
+end
+

@@ -87,7 +87,7 @@ args = commandArgs(trailingOnly = TRUE)
 	orig_data <- read.csv(file_path, header=TRUE, strip.white=TRUE, sep=',')
 
 	#Create plot:
-	png(output_image, width = 800, height = 800, res = 120)
+	png(output_image, width = 700, height = 600, res = 120)
 	plot.pca(orig_data)
 	if (debug) {
 		cat(paste("Saving image to: ", output_image, "\n"))

@@ -42,7 +42,7 @@
   $( '.datepicker', c ).each -> 
     $(this).datepicker
       changeYear: true
-      buttonImage: "/assets/calendar.png"
+      buttonImage: "/assets/calendar.gif"
       buttonImageOnly: true
       showOn: "button"
 
@@ -59,7 +59,7 @@
   inner_groups = form.find('.inner-group-field > .inner-group')
   inner_groups.css('min-width', (parent_width - max - 200) )
       
-  form.find('#submit, p.error-msg, .field-no-label').css("margin-left", max + 10)
+  # form.find('#submit, p.error-msg, .field-no-label').css("margin-left", max + 10)
 
 # Align the left labels and elements of the given form based on the largest label in the form.
 @disable_double_submit = ->

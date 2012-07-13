@@ -1,7 +1,9 @@
 <h1>New Study</h1>
 
-<%= labelled_tabular_form_for :study, @study, :url => { :action => "create" } do |form| %>
-  <%= render :partial => 'form', :locals => { :form => form } %>
+<%= knoxy_form_for @study, :as => :study, :url => { :action => "create" } do |form| %>
+  <%= render :partial => 'form', :locals => { :f => form } %>
 
-  <p><%= form.submit "Create" %></p>
+  <div class="field-no-label actions">
+    <%= form.submit %>
+  </div>
 <% end %>

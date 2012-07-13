@@ -1,0 +1,5 @@
+<div class="nested-field" style="display: <%= f.object.send('_destroy') ? 'none' : 'block' %>">
+  <%= remove_child_link "remove", f %>
+  <%= f.select :ingredient_id, Ingredient.all.collect { |i| [ i.name, i.id ] }, :include_blank => true %>
+  <%= f.text_field :amount, :label => "Amount (%)", :size => 10 %>
+</div>

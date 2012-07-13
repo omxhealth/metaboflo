@@ -23,7 +23,7 @@ class Experiment < ActiveRecord::Base
   
   # Required so that Experiments, Samples, and TestSubjects can be displayed in groupings
   def to_s
-    return "#{self.name} (#{self.experiment_type.name})"
+    "#{self.name} (#{self.experiment_type.name})"
   end
   
   def root

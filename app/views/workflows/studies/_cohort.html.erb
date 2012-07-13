@@ -1,12 +1,9 @@
-<div class="fields box">
-  <div class="field">
-    <%= f.label :label %>
-    <%= f.text_field :label %>
-  </div>
-  <div class="field">
-    <%= f.label :control, 'Control?' %>
-    <%= f.select :control, Cohort::ALLOWED_CONTROL_VALUES %>
-  </div>
+<% count = f.object_name.gsub(/[^0-9]+/,'').to_i %>
+<% count = 'new_cohorts' if count <= 0 %>
+<% enzyme_id = "#{count}_cohort" %>
 
-  <%= remove_fields_for f, :cohorts %>
+<div class="nested-field" style="display: <%= f.object.send('_destroy') ? 'none' : 'block' %>">
+  <%= remove_child_link "remove", f %>
+  <%= f.text_field :label %>
+  <%= f.select :control, Cohort::ALLOWED_CONTROL_VALUES, :label => 'Control?' %>
 </div>

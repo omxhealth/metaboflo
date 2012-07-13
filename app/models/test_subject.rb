@@ -32,6 +32,14 @@ class TestSubject < ActiveRecord::Base
   def to_s
     self.code.to_s
   end
+
+  def to_label
+    self.code.to_s
+  end
+
+  def last_sample_id
+    self.samples.present? ? self.samples.last.id : nil
+  end
   
   #Return a representative data file.
   def data_file

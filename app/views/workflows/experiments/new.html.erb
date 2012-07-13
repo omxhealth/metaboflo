@@ -1,100 +1,3 @@
-<% content_for :css do %>
-  <%= stylesheet_link_tag 'workflows' %>
-<% end %>
-
-<% content_for :javascript do %>
-  <%= javascript_include_tag 'workflows' %>
-<% end %>
-
-<style>
-.ui-menu-item { text-align: left; }
-a#patient-more-toggle, a#patient-more-toggle:hover {
-  display: block;
-  margin: 2em auto 0.3em auto;
-  text-align: center;
-  background: #E0EEE0;
-  padding: 0.3em 1.3em;
-  font-size: larger;
-  border-radius: 5px;
-}
-</style>
-
-<script type="text/javascript" charset="utf-8">
-
-$.ajax("<%= new_workflows_patient_path :format => :js %>");  
-new_sample_form(<%= new_sample_form_for_test_subject(@experiment.test_subject_code) %>);
-
-// Update the list of samples based on the selected code in the patient box
-function updateSamples(item) {
-  $("#experiment_sample_id").html('');
-  var $code = item ? item.value : $("#test-subject-ac").val();
-  $.ajax({
-    url: '<%= workflows_samples_path %>', 
-    data: ({ code: $code }),
-    success: function(html) {
-      $("#experiment_sample_id").html(html).effect('highlight', 500);
-    }
-  })
-}
-
-// Apply autocomplete to the patient code text field
-$(function() {
-  $( "#test-subject-ac" ).autocomplete({
-    source: $( "#test-subject-ac" ).attr('data-source'),
-    autoFocus: true,
-    change: function(event, ui) { updateSamples(ui.item) },
-    close: function(event, ui) { updateSamples(ui.item) }
-  });
-})
-
-// Load the new patient dialog window when user clicks "Add Patient"
-$(function() {
-  $("#new-patient").click(function() {
-    new_patient_dialog();
-    return false;
-  })
-})
-
-// Load the new sample dialog window when user clicks "Add Sample"
-$(function() {
-  $("#new-sample").click(function() {
-    new_sample_dialog(); 
-    return false;
-  })
-})
-
-// Slide the patient form down to input more information after clicking "Add Patient"
-$(function($) {
-  $("#patient-more-toggle").live('click', function() {
-    $('#patient-more').toggle('blind');
-    return false;
-  });
-});
-
-$(function($) {
-  $('#experiment_test_subject_code').change(function() {
-    find_samples("<%= workflows_samples_path :format => :js %>", $('#experiment_test_subject_code').val())
-  });
-})
-
-// Show/hide the concentration import checkbox based on whether the user has selected the CSV file type
-// for a data file.
-$(function($) {
-  $('.file-type-select').change(function() {
-    var $item = $(this).parent().next(); // Grab the next div below this one.
-
-    if( $(this).find("option:selected").text() == 'CSV' ) {
-      $item.fadeIn();
-    }
-    else {
-      $item.fadeOut();
-    }
-  });
-})
-
-</script>
-
-
 <h1><%= title 'New Experiment' %></h1>
 
 <p class="info">
@@ -102,93 +5,92 @@ $(function($) {
   The experiment workflow allows you to enter all the information for an experiment. You can attach raw data files or concentration data, assign this experiment to a particular individual, and enter the protocol used to perform the analysis.
 </p>
 
-<%= form_for [:workflows, setup_workflow_experiment(@experiment)], :html => { :multipart => true, :autocomplete => false } do |f| %>
+<%= knoxy_form_for [ :workflows, setup_workflow_experiment(@experiment) ], :html => { :multipart => true } do |f| %>
   <% flash.now[:error] = "#{pluralize(@experiment.errors.count, "error")} prohibited this experiment from being saved" if @experiment.errors.any? %>
   
   <fieldset>
     <legend>Sample Details</legend>
-    <div id="sample-information">
-      <% if @experiment.sample %>
-        <% @sample = @experiment.sample %>
-        <%= render :partial => '/workflows/samples/show' %>
-        <%= f.hidden_field :sample_id %>
-      <% else %>
-        <div class="field">
-          <%= f.label :test_subject_code, "#{TestSubject.title} Code" %>
-          <%= f.text_field :test_subject_code, :id => 'test-subject-ac', 'data-source' => workflows_patients_path, :style => 'width: 150px' %>
-          <%= link_to 'New patient', '#', :id => 'new-patient' %>
-        </div>
-        <div id="workflow-patient" style="display: none;"></div>
-        <div class="field">
-          <%= f.label :sample_id %>
-          <%= f.select :sample_id, options_for_workflow_sample(@experiment.test_subject_code), { :include_blank => true }, :style => 'width: 153px' %>
-          <%= link_to 'New sample', '#', :id => 'new-sample' %>
-        </div>
-      <% end %>
-    </div>
-    <div id="workflow-sample" style="display: none;"></div>
-    <div class="field">
-      <%= f.label :amount_used %>
-      <%= f.text_field :amount_used, :size => 5 %> 
-      <%= f.select :amount_used_unit, volume_unit_options %>
-      <%= error_message(Experiment.human_attribute_name(:amount_used_unit), f.object.errors[:amount_used_unit]) %>
-    </div>
+
+    <% if @experiment.sample.present? %>
+      <% @sample = @experiment.sample %>
+      <%= render :partial => '/workflows/samples/sample' %>
+      <%= f.hidden_field :sample_id %>
+    <% else %>
+
+      <div id="patient-selector">
+        <%= f.inner_field :test_subject, :label => "#{TestSubject.title} Code", :id => 'dfdf' do %>
+          <%= text_field_tag :test_subject_code, nil, 
+              :class => 'test-subject-autocomplete', :'data-source' => workflows_patients_path(:format => :json), 
+              :'data-update' => 'test-subject-id', :placeholder => 'Start typing a patient code', 
+              :id => 'test-subject-autocomplete-code' %>
+          <%= hidden_field_tag :test_subject_id, nil, :id => 'test-subject-id', :'data-sample-update' => 'sample-id'  %>
+          <span class="actions">
+            <%= link_to 'Add New Patient', new_workflows_patient_path, :id => 'open-patient-dialog' %>
+          </span>
+        <% end -%>
+      </div>
+
+      <div id="sample-selector" style="display:none">
+        <%= f.inner_field :sample do %>
+          <%= f.select :sample_id, options_for_workflow_sample(@experiment.test_subject_code), { :inner => true }, 
+                         :include_blank => true, :id => 'sample-id'  %>
+          <span class="actions">
+            <%= link_to 'Add New Sample', new_workflows_sample_path, :id => 'open-sample-dialog' %>
+          </span>
+        <% end -%>
+
+        <%= f.text_field :amount_used, :size => 5 %> 
+        <%= f.select :amount_used_unit, volume_unit_options %>
+        <%= error_message(Experiment.human_attribute_name(:amount_used_unit), f.object.errors[:amount_used_unit]) %>
+      </div>
+      <div id="sample-added-show"></div>      
+    <% end %>
   </fieldset>
   
   <fieldset>
     <legend>Experiment Description</legend>
-    <div class="field">
-      <%= f.label :name, :required => true %>
-      <%= f.text_field :name, :style => "width: 250px" %>
-      <%= error_message(Experiment.human_attribute_name(:name), f.object.errors[:name]) %>
-    </div>
-    <div class="field">
-      <%= f.label :protocol %>
-      <%= f.select :protocol_id, Protocol.all.collect {|p| [ "#{p.name} (version #{p.version})", p.id ] }, :include_blank => true %>
-      <%= error_message(Experiment.human_attribute_name(:protocol_id), f.object.errors[:protocol_id]) %>
-    </div>
-    <div class="field">
-      <%= f.label :experiment_type_id, :required => true %>
-      <%= f.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
-      <%= error_message(Experiment.human_attribute_name(:experiment_type_id), f.object.errors[:experiment_type_id]) %>
-    </div>
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_area :description, :style => "width: 350px; height: 70px" %>
-      <%= error_message(Experiment.human_attribute_name(:description), f.object.errors[:description]) %>
-    </div>
-    <div class="field">
-      <%= f.label :comments %><br />
-      <%= f.text_area :comments, :style => "width: 350px; height: 70px" %>
-      <%= error_message(Experiment.human_attribute_name(:comments), f.object.errors[:comments]) %>
-    </div>
+    <%= f.text_field :name, :style => "width: 250px", :required => true %>
+    <%= error_message(Experiment.human_attribute_name(:name), f.object.errors[:name]) %>
+
+    <%= f.select :protocol_id, Protocol.all.collect { |p| [ p.to_label, p.id ] }, :include_blank => true %>
+    <%= error_message(Experiment.human_attribute_name(:protocol_id), f.object.errors[:protocol_id]) %>
+
+    <%= f.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, :include_blank => true %>
+    <%= error_message(Experiment.human_attribute_name(:experiment_type_id), f.object.errors[:experiment_type_id]) %>
+
+    <%= f.text_area :description %>
+    <%= error_message(Experiment.human_attribute_name(:description), f.object.errors[:description]) %>
+    
+    <%= f.text_area :comments %>
+    <%= error_message(Experiment.human_attribute_name(:comments), f.object.errors[:comments]) %>
   </fieldset>
 
   <fieldset>
     <legend>Analysis</legend>
-    <% user_options = User.find(:all, :order => 'name ASC').collect { |u| [ u.name, u.id ] } %>
-    <div class="field">
-      <%= f.label :assigned_to_id %>
-      <%= f.select :assigned_to_id, user_options, :include_blank => true %> 
-      on <%= f.text_field :perform_on, :size => 10, :autocomplete => :off %><%= date_picker 'experiment_perform_on' %>
-    </div>
-    <div class="field">
-      <%= f.label :performed_by_id %>
-      <%= f.select :performed_by_id, user_options, :include_blank => true %>
-      on <%= f.text_field :performed_on, :size => 10, :autocomplete => :off %><%= date_picker 'experiment_performed_on' %>
-    </div>
+    <% user_options = User.order('name ASC').all.collect { |u| [ u.name, u.id ] } %>
+
+    <%= f.inner_field :assigned_to_id do %>
+      <%= f.select :assigned_to_id, user_options, { :inner => true }, :include_blank => true %> 
+      on <%= f.text_field :perform_on, :inner => true, :class => 'datepicker' %>
+    <% end -%>
+    <%= f.inner_field :performed_by_id do %>
+      <%= f.select :performed_by_id, user_options, { :inner => true }, :include_blank => true %>
+      on <%= f.text_field :performed_on, :inner => true, :class => 'datepicker' %>
+    <% end -%>
   </fieldset>
   
   <fieldset id="data_files" class="fields-for">
     <legend>Data files</legend>  
-    <div class="actions">
-      <%= add_link_for_new_fields_for f, :data_file %>
-    </div>
 
-    <%= f.fields_for :data_files do |data_file_form| %>
-			<%= render :partial => 'data_file', :locals => { :f => data_file_form } %>
- 		<% end %>
+    <%= f.full_field_group :data_files do %>
+      <%= f.fields_for :data_files do |data_files_form| %>
+        <%= render :partial => 'data_file', :locals => { :f => data_files_form } %>
+      <% end %>
+      <div><%= add_child_link f, :data_files, :partial => 'data_file', :name => 'Add Data File' %></div>
+    <% end -%>
   </fieldset>
-  
-  <%= f.submit %>
+
+  <div class="field-no-label actions">
+    <%= f.submit %>
+  </div>
 <% end %>
