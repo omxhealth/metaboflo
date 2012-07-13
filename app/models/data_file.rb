@@ -15,7 +15,7 @@ class DataFile < ActiveRecord::Base
   def save_concentrations
     if has_concentrations and self.mapping_errors == nil
       self.mapping_errors = Array.new
-      FasterCSV.foreach(self.data.path, :headers => false) do |row|
+      CSV.foreach(self.data.path, :headers => false) do |row|
         add_concentration(row[0], row[1]) #Each row is a concentration
       end
       self.save!
