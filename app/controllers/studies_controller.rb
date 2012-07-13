@@ -1,3 +1,5 @@
+require 'analysis'
+
 class StudiesController < ApplicationController
   ALLOWED_CSV_EXPORT_KINDS = [ :metaboanalyst, :umetrics ]
 

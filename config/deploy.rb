@@ -9,4 +9,4 @@
 
 set :stages, %w(einstein demo testing production)
 require 'capistrano/ext/multistage'
-
+require 'bundler/capistrano'
