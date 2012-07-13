@@ -7,6 +7,6 @@
 #
 # > cap production deploy
 
-set :stages, %w(demo testing production)
+set :stages, %w(einstein demo testing production)
 require 'capistrano/ext/multistage'
 
