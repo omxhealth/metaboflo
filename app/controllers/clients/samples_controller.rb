@@ -10,7 +10,7 @@ class Clients::SamplesController < ApplicationController
       format.xml  { render :xml => @samples }
     end
   end
-
+    
   def show
   end
 

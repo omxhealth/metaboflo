@@ -1,0 +1,26 @@
+<% content_for :javascript do %>
+	<%= javascript_include_tag 'sample_manifest_index' %>
+<%end%>
+<% if @sample_manifests.present? %>
+<table class="list">
+  <tr class="header">
+		<th>Manifest Id</th>
+		<th>Verified?</th>
+		<th>Shipped?</th>
+		<th></th>
+		<th></th>
+  </tr>
+	
+<% @sample_manifests.each do |sm| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+		<td><%= sm.id %></td>
+    	<td><%= sm.verified ? "Yes" : "No" %></td>
+    	<td><%= sm.shipped ? "Yes" : "No" %></td>
+		<td><%= link_to 'Show Manifest', [:clients ,sm], :class => :button %></td>
+		<td><%= link_to 'Edit Sample Manifest', edit_clients_sample_manifest_path(sm), :class => :button %></td>
+		<td><%= link_to 'Delete', clients_sample_manifest_path(sm), :confirm => 'Are you sure?', :method => :delete , :class => :button %></tr>
+  </tr>
+<% end %>
+</table>
+<% end %>
+<%= link_to 'New Sample', new_clients_sample_manifest_path, :class => :button %>

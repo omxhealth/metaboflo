@@ -4,6 +4,9 @@ Metaboflo::Application.routes.draw do
   end
   namespace :clients do
     resources :samples, :only => [:index, :show]
+    resources :sample_manifests do
+      get 'print', :on => :member
+    end
   end
   
   resources :clients

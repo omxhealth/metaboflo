@@ -6,6 +6,7 @@ class Client < ActiveRecord::Base
   attr_protected :current_password
   
   has_many :samples
+  has_many :sample_manifests
   
   validates :name, :presence => true
   
