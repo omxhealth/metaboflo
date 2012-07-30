@@ -1,4 +1,9 @@
 <h1>Available Tests</h1>
+<!-- <p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  Describe Tests
+</p> -->
+
 <table>
 	<tr><td><button id="module_1" style="width:600px;text-align:left">Module 1 - Biocrates p180 kit</button></td></tr>
 	<tr><td><button id="module_2" style="width:600px;text-align:left">Module 2 - Glycolysis, Krebs (TCA) Cycle and Bioenergetics - LC/MS</button></td></tr>
@@ -11,7 +16,7 @@
 </table>
 
 <div id="module_1_dialog">
-	<div id="module_1_compounds">
+	<div id="module_1" class="tab">
 	<ul>
 			<li><a href="#acylcarnitines">Acylcarnitines</a></li>
 			<li><a href="#amino_acids">Amino Acids and Biogenic Amines</a></li>
@@ -91,74 +96,74 @@
 		</div>
 		<div id="amino_acids">
 		<h2>Amino Acids and Biogenic Amines</h2>
-		<table class="list" style="width:900px;">
+		<table class="list" style="width:1000px;">
 			<tr>
-				<td><button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00055/pathway">Alanine</button></td>
-				<td><button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00020/pathway">Arginine</button></td>
-				<td><button class="link_to" data-url="">Asparagine</button></td>
-				<td><button class="link_to" data-url="">Aspartate</button></td>
-			</tr>
-			<tr>
-				<td><button class="link_to" data-url="">Citrulline</button></td>
-				<td><button class="link_to" data-url="">Glutamine</button></td>
-				<td><button class="link_to" data-url="">Glutamate</button></td>
-				<td><button class="link_to" data-url="">Glycine</button></td>
-			</tr>
-			<tr>
-
-				<td><button class="link_to" data-url="">Histidine</button></td>
-				<td><button class="link_to" data-url="">Isoleucine</button></td>
-				<td><button class="link_to" data-url="">Leucine</button></td>
-				<td><button class="link_to" data-url="">Lysine</button></td>
-			</tr>
-			<tr>
-
-				<td><button class="link_to" data-url="">Methionine</button></td>
-				<td><button class="link_to" data-url="">Ornithine</button></td>
-				<td><button class="link_to" data-url="">Phenylalanine</button></td>
-				<td><button class="link_to" data-url="">Proline</button></td>
-			</tr>
-			<tr>
-
-				<td><button class="link_to" data-url="">Serine</button></td>
-				<td><button class="link_to" data-url="">Threonine</button></td>
-				<td><button class="link_to" data-url="">Tryptophan</button></td>
-				<td><button class="link_to" data-url="">Tyrosine</button></td>
-			</tr>
-			<tr>
-
-				<td><button class="link_to" data-url="">Valine</button></td>
-				<td><button class="link_to" data-url="">Acetylornithine</button></td>
+				<td>Alanine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00055/pathway", :target => "_blank" %></td>
+				<td>Arginine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00020/pathway", :target => "_blank" %></td>
+				<td>Asparagine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00067/pathway", :target => "_blank" %></td>
+				<td>Aspartate<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00067/pathway", :target => "_blank" %></td>
+			</tr>   
+			<tr>    
+				<td>Citrulline<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00020/pathway", :target => "_blank" %></td>
+				<td>Glutamine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00072/pathway", :target => "_blank" %></td>
+				<td>Glutamate<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00072/pathway", :target => "_blank" %></td>
+				<td>Glycine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00004/pathway", :target => "_blank" %></td>
+			</tr>   
+			<tr>    
+                    
+				<td>Histidine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00044/pathway", :target => "_blank" %></td>
+				<td>Isoleucine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00032/pathway", :target => "_blank" %></td>
+				<td>Leucine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00032/pathway", :target => "_blank" %></td>
+				<td>Lysine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00037/pathway", :target => "_blank" %></td>
+			</tr>   
+			<tr>    
+                    
+				<td>Methionine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00033/pathway", :target => "_blank" %></td>
+				<td>Ornithine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00020/pathway", :target => "_blank" %></td>
+				<td>Phenylalanine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00008/pathway", :target => "_blank" %></td>
+				<td>Proline<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00020/pathway", :target => "_blank" %></td>
+			</tr>   
+			<tr>    
+                    
+				<td>Serine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00004/pathway", :target => "_blank" %></td>
+				<td>Threonine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00452/pathway", :target => "_blank" %></td>
+				<td>Tryptophan<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00063/pathway", :target => "_blank" %></td>
+				<td>Tyrosine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00006/pathway", :target => "_blank" %></td>
+			</tr>   
+			<tr>    
+                    
+				<td>Valine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00032/pathway", :target => "_blank" %></td>
+				<td>Acetylornithine</td>
 				<td>Asymmetric dimethylarginine</td>
 				<td>Symmetric dimethylarginine</td>
 			</tr>
 			<tr>
 
 				<td>Total dimethylarginine</td>
-				<td><button class="link_to" data-url="">alpha-Aminoadipic acid</button></td>
-				<td><button class="link_to" data-url="">Carnosine</button></td>
-				<td><button class="link_to" data-url="">Creatinine</button></td>
-			</tr>
-			<tr>
-
-				<td><button class="link_to" data-url="">Histamine</button></td>
-				<td><button class="link_to" data-url="">Kynurenine</button></td>
-				<td><button class="link_to" data-url="">Methioninesulfoxide</button></td>
-				<td><button class="link_to" data-url="">Nitrotyrosine</button></td>
-			</tr>
-			<tr>
-
-				<td><button class="link_to" data-url="">Hydroxyproline</button></td>
-				<td><button class="link_to" data-url="">Phenylethylamine</button></td>
-				<td><button class="link_to" data-url="">Putrescine</button></td>
-				<td><button class="link_to" data-url="">Sarcosine</button></td>
-			</tr>
-			<tr>
-
-				<td><button class="link_to" data-url="">Serotonin</button></td>
-				<td><button class="link_to" data-url="">Spermidine</button></td>
-				<td><button class="link_to" data-url="">Spermine</button></td>
-				<td><button class="link_to" data-url="">Taurine</button></td>
+				<td>alpha-Aminoadipic acid<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00037/pathway", :target => "_blank" %></td>
+				<td>Carnosine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00044/pathway", :target => "_blank" %></td>
+				<td>Creatinine</td>
+			</tr>   
+			<tr>    
+                    
+				<td>Histamine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00044/pathway", :target => "_blank" %></td>
+				<td>Kynurenine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00063/pathway", :target => "_blank" %></td>
+				<td>Methionine sulfoxide<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00033/pathway", :target => "_blank" %></td>
+				<td>Nitrotyrosine</td>
+			</tr>   
+			<tr>    
+                    
+				<td>Hydroxyproline<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00020/pathway", :target => "_blank" %></td>
+				<td>Phenylethylamine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00006/pathway", :target => "_blank" %></td>
+				<td>Putrescine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00445/pathway", :target => "_blank" %></td>
+				<td>Sarcosine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00004/pathway", :target => "_blank" %></td>
+			</tr>   
+			<tr>    
+                    
+				<td>Serotonin<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00063/pathway", :target => "_blank" %></td>
+				<td>Spermidine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00445/pathway", :target => "_blank" %></td>
+				<td>Spermine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00445/pathway", :target => "_blank" %></td>
+				<td>Taurine<%= link_to image_tag('info.png', :class => 'info-logo', :width => 20, :heigth => 20), "http://pathman.smpdb.ca/pathways/SMP00021/pathway", :target => "_blank" %></td>
 		</table>
 	
 		</div>
@@ -359,45 +364,66 @@
 </div>
 
 <div id="module_2_dialog">
-	<table class="list"style="width:1000px;">
-		<tr>
-		<td>Hexose-6-Phosphate</td>
-		<td>Fructose-1,6-diphosphate</td>
-		<td>alpha Glycerol-3-phosphate</td>
-		<td>3-phosphoglycerate</td>
-		</tr>
-		<tr>
-		<td>Phosphoenol pyruvate</td>
-		<td>Pyruvate</td>
-		<td>Lactate</td>
-		<td>6-phospho-D-gluconate</td>
-		</tr>
-		<tr>
-		<td>Pentose-5-phosphate</td>
-		<td>glucosamine-6-P</td>
-		<td>N-acetyl-glucosamine-P<br>note: sum of N-acetyl glucoasmine-1-P and -6-P</td>
-		<td>Uridine-diphosphate-glucose (UDPG)</td>
-		</tr>
-		<tr>
-		<td>glutathione (ox)</td>
-		<td>glutathione (red)</td>
-		<td>AMP</td>
-		<td>ADP</td>
-		</tr>
-		<tr>
-		<td>ATP</td>
-		<td>Nicotinamide</td>
-		<td>NAD</td>
-		<td>NADH</td>
-		</tr>
-		<tr>
-		<td>NADP</td>
-		<td>NADPH</td>
-		</tr>
-	</table>
-
+	<div id="module_2" class="tab">
+		<ul>
+			<li><a href="#module_2_compounds">Metabolites</a></li>
+			<li><a href="#module_2_reference">Reference Values</a></li>
+		</ul>
+		<div id="module_2_compounds">
+			<h2>Metabolite Information</h2>
+			<table class="list"style="width:1000px;">
+				<tr>
+				<td>Hexose-6-Phosphate</td>
+				<td>Fructose-1,6-diphosphate</td>
+				<td>alpha Glycerol-3-phosphate</td>
+				<td>3-phosphoglycerate</td>
+				</tr>
+				<tr>
+				<td>Phosphoenol pyruvate</td>
+				<td>Pyruvate</td>
+				<td>Lactate</td>
+				<td>6-phospho-D-gluconate</td>
+				</tr>
+				<tr>
+				<td>Pentose-5-phosphate</td>
+				<td>glucosamine-6-P</td>
+				<td>N-acetyl-glucosamine-P<br>note: sum of N-acetyl glucoasmine-1-P and -6-P</td>
+				<td>Uridine-diphosphate-glucose (UDPG)</td>
+				</tr>
+				<tr>
+				<td>glutathione (ox)</td>
+				<td>glutathione (red)</td>
+				<td>AMP</td>
+				<td>ADP</td>
+				</tr>
+				<tr>
+				<td>ATP</td>
+				<td>Nicotinamide</td>
+				<td>NAD</td>
+				<td>NADH</td>
+				</tr>
+				<tr>
+				<td>NADP</td>
+				<td>NADPH</td>
+				</tr>
+			</table>
+		</div>
+		<div id="module_2_reference">
+			<h2>Metabolite Reference Values</h2>
+			<table class="list"style="width:1000px;">
+				
+			</table>
+		</div>
+	</div>
 </div>
 <div id="module_3_dialog">
+	<div id="module_3" class="tab">
+		<ul>
+			<li><a href="#module_2_compounds">Metabolites</a></li>
+			<li><a href="#module_2_reference">Reference Values</a></li>
+		</ul>
+		<div id="module_3_compounds">
+			<h2>Metabolite Information</h2>
 	<table class="list"style="width:1000px;">
 		<tr>
 		<td>Aspartate</td>
@@ -457,9 +483,23 @@
 		<td>3-hydroxybutyrate</td>
 		</tr>
 	</table>
-
+		</div>
+		<div id="module_3_reference">
+			<h2>Metabolite Reference Values</h2>
+			<table class="list"style="width:1000px;">
+				
+			</table>
+		</div>
+	</div>
 </div>
 <div id="module_4_dialog">
+	<div id="module_4" class="tab">
+		<ul>
+			<li><a href="#module_2_compounds">Metabolites</a></li>
+			<li><a href="#module_2_reference">Reference Values</a></li>
+		</ul>
+		<div id="module_4_compounds">
+			<h2>Metabolite Information</h2>
 	<table class="list"style="width:1000px;">
 		<tr>
 		<td>Acetylcarnitine</td>
@@ -478,9 +518,23 @@
 		<td>Palmitoylcarnitine</td>
 		</tr>
 	</table>
-
+		</div>
+		<div id="module_4_reference">
+			<h2>Metabolite Reference Values</h2>
+			<table class="list"style="width:1000px;">
+				
+			</table>
+		</div>
+	</div>
 </div>
 <div id="module_5_dialog">
+	<div id="module_5" class="tab">
+		<ul>
+			<li><a href="#module_2_compounds">Metabolites</a></li>
+			<li><a href="#module_2_reference">Reference Values</a></li>
+		</ul>
+		<div id="module_5_compounds">
+			<h2>Metabolite Information</h2>
 	<table class="list"style="width:1000px;">
 		<tr>
 		<td>Glucose</td>
@@ -511,7 +565,14 @@
 		<td>Oxaloacetic acid</td>
 		</tr>
 	</table>
-
+		</div>
+		<div id="module_5_reference">
+			<h2>Metabolite Reference Values</h2>
+			<table class="list"style="width:1000px;">
+				
+			</table>
+		</div>
+	</div>
 </div>
 <div id="gc_fap_dialog">
 

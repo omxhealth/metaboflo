@@ -1,6 +1,6 @@
 $(function() {
 	
-	$("#module_1_compounds").tabs({selected: 0});
+	$(".tab").tabs({selected: 0});
 	$("#test_descriptions").accordion();
 	$("#samples_manifests").tabs({selected: 0});
 	$( "#module_1_dialog" ).dialog({

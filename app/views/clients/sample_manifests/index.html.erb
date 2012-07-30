@@ -9,6 +9,7 @@
 		<th>Shipped?</th>
 		<th></th>
 		<th></th>
+		<th></th>
   </tr>
 	
 <% @sample_manifests.each do |sm| %>
@@ -17,10 +18,10 @@
     	<td><%= sm.verified ? "Yes" : "No" %></td>
     	<td><%= sm.shipped ? "Yes" : "No" %></td>
 		<td><%= link_to 'Show Manifest', [:clients ,sm], :class => :button %></td>
-		<td><%= link_to 'Edit Sample Manifest', edit_clients_sample_manifest_path(sm), :class => :button %></td>
+		<td><%= link_to 'Edit Manifest', edit_clients_sample_manifest_path(sm), :class => :button %></td>
 		<td><%= link_to 'Delete', clients_sample_manifest_path(sm), :confirm => 'Are you sure?', :method => :delete , :class => :button %></tr>
   </tr>
 <% end %>
 </table>
 <% end %>
-<%= link_to 'New Sample', new_clients_sample_manifest_path, :class => :button %>
+<%= link_to 'New Manifest', new_clients_sample_manifest_path, :class => :button %>
