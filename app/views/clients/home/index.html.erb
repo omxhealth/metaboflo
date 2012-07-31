@@ -1,0 +1,15 @@
+<% content_for :javascript do %>
+	<%= javascript_include_tag 'home_index' %>
+<%end%>
+<table>
+	<tr>
+		<td>
+<%= link_to "Manage New Samples Submissions", clients_sample_manifests_path , :class => :button%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+<%= link_to "Manage Received Samples", clients_samples_path, :class => :button %>
+		</td>
+	</tr>
+</table>

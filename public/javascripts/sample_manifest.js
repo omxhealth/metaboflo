@@ -12,7 +12,7 @@ $(function() {
 	});
 	$( "#module_2_dialog" ).dialog({
 		title: "Module 2 - Glycolysis, Krebs (TCA) Cycle and Bioenergetics - LC/MS",
-		height: 350,
+		height: 600,
 		width: 1050,
 		modal: true,
 		autoOpen: false

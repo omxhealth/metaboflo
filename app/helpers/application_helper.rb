@@ -7,6 +7,27 @@ module ApplicationHelper
   
   require 'tabular_form_builder'
   
+  def array_to_table(array, columns, options = {})
+    options[:table_parameters] ||= ""
+    out = "<table #{options[:table_parameters]}>"
+    i = 1
+    array.each do |e|
+      out << "<tr>" if i == 0
+      out << "<td>#{e}</td>"
+      if i == columns
+        out << "</tr>" 
+        i = 0
+      end
+      i += 1
+    end
+    if out =~ /<\/tr>$/
+      out << "</table>"
+    else
+      out << "</tr></table"
+    end
+  end
+    
+  
   def new_child_fields_template(form_builder, association, options = {})
     options[:object] ||= form_builder.object.class.reflect_on_association(association).klass.new
     options[:partial] ||= association.to_s.singularize
