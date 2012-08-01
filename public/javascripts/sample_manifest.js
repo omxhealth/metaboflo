@@ -2,8 +2,8 @@ $(function() {
 	
 	$(".tab").tabs({selected: 0});
 	$("#test_descriptions").accordion();
-	$("#samples_manifests").tabs({selected: 0});
-	$( "#module_1_dialog" ).dialog({
+	$("#sample-manifest-form").tabs({selected: 0});
+	$("#module_1_dialog").dialog({
 		title: "Module 1 - Biocrates p180 kit",
 		height: 600,
 		width: 1050,

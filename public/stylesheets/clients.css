@@ -1,0 +1,22 @@
+#sample-manifests {
+  margin: 2em 0;
+  width: 100%;
+}
+
+#sample-manifest-form {
+  margin-bottom: 1em;
+}
+
+#sample-manifest-form table {
+  width: 85%;
+}
+
+#sample-manifest-form table td {
+  padding: 0.3em;
+}
+
+.manifest-remover {
+  float: right;
+  margin-top: 1em;
+  margin-right: 1em;
+}

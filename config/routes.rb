@@ -2,12 +2,13 @@ Metaboflo::Application.routes.draw do
   devise_for :clients do
     match 'clients/home' => 'clients/home#index', :as => :client_root
   end
+  
   namespace :clients do
-    resources :samples, :only => [:index, :show]
+    resources :samples, :only => [ :index, :show ]
     resources :sample_manifests do
       get 'print', :on => :member
     end
-    resources :home, :only => [:index]
+    resources :home, :only => [ :index ]
   end
   
   resources :clients

@@ -3,6 +3,7 @@ class CreateSampleManifestModels < ActiveRecord::Migration
     
     create_table :sample_manifests do |t|
       t.integer :client_id
+      t.string :title
       t.boolean :verified, :default => false
       t.boolean :shipped, :default => false
     end

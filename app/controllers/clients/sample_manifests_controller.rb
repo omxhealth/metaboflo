@@ -1,7 +1,4 @@
-class Clients::SampleManifestsController < ApplicationController
-  skip_before_filter :authenticate_user!
-  before_filter :authenticate_client!
-  
+class Clients::SampleManifestsController < Clients::BaseController  
   def index
     @sample_manifests = current_client.sample_manifests
     respond_to do |format|

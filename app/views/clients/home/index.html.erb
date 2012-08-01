@@ -1,15 +1,13 @@
 <% content_for :javascript do %>
 	<%= javascript_include_tag 'home_index' %>
-<%end%>
-<table>
-	<tr>
-		<td>
-<%= link_to "Manage New Samples Submissions", clients_sample_manifests_path , :class => :button%>
-		</td>
-	</tr>
-	<tr>
-		<td>
-<%= link_to "Manage Received Samples", clients_samples_path, :class => :button %>
-		</td>
-	</tr>
-</table>
+  <%= javascript_include_tag 'sample_manifest' %>
+<% end %>
+
+<h1>Welcome to the Einstein Metabolomics Core</h1>
+
+<p>
+  Welcome back! From here you can track your submitted samples and browse the modules supported by our core. 
+</p>
+
+<h1>Test Modules</h1>
+<%= render :partial => '/clients/sample_manifests/tests' %>

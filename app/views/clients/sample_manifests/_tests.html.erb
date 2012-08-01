@@ -1,10 +1,3 @@
-<h1>Available Tests</h1>
-<p class="info">
-  <%= image_tag 'info.png', :class => 'info-logo' %>
-	Sample preparation and detailed shipping guidelines can be found <%= link_to "here", "/downloads/guidelines_for_all_samples_v1.pdf" %>
-	
-</p>
-
 <table>
 	<tr><td><button id="module_1" style="width:600px;text-align:left">Module 1 - Biocrates p180 kit</button></td></tr>
 	<tr><td><button id="module_2" style="width:600px;text-align:left">Module 2 - Glycolysis, Krebs (TCA) Cycle and Bioenergetics - LC/MS</button></td></tr>
@@ -16,11 +9,11 @@
 	<tr><td><button id="ss_2" style="width:600px;text-align:left">SS 2 - Stable Isotope intraperitoneal glucose tolerance test</button></td></tr>
 </table>
 
-<%= render :partial => "module_1"%>
-<%= render :partial => "module_2"%>
-<%= render :partial => "module_3"%>
-<%= render :partial => "module_4"%>
-<%= render :partial => "module_5"%>
-<%= render :partial => "gc_fap"%>
-<%= render :partial => "ss_1"%>
-<%= render :partial => "ss_2"%>
+<%= render :partial => "/clients/sample_manifests/modules/module_1"%>
+<%= render :partial => "/clients/sample_manifests/modules/module_2"%>
+<%= render :partial => "/clients/sample_manifests/modules/module_3"%>
+<%= render :partial => "/clients/sample_manifests/modules/module_4"%>
+<%= render :partial => "/clients/sample_manifests/modules/module_5"%>
+<%= render :partial => "/clients/sample_manifests/modules/gc_fap"%>
+<%= render :partial => "/clients/sample_manifests/modules/ss_1"%>
+<%= render :partial => "/clients/sample_manifests/modules/ss_2"%>
