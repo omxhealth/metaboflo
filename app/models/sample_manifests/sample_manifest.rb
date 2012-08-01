@@ -4,11 +4,13 @@ class SampleManifest < ActiveRecord::Base
   has_many :tissue_sample_manifests, :dependent => :destroy
   has_many :cell_sample_manifests, :dependent => :destroy
   
+  has_many :stored_files, :as => :attachable
+  accepts_nested_attributes_for :stored_files, :allow_destroy => true
+
   accepts_nested_attributes_for :biofluid_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :tissue_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :cell_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
-   
-   
+      
   def total_samples
     self.biofluid_sample_manifests.count + self.tissue_sample_manifests.count + self.cell_sample_manifests.count
   end 
