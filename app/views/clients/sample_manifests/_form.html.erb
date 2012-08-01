@@ -8,7 +8,7 @@
 	<div id="biofluids">
 		<fieldset id="biofluid_sample_manifest" class="fields-for">
   		<%= f.fields_for :biofluid_sample_manifests do |biofluid_form| %>
-    		<%= render :partial => './manifests/biofluid_sample_manifest', :locals => { :f => biofluid_form } %>
+    		<%= render :partial => '/clients/sample_manifests/manifests/biofluid_sample_manifest', :locals => { :f => biofluid_form } %>
   		<% end %>
     	<p><%= add_child_link "Add Sample", :biofluid_sample_manifests %></p>
     	<%= new_child_fields_template f, :biofluid_sample_manifests, :partial => '/clients/sample_manifests/manifests/biofluid_sample_manifest' %>
@@ -17,7 +17,7 @@
 	<div id="tissue">
 		<fieldset id="tissue_sample_manifest" class="fields-for">
 			<%= f.fields_for :tissue_sample_manifests do |tissue_form| %>
-	    	<%= render :partial => './manifests/tissue_sample_manifest', :locals => { :f => tissue_form } %>
+	    	<%= render :partial => '/clients/sample_manifests/manifests/tissue_sample_manifest', :locals => { :f => tissue_form } %>
 	  	<% end %>
 	    <p><%= add_child_link "Add Sample", :tissue_sample_manifests %></p>
 	    <%= new_child_fields_template f, :tissue_sample_manifests, :partial => '/clients/sample_manifests/manifests/tissue_sample_manifest' %>
@@ -26,7 +26,7 @@
 	<div id="cells">
 		<fieldset id="cell_sample_manifest" class="fields-for">
   		<%= f.fields_for :cell_sample_manifests do |cell_form| %>
-  	    <%= render :partial => './manifests/cell_sample_manifest', :locals => { :f => cell_form } %>
+  	    <%= render :partial => '/clients/sample_manifests/manifests/cell_sample_manifest', :locals => { :f => cell_form } %>
   		<% end %>
 	    <p><%= add_child_link "Add Sample", :cell_sample_manifests %></p>
 	    <%= new_child_fields_template f, :cell_sample_manifests, :partial => '/clients/sample_manifests/manifests/cell_sample_manifest' %>
