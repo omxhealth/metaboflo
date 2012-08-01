@@ -11,3 +11,4 @@ vendor/cache/
 .Rhistory
 .rbenv-version
 vendor/ruby
+vendor/ruby
