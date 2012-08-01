@@ -22,20 +22,7 @@
     		<td><%= s.matrix %></td>
     		<td><%= s.group_id %></td>
     		<td><%= s.sample_volume %></td>
-    		<td>
-    			<table>
-    				<tr>
-              <td><%= "MP\#1" if s.module_1 %></td>
-    					<td><%= "MP\#2" if s.module_2 %></td>
-    					<td><%= "MP\#3" if s.module_3 %></td>
-    					<td><%= "MP\#4" if s.module_4 %></td>
-    					<td><%= "MP\#5" if s.module_5 %></td>
-    					<td><%= "GC-FAP" if s.gc_fap %></td>
-    					<td><%= "SS\#1" if s.ss_1 %></td>
-    					<td><%= "SS\#1" if s.ss_2 %></td>
-    				</tr>
-    			</table>
-    		</td>
+    		<td><%= SampleManifest.module_codes(s).present? ? SampleManifest.module_codes(s).join(", ") : 'none' %></td>
     	</tr>
     <% end %>
   </table>
@@ -61,59 +48,36 @@
     		<td><%=s.matrix%></td>
     		<td><%=s.group_id%></td>
     		<td><%=s.tissue_weight%></td>
-    		<td>
-    			<table>
-    				<tr><td><%= "MP\#1" if s.module_1%></td>
-    					<td><%= "MP\#2" if s.module_2%></td>
-    					<td><%= "MP\#3" if s.module_3%></td>
-    					<td><%= "MP\#4" if s.module_4%></td>
-    					<td><%= "MP\#5" if s.module_5%></td>
-    					<td><%= "GC-FAP" if s.gc_fap%></td>
-    					<td><%= "SS\#1" if s.ss_1%></td>
-    					<td><%= "SS\#1" if s.ss_2%></td>
-    				</tr>
-    			</table>
-    		</td>
+    		<td><%= SampleManifest.module_codes(s).present? ? SampleManifest.module_codes(s).join(", ") : 'none' %></td>
     	</tr>
   	<%end%>
   </table>
 <% end %>
-<% if @sample_manifest.cell_sample_manifests.present?%>
-<h1>Cell Samples</h1>
-<table class="list">
-	<tr>
-		<th>Tube ID</th>
-		<th>Barcode</th>
-		<th>Cell Line</th>
-		<th>Viable Cells</th>
-		<th>Group ID</th>
-		<th>Test Codes</th>
-	</tr>
-	<% @sample_manifest.cell_sample_manifests.each do |s|%>
-	<tr>
-		<td><%=s.tube_id%></td>
-		<td><%=s.barcode%></td>
-		<td><%=s.cell_line%></td>
-		<td><%=s.viable_cells%></td>
-		<td><%=s.group_id%></td>
-		<td>
-			<table>
-				<tr><td><%= "MP\#1" if s.module_1%></td>
-					<td><%= "MP\#2" if s.module_2%></td>
-					<td><%= "MP\#3" if s.module_3%></td>
-					<td><%= "MP\#4" if s.module_4%></td>
-					<td><%= "MP\#5" if s.module_5%></td>
-					<td><%= "GC-FAP" if s.gc_fap%></td>
-					<td><%= "SS\#1" if s.ss_1%></td>
-					<td><%= "SS\#1" if s.ss_2%></td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<%end%>
-	
-</table>	
+<% if @sample_manifest.cell_sample_manifests.exists? %>
+  <h1>Cell Samples</h1>
+  <table class="list">
+  	<tr>
+  		<th>Tube ID</th>
+  		<th>Barcode</th>
+  		<th>Cell Line</th>
+  		<th>Viable Cells</th>
+  		<th>Group ID</th>
+  		<th>Test Codes</th>
+  	</tr>
+  	<% @sample_manifest.cell_sample_manifests.each do |s|%>
+    	<tr>
+    		<td><%=s.tube_id%></td>
+    		<td><%=s.barcode%></td>
+    		<td><%=s.cell_line%></td>
+    		<td><%=s.viable_cells%></td>
+    		<td><%=s.group_id%></td>
+    		<td><%= SampleManifest.module_codes(s).present? ? SampleManifest.module_codes(s).join(", ") : 'none' %></td>
+    	</tr>
+  	<%end%>
+  </table>	
 <%end%>
+
+<br><br>
 <h1>Estimate</h1>
 	<table class="list">
 		<tr>
@@ -128,4 +92,6 @@
 		<tr>
 	</table>
 
+
+<br>
 <button id="print_manifest" class="button" data-url="<%=print_clients_sample_manifest_path(@sample_manifest)%>">Print</button><button class="button">Back</button>

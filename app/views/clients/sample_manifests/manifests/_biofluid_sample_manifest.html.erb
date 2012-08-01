@@ -2,7 +2,7 @@
   <div class="manifest-remover">
     <%= remove_child_link("Remove", f) %>
   </div>
-  <table class="">
+  <table>
   	<tr>
   		<td><%= f.label :tube_id %>:</td><td><%= f.text_field :tube_id, :size => 3, :disabled => true%></td>
   		<td><%= f.label :barcode %>:</td><td><%= f.text_field :barcode, :size => 20, :disabled => true %></td>
@@ -15,9 +15,9 @@
   	</tr>
   	<tr>
   		<td><%= f.label :test_codes %>:</td>
-  		<td colspan=5>
+  		<td colspan="5">
   		  <%= render :partial => "clients/sample_manifests/manifests/module_options", :locals => { :f => f } %>
   		</td>
   	</tr>
   </table>
-</div>:
+</div>

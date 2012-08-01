@@ -42,4 +42,17 @@ class SampleManifest < ActiveRecord::Base
 
     total
   end
+
+  def self.module_codes(manifest)
+    codes = []
+    codes << "MP#1" if manifest.module_1?
+    codes << "MP#2" if manifest.module_2?
+    codes << "MP#3" if manifest.module_3?
+    codes << "MP#4" if manifest.module_4?
+    codes << "MP#5" if manifest.module_5?
+    codes << "GC-FAP" if manifest.gc_fap?
+    codes << "SS#1" if manifest.ss_1?
+    codes << "SS#2" if manifest.ss_2?
+    codes
+  end
 end
