@@ -35,6 +35,14 @@ h2 {
 	font-weight: bold;
 }
 
+h3 {
+	text-align: left;
+	color: black;
+	font-weight: bold;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
 p { margin: 1em; }
 strong { font-weight: bold; }
 em { font-style: italic; }

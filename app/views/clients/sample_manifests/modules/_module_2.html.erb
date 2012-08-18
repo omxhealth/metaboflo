@@ -6,13 +6,16 @@
 		</ul>
 		<div id="module_2_compounds">
 			<h2>Metabolite Information</h2>
-			<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00040/pathway" target="_blank">Glycolysis</button>
-			<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00057/pathway" target="_blank">Citric Acid Cycle</button>
+			
+			
 			<p class="info">
 			  <%= image_tag 'info.png', :class => 'info-logo' %>
 				<%= link_to "Advantages of Tandem LC-MS for the Rapid Assessment of Tissue-Specific Metabolic Complexity Using a Pentafluorophenylpropyl Stationary Phase", "/downloads/module_2_ref.pdf" %>
 
 			</p>
+			<div align="left">
+				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00040/pathway" target="_blank">Glycolysis</button>
+			</div>
 			<table class="list"style="width:1000px;">
 				<tr>
 				<td>Hexose-6-Phosphate</td>
@@ -24,22 +27,40 @@
 				<td>Phosphoenol pyruvate</td>
 				<td>Pyruvate</td>
 				<td>Lactate</td>
-				<td>6-phospho-D-gluconate</td>
+				<td></td>
 				</tr>
+			</table>
+			<div align="left">
+				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00031/pathway" target="_blank">Pentose Phosphate Pathway</button>
+			</div>
+			<table class="list"style="width:1000px;">
 				<tr>
+				<td>Hexose-6-Phosphate</td>
+				<td>6-phospho-D-gluconate</td>
 				<td>Pentose-5-phosphate</td>
+				</tr>
+			</table>
+			<h3>Hexosamine Biosynthetic Pathway</h3>
+			<table class="list"style="width:1000px;">
+				<tr>
 				<td>glucosamine-6-P</td>
-				<td>N-acetyl-glucosamine-P<br>note: sum of N-acetyl glucoasmine-1-P and -6-P</td>
+				<td>N-acetyl-glucosamine-P note: sum of N-acetyl glucoasmine-1-P and -6-P</td>
+				</tr>
+			</table>
+			<div align="left">
+				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00058/pathway" target="_blank">Glycogen synthesis</button>
+			</div>
+			<table class="list"style="width:1000px;">
+				<tr>
+				<td>Hexose-6-Phosphate</td>
 				<td>Uridine-diphosphate-glucose (UDPG)</td>
 				</tr>
+			<table>
+			<h3>Oxidation/Reduction</h3>
+			<table class="list"style="width:1000px;">
 				<tr>
 				<td>glutathione (ox)</td>
 				<td>glutathione (red)</td>
-				<td>AMP</td>
-				<td>ADP</td>
-				</tr>
-				<tr>
-				<td>ATP</td>
 				<td>Nicotinamide</td>
 				<td>NAD</td>
 				<td>NADH</td>
@@ -47,6 +68,17 @@
 				<tr>
 				<td>NADP</td>
 				<td>NADPH</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				</tr>
+			</table>
+			<h3>ATP synthesis</h3>
+			<table class="list"style="width:1000px;">
+				<tr>
+				<td>ATP</td>
+				<td>AMP</td>
+				<td>ADP</td>
 				</tr>
 			</table>
 		</div>
