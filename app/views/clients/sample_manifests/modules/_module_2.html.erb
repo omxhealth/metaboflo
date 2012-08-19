@@ -4,18 +4,23 @@
 			<li><a href="#module_2_compounds">Metabolites</a></li>
 			<li><a href="#module_2_reference">Reference Values</a></li>
 		</ul>
-		<div id="module_2_compounds">
+		<div id="module_2_compounds" class="tab">
 			<h2>Metabolite Information</h2>
-			
-			
 			<p class="info">
 			  <%= image_tag 'info.png', :class => 'info-logo' %>
 				<%= link_to "Advantages of Tandem LC-MS for the Rapid Assessment of Tissue-Specific Metabolic Complexity Using a Pentafluorophenylpropyl Stationary Phase", "/downloads/module_2_ref.pdf" %>
-
 			</p>
-			<div align="left">
+			<ul>
+				<li><a href="#module_2_glycolysis">Glycolysis</a></li>
+				<li><a href="#module_2_pentose_poshphate">Pentose Phosphate Pathway</a></li>
+				<li><a href="#module_2_hexosamine">Hexosamine Biosynthetic Pathway</a></li>
+				<li><a href="#module_2_glycogen">Glycogen synthesis</a></li>
+				<li><a href="#module_2_oxidation">Oxidation/Reduction</a></li>
+				<li><a href="#module_2_atp">ATP Synthesis</a></li>
+			</ul>
+			<div id="module_2_glycolysis">
 				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00040/pathway" target="_blank">Glycolysis</button>
-			</div>
+			
 			<table class="list"style="width:1000px;">
 				<tr>
 				<td>Hexose-6-Phosphate</td>
@@ -30,9 +35,10 @@
 				<td></td>
 				</tr>
 			</table>
-			<div align="left">
-				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00031/pathway" target="_blank">Pentose Phosphate Pathway</button>
 			</div>
+			<div id="module_2_pentose_poshphate">
+				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00031/pathway" target="_blank">Pentose Phosphate Pathway</button>
+			
 			<table class="list"style="width:1000px;">
 				<tr>
 				<td>Hexose-6-Phosphate</td>
@@ -40,6 +46,8 @@
 				<td>Pentose-5-phosphate</td>
 				</tr>
 			</table>
+			</div>
+			<div id="module_2_hexosamine">
 			<h3>Hexosamine Biosynthetic Pathway</h3>
 			<table class="list"style="width:1000px;">
 				<tr>
@@ -47,15 +55,18 @@
 				<td>N-acetyl-glucosamine-P note: sum of N-acetyl glucoasmine-1-P and -6-P</td>
 				</tr>
 			</table>
-			<div align="left">
-				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00058/pathway" target="_blank">Glycogen synthesis</button>
 			</div>
+			<div id="module_2_glycogen">
+				<button class="link_to" data-url="http://pathman.smpdb.ca/pathways/SMP00058/pathway" target="_blank">Glycogen synthesis</button>
+
 			<table class="list"style="width:1000px;">
 				<tr>
 				<td>Hexose-6-Phosphate</td>
 				<td>Uridine-diphosphate-glucose (UDPG)</td>
 				</tr>
-			<table>
+			</table>
+			</div>
+			<div id="module_2_oxidation">
 			<h3>Oxidation/Reduction</h3>
 			<table class="list"style="width:1000px;">
 				<tr>
@@ -73,6 +84,8 @@
 				<td></td>
 				</tr>
 			</table>
+			</div>
+			<div id="module_2_atp">
 			<h3>ATP synthesis</h3>
 			<table class="list"style="width:1000px;">
 				<tr>
@@ -81,15 +94,21 @@
 				<td>ADP</td>
 				</tr>
 			</table>
+			</div>
 		</div>
-		<div id="module_2_reference">
+		<div id="module_2_reference" class="tab">
 			<h2>Metabolite Reference Values</h2>
+			<ul>
+				<li><a href="#module_2_rat_reference">Rat Reference Values</a></li>
+				<li><a href="#module_2_mouse_reference">Mouse Reference Values</a></li>
+			</ul>
+			<div id="module_2_rat_reference">
 			<table class="list"style="width:1000px;">
 				<tr>
 					<th>Metabolite</th>
 					<th>State of Animal</th>
-					<th>Rat Skeletal Muscle (μmole/g fresh wt)</th>
-					<th>Rat Liver (μmole/g fresh wt)<th>
+					<th>Skeletal Muscle (μmole/g fresh wt)</th>
+					<th>Liver (μmole/g fresh wt)<th>
 				</tr>
 				<tr>
 					<td>Fructose-1,6-diphosphate</td>
@@ -435,6 +454,361 @@
 				</tr>
 
 			</table>
+			</div>
+			<div id="module_2_mouse_reference">
+				<table class="list"style="width:1000px;">
+					<tr>
+						<th>Metabolite</th>
+						<th>State of Animal</th>
+						<th>Skeletal Muscle (μmole/g fresh wt)</th>
+						<th>Liver (μmole/g fresh wt)<th>
+					</tr>
+					<tr>
+						<td>Fructose-1,6-diphosphate</td>
+						<td>Fed</td>
+						<td></td>
+						<td>0.24-0.026</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>alpha Glycerol-3-phosphate</td>
+						<td>Fed</td>
+						<td></td>
+						<td>0.30-0.36</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>3-phosphoglycerate</td>
+						<td>Fed</td>
+						<td></td>
+						<td>0.22</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Phosphoenol pyruvate</td>
+						<td>Fed</td>
+						<td></td>
+						<td>0.11</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Pyruvate</td>
+						<td>Fed</td>
+						<td></td>
+						<td>0.15-0.23</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Lactate</td>
+						<td>Fed</td>
+						<td></td>
+						<td>2.5-2.8</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>6-phospho-D-gluconate</td>
+						<td>Fed</td>
+						<td></td>
+						<td>0.021</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Pentose-5-phosphate</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Isocitrate</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>malate</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>succinate</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>fumarate</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>AMP</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>ADP</td>
+						<td>Fed</td>
+						<td></td>
+						<td>0.7</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>ATP</td>
+						<td>Fed</td>
+						<td></td>
+						<td>1.66-3.30</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>NAD</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>NADH</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>NADP</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>NADPH</td>
+						<td>Fed</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Fast (18-24hr.)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Diabetes</td>
+						<td></td>
+						<td></td>
+					</tr>
+
+				</table>
+			</div>
 		</div>
+		
 	</div>
 </div>
