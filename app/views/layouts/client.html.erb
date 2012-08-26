@@ -42,11 +42,13 @@
   <div class="yui3-g" id="layout">
 
     <!-- Side bar -->
-    <div class="yui3-u" id="sidebar-holder">
-      <div id="sidebar">
-        <%= yield :sidebar %>        
+    <% if content_for?(:sidebar) %>
+      <div class="yui3-u" id="sidebar-holder">
+        <div id="sidebar">
+          <%= yield :sidebar %>        
+        </div>
       </div>
-    </div>
+    <% end -%>
 
     <!-- Main body -->
     <div class="yui3-u" id="main-holder">
