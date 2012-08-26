@@ -13,7 +13,7 @@ class Grouping < ActiveRecord::Base
   end
     
   def to_s
-    return name
+    name
   end
   
   # Get a list of possible grouping subclasses

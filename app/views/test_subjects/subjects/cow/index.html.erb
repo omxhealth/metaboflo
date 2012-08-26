@@ -10,8 +10,8 @@
 
 	<% for test_subject in @test_subjects %>
 	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%=h test_subject.code %></td>
-		<td><%=h test_subject.birthdate %></td>
+		<td><%= test_subject.code %></td>
+		<td><%= test_subject.birthdate %></td>
 		<td><%= test_subject.samples.length %> (<%= link_to 'display', test_subject_samples_path(test_subject) %>)</td>
 		<td><%= show_link test_subject %></td>
 		<td><%= edit_link edit_test_subject_path(test_subject) %></td>

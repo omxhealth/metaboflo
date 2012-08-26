@@ -6,22 +6,22 @@
 
 <p>
 	<b>Name</b>
-	<%=h @user.name %>
+	<%= @user.name %>
 </p>
 
 <p>
   <b>Site</b>
-  <%=h(@user.site.name) unless @user.site.blank? %>
+  <%=(@user.site.name) unless @user.site.blank? %>
 </p>
 
 <p>
 	<b>Rank</b>
-	<%=h @user.rank %>
+	<%= @user.rank %>
 </p>
 
 <p>
 	<b>Email</b>
-	<%=h @user.email %>
+	<%= @user.email %>
 </p>
 
 <%= edit_link edit_user_path(@user) %>

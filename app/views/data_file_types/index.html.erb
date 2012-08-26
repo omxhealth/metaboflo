@@ -9,8 +9,8 @@
 
 <% for data_file_type in @data_file_types %>
   <tr class="<%= cycle('odd', 'even') %>">
-    <td><%=h data_file_type.name %></td>
-    <td><%=h data_file_type.description %></td>
+    <td><%= data_file_type.name %></td>
+    <td><%= data_file_type.description %></td>
     <td><%= show_link data_file_type %></td>
     <td><%= edit_link edit_data_file_type_path(data_file_type) %></td>
     <td><%= destroy_link(data_file_type) %></td>

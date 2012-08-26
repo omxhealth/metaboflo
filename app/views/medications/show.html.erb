@@ -1,31 +1,31 @@
 <p>
   <b><%= TestSubject.title %>:</b>
-  <%=h @medication.test_subject %>
+  <%= @medication.test_subject %>
 </p>
 
 <p>
   <b>Drug:</b>
-  <%=h @medication.drug %>
+  <%= @medication.drug %>
 </p>
 
 <p>
   <b>Started on:</b>
-  <%=h @medication.started_on %>
+  <%= @medication.started_on %>
 </p>
 
 <p>
   <b>Stopped on:</b>
-  <%=h @medication.stopped_on %>
+  <%= @medication.stopped_on %>
 </p>
 
 <p>
 	<b>Currently taking:</b>
-	<%=h boolean_to_english(@medication.currently_taking) %>
+	<%= boolean_to_english(@medication.currently_taking) %>
 </p>
 
 <p>
 	<b>Drugbank reference:</b>
-	<%=h @medication.drugbank_reference %>
+	<%= @medication.drugbank_reference %>
 </p>
 
 

@@ -22,13 +22,13 @@
         &nbsp;
       <% end %>
     </td>
-		<td><%=h user.name %></td>
+		<td><%= user.name %></td>
 		<% if user.site %>
-		  <td><%=h user.site.name %></td>
+		  <td><%= user.site.name %></td>
 		<% else %>
 		  <td>-</td>
 		<% end %>
-		<td><%=h user.email %></td>
+		<td><%= user.email %></td>
 		<td><%= show_link user %></td>
 		<td><%= edit_link edit_user_path(user) %></td>
 		<td><%= destroy_link user %></td>

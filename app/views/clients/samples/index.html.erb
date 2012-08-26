@@ -14,7 +14,7 @@
 <% @samples.each do |sample| %>
   <tr class="<%= cycle('odd', 'even') %>">
 		<td><%= sample.sample_type %></td>
-    <td><%= sample.original_amount %> <%=h sample.original_unit %><br />(<%= sample.theoretical_amount %> <%=h sample.original_unit %> remaining)</td>
+    <td><%= sample.original_amount %> <%= sample.original_unit %><br />(<%= sample.theoretical_amount %> <%= sample.original_unit %> remaining)</td>
     <td><%= sample.collected_on %></td>
     <td><%= sample.collected_by.present? ? sample.collected_by.name : '' %></td>
 		<td>

@@ -38,9 +38,6 @@ Metaboflo::Application.routes.draw do
   
   ## API Resources
   namespace :api do
-    resources :test_subjects do
-      get :tree
-    end
   end
 
   ## Resources

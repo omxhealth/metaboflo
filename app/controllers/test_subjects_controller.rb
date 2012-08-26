@@ -58,9 +58,9 @@ class TestSubjectsController < ApplicationController
     redirect_to(test_subjects_url)
   end
 
-  # GET /test_subjects/1/tree.json
+  # GET /test_subjects/1/tree
   def tree
-    
+    render 'tree', :layout => false
   end
 
   protected

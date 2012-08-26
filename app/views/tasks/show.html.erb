@@ -1,51 +1,51 @@
 <p>
   <b>Subject:</b>
-  <%=h @task.subject %>
+  <%= @task.subject %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%=h @task.description %>
+  <%= @task.description %>
 </p>
 
 <p>
   <b>Task status:</b>
-  <%=h @task.status.name if @task.status %>
+  <%= @task.status.name if @task.status %>
 </p>
 
 <p>
   <b>Priority:</b>
-  <%=h @task.priority.name if @task.priority %>
+  <%= @task.priority.name if @task.priority %>
 </p>
 
 <p>
   <b>Assigned to:</b>
-  <%=h @task.assigned_to.to_s if @task.assigned_to %>
+  <%= @task.assigned_to.to_s if @task.assigned_to %>
 </p>
 
 <p>
   <b>Task category:</b>
-  <%=h @task.category.name if @task.category %>
+  <%= @task.category.name if @task.category %>
 </p>
 
 <p>
   <b>Start date:</b>
-  <%=h @task.start_date %>
+  <%= @task.start_date %>
 </p>
 
 <p>
   <b>Due date:</b>
-  <%=h @task.due_date %>
+  <%= @task.due_date %>
 </p>
 
 <p>
   <b>Estimated hours:</b>
-  <%=h @task.estimated_hours %>
+  <%= @task.estimated_hours %>
 </p>
 
 <p>
   <b>% done:</b>
-  <%=h @task.done_ratio %>
+  <%= @task.done_ratio %>
 </p>
 
 
