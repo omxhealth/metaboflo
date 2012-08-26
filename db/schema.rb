@@ -11,23 +11,67 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110713213754) do
+ActiveRecord::Schema.define(:version => 20120801120558) do
+
+  create_table "biofluid_sample_manifests", :force => true do |t|
+    t.integer  "sample_manifest_id"
+    t.string   "tube_id"
+    t.string   "barcode"
+    t.string   "species"
+    t.string   "matrix"
+    t.string   "group_id"
+    t.string   "sample_volume"
+    t.boolean  "module_1"
+    t.boolean  "module_2"
+    t.boolean  "module_3"
+    t.boolean  "module_4"
+    t.boolean  "module_5"
+    t.boolean  "gc_fap"
+    t.boolean  "ss_1"
+    t.boolean  "ss_2"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "cell_sample_manifests", :force => true do |t|
+    t.integer  "sample_manifest_id"
+    t.string   "tube_id"
+    t.string   "barcode"
+    t.string   "cell_line"
+    t.string   "group_id"
+    t.integer  "viable_cells"
+    t.boolean  "module_1"
+    t.boolean  "module_2"
+    t.boolean  "module_3"
+    t.boolean  "module_4"
+    t.boolean  "module_5"
+    t.boolean  "gc_fap"
+    t.boolean  "ss_1"
+    t.boolean  "ss_2"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "clients", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "password_salt"
     t.string   "reset_password_token"
-    t.string   "remember_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "invitation_token"
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "password_salt"
-    t.integer  "failed_attempts",                     :default => 0
-    t.string   "unlock_token"
-    t.datetime "locked_at"
     t.string   "name"
     t.string   "affiliation"
     t.string   "phone"
@@ -43,8 +87,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.string   "secondary_name"
     t.string   "secondary_email"
     t.string   "secondary_phone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true
@@ -54,8 +98,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.integer  "study_id"
     t.string   "label"
     t.string   "control"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "cohorts", ["study_id"], :name => "index_cohorts_on_study_id"
@@ -63,8 +107,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
   create_table "cohorts_test_subjects", :force => true do |t|
     t.integer  "cohort_id"
     t.integer  "test_subject_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "cohorts_test_subjects", ["cohort_id", "test_subject_id"], :name => "index_cohorts_test_subjects_on_cohort_id_and_test_subject_id", :unique => true
@@ -73,8 +117,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.integer  "diet_id"
     t.integer  "nutrient_id"
     t.float    "amount"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "concentrations", :force => true do |t|
@@ -84,15 +128,15 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.boolean  "is_experimental",     :default => true
     t.integer  "data_file_id"
     t.integer  "metabolite_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   create_table "data_file_types", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "data_files", :force => true do |t|
@@ -106,29 +150,29 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.string   "has_concentration_units"
     t.string   "mapping_errors"
     t.integer  "data_file_type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "diet_ingredients", :force => true do |t|
     t.integer  "diet_id"
     t.integer  "ingredient_id"
     t.float    "amount"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "diets", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "experiment_types", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "experiments", :force => true do |t|
@@ -144,8 +188,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.integer  "protocol_id"
     t.integer  "experiment_type_id"
     t.text     "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "grouping_assignments", :force => true do |t|
@@ -154,22 +198,22 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.integer  "grouping_id"
     t.integer  "assignable_id"
     t.string   "assignable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "groupings", :force => true do |t|
     t.string   "type"
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "ingredients", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "lab_tests", :force => true do |t|
@@ -206,8 +250,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.integer  "test_subject_id"
     t.datetime "collected_at"
     t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "meals", :force => true do |t|
@@ -216,8 +260,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.integer  "diet_id"
     t.integer  "consumed_during_period"
     t.integer  "consumed_on_day"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "medications", :force => true do |t|
@@ -227,8 +271,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.date     "stopped_on"
     t.boolean  "currently_taking"
     t.string   "drugbank_reference"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "metabolites", :force => true do |t|
@@ -251,14 +295,14 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.string   "wikipedia_name"
     t.string   "pathways"
     t.text     "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "nutrients", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "protocols", :force => true do |t|
@@ -269,8 +313,15 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.string   "storage_content_type"
     t.integer  "storage_file_size"
     t.datetime "data_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  create_table "sample_manifests", :force => true do |t|
+    t.integer "client_id"
+    t.string  "title"
+    t.boolean "verified",  :default => false
+    t.boolean "shipped",   :default => false
   end
 
   create_table "samples", :force => true do |t|
@@ -292,8 +343,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.date     "collected_on"
     t.integer  "collected_by_id"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "client_id"
     t.string   "status"
   end
@@ -302,8 +353,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.string   "name"
     t.string   "website"
     t.string   "map_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "stored_files", :force => true do |t|
@@ -314,35 +365,35 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "studies", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "task_categories", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "task_priorities", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "task_statuses", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tasks", :force => true do |t|
@@ -356,8 +407,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.date     "due_date"
     t.float    "estimated_hours"
     t.integer  "done_ratio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "test_subject_evaluations", :force => true do |t|
@@ -393,8 +444,8 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.string   "past_medical",          :default => "--- []"
     t.string   "symptoms",              :default => "--- []"
     t.date     "evaluated_on"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   create_table "test_subjects", :force => true do |t|
@@ -416,36 +467,52 @@ ActiveRecord::Schema.define(:version => 20110713213754) do
     t.date     "birthdate"
     t.integer  "site_id"
     t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "tissue_sample_manifests", :force => true do |t|
+    t.integer  "sample_manifest_id"
+    t.string   "tube_id"
+    t.string   "barcode"
+    t.string   "species"
+    t.string   "matrix"
+    t.string   "group_id"
+    t.string   "tissue_weight"
+    t.boolean  "module_1"
+    t.boolean  "module_2"
+    t.boolean  "module_3"
+    t.boolean  "module_4"
+    t.boolean  "module_5"
+    t.boolean  "gc_fap"
+    t.boolean  "ss_1"
+    t.boolean  "ss_2"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "password_salt"
     t.string   "reset_password_token"
-    t.string   "remember_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "password_salt"
-    t.integer  "failed_attempts",                     :default => 0
-    t.string   "unlock_token"
-    t.datetime "locked_at"
     t.string   "name"
     t.integer  "site_id"
     t.string   "rank"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
