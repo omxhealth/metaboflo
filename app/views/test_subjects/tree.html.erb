@@ -1,7 +1,7 @@
-<li id='root'>
+<li id='root' rel="subject">
   <%= link_to "#{TestSubject.title} #{@test_subject.code}", test_subject_path(@test_subject) %>
   <ul>
-    <li><%= link_to "Medications", test_subject_medications_path(@test_subject) %></li>
+    <li rel="subject"><%= link_to "Medications", test_subject_medications_path(@test_subject) %></li>
     <li><%= link_to "Lab Tests", test_subject_lab_tests_path(@test_subject) %></li>
     <li><%= link_to "#{TestSubject.title} Evaluations", test_subject_test_subject_evaluations_path(@test_subject) %></li>
     <li class="jstree-open">
