@@ -1,5 +1,6 @@
 <h1>New Study</h1>
 
+<%= render_form_errors(@study) %>
 <%= knoxy_form_for @study, :as => :study, :url => { :action => "create" } do |form| %>
   <%= render :partial => 'form', :locals => { :f => form } %>
 

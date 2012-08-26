@@ -1,6 +1,5 @@
+<%= render_form_errors(@medication) %>
 <%= knoxy_form_for([@test_subject, @medication]) do |f| %>
-  <%= f.error_messages %>
-
   <fieldset>
     <legend>Medication Details</legend>
     <p><%= f.text_field :drug, :label => 'Drug name', :required => true %></p>

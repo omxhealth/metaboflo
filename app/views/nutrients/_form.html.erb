@@ -1,5 +1,6 @@
+<%= render_form_errors(@nutrient) %>
+
 <%= knoxy_form_for(@nutrient) do |f| %>
-  <%= f.error_messages %>
   <fieldset>
     <%= f.text_field :name %>
   </fieldset>

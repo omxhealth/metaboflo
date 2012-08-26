@@ -1,6 +1,5 @@
+<%= render_form_errors(@test_subject_evaluation) %>
 <%= knoxy_form_for([@test_subject, @test_subject_evaluation]) do |f| %>
-  <%= f.error_messages %>
-
   <fieldset>
     <legend>Evaluation Details</legend>
     <%= f.text_field :evaluated_on, :label => 'Evaluation date', :class => 'datepicker' %>

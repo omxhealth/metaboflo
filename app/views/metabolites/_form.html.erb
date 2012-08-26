@@ -1,7 +1,5 @@
+<%= render_form_errors(@metabolite) %>
 <%= knoxy_form_for(@metabolite) do |f| %>
-
-  <%= f.error_messages %>
-
   <fieldset>
     <legend>Metabolite Identification</legend>
     <%= f.text_field :name %>

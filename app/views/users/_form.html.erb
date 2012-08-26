@@ -1,6 +1,5 @@
+<%= render_form_errors(@user) %>
 <%= knoxy_form_for(setup_user(@user), :html => { :multipart => true }) do |f| -%>
-  <%= error_messages_for :user %>
-
   <fieldset>
     <legend>User Details</legend>
     <%= f.text_field :name, :required => true %>

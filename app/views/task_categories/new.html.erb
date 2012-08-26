@@ -1,8 +1,7 @@
 <h1>New task_category</h1>
 
+<%= render_form_errors(@task_category) %>
 <%= form_for(@task_category) do |f| %>
-  <%= f.error_messages %>
-
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>

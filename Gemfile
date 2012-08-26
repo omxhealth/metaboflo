@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # Core gems:
-gem 'rails', '3.2.5'
+gem 'rails', '3.2.8'
 gem 'mysql2'
 gem 'thin'
 
@@ -44,7 +44,6 @@ gem 'capistrano-ext'
 
 # Extra gems:
 gem 'country-select'
-gem 'dynamic_form'
 gem 'devise'
 gem 'paperclip'
 gem 'meta_search'

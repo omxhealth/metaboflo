@@ -1,6 +1,5 @@
+<%= render_form_errors(@diet) %>
 <%= knoxy_form_for(setup_diet(@diet)) do |f| %>
-  <%= f.error_messages %>
-
   <fieldset>
     <%= f.text_field :name, :required => true %>
   </fieldset>

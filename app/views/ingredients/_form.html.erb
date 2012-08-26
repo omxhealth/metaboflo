@@ -1,5 +1,5 @@
+<%= render_form_errors(@ingredient) %>
 <%= knoxy_form_for(@ingredient) do |f| %>
-  <%= f.error_messages %>
   <fieldset>
     <%= f.text_field :name, :required => true %>
   </fieldset>

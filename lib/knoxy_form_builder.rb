@@ -17,6 +17,7 @@ class KnoxyFormBuilder < ActionView::Helpers::FormBuilder
   (field_helpers - %w(radio_button hidden_field label fields_for) + %w(date_select datetime_select)).each do |selector|
     src = <<-END_SRC
     def #{selector}(field, options = {}) 
+      options.delete(:required) # For now
       return super if options.delete(:inner)
       error_msg = options.delete(:error_msg)
       full_field = @template.content_tag(:div, :class => 'field-holder', :"data-validate" => error_msg, :id => field.to_s.clone << "-knoxy-field") do
@@ -155,6 +156,7 @@ class KnoxyFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def select(field, choices, options = {}, html_options = {})
+    options.delete(:required) # For now
     return super if options.delete(:inner)
     full_field = @template.content_tag(:div, :class => 'field-holder') do
       input_field = String.new
@@ -203,7 +205,8 @@ class KnoxyFormBuilder < ActionView::Helpers::FormBuilder
   # end
 
   private 
-  def label_for_field(field, options)
+  def label_for_field(field, options={})
+    options.delete(:required) # For now
     if options.has_key?(:label) && options[:label].present? # Label is either a string or false
       @template.content_tag( :div, self.label(field, options[:label]), :class => "left-label" )
     elsif !options.has_key?(:label) # No label provided, use default  

@@ -1,3 +1,3 @@
 class Metaboflo.Collections.SampleManifests extends Backbone.Collection
-
-  model: Metaboflo.Models.SampleManifest
+	model: Metaboflo.Models.SampleManifest
+	url: "/api/sample_manifests"

@@ -1,7 +1,5 @@
+<%= render_form_errors(@experiment) %>
 <%= knoxy_form_for( [@sample, @experiment] ) do |f| %>
-
-  <%= f.error_messages %>
-
   <fieldset>
     <legend>Experiment Description</legend>
     <%= f.text_field :name, :label => 'Experiment title', :style => "width: 250px", :required => true %>
