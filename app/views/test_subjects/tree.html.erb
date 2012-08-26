@@ -1,31 +1,31 @@
 <li id='root' rel="subject">
   <%= link_to "#{TestSubject.title} #{@test_subject.code}", test_subject_path(@test_subject) %>
   <ul>
-    <li rel="subject"><%= link_to "Medications", test_subject_medications_path(@test_subject) %></li>
-    <li><%= link_to "Lab Tests", test_subject_lab_tests_path(@test_subject) %></li>
-    <li><%= link_to "#{TestSubject.title} Evaluations", test_subject_test_subject_evaluations_path(@test_subject) %></li>
-    <li class="jstree-open">
+    <li id="tree-medications" rel="medications"><%= link_to "Medications", test_subject_medications_path(@test_subject) %></li>
+    <li id="tree-tests" rel="tests"><%= link_to "Lab Tests", test_subject_lab_tests_path(@test_subject) %></li>
+    <li id="tree-evaluations" rel="evaluations"><%= link_to "#{TestSubject.title} Evaluations", test_subject_test_subject_evaluations_path(@test_subject) %></li>
+    <li id="tree-experiments">
       <%= link_to "Experiments", test_subject_experiments_path(@test_subject) %>
       <ul>
         <% @test_subject.experiments.each do |experiment| %>
-          <li><%= link_to "#{experiment.name} (#{experiment.experiment_type.name})", sample_experiment_path(experiment.sample, experiment) %></li>
+          <li id="tree-experiment-<%= experiment.id %>" rel="experiment"><%= link_to "#{experiment.name} (#{experiment.experiment_type.name})", sample_experiment_path(experiment.sample, experiment) %></li>
         <% end -%>
       </ul>
     </li>
-    <li class="jstree-open">
+    <li id="tree-samples">
       <%= link_to "Samples", test_subject_experiments_path(@test_subject) %>
       <ul>
         <% @test_subject.samples.each do |sample| %>
           <% label = sample.aliquot? ? "Aliquot #{sample.id}" : "Sample #{sample.id}" %>
-          <li><%= link_to label, test_subject_sample_path(@test_subject, sample) %></li>
+          <li id="tree-sample-<%= sample.id %>" rel="<%= sample.aliquot? ? 'aliquot' : 'sample' %>"><%= link_to label, test_subject_sample_path(@test_subject, sample) %></li>
         <% end -%>
       </ul>
     </li>
-    <li class="jstree-open">
+    <li id="tree-groups">
       <%= link_to "Groups", test_subject_grouping_assignments_path(@test_subject) %>
       <ul>
         <% @test_subject.grouping_assignments.each do |grouping_assignment| %>
-          <li><%= link_to grouping_assignment.grouping.name, grouping_path(grouping_assignment.grouping) %></li>
+          <li id="tree-group-<%= grouping_assignment.id %>" rel="group"><%= link_to grouping_assignment.grouping.name, grouping_path(grouping_assignment.grouping) %></li>
         <% end -%>
       </ul>
     </li>

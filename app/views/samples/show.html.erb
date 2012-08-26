@@ -1,8 +1,3 @@
-<%= content_for :sidebar do %>
-  <h2><%= TestSubject.title %> Summary</h2>
-  <div id="subject-tree" data-source="<%= tree_test_subject_path(@sample.test_subject) %>"></div>
-<% end -%>
-
 <h1>
   Showing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : "#{TestSubject.title.downcase} " %> <%= @sample.parent %>
 </h1>
