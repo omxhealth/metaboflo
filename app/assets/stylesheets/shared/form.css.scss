@@ -7,10 +7,13 @@ div.error-explanation {
   -moz-box-shadow: $shadow;
   -webkit-box-shadow: $shadow;
   box-shadow: $shadow;
-  padding: 0.3em 0.8em;
+  padding: 0 0.8em;
   border-radius: 8px;
 
-  h2 { font-size: 17px }
+  h2 { 
+    font-size: 17px;
+    margin: 0.4em 0 !important;
+  }
   ul { margin: 0.8em; }
 }
 

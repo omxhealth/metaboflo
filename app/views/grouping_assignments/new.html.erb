@@ -1,8 +1,8 @@
 <h1>Add <%= humanized_type @assignable_type %> to a group</h1>
 
-<%= form_for([@assignable, @grouping_assignment]) do |f| %>
-  <%= f.error_messages %>
+<%= render_form_errors(@grouping_assignment) %>
 
+<%= form_for([@assignable, @grouping_assignment]) do |f| %>
   <p>
     <%= f.label :grouping_id %><br />
     <%= f.select :grouping_id, "#{@assignable_type}Grouping".constantize.all.collect { |c| [ c.name, c.id ] } %>

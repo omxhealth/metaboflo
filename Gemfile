@@ -44,7 +44,6 @@ gem 'capistrano-ext'
 
 # Extra gems:
 gem 'country-select'
-gem 'dynamic_form'
 gem 'devise'
 gem 'paperclip'
 gem 'meta_search'

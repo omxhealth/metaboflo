@@ -1,6 +1,5 @@
+<%= render_form_errors(@meal) %>
 <%= knoxy_form_for( [ @test_subject, @meal ] ) do |f| %>
-  <%= f.error_messages %>
-
   <fieldset>
     <%= f.text_field :amount, :label => 'Amount consumed (kg)' %> 
     <%= f.select :diet_id, Diet.all.collect { |d| [ d.name, d.id ] }, :include_blank => false %>

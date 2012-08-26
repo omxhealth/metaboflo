@@ -1,5 +1,6 @@
 <h1>Editing <%= humanized_type @type %> group</h1>
 
+<%= render_form_errors(@grouping) %>
 <%= knoxy_form_for( @grouping, :as => :grouping, :url => { :action => "update", :type => @type }, 
                     :html => { :method => :put } ) do |form| %>
   <%= render :partial => 'form', :locals => { :f => form } %>

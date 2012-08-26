@@ -1,8 +1,7 @@
 <h1>Data File Upload</h1>
 
+<%= render_form_errors(@data_file) %>
 <%= knoxy_form_for([@experiment, @data_file], :html => { :multipart => true }) do |f| %>
-  <%= f.error_messages %>
-  
   <fieldset>
     <legend>Data File Details</legend>
     <%= f.file_field :data, :label => 'File to Upload', :required => true %>

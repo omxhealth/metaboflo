@@ -1,6 +1,5 @@
+<%= render_form_errors(@client) %>
 <%= knoxy_form_for(@client) do |f| %>
-  <%= f.error_messages %>
-  
   <fieldset>
     <%= form_header 'Client Details' %>
     <%= f.text_field :email %>

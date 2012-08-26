@@ -1,6 +1,6 @@
-<%= knoxy_form_for(@site) do |f| %>
-  <%= f.error_messages %>
+<%= render_form_errors(@site) %>
 
+<%= knoxy_form_for(@site) do |f| %>
   <fieldset style="width: 50%">
     <legend>Site Details</legend>
     <%= f.text_field :name, :size => 40 %>
