@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Metaboflo: <%= yield(:title) %></title>
+  <% title = yield(:title) %>
+  <title><%= title.present? ? "Metaboflo: #{title}" : 'Metaboflo' %></title>
 
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
@@ -17,6 +18,7 @@
       menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
     });
   </script>
+
   <%= csrf_meta_tag %>
 </head>
 
@@ -26,14 +28,15 @@
       <%= image_tag "banner_left.jpg", :class => 'left' %>
       <%= image_tag "banner_right.png", :class => 'right' %>
 
-      <% if current_user %>
-      <div id="logged-in">Logged in as <em><%= current_user.to_s %></em> | <%= link_to 'Logout', destroy_user_session_path %></div>
-      <% elsif current_client %>
-      <div id="logged-in">Logged in as <em><%= current_client.to_s %></em> | <%= link_to 'Logout', destroy_client_session_path %></div>
+      <% if user_signed_in? %>
+        <div id="logged-in">
+          Logged in as <em><%= current_user.to_s %></em> | 
+          <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+        </div>
       <% end -%>
     </div>
 
-    <%= render :partial => "layouts/menu" if current_user %>
+    <%= render :partial => "layouts/menu" if user_signed_in? %>
   </div>  
 
   <div class="yui3-g" id="layout">
@@ -54,11 +57,7 @@
     <!-- Main body -->
     <div class="yui3-u" id="main-holder">
       <div id="main">
-        <div id="flash">
-          <% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end %>
-          <% if flash[:error] %><p class="error"><%= flash[:error] %></p><% end %>
-          <% if flash[:alert] %><p class="error"><%= flash[:alert] %></p><% end %>
-        </div>
+        <%= render :partial => "layouts/flash" %>
         <%= yield  %>
       </div>
     </div>

@@ -9,5 +9,6 @@
  *= require table
  *= require pagination
  *= require form
+ *= require flash
  *= require_tree . 
 */
