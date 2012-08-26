@@ -1,5 +1,4 @@
 $(function() {
-	
 	$(".tab").tabs({selected: 0});
 	$("#test_descriptions").accordion();
 	$("#sample-manifest-form").tabs({selected: 0});
@@ -71,5 +70,7 @@ $(function() {
 	$("#ss_2").button().click(function(){$( "#ss_2_dialog" ).dialog("open");});
 	$(".link_to").button().click(function(evt){window.open($(evt.currentTarget).data("url"));});
 	$(".close").button()
+	
+	$("#print_manifest").click(function(evt){window.open($(evt.currentTarget).data("url"));})
 });
 

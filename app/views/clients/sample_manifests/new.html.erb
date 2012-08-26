@@ -1,6 +1,5 @@
 <% content_for :javascript do %>
-	<%= javascript_include_tag 'sample_manifest' %>
-	<%= javascript_include_tag 'add_remove_children' %>
+	<%= javascript_include_tag params[:controller] %>
 <% end %>
 
 <h1>Available Tests</h1>
