@@ -21,10 +21,10 @@
 	line-height:0.8em;
 }
 
-.task_late { background:#f66 image_url('task_late.png'); border: 1px solid #f66; }
-.task_done { background:#66f image_url('task_done.png'); border: 1px solid #66f; }  
-.task_todo { background:#aaa image_url('task_todo.png'); border: 1px solid #aaa; }
-.milestone { background-image:image_url('milestone.png'); background-repeat: no-repeat; border: 0; }
+.task_late { background:#f66 image_url('icons/task_late.png'); border: 1px solid #f66; }
+.task_done { background:#66f image_url('icons/task_done.png'); border: 1px solid #66f; }  
+.task_todo { background:#aaa image_url('icons/task_todo.png'); border: 1px solid #aaa; }
+.milestone { background-image:image_url('icons/milestone.png'); background-repeat: no-repeat; border: 0; }
 
 
 /***** Gantt Chart Tooltips ******/
