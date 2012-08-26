@@ -10,29 +10,13 @@ pre {
 	font-size: 13px;
 }
 
+// see http://paulirish.com/2012/box-sizing-border-box-ftw/
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 /***** Links *****/
 a, a:link, a:visited{ color: #2A5685; text-decoration: none; }
 a:hover, a:active{ color: #c61a1a; text-decoration: underline;}
 a img{ border: 0; }
-
-h1 {
-  margin-top: 0.4em;
-  margin-bottom: 1em;
-  color: #4c545a;
-  font-size: medium;
-  background: #E8E8E8;
-  padding: 0.3em 0.5em;
-  text-align: left;
-  text-shadow: 0px 0px 0.05px white;
-  letter-spacing: 1px;
-  border-radius: 8px;
-}
-
-h2 {
-	font-size: larger;
-	margin: 1.5em 0 1em 0;
-	font-weight: bold;
-}
 
 /* Flash messages */
 div#flash-messages { 
@@ -67,18 +51,12 @@ div#hd {
 
 div#layout { 
   $sidebar_width: 300px;
-  padding-left: $sidebar_width;
-  div#main-holder {
-  	height: 100%;
-  	width: 100%;
-  	#main { 	
-      padding: 0.5em; 
-    }
-  }
+
   div#sidebar-holder {
-    width: $sidebar_width;
-    margin-left: -$sidebar_width;
+    float: left;
+
     #sidebar { 
+      width: $sidebar_width;
       overflow: auto;
       white-space: nowrap;
       min-height: 800px;
@@ -88,15 +66,47 @@ div#layout {
       border-bottom: 1px dotted silver;
       h2 {
         text-shadow: 0px 0px 0.05px white;
-        border-radius: 8px;
-      	border: 1px solid #CDCDC1;
-      	background: white;
+        border-radius: 4px;
+        border: 2px solid #CDCDC1;
+        background: white;
         font-weight: normal;
         font-size: 15px;
-      	margin-bottom: 0.8em; 
-      	margin-top: 5px;
-      	padding: 0.3em;
+        margin-bottom: 0.8em; 
+        margin-top: 5px;
+        padding: 0.5em 0.4em;
       }
+    }
+  }
+
+  div#main-holder {
+  	height: 100%;
+  	width: 100%;
+
+  	#main { 	
+      padding: 0.65em 0.5em; 
+      margin-left: $sidebar_width + 8px;
+    }
+
+    .without-sidebar {
+      margin-left: 0.3em !important;
+      padding-left: 0 !important;
+    }
+
+    h1 {
+      color: #4c545a;
+      font-size: 20px;
+      background: #E8E8E8;
+      margin: 0.2em 0 0.7em 0;
+      padding: 0.3em 0.5em;
+      text-align: left;
+      text-shadow: 0px 0px 0.05px white;
+      letter-spacing: 1px;
+      border-radius: 8px;
+    }
+    h2 {
+      font-size: larger;
+      margin: 1.5em 0 1em 0;
+      font-weight: bold;
     }
   }
 }

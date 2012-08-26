@@ -17,8 +17,6 @@ $ ->
 
 # Remove the sidebar if it doesn't have content
 $ -> 
-  sidebar = $('#sidebar')
-  if sidebar.children().length <= 0
-    sidebar.hide()
-    $('#layout').css('padding-left', 0)
+  if !$('#sidebar').length
+    $('#main').addClass('without-sidebar')
 
