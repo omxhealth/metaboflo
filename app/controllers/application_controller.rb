@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  layout 'main'
+  layout 'lims'
 
   helper :all # include all helpers, all the time
   

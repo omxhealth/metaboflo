@@ -5,7 +5,7 @@
   <% title = yield(:title) %>
   <title><%= title.present? ? "Metaboflo: #{title}" : 'Metaboflo' %></title>
 
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "application", 'lims' %>
   <%= javascript_include_tag "application" %>
 
   <%= yield :css %>
@@ -36,7 +36,7 @@
       <% end -%>
     </div>
 
-    <%= render :partial => "layouts/menu" if user_signed_in? %>
+    <%= render :partial => "layouts/lims_menu" if user_signed_in? %>
   </div>  
 
   <div class="yui3-g" id="layout">
