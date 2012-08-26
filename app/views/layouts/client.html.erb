@@ -44,12 +44,6 @@
     <!-- Side bar -->
     <div class="yui3-u" id="sidebar-holder">
       <div id="sidebar">
-        <% if defined?(@test_subject) && @test_subject.present? && !@test_subject.new_record? %>
-          <%= content_for :sidebar do %>
-            <h2><%= TestSubject.title %> Summary</h2>
-            <div id="subject-tree" data-source="<%= tree_test_subject_path(@test_subject) %>"></div>
-          <% end -%>
-        <% end -%>
         <%= yield :sidebar %>        
       </div>
     </div>
