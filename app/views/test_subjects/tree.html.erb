@@ -13,7 +13,7 @@
       </ul>
     </li>
     <li id="tree-samples">
-      <%= link_to "Samples", test_subject_experiments_path(@test_subject) %>
+      <%= link_to "Samples", test_subject_samples_path(@test_subject) %>
       <ul>
         <% @test_subject.samples.each do |sample| %>
           <% label = sample.aliquot? ? "Aliquot #{sample.id}" : "Sample #{sample.id}" %>
