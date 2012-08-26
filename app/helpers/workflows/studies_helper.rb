@@ -3,9 +3,8 @@ module Workflows::StudiesHelper
   def setup_workflow_study(study)
     study.tap do |s|
       if s.new_record? && s.cohorts.blank?
-        s.cohorts.build until s.cohorts.size == 2
+        s.cohorts.build until s.cohorts.size >= 2
       end
     end
   end
-
 end
