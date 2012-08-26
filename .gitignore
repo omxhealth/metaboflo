@@ -4,9 +4,12 @@ log/*.log
 tmp/**/*
 tmp/*
 config/database.yml
-db/schema.rbvendor/ruby
+db/schema.rb
+public/system/*
 vendor/ruby
-vendor/cache
-public/system
+vendor/cache/
 .Rhistory
 .rbenv-version
+vendor/ruby
+vendor/ruby
+vendor/ruby

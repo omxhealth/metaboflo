@@ -5,6 +5,59 @@ module ApplicationHelper
   CONCENTRATION_UNITS = [ 'mol/L' ]
   CLINICAL_UNITS = ['mg/dL', 'mg/L', 'mEq/L', 'g/dL', 'per cubic mm', 'g/L', 'mcg/mL', 'mmol/L']
   
+  require 'tabular_form_builder'
+  
+  def array_to_table(array, columns, options = {})
+    options[:table_parameters] ||= ""
+    out = "<table #{options[:table_parameters]}>"
+    i = 1
+    array.each do |e|
+      out << "<tr>" if i == 0
+      out << "<td>#{e}</td>"
+      if i == columns
+        out << "</tr>" 
+        i = 0
+      end
+      i += 1
+    end
+    if out =~ /<\/tr>$/
+      out << "</table>"
+    else
+      out << "</tr></table"
+    end
+  end
+    
+  def new_child_fields_template(form_builder, association, options = {})
+    options[:object] ||= form_builder.object.class.reflect_on_association(association).klass.new
+    options[:partial] ||= association.to_s.singularize
+    options[:form_builder_local] ||= :f
+
+    content_for :jstemplates do
+        content_tag(:div, :id => "#{association}_fields_template", :style => "display: none") do
+          form_builder.fields_for(association, options[:object], :child_index => "new_#{association}") do |f|        
+            render(:partial => options[:partial], :locals => { options[:form_builder_local] => f })        
+          end
+        end
+      end
+  end
+  
+  # def remove_link_unless_new_record(fields)
+  #   if fields.object.persisted?     
+  #     out = ''
+  #     out << fields.check_box(:_destroy)
+  #     out << fields.label( :_destroy, "Destroy")
+  #     out.html_safe
+  #   end
+  # end
+  
+  def add_child_link(name, association)
+    link_to(name, "javascript:void(0)", :class => "add_child button", :"data-association" => association)
+  end
+
+  def remove_child_link(name, f)
+    f.hidden_field(:_destroy) + link_to(name, "javascript:void(0)", :class => "remove_child button")
+  end
+  
   # Set the given title for the current page. Returns the given title so you can use it in your
   # page as a header, for example: <h1><%= title('Welcome') %></h1>
   def title(page_title)

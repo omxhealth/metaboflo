@@ -20,8 +20,7 @@ module Metaboflo
     config.autoload_paths += %W(#{Rails.root}/lib)
 
     # Load sub-directory models
-    config.autoload_paths += %W(#{Rails.root}/app/models/groupings)
-
+    config.autoload_paths += %W(#{Rails.root}/app/models/groupings #{Rails.root}/app/models/sample_manifests)
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

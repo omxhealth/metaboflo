@@ -1,7 +1,4 @@
-class Clients::SamplesController < ApplicationController
-  skip_before_filter :authenticate_user!
-  before_filter :authenticate_client!
-  
+class Clients::SamplesController < Clients::BaseController
   def index
     @samples = current_client.samples
     
@@ -10,7 +7,7 @@ class Clients::SamplesController < ApplicationController
       format.xml  { render :xml => @samples }
     end
   end
-
+    
   def show
   end
 
