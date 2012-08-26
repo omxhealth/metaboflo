@@ -5,8 +5,6 @@ module ApplicationHelper
   CONCENTRATION_UNITS = [ 'mol/L' ]
   CLINICAL_UNITS = ['mg/dL', 'mg/L', 'mEq/L', 'g/dL', 'per cubic mm', 'g/L', 'mcg/mL', 'mmol/L']
   
-  require 'tabular_form_builder'
-  
   def array_to_table(array, columns, options = {})
     options[:table_parameters] ||= ""
     out = "<table #{options[:table_parameters]}>"

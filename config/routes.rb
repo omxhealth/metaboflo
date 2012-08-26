@@ -1,4 +1,14 @@
 Metaboflo::Application.routes.draw do
+  ## User routes
+  devise_for :users
+  resources :nutrients
+  resources :metabolites do
+    collection do
+      post :search
+    end
+  end
+
+  ## Client routes 
   devise_for :clients do
     match 'clients/home' => 'clients/home#index', :as => :client_root
   end
@@ -10,9 +20,9 @@ Metaboflo::Application.routes.draw do
     end
     resources :home, :only => [ :index ]
   end
-  
   resources :clients
 
+  ## Workflow routes
   namespace :workflows do
     resources :experiments
     resources :patients, :only => [:index, :new, :create]
@@ -26,14 +36,14 @@ Metaboflo::Application.routes.draw do
     end
   end
   
-  devise_for :users
-  resources :nutrients
-  resources :metabolites do
-    collection do
-      post :search
+  ## API Resources
+  namespace :api do
+    resources :test_subjects do
+      get :tree
     end
   end
 
+  ## Resources
   resources :ingredients
   resources :diets
   resources :task_categories
