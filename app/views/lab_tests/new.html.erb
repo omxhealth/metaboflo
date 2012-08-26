@@ -1,10 +1,8 @@
 <h1>Add Lab Test</h1>
 
+<%= render_form_errors(@lab_test) %>
 <%= knoxy_form_for([@test_subject, @lab_test]) do |form| %>
-
   <%= render :partial => 'form', :locals => { :form => form } %>
-
-  <%= form.error_messages %>
 
   <p>
     <%= form.submit "Create" %>
