@@ -1,6 +1,14 @@
 Metaboflo::Application.routes.draw do
+  ## Public routes
+  match 'about' => 'public/pages#about'
+  match 'contact' => 'public/pages#contact'
+  match 'services' => 'public/pages#services'
+
   ## User routes
-  devise_for :users
+  devise_for :users do
+    match 'landing' => 'bovine#index', :as => :user_root
+  end
+
   resources :users do 
     resources :user_pictures
     resources :tasks
@@ -134,5 +142,5 @@ Metaboflo::Application.routes.draw do
   match 'admin' => 'administrators#index', :as => :admin
 
   ## Route URL 
-  root :to => 'bovine#index'
+  root :to => 'public/pages#home'
 end

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <% title = yield(:title) %>
+  <title><%= title.present? ? "Metaboflo: #{title}" : 'Metaboflo' %></title>
+
+  <%= stylesheet_link_tag    "application", 'clients' %>
+  <%= javascript_include_tag "application" %>
+
+  <%= yield :css %>
+  <%= yield :javascript %>
+
+  <script>
+    YUI().use('node-menunav', function(Y) {
+      var menu = Y.one("#navbar");
+      menu.plug(Y.Plugin.NodeMenuNav);
+      menu.get("ownerDocument").get("documentElement").removeClass("yui3-loading");
+    });
+  </script>
+
+  <%= csrf_meta_tag %>
+</head>
+
+<body class="yui3-skin-sam">
+  <div id="hd"><!-- header -->
+    <div id="headerbar">
+      <%= image_tag "einstein/logo.png", :class => 'left' %>
+      <%# image_tag "banner_right.png", :class => 'right' %>
+
+      <div id="logged-in">
+        <%= link_to 'Client Login', new_client_session_path %>
+      </div>
+    </div>
+
+    <%= render :partial => "layouts/public_menu" %>
+  </div>  
+
+  <div class="yui3-g" id="layout">
+    <!-- Main body -->
+    <div class="yui3-u" id="main-holder">
+      <div id="main">
+        <%= render :partial => "layouts/flash" %>
+        <%= yield  %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
