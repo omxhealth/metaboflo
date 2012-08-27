@@ -10,4 +10,5 @@
  *= require shared/pagination
  *= require shared/table
  *= require shared/form
+ *= require shared/login
 */

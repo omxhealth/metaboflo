@@ -1,25 +1,24 @@
-<h1>Client Login</h1>
+<h1>Client Sign in</h1>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
+<%= knoxy_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :id => :login }) do |f| %>
+  <fieldset>
+    <%= f.inner_field :email do %>
+      <%= f.email_field :email, :inner => true  %>
+    <% end -%>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field-checkbox">
-      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    <%= f.inner_field :password do %>
+      <%= f.password_field :password, :inner => true  %>
+    <% end -%>
+
+    <% if devise_mapping.rememberable? -%>
+      <%= f.check_box :remember_me %>
+    <% end -%>
+
+    <div class="actions submit-actions">
+      <%= f.submit "Sign in" %><br />
     </div>
-  <% end %>
-
-  <div class="field-no-label">
-    <%= f.submit "Login" %>
-  </div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+    <div class="signin-links">
+      <%= render :partial => "devise/shared/links" %>
+    </div>
+  </fieldset>
+<% end -%>

@@ -1,0 +1,14 @@
+#login {
+  fieldset {
+    font-size: 20px;
+    min-width: 300px;
+    width: 25em;
+    .actions {
+      font-size: 18px;
+      a { margin-top: 1em; }
+    }
+  }
+  .signin-links {
+    font-size: 18px;
+  }
+}
