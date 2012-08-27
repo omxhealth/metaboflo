@@ -8,7 +8,7 @@ module UrlHelper
     name ||= "#{id}" # Use the ID as the name if no name is provided (force a copy to avoid changing the value of id)
 
     unless id.blank?
-      name << " " << image_tag('link_out.png', :class => 'link').html_safe
+      name << " " << image_tag('icons/link_out.png', :class => 'link').html_safe
       link_to(name.html_safe, url_out(site, id), html_options)
     end
 	end

@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  layout 'main'
+  layout 'lims'
 
   helper :all # include all helpers, all the time
   
@@ -33,17 +33,17 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-    def only_user?(redirect_path = root_path)
-      redirect_to redirect_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
-    end
-  
-    def administrator?(redirect_path = root_path)
-      redirect_to redirect_path unless current_user.rank == 'Administrator'
-    end
-  
-    def find_test_subject(param_name = :test_subject_id)
-      @test_subject = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-                  TestSubject.find(params[param_name]) :
-                  TestSubject.find(params[param_name], :conditions => [ 'site_id=?', current_user.site ])
-    end
+  def only_user?(redirect_path = root_path)
+    redirect_to redirect_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
+  end
+
+  def administrator?(redirect_path = root_path)
+    redirect_to redirect_path unless current_user.rank == 'Administrator'
+  end
+
+  def find_test_subject(param_name = :test_subject_id)
+    @test_subject = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+                TestSubject.find(params[param_name]) :
+                TestSubject.find(params[param_name], :conditions => [ 'site_id=?', current_user.site ])
+  end
 end

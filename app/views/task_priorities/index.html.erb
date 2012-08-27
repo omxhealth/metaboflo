@@ -8,8 +8,8 @@
 
 <% for task_priority in @task_priorities %>
   <tr>
-    <td><%=h task_priority.name %></td>
-    <td><%=h task_priority.description %></td>
+    <td><%= task_priority.name %></td>
+    <td><%= task_priority.description %></td>
     <td><%= show_link task_priority %></td>
     <td><%= edit_link edit_task_priority_path(task_priority) %></td>
     <td><%= destroy_link task_priority %></td>

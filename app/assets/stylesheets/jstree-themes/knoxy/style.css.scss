@@ -1,0 +1,27 @@
+/*
+ * jsTree knoxy theme 1.0
+ * Supported features: dots/no-dots, icons/no-icons, focused, loading
+ * Supported plugins: ui (hovered, clicked), checkbox, contextmenu, search
+ */
+
+.jstree-knoxy {
+  padding: 1em 0; 
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+  font-size: 11px;
+  li, ins { background-image:url("d.png"); background-repeat:no-repeat; background-color:transparent; }
+  li { background-position:-90px 0; background-repeat:repeat-y; }
+  li.jstree-last { background:transparent; }
+
+  .jstree-open > ins { background-position:-72px 0; }
+  .jstree-closed > ins { background-position:-54px 0; }
+  .jstree-leaf > ins { background-position:-36px 0; }
+ 
+  a { border-radius:4px; text-shadow:1px 1px 1px white; line-height: 20px; height: 20px;}
+  .jstree-hovered { background:#e7f4f9; border:1px solid #d8f0fa; padding:0 3px 0 1px; text-shadow:1px 1px 1px silver; }
+  .jstree-clicked { background:#beebff; border:1px solid #99defd; padding:0 3px 0 1px; }
+  a .jstree-icon { height: 20px; width: 20px; vertical-align: middle; }
+  a.jstree-loading .jstree-icon { background:url("throbber.gif") center center no-repeat !important; }
+
+  a.current-node { font-weight: bold; background: #E5E5E5; padding-right: 1em;}
+  .jstree-focused { background:transparent; }
+}

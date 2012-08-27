@@ -8,7 +8,7 @@
 
 <% @nutrients.each do |nutrient| %>
   <tr>
-    <td><%=h nutrient.name %></td>
+    <td><%= nutrient.name %></td>
     <td><%= show_link nutrient %></td>
     <td><%= edit_link edit_nutrient_path(nutrient) %></td>
     <td><%= destroy_link nutrient %></td>

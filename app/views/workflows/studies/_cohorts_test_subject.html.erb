@@ -1,7 +1,0 @@
-<div class="fields box">
-  <div class="field">
-    <%= f.label :test_subject_id, TestSubject.title %>: 
-    <%= f.select :test_subject_id, TestSubject.all.collect { |ts| [ts.code, ts.id] } %>
-  </div>
-  <%= remove_fields_for f, :cohorts_test_subjects %>
-</div>

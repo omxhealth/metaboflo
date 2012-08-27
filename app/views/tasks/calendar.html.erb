@@ -33,11 +33,11 @@
 					<% if i.is_a? Task %>
 					<div class="tooltip">
 						<%= if day == i.start_date && day == i.due_date
-							image_tag('arrow_bw.png')
+							image_tag('icons/arrow_bw.png')
 						elsif day == i.start_date
-							image_tag('arrow_from.png') 
+							image_tag('icons/arrow_from.png') 
 						elsif day == i.due_date
-							image_tag('arrow_to.png') 
+							image_tag('icons/arrow_to.png') 
 						end %>
 						<%= link_to i.subject, task_path(i) %>
 						<span class="tip"><%= render_task_tooltip i %></span>
@@ -52,9 +52,9 @@
 		</tbody>
 	</table>
 
-	<%= image_tag 'arrow_from.png' %>&nbsp;&nbsp; task beginning this day<br />
-	<%= image_tag 'arrow_to.png' %>&nbsp;&nbsp; task ending this day<br />
-	<%= image_tag 'arrow_bw.png' %>&nbsp;&nbsp; task beginning and ending this day<br />
+	<%= image_tag 'icons/arrow_from.png' %>&nbsp;&nbsp; task beginning this day<br />
+	<%= image_tag 'icons/arrow_to.png' %>&nbsp;&nbsp; task ending this day<br />
+	<%= image_tag 'icons/arrow_bw.png' %>&nbsp;&nbsp; task beginning and ending this day<br />
 
 </div>
 

@@ -1,6 +1,5 @@
+<%= render_form_errors(@task) %>
 <%= knoxy_form_for(@task) do |f| %>
-  <%= f.error_messages %>
-
   <fieldset>
     <legend>Task Details</legend>
     <%= f.text_field :subject, :required => true %>

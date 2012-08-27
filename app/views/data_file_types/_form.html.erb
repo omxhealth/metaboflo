@@ -1,6 +1,5 @@
+<%= render_form_errors(@data_file_type) %>
 <%= knoxy_form_for(@data_file_type) do |f| %>
-  <%= f.error_messages %>
-
   <fieldset>
     <legend>File Type Details</legend>
     <%= f.text_field :name, :required => true %>

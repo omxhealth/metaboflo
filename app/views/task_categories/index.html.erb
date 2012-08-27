@@ -8,8 +8,8 @@
 
 <% for task_category in @task_categories %>
   <tr>
-    <td><%=h task_category.name %></td>
-    <td><%=h task_category.description %></td>
+    <td><%= task_category.name %></td>
+    <td><%= task_category.description %></td>
     <td><%= show_link task_category %></td>
     <td><%= edit_link edit_task_category_path(task_category) %></td>
     <td><%= destroy_link task_category %></td>

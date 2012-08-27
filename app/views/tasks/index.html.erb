@@ -21,16 +21,16 @@
 
 <% for task in @tasks %>
 	<tr class="<%= cycle('odd', 'even') %>">
-    <td><span title="<%=h task.description %>"><%=h task.subject %></span></td>
+    <td><span title="<%= task.description %>"><%= task.subject %></span></td>
     <td><%= link_to('Set completed', complete_task_path(task), :confirm => 'Set task to complete and close?', :method => :put) unless task.done_ratio == 100 %></td>
-    <td><%=h task.status.name if task.status %></td>
-    <td><%=h task.priority.name if task.priority %></td>
-    <td><%=h task.assigned_to.name if task.assigned_to %></td>
-    <td><%=h task.category.name if task.category %></td>
-    <td><%=h task.start_date %></td>
-    <td><%=h task.due_date %></td>
-    <td><%=h task.estimated_hours %></td>
-    <td><%=h task.done_ratio %></td>
+    <td><%= task.status.name if task.status %></td>
+    <td><%= task.priority.name if task.priority %></td>
+    <td><%= task.assigned_to.name if task.assigned_to %></td>
+    <td><%= task.category.name if task.category %></td>
+    <td><%= task.start_date %></td>
+    <td><%= task.due_date %></td>
+    <td><%= task.estimated_hours %></td>
+    <td><%= task.done_ratio %></td>
 	  <td><%= show_link task %></td>
 	  <td><%= edit_link edit_task_path(task) %></td>
 	  <td><%= destroy_link task %></td>

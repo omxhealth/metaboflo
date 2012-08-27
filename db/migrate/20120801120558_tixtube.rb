@@ -9,6 +9,5 @@ class Tixtube < ActiveRecord::Migration
     change_column :tissue_sample_manifests, :tube_id , :integer
     change_column :cell_sample_manifests, :tube_id , :integer
     change_column :biofluid_sample_manifests, :tube_id, :integer
-
   end
 end

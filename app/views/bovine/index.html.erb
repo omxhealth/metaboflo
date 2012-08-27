@@ -35,8 +35,8 @@
 
   	<% @experiments.each do |experiment| %>
   	<tr class="<%= cycle('odd', 'even') %>">
-  		<td><%=h experiment.name %></td>
-  		<td><%=h experiment.perform_on %></td>
+  		<td><%= experiment.name %></td>
+  		<td><%= experiment.perform_on %></td>
   		<td><%= show_link [experiment.sample, experiment] %></td>
   		<td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
   		<td><%= destroy_link [experiment.sample, experiment] %></td>

@@ -9,7 +9,7 @@
 
 <% for site in @sites %>
   <tr class="<%= cycle('odd', 'even') %>">
-    <td><%=h site.name %></td>
+    <td><%= site.name %></td>
 	<% if site.users %>
 		<td><%= link_to site.users.length, site_users_path(site) %></td>
 	<% else %>

@@ -42,7 +42,7 @@
   $( '.datepicker', c ).each -> 
     $(this).datepicker
       changeYear: true
-      buttonImage: "/assets/calendar.gif"
+      buttonImage: "/assets/icons/calendar.gif"
       buttonImageOnly: true
       showOn: "button"
 

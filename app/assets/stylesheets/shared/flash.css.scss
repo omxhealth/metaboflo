@@ -1,0 +1,26 @@
+/* Flash messages */
+div#flash-messages {
+  div.flash {
+    font-size: 16px;
+    padding: 0.8em 0.8em;
+    margin: 1em 0;
+    border-radius: 0.4em;
+    border: 1px solid silver;
+    $shadow: 0 0 8px silver;
+    -moz-box-shadow: $shadow;
+    -webkit-box-shadow: $shadow;
+    box-shadow: $shadow;
+  }
+  .alert { 
+    background: #fbe3e4; 
+    color: #8a1f11; 
+    border-color: #fbc2c4; 
+    a { color: #8a1f11; }
+  }
+  .notice { 
+    background: #e6efc2; 
+    color: #264409; 
+    border-color: #c6d880; 
+    a { color: #264409; }
+  }
+}

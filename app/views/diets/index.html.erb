@@ -8,7 +8,7 @@
 
 <% for diet in @diets %>
   <tr>
-    <td><%=h diet.name %></td>
+    <td><%= diet.name %></td>
     <td><%= show_link diet %></td>
     <td><%= edit_link edit_diet_path(diet) %></td>
     <td><%= destroy_link diet %></td>

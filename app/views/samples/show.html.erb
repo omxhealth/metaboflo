@@ -1,42 +1,15 @@
-<%= content_for :sidebar do %>
-<h2><%= TestSubject.title %> Summary</h2>
-<div id="tree"></div>
-<script>
-var data = [
-    {
-        label: 'node1',
-        children: [
-            { label: 'child1' },
-            { label: 'child2' }
-        ]
-    },
-    {
-        label: 'node2',
-        children: [
-            { label: 'child3' }
-        ]
-    }
-];
-$('#tree').tree({
-    data: data,
-    autoOpen: true,
-    saveState: true
-});
-</script>
-<% end -%>
-
 <h1>
   Showing <%= @sample.aliquot? ? 'aliquot' : 'sample' %> <%= @sample.barcode %> from <%= @sample.aliquot? ? 'sample ' : "#{TestSubject.title.downcase} " %> <%= @sample.parent %>
 </h1>
 
 <p>
 	<b>Sample type:</b>
-	<%=h @sample.sample_type %>
+	<%= @sample.sample_type %>
 </p>
 
 <p>
   <b>Barcode:</b>
-  <%=h @sample.barcode %>
+  <%= @sample.barcode %>
 </p>
 
 <p>
@@ -79,17 +52,17 @@ $('#tree').tree({
   <legend>Volume Information</legend>
   <p>
     <b>Original amount:</b>
-    <%=h @sample.original_amount %> <%=h @sample.original_unit %>
+    <%= @sample.original_amount %> <%= @sample.original_unit %>
   </p>
 
   <p>
     <b>Actual amount:</b>
-    <%=h @sample.actual_amount %> <%=h @sample.actual_unit %>
+    <%= @sample.actual_amount %> <%= @sample.actual_unit %>
   </p>
 
   <p>
   	<b>Theoretical amount:</b>
-  	<%=h @sample.theoretical_amount %> <%=h @sample.original_unit %>
+  	<%= @sample.theoretical_amount %> <%= @sample.original_unit %>
   </p>
 </fieldset>
 
@@ -99,37 +72,37 @@ $('#tree').tree({
   <legend>Storage Location</legend>
   <p>
     <b>Site:</b>
-    <%=h(@sample.site.name) if @sample.site %>
+    <%=(@sample.site.name) if @sample.site %>
   </p>
 
   <p>
     <b>Building:</b>
-    <%=h @sample.building %>
+    <%= @sample.building %>
   </p>
 
   <p>
     <b>Room:</b>
-    <%=h @sample.room %>
+    <%= @sample.room %>
   </p>
 
   <p>
   	<b>Freezer:</b>
-  	<%=h @sample.freezer %>
+  	<%= @sample.freezer %>
   </p>
 
   <p>
   	<b>Shelf:</b>
-  	<%=h @sample.shelf %>
+  	<%= @sample.shelf %>
   </p>
 
   <p>
   	<b>Box:</b>
-  	<%=h @sample.box %>
+  	<%= @sample.box %>
   </p>
 
   <p>
   	<b>Box Position:</b>
-  	<%=h @sample.box_position %>
+  	<%= @sample.box_position %>
   </p>
 </fieldset>
 
@@ -146,17 +119,17 @@ $('#tree').tree({
   
   <p>
     <b>Collected on:</b>
-    <%=h @sample.collected_on %>
+    <%= @sample.collected_on %>
   </p>
 
   <p>
     <b>Collected by:</b>
-    <%=h @sample.collected_by %>
+    <%= @sample.collected_by %>
   </p>
 
   <p>
     <b>Description:</b>
-    <%=h @sample.description %>
+    <%= @sample.description %>
   </p>
 </fieldset>
 

@@ -1,8 +1,6 @@
-<%= f.error_messages %>
-
 <% if @sample.new_record? %>
-<%= f.hidden_field(:test_subject_id) if @sample.test_subject %>
-<%= f.hidden_field(:parent_sample_id) if @sample.sample %>
+  <%= f.hidden_field(:test_subject_id) if @sample.test_subject %>
+  <%= f.hidden_field(:parent_sample_id) if @sample.sample %>
 <% end %>
 
 <fieldset>

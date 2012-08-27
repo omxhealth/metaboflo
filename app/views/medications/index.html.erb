@@ -12,11 +12,11 @@
 
 	<% for medication in @medications %>
 	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%=h medication.drug %></td>
-		<td><%=h medication.started_on %></td>
-		<td><%=h medication.stopped_on %></td>
-		<td><%=h boolean_to_english(medication.currently_taking) %></td>
-		<td><%=h medication.drugbank_reference %></td>
+		<td><%= medication.drug %></td>
+		<td><%= medication.started_on %></td>
+		<td><%= medication.stopped_on %></td>
+		<td><%= boolean_to_english(medication.currently_taking) %></td>
+		<td><%= medication.drugbank_reference %></td>
 		<td><%= show_link test_subject_medication_path(@test_subject, medication) %></td>
 		<td><%= edit_link edit_test_subject_medication_path(@test_subject, medication) %></td>
 		<td><%= destroy_link test_subject_medication_path(@test_subject, medication) %></td>

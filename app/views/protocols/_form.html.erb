@@ -1,6 +1,5 @@
+<%= render_form_errors(@protocol) %>
 <%= knoxy_form_for(@protocol, :html => { :multipart => true }) do |f| %>
-  <%= f.error_messages %>
-
   <fieldset style="width: 50%">
     <legend>Protocol Details</legend>
     <%= f.text_field :name, :required => true %>

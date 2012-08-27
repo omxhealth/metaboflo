@@ -2,6 +2,7 @@
 
 <p class="info"><%= render :partial => "/studies/info" %></p>
 
+<%= render_form_errors(@study) %>
 <%= knoxy_form_for [ :workflows, setup_workflow_study(@study) ], :html => { :autocomplete => false } do |f| %>
   <fieldset>
     <legend>Study Details</legend>

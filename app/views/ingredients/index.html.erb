@@ -8,7 +8,7 @@
 
 <% for ingredient in @ingredients %>
   <tr>
-    <td><%=h ingredient.name %></td>
+    <td><%= ingredient.name %></td>
     <td><%= show_link ingredient %></td>
     <td><%= edit_link edit_ingredient_path(ingredient) %></td>
     <td><%= destroy_link ingredient %></td>

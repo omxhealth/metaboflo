@@ -5,5 +5,9 @@
  *= require_self
  *= require jquery.ui.all
  *= require jquery-ui/cupertino
- *= require_tree . 
+ *= require shared/layout
+ *= require shared/flash
+ *= require shared/pagination
+ *= require shared/table
+ *= require shared/form
 */
