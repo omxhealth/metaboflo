@@ -25,14 +25,12 @@ namespace :deploy do
 end
 
 namespace(:customs) do
-  # Custom task to symlink the database.yml file from the shared/config to current/config
+  # Custom task to copy the database.yml and moldb.yml file from the shared/config to current/config
   task :config, :roles => :app do
-    run <<-CMD
-      ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml
-    CMD
+    run "ln -s #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
   end
 end
 
 # Run our custom post-deploy recipes, and perform a cleanup (removes all releases except for the last 5)
-after "deploy:update_code", "customs:config"
+before "deploy:assets:precompile", "customs:config"
 after "deploy", "deploy:cleanup"

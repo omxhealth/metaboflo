@@ -6,7 +6,7 @@
 # You can then deploy to the different environments like so:
 #
 # > cap production deploy
-
+load 'deploy/assets'
 set :stages, %w(einstein demo testing production)
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
