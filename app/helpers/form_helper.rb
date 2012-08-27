@@ -32,6 +32,14 @@ module FormHelper
     end
   end
 
+  def my_add_child_link(name, association)
+    link_to(name, "javascript:void(0)", :class => "add_child", :"data-association" => association)
+  end
+
+  def my_remove_child_link(name, f)
+    f.hidden_field(:_destroy) + link_to(name, "javascript:void(0)", :class => "remove_child")
+  end
+  
   def add_child_link(form_builder, association, options = {})
     options[:name] ||= "Add #{association.to_s.titleize.singularize}"
     adder = content_tag(:div, :class => "nested-add") do
