@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801120558) do
+ActiveRecord::Schema.define(:version => 20120827043353) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
@@ -318,10 +318,14 @@ ActiveRecord::Schema.define(:version => 20120801120558) do
   end
 
   create_table "sample_manifests", :force => true do |t|
-    t.integer "client_id"
-    t.string  "title"
-    t.boolean "verified",  :default => false
-    t.boolean "shipped",   :default => false
+    t.integer  "client_id"
+    t.string   "title"
+    t.boolean  "verified",          :default => false
+    t.boolean  "shipped",           :default => false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "samples", :force => true do |t|

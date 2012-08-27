@@ -3,6 +3,8 @@ class SampleManifest < ActiveRecord::Base
   has_many :biofluid_sample_manifests, :dependent => :destroy
   has_many :tissue_sample_manifests, :dependent => :destroy
   has_many :cell_sample_manifests, :dependent => :destroy
+
+  has_attached_file :file
   
   has_many :stored_files, :as => :attachable
   accepts_nested_attributes_for :stored_files, :allow_destroy => true
@@ -10,7 +12,22 @@ class SampleManifest < ActiveRecord::Base
   accepts_nested_attributes_for :biofluid_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :tissue_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :cell_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
-      
+  
+  after_save :parse_file
+  
+  
+  def parse_file
+    if file.present?
+      CSV.foreach(self.file.path, :col_sep => ",", :headers => true, :header_converters => :symbol, :quote_char => "\"") do |row|
+        
+      end
+      self.file = nil #discard after parseing
+      self.save!
+    end
+    
+  end
+  
+  
   def total_samples
     self.biofluid_sample_manifests.count + self.tissue_sample_manifests.count + self.cell_sample_manifests.count
   end 

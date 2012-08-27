@@ -32,6 +32,9 @@
 	    <%= new_child_fields_template f, :cell_sample_manifests, :partial => '/clients/sample_manifests/manifests/cell_sample_manifest' %>
 		</fieldset>
 	</div>
+	<div>
+	<p>Upload: <%= f.file_field :file %></p>
+	</div>
 </div>
 <%= f.submit "Save Sample Manifest", :class => :button %>
 <% end %>
