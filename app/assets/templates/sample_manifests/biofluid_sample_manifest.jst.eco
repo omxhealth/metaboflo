@@ -1,0 +1,20 @@
+<div class="biofluid_sample_manifest fields box">
+  <table>
+  	<tr>
+  		<td>Tube ID:</td><td><input data-field="tube_id" class="data_field" type="text" value="<%= @biofluid_sample_manifest.get('tube_id') %>"/></td>
+  		<td>Barcode:</td><td><input data-field="bracode" class="data_field" type="text" value="<%= @biofluid_sample_manifest.get('barcode') %>"/></td>
+  		<td>Species:</td><td><input data-field="species" class="data_field" type="text" value="<%= @biofluid_sample_manifest.get('species') %>"/></td>
+  	</tr>
+  	<tr>
+  		<td>Matrix:</td><td><input data-field="matrix" class="data_field" type="text" value="<%= @biofluid_sample_manifest.get('matrix') %>"/></td>
+  		<td>Group ID:</td><td><input data-field="group_id" class="data_field" type="text" value="<%= @biofluid_sample_manifest.get('group_id') %>"/></td>
+  		<td>Sample Volume:</td><td><input data-field="sample_volume" class="data_field" type="text" value="<%= @biofluid_sample_manifest.get('sample_volume') %>"/></td>
+  	</tr>
+  	<tr>
+  		<td>Test Codes:</td>
+  		<td colspan="5">
+  		  <%- JST['sample_manifests/module_options']() %>
+  		</td>
+  	</tr>
+  </table>
+</div>

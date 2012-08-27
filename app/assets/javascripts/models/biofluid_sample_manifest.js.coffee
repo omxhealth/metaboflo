@@ -1,0 +1,1 @@
+class Metaboflo.Models.BiofluidSampleManifest extends Backbone.Model

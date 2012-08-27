@@ -22,6 +22,7 @@ Metaboflo::Application.routes.draw do
 
   ## API Resources
   namespace :api do
+    resources :sample_manifests
   end
 
 

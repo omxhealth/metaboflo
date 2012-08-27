@@ -1,0 +1,32 @@
+<div id="sample-manifest-form">
+	<ul>
+		<li><a href="#biofluids">Blood/Urine Samples</a></li>
+		<li><a href="#tissue">Tissue Samples</a></li>
+		<li><a href="#cells">Cell Samples</a></li>
+	</ul>
+	<div id="biofluids">
+		<fieldset id="biofluid_sample_manifests" class="fields-for">
+		<%for biofluid_sample_manifest in @sample_manifest.get('biofluid_sample_manifests'):%>
+			<%= biofluid_sample_manifest.render(model: biofluid_sample_manifest) %>
+  		<% end %>
+		</fieldset>
+		<p><button id="add_biofluid_sample_manifest">Add</button></p>
+	</div>
+	<div id="tissue">
+		<fieldset id="tissue_sample_manifests" class="fields-for">
+			<% for tissue_sample_manifest in @sample_manifest.get('tissue_sample_manifests'):%>
+				<%= tissue_sample_manifest.render(model: tissue_sample_manifest) %>
+	  		<% end %>
+		</fieldset>
+		<p><button id="add_tissue_sample_manifest">Add</button></p>
+	</div>
+	<div id="cells">
+		<fieldset id="cell_sample_manifests" class="fields-for">
+			<% for cell_sample_manifest in @sample_manifest.get('cell_sample_manifests'):%>
+				<%= cell_sample_manifest.render(model: cell_sample_manifest) %>
+	  		<% end %>
+		</fieldset>
+		<p><button id="add_cell_sample_manifest">Add</button></p>
+	</div>
+</div>
+<button id="save">Save</button>

@@ -9,7 +9,9 @@ class Metaboflo.Routers.SampleManifests extends Backbone.Router
 	show: (id) -> alert("show record #{id}")
 	
 	new: ->
-		view = new Metaboflo.Views.SampleManifestNew(model: new Metaboflo.Models.SampleManifest)
+		model = new Metaboflo.Models.SampleManifest(client_id: $('#sample_manifest_form').data("client"))
+		model.save(wait: true)
+		view = new Metaboflo.Views.SampleManifestNew(model: model)
 		$('#sample_manifest_form').html(view.render().el)
 	edit: (id) -> alert "edit record #{id}"
 	

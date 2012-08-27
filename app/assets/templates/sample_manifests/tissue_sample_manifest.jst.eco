@@ -1,0 +1,23 @@
+<div class="tissue_sample_manifest fields box">
+  <div class="manifest-remover">
+    <%= remove_child_link("Remove", f) %>
+  </div>
+  <table>
+  	<tr>
+  		<td>Tube ID:</td><td><input class="tube_id" type="text" size="3"/></td>
+  		<td>Barcode:</td><td><input class="barcode" type="text" size="20" disabled="disabled"/></td>
+  		<td>Species:</td><td><input class="species" type="text" size="15"/></td>
+  	</tr>
+  	<tr>
+  		<td>Matrix:</td><td><input class="matrix" type="text" size="15"/></td>
+  		<td>Group ID:</td><td><input class="group_id" type="text" size="2"></td>
+  		<td>Tissue Weight:</td><td><input class="tissue_weight" type="text" size="10"></td>
+  	</tr>
+  	<tr>
+  		<td>Test Codes:</td>
+  		<td colspan="5">
+        <%- JST['sample_manifest/module_options']() %>
+  		</td>
+  	</tr>
+  </table>
+</div>

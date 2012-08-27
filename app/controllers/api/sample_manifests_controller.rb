@@ -1,25 +1,25 @@
-class SampleManifiestsController < ApplicationController
+class Api::SampleManifestsController < Api::BaseController
   skip_before_filter :authenticate_user!
   before_filter :authenticate_client!
 
   def index
-    respond_with Entry.all
+    respond_with current_client.sample_manifests
   end
   
   def show
-    respond_with Entry.find(params[:id])
+    respond_with SampleManifest.find(params[:id])
   end
   
   def create
-    respond_with Entry.create(params[:sample_manifest])
+    respond_with SampleManifest.create(params[:sample_manifest])
   end
   
   def update
-    respond_with Entry.update(params[:id],params[:sample_manifest])
+    respond_with SampleManifest.update(params[:id],params[:sample_manifest])
   end
   
   def destroy
-    respond_with Entry.destroy(params[:sample_manifest])
+    respond_with SampleManifest.destroy(params[:sample_manifest])
   end
   
 end
