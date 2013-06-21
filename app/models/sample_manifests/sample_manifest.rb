@@ -63,13 +63,13 @@ class SampleManifest < ActiveRecord::Base
     codes << "MP#3" if manifest.module_3?
     codes << "MP#4" if manifest.module_4?
     codes << "MP#5" if manifest.module_5?
-=begin     codes << "MP#6" if manifest.module_6?
-   codes << "MP#7" if manifest.module_7?
+    codes << "MP#6" if manifest.module_6?
+    codes << "MP#7" if manifest.module_7?
     codes << "MP#8" if manifest.module_8?
     codes << "MP#9" if manifest.module_9?
     codes << "MP#10" if manifest.module_10?
     codes << "MP#11" if manifest.module_11?
-=end    codes << "MP#12" if manifest.module_12?
+    codes << "MP#12" if manifest.module_12?
     codes
   end
   
@@ -201,7 +201,7 @@ class SampleManifest < ActiveRecord::Base
   # different spreadsheets in the excel workbook.
   def set_common_attributes(sample, workbook, row, headers)
      sample.tube_id = workbook.cell(row,headers[:tube_id]).to_i
-     #sample.species = workbook.cell(row,headers[:species])
+     sample.species = workbook.cell(row,headers[:species])
      sample.group_id = workbook.cell(row,headers[:group_id]).to_i
       (headers[:first_module]..headers[:last_module]).each do |num|
           if !workbook.cell(row,num).nil?

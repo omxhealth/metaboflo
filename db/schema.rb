@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120827043353) do
+ActiveRecord::Schema.define(:version => 20130621173438) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
@@ -26,11 +26,15 @@ ActiveRecord::Schema.define(:version => 20120827043353) do
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.boolean  "gc_fap"
-    t.boolean  "ss_1"
-    t.boolean  "ss_2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "module_6"
+    t.boolean  "module_7"
+    t.boolean  "module_8"
+    t.boolean  "module_9"
+    t.boolean  "module_10"
+    t.boolean  "module_11"
+    t.boolean  "module_12"
   end
 
   create_table "cell_sample_manifests", :force => true do |t|
@@ -45,11 +49,16 @@ ActiveRecord::Schema.define(:version => 20120827043353) do
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.boolean  "gc_fap"
-    t.boolean  "ss_1"
-    t.boolean  "ss_2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "species"
+    t.boolean  "module_6"
+    t.boolean  "module_7"
+    t.boolean  "module_8"
+    t.boolean  "module_9"
+    t.boolean  "module_10"
+    t.boolean  "module_11"
+    t.boolean  "module_12"
   end
 
   create_table "clients", :force => true do |t|
@@ -488,11 +497,15 @@ ActiveRecord::Schema.define(:version => 20120827043353) do
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.boolean  "gc_fap"
-    t.boolean  "ss_1"
-    t.boolean  "ss_2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "module_6"
+    t.boolean  "module_7"
+    t.boolean  "module_8"
+    t.boolean  "module_9"
+    t.boolean  "module_10"
+    t.boolean  "module_11"
+    t.boolean  "module_12"
   end
 
   create_table "users", :force => true do |t|
