@@ -13,3 +13,4 @@ vendor/cache/
 vendor/ruby
 public/assets
 config/deploy
+.project
