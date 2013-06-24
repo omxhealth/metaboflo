@@ -11,9 +11,9 @@ class SampleManifest < ActiveRecord::Base
   has_many :stored_files, :as => :attachable
   accepts_nested_attributes_for :stored_files, :allow_destroy => true
 
-  accepts_nested_attributes_for :biofluid_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
-  accepts_nested_attributes_for :tissue_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
-  accepts_nested_attributes_for :cell_sample_manifests, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :biofluid_sample_manifests, :allow_destroy => true, :reject_if => proc {|attributes| attributes.all?{|key,value| value.blank? || value.eql?("0") || value.eql?("false")}}
+  accepts_nested_attributes_for :tissue_sample_manifests, :allow_destroy => true, :reject_if => proc {|attributes| attributes.all?{|key,value| value.blank? || value.eql?("0") || value.eql?("false")}}
+  accepts_nested_attributes_for :cell_sample_manifests, :allow_destroy => true, :reject_if => proc {|attributes| attributes.all?{|key,value| value.blank? || value.eql?("0") || value.eql?("false")}}
   
   after_save :parse_file
   
