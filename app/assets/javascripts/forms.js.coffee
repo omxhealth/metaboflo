@@ -76,6 +76,7 @@
 
 # Support adding/removing nested attributes from form
 $ -> 
+  ###
   $('form a.add_child').on 'click', ->
     association = $(this).attr('data-association')
     template = $('#' + association + '_fields_template').html()
@@ -88,7 +89,7 @@ $ ->
     $(this).trigger('nest-added', to_add)
 
     return false
-
+  ###
   $('form .nested-remove a').live 'click', ->
     hidden_field = $(this).prev('input[type=hidden]')[0]
     if hidden_field
