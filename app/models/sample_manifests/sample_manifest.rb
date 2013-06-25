@@ -163,7 +163,7 @@ class SampleManifest < ActiveRecord::Base
           if (valid_row workbook,row)
              sample = self.biofluid_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
-             sample.matrix = workbook.cell(row,headers[:matrix])  
+             sample.matrix = strip_decimal workbook.cell(row,headers[:matrix])  
              sample.sample_volume = workbook.cell(row,headers[:sample_volume])
             # sample.units = workbook.cell(row,headers[:units])   
            end
@@ -177,7 +177,7 @@ class SampleManifest < ActiveRecord::Base
           if (valid_row workbook,row)
              sample = self.tissue_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
-             sample.matrix = workbook.cell(row,headers[:matrix])  
+             sample.matrix = strip_decimal workbook.cell(row,headers[:matrix])  
              sample.tissue_weight = workbook.cell(row,headers[:tissue_weight])
            #  sample.units = workbook.cell(row,headers[:units])   
          end
@@ -191,8 +191,8 @@ class SampleManifest < ActiveRecord::Base
           if (valid_row workbook,row)
              sample = self.cell_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
-             sample.cell_line = workbook.cell(row,headers[:cell_line]).to_i
-             sample.viable_cells = workbook.cell(row,headers[:viable_cells]) 
+             sample.cell_line = strip_decimal workbook.cell(row,headers[:cell_line])
+             sample.viable_cells = workbook.cell(row,headers[:viable_cells]).to_i 
          end
       end    
   end
@@ -201,7 +201,7 @@ class SampleManifest < ActiveRecord::Base
   # different spreadsheets in the excel workbook.
   def set_common_attributes(sample, workbook, row, headers)
      sample.tube_id = workbook.cell(row,headers[:tube_id]).to_i
-     sample.species = workbook.cell(row,headers[:species])
+     sample.species = strip_decimal workbook.cell(row,headers[:species])
      sample.group_id = workbook.cell(row,headers[:group_id]).to_i
       (headers[:first_module]..headers[:last_module]).each do |num|
           if !workbook.cell(row,num).nil?
@@ -219,6 +219,15 @@ class SampleManifest < ActiveRecord::Base
       end
     end
     return false
+  end
+  
+   # Remove the decimal from the variable if it's a number.
+  def strip_decimal(entry)
+    if entry.is_a? Numeric
+      entry = entry.to_i
+    end
+    
+    entry
   end
   
 end
