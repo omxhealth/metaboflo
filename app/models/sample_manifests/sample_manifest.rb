@@ -79,7 +79,7 @@ class SampleManifest < ActiveRecord::Base
     if file.exists?
         file_name = file_to_xlsx
         workbook = Roo::Excelx.new(file_name)
-        self.title = workbook.cell(6,2)
+        set_sample_manifest_attributes workbook
         headers = column_headers
         sheets = sheet_index
         first_row = 19
@@ -125,25 +125,25 @@ class SampleManifest < ActiveRecord::Base
   # Returns a hash of column headers to column number 
   # in the manifest spreadsheet.
   def column_headers
-    header = {tube_id: 1,
-              species: 2,
-              matrix: 3,
-              cell_line: 3,
-              group_id: 4,
-              tissue_weight: 5,
-              sample_volume: 5,
-              viable_cells: 5,
-              units: 6,
-              first_module: 7,
-              last_module: 18}
+    {tube_id: 1,
+     species: 2,
+     matrix: 3,
+     cell_line: 3,
+     group_id: 4,
+     tissue_weight: 5,
+     sample_volume: 5,
+     viable_cells: 5,
+     units: 6,
+     first_module: 7,
+     last_module: 18}
   end
   
   # Returns a hash of the corresponding page index
   # of each manifest in the excel workbook.
-  def sheet_index
-    sheet = {tissue: 0,
-             biofluids: 1,
-             cell: 2}
+   def sheet_index
+    {tissue: 0,
+      biofluids: 1,
+      cell: 2}
   end
   
   # Change the attatched file to .xlsx, and
@@ -165,7 +165,7 @@ class SampleManifest < ActiveRecord::Base
              set_common_attributes sample, workbook, row, headers
              sample.matrix = strip_decimal workbook.cell(row,headers[:matrix])  
              sample.sample_volume = workbook.cell(row,headers[:sample_volume])
-            # sample.units = workbook.cell(row,headers[:units])   
+             sample.volume_units = workbook.cell(row,headers[:units])   
            end
         end
   end
@@ -179,7 +179,7 @@ class SampleManifest < ActiveRecord::Base
              set_common_attributes sample, workbook, row, headers
              sample.matrix = strip_decimal workbook.cell(row,headers[:matrix])  
              sample.tissue_weight = workbook.cell(row,headers[:tissue_weight])
-           #  sample.units = workbook.cell(row,headers[:units])   
+             sample.weight_units = workbook.cell(row,headers[:units])   
          end
       end   
   end
@@ -221,13 +221,32 @@ class SampleManifest < ActiveRecord::Base
     return false
   end
   
-   # Remove the decimal from the variable if it's a number.
+  # Remove the decimal from the variable if it's a number.
   def strip_decimal(entry)
     if entry.is_a? Numeric
       entry = entry.to_i
     end
     
     entry
+  end
+  
+  # Return a hash of location of the data that is the same
+  # across all of the sheets.
+  def common_data_cells
+      {title: [6,2],
+       client_institution: [7,2],
+       submitter_email: [8,2],
+       pi_email: [9,2] }
+  end
+  # Set the sample_manifests data for all 3 sheets
+  def set_sample_manifest_attributes(workbook)
+    row_column_info = common_data_cells
+    self.title = workbook.cell(row_column_info[:title][0],row_column_info[:title][1])
+    self.client_institution = workbook.cell(row_column_info[:client_institution][0],
+                                            row_column_info[:client_institution][1])
+    self.submitter_email = workbook.cell(row_column_info[:submitter_email][0],
+                                         row_column_info[:submitter_email][1])
+    self.pi_email = workbook.cell(row_column_info[:pi_email][0],row_column_info[:pi_email][1])    
   end
   
 end

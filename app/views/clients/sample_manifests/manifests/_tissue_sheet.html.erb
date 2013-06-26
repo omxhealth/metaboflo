@@ -1,0 +1,23 @@
+<h1>Tissue Samples</h1>
+<table>
+	<tr>
+		<th>Tube ID</th>
+		<th>Species</th>
+		<th>Tissue</th>
+		<th>Experimnental <br /> Group #</th>
+		<th>Tissue <br /> Weight</th>
+		<th>Units</th>
+		<%= render :partial => "clients/sample_manifests/manifests/module_headings" %>
+	</tr>
+	<% samples.each do |s|%>
+	<tr>
+		<td><%= s.tube_id %></td>
+		<td><%= s.species %></td>
+		<td><%= s.matrix %></td>
+		<td><%= s.group_id %></td>
+		<td><%= s.tissue_weight %></td>
+		<td><%= s.weight_units %></td>
+		<%= render :partial => "clients/sample_manifests/manifests/module_tests", :locals => {:s => s} %>
+	</tr>
+	<% end %>
+</table>

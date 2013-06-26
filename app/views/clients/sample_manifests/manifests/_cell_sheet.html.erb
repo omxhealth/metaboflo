@@ -1,0 +1,21 @@
+<h1>Cell Samples</h1>
+<table>
+	<tr>
+		<th>Tube ID</th>
+		<th>Species</th>
+		<th>Cell Line <br /> Code </th>
+		<th>Experimnental <br /> Group #</th>
+		<th>Viable Cell <br /> Number</th>
+		<%= render :partial => "clients/sample_manifests/manifests/module_headings" %>
+	</tr>
+	<% samples.each do |s|%>
+	<tr>
+		<td><%= s.tube_id %></td>
+		<td><%= s.species %></td>
+		<td><%= s.cell_line %></td>
+		<td><%= s.group_id %></td>
+		<td><%= s.viable_cells %></td>
+		<%= render :partial => "clients/sample_manifests/manifests/module_tests", :locals => {:s => s} %>
+	</tr>
+	<% end %>
+</table>

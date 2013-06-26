@@ -7,4 +7,16 @@
 <%= render :partial => 'tests' %>
 
 <h1>Sample Manifest</h1>
-<%= render :partial => 'form' %>
+<% if @sample_manifest.biofluid_sample_manifests.exists? %>
+<%= render :partial => "clients/sample_manifests/manifests/biofluid_sheet", :locals => 
+														{:samples => @sample_manifest.biofluid_sample_manifests} %>
+<% end %>
+<% if @sample_manifest.tissue_sample_manifests.exists? %>
+<%= render :partial => "clients/sample_manifests/manifests/tissue_sheet", :locals => 
+															{:samples => @sample_manifest.tissue_sample_manifests}%>
+<% end %>
+<% if @sample_manifest.cell_sample_manifests.exists? %>														
+<%= render :partial => "clients/sample_manifests/manifests/cell_sheet", :locals => 
+															{:samples => @sample_manifest.cell_sample_manifests}%>
+<% end %>															
+														
