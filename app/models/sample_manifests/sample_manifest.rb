@@ -1,4 +1,5 @@
 require 'roo'
+require 'FileUtils'
 class SampleManifest < ActiveRecord::Base
   
   belongs_to :client
@@ -6,7 +7,7 @@ class SampleManifest < ActiveRecord::Base
   has_many :tissue_sample_manifests, :dependent => :destroy
   has_many :cell_sample_manifests, :dependent => :destroy
 
-  has_attached_file :file, :path => ":rails_root/public/system/sample_manifests/:filename.xlsx"
+  has_attached_file :file, :path => ":rails_root/public/system/sample_manifests/:basename.xlsx"
   
   has_many :stored_files, :as => :attachable
   accepts_nested_attributes_for :stored_files, :allow_destroy => true
@@ -85,8 +86,9 @@ class SampleManifest < ActiveRecord::Base
         read_tissue_sheet workbook, sheets[:tissue], first_row, headers
         read_biofluids_sheet workbook, sheets[:biofluids], first_row, headers
         read_cells_sheet workbook, sheets[:cell], first_row, headers
-        new_file_name
-        self.save!     
+        name = new_file_name
+        self.save!
+        self.file.instance_write(:file_name, name)
       end 
   end
   
