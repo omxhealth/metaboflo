@@ -6,7 +6,7 @@ class SampleManifest < ActiveRecord::Base
   has_many :tissue_sample_manifests, :dependent => :destroy
   has_many :cell_sample_manifests, :dependent => :destroy
 
-  has_attached_file :file
+  has_attached_file :file, :path => ":rails_root/public/system/sample_manifests/:filename.xlsx"
   
   has_many :stored_files, :as => :attachable
   accepts_nested_attributes_for :stored_files, :allow_destroy => true
@@ -77,8 +77,7 @@ class SampleManifest < ActiveRecord::Base
   # Parse the attached sample_manifest if it exists.
   def parse_file
     if file.exists?
-        file_name = file_to_xlsx
-        workbook = Roo::Excelx.new(file_name)
+        workbook = Roo::Excelx.new(file.path)
         set_sample_manifest_attributes workbook
         headers = column_headers
         sheets = sheet_index
@@ -86,7 +85,7 @@ class SampleManifest < ActiveRecord::Base
         read_tissue_sheet workbook, sheets[:tissue], first_row, headers
         read_biofluids_sheet workbook, sheets[:biofluids], first_row, headers
         read_cells_sheet workbook, sheets[:cell], first_row, headers
-        File.delete(file_name)
+        new_file_name
         self.save!     
       end 
   end
@@ -147,11 +146,10 @@ class SampleManifest < ActiveRecord::Base
   end
   
   # Change the attatched file to .xlsx, and
-  # return the new filename,
-  def file_to_xlsx
-     file_name = File.basename( file.path, ".*" )
+  # return the new filename.
+  def new_file_name
      dir = File.dirname(file.path)
-     file_path = "#{dir}/#{file_name}.xlsx"
+     file_path = "#{dir}/sample_manifest_#{self.id}.xlsx"
      File.rename(file.path,file_path)
      file_path
   end
