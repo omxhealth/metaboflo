@@ -66,4 +66,10 @@ class Clients::SampleManifestsController < Clients::BaseController
       format.html { redirect_to(clients_sample_manifests_url) }
     end
   end
+  
+  def download 
+     @sample_manifest = SampleManifest.find(params[:id])
+     send_file "public/system/sample_manifests/sample_manifest_#{@sample_manifest.id}.xlsm", :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
+  end
+  
 end

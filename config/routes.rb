@@ -23,6 +23,7 @@ Metaboflo::Application.routes.draw do
     resources :samples, :only => [ :index, :show ]
     resources :sample_manifests do
       get 'print', :on => :member
+      get 'download', :on => :member
     end
     resources :home, :only => [ :index ]
   end

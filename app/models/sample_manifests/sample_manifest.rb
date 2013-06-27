@@ -1,7 +1,7 @@
 require 'roo'
 require 'FileUtils'
 class SampleManifest < ActiveRecord::Base
-  
+ # attr_accessible :file,:biofluid_sample_manifests_attributes, :tissue_sample_manifests_attributes, :cell_sample_manifests_attributes
   belongs_to :client
   has_many :biofluid_sample_manifests, :dependent => :destroy
   has_many :tissue_sample_manifests, :dependent => :destroy
@@ -86,9 +86,8 @@ class SampleManifest < ActiveRecord::Base
         read_tissue_sheet workbook, sheets[:tissue], first_row, headers
         read_biofluids_sheet workbook, sheets[:biofluids], first_row, headers
         read_cells_sheet workbook, sheets[:cell], first_row, headers
-        name = new_file_name
+        new_file_name
         self.save!
-        self.file.instance_write(:file_name, name)
       end 
   end
   
@@ -150,10 +149,11 @@ class SampleManifest < ActiveRecord::Base
   # Change the attatched file to .xlsx, and
   # return the new filename.
   def new_file_name
+     name = "sample_manifest_#{self.id}.xlsm"
      dir = File.dirname(file.path)
-     file_path = "#{dir}/sample_manifest_#{self.id}.xlsx"
+     file_path = "#{dir}/#{name}"
      File.rename(file.path,file_path)
-     file_path
+     name
   end
   
   # Read the excel biofluids sheet.
