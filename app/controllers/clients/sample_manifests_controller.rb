@@ -67,9 +67,17 @@ class Clients::SampleManifestsController < Clients::BaseController
     end
   end
   
-  def download 
+  def download_uploaded_manifest
      @sample_manifest = SampleManifest.find(params[:id])
      send_file "public/system/sample_manifests/sample_manifest_#{@sample_manifest.id}.xlsm", :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
+  end
+  
+  def download_blank_manifest
+    send_file 'spreadsheets/blank_manifest.xlsm', :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
+  end
+  
+  def download_guideline
+    send_file 'public/downloads/guidelines_for_all_samples_v1.pdf', :type => 'application/pdf'
   end
   
 end

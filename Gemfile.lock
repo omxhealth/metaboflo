@@ -39,7 +39,6 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    bootstrap-sass (2.1.0.0)
     builder (3.0.0)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
@@ -195,7 +194,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bootstrap-sass (= 2.1)
   coffee-rails (~> 3.2.1)
   country-select
   devise
