@@ -8,9 +8,6 @@ class Clients::SampleManifestsController < Clients::BaseController
   
   def new
     @sample_manifest = SampleManifest.new()
-    @sample_manifest.biofluid_sample_manifests.build
-    @sample_manifest.cell_sample_manifests.build
-    @sample_manifest.tissue_sample_manifests.build
     respond_to do |format|
       format.html
     end
@@ -32,6 +29,9 @@ class Clients::SampleManifestsController < Clients::BaseController
   
   def edit
     @sample_manifest = SampleManifest.find(params[:id])
+    if @sample_manifest.verified? 
+      redirect_to([:clients,@sample_manifest], :notice => 'Already confirmed!')
+    end
   end
   
   def create
@@ -48,23 +48,35 @@ class Clients::SampleManifestsController < Clients::BaseController
   
   def update
     @sample_manifest = SampleManifest.find(params[:id])
-
-    respond_to do |format|
-      if @sample_manifest.update_attributes(params[:sample_manifest])
-        format.html { redirect_to([:clients,@sample_manifest], :notice => 'Sample manifest was successfully updated.') }
-      else
-        format.html { render :action => "edit" }
+    if !@sample_manifest.verified?
+      respond_to do |format|
+        if @sample_manifest.update_attributes(params[:sample_manifest])
+          format.html { redirect_to([:clients,@sample_manifest], :notice => 'Sample manifest was successfully updated.') }
+        else
+          format.html { render :action => "edit" }
+        end
       end
+    else
+      redirect_to([:clients,@sample_manifest], :notice => 'Already confirmed!')
     end
   end
   
   def destroy
     @sample_manifest = SampleManifest.find(params[:id])
-    @sample_manifest.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(clients_sample_manifests_url) }
+    if !@sample_manifest.verified?
+      @sample_manifest.destroy
+      respond_to do |format|
+        format.html { redirect_to(clients_sample_manifests_url) }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to(clients_sample_manifests_url, :notice => 'Can\'t destroy a confirmed manifest.')}
+      end
     end
+  end
+  
+  def confirm
+     @sample_manifest = SampleManifest.find(params[:id])
   end
   
   def download_uploaded_manifest

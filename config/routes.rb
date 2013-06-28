@@ -22,6 +22,7 @@ Metaboflo::Application.routes.draw do
   namespace :clients do
     resources :samples, :only => [ :index, :show ]
     resources :sample_manifests do
+      get 'confirm', :on => :member
       get 'print', :on => :member
       get 'download_uploaded_manifest', :on => :member
       get 'download_blank_manifest', :on => :member

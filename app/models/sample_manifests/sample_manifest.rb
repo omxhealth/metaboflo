@@ -78,6 +78,7 @@ class SampleManifest < ActiveRecord::Base
   # Parse the attached sample_manifest if it exists.
   def parse_file
     if file.exists?
+        reset_manifest
         workbook = Roo::Excelx.new(file.path)
         set_sample_manifest_attributes workbook
         headers = column_headers
@@ -247,6 +248,19 @@ class SampleManifest < ActiveRecord::Base
     self.submitter_email = workbook.cell(row_column_info[:submitter_email][0],
                                          row_column_info[:submitter_email][1])
     self.pi_email = workbook.cell(row_column_info[:pi_email][0],row_column_info[:pi_email][1])    
+  end
+  
+  def reset_manifest
+    # reset all nested sample before reading the file
+    self.biofluid_sample_manifests.each do |sample|
+      sample.destroy
+    end
+    self.cell_sample_manifests.each do |sample|
+      sample.destroy
+    end
+    self.tissue_sample_manifests.each do |sample| 
+      sample.destroy
+    end
   end
   
 end

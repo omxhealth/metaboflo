@@ -1,0 +1,5 @@
+<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook'%>											
+<%= form_for([:clients, @sample_manifest]) do |f| %>
+	<%= f.hidden_field :verified, :value => '1' %>
+	<%= f.submit "Confirm", :class => :button %>
+<% end %>
