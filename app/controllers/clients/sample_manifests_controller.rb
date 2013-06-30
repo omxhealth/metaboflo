@@ -1,4 +1,5 @@
 class Clients::SampleManifestsController < Clients::BaseController  
+  before_filter :unverified_manifest, :only => [:edit, :update, :confirm, :destroy]
   def index
     @sample_manifests = current_client.sample_manifests
     respond_to do |format|
@@ -28,10 +29,6 @@ class Clients::SampleManifestsController < Clients::BaseController
   end
   
   def edit
-    @sample_manifest = SampleManifest.find(params[:id])
-    if @sample_manifest.verified? 
-      redirect_to([:clients,@sample_manifest], :notice => 'Already confirmed!')
-    end
   end
   
   def create
@@ -47,36 +44,23 @@ class Clients::SampleManifestsController < Clients::BaseController
   end
   
   def update
-    @sample_manifest = SampleManifest.find(params[:id])
-    if !@sample_manifest.verified?
-      respond_to do |format|
-        if @sample_manifest.update_attributes(params[:sample_manifest])
+    respond_to do |format|
+      if @sample_manifest.update_attributes(params[:sample_manifest])
           format.html { redirect_to([:clients,@sample_manifest], :notice => 'Sample manifest was successfully updated.') }
-        else
+      else
           format.html { render :action => "edit" }
-        end
       end
-    else
-      redirect_to([:clients,@sample_manifest], :notice => 'Already confirmed!')
     end
   end
   
   def destroy
-    @sample_manifest = SampleManifest.find(params[:id])
-    if !@sample_manifest.verified?
-      @sample_manifest.destroy
-      respond_to do |format|
-        format.html { redirect_to(clients_sample_manifests_url) }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to(clients_sample_manifests_url, :notice => 'Can\'t destroy a confirmed manifest.')}
-      end
+    @sample_manifest.destroy
+    respond_to do |format|
+      format.html { redirect_to(clients_sample_manifests_url) }
     end
   end
   
   def confirm
-     @sample_manifest = SampleManifest.find(params[:id])
   end
   
   def download_uploaded_manifest
@@ -90,6 +74,12 @@ class Clients::SampleManifestsController < Clients::BaseController
   
   def download_guideline
     send_file 'public/downloads/guidelines_for_all_samples_v1.pdf', :type => 'application/pdf'
+  end
+  
+  private
+  def unverified_manifest
+   @sample_manifest = SampleManifest.find(params[:id])
+   redirect_to([:clients,@sample_manifest], :notice => 'Already confirmed!') unless !@sample_manifest.verified?
   end
   
 end

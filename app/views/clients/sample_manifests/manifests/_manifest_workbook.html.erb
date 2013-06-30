@@ -5,15 +5,15 @@
 	    <li><a href="#cells">Cells</a></li>
  	 </ul>
  	 <div id="tissue">
-		<% if @sample_manifest.biofluid_sample_manifests.exists? %>
-		<%= render :partial => "clients/sample_manifests/manifests/biofluid_sheet", :locals => 
-																{:samples => @sample_manifest.biofluid_sample_manifests} %>
+		<% if @sample_manifest.tissue_sample_manifests.exists? %>
+		<%= render :partial => "clients/sample_manifests/manifests/tissue_sheet", :locals => 
+																{:samples => @sample_manifest.tissue_sample_manifests} %>
 		<% end %>
 	</div>
 	<div id="biofluids">
-		<% if @sample_manifest.tissue_sample_manifests.exists? %>
-		<%= render :partial => "clients/sample_manifests/manifests/tissue_sheet", :locals => 
-																	{:samples => @sample_manifest.tissue_sample_manifests}%>
+		<% if @sample_manifest.biofluid_sample_manifests.exists? %>
+		<%= render :partial => "clients/sample_manifests/manifests/biofluid_sheet", :locals => 
+																	{:samples => @sample_manifest.biofluid_sample_manifests}%>
 		<% end %>
 	</div>
 	<div id="cells">
