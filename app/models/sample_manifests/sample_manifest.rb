@@ -1,5 +1,4 @@
 require 'roo'
-require 'FileUtils'
 class SampleManifest < ActiveRecord::Base
  # attr_accessible :file,:biofluid_sample_manifests_attributes, :tissue_sample_manifests_attributes, :cell_sample_manifests_attributes
   attr_accessible :verified, :file
