@@ -1,8 +1,9 @@
 class CreateAndChangeColumnsOfSampleManifest < ActiveRecord::Migration
   def up
-   
-    change_column :tissue_sample_manifests, :tissue_weight, :decimal
-    change_column :biofluid_sample_manifests, :sample_volume , :decimal
+    remove_column :tissue_sample_manifests, :tissue_weight
+    add_column :tissue_sample_manifests, :tissue_weight, :decimal
+    remove_column :biofluid_sample_manifests, :sample_volume
+    add_column :biofluid_sample_manifests, :sample_volume , :decimal
 
     add_column :sample_manifests, :client_institution, :string
     add_column :sample_manifests, :submitter_email, :string
@@ -14,8 +15,10 @@ class CreateAndChangeColumnsOfSampleManifest < ActiveRecord::Migration
 
   def down
     
-    change_column :tissue_sample_manifests, :tissue_weight, :string
-    change_column :biofluuid_sample_manifests, :sample_volume , :string
+    remove_column :tissue_sample_manifests, :tissue_weight
+    add_column :tissue_sample_manifests, :tissue_weight, :string
+    remove_column :biofluid_sample_manifests, :sample_volume
+    add_column :biofluid_sample_manifests, :sample_volume , :string
 
     remove_column :sample_manifests, :client_institution
     remove_column :sample_manifests, :submitter_email

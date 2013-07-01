@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626180316) do
+ActiveRecord::Schema.define(:version => 20130701012220) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20130626180316) do
     t.string   "species"
     t.string   "matrix"
     t.string   "group_id"
-    t.decimal  "sample_volume"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
@@ -35,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130626180316) do
     t.boolean  "module_10"
     t.boolean  "module_11"
     t.boolean  "module_12"
+    t.decimal  "sample_volume"
     t.string   "volume_units"
   end
 
@@ -495,7 +495,6 @@ ActiveRecord::Schema.define(:version => 20130626180316) do
     t.string   "species"
     t.string   "matrix"
     t.string   "group_id"
-    t.decimal  "tissue_weight"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
@@ -510,6 +509,7 @@ ActiveRecord::Schema.define(:version => 20130626180316) do
     t.boolean  "module_10"
     t.boolean  "module_11"
     t.boolean  "module_12"
+    t.decimal  "tissue_weight"
     t.string   "weight_units"
   end
 
