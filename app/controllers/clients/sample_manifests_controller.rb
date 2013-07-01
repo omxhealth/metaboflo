@@ -8,6 +8,9 @@ class Clients::SampleManifestsController < Clients::BaseController
   
   def new
     @sample_manifest = SampleManifest.new()
+    @sample_manifest.biofluid_sample_manifests.build
+    @sample_manifest.cell_sample_manifests.build
+    @sample_manifest.tissue_sample_manifests.build
     respond_to do |format|
       format.html
     end
