@@ -2,8 +2,9 @@ source 'http://rubygems.org'
 
 # Core gems:
 gem 'rails', '3.2.8'
-gem 'mysql2'
-gem 'thin'
+gem 'thin', '1.3.1'
+gem 'sqlite3'
+gem 'roo'
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
@@ -11,7 +12,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'execjs'
-  gem 'therubyracer', :require => 'v8'
+  gem 'therubyracer', :require => 'v8', :platform => :ruby
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-ui-themes'
@@ -24,7 +25,7 @@ end
 
 group :production do
   gem 'execjs'
-  gem 'therubyracer', :require => 'v8'
+  gem 'therubyracer', :require => 'v8', :platform => :ruby
 end
 
 # Testing gems
@@ -39,8 +40,8 @@ group :development do
 end
 
 # Deploy with Capistrano
-gem 'capistrano'
-gem 'capistrano-ext'
+#gem 'capistrano'
+#gem 'capistrano-ext'
 
 # Extra gems:
 gem 'country-select'
