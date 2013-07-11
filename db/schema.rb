@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621173438) do
+ActiveRecord::Schema.define(:version => 20130701012220) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20130621173438) do
     t.string   "species"
     t.string   "matrix"
     t.string   "group_id"
-    t.string   "sample_volume"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
@@ -35,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20130621173438) do
     t.boolean  "module_10"
     t.boolean  "module_11"
     t.boolean  "module_12"
+    t.decimal  "sample_volume"
+    t.string   "volume_units"
   end
 
   create_table "cell_sample_manifests", :force => true do |t|
@@ -329,12 +330,15 @@ ActiveRecord::Schema.define(:version => 20130621173438) do
   create_table "sample_manifests", :force => true do |t|
     t.integer  "client_id"
     t.string   "title"
-    t.boolean  "verified",          :default => false
-    t.boolean  "shipped",           :default => false
+    t.boolean  "verified",           :default => false
+    t.boolean  "shipped",            :default => false
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "client_institution"
+    t.string   "submitter_email"
+    t.string   "pi_email"
   end
 
   create_table "samples", :force => true do |t|
@@ -491,7 +495,6 @@ ActiveRecord::Schema.define(:version => 20130621173438) do
     t.string   "species"
     t.string   "matrix"
     t.string   "group_id"
-    t.string   "tissue_weight"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
@@ -506,6 +509,8 @@ ActiveRecord::Schema.define(:version => 20130621173438) do
     t.boolean  "module_10"
     t.boolean  "module_11"
     t.boolean  "module_12"
+    t.decimal  "tissue_weight"
+    t.string   "weight_units"
   end
 
   create_table "users", :force => true do |t|

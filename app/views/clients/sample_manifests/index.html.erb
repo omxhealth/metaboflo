@@ -14,7 +14,13 @@
     <tr class="<%= cycle('odd', 'even') %>">
   		<td><%= sm.id %></td>
       <td><%= sm.title.present? ? sm.title : 'No Title' %></td>
-      <td><%= sm.verified ? "Yes" : "No" %></td>
+      <td>
+      <% if sm.verified? %> 
+      	Yes
+      <% else %>
+      <%= link_to 'No',  confirm_clients_sample_manifest_path(sm) %>
+      <% end %>
+      </td>	
       <td><%= sm.shipped ? "Yes" : "No" %></td>
   		<td><%= link_to 'Show Manifest', [ :clients, sm ] %></td>
   		<td><%= link_to 'Edit Manifest', edit_clients_sample_manifest_path(sm) %></td>

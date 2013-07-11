@@ -1,0 +1,29 @@
+<div id="tabs">
+	 <ul>
+	    <li><a href="#tissue">Tissue</a></li>
+	    <li><a href="#biofluids">Biofluids</a></li>
+	    <li><a href="#cells">Cells</a></li>
+ 	 </ul>
+ 	 <div id="tissue">
+		<% if @sample_manifest.tissue_sample_manifests.exists? %>
+		<%= render :partial => "clients/sample_manifests/manifests/tissue_sheet", :locals => 
+																{:samples => @sample_manifest.tissue_sample_manifests} %>
+		<% end %>
+	</div>
+	<div id="biofluids">
+		<% if @sample_manifest.biofluid_sample_manifests.exists? %>
+		<%= render :partial => "clients/sample_manifests/manifests/biofluid_sheet", :locals => 
+																	{:samples => @sample_manifest.biofluid_sample_manifests}%>
+		<% end %>
+	</div>
+	<div id="cells">
+		<% if @sample_manifest.cell_sample_manifests.exists? %>														
+		<%= render :partial => "clients/sample_manifests/manifests/cell_sheet", :locals => 
+																	{:samples => @sample_manifest.cell_sample_manifests}%>
+		<% end %>
+	</div>
+</div>
+<div id="estimate">
+	<p>Estimate: $<%= @sample_manifest.estimate %></p>
+</div>															
+														
