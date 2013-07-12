@@ -72,5 +72,6 @@ $(function() {
 	$(".link_to").button().click(function(evt){window.open($(evt.currentTarget).data("url"));});
 	$(".close").button()
 	$("#print_manifest").click(function(evt){window.open($(evt.currentTarget).data("url"));})
+	$( "#tabs" ).tabs();
 });
 

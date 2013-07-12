@@ -1,0 +1,2 @@
+<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook'%>											
+<%= link_to 'Confirm', clients_sample_manifest_path(@sample_manifest, :sample_manifest => {:verified => '1'}), :method => :put, :confirm => "Are you sure?", :class => 'button' %> 
