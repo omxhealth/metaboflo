@@ -84,7 +84,7 @@ class Clients::SampleManifestsController < Clients::BaseController
   def barcode_pdf
     @sample_manifest = SampleManifest.find(params[:id])
     @sample_manifest.generate_barcodes(params)
-    redirect_to([:clients,@sample_manifest])
+    send_file "barcodes/sm#{@sample_manifest.id}_barcodes.pdf", :type => 'application/pdf', :disposition => 'inline'
   end
   private
   def unverified_manifest
