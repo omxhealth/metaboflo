@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701012220) do
+ActiveRecord::Schema.define(:version => 20130714182320) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20130701012220) do
     t.string   "secondary_phone"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "serial_number",          :default => 0
   end
 
   add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true

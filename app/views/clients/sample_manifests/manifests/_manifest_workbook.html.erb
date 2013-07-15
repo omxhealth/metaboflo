@@ -7,19 +7,22 @@
  	 <div id="tissue">
 		<% if @sample_manifest.tissue_sample_manifests.exists? %>
 		<%= render :partial => "clients/sample_manifests/manifests/tissue_sheet", :locals => 
-																{:samples => @sample_manifest.tissue_sample_manifests} %>
+																{:samples => @sample_manifest.tissue_sample_manifests, 
+																 :barcode_description => false} %>
 		<% end %>
 	</div>
 	<div id="biofluids">
 		<% if @sample_manifest.biofluid_sample_manifests.exists? %>
 		<%= render :partial => "clients/sample_manifests/manifests/biofluid_sheet", :locals => 
-																	{:samples => @sample_manifest.biofluid_sample_manifests}%>
+																	{:samples => @sample_manifest.biofluid_sample_manifests,
+																	  :barcode_description => false}%>
 		<% end %>
 	</div>
 	<div id="cells">
 		<% if @sample_manifest.cell_sample_manifests.exists? %>														
 		<%= render :partial => "clients/sample_manifests/manifests/cell_sheet", :locals => 
-																	{:samples => @sample_manifest.cell_sample_manifests}%>
+																	{:samples => @sample_manifest.cell_sample_manifests,
+																     :barcode_description => false}%>
 		<% end %>
 	</div>
 </div>

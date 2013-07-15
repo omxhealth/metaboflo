@@ -1,4 +1,8 @@
 require 'roo'
+require 'prawn'
+require 'barby'
+require 'barby/barcode/code_39'
+require 'barby/outputter/prawn_outputter'
 class SampleManifest < ActiveRecord::Base
  # attr_accessible :file,:biofluid_sample_manifests_attributes, :tissue_sample_manifests_attributes, :cell_sample_manifests_attributes
   attr_accessible :verified, :file
@@ -72,6 +76,37 @@ class SampleManifest < ActiveRecord::Base
     codes << "MP#11" if manifest.module_11?
     codes << "MP#12" if manifest.module_12?
     codes
+  end
+  
+  def generate_barcodes(params)
+    Prawn::Document.generate("barcodes/sm#{self.id}_barcodes.pdf") do |pdf|
+      self.biofluid_sample_manifests.each do |sample|
+        barcode_helper(sample,'Biofluids', pdf, params)
+       end
+      self.cell_sample_manifests.each do |sample|
+         barcode_helper(sample,'Cell', pdf, params)
+      end
+      self.tissue_sample_manifests.each do |sample| 
+         barcode_helper(sample,'Tissue', pdf, params)
+      end
+    end
+  end
+  
+  # assign barcodes to the samples
+  def assign_barcodes
+    self.biofluid_sample_manifests.each do |sample|
+       sample.barcode = get_barcode_content
+    end
+    self.cell_sample_manifests.each do |sample|
+      sample.barcode = get_barcode_content
+    end
+    self.tissue_sample_manifests.each do |sample| 
+      sample.barcode = get_barcode_content
+    end
+    # save the serial number
+    self.client.save!
+    # save the barcodes
+    self.save!
   end
   
   private
@@ -261,6 +296,59 @@ class SampleManifest < ActiveRecord::Base
     self.tissue_sample_manifests.each do |sample| 
       sample.destroy
     end
+  end
+  
+  
+  # Barcode generator helper
+  def barcode_helper(sample, type, pdf, params)
+    if pdf.cursor < 50
+      pdf.start_new_page
+    end
+     pdf.bounding_box([0,pdf.cursor],:width=>pdf.bounds.right,:height => 50) do
+          barcode = Barby::Code39.new(sample.barcode)
+          outputter = Barby::PrawnOutputter.new(barcode)
+          if !params[sample.barcode].blank?
+            description = params[sample.barcode]
+          else
+            description = "#{type} ##{sample.tube_id}"
+          end
+          title = "#{type} Samples ##{sample.tube_id}"
+          pdf.text_box(title, :at => [0,pdf.cursor], :height => 50, :width => (pdf.bounds.right - outputter.width - 5), 
+                        :valign => :center, :overflow => :shrink_to_fit)
+          outputter.annotate_pdf(pdf,:height => 30,:x => (pdf.bounds.right - outputter.width), :y=>10)
+          pdf.text_box(description,:at => [(pdf.bounds.right - outputter.width + 5), 5],:width => (outputter.width - 5), 
+          :height => 8, :overflow => :shrink_to_fit, :align => :center) 
+     end
+     # make space between barcodes
+     pdf.move_down 10
+  end
+  
+  def pad_number num
+    digits = num_digits(num);
+    padded_string = ""
+    if digits < 3
+      (4 - digits).times do
+        padded_string += '0'
+      end
+    end
+    padded_string += num.to_s
+  end
+  
+  def num_digits num
+    digits = 0
+    while num != 0
+      digits += 1
+      num /= 10
+    end
+    digits
+  end
+  
+  # Returns the content for the barcode using the serial number
+  def get_barcode_content
+     barcode_content = pad_number(self.client_id) + pad_number(self.client.serial_number)
+     # increment the serial by one
+     self.client.serial_number += 1
+     barcode_content
   end
   
 end

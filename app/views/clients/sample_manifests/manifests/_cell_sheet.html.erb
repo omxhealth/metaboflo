@@ -7,6 +7,9 @@
 			<th>Experimental <br /> Group #</th>
 			<th>Viable Cell <br /> Number</th>
 			<%= render :partial => "clients/sample_manifests/manifests/module_headings" %>
+			<% if barcode_description %>
+				<th>Barcode <br/> Description</th>
+			<% end %>
 		</tr>
 	</thead>
 	<tbody>
@@ -18,6 +21,9 @@
 			<td><%= s.group_id %></td>
 			<td><%= s.viable_cells %></td>
 			<%= render :partial => "clients/sample_manifests/manifests/module_tests", :locals => {:s => s} %>
+			<% if barcode_description %>
+				<td><%= text_field_tag(s.barcode, nil, :placeholder => 'Decscription', :size => 20) %></td>
+			<% end %>
 		</tr>
 	<% end %>
 	</tbody>

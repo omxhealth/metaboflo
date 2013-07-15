@@ -27,6 +27,8 @@ Metaboflo::Application.routes.draw do
       get 'download_uploaded_manifest', :on => :member
       get 'download_blank_manifest', :on => :member
       get 'download_guideline', :on => :member
+      get 'barcode_form', :on => :member
+      post 'barcode_pdf', :on => :member
     end
     resources :home, :only => [ :index ]
   end

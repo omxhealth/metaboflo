@@ -5,6 +5,8 @@ gem 'rails', '3.2.8'
 gem 'thin', '1.3.1'
 gem 'sqlite3'
 gem 'roo'
+gem "prawn", "~> 0.12.0"
+gem "barby", "~> 0.5.1"
 
 # Gems used only for assets and not required in production environments by default.
 group :assets do
