@@ -62,11 +62,12 @@ class Clients::SampleManifestsController < Clients::BaseController
   
   def confirm
     @sample_manifest.assign_barcodes
+    @sample_manifest.generate_barcodes({})
   end
   
   def download_uploaded_manifest
      @sample_manifest = SampleManifest.find(params[:id])
-     send_file "public/system/sample_manifests/sample_manifest_#{@sample_manifest.id}.xlsm", :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
+     send_file @sample_manifest.sample_manifest_path, :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
   end
   
   def download_blank_manifest
@@ -81,10 +82,19 @@ class Clients::SampleManifestsController < Clients::BaseController
     @sample_manifest = SampleManifest.find(params[:id])
   end
   
-  def barcode_pdf
+  def generate_barcode_pdf
     @sample_manifest = SampleManifest.find(params[:id])
     @sample_manifest.generate_barcodes(params)
-    send_file "barcodes/sm#{@sample_manifest.id}_barcodes.pdf", :type => 'application/pdf', :disposition => 'inline'
+    redirect_to barcode_pdf_clients_sample_manifest_path
+  end
+  
+  def barcode_pdf
+    @sample_manifest = SampleManifest.find(params[:id])
+    if File.exists?(@sample_manifest.barcodes_path)
+      send_file @sample_manifest.barcodes_path, :type => 'application/pdf', :disposition => 'inline'
+    else
+      redirect_to([:clients,@sample_manifest], :notice => 'No Barcodes Available.')
+    end
   end
   private
   def unverified_manifest
