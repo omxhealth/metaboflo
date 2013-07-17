@@ -1,0 +1,6 @@
+<%= form_tag('barcode_pdf', :method => :post) do %>
+	<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook', :locals => {:barcode_description => true}%>	
+	<%= submit_tag('Generate Barcodes', :class => :button) %>																									
+<% end %>
+													
+														
