@@ -1,32 +1,38 @@
 <div id="tabs">
 	 <ul>
+	 	<% if @sample_manifest.tissue_sample_manifests.exists? %>
 	    <li><a href="#tissue">Tissue</a></li>
+	    <% end %>
+	    <% if @sample_manifest.biofluid_sample_manifests.exists? %>
 	    <li><a href="#biofluids">Biofluids</a></li>
+	    <% end %>
+	    <% if @sample_manifest.cell_sample_manifests.exists? %>	
 	    <li><a href="#cells">Cells</a></li>
+	    <% end %>
  	 </ul>
+ 	 <% if @sample_manifest.tissue_sample_manifests.exists? %>
  	 <div id="tissue">
-		<% if @sample_manifest.tissue_sample_manifests.exists? %>
 		<%= render :partial => "clients/sample_manifests/manifests/tissue_sheet", :locals => 
 																{:samples => @sample_manifest.tissue_sample_manifests, 
 																 :barcode_description => barcode_description} %>
-		<% end %>
 	</div>
+	<% end %>
+	<% if @sample_manifest.biofluid_sample_manifests.exists? %>
 	<div id="biofluids">
-		<% if @sample_manifest.biofluid_sample_manifests.exists? %>
 		<%= render :partial => "clients/sample_manifests/manifests/biofluid_sheet", :locals => 
 																	{:samples => @sample_manifest.biofluid_sample_manifests,
 																	  :barcode_description => barcode_description}%>
-		<% end %>
 	</div>
+	<% end %>
+	<% if @sample_manifest.cell_sample_manifests.exists? %>	
 	<div id="cells">
-		<% if @sample_manifest.cell_sample_manifests.exists? %>														
 		<%= render :partial => "clients/sample_manifests/manifests/cell_sheet", :locals => 
 																	{:samples => @sample_manifest.cell_sample_manifests,
 																     :barcode_description => barcode_description}%>
-		<% end %>
 	</div>
+	<% end %>
 </div>
 <div id="estimate">
-	<p>Estimate: $<%= @sample_manifest.estimate %></p>
+	<p>Estimate: <%= number_to_currency(@sample_manifest.estimate) %></p>
 </div>															
 														

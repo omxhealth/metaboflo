@@ -5,7 +5,7 @@ require 'barby/barcode/code_39'
 require 'barby/outputter/prawn_outputter'
 class SampleManifest < ActiveRecord::Base
  # attr_accessible :file,:biofluid_sample_manifests_attributes, :tissue_sample_manifests_attributes, :cell_sample_manifests_attributes
-  attr_accessible :verified, :file
+  attr_accessible :file
   belongs_to :client
   has_many :biofluid_sample_manifests, :dependent => :destroy
   has_many :tissue_sample_manifests, :dependent => :destroy
@@ -46,38 +46,20 @@ class SampleManifest < ActiveRecord::Base
   # Returns a quote for all samples in the sample_manifest.
   def estimate
     total = 0
-    self.biofluid_sample_manifests.each do |s|
-      total += s.estimate
-    end
-    self.tissue_sample_manifests.each do |s|
-      total += s.estimate
-    end
-    self.cell_sample_manifests.each do |s|
-      total += s.estimate
-    end
-
+    total += self.class.sheet_estimate(self.biofluid_sample_manifests)
+    total += self.class.sheet_estimate(self.tissue_sample_manifests)
+    total += self.class.sheet_estimate(self.cell_sample_manifests)
     total
   end
   
-  # Populates an array to hold the text indicating what 
-  # modules should be done to this sample.
-  def self.module_codes(manifest)
-    codes = []
-    codes << "MP#1" if manifest.module_1?
-    codes << "MP#2" if manifest.module_2?
-    codes << "MP#3" if manifest.module_3?
-    codes << "MP#4" if manifest.module_4?
-    codes << "MP#5" if manifest.module_5?
-    codes << "MP#6" if manifest.module_6?
-    codes << "MP#7" if manifest.module_7?
-    codes << "MP#8" if manifest.module_8?
-    codes << "MP#9" if manifest.module_9?
-    codes << "MP#10" if manifest.module_10?
-    codes << "MP#11" if manifest.module_11?
-    codes << "MP#12" if manifest.module_12?
-    codes
+  def self.sheet_estimate(samples)
+    total = 0
+    samples.each do |s|
+      total += s.estimate
+    end
+    total
   end
-  
+    
   def generate_barcodes(params)
     Prawn::Document.generate(barcodes_path) do |pdf|
       self.biofluid_sample_manifests.each do |sample|
@@ -115,6 +97,38 @@ class SampleManifest < ActiveRecord::Base
   
   def sample_manifest_path
     "sample_manifests/sample_manifest_#{self.id}.xlsm"
+  end
+  
+  # Returns a boolean if this manifest can be confirmed
+  def confirmable_manifest?
+    if !all_common_fields_present?
+      return false
+    end
+    # Make sure each sample has all required information
+    self.biofluid_sample_manifests.each do |s|
+      if !s.required_fields_present?
+        return false
+      end     
+    end
+    self.tissue_sample_manifests.each do |s|
+      if !s.required_fields_present?
+        return false
+      end
+    end
+    self.cell_sample_manifests.each do |s|
+      if !s.required_fields_present?
+        return false
+      end
+    end
+    return true
+  end
+  
+  def all_common_fields_present?
+    !self.client_institution.blank? && !self.pi_email.blank? && !self.submitter_email.blank?
+  end
+  
+  def self.barcode_textbox_name(sample)
+    "#{sample.class.to_s}#{sample.tube_id}"
   end
   
   private
@@ -218,7 +232,7 @@ class SampleManifest < ActiveRecord::Base
              sample = self.tissue_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
              sample.matrix = strip_decimal workbook.cell(row,headers[:matrix])  
-             sample.tissue_weight = workbook.cell(row,headers[:tissue_weight])
+             sample.tissue_weight = round_num(workbook.cell(row,headers[:tissue_weight]))
              sample.weight_units = workbook.cell(row,headers[:units])   
          end
       end   
@@ -232,7 +246,7 @@ class SampleManifest < ActiveRecord::Base
              sample = self.cell_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
              sample.cell_line = strip_decimal workbook.cell(row,headers[:cell_line])
-             sample.viable_cells = workbook.cell(row,headers[:viable_cells]).to_i 
+             sample.viable_cells = to_int(workbook.cell(row,headers[:viable_cells]))
          end
       end    
   end
@@ -242,7 +256,7 @@ class SampleManifest < ActiveRecord::Base
   def set_common_attributes(sample, workbook, row, headers)
      sample.tube_id = workbook.cell(row,headers[:tube_id]).to_i
      sample.species = strip_decimal workbook.cell(row,headers[:species])
-     sample.group_id = workbook.cell(row,headers[:group_id]).to_i
+     sample.group_id = to_int(workbook.cell(row,headers[:group_id]))
       (headers[:first_module]..headers[:last_module]).each do |num|
           if !workbook.cell(row,num).nil?
             set_module sample,num - headers[:first_module] + 1
@@ -268,6 +282,25 @@ class SampleManifest < ActiveRecord::Base
     end
     
     entry
+  end
+  
+  # Round number if it's Numeric
+  def round_num(num)
+    if num.is_a? Numeric
+      num = num.round
+      puts num
+      puts "raffi"
+    end
+    
+    num
+  end
+  
+  def to_int(num)
+    if num.is_a? Numeric
+      num = num.to_i
+    end
+    
+    num
   end
   
   # Return a hash of location of the data that is the same
@@ -311,14 +344,14 @@ class SampleManifest < ActiveRecord::Base
      pdf.bounding_box([0,pdf.cursor],:width=>pdf.bounds.right,:height => 50) do
           barcode = Barby::Code39.new(sample.barcode)
           outputter = Barby::PrawnOutputter.new(barcode)
-          if !params[sample.barcode].blank?
-            description = params[sample.barcode]
+          if !params[self.class.barcode_textbox_name(sample)].blank?
+            description = params[self.class.barcode_textbox_name(sample)]
           else
             description = "#{type} ##{sample.tube_id}"
           end
-          title = "#{type} Samples ##{sample.tube_id}"
-          pdf.text_box(title, :at => [0,pdf.cursor], :height => 50, :width => (pdf.bounds.right - outputter.width - 5), 
-                        :valign => :center, :overflow => :shrink_to_fit)
+          title = sample.to_s
+          pdf.text_box(title, :at => [0,pdf.cursor], :height => 50, :width => (pdf.bounds.right - outputter.width - 50), 
+                        :valign => :center, :align => :justify, :overflow => :shrink_to_fit)
           outputter.annotate_pdf(pdf,:height => 30,:x => (pdf.bounds.right - outputter.width), :y=>10)
           pdf.text_box(description,:at => [(pdf.bounds.right - outputter.width + 5), 5],:width => (outputter.width - 5), 
           :height => 8, :overflow => :shrink_to_fit, :align => :center) 
@@ -341,10 +374,10 @@ class SampleManifest < ActiveRecord::Base
   
   # Returns the content for the barcode using the serial number
   def get_barcode_content
-     barcode_content = pad_number(self.client_id) + pad_number(self.client.serial_number)
+     barcode_content = pad_number(self.client_id) + '-' + pad_number(self.client.serial_number)
      # increment the serial by one
      self.client.serial_number += 1
      barcode_content
   end
-  
+
 end

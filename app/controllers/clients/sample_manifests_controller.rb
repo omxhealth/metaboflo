@@ -61,8 +61,17 @@ class Clients::SampleManifestsController < Clients::BaseController
   end
   
   def confirm
-    @sample_manifest.assign_barcodes
-    @sample_manifest.generate_barcodes({})
+    @sample_manifest = SampleManifest.find(params[:id])
+    message = ""
+    if @sample_manifest.confirmable_manifest?
+      @sample_manifest.verified = true
+      @sample_manifest.assign_barcodes
+      @sample_manifest.generate_barcodes(params)
+      message = "Successfully confirmed the order."
+    else
+      message = "Please fill out all the required fields."
+    end
+    redirect_to([:clients,@sample_manifest], :notice => message)
   end
   
   def download_uploaded_manifest
@@ -78,15 +87,6 @@ class Clients::SampleManifestsController < Clients::BaseController
     send_file 'public/downloads/guidelines_for_all_samples_v1.pdf', :type => 'application/pdf'
   end
   
-  def barcode_form
-    @sample_manifest = SampleManifest.find(params[:id])
-  end
-  
-  def generate_barcode_pdf
-    @sample_manifest = SampleManifest.find(params[:id])
-    @sample_manifest.generate_barcodes(params)
-    redirect_to barcode_pdf_clients_sample_manifest_path
-  end
   
   def barcode_pdf
     @sample_manifest = SampleManifest.find(params[:id])
@@ -96,6 +96,7 @@ class Clients::SampleManifestsController < Clients::BaseController
       redirect_to([:clients,@sample_manifest], :notice => 'No Barcodes Available.')
     end
   end
+  
   private
   def unverified_manifest
    @sample_manifest = SampleManifest.find(params[:id])

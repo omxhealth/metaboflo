@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover table-striped">
+<table class="table table-bordered table-hover">
 	<thead >
 		<tr>
 			<th>Tube ID</th>
@@ -11,11 +11,12 @@
 			<% if barcode_description %>
 				<th>Barcode <br/> Description</th>
 			<% end %>
+			<th>Price</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% samples.each do |s|%>
-		<tr>
+		<tr <% if !s.required_fields_present? %> class="warning" <% end %>>
 			<td><%= s.tube_id %></td>
 			<td><%= s.species %></td>
 			<td><%= s.matrix %></td>
@@ -24,9 +25,13 @@
 			<td><%= s.weight_units %></td>
 			<%= render :partial => "clients/sample_manifests/manifests/module_tests", :locals => {:s => s} %>
 			<% if barcode_description %>
-				<td><%= text_field_tag(s.barcode, nil, :placeholder => 'Decscription', :size => 20) %></td>
+				<td><%= text_field_tag(SampleManifest.barcode_textbox_name(s), nil, :placeholder => 'Decscription', :size => 20, :maxlength => 20) %></td>
 			<% end %>
+			<td><%= number_to_currency(s.estimate) %></td>
 		</tr>
 		<% end %>
+		<td colspan="<%= barcode_description ? 18 : 17 %>"></td>
+		<td>Total:</td>
+		<td><%= number_to_currency(SampleManifest.sheet_estimate(samples)) %></td>	
 	</tbody>
 </table>

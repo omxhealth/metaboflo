@@ -37,5 +37,33 @@ class CellSampleManifest < ActiveRecord::Base
     total
     
   end
-
+  
+  def required_fields_present?
+    !self.species.blank? && !self.cell_line.blank? &&
+    !self.viable_cells.blank? && !self.group_id.blank?
+  end
+  
+  def to_s
+    "#{self.class.to_s}: Tube Id - #{self.tube_id} Species - #{self.species} Group # - #{self.group_id} " + 
+    "Cell Line - #{self.cell_line} Viable Cells - #{self.viable_cells} Modules - #{modules.join(',')}"
+  end
+  
+  def modules
+    
+    modules = []
+    modules << "1" if self.module_1
+    modules << "2" if self.module_2
+    modules << "3" if self.module_3
+    modules << "4" if self.module_4
+    modules << "5" if self.module_5
+    modules << "6" if self.module_6
+    modules << "7" if self.module_7
+    modules << "8" if self.module_8
+    modules << "9" if self.module_9
+    modules << "10" if self.module_10
+    modules << "11" if self.module_11
+    modules << "12" if self.module_12
+    modules
+  end
+  
 end

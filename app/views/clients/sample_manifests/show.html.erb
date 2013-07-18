@@ -1,4 +1,10 @@
-<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook', :locals => {:barcode_description => false} %>
+<%= form_tag("#{@sample_manifest.id}/confirm", :method => :post) do %>
+	<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook', :locals => {:barcode_description => 	!@sample_manifest.verified } %>
+	<% if !@sample_manifest.verified %>
+			<%= submit_tag('Confirm Order', :class => :button, :confirm => 'By Confirming this manifest you agree to pay the total estimate. ' + 
+																			'Additionally, once comfirmed the manifest cannot be edited anymore.') %>																									
+	<% end %>
+<% end %>
 <% if File.exists?(@sample_manifest.barcodes_path) %>
-	<%= link_to 'Barcodes', barcode_pdf_clients_sample_manifest_path %>
+	<%= link_to 'Barcodes', barcode_pdf_clients_sample_manifest_path, :target => '_blank' %>
 <% end %>	
