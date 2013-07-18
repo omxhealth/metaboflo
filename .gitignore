@@ -16,3 +16,4 @@ config/deploy
 .project
 barcodes/*
 sample_manifests/*
+clients/*

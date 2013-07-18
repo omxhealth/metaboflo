@@ -3,6 +3,7 @@ require 'prawn'
 require 'barby'
 require 'barby/barcode/code_39'
 require 'barby/outputter/prawn_outputter'
+require 'fileutils'
 class SampleManifest < ActiveRecord::Base
  # attr_accessible :file,:biofluid_sample_manifests_attributes, :tissue_sample_manifests_attributes, :cell_sample_manifests_attributes
   attr_accessible :file
@@ -11,7 +12,7 @@ class SampleManifest < ActiveRecord::Base
   has_many :tissue_sample_manifests, :dependent => :destroy
   has_many :cell_sample_manifests, :dependent => :destroy
 
-  has_attached_file :file, :path => ":rails_root/sample_manifests/:basename.xlsx"
+  has_attached_file :file, :path => ":rails_root/clients/:basename.xlsx"
   
   has_many :stored_files, :as => :attachable
   accepts_nested_attributes_for :stored_files, :allow_destroy => true
@@ -92,13 +93,16 @@ class SampleManifest < ActiveRecord::Base
   end
   
   def barcodes_path
-    "barcodes/sm#{self.id}_barcodes.pdf"
+    "#{client_directory}/sm#{self.id}_barcodes.pdf"
   end
   
   def sample_manifest_path
-    "sample_manifests/sample_manifest_#{self.id}.xlsm"
+    "#{client_directory}/sample_manifest_#{self.id}.xlsm"
   end
   
+  def client_directory
+    "clients/#{self.client_id}/sample_manifests"
+  end
   # Returns a boolean if this manifest can be confirmed
   def confirmable_manifest?
     if !all_common_fields_present?
@@ -144,6 +148,7 @@ class SampleManifest < ActiveRecord::Base
         read_tissue_sheet workbook, sheets[:tissue], first_row, headers
         read_biofluids_sheet workbook, sheets[:biofluids], first_row, headers
         read_cells_sheet workbook, sheets[:cell], first_row, headers
+        FileUtils.makedirs(client_directory) unless File.directory?(client_directory)
         new_file_name
         self.save!
       end 
