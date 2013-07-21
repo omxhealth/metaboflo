@@ -29,7 +29,7 @@
 		</tr>
 	<% end %>
 		<tr>
-			<td colspan="<%= barcode_description ? 18 : 17 %>"></td>
+			<td colspan="<%= barcode_description ? 17 : 16 %>"></td>
 			<td>Total:</td>
 			<td><%= number_to_currency(SampleManifest.sheet_estimate(@sample_manifest.cell_sample_manifests)) %></td>
 		</tr>
