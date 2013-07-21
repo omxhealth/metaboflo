@@ -135,6 +135,15 @@ class SampleManifest < ActiveRecord::Base
     "#{sample.class.to_s}#{sample.tube_id}"
   end
   
+  def samples?
+    self.tissue_sample_manifests.exists? || self.biofluid_sample_manifests.exists? ||
+    self.tissue_sample_manifests.exists?
+  end
+  
+  def common_data_exists?
+   !self.title.blank? || !self.client_institution.blank? || !self.pi_email.blank? ||
+   !self.submitter_email.blank?
+  end
   private
   # Parse the attached sample_manifest if it exists.
   def parse_file

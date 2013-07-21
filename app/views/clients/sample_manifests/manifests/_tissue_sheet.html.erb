@@ -15,14 +15,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% samples.each do |s|%>
-		<tr <% if !s.required_fields_present? %> class="warning" <% end %>>
+		<% @sample_manifest.tissue_sample_manifests.each do |s|%>
+		<tr>
 			<td><%= s.tube_id %></td>
-			<td><%= s.species %></td>
-			<td><%= s.matrix %></td>
-			<td><%= s.group_id %></td>
-			<td><%= s.tissue_weight %></td>
-			<td><%= s.weight_units %></td>
+			<td <% if s.species.blank? %> class='warning'<% end %>><%= s.species %></td>
+			<td <% if s.matrix.blank? %> class='warning'<% end %>><%= s.matrix %></td>
+			<td <% if s.group_id.blank? %> class='warning'<% end %>><%= s.group_id %></td>
+			<td <% if s.tissue_weight.blank? %> class='warning'<% end %>><%= s.tissue_weight %></td>
+			<td <% if s.weight_units.blank? %> class='warning'<% end %>><%= s.weight_units %></td>
 			<%= render :partial => "clients/sample_manifests/manifests/module_tests", :locals => {:s => s} %>
 			<% if barcode_description %>
 				<td><%= text_field_tag(SampleManifest.barcode_textbox_name(s), nil, :placeholder => 'Decscription', :size => 20, :maxlength => 20) %></td>
@@ -30,8 +30,10 @@
 			<td><%= number_to_currency(s.estimate) %></td>
 		</tr>
 		<% end %>
-		<td colspan="<%= barcode_description ? 18 : 17 %>"></td>
-		<td>Total:</td>
-		<td><%= number_to_currency(SampleManifest.sheet_estimate(samples)) %></td>	
+		<tr>
+			<td colspan="<%= barcode_description ? 18 : 17 %>"></td>
+			<td>Total:</td>
+			<td><%= number_to_currency(SampleManifest.sheet_estimate(@sample_manifest.tissue_sample_manifests)) %></td>
+		</tr>	
 	</tbody>
 </table>

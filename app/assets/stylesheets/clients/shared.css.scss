@@ -280,3 +280,14 @@ table th[class*="span"],
   background-color: #E6E6FA;
   padding: 15px;
 }
+
+#small-table {
+  width: 25%;
+  th {
+    width: 10%;
+  }
+}
+
+td.warning {
+  background-color: #fcf8e3;
+}

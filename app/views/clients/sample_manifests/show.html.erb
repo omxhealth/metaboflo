@@ -1,7 +1,10 @@
 <%= form_tag("#{@sample_manifest.id}/confirm", :method => :post) do %>
-	<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook', :locals => {:barcode_description => 	!@sample_manifest.verified } %>
-	<% if !@sample_manifest.verified %>
-			<%= submit_tag('Confirm Order', :class => :button, :confirm => 'By Confirming this manifest you agree to pay the total estimate. ' + 
+	<%= render :partial => "clients/sample_manifests/manifests/common_sheet_data" %>
+	<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook', :locals => {:barcode_description => 	@sample_manifest.confirmable_manifest? && 
+																														!@sample_manifest.verified } %>
+	<%= link_to 'Edit Manifest', edit_clients_sample_manifest_path, :class => :button unless @sample_manifest.verified %>
+	<% if @sample_manifest.confirmable_manifest? && !@sample_manifest.verified %>
+	<%= submit_tag('Confirm Order', :class => :button, :confirm => 'By Confirming this manifest you agree to pay the total estimate. ' + 
 																			'Additionally, once comfirmed the manifest cannot be edited anymore.') %>																									
 	<% end %>
 <% end %>

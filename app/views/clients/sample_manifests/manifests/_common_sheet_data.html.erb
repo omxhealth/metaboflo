@@ -1,0 +1,24 @@
+<% if @sample_manifest.samples? || @sample_manifest.common_data_exists? %>
+	<table class="table table-bordered table-hover" id="small-table">
+		<tr<% if @sample_manifest.title.blank? %> class="warning"<% end %>>
+			<th>Project Title</th>
+			<td><%= @sample_manifest.title %></td>
+		</tr>
+		<tr <% if @sample_manifest.client_institution.blank? %> class="warning"<% end %>>
+			<th>Client Institution/Dept.</th>
+			<td><%= @sample_manifest.client_institution %></td>
+		</tr>
+		<tr <% if @sample_manifest.submitter_email.blank? %> class="warning"<% end %>>
+			<th>Submitter Email</th>
+			<td><%= @sample_manifest.submitter_email %></td>
+		</tr>
+		<tr <% if @sample_manifest.pi_email.blank? %> class="warning"<% end %>>
+			<th>PI Email</th>
+			<td><%= @sample_manifest.pi_email %></td>
+		</tr>
+		<tr>
+			<th>Manifest Quote Estimate</th>
+			<td><%= number_to_currency(@sample_manifest.estimate) %></td>
+		</tr>
+	</table>
+<% end %>

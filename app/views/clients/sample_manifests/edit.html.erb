@@ -1,4 +1,4 @@
 <h1>Sample Manifest</h1>
-<%= link_to 'Download', download_uploaded_manifest_clients_sample_manifest_path %>
+<%= link_to 'Download', download_uploaded_manifest_clients_sample_manifest_path if File.exists?(@sample_manifest.sample_manifest_path) %>
 <%= render :partial => 'form'%>
 <%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook', :locals => {:barcode_description => false} %>											
