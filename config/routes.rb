@@ -3,7 +3,7 @@ Metaboflo::Application.routes.draw do
   match 'about' => 'public/pages#about'
   match 'contact' => 'public/pages#contact'
   match 'services' => 'public/pages#services'
-
+  match 'download_blank_manifest' => 'public/pages#download_blank_manifest'
   ## User routes
   devise_for :users do
     match 'landing' => 'bovine#index', :as => :user_root
@@ -25,8 +25,6 @@ Metaboflo::Application.routes.draw do
       post 'confirm', :on => :member
       get 'print', :on => :member
       get 'download_uploaded_manifest', :on => :member
-      get 'download_blank_manifest', :on => :member
-      get 'download_guideline', :on => :member
       get 'barcode_pdf', :on => :member
     end
     resources :home, :only => [ :index ]

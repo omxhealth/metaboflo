@@ -78,16 +78,7 @@ class Clients::SampleManifestsController < Clients::BaseController
      @sample_manifest = SampleManifest.find(params[:id])
      send_file @sample_manifest.sample_manifest_path, :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
   end
-  
-  def download_blank_manifest
-    send_file 'spreadsheets/blank_manifest.xlsm', :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
-  end
-  
-  def download_guideline
-    send_file 'public/downloads/guidelines_for_all_samples_v1.pdf', :type => 'application/pdf'
-  end
-  
-  
+   
   def barcode_pdf
     @sample_manifest = SampleManifest.find(params[:id])
     if File.exists?(@sample_manifest.barcodes_path)
