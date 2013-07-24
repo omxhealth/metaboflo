@@ -228,7 +228,7 @@ class SampleManifest < ActiveRecord::Base
   def read_biofluids_sheet(workbook, sheet_number, first_row, headers)
     workbook.default_sheet = workbook.sheets[sheet_number]
      (first_row..workbook.last_row).each do |row|
-          if (valid_row workbook,row)
+          if (valid_row workbook,row, headers[:species], headers[:last_module])
              sample = self.biofluid_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
              sample.matrix = strip_decimal workbook.cell(row,headers[:matrix])  
@@ -242,7 +242,7 @@ class SampleManifest < ActiveRecord::Base
   def read_tissue_sheet(workbook,sheet_number, first_row, headers)
     workbook.default_sheet = workbook.sheets[sheet_number]
     (first_row..workbook.last_row).each do |row|
-          if (valid_row workbook,row)
+          if (valid_row workbook,row, headers[:species], headers[:last_module])
              sample = self.tissue_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
              sample.matrix = strip_decimal workbook.cell(row,headers[:matrix])  
@@ -255,8 +255,8 @@ class SampleManifest < ActiveRecord::Base
   # Read the excel cells sheet.
   def read_cells_sheet(workbook, sheet_number, first_row, headers)
     workbook.default_sheet = workbook.sheets[sheet_number]
-    ((first_row - 1)..(workbook.last_row - 1)).each do |row|
-          if (valid_row workbook,row)
+    (first_row..workbook.last_row).each do |row|
+          if (valid_row workbook,row, headers[:species], headers[:last_module])
              sample = self.cell_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
              sample.cell_line = strip_decimal workbook.cell(row,headers[:cell_line])
@@ -271,17 +271,19 @@ class SampleManifest < ActiveRecord::Base
      sample.tube_id = workbook.cell(row,headers[:tube_id]).to_i
      sample.species = strip_decimal workbook.cell(row,headers[:species])
      sample.group_id = to_int(workbook.cell(row,headers[:group_id]))
-      (headers[:first_module]..headers[:last_module]).each do |num|
+     first_module = sample.class.to_s.eql?('CellSampleManifest') ? headers[:first_module] - 1 : headers[:first_module]
+     last_module = sample.class.to_s.eql?('CellSampleManifest') ? headers[:last_module] - 1 : headers[:last_module]
+      (first_module..last_module).each do |num|
           if !workbook.cell(row,num).nil?
-            set_module sample,num - headers[:first_module] + 1
+            set_module sample,num - first_module + 1
           end
       end  
   end
   
   # Check if a row is valid, by checking if the 
   # client entered in any information.
-  def valid_row(workbook,row)
-    (2..18).each do |index|
+  def valid_row(workbook,row, second, last)
+    (second..last).each do |index|
       if (!workbook.cell(row,index).nil?)
         return true
       end
@@ -302,8 +304,6 @@ class SampleManifest < ActiveRecord::Base
   def round_num(num)
     if num.is_a? Numeric
       num = num.round
-      puts num
-      puts "raffi"
     end
     
     num
