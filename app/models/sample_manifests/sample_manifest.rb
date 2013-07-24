@@ -206,8 +206,8 @@ class SampleManifest < ActiveRecord::Base
      sample_volume: 5,
      viable_cells: 5,
      units: 6,
-     first_module: 7,
-     last_module: 18}
+     first_module: 9,
+     last_module: 20}
   end
   
   # Returns a hash of the corresponding page index
@@ -255,7 +255,7 @@ class SampleManifest < ActiveRecord::Base
   # Read the excel cells sheet.
   def read_cells_sheet(workbook, sheet_number, first_row, headers)
     workbook.default_sheet = workbook.sheets[sheet_number]
-    (first_row..workbook.last_row).each do |row|
+    ((first_row - 1)..(workbook.last_row - 1)).each do |row|
           if (valid_row workbook,row)
              sample = self.cell_sample_manifests.build
              set_common_attributes sample, workbook, row, headers
