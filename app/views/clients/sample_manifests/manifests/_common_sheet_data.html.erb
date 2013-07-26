@@ -16,6 +16,10 @@
 			<th>PI Email</th>
 			<td><%= @sample_manifest.pi_email %></td>
 		</tr>
+		<tr <% if @sample_manifest.grant_id.blank? %> class="warning"<% end %>>
+			<th>PI Email</th>
+			<td><%= @sample_manifest.grant_id %></td>
+		</tr>
 		<tr>
 			<th>Manifest Quote Estimate</th>
 			<td><%= number_to_currency(@sample_manifest.estimate) %></td>

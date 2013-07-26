@@ -153,7 +153,7 @@ class SampleManifest < ActiveRecord::Base
         set_sample_manifest_attributes workbook
         headers = column_headers
         sheets = sheet_index
-        first_row = 19
+        first_row = 20
         read_tissue_sheet workbook, sheets[:tissue], first_row, headers
         read_biofluids_sheet workbook, sheets[:biofluids], first_row, headers
         read_cells_sheet workbook, sheets[:cell], first_row, headers
@@ -323,17 +323,19 @@ class SampleManifest < ActiveRecord::Base
       {title: [6,2],
        client_institution: [7,2],
        submitter_email: [8,2],
-       pi_email: [9,2] }
+       pi_email: [9,2],
+       grant_id: [10,2] }
   end
   # Set the sample_manifests data for all 3 sheets
   def set_sample_manifest_attributes(workbook)
     row_column_info = common_data_cells
-    self.title = workbook.cell(row_column_info[:title][0],row_column_info[:title][1])
-    self.client_institution = workbook.cell(row_column_info[:client_institution][0],
-                                            row_column_info[:client_institution][1])
-    self.submitter_email = workbook.cell(row_column_info[:submitter_email][0],
-                                         row_column_info[:submitter_email][1])
-    self.pi_email = workbook.cell(row_column_info[:pi_email][0],row_column_info[:pi_email][1])    
+    self.title = strip_decimal(workbook.cell(row_column_info[:title][0],row_column_info[:title][1]))
+    self.client_institution = strip_decimal(workbook.cell(row_column_info[:client_institution][0],
+                                            row_column_info[:client_institution][1]))
+    self.submitter_email = strip_decimal(workbook.cell(row_column_info[:submitter_email][0],
+                                         row_column_info[:submitter_email][1]))
+    self.pi_email = strip_decimal(workbook.cell(row_column_info[:pi_email][0],row_column_info[:pi_email][1]))
+    self.grant_id = strip_decimal(workbook.cell(row_column_info[:grant_id][0],row_column_info[:grant_id][1]))   
   end
   
   def reset_manifest
