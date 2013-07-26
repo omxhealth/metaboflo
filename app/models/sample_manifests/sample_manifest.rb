@@ -128,7 +128,7 @@ class SampleManifest < ActiveRecord::Base
   end
   
   def all_common_fields_present?
-    !self.client_institution.blank? && !self.pi_email.blank? && !self.submitter_email.blank?
+    !self.client_institution.blank? && !self.pi_email.blank? && !self.submitter_email.blank? && !self.grant_id.blank?
   end
   
   def self.barcode_textbox_name(sample)
