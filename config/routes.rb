@@ -22,10 +22,12 @@ Metaboflo::Application.routes.draw do
   namespace :clients do
     resources :samples, :only => [ :index, :show ]
     resources :sample_manifests do
-      post 'confirm', :on => :member
-      get 'print', :on => :member
-      get 'download_uploaded_manifest', :on => :member
-      get 'barcode_pdf', :on => :member
+      member do
+        post 'confirm'
+        get 'print'
+        get 'download_uploaded_manifest'
+        get 'barcode_pdf'
+      end
     end
     resources :home, :only => [ :index ]
   end

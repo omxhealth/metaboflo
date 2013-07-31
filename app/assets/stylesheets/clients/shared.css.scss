@@ -291,3 +291,8 @@ table th[class*="span"],
 td.warning {
   background-color: #fcf8e3;
 }
+
+.ui-tabs .ui-tabs-nav .warning a
+{
+   background-color: red;
+}

@@ -19,7 +19,24 @@
     <%= @client.name %>
   </p>
 </div>
-
+<table>
+	<tr>
+		<th>Sample Manifest #</th>
+		<th>Barcodes</th>
+	</tr>
+	<% @client.sample_manifests.each do |sm| %>
+		<tr>
+			<td><%= sm.id %></td>
+			<td class="barcodes">
+			<% if File.exists?(sm.barcodes_path) %>
+				<%= link_to 'Barcodes', barcode_pdf_clients_sample_manifest_path(sm), :target => :blank %></td>
+			<% else %>
+				No Barcodes Exist
+			<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>
 <p class="actions">
   <%= link_to 'Edit', edit_client_path(@client) %>
   <%= link_to 'Back to Clients', clients_path %>

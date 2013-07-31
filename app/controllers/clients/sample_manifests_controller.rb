@@ -66,7 +66,7 @@ class Clients::SampleManifestsController < Clients::BaseController
     if @sample_manifest.confirmable_manifest?
       @sample_manifest.verified = true
       @sample_manifest.assign_barcodes
-      @sample_manifest.generate_barcodes(params)
+      @sample_manifest.generate_barcodes(params.dup)
       message = "Successfully confirmed the order."
     else
       message = "Please fill out all the required fields."

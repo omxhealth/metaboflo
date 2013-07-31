@@ -103,27 +103,27 @@ class SampleManifest < ActiveRecord::Base
   def client_directory
     "clients/#{self.client_id}/sample_manifests"
   end
+  
+  # checks if a given set of samples are confirmable.
+  def self.confirmable_sheet(samples)
+    samples.each do |s|
+      if !s.required_fields_present?
+        return false
+      end     
+    end
+    return true
+  end
   # Returns a boolean if this manifest can be confirmed
   def confirmable_manifest?
     if !all_common_fields_present?
       return false
     end
     # Make sure each sample has all required information
-    self.biofluid_sample_manifests.each do |s|
-      if !s.required_fields_present?
-        return false
-      end     
-    end
-    self.tissue_sample_manifests.each do |s|
-      if !s.required_fields_present?
-        return false
-      end
-    end
-    self.cell_sample_manifests.each do |s|
-      if !s.required_fields_present?
-        return false
-      end
-    end
+    if !self.class.confirmable_sheet(self.biofluid_sample_manifests) ||
+       !self.class.confirmable_sheet(self.tissue_sample_manifests) ||
+       !self.class.confirmable_sheet(self.cell_sample_manifests)
+       return false
+     end
     return true
   end
   

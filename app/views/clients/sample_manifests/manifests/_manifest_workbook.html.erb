@@ -2,13 +2,19 @@
 	<div id="tabs">
 		 <ul>
 		 	<% if @sample_manifest.tissue_sample_manifests.exists? %>
-		    <li><a href="#tissue">Tissue</a></li>
+		    <li <% if !SampleManifest.confirmable_sheet(@sample_manifest.tissue_sample_manifests) %> 
+		    	class="warning"
+		    	<% end %>><a href="#tissue">Tissue</a></li>
 		    <% end %>
 		    <% if @sample_manifest.biofluid_sample_manifests.exists? %>
-		    <li><a href="#biofluids">Biofluids</a></li>
+		    <li <% if !SampleManifest.confirmable_sheet(@sample_manifest.biofluid_sample_manifests) %> 
+		    	class="warning"
+		    	<% end %>><a href="#biofluids">Biofluids</a></li>
 		    <% end %>
 		    <% if @sample_manifest.cell_sample_manifests.exists? %>	
-		    <li><a href="#cells">Cells</a></li>
+		    <li  <% if !SampleManifest.confirmable_sheet(@sample_manifest.cell_sample_manifests) %> 
+		    	class="warning"
+		    	<% end %>><a href="#cells">Cells</a></li>
 		    <% end %>
 	 	 </ul>
 	 	 <% if @sample_manifest.tissue_sample_manifests.exists? %>
