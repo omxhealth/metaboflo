@@ -81,4 +81,10 @@ class ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def download_barcodes
+    if File.exists?(params[:barcodes_path])
+      send_file params[:barcodes_path], :type => 'application/pdf', :disposition => 'inline'
+    end
+  end
 end

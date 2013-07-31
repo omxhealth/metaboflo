@@ -31,7 +31,11 @@ Metaboflo::Application.routes.draw do
     end
     resources :home, :only => [ :index ]
   end
-  resources :clients
+  resources :clients do
+    member do
+      get 'download_barcodes'
+    end
+  end
 
   ## API Resources
   namespace :api do

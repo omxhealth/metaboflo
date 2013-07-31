@@ -29,7 +29,8 @@
 			<td><%= sm.id %></td>
 			<td class="barcodes">
 			<% if File.exists?(sm.barcodes_path) %>
-				<%= link_to 'Barcodes', barcode_pdf_clients_sample_manifest_path(sm), :target => :blank %></td>
+			
+				<%= link_to 'Barcodes', download_barcodes_client_path(:barcodes_path => sm.barcodes_path), :target => :blank %></td>
 			<% else %>
 				No Barcodes Exist
 			<% end %>
