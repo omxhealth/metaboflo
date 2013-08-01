@@ -73,5 +73,6 @@ $(function() {
 	$(".close").button()
 	$("#print_manifest").click(function(evt){window.open($(evt.currentTarget).data("url"));})
 	$( "#tabs" ).tabs();
+	$("#missing-fields-accordion").accordion({collapsible: true, active: false,  autoHeight: false });
 });
 
