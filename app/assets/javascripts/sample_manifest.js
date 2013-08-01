@@ -60,7 +60,7 @@ $(function() {
 		autoOpen: false
 	});
 	
-	$(".button").button()
+	$(".button").button();
 	$("#module_1").button().click(function(){$( "#module_1_dialog" ).dialog("open");});
 	$("#module_2").button().click(function(){$( "#module_2_dialog" ).dialog("open");});
 	$("#module_3").button().click(function(){$( "#module_3_dialog" ).dialog("open");});
@@ -73,6 +73,7 @@ $(function() {
 	$(".close").button()
 	$("#print_manifest").click(function(evt){window.open($(evt.currentTarget).data("url"));})
 	$( "#tabs" ).tabs();
-	$("#missing-fields-accordion").accordion({collapsible: true, active: false,  autoHeight: false });
+	$("#missing-fields-accordion").accordion({collapsible: true, active: false,  autoHeight: false});
+	$("#missing-fields-accordion h3").attr("title", "Click to expand/collapse content.").tipTip();
 });
 

@@ -1,17 +1,15 @@
-<% if samples.exists? %>
-			<% if !SampleManifest.confirmable_sheet(samples) %>
-			<h3><%= type.titleize %> Samples</h3>
-				<ul>
-				<% samples.each do |s| %>
-					<% if !s.required_fields_present? %>
-						<li>
-							Tube #<%= s.tube_id %>
-							<ul>
-								<%= render :partial => "clients/sample_manifests/manifests/" + type + "_missing_fields", :locals => {:s => s} %>																											
-							</ul>
-						</li>
-					<% end %>
+<% if samples.exists? && !SampleManifest.confirmable_sheet(samples) %>
+	<h3><%= type.titleize %> Samples</h3>
+		<ul>
+			<% samples.each do |s| %>
+				<% if !s.required_fields_present? %>
+				<li>
+					Tube #<%= s.tube_id %>
+					<ul>
+						<%= render :partial => "clients/sample_manifests/manifests/" + type + "_missing_fields", :locals => {:s => s} %>																											
+						</ul>
+					</li>
 				<% end %>
-				</ul>
-	<% end %>
+			<% end %>
+		</ul>
 <% end %>

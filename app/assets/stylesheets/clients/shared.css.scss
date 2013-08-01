@@ -299,9 +299,8 @@ td.warning {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  h3 {
-    color: red;
-  }
+  max-height: 200px;
+  overflow-y: auto;
   ul, li {
     text-decoration: none;
     padding: 0px;

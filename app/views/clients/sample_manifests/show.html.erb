@@ -1,10 +1,10 @@
 <% confirmable = @sample_manifest.confirmable_manifest? %>
-<% if !confirmable %>
+<% if !confirmable && (@sample_manifest.samples? || @sample_manifest.common_data_exists?) %>
 	<div id="missing-fields">
 		<h2>Fill out the following fields on the spreadsheet to be able to confirm</h2>
 		<div id="missing-fields-accordion">
 				<% if !@sample_manifest.all_common_fields_present? %>
-					<h3>Sample Manifest</h3>
+					<h3>All Sheets</h3>
 					<ul>
 						<% if @sample_manifest.title.blank?%>
 							<li>Title</li>
