@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719182614) do
+ActiveRecord::Schema.define(:version => 20130802182620) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
+    t.integer  "tube_id",            :limit => 255
     t.string   "barcode"
     t.string   "species"
     t.string   "matrix"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20130719182614) do
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.boolean  "module_6"
     t.boolean  "module_7"
     t.boolean  "module_8"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130719182614) do
 
   create_table "cell_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
+    t.integer  "tube_id",            :limit => 255
     t.string   "barcode"
     t.string   "cell_line"
     t.integer  "viable_cells"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20130719182614) do
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "species"
     t.boolean  "module_6"
     t.boolean  "module_7"
@@ -492,7 +492,7 @@ ActiveRecord::Schema.define(:version => 20130719182614) do
 
   create_table "tissue_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
+    t.integer  "tube_id",            :limit => 255
     t.string   "barcode"
     t.string   "species"
     t.string   "matrix"
@@ -501,8 +501,8 @@ ActiveRecord::Schema.define(:version => 20130719182614) do
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.boolean  "module_6"
     t.boolean  "module_7"
     t.boolean  "module_8"
