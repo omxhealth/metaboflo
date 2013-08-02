@@ -14,7 +14,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<% @sample_manifest.cell_sample_manifests.each do |s|%>
+	<% @sample_manifest.cell_sample_manifests.order("tube_id").each do |s|%>
 		<tr>
 			<td><%= s.tube_id %></td>
 			<td <% if s.species.blank? %> class='warning'<% end %>><%= s.species %></td>

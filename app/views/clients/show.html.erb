@@ -24,7 +24,7 @@
 		<th>Sample Manifest #</th>
 		<th>Barcodes</th>
 	</tr>
-	<% @client.sample_manifests.each do |sm| %>
+	<% @client.sample_manifests.order("id").each do |sm| %>
 		<tr>
 			<td><%= sm.id %></td>
 			<td class="barcodes">
