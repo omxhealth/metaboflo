@@ -1,0 +1,39 @@
+<% if @sample_manifest.samples? %>
+	<div id="tabs">
+		 <ul>
+		 	<% if @sample_manifest.tissue_sample_manifests.exists? %>
+		    <li <% if !SampleManifest.confirmable_sheet(@sample_manifest.tissue_sample_manifests) %> 
+		    	class="warning"
+		    	<% end %>><a href="#tissue">Tissue</a></li>
+		    <% end %>
+		    <% if @sample_manifest.biofluid_sample_manifests.exists? %>
+		    <li <% if !SampleManifest.confirmable_sheet(@sample_manifest.biofluid_sample_manifests) %> 
+		    	class="warning"
+		    	<% end %>><a href="#biofluids">Biofluids</a></li>
+		    <% end %>
+		    <% if @sample_manifest.cell_sample_manifests.exists? %>	
+		    <li  <% if !SampleManifest.confirmable_sheet(@sample_manifest.cell_sample_manifests) %> 
+		    	class="warning"
+		    	<% end %>><a href="#cells">Cells</a></li>
+		    <% end %>
+	 	 </ul>
+	 	 <% if @sample_manifest.tissue_sample_manifests.exists? %>
+	 	 <div id="tissue">
+			<%= render :partial => "clients/sample_manifests/manifests/tissue_sheet", :locals => 
+																	{:barcode_description => barcode_description} %>
+		</div>
+		<% end %>
+		<% if @sample_manifest.biofluid_sample_manifests.exists? %>
+		<div id="biofluids">
+			<%= render :partial => "clients/sample_manifests/manifests/biofluid_sheet", :locals => 
+																		{:barcode_description => barcode_description} %>
+		</div>
+		<% end %>
+		<% if @sample_manifest.cell_sample_manifests.exists? %>	
+		<div id="cells">
+			<%= render :partial => "clients/sample_manifests/manifests/cell_sheet", :locals => 
+																		{:barcode_description => barcode_description} %>
+		</div>
+		<% end %>
+	</div>															
+<% end %>														

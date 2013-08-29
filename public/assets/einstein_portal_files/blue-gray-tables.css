@@ -1,0 +1,25 @@
+/* BEGIN Table Styling */
+.tblStyle1 {
+	background-color: #FFF;
+}
+
+.tblStyle1 td {
+	padding: 7px;
+	background-color: #EBEBEB;
+}
+
+.tblStyle1 th {
+	background-color: #3884bd;
+	height: 30px !important;
+	vertical-align: middle;
+	font-weight: bold;
+	color: #FFF;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.tblStyle1 .emptyCells {
+	background-color: #FFF;
+	height: 40px !important;
+}
+/* END Table Styling */

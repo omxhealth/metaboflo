@@ -1,10 +1,5 @@
-<h1>Available Tests</h1>
-<p class="info">
-  <%= image_tag 'info.png', :class => 'info-logo' %>
-  Sample preparation and detailed shipping guidelines can be found 
-  <%= link_to "here", "/downloads/guidelines_for_all_samples_v1.pdf" %>
-</p>
-<%= render :partial => 'tests' %>
-
 <h1>Sample Manifest</h1>
-<%= render :partial => 'form' %>
+<%= link_to 'Download Manifest', download_uploaded_manifest_clients_sample_manifest_path, :class => :button if File.exists?(@sample_manifest.sample_manifest_path) %>
+<%= link_to 'Show Manifest', [:clients, @sample_manifest], :class => :button %>		
+<%= render :partial => 'form'%>
+								

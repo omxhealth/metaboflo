@@ -1,42 +1,8 @@
 <%= form_for([:clients, @sample_manifest]) do |f| %>
-<div id="sample-manifest-form">
-	<ul>
-		<li><a href="#biofluids">Blood/Urine Samples</a></li>
-		<li><a href="#tissue">Tissue Samples</a></li>
-		<li><a href="#cells">Cell Samples</a></li>
-	</ul>
-	<div id="biofluids">
-		<fieldset id="biofluid_sample_manifest" class="fields-for">
-  		<%= f.fields_for :biofluid_sample_manifests do |biofluid_form| %>
-    		<%= render :partial => '/clients/sample_manifests/manifests/biofluid_sample_manifest', :locals => { :f => biofluid_form } %>
-  		<% end %>
-    	<p><%= my_add_child_link "Add Sample", :biofluid_sample_manifests %></p>
-    	<%= new_child_fields_template f, :biofluid_sample_manifests, :partial => '/clients/sample_manifests/manifests/biofluid_sample_manifest' %>
-		</fieldset>
+	<div id="sample-manifest-form">
+		<p>Upload: <%= f.file_field :file %></p>
 	</div>
-	<div id="tissue">
-		<fieldset id="tissue_sample_manifest" class="fields-for">
-			<%= f.fields_for :tissue_sample_manifests do |tissue_form| %>
-	    	<%= render :partial => '/clients/sample_manifests/manifests/tissue_sample_manifest', :locals => { :f => tissue_form } %>
-	  	<% end %>
-	    <p><%= my_add_child_link "Add Sample", :tissue_sample_manifests %></p>
-	    <%= new_child_fields_template f, :tissue_sample_manifests, :partial => '/clients/sample_manifests/manifests/tissue_sample_manifest' %>
-		</fieldset>
-	</div>
-	<div id="cells">
-		<fieldset id="cell_sample_manifest" class="fields-for">
-  		<%= f.fields_for :cell_sample_manifests do |cell_form| %>
-  	    <%= render :partial => '/clients/sample_manifests/manifests/cell_sample_manifest', :locals => { :f => cell_form } %>
-  		<% end %>
-	    <p><%= my_add_child_link "Add Sample", :cell_sample_manifests %></p>
-	    <%= new_child_fields_template f, :cell_sample_manifests, :partial => '/clients/sample_manifests/manifests/cell_sample_manifest' %>
-		</fieldset>
-	</div>
-	<div>
-	<p>Upload: <%= f.file_field :file %></p>
-	</div>
-</div>
-<%= f.submit "Save Sample Manifest", :class => :button %>
+	<%= f.submit "Save Sample Manifest", :class => :button %>
 <% end %>
 
 <div id="jstemplates">

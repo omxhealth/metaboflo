@@ -13,3 +13,7 @@ vendor/cache/
 vendor/ruby
 public/assets
 config/deploy
+.project
+barcodes/*
+sample_manifests/*
+clients/*

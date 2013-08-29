@@ -11,45 +11,55 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120827043353) do
+ActiveRecord::Schema.define(:version => 20130802184422) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
     t.string   "barcode"
     t.string   "species"
     t.string   "matrix"
-    t.string   "group_id"
-    t.string   "sample_volume"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.boolean  "gc_fap"
-    t.boolean  "ss_1"
-    t.boolean  "ss_2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "module_6"
+    t.boolean  "module_7"
+    t.boolean  "module_8"
+    t.boolean  "module_9"
+    t.boolean  "module_10"
+    t.boolean  "module_11"
+    t.boolean  "module_12"
+    t.decimal  "sample_volume"
+    t.string   "volume_units"
+    t.integer  "group_id"
+    t.integer  "tube_id"
   end
 
   create_table "cell_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
     t.string   "barcode"
     t.string   "cell_line"
-    t.string   "group_id"
     t.integer  "viable_cells"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.boolean  "gc_fap"
-    t.boolean  "ss_1"
-    t.boolean  "ss_2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "species"
+    t.boolean  "module_6"
+    t.boolean  "module_7"
+    t.boolean  "module_8"
+    t.boolean  "module_9"
+    t.boolean  "module_10"
+    t.boolean  "module_11"
+    t.boolean  "module_12"
+    t.integer  "group_id"
+    t.integer  "tube_id"
   end
 
   create_table "clients", :force => true do |t|
@@ -89,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20120827043353) do
     t.string   "secondary_phone"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "serial_number",          :default => 0
   end
 
   add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true
@@ -320,12 +331,16 @@ ActiveRecord::Schema.define(:version => 20120827043353) do
   create_table "sample_manifests", :force => true do |t|
     t.integer  "client_id"
     t.string   "title"
-    t.boolean  "verified",          :default => false
-    t.boolean  "shipped",           :default => false
+    t.boolean  "verified",           :default => false
+    t.boolean  "shipped",            :default => false
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "client_institution"
+    t.string   "submitter_email"
+    t.string   "pi_email"
+    t.string   "grant_id"
   end
 
   create_table "samples", :force => true do |t|
@@ -477,22 +492,27 @@ ActiveRecord::Schema.define(:version => 20120827043353) do
 
   create_table "tissue_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
     t.string   "barcode"
     t.string   "species"
     t.string   "matrix"
-    t.string   "group_id"
-    t.string   "tissue_weight"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
     t.boolean  "module_4"
     t.boolean  "module_5"
-    t.boolean  "gc_fap"
-    t.boolean  "ss_1"
-    t.boolean  "ss_2"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "module_6"
+    t.boolean  "module_7"
+    t.boolean  "module_8"
+    t.boolean  "module_9"
+    t.boolean  "module_10"
+    t.boolean  "module_11"
+    t.boolean  "module_12"
+    t.string   "weight_units"
+    t.integer  "tissue_weight"
+    t.integer  "group_id"
+    t.integer  "tube_id"
   end
 
   create_table "users", :force => true do |t|

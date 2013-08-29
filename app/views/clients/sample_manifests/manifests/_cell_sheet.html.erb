@@ -1,0 +1,37 @@
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Tube ID</th>
+			<th>Species</th>
+			<th>Cell Line <br /> Code </th>
+			<th>Experimental <br /> Group #</th>
+			<th>Viable Cell <br /> Number</th>
+			<%= render :partial => "clients/sample_manifests/manifests/module_headings" %>
+			<% if barcode_description %>
+				<th>Barcode <br/> Description</th>
+			<% end %>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @sample_manifest.cell_sample_manifests.order("tube_id").each do |s|%>
+		<tr>
+			<td><%= s.tube_id %></td>
+			<td <% if s.species.blank? %> class='warning'<% end %>><%= s.species %></td>
+			<td <% if s.cell_line.blank? %> class='warning'<% end %>><%= s.cell_line %></td>
+			<td <% if s.group_id.blank? %> class='warning'<% end %>><%= s.group_id %></td>
+			<td <% if s.viable_cells.blank? %> class='warning'<% end %>><%= s.viable_cells %></td>
+			<%= render :partial => "clients/sample_manifests/manifests/module_tests", :locals => {:s => s} %>
+			<% if barcode_description %>
+				<td><%= text_field_tag(SampleManifest.barcode_textbox_name(s), nil, :placeholder => 'Decscription', :size => 20, :maxlength => 20) %></td>
+			<% end %>
+			<td><%= number_to_currency(s.estimate) %></td>
+		</tr>
+	<% end %>
+		<tr>
+			<td colspan="<%= barcode_description ? 17 : 16 %>"></td>
+			<td>Total:</td>
+			<td><%= number_to_currency(SampleManifest.sheet_estimate(@sample_manifest.cell_sample_manifests)) %></td>
+		</tr>
+	</tbody>
+</table>

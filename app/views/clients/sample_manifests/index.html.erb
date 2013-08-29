@@ -10,7 +10,7 @@
 		<th></th>
   </tr>
 	
-  <% @sample_manifests.each do |sm| %>
+  <% @sample_manifests.order("id").each do |sm| %>
     <tr class="<%= cycle('odd', 'even') %>">
   		<td><%= sm.id %></td>
       <td><%= sm.title.present? ? sm.title : 'No Title' %></td>

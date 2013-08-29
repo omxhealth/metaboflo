@@ -5,6 +5,7 @@ class Public::PagesController < ApplicationController
   skip_before_filter :authenticate_client!
 
   def home
+    render :layout => false
   end
       
   def about
@@ -15,4 +16,9 @@ class Public::PagesController < ApplicationController
 
   def contact
   end
+  
+   def download_blank_manifest
+    send_file 'spreadsheets/blank_manifest.xlsm', :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
+  end
+  
 end

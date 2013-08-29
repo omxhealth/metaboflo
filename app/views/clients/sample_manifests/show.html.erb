@@ -1,112 +1,49 @@
-<% if @sample_manifest.biofluid_sample_manifests.exists? %>
-  <h1>Blood/Urine Samples</h1>
-  <table class="list">
-  	<tr>
-  		<th>Tube ID</th>
-  		<th>Barcode</th>
-  		<th>Species</th>
-  		<th>Matrix</th>
-  		<th>Group ID</th>
-  		<th>Sample Volume</th>
-  		<th>Test Codes</th>
-  	</tr>
-  	<% @sample_manifest.biofluid_sample_manifests.each do |s|%>
-    	<tr>
-    		<td><%= s.tube_id %></td>
-    		<td><%= s.barcode %></td>
-    		<td><%= s.species %></td>
-    		<td><%= s.matrix %></td>
-    		<td><%= s.group_id %></td>
-    		<td><%= s.sample_volume %></td>
-    		<td><%= SampleManifest.module_codes(s).present? ? SampleManifest.module_codes(s).join(", ") : 'none' %></td>
-    	</tr>
-    <% end %>
-  </table>
+<% confirmable = @sample_manifest.confirmable_manifest? %>
+<% if !confirmable && (@sample_manifest.samples? || @sample_manifest.common_data_exists?) %>
+	<div id="missing-fields">
+		<h2>Fill out the following fields on the spreadsheet to be able to confirm</h2>
+		<div id="missing-fields-accordion">
+				<% if !@sample_manifest.all_common_fields_present? %>
+					<h3>All Sheets</h3>
+					<ul>
+						<% if @sample_manifest.title.blank?%>
+							<li>Title</li>
+						<% end %>
+						<% if @sample_manifest.client_institution.blank?%>
+							<li>Client Institution</li>
+						<% end %>
+						<% if @sample_manifest.submitter_email.blank?%>
+							<li>Submitter Email</li>
+						<% end %>
+						<% if @sample_manifest.pi_email.blank?%>
+							<li>Pi Email</li>
+						<% end %>
+						<% if @sample_manifest.grant_id.blank? %>
+							<li>Grant/Funding</li>
+						<% end %>
+					</ul>
+				<% end %>
+				<%= render :partial => "clients/sample_manifests/manifests/all_sheets_missing_fields", :locals => 
+																		{:samples => @sample_manifest.tissue_sample_manifests, :type => "tissue"} %>
+				<%= render :partial => "clients/sample_manifests/manifests/all_sheets_missing_fields", :locals => 
+																		{:samples => @sample_manifest.biofluid_sample_manifests, :type => "biofluid"} %>
+				<%= render :partial => "clients/sample_manifests/manifests/all_sheets_missing_fields", :locals => 
+																		{:samples => @sample_manifest.cell_sample_manifests, :type => "cell"} %>
+		</div>
+	</div>
 <% end %>
 
-<% if @sample_manifest.tissue_sample_manifests.exists? %>
-  <h1>Tissue Samples</h1>
-  <table class="list">
-  	<tr>
-  		<th>Tube ID</th>
-  		<th>Barcode</th>
-  		<th>Species</th>
-  		<th>Matrix</th>
-  		<th>Group ID</th>
-  		<th>Tissue Weight</th>
-  		<th>Test Codes</th>
-  	</tr>
-  	<% @sample_manifest.tissue_sample_manifests.each do |s|%>
-    	<tr>
-    		<td><%=s.tube_id%></td>
-    		<td><%=s.barcode%></td>
-    		<td><%=s.species%></td>
-    		<td><%=s.matrix%></td>
-    		<td><%=s.group_id%></td>
-    		<td><%=s.tissue_weight%></td>
-    		<td><%= SampleManifest.module_codes(s).present? ? SampleManifest.module_codes(s).join(", ") : 'none' %></td>
-    	</tr>
-  	<%end%>
-  </table>
+
+<%= form_tag("#{@sample_manifest.id}/confirm", :method => :post) do %>
+	<%= render :partial => "clients/sample_manifests/manifests/common_sheet_data" %>
+	<%= render :partial => 'clients/sample_manifests/manifests/manifest_workbook', :locals => {:barcode_description => 	confirmable && 
+																														!@sample_manifest.verified } %>
+	<%= link_to 'Edit Manifest', edit_clients_sample_manifest_path, :class => :button unless @sample_manifest.verified %>
+	<% if confirmable && !@sample_manifest.verified %>
+	<%= submit_tag('Confirm Order', :class => :button, :confirm => 'By Confirming this manifest you agree to pay the total estimate. ' + 
+																			'Additionally, once comfirmed the manifest cannot be edited anymore.') %>																									
+	<% end %>
 <% end %>
-<% if @sample_manifest.cell_sample_manifests.exists? %>
-  <h1>Cell Samples</h1>
-  <table class="list">
-  	<tr>
-  		<th>Tube ID</th>
-  		<th>Barcode</th>
-  		<th>Cell Line</th>
-  		<th>Viable Cells</th>
-  		<th>Group ID</th>
-  		<th>Test Codes</th>
-  	</tr>
-  	<% @sample_manifest.cell_sample_manifests.each do |s|%>
-    	<tr>
-    		<td><%= s.tube_id %></td>
-    		<td><%= s.barcode %></td>
-    		<td><%= s.cell_line %></td>
-    		<td><%= s.viable_cells %></td>
-    		<td><%= s.group_id %></td>
-    		<td><%= SampleManifest.module_codes(s).present? ? SampleManifest.module_codes(s).join(", ") : 'none' %></td>
-    	</tr>
-  	<%end%>
-  </table>	
-<% end %>
-
-<br><br>
-<h1>Estimate</h1>
-<table class="list">
-	<tr>
-		<th>Total Samples</th>
-		<th>Total Tests</th>
-		<th>Estimated Cost</th>
-	<tr>
-	<tr>
-		<td><%= @sample_manifest.total_samples %></td>
-		<td><%= @sample_manifest.total_tests %></td>
-		<td>$<%= @sample_manifest.estimate %></td>
-	<tr>
-</table>
-<br>
-
-<% if @sample_manifest.stored_files.present? %>
-  <br>
-  <h1>Reports</h1>
-  <table class="list">
-    <tr>
-      <th>#</th>
-      <th>Description</th>
-      <th>Download</th>
-    <tr>
-      <% @sample_manifest.stored_files.each_with_index do |file, count| %>
-        <tr>
-          <td><%= count + 1 %></td>
-          <td>GC/MS Result Summary (Metabolite AUC)</td>
-          <td><%= link_to 'Download', file.attachment.url %></td>
-        <tr>
-      <% end -%>
-  </table>
-  <br>
-<% end -%>
-
-<button id="print_manifest" class="button" data-url="<%=print_clients_sample_manifest_path(@sample_manifest)%>">Print</button><button class="button">Back</button>
+<% if File.exists?(@sample_manifest.barcodes_path) %>
+	<%= link_to 'Barcodes', barcode_pdf_clients_sample_manifest_path, :target => '_blank' %>
+<% end %>	
