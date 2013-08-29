@@ -48,8 +48,8 @@ table {
 .table td {
   padding: 8px;
   line-height: 20px;
-  text-align: left;
-  vertical-align: top;
+  text-align: center;
+  vertical-align: center;
   border-top: 1px solid #dddddd;
 }
 .table th {
@@ -274,9 +274,47 @@ table th[class*="span"],
   text-align: center;
 }
 // My own css
+table.table {
+  border-collapse: collapse;  
+}
+
 #downloads {
   float: left;
   width: 20%;
   background-color: #E6E6FA;
   padding: 15px;
+}
+
+#small-table {
+  width: 25%;
+  th {
+    width: 10%;
+  }
+}
+
+td.warning {
+  background-color: #fcf8e3;
+  border: 2px solid red;
+}
+
+#missing-fields {
+  border-color: red;
+  border-style: solid;
+  width: 25%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  max-height: 200px;
+  overflow-y: auto;
+  ul, li {
+    text-decoration: none;
+    padding: 0px;
+  }
+  div > ul > li {
+    border-bottom: solid black;
+    font-weight: bold;
+    li {
+      font-weight: normal;
+    }
+  }
 }

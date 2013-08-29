@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover table-striped">
+<table class="table table-bordered table-hover">
 	<thead>
 		<tr>
 			<th>Tube ID</th>
@@ -8,19 +8,32 @@
 			<th>Sample <br /> Volume</th>
 			<th>Units</th>
 			<%= render :partial => "clients/sample_manifests/manifests/module_headings" %>
+			<% if barcode_description %>
+				<th>Barcode <br/> Description</th>
+			<% end %>
+			<th>Price</th>
 		</tr>
 	</thead>
 	<tbody>
-	<% samples.each do |s|%>
+	<% @sample_manifest.biofluid_sample_manifests.order("tube_id").each do |s|%>
 		<tr>
 			<td><%= s.tube_id %></td>
-			<td><%= s.species %></td>
-			<td><%= s.matrix %></td>
-			<td><%= s.group_id %></td>
-			<td><%= s.sample_volume %></td>
-			<td><%= s.volume_units %></td>
+			<td <% if s.species.blank? %> class='warning'<% end %>><%= s.species %></td>
+			<td <% if s.matrix.blank? %> class='warning'<% end %>><%= s.matrix %></td>
+			<td <% if s.group_id.blank? %> class='warning'<% end %>><%= s.group_id %></td>
+			<td <% if s.sample_volume.blank? %> class='warning'<% end %>><%= s.sample_volume %></td>
+			<td <% if s.volume_units.blank? %> class='warning'<% end %>><%= s.volume_units %></td>
 			<%= render :partial => "clients/sample_manifests/manifests/module_tests", :locals => {:s => s} %>
+			<% if barcode_description %>
+				<td><%= text_field_tag(SampleManifest.barcode_textbox_name(s), nil, :placeholder => 'Decscription', :size => 20, :maxlength => 20) %></td>
+			<% end %>
+			<td><%= number_to_currency(s.estimate) %></td>
 		</tr>
-		<% end %>
+	<% end %>
+		<tr>
+			<td colspan="<%= barcode_description ? 18 : 17 %>"></td>
+			<td>Total:</td>
+			<td><%= number_to_currency(SampleManifest.sheet_estimate(@sample_manifest.biofluid_sample_manifests)) %></td>
+		</tr>	
 	</tbody>
 </table>

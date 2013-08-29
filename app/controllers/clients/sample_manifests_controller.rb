@@ -61,19 +61,31 @@ class Clients::SampleManifestsController < Clients::BaseController
   end
   
   def confirm
+    @sample_manifest = SampleManifest.find(params[:id])
+    message = ""
+    if @sample_manifest.confirmable_manifest?
+      @sample_manifest.verified = true
+      @sample_manifest.assign_barcodes
+      @sample_manifest.generate_barcodes(params.dup)
+      message = "Successfully confirmed the order."
+    else
+      message = "Please fill out all the required fields."
+    end
+    redirect_to([:clients,@sample_manifest], :notice => message)
   end
   
   def download_uploaded_manifest
      @sample_manifest = SampleManifest.find(params[:id])
-     send_file "public/system/sample_manifests/sample_manifest_#{@sample_manifest.id}.xlsm", :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
+     send_file @sample_manifest.sample_manifest_path, :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
   end
-  
-  def download_blank_manifest
-    send_file 'spreadsheets/blank_manifest.xlsm', :type => 'application/vnd.ms-excel.sheet.macroEnabled.12'
-  end
-  
-  def download_guideline
-    send_file 'public/downloads/guidelines_for_all_samples_v1.pdf', :type => 'application/pdf'
+   
+  def barcode_pdf
+    @sample_manifest = SampleManifest.find(params[:id])
+    if File.exists?(@sample_manifest.barcodes_path)
+      send_file @sample_manifest.barcodes_path, :type => 'application/pdf', :disposition => 'inline'
+    else
+      redirect_to([:clients,@sample_manifest], :notice => 'No Barcodes Available.')
+    end
   end
   
   private

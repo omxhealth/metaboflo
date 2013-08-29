@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
   def index
-    @clients = Client.all
+    @clients = Client.order("email")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,6 +79,12 @@ class ClientsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(clients_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def download_barcodes
+    if File.exists?(params[:barcodes_path])
+      send_file params[:barcodes_path], :type => 'application/pdf', :disposition => 'inline'
     end
   end
 end

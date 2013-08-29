@@ -23,10 +23,10 @@ class BiofluidSampleManifest < ActiveRecord::Base
     total += 90 if self.module_1
     total += 90 if self.module_2
     total += 90 if self.module_3
-    total += 65 if self.module_4
+    total += 90 if self.module_4
     total += 90 if self.module_5
     total += 90 if self.module_6
-    total += 90 if self.module_7
+    total += 125 if self.module_7
     total += 90 if self.module_8
     total += 90 if self.module_9
     total += 90 if self.module_10
@@ -36,4 +36,33 @@ class BiofluidSampleManifest < ActiveRecord::Base
     total
     
   end
+  
+  def to_s
+    "#{self.class.to_s}: Tube Id - #{self.tube_id} Species - #{self.species} Biofluid - #{self.matrix} " + 
+    "Group # - #{self.group_id} Volume - #{self.sample_volume}#{self.volume_units} Modules - #{modules.join(',')}"
+  end
+  
+  def required_fields_present?
+    !self.species.blank? && !self.sample_volume.blank? &&
+    !self.matrix.blank? && !self.volume_units.blank? && !self.group_id.blank?
+  end
+  
+  def modules
+    
+    modules = []
+    modules << "1" if self.module_1
+    modules << "2" if self.module_2
+    modules << "3" if self.module_3
+    modules << "4" if self.module_4
+    modules << "5" if self.module_5
+    modules << "6" if self.module_6
+    modules << "7" if self.module_7
+    modules << "8" if self.module_8
+    modules << "9" if self.module_9
+    modules << "10" if self.module_10
+    modules << "11" if self.module_11
+    modules << "12" if self.module_12
+    modules
+  end
+  
 end

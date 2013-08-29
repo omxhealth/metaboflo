@@ -11,15 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701012220) do
+ActiveRecord::Schema.define(:version => 20130802184422) do
 
   create_table "biofluid_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
     t.string   "barcode"
     t.string   "species"
     t.string   "matrix"
-    t.string   "group_id"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
@@ -36,14 +34,14 @@ ActiveRecord::Schema.define(:version => 20130701012220) do
     t.boolean  "module_12"
     t.decimal  "sample_volume"
     t.string   "volume_units"
+    t.integer  "group_id"
+    t.integer  "tube_id"
   end
 
   create_table "cell_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
     t.string   "barcode"
     t.string   "cell_line"
-    t.string   "group_id"
     t.integer  "viable_cells"
     t.boolean  "module_1"
     t.boolean  "module_2"
@@ -60,6 +58,8 @@ ActiveRecord::Schema.define(:version => 20130701012220) do
     t.boolean  "module_10"
     t.boolean  "module_11"
     t.boolean  "module_12"
+    t.integer  "group_id"
+    t.integer  "tube_id"
   end
 
   create_table "clients", :force => true do |t|
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20130701012220) do
     t.string   "secondary_phone"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "serial_number",          :default => 0
   end
 
   add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true
@@ -339,6 +340,7 @@ ActiveRecord::Schema.define(:version => 20130701012220) do
     t.string   "client_institution"
     t.string   "submitter_email"
     t.string   "pi_email"
+    t.string   "grant_id"
   end
 
   create_table "samples", :force => true do |t|
@@ -490,11 +492,9 @@ ActiveRecord::Schema.define(:version => 20130701012220) do
 
   create_table "tissue_sample_manifests", :force => true do |t|
     t.integer  "sample_manifest_id"
-    t.string   "tube_id"
     t.string   "barcode"
     t.string   "species"
     t.string   "matrix"
-    t.string   "group_id"
     t.boolean  "module_1"
     t.boolean  "module_2"
     t.boolean  "module_3"
@@ -509,8 +509,10 @@ ActiveRecord::Schema.define(:version => 20130701012220) do
     t.boolean  "module_10"
     t.boolean  "module_11"
     t.boolean  "module_12"
-    t.decimal  "tissue_weight"
     t.string   "weight_units"
+    t.integer  "tissue_weight"
+    t.integer  "group_id"
+    t.integer  "tube_id"
   end
 
   create_table "users", :force => true do |t|
