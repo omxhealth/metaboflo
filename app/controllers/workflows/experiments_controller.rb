@@ -6,14 +6,14 @@ class Workflows::ExperimentsController < ApplicationController
   def index
   end
 
-  # GET /workflows/experiments/1
-  # GET /workflows/experiments/1.xml
-  def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @experiment }
-    end
-  end
+  # # GET /workflows/experiments/1
+  # # GET /workflows/experiments/1.xml
+  # def show
+  #   respond_to do |format|
+  #     format.html # show.html.erb
+  #     format.xml  { render :xml => @experiment }
+  #   end
+  # end
 
   # GET /workflows/experiments/new
   # GET /workflows/experiments/new.xml
@@ -26,9 +26,9 @@ class Workflows::ExperimentsController < ApplicationController
     end
   end
 
-  # GET /workflows/experiments/1/edit
-  def edit
-  end
+  # # GET /workflows/experiments/1/edit
+  # def edit
+  # end
 
   # POST /workflows/experiments
   # POST /workflows/experiments.xml
@@ -47,20 +47,20 @@ class Workflows::ExperimentsController < ApplicationController
     end
   end
 
-  # PUT /experiments/1
-  # PUT /experiments/1.xml
-  def update
-    respond_to do |format|
-      if @experiment.update_attributes(params[:experiment])
-        flash[:notice] = 'Experiment was successfully updated.'
-        format.html { redirect_to([:workflows, @experiment]) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+  # # PUT /experiments/1
+  # # PUT /experiments/1.xml
+  # def update
+  #   respond_to do |format|
+  #     if @experiment.update_attributes(params[:experiment])
+  #       flash[:notice] = 'Experiment was successfully updated.'
+  #       format.html { redirect_to([:workflows, @experiment]) }
+  #       format.xml  { head :ok }
+  #     else
+  #       format.html { render :action => "edit" }
+  #       format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /workflows/experiments/1
   # DELETE /workflows/experiments/1.xml
