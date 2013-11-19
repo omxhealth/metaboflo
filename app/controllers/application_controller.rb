@@ -42,8 +42,10 @@ class ApplicationController < ActionController::Base
     end
   
     def find_test_subject(param_name = :test_subject_id)
-      @test_subject = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
+      @test_subject = (current_user.rank == 'Superuser' || current_user.rank == 'Administrator') ?
                   TestSubject.find(params[param_name]) :
                   TestSubject.find(params[param_name], :conditions => [ 'site_id=?', current_user.site ])
+
+      #TODO: What if the test_subject isnt in this user's site? This currently throws an exception...
     end
 end

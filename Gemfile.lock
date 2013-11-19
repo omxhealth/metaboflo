@@ -30,6 +30,11 @@ GEM
     activesupport (3.0.7)
     arel (2.0.10)
     bcrypt-ruby (2.1.4)
+    better_errors (0.7.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
     builder (2.1.2)
     capistrano (2.5.21)
       highline
@@ -39,6 +44,8 @@ GEM
       net-ssh-gateway (>= 1.0.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
+    coderay (1.0.9)
+    debug_inspector (0.0.2)
     devise (1.2.1)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -106,6 +113,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   capistrano (= 2.5.21)
   capistrano-ext (= 1.2.1)
   devise (= 1.2.1)

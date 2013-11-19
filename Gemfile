@@ -31,6 +31,11 @@ gem 'meta_search', '1.0.3'
 gem 'paperclip', '2.3.8'
 gem 'will_paginate', '3.0.pre2'
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
