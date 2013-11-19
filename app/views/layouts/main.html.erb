@@ -76,6 +76,15 @@
                 </div>
               </div>
             </li>
+            <li class="yuimenubaritem"><%= link_to 'Batches', new_batches_sample_path, :class => 'yuimenubaritemlabel' %>
+              <div id="tasks" class="yuimenu">
+                <div class="bd">                    
+                  <ul>
+                    <li class="yuimenuitem"><%= link_to 'New Samples', new_batches_sample_path, :class => 'yuimenuitemlabel' %></li>
+                  </ul>                    
+                </div>
+              </div>                                        
+            </li>
             <li class="yuimenubaritem">
               <%= link_to 'Run Experiment', new_workflows_experiment_path, :class => 'yuimenuitemlabel' %>
             </li>

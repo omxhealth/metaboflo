@@ -27,6 +27,10 @@ Metaboflo::Application.routes.draw do
       end
     end
   end
+
+  namespace :batches do
+    resources :samples, :only => [:new, :create]
+  end
   
   devise_for :users
   resources :nutrients
