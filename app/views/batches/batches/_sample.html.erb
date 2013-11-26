@@ -1,0 +1,7 @@
+<div class="fields box files">
+  <div class="field">
+    <%= f.label :barcode, :required => true %>
+    <%= f.text_field :barcode, :size => 30 %>
+  </div>
+  <%= remove_fields_for f, :sample %>
+</div>

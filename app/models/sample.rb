@@ -4,6 +4,7 @@ class Sample < ActiveRecord::Base
   scope :location_contains, lambda {|name| where(['building like ? or room like ?', "%#{name}%", "%#{name}%"])}
   search_methods :location_contains
   
+  belongs_to :batch
   belongs_to :client
   belongs_to :test_subject
   belongs_to :sample

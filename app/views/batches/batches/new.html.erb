@@ -1,0 +1,23 @@
+<h1>New Batch of Samples</h1>
+
+<p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  Batches allow you to enter information for many batches at a time. This page allows for the creation of many samples at once.
+</p>
+
+<%= form_for [:batches, setup_batch(@batch)], :html => { :multipart => true, :autocomplete => false } do |f| %>
+  <% flash.now[:error] = "#{pluralize(@batch.errors.count, "error")} prohibited this experiment from being saved" if @batch.errors.any? %>
+  
+  <fieldset id="samples" class="fields-for">
+    <legend>Samples</legend>  
+    <div class="actions">
+      <%= add_link_for_new_fields_for f, :sample %>
+    </div>
+
+    <%= f.fields_for :samples do |sample_form| %>
+      <%= render :partial => 'sample', :locals => { :f => sample_form } %>
+    <% end %>
+  </fieldset>
+  
+  <%= f.submit %>
+<% end %>

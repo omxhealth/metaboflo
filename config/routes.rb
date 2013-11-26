@@ -29,7 +29,7 @@ Metaboflo::Application.routes.draw do
   end
 
   namespace :batches do
-    resources :samples, :only => [:new, :create]
+    resources :batches, :only => [:new, :create]
   end
   
   devise_for :users
