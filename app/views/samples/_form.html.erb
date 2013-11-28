@@ -10,7 +10,7 @@
   <% if @parent_sample %>
     <p><%= form.label :sample_type %> <%= @parent_sample.sample_type %></p>
   <% else %>
-    <p><%= form.select :sample_type, ['ruminal', 'blood', 'milk', 'urine', 'feces'] %></p>
+    <p><%= form.select :sample_type, sample_types %></p>
   <% end %>
   <p><%= form.text_field :barcode, :size => 30 %></p>
   <p><%= form.label :description %><%= form.text_area :description %></p>

@@ -22,5 +22,4 @@ $(function() {
 
     $('form a.add_child').live('click', add_child)
     $('form a.remove_child').live('click', remove_child)
-	
 });

@@ -7,4 +7,8 @@ module SamplesHelper
       end
     end
   end
+
+  def sample_types
+    ['Urine', 'Blood', 'Feces', 'Saliva', 'CSF', 'Bile', 'Amniotic Fluid', 'Cellular Cytoplasm', 'Breast Milk', 'Semen', 'Pericardial Effusion', 'Aqueous Humour', 'Ascites Fluid', 'Lymph', 'Sweat', 'Tears']
+  end
 end

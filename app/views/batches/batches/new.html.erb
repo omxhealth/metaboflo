@@ -8,6 +8,15 @@
 <%= form_for [:batches, setup_batch(@batch)], :html => { :multipart => true, :autocomplete => false } do |f| %>
   <% flash.now[:error] = "#{pluralize(@batch.errors.count, "error")} prohibited this experiment from being saved" if @batch.errors.any? %>
   
+  <fieldset id="batch" class="fields-for">
+    <legend>Batch</legend>  
+    <div class="field">
+      <%= f.label :name, :required => true %>
+      <%= f.text_field :name, :size => 30 %>
+      <%= error_message(Batch.human_attribute_name(:name), f.object.errors[:name]) %>
+    </div>
+  </fieldset>
+
   <fieldset id="samples" class="fields-for">
     <legend>Samples</legend>  
     <div class="actions">
