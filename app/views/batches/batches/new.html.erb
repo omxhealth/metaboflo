@@ -25,6 +25,7 @@
 
     <%= f.fields_for :samples do |sample_form| %>
       <%= render :partial => 'sample', :locals => { :f => sample_form } %>
+      <br /><br />
     <% end %>
   </fieldset>
   

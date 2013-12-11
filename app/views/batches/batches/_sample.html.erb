@@ -1,5 +1,8 @@
 <div class="fields box batchsample">
 
+  <!-- TODO: sample counter, ###enter number in batch first. -->
+
+
   <div class="field">
     <%= f.label :barcode, :required => true %>
     <%= f.text_field :barcode, :size => 30 %>
@@ -20,40 +23,45 @@
     <%= f.date_select :collected_on, :include_blank => true, :no_label => true %>
   </div>
 
-
-<!--   <div class="field">
-    <%= f.label :original_amount %>
-    <%= f.text_field :original_amount, :label => 'Amodunt received', :size => 5 %> 
-    <%= f.select :original_unit, volume_unit_options, :include_blank => true, :no_label => true %>
-  </div>
-
-
   <div class="field">
-    <%= f.label :actual_amount %>
-    <%= f.text_field :actual_amount, :label => 'Amodunt remaining', :size => 5 %> 
-    <%= f.select :actual_unit, volume_unit_options, :include_blank => true, :no_label => true %>
+    <%= f.label :collection_location %>
+    <%= f.text_field :collection_location, :size => 20 %>
   </div>
- -->
 
   <div class="field">
     <%= f.label :site_id %>
     <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
-    <br /><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :building %>
     <%= f.text_field :building, :size => 10 %>
   </div>
 
-<fieldset>
-  <legend>Storage Details</legend>
-  <p>Site: <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %></p>
-  <p>Building: <%= f.text_field :building, :size => 10 %></p>
-  <p>Room: <%= f.text_field :room, :size => 10 %></p>
-  <p>Freezer: <%= f.text_field :freezer, :size => 10 %></p>
-  <p>Shelf: <%= f.text_field :shelf, :size => 10 %></p>
-  <p>Box: <%= f.text_field :box, :size => 10 %></p>
-  <p>Box Position: <%= f.text_field :box_position, :size => 10 %></p>
-</fieldset>
+  <div class="field">
+    <%= f.label :room %>
+    <%= f.text_field :room, :size => 10 %>
+  </div>
 
-  <!-- collection location, sample counter, ###enter number in batch first. -->
+  <div class="field">
+    <%= f.label :freezer %>
+    <%= f.text_field :freezer, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :shelf %>
+    <%= f.text_field :shelf, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :box %>
+    <%= f.text_field :box, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :box_position %>
+    <%= f.text_field :box_position, :size => 10 %>
+  </div>
 
   <%= remove_fields_for f, :sample %>
 </div>
