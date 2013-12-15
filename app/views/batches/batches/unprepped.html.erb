@@ -1,5 +1,5 @@
 
-<%= form_tag new_batches_preparation_path, :html => { :method => :get } do |f| %>
+<%= form_tag new_batches_preparation_path, method: :get do |f| %>
   <table class="list", style="width: 100%">
 
     <tr class="header">
@@ -13,7 +13,7 @@
     <% @batches.each do |batch| %>
       <% batch.samples.each do |s| %>
         <tr class="<%= cycle('odd', 'even') %>">
-          <td><%= check_box_tag 'blah' %></td>
+          <td><%= check_box_tag 'samples[]', s.id %></td>
           <td><%= s.barcode %></td>
           <td><%= batch.name %></td>
           <td><%= s.collected_on %></td>

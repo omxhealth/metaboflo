@@ -1,0 +1,28 @@
+<h1>Prepare a Batch of Samples</h1>
+
+<p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  Add sample preparation information.
+</p>
+
+
+<%= form_tag batches_preparations_path :method => :put do %>  
+
+  <fieldset id="batch" class="fields-for">
+    <legend>Batch</legend>  
+    <div class="field">
+      <%= label_tag :batch_name %>
+      <%= text_field_tag :batch_name %>
+    </div>
+
+
+    <% for sample in @samples %>  
+      <%= fields_for "samples[]", sample do |f| %>  
+        <%= render :partial => 'sample', :locals => { :f => f } %>
+      <% end %>  
+    <% end %>  
+
+    <p><%= submit_tag "Submit" %></p>  
+
+  </fieldset>
+<% end %>  
