@@ -1,25 +1,26 @@
 <div class="fields box batchsample">
 
-  <!-- TODO: sample counter, ###enter number in batch first. -->
+  <strong>Sample #<%= counter %></strong>
 
+  <!-- TODO:  ###enter number in batch first. -->
 
   <div class="field">
-    <%= f.label :barcode, :required => true %>
+    <%= f.label :barcode %>
     <%= f.text_field :barcode, :size => 30 %>
   </div>
 
   <div class="field">
-    <%= f.label :sample_type, :required => true %>
+    <%= f.label :sample_type %>
     <%= f.select :sample_type, sample_types %>
   </div>
 
   <div class="field">
-    <%= f.label :collected_by_id, 'Collected By', :required => true %>
+    <%= f.label :collected_by_id, 'Collected By' %>
     <%= f.select :collected_by_id, User.all.collect {|u| [ "#{u.name}", u.id ] }, { }, { :include_blank => true } %>
   </div>
 
   <div class="field">
-    <%= f.label :collected_on, 'Collected On', :required => true %>
+    <%= f.label :collected_on, 'Collected On' %>
     <%= f.date_select :collected_on, :include_blank => true, :no_label => true %>
   </div>
 
@@ -28,40 +29,44 @@
     <%= f.text_field :collection_location, :size => 20 %>
   </div>
 
-  <div class="field">
-    <%= f.label :site_id %>
-    <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :building %>
-    <%= f.text_field :building, :size => 10 %>
-  </div>
+  <fieldset>
+    <legend>Storage Location</legend>
 
-  <div class="field">
-    <%= f.label :room %>
-    <%= f.text_field :room, :size => 10 %>
-  </div>
+    <div class="field">
+      <%= f.label :site_id %>
+      <%= f.select :site_id, Site.find(:all, :order => 'name ASC').collect { |site| [site.name, site.id] }, :include_blank => true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :freezer %>
-    <%= f.text_field :freezer, :size => 10 %>
-  </div>
+    <div class="field">
+      <%= f.label :building %>
+      <%= f.text_field :building, :size => 10 %>
+    </div>
 
-  <div class="field">
-    <%= f.label :shelf %>
-    <%= f.text_field :shelf, :size => 10 %>
-  </div>
+    <div class="field">
+      <%= f.label :room %>
+      <%= f.text_field :room, :size => 10 %>
+    </div>
 
-  <div class="field">
-    <%= f.label :box %>
-    <%= f.text_field :box, :size => 10 %>
-  </div>
+    <div class="field">
+      <%= f.label :freezer %>
+      <%= f.text_field :freezer, :size => 10 %>
+    </div>
 
-  <div class="field">
-    <%= f.label :box_position %>
-    <%= f.text_field :box_position, :size => 10 %>
-  </div>
+    <div class="field">
+      <%= f.label :shelf %>
+      <%= f.text_field :shelf, :size => 10 %>
+    </div>
 
-  <%= remove_fields_for f, :sample %>
+    <div class="field">
+      <%= f.label :box %>
+      <%= f.text_field :box, :size => 10 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :box_position %>
+      <%= f.text_field :box_position, :size => 10 %>
+    </div>
+  </fieldset>
+
 </div>

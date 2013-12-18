@@ -29,7 +29,20 @@ class Sample < ActiveRecord::Base
   validate :sample_chronology
   validate :same_parent?
   validate :client_blank?
-  
+
+  validates :barcode, presence: true
+  # validates :sample_type, presence: true
+  # validates :collected_by, presence: true
+  # validates :collected_on, presence: true
+  # validates :collection_location, presence: true
+  # validates :site, presence: true
+  # validates :building, presence: true
+  # validates :room, presence: true
+  # validates :freezer, presence: true
+  # validates :shelf, presence: true
+  # validates :box, presence: true
+  # validates :box, presence: true
+
   # Required so that Experiments, Samples, and TestSubjects can be displayed in groupings
   def to_s
     return "#{self.barcode.blank? ? 'No barcode' : self.barcode} (#{sample_type.blank? ? 'No sample type' : sample_type} - #{original_amount.blank? ? 'Unknown amount' : "#{original_amount} #{original_unit}"})"
