@@ -3,6 +3,8 @@ class Batches::PreparationsController < ApplicationController
   # GET /batches/preparations/new
   # GET /batches/preparations/new.xml
   def new
+    @batch_name = DateTime.now.strftime("%Y-%m-%d")
+
     if (params[:samples])
       @samples = Sample.find(params[:samples])
     else
@@ -13,7 +15,7 @@ class Batches::PreparationsController < ApplicationController
   # POST /batches/preparations
   # POST /batches/preparations.xml
   def create
-    @batch = Batch.new(params[:batch])
+    @batch = Batch.new(:name => params[:batch_name])
 
     puts params
 

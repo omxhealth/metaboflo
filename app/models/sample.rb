@@ -10,6 +10,8 @@ class Sample < ActiveRecord::Base
   belongs_to :sample
   belongs_to :site
   belongs_to :collected_by, :class_name => 'User'
+  belongs_to :prepped_by, :class_name => 'User'
+  belongs_to :protocol
   
   has_many :samples, :dependent => :destroy
   has_many :experiments, :dependent => :destroy

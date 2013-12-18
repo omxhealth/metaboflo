@@ -4,5 +4,24 @@
 
   <br /><br />
 
-  Prep information...
+  <div class="field">
+    <%= f.label :prepped_by_id, 'Prepped By' %>
+    <%= f.select :prepped_by_id, User.all.collect {|u| [ "#{u.name}", u.id ] }, { }, { :include_blank => true } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dss_concentration, 'DSS Concentration' %>
+    <%= f.text_field :dss_concentration, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dss_lot, 'DSS Lot #' %>
+    <%= f.text_field :dss_lot, :size => 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :protocol, 'SOP' %>
+    <%= f.select :protocol, Protocol.all.collect {|u| [ "#{u.name}", u.id ] }, { }, { :include_blank => true } %>
+  </div>
+
 </div>
