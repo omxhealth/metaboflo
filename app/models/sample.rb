@@ -18,6 +18,9 @@ class Sample < ActiveRecord::Base
   
   has_many :grouping_assignments, :as => :assignable, :dependent => :destroy
   has_many :groupings, :through => :grouping_assignments
+
+  has_many :corrections, :dependent => :destroy
+  accepts_nested_attributes_for :corrections, :allow_destroy => true
   
   has_many :stored_files, :as => :attachable
   accepts_nested_attributes_for :stored_files, :allow_destroy => true
