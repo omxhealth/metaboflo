@@ -3,32 +3,60 @@ class Batches::PreparationsController < ApplicationController
   # GET /batches/preparations/new
   # GET /batches/preparations/new.xml
   def new
-    @batch_name = DateTime.now.strftime("%Y-%m-%d")
+    @batch = Batch.new(:name => DateTime.now.strftime("%Y-%m-%d"))
 
     if (params[:samples])
       @samples = Sample.find(params[:samples])
     else
-      @samples = Array.new
+      flash[:notice] = 'You must select at least one sample to prep a batch'
+      redirect_to(unprepped_batches_batches_path)
     end
   end
 
   # POST /batches/preparations
   # POST /batches/preparations.xml
   def create
-    @batch = Batch.new(:name => params[:batch_name])
 
-    puts params
+    @samples = Array.new()
 
-    # respond_to do |format|
-    #   if @batch.save
-    #     flash[:notice] = 'Batch was successfully created.'
-    #     format.html { redirect_to(unprepped_batches_batches_path) }
-    #     format.xml  { render :xml => @batch, :status => :created }
-    #   else
-    #     format.html { render :action => "new" }
-    #     format.xml  { render :xml => @batch.errors, :status => :unprocessable_entity }
-    #   end
-    # end
+    saved = true
+    Batch.transaction do 
+      @batch = Batch.new(params[:batch])
+
+      samples_hash = params[:samples]
+
+      samples_hash.keys.each do |id|
+
+        sample = Sample.find(id)
+
+        @batch.samples << sample
+        @samples << sample
+        if not sample.update_attributes(samples_hash[id])
+          saved = false
+        end
+      end
+
+      if not @batch.save
+        saved = false
+      end
+
+      if not saved
+        raise ActiveRecord::Rollback, "Prepping failed!"
+      end
+    end
+
+    if saved
+      flash[:notice] = 'Batch was successfully created.'
+      redirect_to(non_ph_batches_preparations_path)
+    else
+      render :action => "new"
+    end
+
+  end
+
+  def non_ph
+    #Shows all un-PH-ed batches along with their samples
+    @batches = Batch.all
   end
 
 end

@@ -20,8 +20,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :protocol, 'SOP' %>
-    <%= f.select :protocol, Protocol.all.collect {|u| [ "#{u.name}", u.id ] }, { }, { :include_blank => true } %>
+    <%= f.label :protocol_id, 'SOP' %>
+    <%= f.select :protocol_id, Protocol.all.collect {|u| [ "#{u.name}", u.id ] }, { }, { :include_blank => true } %>
   </div>
 
 </div>

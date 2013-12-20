@@ -34,13 +34,13 @@ class Batches::BatchesController < ApplicationController
       end
 
       if not saved
-        raise ActiveRecord::Rollback, "One failed!"
+        raise ActiveRecord::Rollback, "Creation failed!"
       end
 
     end
 
     if saved
-      flash[:notice] = 'Batch was successfully created.'
+      flash[:notice] = 'Samples were successfully created.'
       redirect_to(unprepped_batches_batches_path)
     else
       render :action => "new" 

@@ -35,7 +35,14 @@ Metaboflo::Application.routes.draw do
       end
     end
 
-    resources :preparations, :only => [:new, :create]
+    resources :preparations, :only => [:new, :create] do 
+      collection do 
+        get :non_ph
+      end
+    end
+
+    resources :phs, :only => [:new, :create]
+
   end
   
   devise_for :users
