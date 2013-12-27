@@ -3,12 +3,16 @@ class Batches::BatchesController < ApplicationController
   # GET /batches/batches/new
   # GET /batches/batches/new.xml
   def new
-    #@batch = Batch.new(:name => DateTime.now.strftime("%Y-%m-%d"))
-
     @samples = Array.new
+    @num = params[:num_samples]
+    if @num.blank?
+      @num = 2
+    end
+    @num = @num.to_i
 
-    @samples << Sample.new
-    @samples << Sample.new    
+    (1..@num).each do
+      @samples << Sample.new
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -26,10 +30,8 @@ class Batches::BatchesController < ApplicationController
     Sample.transaction do 
 
       @samples.each do |sample|
-        puts sample
         if not sample.save
           saved = false
-          puts "NOT SAVED"
         end
       end
 

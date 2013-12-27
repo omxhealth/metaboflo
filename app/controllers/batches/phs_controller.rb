@@ -10,6 +10,14 @@ class Batches::PhsController < ApplicationController
   # POST /batches/phs.xml
   def create
 
+    respond_to do |format|
+      if @batch.update_attributes(params[:batch])
+        flash[:notice] = 'Batch was successfully updated.'
+        redirect_to('/')
+      else
+        render :action => "new"
+      end
+    end
 
   end
 
