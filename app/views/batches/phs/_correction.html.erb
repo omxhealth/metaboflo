@@ -1,0 +1,15 @@
+<div class="fields box corrections">
+  <div class="field">
+    <%= f.label :initial_ph %>
+    <%= f.text_field :initial_ph %>
+  </div>
+  <div class="field">
+    <%= f.label :final_ph %>
+    <%= f.text_field :final_ph %>
+  </div>
+  <div class="field">
+    <%= f.label :buffer_amount %>
+    <%= f.text_field :buffer_amount %>
+  </div>
+  <%= remove_fields_for f, :correction %>
+</div>

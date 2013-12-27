@@ -50,7 +50,7 @@ class Batches::BatchesController < ApplicationController
 
   def unprepped
     #Shows all unprepped batches along with their samples
-    @samples = Sample.all
+    @samples = Sample.all(:conditions => "dss_concentration is NULL")
   end
 
 end
