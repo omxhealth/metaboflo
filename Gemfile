@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7' #To-Do: Upgrade to 3.0.20 and then 3.2.15
+gem 'rails', '3.0.20' #To-Do: Upgrade to 3.0.20 and then 3.2.15
 
 gem 'mysql2', '0.2.7'
 # gem 'rake', '0.8.7'
