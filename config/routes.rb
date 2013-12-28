@@ -41,7 +41,11 @@ Metaboflo::Application.routes.draw do
       end
     end
 
-    resources :phs, :only => [:new, :create]
+    resources :phs, :only => [:edit, :update] do 
+      collection do
+        get :no_experiment
+      end
+    end
 
   end
   

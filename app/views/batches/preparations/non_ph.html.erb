@@ -11,7 +11,7 @@
     <tr class="<%= cycle('odd', 'even') %>">
       <td><%= b.name %></td>
       <td><%= b.samples.length %></td>
-      <td><%= link_to 'pH Batch', new_batches_ph_path(:batch_id => b.id) %></td>
+      <td><%= link_to 'pH Batch', edit_batches_ph_path(b) %></td>
     </tr>
   <% end %>
 

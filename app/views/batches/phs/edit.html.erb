@@ -1,0 +1,21 @@
+<h1>pH a Batch of Samples</h1>
+
+<p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  pH balance a batch of samples. 
+</p>
+
+
+<%= form_for @batch, :url => batches_ph_path(@batch), :html => {method: :put} do |f| %>
+
+  <fieldset id="batch" class="fields-for">
+    <legend>Batch <%= @batch.name %></legend>  
+
+    <%= f.fields_for :samples do |sample_form| %>
+      <%= render :partial => 'sample', :locals => { :f => sample_form } %>
+    <% end %>
+
+    <p><%= f.submit "Submit" %></p>  
+
+  </fieldset>
+<% end %>  
