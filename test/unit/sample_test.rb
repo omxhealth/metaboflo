@@ -18,8 +18,8 @@ class SampleTest < ActiveSupport::TestCase
   end
   
   test "test_subject_id equal to test_subject_id of parent sample" do
-    parent_sample = Sample.new(:test_subject => test_subjects(:one))
-    sample = Sample.new(:test_subject => test_subjects(:two), :sample => parent_sample)
+    parent_sample = Sample.new(:test_subject => test_subjects(:one), :barcode => '12344')
+    sample = Sample.new(:test_subject => test_subjects(:two), :sample => parent_sample, :barcode => '123441')
     assert !sample.valid?
     
     sample.test_subject = test_subjects(:one)
@@ -31,7 +31,7 @@ class SampleTest < ActiveSupport::TestCase
   
   test "taken_on" do
     #Birthdate == taken_on
-    sample = Sample.new(:collected_on => test_subjects(:one).birthdate, :test_subject => test_subjects(:one))
+    sample = Sample.new(:collected_on => test_subjects(:one).birthdate, :test_subject => test_subjects(:one), :barcode => '123455')
     assert sample.valid?
     
     #Birthdate > taken_on

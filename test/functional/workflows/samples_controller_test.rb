@@ -16,7 +16,7 @@ class Workflows::SamplesControllerTest < ActionController::TestCase
   test "should create sample" do
     login_as :admin
     assert_difference('Sample.count') do
-      post :create, :patient_id => test_subjects(:one).to_param, :format => :js
+      post :create, :patient_id => test_subjects(:one).to_param, :format => :js, :sample => { barcode: '1234' }
     end
 
     assert_response :success

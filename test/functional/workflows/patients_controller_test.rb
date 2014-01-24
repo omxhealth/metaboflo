@@ -10,7 +10,7 @@ class Workflows::PatientsControllerTest < ActionController::TestCase
   test "should create patient" do
     login_as :user
     assert_difference('TestSubject.count') do
-      post :create, :test_subject => { :code => 'NEW007', :site_id => users(:user).site_id, :samples_attributes => { 0 => {} } }
+      post :create, :test_subject => { :code => 'NEW007', :site_id => users(:user).site_id, :samples_attributes => { 0 => { barcode: '235643'} } }
     end
     
     assert_equal 1, assigns(:test_subject).samples.count

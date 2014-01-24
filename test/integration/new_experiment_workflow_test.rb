@@ -20,7 +20,7 @@ class NewExperimentWorkflowTest < ActionDispatch::IntegrationTest
     assert_response :success
     
     # create patient
-    post_via_redirect workflows_patients_path, :test_subject => { :code => 'NEW007', :site_id => users(:user).site_id, :samples_attributes => { 0 => { :sample_type => 'milk' } } }, :format => :js
+    post_via_redirect workflows_patients_path, :test_subject => { :code => 'NEW007', :site_id => users(:user).site_id, :samples_attributes => { 0 => { :sample_type => 'milk', :barcode => 'lksdjflksjdf' } } }, :format => :js
     patient = TestSubject.find_by_code('NEW007')
     assert_equal 1, patient.samples.count
     assert_response :success

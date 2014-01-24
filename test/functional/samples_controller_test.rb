@@ -69,14 +69,14 @@ class SamplesControllerTest < ActionController::TestCase
     
     # with test_subject_id
     assert_difference('Sample.count') do
-      post :create, :test_subject_id => test_subjects(:one), :sample => { }
+      post :create, :test_subject_id => test_subjects(:one), :sample => { barcode: 'abcd' }
     end
 
     assert_redirected_to test_subject_sample_path(assigns(:parent), assigns(:sample))
     
     # with sample_id
     assert_difference('Sample.count') do
-      post :create, :sample_id => samples(:one), :sample => { }
+      post :create, :sample_id => samples(:one), :sample => { barcode: '1234' }
     end
     
     assert_redirected_to sample_sample_path(assigns(:parent), assigns(:sample))
