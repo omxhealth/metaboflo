@@ -12,6 +12,8 @@
     <legend>Batch</legend>  
 
     <%= fields_for @batch do |bf| %>
+      <%= bf.error_messages %>
+
       <div class="field">
         <%= bf.label :name %>
         <%= bf.text_field :name %>
@@ -20,7 +22,8 @@
 
 
     <% for sample in @samples %>  
-      <%= fields_for "samples[]", sample do |f| %>  
+      <%= fields_for "samples[]", sample do |f| %> 
+ 
         <%= render :partial => 'sample', :locals => { :f => f } %>
       <% end %>  
     <% end %>  

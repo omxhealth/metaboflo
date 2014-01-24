@@ -31,6 +31,7 @@ class Batches::PreparationsController < ApplicationController
 
         @batch.samples << sample
         @samples << sample
+        sample.preparing = true
         if not sample.update_attributes(samples_hash[id])
           saved = false
         end

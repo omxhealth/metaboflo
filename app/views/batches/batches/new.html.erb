@@ -12,6 +12,9 @@
 
     <% @samples.each_with_index do |sample, index| %>
       <%= fields_for "samples[#{index}]", sample do |sample_form| %>
+
+        <%= sample_form.error_messages %>
+
         <%= render :partial => 'sample', :locals => { :f => sample_form, :counter => (index+1) } %>
         <br /><br />
       <% end %>

@@ -48,6 +48,37 @@ class Sample < ActiveRecord::Base
   # validates :box, presence: true
   # validates :box, presence: true
 
+
+  # ========= Validations specifically for the preparations step =========
+  validate :preparations, :if => :preparing_sample?
+  attr_accessor :preparing
+
+  def preparing_sample?
+    preparing
+  end
+
+  def preparations
+    valid = true
+
+    if self.dss_concentration.blank?
+      valid = false
+      errors.add(:dss_concentration, "can not be blank")
+    end
+
+    if self.dss_lot.blank?
+      valid = false
+      errors.add(:dss_lot, "can not be blank")
+    end
+
+    if self.protocol.blank?
+      valid = false
+      errors.add(:protocol, "can not be blank")
+    end
+
+    return valid
+  end
+
+
   # Required so that Experiments, Samples, and TestSubjects can be displayed in groupings
   def to_s
     return "#{self.barcode.blank? ? 'No barcode' : self.barcode} (#{sample_type.blank? ? 'No sample type' : sample_type} - #{original_amount.blank? ? 'Unknown amount' : "#{original_amount} #{original_unit}"})"
