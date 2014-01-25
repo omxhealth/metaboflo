@@ -8,6 +8,8 @@
 
 <%= form_for @batch, :url => batches_ph_path(@batch), :html => {method: :put} do |f| %>
 
+  <%= f.error_messages %>
+
   <fieldset id="batch" class="fields-for">
     <legend>Batch <%= @batch.name %></legend>  
 

@@ -77,6 +77,7 @@ class Sample < ActiveRecord::Base
 
     return valid
   end
+  # ========= End of preparations validations =========
 
 
   # Required so that Experiments, Samples, and TestSubjects can be displayed in groupings

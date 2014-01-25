@@ -17,11 +17,12 @@ class Batches::PhsController < ApplicationController
 
     @batch = Batch.find(params[:id])
 
+    @batch.phing = true
     if @batch.update_attributes(params[:batch])
       flash[:notice] = 'Batch was successfully updated.'
       redirect_to(no_experiment_batches_phs_path)
     else
-      render :action => "new"
+      render :action => "edit"
     end
 
   end
