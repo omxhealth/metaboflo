@@ -58,6 +58,9 @@ class Batches::PreparationsController < ApplicationController
   def non_ph
     #Shows all un-PH-ed batches along with their samples
     @batches = Batch.all
+
+
+    #Customer.joins(:purchases).group("customer.id HAVING count(purchases.id) > 5")
   end
 
 end

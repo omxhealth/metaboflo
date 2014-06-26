@@ -28,7 +28,8 @@ class Batches::PhsController < ApplicationController
   end
 
   def no_experiment
-    
+    #Shows all batches without NMR:
+    @batches = Batch.all
   end
 
 end

@@ -18,8 +18,10 @@
         <%= bf.label :name %>
         <%= bf.text_field :name %>
       </div>
-    <% end %>
 
+      <%= bf.hidden_field :prep_done, :value => true %>
+
+    <% end %>
 
     <% for sample in @samples %>  
       <%= fields_for "samples[]", sample do |f| %> 
