@@ -14,7 +14,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'execjs'
-  gem 'therubyracer', :require => 'v8', :platform => :ruby
+  gem 'therubyracer', '~> 0.12.2'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-ui-themes'
@@ -27,7 +27,7 @@ end
 
 group :production do
   gem 'execjs'
-  gem 'therubyracer', :require => 'v8', :platform => :ruby
+  gem 'therubyracer', '~> 0.12.2'
 end
 
 # Testing gems
