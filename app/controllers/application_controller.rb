@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
   
   before_filter :authenticate_user!
   
-  def after_sign_in_path_for(resource)
-    if current_user.admin?
-      redirect_to 'users#index'
-    else
-      redirect_to 'clients#index'
-    end
-  end
+  #def after_sign_in_path_for(resource)
+    #if current_client.admin?
+    #  redirect_to 'users#index'
+    #else
+    #  redirect_to 'clients#index'
+    #end
+  #end
   
   
   def layout_by_resource
