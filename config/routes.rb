@@ -17,6 +17,7 @@ Metaboflo::Application.routes.draw do
   ## Client routes 
   devise_for :clients do
     match 'clients/home' => 'clients/home#index', :as => :client_root
+    get '/clients/sign_out' => 'devise/sessions#destroy' 
   end
   
   namespace :clients do
@@ -151,5 +152,5 @@ Metaboflo::Application.routes.draw do
   match 'admin' => 'administrators#index', :as => :admin
 
   ## Route URL 
-  root :to => 'public/pages#home'
+  root :to => 'home#index'
 end

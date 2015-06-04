@@ -13,3 +13,9 @@ ActiveRecord::Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "defaul
 
 # Load default experiment types
 ActiveRecord::Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "defaults" ), :experiment_types)
+
+# Create user login
+User.create!(name:  "Example User",
+             email: "example@railstutorial.org",
+             password:              "metaboflo",
+             password_confirmation: "metaboflo")
