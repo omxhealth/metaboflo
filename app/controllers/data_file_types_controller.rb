@@ -86,7 +86,7 @@ class DataFileTypesController < ApplicationController
     end
   end
 
-  protected
+  private
 
   def only_user?(redirect_path = data_file_types_path)
     super
