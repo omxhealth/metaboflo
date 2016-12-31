@@ -1,0 +1,30 @@
+li#root rel="subject" data-jstree='{"type":"subject", "open": true}'
+  = link_to "#{TestSubject.title} #{@test_subject.code}", test_subject_path(@test_subject)
+  ul
+    li#tree-medications rel="medications" data-jstree='{"type":"medications"}'
+      = link_to "Medications", test_subject_medications_path(@test_subject)
+    li#tree-tests rel="tests" data-jstree='{"type":"tests"}'
+      = link_to "Lab Tests", test_subject_lab_tests_path(@test_subject)
+    li#tree-evaluations rel="evaluations" data-jstree='{"type":"evaluations"}'
+      = link_to "#{TestSubject.title} Evaluations", test_subject_test_subject_evaluations_path(@test_subject)
+    li#tree-experiments
+      = link_to "Experiments", test_subject_experiments_path(@test_subject)
+      ul
+        - @test_subject.experiments.each do |experiment|
+          li id="tree-experiment-#{experiment.id}" rel="experiment" data-jstree='{"type":"experiment"}'
+            = link_to "#{experiment.name} (#{experiment.experiment_type.name})",
+                sample_experiment_path(experiment.sample, experiment)
+    li#tree-samples
+      = link_to "Samples", test_subject_samples_path(@test_subject)
+      ul
+        - @test_subject.samples.each do |sample|
+          - type = sample.aliquot? ? 'aliquot' : 'sample'
+          li id="tree-sample-#{sample.id}" rel=type data-jstree='{"type":"#{type}"}'
+            = link_to "#{type.titlecase} #{sample.id}", test_subject_sample_path(@test_subject, sample)
+    li#tree-groups
+      = link_to "Groups", test_subject_grouping_assignments_path(@test_subject)
+      ul
+        - @test_subject.grouping_assignments.each do |grouping_assignment|
+          li id="tree-group-#{grouping_assignment.id}" rel="group" data-jstree='{"type":"group"}'
+            = link_to grouping_assignment.grouping.name, grouping_path(grouping_assignment.grouping)
+

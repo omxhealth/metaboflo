@@ -64,6 +64,7 @@ class TestSubjectsController < ApplicationController
   end
 
   protected
+
   def find_test_subject(param_name = :id)
     super
   end

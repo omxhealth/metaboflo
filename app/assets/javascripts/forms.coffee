@@ -5,7 +5,7 @@
   else
     context = context
   c = $(context)
-  $('.dynamic-other', c).each -> 
+  $('.dynamic-other', c).each ->
     $(this).on 'change', ->
       newElementOnOther(this)
 
@@ -39,7 +39,7 @@
 @datepickers = (context) ->
   context = document if !context
   c = $(context)
-  $( '.datepicker', c ).each -> 
+  $( '.datepicker', c ).each ->
     $(this).datepicker
       changeYear: true
       buttonImage: "/assets/icons/calendar.gif"
@@ -51,14 +51,14 @@
   parent_width = form.width()
   max = 0
   labels = form.find('.left-label, .field_with_errors > label')
-  labels.each -> 
+  labels.each ->
     max = $(this).width() if $(this).width() > max
   labels.width(max)
-  
+
   # Set the inner group widths (inline-block elements require a width)
   inner_groups = form.find('.inner-group-field > .inner-group')
   inner_groups.css('min-width', (parent_width - max - 200) )
-      
+
   # form.find('#submit, p.error-msg, .field-no-label').css("margin-left", max + 10)
 
 # Align the left labels and elements of the given form based on the largest label in the form.
@@ -75,7 +75,7 @@
   $(button).val(original_value).removeAttr('disabled')
 
 # Support adding/removing nested attributes from form
-$ -> 
+$ ->
   $('form a.add_child').on 'click', ->
     association = $(this).attr('data-association')
     template = $('#' + association + '_fields_template').html()
@@ -89,7 +89,7 @@ $ ->
 
     return false
 
-  $('form .nested-remove a').live 'click', ->
+  $('form .nested-remove a').on 'click', ->
     hidden_field = $(this).prev('input[type=hidden]')[0]
     if hidden_field
       field_holder = $(this).parents('.nested-field')
@@ -104,7 +104,7 @@ $ ->
         $(this).children('.ui-button-text').text('undo')
         field_holder.addClass('nested-removed', 1000)
 
-    $(this).prev('input[type=hidden]').attr('disabled', false)  
+    $(this).prev('input[type=hidden]').attr('disabled', false)
     return false
 
 # Load any date picker fields

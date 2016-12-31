@@ -9,14 +9,13 @@ $ ->
 
 # Enable any show/hide links (pass in the element you want to toggle with the data-element attribute
 $ ->
-  $('a.show-hide')
-  .live 'click', ->
+  $('a.show-hide').on 'click', ->
     element_id = $(this).data('element')
     $("#" + element_id).toggle('blind')
     false
 
 # Remove the sidebar if it doesn't have content
-$ -> 
+$ ->
   if !$('#sidebar').length
     $('#main').addClass('without-sidebar')
 

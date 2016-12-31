@@ -1,0 +1,50 @@
+$ ->
+  if $("#subject-tree").length
+    tree = $("#subject-tree")
+
+    tree.on 'loaded.jstree', (event, data) ->
+      tree.find('a').each (index, value) ->
+        if value.href == window.location.href
+          $(value).addClass('current-node')
+
+    # jsTree doesn't follow click throughs by default, so here we initiate
+    # a click event if the node contains a link that is a real URL
+    tree.on 'activate_node.jstree', (e, data) ->
+      selected = data.node
+
+      if selected && selected.a_attr['href'] != '#'
+        link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+        link.href = selected.a_attr['href']
+        event = new MouseEvent('click', {
+            'view': window,
+            'bubbles': false,
+            'cancelable': true
+        })
+        link.dispatchEvent(event)
+
+    tree.jstree
+      plugins: ['types', 'state']
+      core:
+        multiple: false
+        initially_open: ["root", 'tree-experiments', 'tree-samples', 'tree-groups']
+        data:
+          url: tree.data('source')
+      types:
+        default:
+          icon: '<%= image_path("tree/folder.png") %>'
+        subject:
+          icon: '<%= image_path("tree/subjects/patient.png") %>'
+        medications:
+          icon: '<%= image_path("tree/medicine.png") %>'
+        tests:
+          icon: '<%= image_path("tree/test.png") %>'
+        evaluations:
+          icon: '<%= image_path("tree/evaluation.png") %>'
+        experiment:
+          icon: '<%= image_path("tree/experiment.png") %>'
+        sample:
+          icon: '<%= image_path("tree/sample.png") %>'
+        aliquot:
+          icon: '<%= image_path("tree/aliquot.png") %>'
+        group:
+          icon: '<%= image_path("tree/grouping.png") %>'
