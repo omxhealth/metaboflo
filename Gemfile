@@ -63,4 +63,3 @@ end
 group :development, :production do
   gem 'puma'
 end
-

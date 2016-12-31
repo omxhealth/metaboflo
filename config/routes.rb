@@ -29,8 +29,47 @@ Rails.application.routes.draw do
   end
   resources :clients
 
-  ## API Resources
-  namespace :api do
+  namespace :workflows do
+    resources :experiments
+    resources :patients, only: [:index, :new, :create] do
+      resources :samples, only: [:new, :create]
+    end
+    resources :samples, only: [:index, :show]
+    resources :studies, only: [:new, :create] do
+      member do
+        get :cohort_assignment
+        post :add_to_cohort
+        post :remove_from_cohort
+      end
+    end
+  end
+
+  namespace :batches do
+    resources :batches, only: [:new, :create] do
+      collection do
+        get :unprepped
+      end
+    end
+
+    resources :preparations, only: [:new, :create] do
+      collection do
+        get :non_ph
+      end
+    end
+
+    resources :phs, only: [:edit, :update] do
+      collection do
+        get :no_experiment
+      end
+    end
+  end
+
+  devise_for :users
+  resources :nutrients
+  resources :metabolites do
+    collection do
+      post :search
+    end
   end
 
   ## Resources

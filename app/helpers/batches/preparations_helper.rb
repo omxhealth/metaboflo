@@ -1,0 +1,2 @@
+module Batches::PreparationsHelper
+end

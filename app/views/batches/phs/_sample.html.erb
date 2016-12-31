@@ -1,0 +1,24 @@
+<div class="fields box batchsample">
+
+  <strong>Sample <%= f.object.barcode %></strong>
+
+  <br /><br />
+
+  <div class="field">
+    <%= f.label :corrected_by_id, 'Corrected By' %>
+    <%= f.select :corrected_by_id, User.all.collect {|u| [ "#{u.name}", u.id ] }, { }, { :include_blank => true } %>
+  </div>
+
+  <fieldset id="corrections" class="fields-for">
+    <legend>pH Corrections</legend>  
+
+    <div class="actions">
+      <%= add_link_for_new_fields_for f, :correction %>
+    </div>
+
+    <%= f.fields_for :corrections do |correction_form| %>
+      <%= render :partial => 'correction', :locals => { :f => correction_form } %>
+    <% end %>
+  </fieldset>
+
+</div>

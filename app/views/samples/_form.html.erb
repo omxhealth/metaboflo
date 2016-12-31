@@ -8,7 +8,7 @@
   <% if @parent_sample %>
     <p><%= f.label :sample_type %> <%= @parent_sample.sample_type %></p>
   <% else %>
-    <%= f.input :sample_type, collection: ['ruminal', 'blood', 'milk', 'urine', 'feces'] %>
+    <%= f.input :sample_type, collection: sample_types %>
   <% end %>
   <%= f.input :barcode %>
   <%= f.input :description %>

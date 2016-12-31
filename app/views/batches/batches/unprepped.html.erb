@@ -1,0 +1,26 @@
+
+<%= form_tag new_batches_preparation_path, method: :get do |f| %>
+  <table class="list", style="width: 100%">
+
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Barcode</th>
+      <th>Collection Date</th>
+      <!--<th>Actions</th>-->
+    </tr>
+
+    <% @samples.each do |s| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= check_box_tag 'samples[]', s.id %></td>
+        <td><%= s.barcode %></td>
+        <td><%= s.collected_on %></td>
+        <%# show_link s.sample ? sample_sample_path(s.sample, s) : test_subject_sample_path(s.test_subject, s) %>
+      </tr>
+    <% end %>
+
+  </table>
+
+  <br /><br />
+
+  <%= submit_tag "Prepare Selected Samples" %>
+<% end %>

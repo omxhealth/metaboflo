@@ -26,9 +26,9 @@ class Workflows::ExperimentsController < ApplicationController
     end
   end
 
-  # GET /workflows/experiments/1/edit
-  def edit
-  end
+  # # GET /workflows/experiments/1/edit
+  # def edit
+  # end
 
   # POST /workflows/experiments
   # POST /workflows/experiments.xml
@@ -44,32 +44,6 @@ class Workflows::ExperimentsController < ApplicationController
         format.html { render action: "new" }
         format.xml  { render xml: @experiment.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PUT /experiments/1
-  # PUT /experiments/1.xml
-  def update
-    respond_to do |format|
-      if @experiment.update(experiment_params)
-        flash[:notice] = 'Experiment was successfully updated.'
-        format.html { redirect_to([:workflows, @experiment]) }
-        format.xml  { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.xml  { render xml: @experiment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /workflows/experiments/1
-  # DELETE /workflows/experiments/1.xml
-  def destroy
-    @experiment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(workflows_experiments_url) }
-      format.xml  { head :ok }
     end
   end
 

@@ -1,0 +1,36 @@
+<h1>Prepare a Batch of Samples</h1>
+
+<p class="info">
+  <%= image_tag 'info.png', :class => 'info-logo' %>
+  Add sample preparation information for running on NMR.
+</p>
+
+
+<%= form_tag batches_preparations_path :method => :put do %>  
+
+  <fieldset id="batch" class="fields-for">
+    <legend>Batch</legend>  
+
+    <%= fields_for @batch do |bf| %>
+      <%= bf.error_messages %>
+
+      <div class="field">
+        <%= bf.label :name %>
+        <%= bf.text_field :name %>
+      </div>
+
+      <%= bf.hidden_field :prep_done, :value => true %>
+
+    <% end %>
+
+    <% for sample in @samples %>  
+      <%= fields_for "samples[]", sample do |f| %> 
+ 
+        <%= render :partial => 'sample', :locals => { :f => f } %>
+      <% end %>  
+    <% end %>  
+
+    <p><%= submit_tag "Submit" %></p>  
+
+  </fieldset>
+<% end %>  

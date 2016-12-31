@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sample: 
+  initial_ph: 1.5
+  final_ph: 1.5
+  buffer_amount: 1.5
+
+two:
+  sample: 
+  initial_ph: 1.5
+  final_ph: 1.5
+  buffer_amount: 1.5

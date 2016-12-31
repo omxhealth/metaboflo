@@ -1,0 +1,18 @@
+
+<table class="list", style="width: 100%">
+
+  <tr class="header">
+    <th>Barcode</th>
+    <th>Samples</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @batches.each do |b| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= b.name %></td>
+      <td><%= b.samples.length %></td>
+      <td><%= link_to 'Run NMR', edit_batches_ph_path(b) %></td>
+    </tr>
+  <% end %>
+
+</table>
