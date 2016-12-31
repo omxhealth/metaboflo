@@ -1,9 +1,9 @@
 class Batches::PreparationsController < ApplicationController
-  
+
   # GET /batches/preparations/new
   # GET /batches/preparations/new.xml
   def new
-    @batch = Batch.new(:name => DateTime.now.strftime("%Y-%m-%d"))
+    @batch = Batch.new(name: DateTime.now.strftime("%Y-%m-%d"))
 
     if (params[:samples])
       @samples = Sample.find(params[:samples])
@@ -20,8 +20,8 @@ class Batches::PreparationsController < ApplicationController
     @samples = Array.new()
 
     saved = true
-    Batch.transaction do 
-      @batch = Batch.new(params[:batch])
+    Batch.transaction do
+      @batch = Batch.new(batch_params)
 
       samples_hash = params[:samples]
 
@@ -32,16 +32,16 @@ class Batches::PreparationsController < ApplicationController
         @batch.samples << sample
         @samples << sample
         sample.preparing = true
-        if not sample.update_attributes(samples_hash[id])
+        if !sample.update_attributes(samples_hash[id])
           saved = false
         end
       end
 
-      if not @batch.save
+      if !@batch.save
         saved = false
       end
 
-      if not saved
+      if !saved
         raise ActiveRecord::Rollback, "Prepping failed!"
       end
     end
@@ -50,7 +50,7 @@ class Batches::PreparationsController < ApplicationController
       flash[:notice] = 'Batch was successfully created.'
       redirect_to(non_ph_batches_preparations_path)
     else
-      render :action => "new"
+      render action: "new"
     end
 
   end
@@ -58,9 +58,12 @@ class Batches::PreparationsController < ApplicationController
   def non_ph
     #Shows all un-PH-ed batches along with their samples
     @batches = Batch.all
-
-
     #Customer.joins(:purchases).group("customer.id HAVING count(purchases.id) > 5")
   end
 
+  private
+
+  def batch_params
+    params.require(:batch).permit!
+  end
 end

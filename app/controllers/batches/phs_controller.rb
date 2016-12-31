@@ -1,5 +1,5 @@
 class Batches::PhsController < ApplicationController
-  
+
   # GET /batches/phs/new
   # GET /batches/phs/new.xml
   def edit
@@ -18,7 +18,7 @@ class Batches::PhsController < ApplicationController
     @batch = Batch.find(params[:id])
 
     @batch.phing = true
-    if @batch.update_attributes(params[:batch])
+    if @batch.update(batch_params)
       flash[:notice] = 'Batch was successfully updated.'
       redirect_to(no_experiment_batches_phs_path)
     else
@@ -32,4 +32,9 @@ class Batches::PhsController < ApplicationController
     @batches = Batch.all
   end
 
+  private
+
+  def batch_params
+    params.require(:batch).permit!
+  end
 end

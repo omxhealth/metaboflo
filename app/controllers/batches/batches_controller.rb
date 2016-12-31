@@ -1,5 +1,5 @@
 class Batches::BatchesController < ApplicationController
-  
+
   # GET /batches/batches/new
   # GET /batches/batches/new.xml
   def new
@@ -23,19 +23,18 @@ class Batches::BatchesController < ApplicationController
   # POST /batches/batches
   # POST /batches/batches.xml
   def create
-
-    @samples = params[:samples].values.collect { |sample| Sample.new(sample) }
+    @samples = params[:samples].values.map { |sample| Sample.new(sample) }
 
     saved = true
-    Sample.transaction do 
+    Sample.transaction do
 
       @samples.each do |sample|
-        if not sample.save
+        if !sample.save
           saved = false
         end
       end
 
-      if not saved
+      if !saved
         raise ActiveRecord::Rollback, "Creation failed!"
       end
 
@@ -45,14 +44,12 @@ class Batches::BatchesController < ApplicationController
       flash[:notice] = 'Samples were successfully created.'
       redirect_to(unprepped_batches_batches_path)
     else
-      render :action => "new" 
+      render :action => "new"
     end
-
   end
 
   def unprepped
     #Shows all unprepped batches along with their samples
     @samples = Sample.all(:conditions => "dss_concentration is NULL")
   end
-
 end
