@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_site
-  before_action :find_user, :only => [ :show, :edit, :update, :destroy ]
+  before_action :find_user, only: [ :show, :edit, :update, :destroy ]
   before_action :authorize
 
   # GET /users
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.xml  { render xml: @users }
     end
   end
 
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render xml: @user }
     end
   end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render xml: @user }
     end
   end
 
@@ -47,16 +47,16 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
         flash[:notice] = 'User was successfully created.'
         format.html { redirect_to(@user) }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        format.xml  { render xml: @user, status: :created, location: @user }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,13 +65,13 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update(user_params)
         flash[:notice] = 'User was successfully updated.'
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -87,7 +87,8 @@ class UsersController < ApplicationController
     end
   end
 
-  protected
+  private
+
   def find_site
     @site = Site.find(params[:site_id]) unless params[:site_id].blank?
   end
@@ -117,5 +118,9 @@ class UsersController < ApplicationController
           redirect_to root_path
         end
     end
+  end
+
+  def user_params
+    params.require(:user).permit!
   end
 end

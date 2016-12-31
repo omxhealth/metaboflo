@@ -1,5 +1,4 @@
 class MealsController < ApplicationController
-
   before_action :find_test_subject
 
   # GET /meals
@@ -9,7 +8,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @meals }
+      format.xml  { render xml: @meals }
     end
   end
 
@@ -20,7 +19,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @meal }
+      format.xml  { render xml: @meal }
     end
   end
 
@@ -31,7 +30,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @meal }
+      format.xml  { render xml: @meal }
     end
   end
 
@@ -43,7 +42,7 @@ class MealsController < ApplicationController
   # POST /meals
   # POST /meals.xml
   def create
-    @meal = Meal.new(params[:meal])
+    @meal = Meal.new(meal_params)
 
     @meal.test_subject = @test_subject
 
@@ -51,10 +50,10 @@ class MealsController < ApplicationController
       if @meal.save
         flash[:notice] = 'Meal was successfully created.'
         format.html { redirect_to(@test_subject) }
-        format.xml  { render :xml => @meal, :status => :created, :location => @meal }
+        format.xml  { render xml: @meal, status: :created, location: @meal }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @meal.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @meal.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,13 +64,13 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
 
     respond_to do |format|
-      if @meal.update_attributes(params[:meal])
+      if @meal.update(meal_params)
         flash[:notice] = 'Meal was successfully updated.'
         format.html { redirect_to([@test_subject, @meal]) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @meal.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @meal.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -88,4 +87,9 @@ class MealsController < ApplicationController
     end
   end
 
+  private
+
+  def meal_params
+    params.require(:meal).permit!
+  end
 end

@@ -48,7 +48,7 @@ class DataFilesController < ApplicationController
   # POST /data_files
   # POST /data_files.xml
   def create
-    @data_file = DataFile.new(params[:data_file])
+    @data_file = DataFile.new(data_file_params)
     @data_file.experiment = @experiment
 
     respond_to do |format|
@@ -76,6 +76,7 @@ class DataFilesController < ApplicationController
   end
 
   private
+
   def find_experiment
     if params[:experiment_id]
       @experiment = Experiment.find(params[:experiment_id])
@@ -84,4 +85,7 @@ class DataFilesController < ApplicationController
     end
   end
 
+  def data_file_params
+    params.require(:data_file).permit!
+  end
 end

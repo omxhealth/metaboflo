@@ -43,7 +43,7 @@ class DataFileTypesController < ApplicationController
   # POST /data_file_types
   # POST /data_file_types.xml
   def create
-    @data_file_type = DataFileType.new(params[:data_file_type])
+    @data_file_type = DataFileType.new(data_file_type_params)
 
     respond_to do |format|
       if @data_file_type.save
@@ -63,7 +63,7 @@ class DataFileTypesController < ApplicationController
     @data_file_type = DataFileType.find(params[:id])
 
     respond_to do |format|
-      if @data_file_type.update_attributes(params[:data_file_type])
+      if @data_file_type.update(data_file_type_params)
         flash[:notice] = 'Data file type was successfully updated.'
         format.html { redirect_to(@data_file_type) }
         format.xml  { head :ok }
@@ -87,11 +87,16 @@ class DataFileTypesController < ApplicationController
   end
 
   protected
-    def only_user?(redirect_path = data_file_types_path)
-      super
-    end
 
-    def administrator?(redirect_path = data_file_types_path)
-      super
-    end
+  def only_user?(redirect_path = data_file_types_path)
+    super
+  end
+
+  def administrator?(redirect_path = data_file_types_path)
+    super
+  end
+
+  def data_file_type_params
+    params.require(:data_file_type).permit!
+  end
 end

@@ -23,13 +23,12 @@ class GroupingsController < ApplicationController
 
   # POST /groupings
   def create
-    @grouping = Grouping.factory(@type, params[:grouping])
+    @grouping = Grouping.factory(@type, grouping_params)
 
     if @grouping.save
-      flash[:notice] = 'Group was successfully created.'
-      redirect_to(:action => 'show', :type => @type, :id => @grouping)
+      redirect_to action: 'show', type: @type, id: @grouping, notice: 'Group was successfully created.'
     else
-      render :action => "new"
+      render action: "new"
     end
   end
 
@@ -37,11 +36,10 @@ class GroupingsController < ApplicationController
   def update
     @grouping = Grouping.find(params[:id])
 
-    if @grouping.update_attributes(params[:grouping])
-      flash[:notice] = 'Group was successfully updated.'
-      redirect_to(:action => 'show', :type => @type, :id => @grouping)
+    if @grouping.update(grouping_params)
+      redirect_to action: 'show', type: @type, id: @grouping, notice: 'Group was successfully updated.'
     else
-      render :action => "edit"
+      render action: "edit"
     end
   end
 
@@ -51,12 +49,16 @@ class GroupingsController < ApplicationController
     @grouping.destroy
 
     flash[:notice] = 'Group was successfully deleted.'
-    redirect_to(:action => 'index', :type => @type)
+    redirect_to(action: 'index', type: @type)
   end
 
   private
+
   def find_type
     @type = params[:type]
   end
 
+  def grouping_params
+    params.require(:grouping).permit!
+  end
 end

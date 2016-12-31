@@ -42,7 +42,7 @@ class TestSubjectEvaluationsController < ApplicationController
   # POST /test_subject_evaluations
   # POST /test_subject_evaluations.xml
   def create
-    @test_subject_evaluation = TestSubjectEvaluation.new(params[:test_subject_evaluation])
+    @test_subject_evaluation = TestSubjectEvaluation.new(test_subject_evaluation_params)
 
     @test_subject_evaluation.test_subject = @test_subject
 
@@ -72,7 +72,7 @@ class TestSubjectEvaluationsController < ApplicationController
     end
 
     respond_to do |format|
-      if @test_subject_evaluation.update_attributes(params[:test_subject_evaluation])
+      if @test_subject_evaluation.update(test_subject_evaluation_params)
         flash[:notice] = "#{TestSubject.title} Evaluation was successfully updated."
         format.html { redirect_to(test_subject_test_subject_evaluation_url(@test_subject, @test_subject_evaluation)) }
         format.xml  { head :ok }
@@ -93,5 +93,11 @@ class TestSubjectEvaluationsController < ApplicationController
       format.html { redirect_to(test_subject_test_subject_evaluations_url(@test_subject)) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def test_subject_evaluation_params
+    params.require(:test_subject_evaluation).permit!
   end
 end

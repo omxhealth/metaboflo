@@ -6,7 +6,7 @@ class TaskPrioritiesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @task_priorities }
+      format.xml  { render xml: @task_priorities }
     end
   end
 
@@ -17,7 +17,7 @@ class TaskPrioritiesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @task_priority }
+      format.xml  { render xml: @task_priority }
     end
   end
 
@@ -28,7 +28,7 @@ class TaskPrioritiesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @task_priority }
+      format.xml  { render xml: @task_priority }
     end
   end
 
@@ -40,16 +40,16 @@ class TaskPrioritiesController < ApplicationController
   # POST /task_priorities
   # POST /task_priorities.xml
   def create
-    @task_priority = TaskPriority.new(params[:task_priority])
+    @task_priority = TaskPriority.new(task_priority_params)
 
     respond_to do |format|
       if @task_priority.save
         flash[:notice] = 'TaskPriority was successfully created.'
         format.html { redirect_to(@task_priority) }
-        format.xml  { render :xml => @task_priority, :status => :created, :location => @task_priority }
+        format.xml  { render xml: @task_priority, status: :created, location: @task_priority }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @task_priority.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @task_priority.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,13 +60,13 @@ class TaskPrioritiesController < ApplicationController
     @task_priority = TaskPriority.find(params[:id])
 
     respond_to do |format|
-      if @task_priority.update_attributes(params[:task_priority])
+      if @task_priority.update(task_priority_params)
         flash[:notice] = 'TaskPriority was successfully updated.'
         format.html { redirect_to(@task_priority) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @task_priority.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @task_priority.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -81,5 +81,11 @@ class TaskPrioritiesController < ApplicationController
       format.html { redirect_to(task_priorities_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def task_priority_params
+    params.require(:task_priority).permit!
   end
 end

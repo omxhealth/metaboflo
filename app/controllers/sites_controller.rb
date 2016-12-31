@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
-  before_action :only_user?, :only => [ :new, :create, :edit, :update ]
-  before_action :administrator?, :only => [ :destroy ]
+  before_action :only_user?, only: [ :new, :create, :edit, :update ]
+  before_action :administrator?, only: [ :destroy ]
 
   # GET /sites
   # GET /sites.xml
@@ -9,7 +9,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @sites }
+      format.xml  { render xml: @sites }
     end
   end
 
@@ -20,7 +20,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @site }
+      format.xml  { render xml: @site }
     end
   end
 
@@ -31,7 +31,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @site }
+      format.xml  { render xml: @site }
     end
   end
 
@@ -43,16 +43,16 @@ class SitesController < ApplicationController
   # POST /sites
   # POST /sites.xml
   def create
-    @site = Site.new(params[:site])
+    @site = Site.new(site_params)
 
     respond_to do |format|
       if @site.save
         flash[:notice] = 'Site was successfully created.'
         format.html { redirect_to(@site) }
-        format.xml  { render :xml => @site, :status => :created, :location => @site }
+        format.xml  { render xml: @site, status: :created, location: @site }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @site.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @site.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,13 +63,13 @@ class SitesController < ApplicationController
     @site = Site.find(params[:id])
 
     respond_to do |format|
-      if @site.update_attributes(params[:site])
+      if @site.update(site_params)
         flash[:notice] = 'Site was successfully updated.'
         format.html { redirect_to(@site) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @site.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @site.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -86,12 +86,17 @@ class SitesController < ApplicationController
     end
   end
 
-  protected
-    def only_user?(redirect_path = sites_path)
-      super
-    end
+  private
 
-    def administrator?(redirect_path = sites_path)
-      super
-    end
+  def only_user?(redirect_path = sites_path)
+    super
+  end
+
+  def administrator?(redirect_path = sites_path)
+    super
+  end
+
+  def site_params
+    params.require(:site).permit!
+  end
 end

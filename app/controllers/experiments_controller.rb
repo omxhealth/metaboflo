@@ -1,7 +1,7 @@
 class ExperimentsController < ApplicationController
   before_action :find_sample
-  before_action :find_test_subject, :only => [ :index ]
-  before_action :find_experiment, :only => [ :show, :edit, :update, :destroy ]
+  before_action :find_test_subject, only: [ :index ]
+  before_action :find_experiment, only: [ :show, :edit, :update, :destroy ]
 
   # GET /experiments
   # GET /experiments.xml
@@ -16,7 +16,7 @@ class ExperimentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @experiments }
+      format.xml  { render xml: @experiments }
     end
   end
 
@@ -25,7 +25,7 @@ class ExperimentsController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @experiment }
+      format.xml  { render xml: @experiment }
     end
   end
 
@@ -36,7 +36,7 @@ class ExperimentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @experiment }
+      format.xml  { render xml: @experiment }
     end
   end
 
@@ -47,17 +47,16 @@ class ExperimentsController < ApplicationController
   # POST /experiments
   # POST /experiments.xml
   def create
-    @experiment = Experiment.new(params[:experiment])
+    @experiment = Experiment.new(experiment_params)
     @experiment.sample = @sample
 
     respond_to do |format|
       if @experiment.save
-        flash[:notice] = 'Experiment was successfully created.'
-        format.html { redirect_to([@sample, @experiment]) }
-        format.xml  { render :xml => @experiment, :status => :created, :location => @experiment }
+        format.html { redirect_to [@sample, @experiment], notice: 'Experiment was successfully created.' }
+        format.xml  { render xml: @experiment, status: :created, location: @experiment }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @experiment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,13 +65,12 @@ class ExperimentsController < ApplicationController
   # PUT /experiments/1.xml
   def update
     respond_to do |format|
-      if @experiment.update_attributes(params[:experiment])
-        flash[:notice] = 'Experiment was successfully updated.'
-        format.html { redirect_to([@sample, @experiment]) }
+      if @experiment.update(experiment_params)
+        format.html { redirect_to [@sample, @experiment], notice: 'Experiment was successfully updated.' }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @experiment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -89,6 +87,7 @@ class ExperimentsController < ApplicationController
   end
 
   private
+
   def find_sample
     if action_name != 'index' || !params[:sample_id].blank?
       @sample = Sample.find(params[:sample_id])
@@ -108,4 +107,7 @@ class ExperimentsController < ApplicationController
     @test_subject = current_sample.root
   end
 
+  def experiment_params
+    params.require(:experiment).permit!
+  end
 end

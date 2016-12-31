@@ -40,12 +40,11 @@ class DietsController < ApplicationController
   # POST /diets
   # POST /diets.xml
   def create
-    @diet = Diet.new(params[:diet])
+    @diet = Diet.new(diet_params)
 
     respond_to do |format|
       if @diet.save
-        flash[:notice] = 'Diet was successfully created.'
-        format.html { redirect_to(@diet) }
+        format.html { redirect_to(@diet), notice: 'Diet was successfully created.' }
         format.xml  { render :xml => @diet, :status => :created, :location => @diet }
       else
         format.html { render :action => "new" }
@@ -60,9 +59,8 @@ class DietsController < ApplicationController
     @diet = Diet.find(params[:id])
 
     respond_to do |format|
-      if @diet.update_attributes(params[:diet])
-        flash[:notice] = 'Diet was successfully updated.'
-        format.html { redirect_to(@diet) }
+      if @diet.update(diet_params)
+        format.html { redirect_to(@diet), notice: 'Diet was successfully updated.' }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -81,5 +79,11 @@ class DietsController < ApplicationController
       format.html { redirect_to(diets_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def diet_params
+    params.require(:diet).permit!
   end
 end

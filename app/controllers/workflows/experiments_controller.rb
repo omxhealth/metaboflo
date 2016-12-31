@@ -1,5 +1,5 @@
 class Workflows::ExperimentsController < ApplicationController
-  before_action :find_experiment, :except => [ :index, :new, :create ]
+  before_action :find_experiment, except: [ :index, :new, :create ]
 
   # GET /workflows/experiments
   # GET /workflows/experiments.xml
@@ -11,7 +11,7 @@ class Workflows::ExperimentsController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @experiment }
+      format.xml  { render xml: @experiment }
     end
   end
 
@@ -22,7 +22,7 @@ class Workflows::ExperimentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @experiment }
+      format.xml  { render xml: @experiment }
     end
   end
 
@@ -33,16 +33,16 @@ class Workflows::ExperimentsController < ApplicationController
   # POST /workflows/experiments
   # POST /workflows/experiments.xml
   def create
-    @experiment = Experiment.new(params[:experiment])
+    @experiment = Experiment.new(experiment_params)
 
     respond_to do |format|
       if @experiment.save
         flash[:notice] = 'Experiment was successfully created.'
         format.html { redirect_to([@experiment.sample, @experiment]) }
-        format.xml  { render :xml => @experiment, :status => :created, :location => @experiment }
+        format.xml  { render xml: @experiment, status: :created, location: @experiment }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @experiment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,13 +51,13 @@ class Workflows::ExperimentsController < ApplicationController
   # PUT /experiments/1.xml
   def update
     respond_to do |format|
-      if @experiment.update_attributes(params[:experiment])
+      if @experiment.update(experiment_params)
         flash[:notice] = 'Experiment was successfully updated.'
         format.html { redirect_to([:workflows, @experiment]) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @experiment.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @experiment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -74,7 +74,12 @@ class Workflows::ExperimentsController < ApplicationController
   end
 
   private
-    def find_experiment
-      @experiment = Experiment.find(params[:id])
-    end
+
+  def find_experiment
+    @experiment = Experiment.find(params[:id])
+  end
+
+  def experiment_params
+    params.require(:experiment).permit!
+  end
 end

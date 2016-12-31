@@ -5,7 +5,7 @@ class Workflows::StudiesController < ApplicationController
   end
 
   def create
-    @study = Study.new(params[:study])
+    @study = Study.new(study_params)
     if @study.save
       flash[:notice] = 'Study was successfully created.'
       redirect_to cohort_assignment_workflows_study_path(@study)
@@ -41,5 +41,11 @@ class Workflows::StudiesController < ApplicationController
     respond_to do |format|
       format.js { render nothing: true, status: :ok }
     end
+  end
+
+  private
+
+  def study_params
+    params.require(:study).permit!
   end
 end

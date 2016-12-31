@@ -53,7 +53,7 @@ class SamplesController < ApplicationController
   # POST /samples
   # POST /samples.xml
   def create
-    @sample = Sample.new(params[:sample])
+    @sample = Sample.new(sample_params)
     if @parent.kind_of?(TestSubject)
       @sample.test_subject = @parent
     else
@@ -76,7 +76,7 @@ class SamplesController < ApplicationController
   # PUT /samples/1.xml
   def update
     respond_to do |format|
-      if @sample.update_attributes(params[:sample])
+      if @sample.update(sample_params)
         flash[:notice] = 'Sample was successfully updated.'
         format.html { redirect_to([@parent, @sample]) }
         format.xml  { head :ok }
@@ -102,7 +102,7 @@ class SamplesController < ApplicationController
   # POST /samples/1/finish
   def finish
     respond_to do |format|
-      if @sample.update_attributes(status: 'Finished')
+      if @sample.update(status: 'Finished')
         if @sample.root_sample.client.blank?
           flash[:notice] = 'Sample is now finished.'
         else
@@ -117,29 +117,34 @@ class SamplesController < ApplicationController
     end
   end
 
-  protected
-    def find_test_subject
-      unless params[:test_subject_id].blank?
-        super
-        @parent = @test_subject if @parent.blank?
-      end
-    end
+  private
 
-    def find_parent_sample
-      unless params[:sample_id].blank?
-        @parent = @parent_sample = Sample.find(params[:sample_id])
-        params[:test_subject_id] = @parent.root.id
-        find_test_subject
-      end
+  def find_test_subject
+    unless params[:test_subject_id].blank?
+      super
+      @parent = @test_subject if @parent.blank?
     end
+  end
 
-    def find_sample
-      @sample = @parent.blank? ? Sample.find(params[:id]) : @parent.samples.find(params[:id])
-      params[:test_subject_id] = @sample.root.id
+  def find_parent_sample
+    unless params[:sample_id].blank?
+      @parent = @parent_sample = Sample.find(params[:sample_id])
+      params[:test_subject_id] = @parent.root.id
       find_test_subject
     end
+  end
 
-    def no_parent?
-      redirect_to samples_url if @parent.blank?
-    end
+  def find_sample
+    @sample = @parent.blank? ? Sample.find(params[:id]) : @parent.samples.find(params[:id])
+    params[:test_subject_id] = @sample.root.id
+    find_test_subject
+  end
+
+  def no_parent?
+    redirect_to samples_url if @parent.blank?
+  end
+
+  def sample_params
+    params.require(:sample).permit!
+  end
 end

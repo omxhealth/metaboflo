@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.xml
   def create
-    @task = Task.new(params[:task])
+    @task = Task.new(task_params)
 
     respond_to do |format|
       if @task.save
@@ -65,7 +65,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      if @task.update_attributes(params[:task])
+      if @task.update(task_params)
         flash[:notice] = 'Task was successfully updated.'
         format.html { redirect_to(@task) }
         format.xml  { head :ok }
@@ -141,5 +141,11 @@ class TasksController < ApplicationController
       format.html { redirect_to(@task) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit!
   end
 end

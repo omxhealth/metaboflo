@@ -31,7 +31,7 @@ class TestSubjectsController < ApplicationController
 
   # POST /test_subjects
   def create
-    @test_subject = TestSubject.new(params[:test_subject])
+    @test_subject = TestSubject.new(test_subject_params)
 
     if @test_subject.save
       flash[:notice] = "#{TestSubject.title} was successfully created."
@@ -43,7 +43,7 @@ class TestSubjectsController < ApplicationController
 
   # PUT /test_subjects/1
   def update
-    if @test_subject.update_attributes(params[:test_subject])
+    if @test_subject.update_attributes(test_subject_params)
       flash[:notice] = "#{TestSubject.title} was successfully updated."
       redirect_to(@test_subject)
     else
@@ -63,9 +63,13 @@ class TestSubjectsController < ApplicationController
     render 'tree', layout: false
   end
 
-  protected
+  private
 
   def find_test_subject(param_name = :id)
     super
+  end
+
+  def test_subject_params
+    params.require(:test_subject).permit!
   end
 end

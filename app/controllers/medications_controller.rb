@@ -8,7 +8,7 @@ class MedicationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @medications }
+      format.xml  { render xml: @medications }
     end
   end
 
@@ -19,7 +19,7 @@ class MedicationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @medication }
+      format.xml  { render xml: @medication }
     end
   end
 
@@ -30,7 +30,7 @@ class MedicationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @medication }
+      format.xml  { render xml: @medication }
     end
   end
 
@@ -42,17 +42,17 @@ class MedicationsController < ApplicationController
   # POST /medications
   # POST /medications.xml
   def create
-    @medication = Medication.new(params[:medication])
+    @medication = Medication.new(medication_params)
     @medication.test_subject = @test_subject
 
     respond_to do |format|
       if @medication.save
         flash[:notice] = 'Medication was successfully created.'
         format.html { redirect_to(test_subject_medication_url(@test_subject, @medication)) }
-        format.xml  { render :xml => @medication, :status => :created, :location => @medication }
+        format.xml  { render xml: @medication, status: :created, location: @medication }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @medication.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @medication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,13 +63,13 @@ class MedicationsController < ApplicationController
     @medication = @test_subject.medications.find(params[:id])
 
     respond_to do |format|
-      if @medication.update_attributes(params[:medication])
+      if @medication.update(medication_params)
         flash[:notice] = 'Medication was successfully updated.'
         format.html { redirect_to(test_subject_medication_url(@test_subject, @medication)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @medication.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @medication.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -86,4 +86,9 @@ class MedicationsController < ApplicationController
     end
   end
 
+  private
+
+  def medication_params
+    params.require(:medication).permit!
+  end
 end

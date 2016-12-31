@@ -6,7 +6,7 @@ class TaskCategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @task_categories }
+      format.xml  { render xml: @task_categories }
     end
   end
 
@@ -17,7 +17,7 @@ class TaskCategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @task_category }
+      format.xml  { render xml: @task_category }
     end
   end
 
@@ -28,7 +28,7 @@ class TaskCategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @task_category }
+      format.xml  { render xml: @task_category }
     end
   end
 
@@ -40,16 +40,16 @@ class TaskCategoriesController < ApplicationController
   # POST /task_categories
   # POST /task_categories.xml
   def create
-    @task_category = TaskCategory.new(params[:task_category])
+    @task_category = TaskCategory.new(task_category_params)
 
     respond_to do |format|
       if @task_category.save
         flash[:notice] = 'TaskCategory was successfully created.'
         format.html { redirect_to(@task_category) }
-        format.xml  { render :xml => @task_category, :status => :created, :location => @task_category }
+        format.xml  { render xml: @task_category, status: :created, location: @task_category }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @task_category.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @task_category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,13 +60,13 @@ class TaskCategoriesController < ApplicationController
     @task_category = TaskCategory.find(params[:id])
 
     respond_to do |format|
-      if @task_category.update_attributes(params[:task_category])
+      if @task_category.update(task_category_params)
         flash[:notice] = 'TaskCategory was successfully updated.'
         format.html { redirect_to(@task_category) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @task_category.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @task_category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -81,5 +81,11 @@ class TaskCategoriesController < ApplicationController
       format.html { redirect_to(task_categories_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def task_category_params
+    params.require(:task_category).permit!
   end
 end
