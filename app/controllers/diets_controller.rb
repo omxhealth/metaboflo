@@ -2,7 +2,7 @@ class DietsController < ApplicationController
   # GET /diets
   # GET /diets.xml
   def index
-    @diets = Diet.find(:all)
+    @diets = Diet.all
 
     respond_to do |format|
       format.html # index.html.erb

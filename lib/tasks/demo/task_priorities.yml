@@ -1,13 +1,13 @@
---- 
-"464995676": 
+---
+"464995676":
   name: High
-  updated_at: 2008-12-16 07:14:37 Z
+  updated_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>
   id: 464995676
   description: Task is a high priority item
-  created_at: 2008-12-16 07:14:37 Z
-"927634277": 
+  created_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>
+"927634277":
   name: Low
-  updated_at: 2008-12-16 07:14:37 Z
+  updated_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>
   id: 927634277
   description: Task is a low priority item
-  created_at: 2008-12-16 07:14:37 Z
+  created_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>

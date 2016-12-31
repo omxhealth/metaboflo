@@ -1,11 +1,11 @@
 <%= render_form_errors(@protocol) %>
-<%= knoxy_form_for(@protocol, :html => { :multipart => true }) do |f| %>
+<%= knoxy_form_for(@protocol) do |f| %>
   <fieldset style="width: 50%">
     <legend>Protocol Details</legend>
-    <%= f.text_field :name, :required => true %>
-    <%= f.text_field :version, :size => 5 %>
-    <%= f.text_area :comments %>
-    <%= f.file_field :storage, :label => 'File', :required => true %>
+    <%= f.input :name, required: true %>
+    <%= f.input :version, size: 5 %>
+    <%= f.input :comments %>
+    <%= f.input :storage, label: 'File', required: true %>
   </fieldset>
 
   <div class="field-no-label actions">

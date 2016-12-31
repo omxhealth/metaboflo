@@ -1,11 +1,11 @@
 class LabTestsController < ApplicationController
-  before_filter :find_test_subject
-  
+  before_action :find_test_subject
+
   # GET /lab_tests
   # GET /lab_tests.xml
   def index
     @lab_tests = @test_subject.lab_tests
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @lab_tests }

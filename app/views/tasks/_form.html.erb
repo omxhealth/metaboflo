@@ -2,21 +2,21 @@
 <%= knoxy_form_for(@task) do |f| %>
   <fieldset>
     <legend>Task Details</legend>
-    <%= f.text_field :subject, :required => true %>
-    <%= f.text_area :description %>
-    <%= f.select :category_id, TaskCategory.all.collect { |tc| [tc.name, tc.id] }, :include_blank => true %>
-    <%= f.select :priority_id, TaskPriority.all.collect { |tp| [tp.name, tp.id] }, :include_blank => true %>
-    <%= f.select :assigned_to_id, User.find(:all).collect { |u| [u.name, u.id] }, :include_blank => true %>
+    <%= f.input :subject, required: true %>
+    <%= f.input :description %>
+    <%= f.association :category, include_blank: true %>
+    <%= f.association :priority, include_blank: true %>
+    <%= f.association :assigned_to, include_blank: true %>
   </fieldset>
 
   <fieldset>
     <legend>Progress</legend>
 
-    <%= f.select :status_id, TaskStatus.all.collect { |ts| [ts.name, ts.id] }, :include_blank => true %>
-    <%= f.text_field :start_date, :class => 'datepicker' %>
-    <%= f.text_field :due_date, :class => 'datepicker' %>
-    <%= f.text_field :estimated_hours, :size => 5 %>
-    <%= f.text_field :done_ratio, :label => '% done', :size => 5 %>
+    <%= f.association :status, include_blank: true %>
+    <%= f.input :start_date, class: 'datepicker' %>
+    <%= f.input :due_date, class: 'datepicker' %>
+    <%= f.input :estimated_hours %>
+    <%= f.input :done_ratio, label: "% complete", size: 5 %>
   </fieldset>
 
   <div class="field-no-label actions">

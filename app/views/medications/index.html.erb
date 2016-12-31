@@ -10,7 +10,7 @@
 		<th colspan="3">Actions</th>
 	</tr>
 
-	<% for medication in @medications %>
+	<% @medications.each do |medication| %>
 	<tr class="<%= cycle('odd', 'even') %>">
 		<td><%= medication.drug %></td>
 		<td><%= medication.started_on %></td>

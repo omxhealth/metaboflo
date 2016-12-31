@@ -2,7 +2,7 @@ class ProtocolsController < ApplicationController
   # GET /protocols
   # GET /protocols.xml
   def index
-    @protocols = Protocol.find(:all)
+    @protocols = Protocol.all
 
     respond_to do |format|
       format.html # index.html.erb

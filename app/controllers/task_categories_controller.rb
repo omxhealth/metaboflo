@@ -2,7 +2,7 @@ class TaskCategoriesController < ApplicationController
   # GET /task_categories
   # GET /task_categories.xml
   def index
-    @task_categories = TaskCategory.find(:all)
+    @task_categories = TaskCategory.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,11 +1,11 @@
 class SitesController < ApplicationController
-  before_filter :only_user?, :only => [ :new, :create, :edit, :update ]
-  before_filter :administrator?, :only => [ :destroy ]
-  
+  before_action :only_user?, :only => [ :new, :create, :edit, :update ]
+  before_action :administrator?, :only => [ :destroy ]
+
   # GET /sites
   # GET /sites.xml
   def index
-    @sites = Site.find(:all, :order => 'name ASC')
+    @sites = Site.order('name ASC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,12 +85,12 @@ class SitesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   protected
     def only_user?(redirect_path = sites_path)
       super
     end
-    
+
     def administrator?(redirect_path = sites_path)
       super
     end

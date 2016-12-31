@@ -1,5 +1,5 @@
 class Workflows::ExperimentsController < ApplicationController
-  before_filter :find_experiment, :except => [ :index, :new, :create ]
+  before_action :find_experiment, :except => [ :index, :new, :create ]
 
   # GET /workflows/experiments
   # GET /workflows/experiments.xml

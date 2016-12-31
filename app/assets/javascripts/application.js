@@ -7,7 +7,8 @@
 //= require jquery
 //= require jquery.cookie
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jstree
+//= require bootstrap-sass
 //= require yui-min
 //= require_tree .

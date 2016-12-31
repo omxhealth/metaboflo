@@ -1,11 +1,11 @@
 class MealsController < ApplicationController
-  
-  before_filter :find_test_subject
-  
+
+  before_action :find_test_subject
+
   # GET /meals
   # GET /meals.xml
   def index
-    @meals = TestSubject.find(@test_subject.id).meals.all
+    @meals = TestSubject.find(@test_subject.id).meals
 
     respond_to do |format|
       format.html # index.html.erb
@@ -87,5 +87,5 @@ class MealsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
 end

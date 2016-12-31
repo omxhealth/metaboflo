@@ -1,15 +1,15 @@
 <h1>Data File Upload</h1>
 
 <%= render_form_errors(@data_file) %>
-<%= knoxy_form_for([@experiment, @data_file], :html => { :multipart => true }) do |f| %>
+<%= knoxy_form_for([@experiment, @data_file], html: { multipart: true }) do |f| %>
   <fieldset>
     <legend>Data File Details</legend>
-    <%= f.file_field :data, :label => 'File to Upload', :required => true %>
-    <%= f.select :data_file_type_id, DataFileType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :required => true } %>
-    <%= f.check_box :has_concentrations, :label => 'This file contains concentration data in <br>CSV format that should be imported' %> (<%= link_to 'File Format Information', '/file_format.html', :target => '_blank' %>)
-    <%= f.select :has_concentration_units, ["uM", "mmol / mol creatinine"], :label => 'Units' %>
-    
-    <%= f.text_area :description %>
+    <%= f.input :data, label: 'File to Upload', required: true %>
+    <%= f.input :data_file_type_id, collection: DataFileType.all, include_blank: true, required: true %>
+    <%= f.input :has_concentrations, label: 'This file contains concentration data in CSV format that should be imported' %> (<%= link_to 'File Format Information', '/file_format.html', target: '_blank' %>)
+    <%= f.input :has_concentration_units, collection: ["uM", "mmol / mol creatinine"], label: 'Units' %>
+
+    <%= f.input :description %>
   </fieldset>
 
   <%= f.submit "Upload" %>

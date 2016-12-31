@@ -1,14 +1,14 @@
 class TestSubjectEvaluationsController < ApplicationController
-  before_filter :find_test_subject
+  before_action :find_test_subject
 
   # GET /test_subject_evaluations
   # GET /test_subject_evaluations.xml
   def index
-    @test_subject_evaluations = @test_subject.test_subject_evaluations.find(:all, :order => 'evaluated_on DESC')
+    @test_subject_evaluations = @test_subject.test_subject_evaluations.order('evaluated_on DESC')
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @test_subject_evaluations }
+      format.xml  { render xml: @test_subject_evaluations }
     end
   end
 
@@ -19,7 +19,7 @@ class TestSubjectEvaluationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @test_subject_evaluation }
+      format.xml  { render xml: @test_subject_evaluation }
     end
   end
 
@@ -30,7 +30,7 @@ class TestSubjectEvaluationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @test_subject_evaluation }
+      format.xml  { render xml: @test_subject_evaluation }
     end
   end
 
@@ -50,10 +50,10 @@ class TestSubjectEvaluationsController < ApplicationController
       if @test_subject_evaluation.save
         flash[:notice] = "#{TestSubject.title} Evaluation was successfully created."
         format.html { redirect_to(test_subject_test_subject_evaluation_url(@test_subject, @test_subject_evaluation)) }
-        format.xml  { render :xml => @test_subject_evaluation, :status => :created, :location => @test_subject_evaluation }
+        format.xml  { render xml: @test_subject_evaluation, status: :created, location: @test_subject_evaluation }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @test_subject_evaluation.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @test_subject_evaluation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,8 +77,8 @@ class TestSubjectEvaluationsController < ApplicationController
         format.html { redirect_to(test_subject_test_subject_evaluation_url(@test_subject, @test_subject_evaluation)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @test_subject_evaluation.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @test_subject_evaluation.errors, status: :unprocessable_entity }
       end
     end
   end

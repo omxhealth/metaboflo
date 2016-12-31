@@ -1,11 +1,11 @@
---- 
-"492774626": 
+---
+"492774626":
   name: Closed
-  updated_at: 2008-12-16 07:14:37 Z
+  updated_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>
   id: 492774626
-  created_at: 2008-12-16 07:14:37 Z
-"417306706": 
+  created_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>
+"417306706":
   name: Open
-  updated_at: 2008-12-16 07:14:37 Z
+  updated_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>
   id: 417306706
-  created_at: 2008-12-16 07:14:37 Z
+  created_at: <%= Time.parse('2008-12-16 07:14:37 Z') %>

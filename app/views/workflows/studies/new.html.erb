@@ -1,26 +1,26 @@
 <h1><%= title 'Create new study' %></h1>
 
-<p class="info"><%= render :partial => "/studies/info" %></p>
+<p class="info"><%= render partial: "/studies/info" %></p>
 
 <%= render_form_errors(@study) %>
-<%= knoxy_form_for [ :workflows, setup_workflow_study(@study) ], :html => { :autocomplete => false } do |f| %>
+<%= knoxy_form_for [ :workflows, setup_workflow_study(@study) ], html: { autocomplete: false } do |f| %>
   <fieldset>
     <legend>Study Details</legend>
-    
-    <%= f.text_field :name %>
-    <%= f.text_area :description %>
+
+    <%= f.input :name %>
+    <%= f.input :description %>
   </fieldset>
-  
+
   <fieldset id="cohorts" class="fields-for">
-    <legend>Cohorts</legend>  
+    <legend>Cohorts</legend>
 
     <%= f.full_field_group :cohorts do %>
       <% count = 1 %>
       <%= f.fields_for :cohorts do |cohort_form| %>
-        <%= render :partial => 'cohort', :locals => { :f => cohort_form,  :count => count } %>
+        <%= render 'cohort', f: cohort_form, count: count %>
         <% count += 1 %>
       <% end %>
-      <div><%= add_child_link f, :cohorts, :partial => 'cohort', :name => 'Add Cohort' %></div>
+      <div><%= add_child_link f, :cohorts, partial: 'cohort', name: 'Add Cohort' %></div>
     <% end -%>
   </fieldset>
 

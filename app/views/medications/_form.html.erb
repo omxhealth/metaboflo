@@ -2,11 +2,11 @@
 <%= knoxy_form_for([@test_subject, @medication]) do |f| %>
   <fieldset>
     <legend>Medication Details</legend>
-    <p><%= f.text_field :drug, :label => 'Drug name', :required => true %></p>
-    <p><%= f.text_field :started_on, :label => 'Treatment started on', :class => 'datepicker' %></p>
-    <p><%= f.text_field :stopped_on, :label => 'Treatment stopped on', :class => 'datepicker' %></p>
-    <p><%= f.check_box :currently_taking, :label => 'Drug currently being taken?' %></p>
-    <p><%= f.text_field :drugbank_reference, :label => 'DrugBank reference (drug ID number)', :size => 8, :maxlength => 7 %></p>
+    <p><%= f.input :drug, label: 'Drug name', required: true %></p>
+    <p><%= f.input :started_on, label: 'Treatment started on', class: 'datepicker' %></p>
+    <p><%= f.input :stopped_on, label: 'Treatment stopped on', class: 'datepicker' %></p>
+    <p><%= f.input :currently_taking, label: 'Drug currently being taken?' %></p>
+    <p><%= f.input :drugbank_reference, label: 'DrugBank reference (drug ID number)', maxlength: 7 %></p>
   </fieldset>
 
   <div class="field-no-label actions">

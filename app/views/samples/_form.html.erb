@@ -8,10 +8,10 @@
   <% if @parent_sample %>
     <p><%= f.label :sample_type %> <%= @parent_sample.sample_type %></p>
   <% else %>
-    <%= f.select :sample_type, ['ruminal', 'blood', 'milk', 'urine', 'feces'] %>
+    <%= f.input :sample_type, collection: ['ruminal', 'blood', 'milk', 'urine', 'feces'] %>
   <% end %>
-  <%= f.text_field :barcode, :size => 30 %>
-  <%= f.text_area :description %>
+  <%= f.input :barcode %>
+  <%= f.input :description %>
 </fieldset>
 
 <fieldset>
@@ -19,18 +19,17 @@
   <% if @parent_sample %>
     <p><%= f.label :client_id %><%= @sample.root_sample.client.to_s %></p>
   <% else %>
-    <%= f.select :client_id, Client.order(:name).collect { |c| [c.name, c.id] }, :include_blank => true %>
+    <%= f.association :client, include_blank: true %>
   <% end %>
-  <%= f.select :status, ['Submitted', 'Queued', 'In Progress', 'Finished'], :include_blank => true %>
-  
+  <%= f.input :status, collection: ['Submitted', 'Queued', 'In Progress', 'Finished'], include_blank: true %>
+
   <%= f.inner_field_group :reports do %>
-    <%= f.fields_for :stored_files do |stored_file_form| %>
-      <% if stored_file_form.object.new_record? %>
-        <%= stored_file_form.file_field :attachment, :no_label => true %>
+    <%= f.fields_for :stored_files do |sff| %>
+      <% if sff.object.new_record? %>
+        <%= sff.input :attachment, label: false %>
       <% else %>
-        <%= link_to stored_file_form.object.attachment_file_name, stored_file_form.object.attachment.url %>
-        <%= stored_file_form.check_box '_destroy', :no_label => true %>
-        <%= stored_file_form.label '_destroy', 'Remove', :class => 'grouped' %>
+        <%= link_to sff.object.attachment_file_name, sff.object.attachment.url %>
+        <%= sff.input '_destroy', label: 'Remove?' %>
       <% end %>
     <% end -%>
   <% end %>
@@ -38,30 +37,30 @@
 
 <fieldset>
   <legend>Collection Details</legend>
-  <%= f.inner_field :original_amount, :label => 'Amount received' do %>
-    <%= f.text_field :original_amount, :inner => true %> 
-    <%= f.select :original_unit, volume_unit_options, :include_blank => true, :inner => true %>
+  <%= f.inner_field_group :original_amount, label: 'Amount received' do %>
+    <%= f.input :original_amount, inner: true %>
+    <%= f.input :original_unit, collection: volume_unit_options, include_blank: true %>
   <% end -%>
-  <%= f.inner_field :actual_amount, :label => 'Amount remaining' do %>
-    <%= f.text_field :actual_amount, :inner => true %> 
-    <%= f.select :actual_unit, volume_unit_options, :include_blank => true, :inner => true %>
+  <%= f.inner_field_group :actual_amount, label: 'Amount remaining' do %>
+    <%= f.input :actual_amount, inner: true %>
+    <%= f.input :actual_unit, collection: volume_unit_options, include_blank: true %>
   <% end -%>
 
-  <%= f.inner_field :collected_by_id do %>
-    <%= f.select :collected_by_id, User.all.collect {|u| [ u.name, u.id ] }, { :inner => true }, { :include_blank => true } %>
-    on <%= f.text_field :collected_on, :inner => true, :class => 'datepicker' %>
+  <%= f.inner_field_group :collected_by_id do %>
+    <%= f.association :collected_by, include_blank: true %>
+    <%= f.input :collected_on, class: 'datepicker' %>
   <% end -%>
 </fieldset>
 
 <fieldset>
   <legend>Storage Details</legend>
-  <%= f.select :site_id, Site.order('name ASC').collect { |site| [ site.name, site.id ] }, :include_blank => true %>
-  <%= f.text_field :building %>
-  <%= f.text_field :room %>
-  <%= f.text_field :freezer %>
-  <%= f.text_field :shelf %>
-  <%= f.text_field :box %>
-  <%= f.text_field :box_position %>
+  <%= f.association :site, include_blank: true %>
+  <%= f.input :building %>
+  <%= f.input :room %>
+  <%= f.input :freezer %>
+  <%= f.input :shelf %>
+  <%= f.input :box %>
+  <%= f.input :box_position %>
 </fieldset>
 
 <div class="field-no-label actions">

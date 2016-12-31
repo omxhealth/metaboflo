@@ -6,7 +6,7 @@
     <th>Description</th>
   </tr>
 
-<% for task_priority in @task_priorities %>
+<% @task_priorities.each do |task_priority| %>
   <tr>
     <td><%= task_priority.name %></td>
     <td><%= task_priority.description %></td>

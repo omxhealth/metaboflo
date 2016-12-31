@@ -1,5 +1,5 @@
 class GroupingsController < ApplicationController
-  before_filter :find_type
+  before_action :find_type
 
   # GET /groupings
   def index
@@ -54,7 +54,7 @@ class GroupingsController < ApplicationController
     redirect_to(:action => 'index', :type => @type)
   end
 
-  private 
+  private
   def find_type
     @type = params[:type]
   end

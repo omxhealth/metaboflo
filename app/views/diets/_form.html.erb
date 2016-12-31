@@ -1,29 +1,28 @@
 <%= render_form_errors(@diet) %>
 <%= knoxy_form_for(setup_diet(@diet)) do |f| %>
   <fieldset>
-    <%= f.text_field :name, :required => true %>
+    <%= f.input :name, required: true %>
   </fieldset>
-    
+
   <fieldset id="diet_ingredients" class="fields-for">
-    <legend>Ingredients</legend>  
+    <legend>Ingredients</legend>
 
     <%= f.full_field_group :diet_ingredients do %>
       <%= f.fields_for :diet_ingredients do |diet_ingredient_form| %>
-        <%= render :partial => 'diet_ingredient', :locals => { :f => diet_ingredient_form } %>
+        <%= render 'diet_ingredient', f: diet_ingredient_form %>
       <% end %>
-      <div><%= add_child_link f, :diet_ingredients, :partial => 'diet_ingredient', :name => 'Add Ingredient' %></div>
+      <div><%= add_child_link f, :diet_ingredients, partial: 'diet_ingredient', name: 'Add Ingredient' %></div>
     <% end -%>
   </fieldset>
 
-
   <fieldset id="compositions" class="fields-for">
-    <legend>Nutrient Compositions</legend>  
+    <legend>Nutrient Compositions</legend>
 
     <%= f.full_field_group :compositions do %>
       <%= f.fields_for :compositions do |compositions_form| %>
-        <%= render :partial => 'composition', :locals => { :f => compositions_form } %>
+        <%= render 'composition', f: compositions_form %>
       <% end %>
-      <div><%= add_child_link f, :compositions, :partial => 'composition', :name => 'Add Nutrient Composition' %></div>
+      <div><%= add_child_link f, :compositions, partial: 'composition', name: 'Add Nutrient Composition' %></div>
     <% end -%>
   </fieldset>
 

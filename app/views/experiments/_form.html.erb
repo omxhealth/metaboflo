@@ -2,31 +2,32 @@
 <%= knoxy_form_for( [@sample, @experiment] ) do |f| %>
   <fieldset>
     <legend>Experiment Description</legend>
-    <%= f.text_field :name, :label => 'Experiment title', :style => "width: 250px", :required => true %>
-    <%= f.select :protocol_id, Protocol.all.collect {|p| [ p.to_label, p.id ] }, { :label => 'Experiment protocol' }, { :include_blank => true } %>
-    <%= f.select :experiment_type_id, ExperimentType.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :required => true } %>
-    <%= f.text_area :description, :style => "width: 350px; height: 70px" %>
-    <%= f.text_area :comments, :style => "width: 350px; height: 70px" %>
+    <%= f.input :name, label: 'Experiment title', style: "width: 250px", required: true %>
+    <%= f.input :protocol_id, collection: Protocol.all.map {|p| [p.to_label, p.id] }, label: 'Experiment protocol', include_blank: true %>
+    <%= f.input :experiment_type_id, collection: ExperimentType.all.map {|p| [p.name, p.id] }, include_blank: true, required: true %>
+    <%= f.input :description, style: "width: 350px; height: 70px" %>
+    <%= f.input :comments, style: "width: 350px; height: 70px" %>
   </fieldset>
 
   <fieldset>
     <legend>Analysis</legend>
-    <% user_options = User.order('name ASC').collect { |u| [ u.name, u.id ] } %>
-    <%= f.inner_field :assigned_to_id do %>
-      <%= f.select :assigned_to_id, user_options, { :inner => true }, :include_blank => true %> 
-      on <%= f.text_field :perform_on, :inner => true, :class => 'datepicker' %>
+    <%= f.inner_field_group :assigned_to_id do %>
+      <%= f.input :assigned_to_id, collection: User.order(:name), include_blank: true %>
+      on
+      <%= f.input :perform_on, class: 'datepicker' %>
     <% end -%>
-    <%= f.inner_field :performed_by_id do %>
-      <%= f.select :performed_by_id, user_options, { :inner => true }, :include_blank => true %>
-      on <%= f.text_field :performed_on, :inner => true, :class => 'datepicker' %>
+    <%= f.inner_field_group :performed_by_id do %>
+      <%= f.input :performed_by_id, collection: User.order(:name), include_blank: true %>
+      on
+      <%= f.input :performed_on, class: 'datepicker' %>
     <% end -%>
   </fieldset>
 
   <fieldset>
     <legend>Sample Details</legend>
-    <%= f.inner_field :amount_used do %>
-      <%= f.text_field :amount_used, :label => 'Amount used for experiment', :inner => true, :size => 5 %> 
-      <%= f.select :amount_used_unit, volume_unit_options, :inner => true, :include_blank => true %>
+    <%= f.inner_field_group :amount_used do %>
+      <%= f.input :amount_used, label: 'Amount used for experiment' %>
+      <%= f.input :amount_used_unit, collection: volume_unit_options, include_blank: true %>
     <% end -%>
   </fieldset>
 

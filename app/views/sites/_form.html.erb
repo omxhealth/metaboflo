@@ -3,9 +3,9 @@
 <%= knoxy_form_for(@site) do |f| %>
   <fieldset style="width: 50%">
     <legend>Site Details</legend>
-    <%= f.text_field :name, :size => 40 %>
-    <%= f.text_field :website, :size => 50 %>
-    <%= f.text_field :map_url, :label => 'Google Map Link', :size => 50 %>
+    <%= f.input :name %>
+    <%= f.input :website %>
+    <%= f.input :map_url, label: 'Google Map Link' %>
   </fieldset>
 
   <div class="field-no-label actions">

@@ -1,37 +1,37 @@
-Metaboflo::Application.routes.draw do
+Rails.application.routes.draw do
+
   ## Public routes
-  match 'about' => 'public/pages#about'
-  match 'contact' => 'public/pages#contact'
-  match 'services' => 'public/pages#services'
+  get 'about' => 'public/pages#about'
+  get 'contact' => 'public/pages#contact'
+  get 'services' => 'public/pages#services'
 
   ## User routes
   devise_for :users do
-    match 'landing' => 'bovine#index', :as => :user_root
+    get 'landing' => 'bovine#index', as: :user_root
   end
 
-  resources :users do 
+  resources :users do
     resources :user_pictures
     resources :tasks
   end
 
-  ## Client routes 
+  ## Client routes
   devise_for :clients do
-    match 'clients/home' => 'clients/home#index', :as => :client_root
+    get 'clients/home' => 'clients/home#index', as: :client_root
   end
-  
+
   namespace :clients do
-    resources :samples, :only => [ :index, :show ]
+    resources :samples, only: [ :index, :show ]
     resources :sample_manifests do
-      get 'print', :on => :member
+      get 'print', on: :member
     end
-    resources :home, :only => [ :index ]
+    resources :home, only: [ :index ]
   end
   resources :clients
 
   ## API Resources
   namespace :api do
   end
-
 
   ## Resources
 
@@ -78,9 +78,9 @@ Metaboflo::Application.routes.draw do
   # Workflows
   namespace :workflows do
     resources :experiments
-    resources :patients, :only => [:index, :new, :create]
-    resources :samples, :only => [:index, :show, :new, :create]
-    resources :studies, :only => [:new, :create] do
+    resources :patients, only: [:index, :new, :create]
+    resources :samples, only: [:index, :show, :new, :create]
+    resources :studies, only: [:new, :create] do
       member do
         get :cohort_assignment
         post :add_to_cohort
@@ -102,7 +102,7 @@ Metaboflo::Application.routes.draw do
       post :finish
     end
   end
-  
+
   resources :test_subjects do
     member do
       get :tree
@@ -128,19 +128,20 @@ Metaboflo::Application.routes.draw do
   end
 
   # Grouping/cohorts
-  resources :groupings do 
+  resources :groupings do
     resources :grouping_assignments
     resources :study_grouping_assignments
   end
-  
-  Grouping.valid_types.each do |grouping_type| # Add routes to direct the grouping types to the correct place
-    resources "#{grouping_type.tableize.singularize}_groupings", :controller => 'groupings', :defaults => { :type => grouping_type } 
+
+  # Add routes to direct the grouping types to the correct place
+  Grouping.valid_types.each do |grouping_type|
+    resources "#{grouping_type.tableize.singularize}_groupings",
+      controller: 'groupings', defaults: { type: grouping_type }
   end
 
-  
   ## Named routes
-  match 'admin' => 'administrators#index', :as => :admin
+  get 'admin' => 'administrators#index', as: :admin
 
-  ## Route URL 
-  root :to => 'public/pages#home'
+  ## Route URL
+  root 'public/pages#home'
 end

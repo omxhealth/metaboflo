@@ -1,8 +1,7 @@
---- 
-"6": 
+---
+"6":
   drinking_weekly: 2.0
   city: Edmonton
-  updated_at: 2008-12-16 03:58:39.579691 Z
   relative_condition: ""
   exercise_weekly: 4.0
   evaluated_on: 2007-11-15
@@ -12,15 +11,13 @@
   postal_zip_code: T5M1K2
   mother_health: Anemia
   mother_death_cause: ""
-  mother_death_age: 
+  mother_death_age:
   current_smoker: false
   symptoms: []
-
   test_subject_id: 1
   mother_age: 58
   relative_relationship: ""
   past_medical: []
-
   country: Canada
   id: 6
   father_death_cause: ""
@@ -30,35 +27,33 @@
   height: 65.0
   address_2: ""
   education: Undergraduate Degree
-  past_smoker: 
+  past_smoker:
   father_health: High blood pressure
   address: 10990-135 Street NW
-  father_death_age: 
+  father_death_age:
   father_age: 64
   diagnosis: Agitated
-  created_at: 2008-12-16 03:58:39.579691 Z
-"7": 
+"7":
   drinking_weekly: 1.0
   city: Edmonton
-  updated_at: 2008-12-16 04:08:48.462131 Z
   relative_condition: ""
   exercise_weekly: 4.0
   evaluated_on: 2008-12-15
   enough_sleep: false
-  weight: 
+  weight:
   province_state: AB
   postal_zip_code: T5M1K2
   mother_health: OK
   mother_death_cause: ""
-  mother_death_age: 
+  mother_death_age:
   current_smoker: false
-  symptoms: 
+  symptoms:
   - agitation
   - difficulty staying asleep
   test_subject_id: 2
   mother_age: 58
   relative_relationship: ""
-  past_medical: 
+  past_medical:
   - Asthma
   - Bad headaches
   country: Canada
@@ -73,32 +68,30 @@
   past_smoker: 7.0
   father_health: Good
   address: 10990-135 Street NW
-  father_death_age: 
+  father_death_age:
   father_age: 57
   diagnosis: High stress levels
-  created_at: 2008-12-16 04:08:48.462131 Z
-"1": 
+"1":
   drinking_weekly: 1.0
   city: Edmonton
-  updated_at: 2008-12-16 03:50:22.417713 Z
   relative_condition: ""
   exercise_weekly: 3.0
   evaluated_on: 2006-02-24
   enough_sleep: false
-  weight: 
+  weight:
   province_state: AB
   postal_zip_code: T6G1H7
   mother_health: Well
   mother_death_cause: ""
-  mother_death_age: 
+  mother_death_age:
   current_smoker: false
-  symptoms: 
+  symptoms:
   - fatigue
   - agitation
   test_subject_id: 2
   mother_age: 56
   relative_relationship: ""
-  past_medical: 
+  past_medical:
   - Asthma
   - Bad headaches
   country: Canada
@@ -113,31 +106,29 @@
   past_smoker: 5.0
   father_health: Good
   address: 8510-111 Street NW
-  father_death_age: 
+  father_death_age:
   father_age: 55
   diagnosis: Overreacting
-  created_at: 2008-12-16 03:47:31.463150 Z
-"2": 
+"2":
   drinking_weekly: 1.0
   city: Edmonton
-  updated_at: 2008-12-16 03:50:37.840266 Z
   relative_condition: ""
   exercise_weekly: 4.0
   evaluated_on: 2007-07-07
   enough_sleep: false
-  weight: 
+  weight:
   province_state: AB
   postal_zip_code: T6G1H7
   mother_health: Well
   mother_death_cause: ""
-  mother_death_age: 
+  mother_death_age:
   current_smoker: false
-  symptoms: 
+  symptoms:
   - fatigue
   test_subject_id: 2
   mother_age: 57
   relative_relationship: ""
-  past_medical: 
+  past_medical:
   - Asthma
   - Bad headaches
   country: Canada
@@ -152,31 +143,29 @@
   past_smoker: 6.0
   father_health: Good
   address: 8510-111 Street NW
-  father_death_age: 
+  father_death_age:
   father_age: 56
   diagnosis: Dizzy spells, probably due to elation of being married
-  created_at: 2008-12-16 03:50:08.228390 Z
-"3": 
+"3":
   drinking_weekly: 1.0
   city: Edmonton
-  updated_at: 2008-12-16 03:52:12.861180 Z
   relative_condition: ""
   exercise_weekly: 4.0
   evaluated_on: 2008-10-11
   enough_sleep: false
-  weight: 
+  weight:
   province_state: AB
   postal_zip_code: T5M1K2
   mother_health: Well
   mother_death_cause: ""
-  mother_death_age: 
+  mother_death_age:
   current_smoker: false
-  symptoms: 
+  symptoms:
   - fatigue
   test_subject_id: 2
   mother_age: 58
   relative_relationship: ""
-  past_medical: 
+  past_medical:
   - Asthma
   - Bad headaches
   country: Canada
@@ -191,14 +180,12 @@
   past_smoker: 7.0
   father_health: Good
   address: 10990-135 Street NW
-  father_death_age: 
+  father_death_age:
   father_age: 57
   diagnosis: Good Health
-  created_at: 2008-12-16 03:51:34.697725 Z
-"4": 
+"4":
   drinking_weekly: 2.0
   city: ""
-  updated_at: 2008-12-16 03:54:23.293344 Z
   relative_condition: ""
   exercise_weekly: 4.0
   evaluated_on: 2006-02-23
@@ -208,16 +195,15 @@
   postal_zip_code: ""
   mother_health: Anemia
   mother_death_cause: ""
-  mother_death_age: 
+  mother_death_age:
   current_smoker: false
-  symptoms: 
+  symptoms:
   - pain in chest
   - dizziness
   test_subject_id: 1
   mother_age: 56
   relative_relationship: ""
   past_medical: []
-
   country: ""
   id: 4
   father_death_cause: ""
@@ -227,17 +213,15 @@
   height: 65.0
   address_2: ""
   education: Undergraduate Degree
-  past_smoker: 
+  past_smoker:
   father_health: High blood pressure
   address: ""
-  father_death_age: 
+  father_death_age:
   father_age: 62
   diagnosis: Stressed out
-  created_at: 2008-12-16 03:54:23.293344 Z
-"5": 
+"5":
   drinking_weekly: 2.0
   city: Edmonton
-  updated_at: 2008-12-16 03:55:56.495164 Z
   relative_condition: ""
   exercise_weekly: 4.0
   evaluated_on: 2007-08-12
@@ -247,15 +231,14 @@
   postal_zip_code: T6G1H7
   mother_health: Anemia
   mother_death_cause: ""
-  mother_death_age: 
+  mother_death_age:
   current_smoker: false
-  symptoms: 
+  symptoms:
   - difficulty staying asleep
   test_subject_id: 1
   mother_age: 57
   relative_relationship: ""
   past_medical: []
-
   country: ""
   id: 5
   father_death_cause: ""
@@ -265,10 +248,9 @@
   height: 65.0
   address_2: Apt 712
   education: Undergraduate Degree
-  past_smoker: 
+  past_smoker:
   father_health: High blood pressure
   address: 8510-111 Street NW
-  father_death_age: 
+  father_death_age:
   father_age: 63
   diagnosis: In good health
-  created_at: 2008-12-16 03:55:56.495164 Z

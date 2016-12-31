@@ -1,21 +1,20 @@
 module FormHelper
-  def knoxy_form_for(*args, &proc)
+  def knoxy_form_for(object, *args, &block)
     options = args.extract_options!
     options[:html] ||= {}
     options[:html][:class] = 'standard' unless options[:html].has_key?(:class)
-    args << options.merge({ :builder => KnoxyFormBuilder })
-    form_for(*args, &proc)
+
+    simple_form_for(object, *(args << options.merge(builder: KnoxyFormBuilder)), &block)
   end
-  
+
   def form_header(title)
-    id = title.gsub(/\W/, '_').downcase
-    "<legend id=\"#{id}\">#{title}</legend>".html_safe
+    content_tag(:legend, title, id: title.parameterize('_'))
   end
 
   def render_form_errors(entry)
-    render :partial => '/shared/form_errors', :locals => { :entry => entry }
+    render '/shared/form_errors', entry: entry
   end
-    
+
   #
   # Support methods for nested forms
   #
@@ -39,7 +38,7 @@ module FormHelper
   def my_remove_child_link(name, f)
     f.hidden_field(:_destroy) + link_to(name, "javascript:void(0)", :class => "remove_child")
   end
-  
+
   def add_child_link(form_builder, association, options = {})
     options[:name] ||= "Add #{association.to_s.titleize.singularize}"
     adder = content_tag(:div, :class => "nested-add") do
