@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    == content_for(:meta_tags)
+    title = content_for?(:title) ? yield(:title) : 'Metaboflo'
+    == stylesheet_link_tag 'lims', media: 'all',
+        "data-turbolinks-track" => true
+    == javascript_include_tag "application", media: 'all',
+        "data-turbolinks-track" => true
+    == yield :css
+    == yield :javascript
+
+    == csrf_meta_tags
+
+  body[class="#{params[:controller].parameterize.dasherize}-c \
+              #{params[:action].parameterize}-a"
+       data-c=params[:controller].parameterize
+       data-a=params[:action].parameterize]
+    header == render 'layouts/lims/navigation'
+    main role="main"
+      - if defined?(@test_subject) && @test_subject.present? && @test_subject.persisted?
+        = content_for :sidebar do
+          h2 #{TestSubject.title} Summary
+          #subject-tree data-source="#{tree_test_subject_path(@test_subject)}"
+
+      .row
+        - if content_for?(:sidebar)
+          #sidebar-holder.col-md-3
+            #sidebar == yield :sidebar
+          #main.col-md-9
+            == render '/layouts/lims/messages'
+            == yield
+        - else
+          #main.col-md-12
+            == render '/layouts/lims/messages'
+            == yield
+
+    footer

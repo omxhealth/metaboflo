@@ -26,10 +26,10 @@ gem 'rabl'
 gem 'simple_form'
 gem 'cocoon'
 gem 'slim-rails'
+gem 'bootstrap-sass'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jstree'
-  gem 'rails-assets-bootstrap-sass'
 end
 
 group :production do

@@ -47,9 +47,14 @@ GEM
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (6.0.4)
+    autoprefixer-rails (6.6.0)
+      execjs
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
     capistrano (3.7.1)
@@ -162,8 +167,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.7)
       sprockets-rails
-    rails-assets-bootstrap-sass (3.3.7)
-      rails-assets-jquery (>= 1.9.1, < 4)
     rails-assets-jquery (3.1.1)
     rails-assets-jstree (3.3.3)
       rails-assets-jquery (>= 1.9.1)
@@ -251,6 +254,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   bundler (>= 1.8.4)
   byebug
   capistrano
@@ -275,7 +279,6 @@ DEPENDENCIES
   quiet_assets
   rabl
   rails (~> 4.2.0)
-  rails-assets-bootstrap-sass!
   rails-assets-jstree!
   ransack
   sass-rails (~> 5.0)

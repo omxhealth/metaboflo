@@ -1,0 +1,14 @@
+nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle type="button" data-toggle="collapse" data-target="#main-nav"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to 'Metaboflo', main_app.root_path, class: 'navbar-brand'
+    - if user_signed_in?
+      .collapse.navbar-collapse id="main-nav"
+        ul.nav.navbar-nav
+          = render 'layouts/lims/navigation_links'
+

@@ -9,6 +9,6 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jstree
-//= require bootstrap-sass
+//= require bootstrap
 //= require yui-min
 //= require_tree .

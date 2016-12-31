@@ -1,0 +1,47 @@
+li.dropdown
+  a href="#" class="dropdown-toggle" data-toggle="dropdown"
+    ' #{TestSubject.title.pluralize} <b class="caret"></b>
+  ul.dropdown-menu
+    li= link_to "All #{TestSubject.title.pluralize}", test_subjects_path
+    li= link_to 'Diets', diets_path
+li.dropdown
+  a href="#" class="dropdown-toggle" data-toggle="dropdown" Wet Lab <b class="caret"></b>
+  ul.dropdown-menu
+    li= link_to 'Sample Tracking', samples_path
+    li= link_to 'Experiments', experiments_path
+li= link_to 'Run Experiment', new_workflows_experiment_path
+li= link_to 'Create Study', new_workflows_study_path
+li.dropdown
+  a href="#" class="dropdown-toggle" data-toggle="dropdown" Analysis <b class="caret"></b>
+  ul.dropdown-menu
+    li= link_to 'Studies', studies_path
+    li= link_to "#{TestSubject.title} Groups", test_subject_groupings_path
+    li= link_to "Sample Groups", sample_groupings_path
+    li= link_to "Experiment Groups", experiment_groupings_path
+li= link_to 'Metabolites', metabolites_path
+li.dropdown
+  a href="#" class="dropdown-toggle" data-toggle="dropdown" Tools <b class="caret"></b>
+  ul.dropdown-menu
+    li= link_to 'HMDB', 'http://www.hmdb.ca/', target: '_blank'
+    li= link_to 'DrugBank', 'http://drugbank.ca', target: '_blank'
+    li= link_to 'Metabo-Analyst', 'http://www.metaboanalyst.ca', target: '_blank'
+    li= link_to 'PolySearch', 'http://polysearch.cs.ualberta.ca', target: '_blank'
+li.dropdown
+  a href="#" class="dropdown-toggle" data-toggle="dropdown" Planning <b class="caret"></b>
+  ul.dropdown-menu
+    li= link_to 'Tasks', tasks_path
+    li= link_to 'My Tasks', user_tasks_path(current_user)
+    li= link_to 'Gantt Chart', gantt_tasks_path
+    li= link_to 'Calendar', calendar_tasks_path
+li.dropdown
+  a href="#" class="dropdown-toggle" data-toggle="dropdown" Admin <b class="caret"></b>
+  ul.dropdown-menu
+    li= link_to 'Sites', sites_path
+    li= link_to 'Data file types', data_file_types_path
+    li= link_to 'Users', users_path
+    li= link_to 'Clients', clients_path
+    li= link_to 'Protocols', protocols_path
+li.dropdown
+  a href="#" class="dropdown-toggle" data-toggle="dropdown" #{glyphicon(:user)} <b class="caret"></b>
+  ul.dropdown-menu
+    li= link_to 'Logout', destroy_user_session_path, method: 'delete'
