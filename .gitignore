@@ -5,6 +5,7 @@ tmp/**/*
 tmp/*
 config/database.yml
 config/secrets.yml
+config/app_config.yml
 db/schema.rb
 public/system/*
 vendor/ruby

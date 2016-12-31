@@ -1,0 +1,16 @@
+# Replace this with your application settings, and duplicate as
+# app_config.yml
+development:
+  domain: localhost:3000
+  sample:
+    from: 'My Company <noreply@example.com>'
+
+test:
+  domain: localhost:3000
+  sample:
+    from: 'My Company <noreply@example.com>'
+
+production:
+  domain: metaboflo.example.com
+  sample:
+    from: 'My Company <noreply@example.com>'
