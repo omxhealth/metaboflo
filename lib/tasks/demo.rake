@@ -1,11 +1,17 @@
 require 'active_record/fixtures'
 
-@@all_models = [:sites, :users, :protocols, :test_subjects, :groupings, :grouping_assignments, :lab_tests, :test_subject_evaluations, :samples, :experiment_types, :experiments, :data_file_types, :data_files, :task_statuses, :task_categories, :task_priorities, :tasks]
-
 namespace :demo do
+  ALL_MODELS = [:sites, :users, :protocols, :test_subjects,
+                :groupings, :grouping_assignments, :lab_tests,
+                :test_subject_evaluations, :samples, :experiment_types,
+                :experiments, :data_file_types, :data_files,
+                :task_statuses, :task_categories,
+                :task_priorities, :tasks].freeze
+
   desc 'Import demo data into database.'
   task :load => [:environment] do |t|
-    @@all_models.each do |models|
+    ALL_MODELS.each do |models|
+      puts "Loading #{models}"
       load_fixture models
     end
     load_data_files
@@ -13,7 +19,7 @@ namespace :demo do
 
   desc 'Create demo data from data in database.'
   task :dump => [:environment] do |t|
-    @@all_models.each do |models|
+    ALL_MODELS.each do |models|
       dump_models models
     end
   end
@@ -34,14 +40,14 @@ def load_data_files
                                                :collected_by_id => user.id)
     e = s.experiments.first || s.experiments.create!(:name => "Experiment for #{ts.id}", :experiment_type => exptype,
                                                      :description => "#{exptype.name} Experiment -- Batch upload of Cachexia data.",
-                                                     :assigned_to => user, :perform_on => Date.today, :performed_on => Date.today, 
+                                                     :assigned_to => user, :perform_on => Date.today, :performed_on => Date.today,
                                                      :performed_by => user)
-    
+
     csv = "#{ts.id}.csv"
     path = File.join(File.dirname(__FILE__), "demo", "data_files", csv)
-    
+
     f = File.new(path, "r")
-          
+
     data_file = e.data_files.create!(:data => f, :data_file_type => DataFileType.find_by_name('CSV'), :has_concentrations => true, :has_concentration_units => 'uM')
   end
 end

@@ -7,7 +7,7 @@
 	<th colspan="3">Actions</th>
   </tr>
 
-<% for site in @sites %>
+<% @sites.each do |site| %>
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= site.name %></td>
 	<% if site.users %>

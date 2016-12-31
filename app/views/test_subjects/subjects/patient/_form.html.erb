@@ -2,22 +2,22 @@
 <%= knoxy_form_for @test_subject do |f| %>
   <fieldset>
     <legend>Patient Identification</legend>
-    <%= f.text_field :code %>
-    <%= f.select :site_id, Site.order('name asc').collect { |s| [ s.name, s.id ] }, :include_blank => true %>
+    <%= f.input :code %>
+    <%= f.association :site, include_blank: true %>
   </fieldset>
 
   <fieldset>
     <legend>Patient Personal Details</legend>
-      <%= f.text_field :birthdate, :class => 'datepicker' %>
-      <%= f.select :blood_type, ['A', 'B', 'O', 'AB'], :include_blank => true %>
-      <%= f.select :gender, ['Male', 'Female'], :include_blank => true %>
-      <%= f.select :race, ['Caucasian (White)', 'Black', 'Hispanic', 'Asian', 'Native Indian', 'Multiracial', 'Unknown', 'Not available'], :include_blank => true %>
+      <%= f.input :birthdate, class: 'datepicker' %>
+      <%= f.input :blood_type, collection: ['A', 'B', 'O', 'AB'], include_blank: true %>
+      <%= f.input :gender, collection: ['Male', 'Female'], include_blank: true %>
+      <%= f.input :race, collection: ['Caucasian (White)', 'Black', 'Hispanic', 'Asian', 'Native Indian', 'Multiracial', 'Unknown', 'Not available'], include_blank: true %>
   </fieldset>
 
   <fieldset>
     <legend>Practitioner Notes</legend>
-    <%= f.text_field :practitioner %>
-    <%= f.text_area :notes %>
+    <%= f.input :practitioner %>
+    <%= f.input :notes %>
   </fieldset>
 
   <div class="field-no-label actions">

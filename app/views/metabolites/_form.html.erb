@@ -2,35 +2,35 @@
 <%= knoxy_form_for(@metabolite) do |f| %>
   <fieldset>
     <legend>Metabolite Identification</legend>
-    <%= f.text_field :name %>
-    <%= f.text_field :cas, :label => 'CAS number' %>
-    <%= f.text_area :description %>
-    <%= f.text_field :iupac_name, :label => 'IUPAC name', :size => 50 %>
-    <%= f.text_field :formula, :label => 'Chemical formula' %>
-    <%= f.text_field :mono_mass, :label => 'Monoisotopic mass' %>
-    <%= f.text_field :average_mass %>
-    <%= f.text_area :smiles, :label => 'SMILES (isomeric)' %>
-    <%= f.text_area :inchi_identifier, :label => 'InChI identifier' %>
+    <%= f.input :name %>
+    <%= f.input :cas, label: 'CAS number' %>
+    <%= f.input :description %>
+    <%= f.input :iupac_name, label: 'IUPAC name', size: 50 %>
+    <%= f.input :formula, label: 'Chemical formula' %>
+    <%= f.input :mono_mass, label: 'Monoisotopic mass' %>
+    <%= f.input :average_mass %>
+    <%= f.input :smiles, label: 'SMILES (isomeric)' %>
+    <%= f.input :inchi_identifier, label: 'InChI identifier' %>
   </fieldset>
 
   <fieldset>
     <legend>Metabolite Properties</legend>
-    <%= f.text_field :melting_point %>
-    <%= f.select :state, ['Solid', 'Liquid', 'Gas'], :include_blank => true %>
+    <%= f.input :melting_point %>
+    <%= f.input :state, collection: ['Solid', 'Liquid', 'Gas'], include_blank: true %>
   </fieldset>
 
   <fieldset>
     <legend>External Links</legend>
-    <%= f.text_field :hmdb_id, :label => 'HMDB ID' %>
-    <%= f.text_field :kegg_compound_id, :label => 'KEGG compound ID' %>
-    <%= f.text_field :pubchem_compound_id, :label => 'PubChem compound ID' %>
-    <%= f.text_field :chebi_id, :label => 'ChEBI ID' %>
-    <%= f.text_field :wikipedia_name, :label => 'Wikipedia entry' %>
+    <%= f.input :hmdb_id, label: 'HMDB ID' %>
+    <%= f.input :kegg_compound_id, label: 'KEGG compound ID' %>
+    <%= f.input :pubchem_compound_id, label: 'PubChem compound ID' %>
+    <%= f.input :chebi_id, label: 'ChEBI ID' %>
+    <%= f.input :wikipedia_name, label: 'Wikipedia entry' %>
   </fieldset>
-    
+
   <fieldset>
     <legend>Other/Meta Data</legend>
-    <%= f.text_area :comments %>
+    <%= f.input :comments %>
   </fieldset>
 
   <div class="field-no-label actions">

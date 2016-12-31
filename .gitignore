@@ -12,4 +12,4 @@ vendor/cache/
 .rbenv-version
 vendor/ruby
 public/assets
-config/deploy
+config/deployvendor/ruby

@@ -1,13 +1,13 @@
-<%= knoxy_form_for [:workflow, @sample], :url => workflows_samples_path, 
-            :remote => request.xhr?, :html => { :'data-type' => 'html' } do |f| %>
+<%= knoxy_form_for [:workflow, @sample], url: workflows_samples_path,
+            remote: request.xhr?, html: { :'data-type' => 'html' } do |f| %>
   <h2>Patient <%= @patient.code %></h2>
-  
+
   <%= f.hidden_field :test_subject_id %>
-  <%= f.select :sample_type, Sample::SAMPLE_TYPES, :include_blank => true %>
-  <%= f.text_field :barcode, :size => 30 %>
-  <%= f.text_field :original_amount, :size => 5 %> 
-  <%= f.select :original_unit, volume_unit_options, :no_label => true %>
-  
+  <%= f.input :sample_type, collection: Sample::SAMPLE_TYPES, include_blank: true %>
+  <%= f.input :barcode %>
+  <%= f.input :original_amount %>
+  <%= f.input :original_unit, collection: volume_unit_options, label: false %>
+
   <div class="field-no-label">
     <%= f.submit %>
   </div>

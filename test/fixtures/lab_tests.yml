@@ -3,107 +3,107 @@
 one:
   cholesterol_value: 195
   cholesterol_unit: mg/dL
-  cholesterol_tested_at: 2008-11-26 17:29:19
-  creatinine_value: 
-  creatinine_unit: 
-  creatinine_tested_at: 
+  cholesterol_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
+  creatinine_value:
+  creatinine_unit:
+  creatinine_tested_at:
   urea_value: 89
   urea_unit: mg/dL
-  urea_tested_at: 2008-11-26 17:29:19
-  sodium_value: 
-  sodium_unit: 
-  sodium_tested_at: 
-  potassium_value: 
-  potassium_unit: 
-  potassium_tested_at: 
-  hemoglobin_value: 
-  hemoglobin_unit: 
-  hemoglobin_tested_at: 
-  white_cell_count_value: 
-  white_cell_count_unit: 
-  white_cell_count_tested_at: 
-  glucose_value: 
-  glucose_unit: 
-  glucose_tested_at: 
-  sodium_value: 
-  sodium_unit: 
-  sodium_tested_at: 
-  protein_value: 
-  protein_unit: 
-  protein_tested_at: 
-  c_reactive_protein_value: 
-  c_reactive_protein_unit: 
-  c_reactive_protein_tested_at: 
+  urea_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
+  sodium_value:
+  sodium_unit:
+  sodium_tested_at:
+  potassium_value:
+  potassium_unit:
+  potassium_tested_at:
+  hemoglobin_value:
+  hemoglobin_unit:
+  hemoglobin_tested_at:
+  white_cell_count_value:
+  white_cell_count_unit:
+  white_cell_count_tested_at:
+  glucose_value:
+  glucose_unit:
+  glucose_tested_at:
+  sodium_value:
+  sodium_unit:
+  sodium_tested_at:
+  protein_value:
+  protein_unit:
+  protein_tested_at:
+  c_reactive_protein_value:
+  c_reactive_protein_unit:
+  c_reactive_protein_tested_at:
   test_subject: one
   collected_at: 2008-11-26 17:29:19
 
 two:
   cholesterol_value: 200.0
   cholesterol_unit: mg/dL
-  cholesterol_tested_at: 2008-11-26 17:29:19
+  cholesterol_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   creatinine_value: 3.2
   creatinine_unit: mg/dL
-  creatinine_tested_at: 2008-11-26 17:29:19
-  urea_value: 
-  urea_unit: 
-  urea_tested_at: 
-  sodium_value: 
-  sodium_unit: 
-  sodium_tested_at: 
-  potassium_value: 
-  potassium_unit: 
-  potassium_tested_at: 
-  hemoglobin_value: 
-  hemoglobin_unit: 
-  hemoglobin_tested_at: 
-  white_cell_count_value: 
-  white_cell_count_unit: 
-  white_cell_count_tested_at: 
-  glucose_value: 
-  glucose_unit: 
-  glucose_tested_at: 
-  sodium_value: 
-  sodium_unit: 
-  sodium_tested_at: 
-  protein_value: 
-  protein_unit: 
-  protein_tested_at: 
-  c_reactive_protein_value: 
-  c_reactive_protein_unit: 
+  creatinine_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
+  urea_value:
+  urea_unit:
+  urea_tested_at:
+  sodium_value:
+  sodium_unit:
+  sodium_tested_at:
+  potassium_value:
+  potassium_unit:
+  potassium_tested_at:
+  hemoglobin_value:
+  hemoglobin_unit:
+  hemoglobin_tested_at:
+  white_cell_count_value:
+  white_cell_count_unit:
+  white_cell_count_tested_at:
+  glucose_value:
+  glucose_unit:
+  glucose_tested_at:
+  sodium_value:
+  sodium_unit:
+  sodium_tested_at:
+  protein_value:
+  protein_unit:
+  protein_tested_at:
+  c_reactive_protein_value:
+  c_reactive_protein_unit:
   c_reactive_protein_tested_at:
   test_subject: one
-  collected_at: 2008-11-26 17:29:19
+  collected_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
 
 three:
   cholesterol_value: 200.0
   cholesterol_unit: mg/dL
-  cholesterol_tested_at: 2008-11-26 17:29:19
+  cholesterol_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   creatinine_value: 3.2
   creatinine_unit: mg/dL
-  creatinine_tested_at: 2008-11-26 17:29:19
-  urea_value: 
-  urea_unit: 
-  urea_tested_at: 
+  creatinine_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
+  urea_value:
+  urea_unit:
+  urea_tested_at:
   sodium_value: 135
   sodium_unit: mEq/L
-  sodium_tested_at: 2008-11-26 17:29:19
+  sodium_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   potassium_value: 5.3
   potassium_unit: mEq/L
-  potassium_tested_at: 2008-11-26 17:29:19
+  potassium_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   hemoglobin_value: 10.4
   hemoglobin_unit: g/dL
-  hemoglobin_tested_at: 2008-11-26 17:29:19 
+  hemoglobin_tested_at: <%= Time.parse('2008-11-26 17:29:19  Z') %>
   white_cell_count_value: 4860
   white_cell_count_unit: per cubic mm
-  white_cell_count_tested_at: 2008-11-26 17:29:19
+  white_cell_count_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   glucose_value: 94
   glucose_unit: mg/dL
-  glucose_tested_at: 2008-11-26 17:29:19
+  glucose_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   protein_value: 1
   protein_unit: g/L
-  protein_tested_at: 2008-11-26 17:29:19
+  protein_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   c_reactive_protein_value: 2.42
   c_reactive_protein_unit: mcg/mL
-  c_reactive_protein_tested_at: 2008-11-26 17:29:19
+  c_reactive_protein_tested_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>
   test_subject: two
-  collected_at: 2008-11-26 17:29:19
+  collected_at: <%= Time.parse('2008-11-26 17:29:19 Z') %>

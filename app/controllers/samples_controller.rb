@@ -1,16 +1,16 @@
 class SamplesController < ApplicationController
-  before_filter :find_test_subject
-  before_filter :find_parent_sample
-  before_filter :find_sample, :only => [ :show, :edit, :update, :destroy, :finish ]
-  before_filter :no_parent?, :only => [ :new, :create ]
-  
+  before_action :find_test_subject
+  before_action :find_parent_sample
+  before_action :find_sample, only: [ :show, :edit, :update, :destroy, :finish ]
+  before_action :no_parent?, only: [ :new, :create ]
+
   # GET /samples
   # GET /samples.xml
   def index
-    @search = Sample.search(params[:search])
-  
+    @search = Sample.ransack(params[:q])
+
     if @parent.blank?
-      @all_samples = @search.includes(:sample, :test_subject, :experiments => [ :experiment_type ]).all
+      @all_samples = @search.result.includes(:sample, :test_subject, experiments: [:experiment_type])
       if can_view_all(current_user)
         @samples = @all_samples
       else
@@ -19,10 +19,10 @@ class SamplesController < ApplicationController
     else
       @samples = @parent.samples
     end
-    
+
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @samples }
+      format.xml  { render xml: @samples }
     end
   end
 
@@ -31,7 +31,7 @@ class SamplesController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @sample }
+      format.xml  { render xml: @sample }
     end
   end
 
@@ -42,7 +42,7 @@ class SamplesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @sample }
+      format.xml  { render xml: @sample }
     end
   end
 
@@ -59,15 +59,15 @@ class SamplesController < ApplicationController
     else
       @sample.sample = @parent
     end
-    
+
     respond_to do |format|
       if @sample.save
         flash[:notice] = 'Sample was successfully created.'
         format.html { redirect_to([@parent, @sample]) }
-        format.xml  { render :xml => @sample, :status => :created, :location => @sample }
+        format.xml  { render xml: @sample, status: :created, location: @sample }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @sample.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @sample.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -81,8 +81,8 @@ class SamplesController < ApplicationController
         format.html { redirect_to([@parent, @sample]) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sample.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @sample.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -98,25 +98,25 @@ class SamplesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   # POST /samples/1/finish
   def finish
     respond_to do |format|
-      if @sample.update_attributes(:status => 'Finished')
+      if @sample.update_attributes(status: 'Finished')
         if @sample.root_sample.client.blank?
           flash[:notice] = 'Sample is now finished.'
         else
           SampleMailer.finished_notification(@sample).deliver
-          flash[:notice] = 'Sample is now finished and a notification has been sent to the client.'          
+          flash[:notice] = 'Sample is now finished and a notification has been sent to the client.'
         end
-        
+
         format.html { redirect_to([@parent, @sample]) }
       else
-        format.html { render :action => "edit" }
+        format.html { render action: "edit" }
       end
     end
   end
-  
+
   protected
     def find_test_subject
       unless params[:test_subject_id].blank?
@@ -124,7 +124,7 @@ class SamplesController < ApplicationController
         @parent = @test_subject if @parent.blank?
       end
     end
-    
+
     def find_parent_sample
       unless params[:sample_id].blank?
         @parent = @parent_sample = Sample.find(params[:sample_id])
@@ -132,13 +132,13 @@ class SamplesController < ApplicationController
         find_test_subject
       end
     end
-    
+
     def find_sample
       @sample = @parent.blank? ? Sample.find(params[:id]) : @parent.samples.find(params[:id])
       params[:test_subject_id] = @sample.root.id
       find_test_subject
     end
-    
+
     def no_parent?
       redirect_to samples_url if @parent.blank?
     end

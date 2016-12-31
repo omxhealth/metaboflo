@@ -15,7 +15,7 @@
     <th colspan="3">Actions</th>
   </tr>
 
-  <% for experiment in @experiments %>
+  <% @experiments.each do |experiment| %>
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= link_to(experiment.sample.root, experiment.sample.root) %></td>
     <td><%= link_to(experiment.sample, experiment.sample) %></td>

@@ -6,7 +6,7 @@
     <th>Description</th>
   </tr>
 
-<% for task_category in @task_categories %>
+<% @task_categories.each do |task_category| %>
   <tr>
     <td><%= task_category.name %></td>
     <td><%= task_category.description %></td>

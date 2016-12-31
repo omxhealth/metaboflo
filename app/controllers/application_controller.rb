@@ -4,11 +4,9 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
   protect_from_forgery
-  
-  helper :all # include all helpers, all the time
-  
-  before_filter :authenticate_user!
-  
+
+  before_action :authenticate_user!
+
   def layout_by_resource
     if devise_controller? && resource_name == :client
       'public'
@@ -27,12 +25,13 @@ class ApplicationController < ActionController::Base
     end
     site_objects
   end
-  
+
   def can_view_all(user)
     return (current_user.rank == 'Superuser' || current_user.rank == 'Administrator')
   end
 
   protected
+
   def only_user?(redirect_path = root_path)
     redirect_to redirect_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
   end
@@ -43,7 +42,7 @@ class ApplicationController < ActionController::Base
 
   def find_test_subject(param_name = :test_subject_id)
     @test_subject = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-                TestSubject.find(params[param_name]) :
-                TestSubject.find(params[param_name], :conditions => [ 'site_id=?', current_user.site ])
+      TestSubject.find(params[param_name]) :
+      TestSubject.find_by!(id: params[param_name], site_id: current_user.site)
   end
 end

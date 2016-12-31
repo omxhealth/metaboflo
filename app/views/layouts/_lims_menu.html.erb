@@ -1,11 +1,11 @@
 <div id="navbar" class="yui3-menu yui3-menu-horizontal yui3-menubuttonnav">
   <div class="yui3-menu-content">
     <ul class="first-of-type">
-      
+
       <li class="yui3-menuitem">
-        <%= link_to 'Home', user_root_path, :class => 'yui3-menuitem-content' %>
+        <%= link_to 'Home', root_path, :class => 'yui3-menuitem-content' %>
       </li>
-      
+
       <li>
         <%= link_to content_tag(:em, TestSubject.title.pluralize), test_subjects_path, :class => 'yui3-menu-label' %>
         <div id="test-subject" class="yui3-menu">
@@ -28,7 +28,7 @@
           </div>
         </div>
       </li>
-      
+
       <li>
         <%= link_to content_tag(:em, 'Wet Lab'), samples_path, :class => 'yui3-menu-label' %>
         <div id="wet-lab" class="yui3-menu">
@@ -40,15 +40,15 @@
           </div>
         </div>
       </li>
-      
+
       <li class="yui3-menuitem">
         <%= link_to 'Run Experiment', new_workflows_experiment_path, :class => 'yui3-menuitem-content' %>
       </li>
-      
+
       <li class="yui3-menuitem">
         <%= link_to 'Create Study', new_workflows_study_path, :class => 'yui3-menuitem-content' %>
       </li>
-      
+
       <li>
         <%= link_to content_tag(:em, 'Analysis'), studies_path, :class => 'yui3-menu-label' %>
         <div id="analysis" class="yui3-menu">
@@ -58,7 +58,7 @@
               <li>
                 <%= link_to 'Groups', test_subject_groupings_path, :class => 'yui3-menu-label' %>
                 <div id="groupings" class="yui3-menu">
-                  <div class="yui3-menu-content">             
+                  <div class="yui3-menu-content">
                     <ul>
                       <li class="yui3-menuitem"><%= link_to "#{TestSubject.title} Groups", test_subject_groupings_path, :class => 'yui3-menuitem-content' %></li>
                       <li class="yui3-menuitem"><%= link_to 'Sample Groups', sample_groupings_path, :class => 'yui3-menuitem-content' %></li>
@@ -77,19 +77,19 @@
                       <li class="yui3-menuitem"><%= link_to 'Metabo-Analyst', 'http://www.metaboanalyst.ca', :target => '_blank', :class => 'yui3-menuitem-content' %></li>
                       <li class="yui3-menuitem"><%= link_to 'PolySearch', 'http://wishart.biology.ualberta.ca/polysearch/', :target => '_blank', :class => 'yui3-menuitem-content' %></li>
                       <li class="yui3-menuitem"><%= link_to 'BioSpider', 'http://biospider.ca', :target => '_blank', :class => 'yui3-menuitem-content' %></li>
-                    </ul>                    
+                    </ul>
                   </div>
-                </div>                                        
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </li>
-      
+
       <li class="yui3-menuitem">
         <%= link_to 'Metabolites', metabolites_path, :class => 'yui3-menuitem-content' %>
       </li>
-      
+
       <li>
         <%= link_to content_tag(:em, 'Planning'), tasks_path, :class => 'yui3-menu-label' %>
         <div id="tasks" class="yui3-menu">
@@ -99,11 +99,11 @@
               <li class="yui3-menuitem"><%= link_to 'My Tasks', user_tasks_path(current_user), :class => 'yui3-menuitem-content' %></li>
               <li class="yui3-menuitem"><%= link_to 'Gantt Chart', gantt_tasks_path, :class => 'yui3-menuitem-content' %></li>
               <li class="yui3-menuitem"><%= link_to 'Calendar', calendar_tasks_path, :class => 'yui3-menuitem-content' %></li>
-            </ul>                    
+            </ul>
           </div>
-        </div>                                        
+        </div>
       </li>
-      
+
       <li>
         <%= link_to content_tag(:em, 'Administration'), admin_path, :class => 'yui3-menu-label' %>
         <div id="administration" class="yui3-menu">
@@ -116,9 +116,9 @@
               <li class="yui3-menuitem"><%= link_to 'Protocols', protocols_path, :class => 'yui3-menuitem-content' %></li>
             </ul>
           </div>
-        </div>                    
+        </div>
       </li>
-      
-    </ul> 
+
+    </ul>
   </div>
 </div>

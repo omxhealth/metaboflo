@@ -1,10 +1,10 @@
 class GroupingAssignmentsController < ApplicationController
-  before_filter :find_grouping
-  before_filter :find_assignable
-  
+  before_action :find_grouping
+  before_action :find_assignable
+
   # GET /grouping_assignments
   def index
-    @grouping_assignments = @entity.grouping_assignments.find(:all)
+    @grouping_assignments = @entity.grouping_assignments.all
   end
 
   # GET /grouping_assignments/1
@@ -20,7 +20,7 @@ class GroupingAssignmentsController < ApplicationController
   # POST /grouping_assignments
   def create
     @grouping_assignment = GroupingAssignment.new(params[:grouping_assignment])
-    
+
     if @entity.is_a?(Grouping)
       @grouping_assignment.grouping = @entity
     else
@@ -29,9 +29,9 @@ class GroupingAssignmentsController < ApplicationController
 
     respond_to do |format|
       if @grouping_assignment.save
-        format.html { 
+        format.html {
           flash[:notice] = "#{@grouping_assignment.assignable.class} was successfully added to the group."
-          redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable) 
+          redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable)
         }
         format.js { @successful = true } # Render create.js.erb
       else
@@ -47,9 +47,9 @@ class GroupingAssignmentsController < ApplicationController
     @grouping_assignment.destroy
 
     respond_to do |format|
-      format.html { 
+      format.html {
         flash[:notice] = "#{@grouping_assignment.assignable.class} was successfully removed from the group."
-        redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable)   
+        redirect_to(:controller => @assignable_type.tableize, :action => 'show', :id => @assignable)
       }
       format.js { @successful = true } # Render destroy.js.erb
     end

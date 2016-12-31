@@ -9,7 +9,7 @@
 require 'active_record/fixtures'
 
 # Load default data file types
-ActiveRecord::Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "defaults" ), :data_file_types)
+ActiveRecord::Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "migrate/defaults" ), :data_file_types)
 
 # Load default experiment types
-ActiveRecord::Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "defaults" ), :experiment_types)
+ActiveRecord::Fixtures.create_fixtures(File.join(File.dirname(__FILE__), "migrate/defaults" ), :experiment_types)

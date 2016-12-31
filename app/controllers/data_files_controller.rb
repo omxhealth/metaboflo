@@ -1,5 +1,5 @@
 class DataFilesController < ApplicationController
-  before_filter :find_experiment
+  before_action :find_experiment
 
   # GET /data_files
   # GET /data_files.xml
@@ -7,15 +7,15 @@ class DataFilesController < ApplicationController
     if @experiment
       @data_files = @experiment.data_files
     else
-      all_data_files = DataFile.find(:all)
-      
+      all_data_files = DataFile.all
+
       if can_view_all(current_user)
         @data_files = all_data_files
       else
         @data_files = find_for_site(all_data_files, current_user.site)
       end
     end
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @data_files }
@@ -74,7 +74,7 @@ class DataFilesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   private
   def find_experiment
     if params[:experiment_id]
@@ -82,6 +82,6 @@ class DataFilesController < ApplicationController
       @sample = @experiment.sample
       @test_subject = @sample.root
     end
-  end  
+  end
 
 end

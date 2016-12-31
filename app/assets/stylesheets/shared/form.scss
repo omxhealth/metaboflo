@@ -1,0 +1,185 @@
+div.error-explanation {
+  background: #fbe3e4;
+  color: #8a1f11;
+  border: 1px solid #fbc2c4;
+  box-shadow: 0 0 3px silver;
+  padding: 0.3em 0.8em;
+  border-radius: 8px;
+  margin-top: 1em;
+
+  h2 { font-size: 17px }
+  ul { margin: 0.8em; }
+}
+
+.textile-holder {
+  .help-block {
+    .textile-hint {
+      float: right;
+      font-size: 12px;
+    }
+  }
+}
+
+.textile-editor {
+  font-size: smaller;
+}
+
+.citable {
+  .citation-text {
+    height: 100px;
+  }
+}
+
+form.standard {
+  .form-actions {
+    padding-top: .8em;
+    margin-bottom: 1em;
+    margin-top: .8em;
+    border-top: 1px solid white;
+    a, input, button {
+      @include btn;
+      @include btn-primary;
+      margin-right: 0.5em;
+    }
+  }
+  .error-msg {
+    font-style: italic;
+    margin-bottom: 0;
+    margin-top: -10px;
+    padding: 0;
+    font-size: 85%;
+  }
+  .datepicker {
+    width: 90px;
+  }
+  .field_with_errors {
+    display: inline;
+  }
+  fieldset {
+    @include well;
+    @include well-sm;
+    background: #E0EBEA;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  legend {
+    font-size: 18px;
+    background: white;
+    display: inline-block;
+    border: 1px solid silver;
+    padding: 0 0.5em;
+    border-radius: 3px;
+    max-width: 600px;
+    margin-left: .5em;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+.inline-checkbox-group {
+  .checkbox {
+    display: inline-block;
+    input {
+      vertical-align: middle;
+    }
+    label {
+      margin-right: 1.5em;
+    }
+  }
+}
+
+.nested-fields {
+  .form-control {
+    @extend .input-sm;
+  }
+  &.inline {
+    @extend .form-inline;
+    background: white;
+    border-radius: 2px;
+    position:relative;
+    padding: 2px 3px;
+    margin-top: 1px;
+    label {
+      margin-left: 1.5em;
+      margin-right: 0.5em;
+    }
+    .btn-rmv, .notice-rmv {
+      top: 14%; // Bleh...
+      position: absolute;
+      right: 5px;
+      vertical-align: middle;
+    }
+    &:hover {
+      background: $app-light-yellow;
+    }
+  }
+  &.panelled {
+    @extend .panel;
+    @extend .panel-default;
+    .btn-rmv {
+      float: right;
+    }
+  }
+}
+.btn-add {
+  @include btn;
+  @include btn-xs;
+  @include btn-default;
+  margin-top: 1em;
+}
+.btn-rmv {
+  @include btn;
+  @include btn-xs;
+  @include btn-default;
+  color: #9D1309;
+}
+.btn-new {
+  @include btn;
+  @include btn-xs;
+  @include btn-primary;
+  margin-top: 1em;
+  margin-left: 2em;
+  float: right;
+}
+
+.lims-edit-sidebar {
+  &.affix {
+    top: 60px;
+  }
+  .lims-sidebar-actions {
+    .cancel { margin-right: 1em; }
+  }
+  .lims-edit-sidenav {
+    > li {
+      a {
+        display: block;
+        padding: 4px 20px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #767676;
+        &:hover { color: $app-dark-pink; }
+      }
+      &.active {
+        > a {
+          border-left: 1px solid $app-dark-pink;
+          background: #f5f5f5;
+          font-weight: bold;
+          color: $app-dark-pink;
+        }
+        ul.nav {
+          display: block;
+        }
+      }
+      ul.nav {
+        display: none;
+      }
+    }
+    .nav>li>a {
+      padding-top: 1px;
+      padding-bottom: 1px;
+      padding-left: 30px;
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+}

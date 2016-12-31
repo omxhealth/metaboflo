@@ -7,7 +7,7 @@
 		<th colspan="3">Actions</th>
   </tr>
 
-<% for grouping_assignment in @grouping_assignments %>
+<% @grouping_assignments.each do |grouping_assignment| %>
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= link_to(grouping_assignment.grouping.name, grouping_assignment.grouping) %></td>
     <td><%= grouping_assignment.grouping.assignables.length %></td>

@@ -1,49 +1,49 @@
 <h1><%= (@parent and @parent.kind_of?(Sample)) ? "Aliquots of Sample #{@parent.id}" : (@parent and @parent.kind_of?(TestSubject)) ? "Samples for #{TestSubject.title.downcase} #{@parent}" : 'Sample Tracking' %></h1>
 
-<%= form_for @search, :url => samples_path, :html => { :method => :get } do |f| %>
+<%= search_form_for @search, url: samples_path, html: { method: :get } do |f| %>
 <table class="list">
   <tr class="header">
-		<th>Type</th>
-		<th>Barcode</th>
+    <th>Type</th>
+    <th>Barcode</th>
     <th>Amount Received</th>
     <th><%= TestSubject.title unless @test_subject %></th>
-		<th><%= 'Aliquoted from' unless @parent %></th>
+    <th><%= 'Aliquoted from' unless @parent %></th>
     <th>Collected on</th>
     <th>Collected by</th>
     <th>Location</th>
-		<th>Experiments</th>
-		<th colspan="3">Actions</th>
+    <th>Experiments</th>
+    <th colspan="3">Actions</th>
   </tr>
   <% if @parent.blank? %>
   <tr class="table-search">
-		<th><%= f.select :sample_type_contains, Sample.sample_types, :include_blank => true %></th>
-		<th><%= f.text_field :barcode_contains, :size => 6 %></th>
-    <th><%= f.text_field :original_amount_gte, :size => 6 %></th>
-    <th><%= f.text_field :test_subject_code_contains, :size => 6 %></th>
-    <th><%= f.text_field :sample_barcode_contains, :size => 6 %></th>
-    <th><%= f.text_field :collected_on_gte, :size => 8 %></th>
-    <th><%= f.select :collected_by_id_equals, User.order(:name).all.collect { |s| [ s.name, s.id ] }, :include_blank => true, :width => 7 %></th>
-    <th><%= f.text_field :location_contains, :size => 13 %></th>
-    <th><%= f.text_field :experiments_experiment_type_name_contains, :size => 15 %></th>
-		<th colspan="3"><%= f.submit 'Search' %> | <%= link_to 'Clear', test_subjects_path %></th>
-	</tr>
-	<% end -%>
-	
+    <th><%= f.select :sample_type_cont, Sample.sample_types, include_blank: true %></th>
+    <th><%= f.text_field :barcode_cont, size: 6 %></th>
+    <th><%= f.text_field :original_amount_gteq, size: 6 %></th>
+    <th><%= f.text_field :test_subject_code_cont, size: 6 %></th>
+    <th><%= f.text_field :sample_barcode_cont, size: 6 %></th>
+    <th><%= f.text_field :collected_on_gteq, size: 8 %></th>
+    <th><%= f.select :collected_by_id_eq, User.order(:name).all.collect { |s| [ s.name, s.id ] }, include_blank: true, width: 7 %></th>
+    <th><%= f.text_field :location_cont, size: 13 %></th>
+    <th><%= f.text_field :experiments_experiment_type_name_cont, size: 15 %></th>
+    <th colspan="3"><%= f.submit 'Search' %> | <%= link_to 'Clear', test_subjects_path %></th>
+  </tr>
+  <% end -%>
+
 <% @samples.each do |sample| %>
   <tr class="<%= cycle('odd', 'even') %>">
-		<td><%= sample.sample_type %></td>
-		<td><%= sample.barcode %></td>
+    <td><%= sample.sample_type %></td>
+    <td><%= sample.barcode %></td>
     <td><%= sample.original_amount %> <%= sample.original_unit %><br />(<%= sample.theoretical_amount %> <%= sample.original_unit %> remaining)</td>
     <td><%= link_to(sample.root.code, sample.root) %></td>
-		<td><%= link_to(sample.sample.barcode, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
+    <td><%= link_to(sample.sample.barcode, sample.sample) unless @parent_sample || sample.sample.nil? %></td>
     <td><%= sample.collected_on %></td>
     <td><%= sample.collected_by.present? ? link_to(sample.collected_by.name, sample.collected_by) : '' %></td>
     <td><%= sample.building %> <%= sample.room %></td>
-		<td>
-			<% sample.experiments.each do |experiment| -%>
-			  <%= link_to experiment.experiment_type.name, [sample, experiment] %><br />
-			<% end -%>
-		</td>
+    <td>
+      <% sample.experiments.each do |experiment| -%>
+        <%= link_to experiment.experiment_type.name, [sample, experiment] %><br />
+      <% end -%>
+    </td>
     <td><%= show_link sample.sample ? sample_sample_path(sample.sample, sample) : test_subject_sample_path(sample.test_subject, sample) %></td>
     <td><%= edit_link sample.sample ? edit_sample_sample_path(sample.sample, sample) : edit_test_subject_sample_path(sample.test_subject, sample) %></td>
     <td><%= destroy_link sample.sample ? sample_sample_path(sample.sample, sample) : test_subject_sample_path(sample.test_subject, sample) %></td>

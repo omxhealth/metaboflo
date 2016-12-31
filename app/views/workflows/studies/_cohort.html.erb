@@ -1,9 +1,9 @@
-<% count = f.object_name.gsub(/[^0-9]+/,'').to_i %>
+<% count = f.object_name.remove(/[^0-9]+/).to_i %>
 <% count = 'new_cohorts' if count <= 0 %>
 <% enzyme_id = "#{count}_cohort" %>
 
 <div class="nested-field" style="display: <%= f.object.send('_destroy') ? 'none' : 'block' %>">
   <%= remove_child_link "remove", f %>
-  <%= f.text_field :label %>
-  <%= f.select :control, Cohort::ALLOWED_CONTROL_VALUES, :label => 'Control?' %>
+  <%= f.input :label %>
+  <%= f.input :control, collection: Cohort::ALLOWED_CONTROL_VALUES, label: 'Control?' %>
 </div>

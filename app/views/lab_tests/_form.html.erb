@@ -1,20 +1,18 @@
 <fieldset>
   <legend>Test Details</legend>
-  <p><%= form.datetime_select :collected_at, :label => 'Test completed at', :order => [:month, :day, :year], :include_blank => true %></p>
-  <p><%= form.text_area :notes %></p>
+  <p><%= form.input :collected_at, label: 'Test completed at', order: [:month, :day, :year], include_blank: true %></p>
+  <p><%= form.input :notes %></p>
 </fieldset>
 
 <hr />
 
-<% for test in tests(@lab_test, true) %>
-
-<fieldset style="width: 70%">
-  <legend><%= "#{test}".gsub('_', ' ').capitalize %></legend>
-  <p>
-    <%= form.text_field "#{test}_value".to_sym, :label => 'Level' %> 
-    <%= form.select :"#{test}_unit".to_sym, clinical_unit_options, :no_label => true, :include_blank => true %>
-  </p>
-  <p><%= form.datetime_select "#{test}_tested_at".to_sym, :label => 'Tested at', :order => [:month, :day, :year], :include_blank => true %></p>
-</fieldset>
-
+<% tests(@lab_test, true).each do |test| %>
+  <fieldset>
+    <legend><%= "#{test}".gsub('_', ' ').capitalize %></legend>
+    <p>
+      <%= form.input "#{test}_value".to_sym, label: 'Level' %>
+      <%= form.input :"#{test}_unit".to_sym, collection: clinical_unit_options, label: false, include_blank: true %>
+    </p>
+    <p><%= form.input "#{test}_tested_at".to_sym, label: 'Tested at', order: [:month, :day, :year], include_blank: true %></p>
+  </fieldset>
 <% end %>

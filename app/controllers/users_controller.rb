@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
-  before_filter :find_site
-  before_filter :find_user, :only => [ :show, :edit, :update, :destroy ]
-  before_filter :authorize
-  
+  before_action :find_site
+  before_action :find_user, :only => [ :show, :edit, :update, :destroy ]
+  before_action :authorize
+
   # GET /users
   # GET /users.xml
   def index
     if !@site.blank?
       @users = @site.users
     elsif current_user.rank == 'Administrator' || current_user.rank == 'Superuser'
-      @users = User.find(:all)
+      @users = User.all
     else
       @users = current_user.site.users
     end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
-  
+
   # POST /users
   # POST /users.xml
   def create
@@ -80,13 +80,13 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
     end
   end
-  
+
   protected
   def find_site
     @site = Site.find(params[:site_id]) unless params[:site_id].blank?

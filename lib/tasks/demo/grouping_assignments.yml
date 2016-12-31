@@ -1,239 +1,171 @@
---- 
-"33": 
-  updated_at: 2008-12-16 06:20:06.335100 Z
+---
+"33":
   id: 33
   grouping_id: 5
   assignable_id: 4
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:20:06.335100 Z
-"22": 
-  updated_at: 2008-12-16 06:17:45.457051 Z
+"22":
   id: 22
   grouping_id: 3
   assignable_id: 13
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:17:45.457051 Z
-"11": 
-  updated_at: 2008-12-16 06:16:04.026246 Z
+"11":
   id: 11
   grouping_id: 2
   assignable_id: 12
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:04.026246 Z
-"6": 
-  updated_at: 2008-12-16 06:15:25.496351 Z
+"6":
   id: 6
   grouping_id: 1
   assignable_id: 3
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:25.496351 Z
-"34": 
-  updated_at: 2008-12-16 06:20:08.638694 Z
+"34":
   id: 34
   grouping_id: 5
   assignable_id: 9
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:20:08.638694 Z
-"23": 
-  updated_at: 2008-12-16 06:17:49.779636 Z
+"23":
   id: 23
   grouping_id: 3
   assignable_id: 17
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:17:49.779636 Z
-"12": 
-  updated_at: 2008-12-16 06:16:09.195257 Z
+"12":
   id: 12
   grouping_id: 2
   assignable_id: 8
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:09.195257 Z
-"7": 
-  updated_at: 2008-12-16 06:15:30.154495 Z
+"7":
   id: 7
   grouping_id: 1
   assignable_id: 10
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:30.154495 Z
-"24": 
-  updated_at: 2008-12-16 06:18:46.050675 Z
+"24":
   id: 24
   grouping_id: 4
   assignable_id: 15
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:18:46.050675 Z
-"13": 
-  updated_at: 2008-12-16 06:16:16.003773 Z
+"13":
   id: 13
   grouping_id: 2
   assignable_id: 9
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:16.003773 Z
-"8": 
-  updated_at: 2008-12-16 06:15:33.686510 Z
+"8":
   id: 8
   grouping_id: 1
   assignable_id: 5
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:33.686510 Z
-"25": 
-  updated_at: 2008-12-16 06:18:49.539850 Z
+"25":
   id: 25
   grouping_id: 4
   assignable_id: 16
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:18:49.539850 Z
-"14": 
-  updated_at: 2008-12-16 06:16:20.474801 Z
+"14":
   id: 14
   grouping_id: 2
   assignable_id: 14
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:20.474801 Z
-"9": 
-  updated_at: 2008-12-16 06:15:58.268730 Z
+"9":
   id: 9
   grouping_id: 2
   assignable_id: 11
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:58.268730 Z
-"26": 
-  updated_at: 2008-12-16 06:18:52.964935 Z
+"26":
   id: 26
   grouping_id: 4
   assignable_id: 1
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:18:52.964935 Z
-"15": 
-  updated_at: 2008-12-16 06:16:23.695648 Z
+"15":
   id: 15
   grouping_id: 2
   assignable_id: 17
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:23.695648 Z
-"27": 
-  updated_at: 2008-12-16 06:18:59.209723 Z
+"27":
   id: 27
   grouping_id: 4
   assignable_id: 3
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:18:59.209723 Z
-"16": 
-  updated_at: 2008-12-16 06:16:31.911007 Z
+"16":
   id: 16
   grouping_id: 2
   assignable_id: 2
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:31.911007 Z
-"28": 
-  updated_at: 2008-12-16 06:19:03.829580 Z
+"28":
   id: 28
   grouping_id: 4
   assignable_id: 5
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:19:03.829580 Z
-"17": 
-  updated_at: 2008-12-16 06:16:35.514163 Z
+"17":
   id: 17
   grouping_id: 2
   assignable_id: 4
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:35.514163 Z
-"1": 
-  updated_at: 2008-12-16 06:15:00.929394 Z
+"1":
   id: 1
   grouping_id: 1
   assignable_id: 6
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:00.929394 Z
-"30": 
-  updated_at: 2008-12-16 06:19:54.727821 Z
+"30":
   id: 30
   grouping_id: 5
   assignable_id: 15
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:19:54.727821 Z
-"29": 
-  updated_at: 2008-12-16 06:19:51.797992 Z
+"29":
   id: 29
   grouping_id: 5
   assignable_id: 11
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:19:51.797992 Z
-"18": 
-  updated_at: 2008-12-16 06:17:28.932217 Z
+"18":
   id: 18
   grouping_id: 3
   assignable_id: 6
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:17:28.932217 Z
-"2": 
-  updated_at: 2008-12-16 06:15:08.719984 Z
+"2":
   id: 2
   grouping_id: 1
   assignable_id: 13
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:08.719984 Z
-"31": 
-  updated_at: 2008-12-16 06:20:00.817524 Z
+"31":
   id: 31
   grouping_id: 5
   assignable_id: 1
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:20:00.817524 Z
-"20": 
-  updated_at: 2008-12-16 06:17:37.443697 Z
+"20":
   id: 20
   grouping_id: 3
   assignable_id: 12
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:17:37.443697 Z
-"19": 
-  updated_at: 2008-12-16 06:17:32.991018 Z
+"19":
   id: 19
   grouping_id: 3
   assignable_id: 7
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:17:32.991018 Z
-"3": 
-  updated_at: 2008-12-16 06:15:11.754688 Z
+"3":
   id: 3
   grouping_id: 1
   assignable_id: 15
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:11.754688 Z
-"32": 
-  updated_at: 2008-12-16 06:20:03.720886 Z
+"32":
   id: 32
   grouping_id: 5
   assignable_id: 2
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:20:03.720886 Z
-"21": 
-  updated_at: 2008-12-16 06:17:41.942281 Z
+"21":
   id: 21
   grouping_id: 3
   assignable_id: 8
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:17:41.942281 Z
-"10": 
-  updated_at: 2008-12-16 06:16:01.861740 Z
+"10":
   id: 10
   grouping_id: 2
   assignable_id: 7
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:16:01.861740 Z
-"4": 
-  updated_at: 2008-12-16 06:15:15.584128 Z
+"4":
   id: 4
   grouping_id: 1
   assignable_id: 16
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:15.584128 Z
-"5": 
-  updated_at: 2008-12-16 06:15:19.173452 Z
+"5":
   id: 5
   grouping_id: 1
   assignable_id: 1
   assignable_type: TestSubject
-  created_at: 2008-12-16 06:15:19.173452 Z

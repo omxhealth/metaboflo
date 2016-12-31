@@ -1,46 +1,46 @@
-<%= knoxy_form_for [:workflow, setup_workflow_patient(@test_subject)], :url => workflows_patients_path, 
-            :remote => request.xhr?, :html => { :'data-type' => 'html' } do |f| %>
+<%= knoxy_form_for [:workflow, setup_workflow_patient(@test_subject)], url: workflows_patients_path,
+            remote: request.xhr?, html: { :'data-type' => 'html' } do |f| %>
   <fieldset>
     <legend>Patient Identification</legend>
-    <%= f.text_field :code %>
+    <%= f.input :code %>
     <%= error_message(TestSubject.human_attribute_name(:code), @test_subject.errors[:code]) %>
-  
-    <%= f.select :site_id, Site.order(:name).collect { |s| [s.name, s.id] }, :include_blank => true  %>
+
+    <%= f.association :site, include_blank: true  %>
     <%= error_message(TestSubject.human_attribute_name(:site_id), @test_subject.errors[:site_id]) %>
   </fieldset>
-  
+
   <fieldset>
     <legend>Sample Information</legend>
     <%= f.fields_for :samples do |sample_form| %>
-      <%= sample_form.select :sample_type, Sample::SAMPLE_TYPES %>
-      <%= sample_form.text_field :barcode, :size => 30 %>
-      <%= sample_form.text_field :original_amount, :size => 5 %> 
-      <%= sample_form.select :original_unit, volume_unit_options %>
+      <%= sample_form.input :sample_type, collection: Sample::SAMPLE_TYPES %>
+      <%= sample_form.input :barcode %>
+      <%= sample_form.input :original_amount %>
+      <%= sample_form.input :original_unit, collection: volume_unit_options %>
     <% end %>
   </fieldset>
 
   <div id="patient-more" style="display: none;">
     <fieldset>
       <legend>Patient Personal Details</legend>
-      <%= f.date_select :birthdate, :order => [ :month, :day, :year ], :include_blank => true, :start_year => Time.now.year-100, :end_year => Time.now.year %>
-      <%= f.select :blood_type, ['A', 'B', 'O', 'AB'], :include_blank => true %>
-      <%= f.select :gender, ['Male', 'Female'], :include_blank => true %>
-      <%= f.select :race, ['Caucasian (White)', 'Black', 'Hispanic', 'Asian', 'Native Indian', 'Multiracial', 'Unknown', 'Not available'], :include_blank => true %>
-    </fieldset>  
-  
+      <%= f.input :birthdate, order: [:month, :day, :year], include_blank: true, start_year: Time.now.year-100, end_year: Time.now.year %>
+      <%= f.input :blood_type, collection: ['A', 'B', 'O', 'AB'], include_blank: true %>
+      <%= f.input :gender, collection: ['Male', 'Female'], include_blank: true %>
+      <%= f.input :race, collection: ['Caucasian (White)', 'Black', 'Hispanic', 'Asian', 'Native Indian', 'Multiracial', 'Unknown', 'Not available'], include_blank: true %>
+    </fieldset>
+
     <fieldset>
       <legend>Practitioner Notes</legend>
-      <%= f.text_field :practitioner %>
+      <%= f.input :practitioner %>
       <%= error_message(TestSubject.human_attribute_name(:practitioner), @test_subject.errors[:practitioner]) %>
-      <%= f.text_area :notes %>
+      <%= f.input :notes %>
     </fieldset>
   </div>
-  
+
   <div class="field-no-label actions">
     <%= f.submit 'Create Patient' %>
   </div>
-  
+
   <div id="patient-more-toggle">
-    <%= link_to 'Show/Hide other patient fields', '#', :class => 'show-hide', :'data-element' => 'patient-more' %>
+    <%= link_to 'Show/Hide other patient fields', '#', class: 'show-hide', :'data-element' => 'patient-more' %>
   </div>
 <% end %>

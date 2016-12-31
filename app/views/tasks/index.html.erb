@@ -19,7 +19,7 @@
 		<th colspan="3">Actions</th>
   </tr>
 
-<% for task in @tasks %>
+<% @tasks.each do |task| %>
 	<tr class="<%= cycle('odd', 'even') %>">
     <td><span title="<%= task.description %>"><%= task.subject %></span></td>
     <td><%= link_to('Set completed', complete_task_path(task), :confirm => 'Set task to complete and close?', :method => :put) unless task.done_ratio == 100 %></td>
@@ -40,8 +40,8 @@
 
 <br />
 
-<%= new_link("task", new_task_path) %> | 
-<%= link_to 'My tasks', user_tasks_path(current_user) %> | 
-<%= link_to 'Gantt', gantt_tasks_path, :class => 'icon icon-report' %> | 
+<%= new_link("task", new_task_path) %> |
+<%= link_to 'My tasks', user_tasks_path(current_user) %> |
+<%= link_to 'Gantt', gantt_tasks_path, :class => 'icon icon-report' %> |
 <%= link_to 'Calendar', calendar_tasks_path, :class => 'icon icon-calendar' %>
 

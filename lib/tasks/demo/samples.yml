@@ -1,6 +1,5 @@
-"1054583385": 
+"1054583385":
   original_unit: mL
-  updated_at: 2008-12-16 04:43:06 Z
   site_id: 1025886481
   test_subject_id: 1
   collected_on: 2008-08-03
@@ -11,14 +10,12 @@
   original_amount: 200.0
   description: ""
   collected_by: roman
-  sample_id: 
+  sample_id:
   room: 3-27
   building: West Wing
   actual_amount: 150.0
-  created_at: 2008-12-16 03:48:28 Z
-"1054583386": 
+"1054583386":
   original_unit: mL
-  updated_at: 2008-12-16 04:43:24 Z
   site_id: 1025886481
   test_subject_id: 1
   collected_on: 2008-11-13
@@ -33,10 +30,8 @@
   room: 3-27
   building: West Wing
   actual_amount: 25.0
-  created_at: 2008-12-16 03:49:58 Z
-"2054534539": 
+"2054534539":
   original_unit: mL
-  updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
   test_subject_id: 1
   collected_on: 2007-03-18
@@ -51,10 +46,8 @@
   room: "235"
   building: Bio Sci
   actual_amount: 200.0
-  created_at: 2008-12-16 04:52:17 Z
-"1054583387": 
+"1054583387":
   original_unit: mL
-  updated_at: 2008-12-16 04:43:34 Z
   site_id: 953125641
   test_subject_id: 2
   collected_on: 2007-04-16
@@ -65,14 +58,12 @@
   original_amount: 5.0
   description: ""
   collected_by: roman
-  sample_id: 
+  sample_id:
   room: w203
   building: Biological Sciences
   actual_amount: 5.0
-  created_at: 2008-12-16 03:51:10 Z
-"1054583388": 
+"1054583388":
   original_unit: mL
-  updated_at: 2008-12-16 04:44:20 Z
   site_id: 996332877
   test_subject_id: 2
   collected_on: 2007-12-25
@@ -83,14 +74,12 @@
   original_amount: 50.0
   description: ""
   collected_by: craig
-  sample_id: 
+  sample_id:
   room: "345"
   building: Biological Sciences
   actual_amount: 45.0
-  created_at: 2008-12-16 03:54:25 Z
-"1054534399": 
+"1054534399":
   original_unit: mL
-  updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
   test_subject_id: 1
   collected_on: 2007-03-18
@@ -105,10 +94,8 @@
   room: "235"
   building: Bio Sci
   actual_amount: 400.0
-  created_at: 2008-12-16 04:52:17 Z
-"1054583390": 
+"1054583390":
   original_unit: mL
-  updated_at: 2008-12-16 04:49:30 Z
   site_id: 357751860
   test_subject_id: 2
   collected_on: 2006-04-05
@@ -123,10 +110,8 @@
   room: 3-53
   building: Medical Sciences
   actual_amount: 30.0
-  created_at: 2008-12-16 04:49:30 Z
-"1054583389": 
+"1054583389":
   original_unit: mL
-  updated_at: 2008-12-16 04:48:10 Z
   site_id: 866167485
   test_subject_id: 2
   collected_on: 2008-09-18
@@ -141,10 +126,8 @@
   room: "456"
   building: East Wing
   actual_amount: 1.0
-  created_at: 2008-12-16 04:48:10 Z
-"1054583391": 
+"1054583391":
   original_unit: mL
-  updated_at: 2008-12-16 04:51:08 Z
   site_id: 995115194
   test_subject_id: 1
   collected_on: 2006-03-16
@@ -155,14 +138,12 @@
   original_amount: 1200.0
   description: ""
   collected_by: joseph
-  sample_id: 
+  sample_id:
   room: "225"
   building: Med Sci
   actual_amount: 1200.0
-  created_at: 2008-12-16 04:51:08 Z
-"1054583392": 
+"1054583392":
   original_unit: mL
-  updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
   test_subject_id: 1
   collected_on: 2007-03-18
@@ -177,10 +158,8 @@
   room: "235"
   building: Bio Sci
   actual_amount: 800.0
-  created_at: 2008-12-16 04:52:17 Z
-"1054534392": 
+"1054534392":
   original_unit: mL
-  updated_at: 2008-12-16 04:52:17 Z
   site_id: 827311906
   test_subject_id: 1
   collected_on: 2007-03-18
@@ -195,4 +174,3 @@
   room: "235"
   building: Bio Sci
   actual_amount: 500.0
-  created_at: 2008-12-16 04:52:17 Z

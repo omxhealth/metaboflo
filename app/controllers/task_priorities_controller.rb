@@ -2,7 +2,7 @@ class TaskPrioritiesController < ApplicationController
   # GET /task_priorities
   # GET /task_priorities.xml
   def index
-    @task_priorities = TaskPriority.find(:all)
+    @task_priorities = TaskPriority.all
 
     respond_to do |format|
       format.html # index.html.erb

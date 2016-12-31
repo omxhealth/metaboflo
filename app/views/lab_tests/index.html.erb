@@ -7,18 +7,18 @@
 		<th colspan="3">Actions</th>
 	</tr>
 
-	<% for lab_test in @lab_tests %>
+	<% @lab_tests.each do |lab_test| %>
 	<tr class="<%= cycle('odd', 'even') %>">
 		<td>
       <% nonempty_tests = tests(lab_test) %>
       <% if nonempty_tests.length > 0 %>
-      
+
         <ul>
 		      <% for test in tests(lab_test) %>
             <li><%= test.gsub('_', ' ') %>: <%= lab_test.send("#{test}_value") %> <%= lab_test.send("#{test}_unit") %></li>
 		      <% end %>
 	      </ul>
-	    
+
 		  <% end %>
 		</td>
 		<td><%= lab_test.collected_at %></td>

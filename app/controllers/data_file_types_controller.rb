@@ -1,11 +1,11 @@
 class DataFileTypesController < ApplicationController
-  before_filter :only_user?, :only => [ :new, :create, :edit, :update ]
-  before_filter :administrator?, :only => [ :destroy ]
-  
+  # before_action :only_user?, :only => [ :new, :create, :edit, :update ]
+  before_action :administrator?, :only => [ :destroy ]
+
   # GET /data_file_types
   # GET /data_file_types.xml
   def index
-    @data_file_types = DataFileType.find(:all)
+    @data_file_types = DataFileType.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,12 +85,12 @@ class DataFileTypesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   protected
     def only_user?(redirect_path = data_file_types_path)
       super
     end
-    
+
     def administrator?(redirect_path = data_file_types_path)
       super
     end

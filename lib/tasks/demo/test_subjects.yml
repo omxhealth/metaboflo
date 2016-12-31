@@ -1,6 +1,5 @@
---- 
-"11": 
-  updated_at: 2008-12-16 03:20:05.057476 Z
+---
+"11":
   site_id: 986866124
   code: HU003
   blood_type: O
@@ -13,9 +12,7 @@
   middle_initial: E
   last_initial: G
   race: Asian
-  created_at: 2008-12-16 03:20:05.057476 Z
-"6": 
-  updated_at: 2008-12-16 03:06:38.554715 Z
+"6":
   site_id: 996332877
   code: DUMC001
   blood_type: O
@@ -28,9 +25,7 @@
   middle_initial: B
   last_initial: C
   race: Hispanic
-  created_at: 2008-12-16 03:06:38.554715 Z
-"12": 
-  updated_at: 2008-12-16 03:21:27.160384 Z
+"12":
   site_id: 986866124
   code: HU004
   blood_type: A
@@ -43,9 +38,7 @@
   middle_initial: C
   last_initial: D
   race: Caucasian
-  created_at: 2008-12-16 03:21:27.160384 Z
-"7": 
-  updated_at: 2008-12-16 03:07:37.407959 Z
+"7":
   site_id: 996332877
   code: DUMC002
   blood_type: B
@@ -58,9 +51,7 @@
   middle_initial: E
   last_initial: F
   race: Black
-  created_at: 2008-12-16 03:07:37.407959 Z
-"13": 
-  updated_at: 2008-12-16 03:24:12.036374 Z
+"13":
   site_id: 357751860
   code: MC001
   blood_type: A
@@ -73,9 +64,7 @@
   middle_initial: E
   last_initial: M
   race: Black
-  created_at: 2008-12-16 03:24:12.036374 Z
-"8": 
-  updated_at: 2008-12-16 03:09:20.789020 Z
+"8":
   site_id: 996332877
   code: DUMC003
   blood_type: O
@@ -88,9 +77,7 @@
   middle_initial: B
   last_initial: J
   race: Multiracial
-  created_at: 2008-12-16 03:09:20.789020 Z
-"14": 
-  updated_at: 2008-12-16 03:25:21.665477 Z
+"14":
   site_id: 357751860
   code: MC002
   blood_type: B
@@ -103,9 +90,7 @@
   middle_initial: I
   last_initial: P
   race: Caucasian
-  created_at: 2008-12-16 03:25:21.665477 Z
-"9": 
-  updated_at: 2008-12-16 03:17:19.472920 Z
+"9":
   site_id: 986866124
   code: HU001
   blood_type: O
@@ -118,9 +103,7 @@
   middle_initial: T
   last_initial: F
   race: Hispanic
-  created_at: 2008-12-16 03:17:19.472920 Z
-"15": 
-  updated_at: 2008-12-16 03:28:14.949813 Z
+"15":
   site_id: 53320508
   code: UL001
   blood_type: B
@@ -133,9 +116,7 @@
   middle_initial: V
   last_initial: C
   race: Not available
-  created_at: 2008-12-16 03:28:14.949813 Z
-"16": 
-  updated_at: 2008-12-16 03:29:18.024296 Z
+"16":
   site_id: 53320508
   code: UL002
   blood_type: O
@@ -148,9 +129,7 @@
   middle_initial: P
   last_initial: S
   race: Multiracial
-  created_at: 2008-12-16 03:29:18.024296 Z
-"17": 
-  updated_at: 2008-12-16 03:31:28.609489 Z
+"17":
   site_id: 53320508
   code: UL003
   blood_type: B
@@ -163,9 +142,7 @@
   middle_initial: M
   last_initial: G
   race: Black
-  created_at: 2008-12-16 03:31:28.609489 Z
-"1": 
-  updated_at: 2008-12-16 02:59:14.953096 Z
+"1":
   site_id: 953125641
   code: UA001
   blood_type: O
@@ -178,9 +155,7 @@
   middle_initial: A
   last_initial: C
   race: Asian
-  created_at: 2008-12-16 02:54:43.280889 Z
-"2": 
-  updated_at: 2008-12-16 02:58:37.694815 Z
+"2":
   site_id: 953125641
   code: UA002
   blood_type: A
@@ -193,9 +168,7 @@
   middle_initial: J
   last_initial: E
   race: Asian
-  created_at: 2008-12-16 02:58:37.694815 Z
-"3": 
-  updated_at: 2008-12-16 03:00:44.173958 Z
+"3":
   site_id: 953125641
   code: UA003
   blood_type: B
@@ -208,9 +181,7 @@
   middle_initial: A
   last_initial: K
   race: Caucasian
-  created_at: 2008-12-16 03:00:44.173958 Z
-"10": 
-  updated_at: 2008-12-16 03:18:40.860069 Z
+"10":
   site_id: 986866124
   code: HU002
   blood_type: A
@@ -223,9 +194,7 @@
   middle_initial: B
   last_initial: S
   race: Black
-  created_at: 2008-12-16 03:18:40.860069 Z
-"4": 
-  updated_at: 2008-12-16 03:01:50.417411 Z
+"4":
   site_id: 953125641
   code: UA004
   blood_type: AB
@@ -238,9 +207,7 @@
   middle_initial: ""
   last_initial: L
   race: Asian
-  created_at: 2008-12-16 03:01:50.417411 Z
-"5": 
-  updated_at: 2008-12-16 03:03:34.577365 Z
+"5":
   site_id: 953125641
   code: UA005
   blood_type: A
@@ -253,4 +220,3 @@
   middle_initial: ""
   last_initial: E
   race: Caucasian
-  created_at: 2008-12-16 03:03:34.577365 Z

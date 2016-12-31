@@ -1,12 +1,12 @@
 <h1>Editing Study</h1>
 
 <%= render_form_errors(@study) %>
-<%= knoxy_form_for(@study, :as => :study, :url => { :action => "update" }, :html => { :method => :put }) do |form| %>
-  <%= render :partial => 'form', :locals => { :f => form } %>
+<%= knoxy_form_for(@study, as: :study, url: { action: "update" }, html: { method: :put }) do |form| %>
+  <%= render partial: 'form', locals: { f: form } %>
 
   <div class="field-no-label actions">
     <%= form.submit %>
   </div>
 <% end %>
 
-<%= show_link({:id => @study}) %>
+<%= show_link({id: @study}) %>

@@ -1,12 +1,12 @@
 <%= render_form_errors(@meal) %>
 <%= knoxy_form_for( [ @test_subject, @meal ] ) do |f| %>
   <fieldset>
-    <%= f.text_field :amount, :label => 'Amount consumed (kg)' %> 
-    <%= f.select :diet_id, Diet.all.collect { |d| [ d.name, d.id ] }, :include_blank => false %>
-    <%= f.text_field :consumed_during_period %>
-    <%= f.text_field :consumed_on_day %>
+    <%= f.input :amount, label: 'Amount consumed (kg)' %>
+    <%= f.association :diet %>
+    <%= f.input :consumed_during_period %>
+    <%= f.input :consumed_on_day %>
   </fieldset>
-  
+
   <div class="field-no-label actions">
     <%= f.submit %>
   </div>

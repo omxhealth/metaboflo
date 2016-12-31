@@ -1,10 +1,10 @@
 class MedicationsController < ApplicationController
-  before_filter :find_test_subject
+  before_action :find_test_subject
 
   # GET /medications
   # GET /medications.xml
   def index
-    @medications = @test_subject.medications.find(:all)
+    @medications = @test_subject.medications.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +44,7 @@ class MedicationsController < ApplicationController
   def create
     @medication = Medication.new(params[:medication])
     @medication.test_subject = @test_subject
-    
+
     respond_to do |format|
       if @medication.save
         flash[:notice] = 'Medication was successfully created.'

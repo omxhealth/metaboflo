@@ -1,8 +1,8 @@
 class BovineController < ApplicationController
-  before_filter :authenticate_user!
-  
+  before_action :authenticate_user!
+
   def index
-    @experiments = Experiment.find(:all, :conditions => [ 'assigned_to_id=? AND performed_on IS NULL', current_user ])
+    @experiments = Experiment.where(assigned_to_id: current_user.id, performed_on: nil)
 
     #Find the user's incomplete tasks:
     @incomplete_tasks = []
@@ -11,7 +11,7 @@ class BovineController < ApplicationController
         @incomplete_tasks << task
       end
     end
-    
+
     #Get system statistics:
     @stats = []
     @stats << ["Number of Users", User.count]
@@ -20,7 +20,7 @@ class BovineController < ApplicationController
     @stats << ["Number of Experiments", Experiment.count]
     @stats << ["Number of Metabolite Concentrations", Concentration.count]
     @stats << ["Number of Tasks", Task.count]
-    @stats << ["Number of Unfinished Tasks", Task.find(:all, :conditions => ['done_ratio<100']).count]
-    
+    @stats << ["Number of Unfinished Tasks", Task.where('done_ratio < 100').count]
+
   end
 end
