@@ -4,6 +4,7 @@ log/*.log
 tmp/**/*
 tmp/*
 config/database.yml
+config/secrets.yml
 db/schema.rb
 public/system/*
 vendor/ruby
