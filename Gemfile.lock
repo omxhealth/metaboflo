@@ -52,9 +52,9 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+    bootstrap (4.0.0.alpha5)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     builder (3.2.2)
     byebug (9.0.6)
     capistrano (3.7.1)
@@ -93,6 +93,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-sass (4.7.0)
+      sass (>= 3.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     highcharts-rails (4.2.5)
@@ -170,6 +172,7 @@ GEM
     rails-assets-jquery (3.1.1)
     rails-assets-jstree (3.3.3)
       rails-assets-jquery (>= 1.9.1)
+    rails-assets-tether (1.4.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.8)
@@ -254,7 +257,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap
   bundler (>= 1.8.4)
   byebug
   capistrano
@@ -265,6 +268,7 @@ DEPENDENCIES
   country-select
   devise
   execjs
+  font-awesome-sass
   highcharts-rails
   jbuilder (~> 2.0)
   jquery-cookie-rails
@@ -280,6 +284,7 @@ DEPENDENCIES
   rabl
   rails (~> 4.2.0)
   rails-assets-jstree!
+  rails-assets-tether (>= 1.1.0)!
   ransack
   sass-rails (~> 5.0)
   shoulda

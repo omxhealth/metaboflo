@@ -4,13 +4,13 @@ $app-dark-grey: #515151;
 $app-grey: #F9F9F9;
 $app-green: #12d678;
 $app-purple: #DD5DEB;
-
-$app-pink: #FF4390;
-$app-light-pink: #FF8EBC;
-$app-dark-pink: #B21D5A;
-$app-yellow: #FFF05D;
 $app-light-yellow: #FFF69E;
-$app-blue: #22AFCC;
-$app-light-blue: #7ACFE0;
-$app-very-light-blue: #BDE7F0;
-$app-dark-blue: #269AB2;
+
+// Override bootstrap variables:
+$font-size-h1: 1.75rem;
+$font-size-h2: 1.5rem;
+$font-size-h3: 1.25rem;
+$font-size-h4: 1rem;
+$font-size-h5: .75rem;
+$font-size-h6: .5rem;
+

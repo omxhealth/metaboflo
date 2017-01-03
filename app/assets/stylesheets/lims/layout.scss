@@ -3,134 +3,74 @@ main {
   margin-top: 61px; // accommodate the navbar
 }
 
+#main-content {
+  margin-top: .5rem;
+  &.with-sidebar {
+    @extend .col-md-9;
+  }
+  &.without-sidebar {
+    @extend .col-md-12;
+  }
+}
+
+#sidebar-content {
+  @extend .col-md-3;
+  #sidebar {
+    overflow: hidden;
+    white-space: nowrap;
+    background: #FCFFF0;
+    min-height: 800px;
+
+    h2 {
+      @extend .rounded;
+      text-shadow: 0px 0px 0.05px white;
+      border: 2px solid #CDCDC1;
+      background: white;
+      font-weight: normal;
+      font-size: 15px;
+      margin: .5rem;
+      margin-bottom: 1rem;
+      padding: 0.5em 0.4em;
+    }
+  }
+}
+
+dl.standard {
+  @extend .row;
+  dt {
+    @extend .col-md-3;
+    @extend .col-sm-6;
+    @extend .col-xs-6;
+  }
+  dd {
+    @extend .col-md-9;
+    @extend .col-sm-7;
+    @extend .col-xs-6;
+  }
+
+}
+
 .error_notification {
   @extend .alert;
   @extend .alert-danger;
 }
 
-body {
-  @extend .container-fluid;
-  position: relative;
+table.list {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-sm;
 
-  & > header {
-    @extend .navbar;
-    @extend .navbar-fixed-top;
+  tr.table-search {
+    @extend .table-info;
+    th {
+      input, select {
+        @extend .form-control;
+        @extend .form-control-sm;
+      }
+    }
+    .table-search-actions.btn-group {
+      float: right;
+    }
   }
 }
 
-// Table for displaying object data
-table#object-data {
-  text-align: left;
-  width: 100%;
-  margin: 1em auto;
-  border-collapse: collapse;
-}
-
-table#object-data td, table#object-data th {
-  border: 1px solid #636363;
-  padding: 0.4em;
-}
-
-table#object-data th {
-  background: #3399ff;
-  color: white;
-  width: 18%;
-}
-
-table#object-data th.spanheader {
-  background: #E0EEEE;
-  width: 100%;
-  color: gray;
-}
-
-table#object-data td {
-  background: #F7F7F7;
-  color: black;
-}
-
-table#object-data img.structure {
-  border: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-table#object-data pre {
-  margin: 0px;
-  padding: 0px;
-  font-size: 14px;
-  font-family: courier;
-}
-
-table#object-data div.citations {
-  background: red !important;
-}
-
-table#object-data div.inner {
-  border: 1px solid silver;
-  margin: 0.5em 0;
-  padding: 0.3em;
-  background: white;
-}
-
-/* Metadata section for entities */
-div.metadata {
-  background: #FFFFCC;
-  padding: 0.5em;
-}
-
-/* Box used on show pages to group associated information */
-.box {
-  padding:6px;
-  margin-bottom: 10px;
-  background-color:#f6f6f6;
-  color:#505050;
-  line-height:1.5em;
-  border: 1px solid #e4e4e4;
-}
-
-h3.box-header {
-  background: #E0E0E0;
-}
-
-/* Pharmacological actions */
-div.action-legend {
-  float: right;
-  font-weight: bold;
-}
-
-.action-yes {
-  background-color: #9AFF9A;
-}
-
-.action-no {
-  background-color: #EEB4B4;
-}
-
-/* Inner tables in show views */
-table#object-data table.inner {
-  background: #E0DFDB;
-  width: 100%;
-  text-align: left;
-  border-collapse: collapse;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
-table#object-data table.inner th {
-  text-align: left;
-  border-collapse: collapse;
-  font-size: smaller;
-  color: #474747;
-  background: silver;
-  border: none;
-  border-bottom: 1px solid grey;
-  padding: 0.2em;
-}
-
-table#object-data table.inner td {
-  padding: 0 1em 0 0;
-  border: none;
-  border-top: 1px solid grey;
-  padding: 0.2em;
-}

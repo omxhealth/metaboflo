@@ -1,0 +1,85 @@
+h1 Showing #{@sample.aliquot? ? 'aliquot' : 'sample'} #{@sample.barcode} from #{@sample.aliquot? ? 'sample ' : "#{TestSubject.title.downcase} "} #{@sample.parent}
+
+.card-deck
+  .card
+    .card-header Sample Details
+    .card-block
+      dl
+        dt Sample type:
+        dd = @sample.sample_type
+        dt Barcode:
+        dd = @sample.barcode
+        dt = TestSubject.title
+        dd = link_to(@sample.root.to_s, test_subject_path(@sample.root))
+    .card-footer
+      .btn-group
+        = new_link 'aliquot', new_sample_sample_path(@sample)
+        = new_link 'experiment', new_sample_experiment_path(@sample)
+
+  .card
+    .card-header Client-related Information
+    .card-block
+      dl
+        dt Client
+        dd = nah @sample.client&.name
+        dt Status
+        dd = nah @sample.status
+        dt Reports
+        dd
+          - if @sample.stored_files.present?
+            - @sample.stored_files.each do |stored_file|
+              = link_to stored_file.attachment_file_name, stored_file.attachment.url
+          - else
+            = nah nil, 'None'
+    .card-footer
+      .btn-group
+        = link_to finish_sample_path(@sample), method: :post, confirm: 'A notification will be sent to the client. Proceed?', class: 'btn btn-info btn-sm' do
+          = @sample.status == 'Finished' ? 'Notify client' : 'Mark finished'
+
+.card-deck
+  .card
+    .card-header Volume Information
+    .card-block
+      dl
+        dt Original amount
+        dd #{@sample.original_amount} #{@sample.original_unit}
+        dt Actual amount
+        dd = nah "#{@sample.actual_amount} #{@sample.actual_unit}"
+        dt Theoretical amount
+        dd #{@sample.theoretical_amount} #{@sample.original_unit}
+  .card
+    .card-header Storage Location
+    .card-block
+      dl
+        dt Site
+        dd = nah @sample.site&.name
+        dt Building
+        dd = nah @sample.building
+        dt Room
+        dd = nah @sample.room
+        dt Freezer
+        dd = nah @sample.freezer
+        dt Shelf
+        dd = nah @sample.shelf
+        dt Box
+        dd = nah @sample.box
+        dt Box Position
+        dd = nah @sample.box_position
+  .card
+    .card-header Collection Details
+    .card-block
+      dl
+        - if @sample.aliquot?
+          dt Source sample
+          dd = link_to(@sample.sample, sample_path(@sample.sample))
+        dt Collected on
+        dd = nah @sample.collected_on
+        dt Collected by
+        dd = nah @sample.collected_by
+        dt Description
+        dd = nah @sample.description
+
+br
+
+= edit_link @sample.aliquot? ? edit_sample_sample_path(@sample.sample, @sample) : edit_test_subject_sample_path(@test_subject, @sample)
+

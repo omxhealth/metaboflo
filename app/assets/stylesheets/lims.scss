@@ -1,14 +1,15 @@
 @import 'jquery-ui';
 @import 'jquery-ui/cupertino';
 @import 'jstree';
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import 'shared/constants';
+@import 'bootstrap-flex';
+
 @import 'shared/mixins';
 @import 'shared/layout';
 @import 'shared/flash';
 @import 'shared/pagination';
-@import 'shared/table';
 @import 'shared/form';
 @import 'shared/login';
 

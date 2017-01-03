@@ -9,6 +9,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jstree
+//= require tether
 //= require bootstrap
 //= require yui-min
 //= require_tree .

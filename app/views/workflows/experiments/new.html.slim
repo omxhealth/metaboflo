@@ -1,0 +1,60 @@
+h1 New Experiment
+p.info #{icon('info-circle', class: 'fa-2x info-logo')} The experiment workflow allows you to enter all the information for an experiment. You can attach raw data files or concentration data, assign this experiment to a particular individual, and enter the protocol used to perform the analysis.
+
+= knoxy_form_for [:workflows, setup_workflow_experiment(@experiment)] do |f|
+  - flash.now[:error] = "#{pluralize(@experiment.errors.count, "error")} prohibited this experiment from being saved" if @experiment.errors.any?
+  fieldset
+    legend Sample Details
+    - if @experiment.sample.present?
+      - @sample = @experiment.sample
+      = render partial: '/workflows/samples/sample'
+      = f.hidden_field :sample_id
+    - else
+      #patient-selector
+        = f.inner_field :test_subject, label: "#{TestSubject.title} Code", id: 'dfdf' do
+          = text_field_tag :test_subject_code, nil, class: 'test-subject-autocomplete',
+            placeholder: 'Start typing a patient code', id: 'test-subject-autocomplete-code',
+            data: { source: workflows_patients_path(format: :json), update: 'test-subject-id' }
+          = hidden_field_tag :test_subject_id, nil, id: 'test-subject-id',
+              data: { 'sample-update' => 'sample-id' }
+          span.actions
+            = link_to 'Add New Patient', new_workflows_patient_path, id: 'open-patient-dialog'
+      #sample-selector style="display:none"
+        = f.inner_field :sample do
+          = f.input :sample_id, collection: options_for_workflow_sample(@experiment.test_subject_code),
+            include_blank: true, id: 'sample-id'
+          span.actions
+            = link_to 'Add New Sample', new_workflows_sample_path, id: 'open-sample-dialog'
+        = f.input :amount_used
+        = f.input :amount_used_unit, collection: volume_unit_options
+        = error_message(Experiment.human_attribute_name(:amount_used_unit), f.object.errors[:amount_used_unit])
+      #sample-added-show
+  fieldset
+    legend Experiment Description
+    = f.input :name, style: "width: 250px", required: true
+    = error_message(Experiment.human_attribute_name(:name), f.object.errors[:name])
+    = f.input :protocol_id, collection: Protocol.all, include_blank: true
+    = error_message(Experiment.human_attribute_name(:protocol_id), f.object.errors[:protocol_id])
+    = f.input :experiment_type_id, collection: ExperimentType.all, include_blank: true
+    = error_message(Experiment.human_attribute_name(:experiment_type_id), f.object.errors[:experiment_type_id])
+    = f.input :description
+    = error_message(Experiment.human_attribute_name(:description), f.object.errors[:description])
+    = f.input :comments
+    = error_message(Experiment.human_attribute_name(:comments), f.object.errors[:comments])
+  fieldset
+    legend Analysis
+    = f.inner_field_group :assigned_to_id do
+      = f.association :assigned_to, include_blank: true
+      = f.input :perform_on, class: 'datepicker'
+    = f.inner_field_group :performed_by_id do
+      = f.association :performed_by, include_blank: true
+      = f.input :performed_on, class: 'datepicker'
+  fieldset#data_files.fields-for
+    legend Data files
+    = f.full_field_group :data_files do
+      = f.fields_for :data_files do |data_files_form|
+        = render 'data_file', f: data_files_form
+      div= add_child_link f, :data_files, partial: 'data_file', name: 'Add Data File'
+  .field-no-label.actions
+    = f.submit
+

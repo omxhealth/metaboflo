@@ -27,13 +27,13 @@ html
 
       .row
         - if content_for?(:sidebar)
-          #sidebar-holder.col-md-3
+          #sidebar-content
             #sidebar == yield :sidebar
-          #main.col-md-9
+          #main-content.with-sidebar
             == render '/layouts/lims/messages'
             == yield
         - else
-          #main.col-md-12
+          #main-content.without-sidebar
             == render '/layouts/lims/messages'
             == yield
 

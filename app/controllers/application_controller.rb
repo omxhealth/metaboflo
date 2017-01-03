@@ -27,22 +27,25 @@ class ApplicationController < ActionController::Base
   end
 
   def can_view_all(user)
-    return (current_user.rank == 'Superuser' || current_user.rank == 'Administrator')
+    current_user.superuser? || current_user.administrator?
   end
 
   protected
 
   def only_user?(redirect_path = root_path)
-    redirect_to redirect_path unless current_user.rank == 'Superuser' || current_user.rank == 'Administrator'
+    redirect_to redirect_path unless current_user.superuser? || current_user.administrator?
   end
 
   def administrator?(redirect_path = root_path)
-    redirect_to redirect_path unless current_user.rank == 'Administrator'
+    redirect_to redirect_path unless current_user.administrator?
   end
 
-  def find_test_subject(param_name = :test_subject_id)
-    @test_subject = current_user.rank == 'Superuser' || current_user.rank == 'Administrator' ?
-      TestSubject.find(params[param_name]) :
-      TestSubject.find_by!(id: params[param_name], site_id: current_user.site)
+  def find_test_subject(id_param = :test_subject_id)
+    @test_subject =
+      if current_user.superuser? || current_user.administrator?
+        TestSubject.find(params[id_param])
+      else
+        current_user.site.test_subjects.find(params[id_param])
+      end
   end
 end

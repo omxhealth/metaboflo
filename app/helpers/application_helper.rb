@@ -61,20 +61,70 @@ module ApplicationHelper
     end
   end
 
-  def destroy_link(params)
-    link_to('delete', params, {:confirm => 'Are you sure you want to delete this entry?', :method => :delete, :class => 'icon icon-del', :title => 'Delete Entry'} )
+  # Return the "Not Available" tag when the given value is blank.
+  # Optionally pass in a message to use instead of "Not Available".
+  # Return the given value if it is not blank.
+  def nah(value=nil, message="Not Available")
+    if value.present?
+      value.respond_to?(:html_safe) ? value.html_safe : value
+    else
+      "<span class='text text-muted'>#{message}</span>".html_safe
+    end
   end
 
-  def edit_link(params)
-    link_to('edit', params, :class => 'icon icon-edit', :title => 'Edit Entry' )
+
+  def destroy_link(params, title='delete')
+    link_to "#{icon(:remove)} #{title}".html_safe, params,
+      data: { confirm: 'Are you sure you want to delete this entry?' },
+      method: :delete, class: 'btn btn-outline-danger btn-sm',
+      title: 'Delete Entry'
   end
 
-  def show_link(params, name='show')
-    link_to(name, params, :class => 'icon icon-show', :title => 'Show Entry' )
+  def edit_link(params, title='edit')
+    link_to "#{icon(:edit)} #{title}".html_safe, params,
+      class: 'btn btn-sm btn-outline-primary', title: 'Edit Entry'
   end
 
-  def new_link(name, params)
-    name ||= 'new'
-    link_to(name, params, :class => 'icon icon-add' )
+  def show_link(params, title='view')
+    link_to "#{icon(:eye)} #{title}".html_safe, params,
+      class: 'btn btn-sm btn-outline-primary', title: 'Show Entry'
+  end
+
+  def new_link(title, params)
+    title ||= 'new'
+    link_to "#{icon(:'plus-square')} add #{title}".html_safe, params, class: 'btn btn-sm btn-outline-success'
+  end
+
+  def table_search_actions
+    content_tag(:div, class: 'table-search-actions btn-group') do
+      button_tag(icon(:search), type: 'submit', class: 'btn btn-info btn-sm') <<
+      link_to('clear', request.path, class: 'btn btn-secondary btn-sm')
+    end
+  end
+
+  def table_search_text(form, query, *args)
+    options = args.extract_options!
+    if options[:class].present? && options[:class].is_a?(String)
+      options[:class] = [options[:class]]
+    end
+    options[:class] ||= []
+    options[:class].concat(["form-control", "input-tbl-search"])
+
+    form.text_field query, *(args << options)
+  end
+
+  def table_search_select(form, field, select_options, options={}, *args)
+    options[:include_blank] ||= true
+    html_options = args.extract_options!
+    if html_options[:class].present? && html_options[:class].is_a?(String)
+      html_options[:class] = [html_options[:class]]
+    end
+    html_options[:class] ||= []
+    html_options[:class].concat(["form-control", "input-tbl-search"])
+
+    form.select field,
+      select_options,
+      options,
+      *(args << html_options)
   end
 end

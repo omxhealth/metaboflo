@@ -12,7 +12,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-ui-themes'
 gem 'jbuilder', '~> 2.0'
-gem 'sass-rails', '~> 5.0'
 gem 'highcharts-rails'
 gem 'jquery-tablesorter'
 gem 'yui-rails'
@@ -26,9 +25,11 @@ gem 'rabl'
 gem 'simple_form'
 gem 'cocoon'
 gem 'slim-rails'
-gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+gem 'bootstrap'
 
 source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
   gem 'rails-assets-jstree'
 end
 

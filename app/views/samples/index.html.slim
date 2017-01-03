@@ -1,0 +1,74 @@
+h1
+  - if !defined? @parent
+    ' Sample Tracking
+  - elsif @parent.kind_of?(Sample)
+    ' Aliquots of Sample #{@parent.id}
+  - elsif @parent.kind_of?(TestSubject)
+    ' Samples for #{TestSubject.title.downcase} #{@parent}
+
+= search_form_for @search, url: samples_path, html: { method: :get } do |f|
+  table.list
+    thead
+      tr
+        th Type
+        th Barcode
+        th Amount Received
+        th= TestSubject.title unless @test_subject
+        th= 'Aliquoted from' unless @parent
+        th Collected on
+        th Collected by
+        th Location
+        th Experiments
+        th colspan="3" Actions
+      - if @parent.blank?
+        tr.table-search
+          th= f.select :sample_type_cont, Sample.sample_types, include_blank: true
+          th= f.text_field :barcode_cont
+          th= f.text_field :original_amount_gteq
+          th= f.text_field :test_subject_code_cont
+          th= f.text_field :sample_barcode_cont
+          th= f.text_field :collected_on_gteq
+          th= f.select :collected_by_id_eq, User.order(:name).map { |s| [s.name, s.id] }, include_blank: true
+          th= f.text_field :location_cont
+          th= f.text_field :experiments_experiment_type_name_cont
+          th colspan="3" = table_search_actions
+    tbody
+      - @samples.each do |sample|
+        tr
+          td= sample.sample_type
+          td= sample.barcode
+          td
+            ' #{sample.original_amount} #{sample.original_unit}<br>
+            ' (#{sample.theoretical_amount} #{sample.original_unit} remaining)
+          td= link_to(sample.root.code, sample.root)
+          td= link_to(sample.sample.barcode, sample.sample) unless @parent_sample || sample.sample.nil?
+          td= sample.collected_on
+          td= sample.collected_by.present? ? link_to(sample.collected_by.name, sample.collected_by) : ''
+          td #{sample.building} #{sample.room}
+          td
+            - sample.experiments.each do |experiment|
+              = link_to experiment.experiment_type.name, [sample, experiment]
+              br
+          td
+            - if sample.aliquot?
+              = show_link sample_sample_path(sample.sample, sample)
+            - else
+              = show_link test_subject_sample_path(sample.test_subject, sample)
+          td
+            - if sample.aliquot?
+              = edit_link edit_sample_sample_path(sample.sample, sample)
+            - else
+              = edit_link edit_test_subject_sample_path(sample.test_subject, sample)
+          td
+            - if sample.aliquot?
+              = destroy_link sample_sample_path(sample.sample, sample)
+            - else
+              = destroy_link test_subject_sample_path(sample.test_subject, sample)
+br
+- if defined? @parent
+  - if @parent.kind_of?(Sample)
+    = new_link "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent)
+  - elsif @parent.kind_of?(TestSubject)
+    = new_link "sample for #{TestSubject.title.downcase} #{@parent.code}",
+        new_test_subject_sample_path(@parent)
+

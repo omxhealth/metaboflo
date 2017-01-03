@@ -1,175 +1,130 @@
-/* Standard HTML Tag Styles */
-body {
-  font-size: 15px;
-  font-family: helvetica, sans-serif;
-}
+// /* Standard HTML Tag Styles */
+// body {
+//   font-size: 15px;
+//   font-family: helvetica, sans-serif;
+// }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 13px;
-}
+// pre {
+//   background-color: #eee;
+//   padding: 10px;
+//   font-size: 13px;
+// }
 
-// see http://paulirish.com/2012/box-sizing-border-box-ftw/
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+// // see http://paulirish.com/2012/box-sizing-border-box-ftw/
+// * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-/***** Links *****/
-a, a:link, a:visited{ color: #2A5685; text-decoration: none; }
-a:hover, a:active{ color: #c61a1a; text-decoration: underline;}
-a img{ border: 0; }
+// /***** Links *****/
+// a, a:link, a:visited{ color: #2A5685; text-decoration: none; }
+// a:hover, a:active{ color: #c61a1a; text-decoration: underline;}
+// a img{ border: 0; }
 
-/* Flash messages */
-div#flash-messages {
-  margin: 1em 0.6em;
+// /* Flash messages */
+// div#flash-messages {
+//   margin: 1em 0.6em;
 
-  p.flash { padding: 0.4em 0.8em; font-weight: bold; border-radius: 10px; }
-  p.flash-notice { background-color: #a6d785; color: #3f602b; border: 1px solid #3f602b; }
-  p.flash-warning { background-color: #fbec5d; color: #8b6508; border: 1px solid #8b6508; }
-  p.flash-error, p.flash-alert { background-color: #fa8072; color: #800000; border: 1px solid #800000; }
-}
+//   p.flash { padding: 0.4em 0.8em; font-weight: bold; border-radius: 10px; }
+//   p.flash-notice { background-color: #a6d785; color: #3f602b; border: 1px solid #3f602b; }
+//   p.flash-warning { background-color: #fbec5d; color: #8b6508; border: 1px solid #8b6508; }
+//   p.flash-error, p.flash-alert { background-color: #fa8072; color: #800000; border: 1px solid #800000; }
+// }
 
-/* Layout CSS */
-div#hd {
-  min-width: 1000px;
-  div#headerbar {
-    background: #609db3; height: 125px;
-    img.left { float: left }
-    img.right { float: right }
-  }
-  div#logged-in {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    background: #B9D3EE;
-    padding: 0.3em 0.4em;
-    border-radius: 5px;
-    border: 1px solid #FFEBCD;
-    font-size: 14px;
-    font-weight: bold;
-    a { text-decoration: underline; }
-  }
-}
+// /* Layout CSS */
+// div#hd {
+//   min-width: 1000px;
+//   div#headerbar {
+//     background: #609db3; height: 125px;
+//     img.left { float: left }
+//     img.right { float: right }
+//   }
+//   div#logged-in {
+//     position: absolute;
+//     top: 5px;
+//     right: 15px;
+//     background: #B9D3EE;
+//     padding: 0.3em 0.4em;
+//     border-radius: 5px;
+//     border: 1px solid #FFEBCD;
+//     font-size: 14px;
+//     font-weight: bold;
+//     a { text-decoration: underline; }
+//   }
+// }
 
-div#sidebar-holder {
-  #sidebar {
-    overflow: auto;
-    white-space: nowrap;
-    min-height: 800px;
-    background: #FCFFF0;
-    padding: 0.5em;
-    border-right: 1px dotted silver;
-    border-bottom: 1px dotted silver;
-    h2 {
-      text-shadow: 0px 0px 0.05px white;
-      border-radius: 4px;
-      border: 2px solid #CDCDC1;
-      background: white;
-      font-weight: normal;
-      font-size: 15px;
-      margin-bottom: 0.8em;
-      margin-top: 5px;
-      padding: 0.5em 0.4em;
-    }
-  }
-}
+// div#sidebar-holder {
+//   #sidebar {
+//     overflow: auto;
+//     white-space: nowrap;
+//     min-height: 800px;
+//     background: #FCFFF0;
+//     padding: 0.5em;
+//     border-right: 1px dotted silver;
+//     border-bottom: 1px dotted silver;
+//     h2 {
+//       text-shadow: 0px 0px 0.05px white;
+//       border-radius: 4px;
+//       border: 2px solid #CDCDC1;
+//       background: white;
+//       font-weight: normal;
+//       font-size: 15px;
+//       margin-bottom: 0.8em;
+//       margin-top: 5px;
+//       padding: 0.5em 0.4em;
+//     }
+//   }
+// }
 
-div#main-holder {
-  #main {
-    padding: 0.65em 0.5em;
-  }
+// div#main-holder {
+//   #main {
+//     padding: 0.65em 0.5em;
+//   }
 
-  .without-sidebar {
-    margin-left: 0.3em !important;
-    padding-left: 0 !important;
-  }
+//   .without-sidebar {
+//     margin-left: 0.3em !important;
+//     padding-left: 0 !important;
+//   }
 
-  h1 {
-    color: #4c545a;
-    font-size: 20px;
-    background: #E8E8E8;
-    margin: 0.2em 0 0.7em 0;
-    padding: 0.3em 0.5em;
-    text-align: left;
-    text-shadow: 0px 0px 0.05px white;
-    letter-spacing: 1px;
-    border-radius: 8px;
-  }
-  h2 {
-    font-size: larger;
-    margin: 1.5em 0 1em 0;
-    font-weight: bold;
-  }
-}
+//   h1 {
+//     color: #4c545a;
+//     font-size: 20px;
+//     background: #E8E8E8;
+//     margin: 0.2em 0 0.7em 0;
+//     padding: 0.3em 0.5em;
+//     text-align: left;
+//     text-shadow: 0px 0px 0.05px white;
+//     letter-spacing: 1px;
+//     border-radius: 8px;
+//   }
+//   h2 {
+//     font-size: larger;
+//     margin: 1.5em 0 1em 0;
+//     font-weight: bold;
+//   }
+// }
 
+// .box {
+//   padding: 1em;
+//   margin-bottom: 10px;
+//   background-color:#f6f6f6;
+//   color: #505050;
+//   border: 1px solid silver;
+//   border-radius: 0.4em;
+//   font-size: 16px;
+// }
 
-// Icon theme
-.icon {
-  background-position: 0% 40%;
-  background-repeat: no-repeat;
-  padding-left: 20px;
-  padding-top: 2px;
-  padding-bottom: 3px;
-}
-
-.icon-add { background-image: image_url('icons/add.png'); }
-.icon-edit { background-image: image_url('icons/edit.png'); }
-.icon-copy { background-image: image_url('icons/copy.png'); }
-.icon-del { background-image: image_url('icons/delete.png'); }
-.icon-move { background-image: image_url('icons/move.png'); }
-.icon-save { background-image: image_url('icons/save.png'); }
-.icon-cancel { background-image: image_url('icons/cancel.png'); }
-.icon-file { background-image: image_url('icons/file.png'); }
-.icon-folder { background-image: image_url('icons/folder.png'); }
-.open .icon-folder { background-image: image_url('icons/folder_open.png'); }
-.icon-package { background-image: image_url('icons/package.png'); }
-.icon-home { background-image: image_url('icons/home.png'); }
-.icon-user { background-image: image_url('icons/user.png'); }
-.icon-mypage { background-image: image_url('icons/user_page.png'); }
-.icon-admin { background-image: image_url('icons/admin.png'); }
-.icon-projects { background-image: image_url('icons/projects.png'); }
-.icon-help { background-image: image_url('icons/help.png'); }
-.icon-attachment  { background-image: image_url('icons/attachment.png'); }
-.icon-index  { background-image: image_url('icons/index.png'); }
-.icon-history  { background-image: image_url('icons/history.png'); }
-.icon-time  { background-image: image_url('icons/time.png'); }
-.icon-stats  { background-image: image_url('icons/stats.png'); }
-.icon-warning  { background-image: image_url('icons/warning.png'); }
-.icon-fav  { background-image: image_url('icons/fav.png'); }
-.icon-fav-off  { background-image: image_url('icons/fav_off.png'); }
-.icon-reload  { background-image: image_url('icons/reload.png'); }
-.icon-lock  { background-image: image_url('icons/locked.png'); }
-.icon-unlock  { background-image: image_url('icons/unlock.png'); }
-.icon-checked  { background-image: image_url('icons/true.png'); }
-.icon-details  { background-image: image_url('icons/zoom_in.png'); }
-.icon-report  { background-image: image_url('icons/report.png'); }
-.icon-comment  { background-image: image_url('icons/comment.png'); }
-.icon-calendar  { background-image: image_url('icons/calendar.png'); }
-.icon-show  { background-image: image_url('icons/show.png'); }
-
-.box {
-  padding: 1em;
-  margin-bottom: 10px;
-  background-color:#f6f6f6;
-  color: #505050;
-  border: 1px solid silver;
-  border-radius: 0.4em;
-  font-size: 16px;
-}
-
-h3.box-header {
-  background: #e0e0e0;
-}
+// h3.box-header {
+//   background: #e0e0e0;
+// }
 
 
-//Unknown:
-div.analysis {
-  float: left;
-  margin-right: 6em;
-}
+// //Unknown:
+// div.analysis {
+//   float: left;
+//   margin-right: 6em;
+// }
 
-div.subcontainer {
-  background: #F0F0F0;
-  display: table;
-  padding: 1em;
-  border: 1px solid #A3A3A3;
-}
+// div.subcontainer {
+//   background: #F0F0F0;
+//   display: table;
+//   padding: 1em;
+//   border: 1px solid #A3A3A3;
+// }

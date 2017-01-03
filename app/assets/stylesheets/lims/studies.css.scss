@@ -51,7 +51,8 @@
   margin: 0.5em 0;
 }
 
-img.info-logo {
+.info-logo {
   float: left;
-  margin-right: 1.5em;
+  margin-right: 1rem;
+  color: $app-dark-grey;
 }

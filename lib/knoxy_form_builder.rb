@@ -75,22 +75,5 @@ class KnoxyFormBuilder < SimpleForm::FormBuilder
     end
     full_field.html_safe
   end
-
-  def textile_editor(field, options = {})
-    options[:input_html] ||= {}
-    if options[:input_html][:class].present?
-      options[:input_html][:class] << ' textile-editor'
-    else
-      options[:input_html][:class] = 'textile-editor'
-    end
-    options[:placeholder] ||= 'Insert text in Textile format'
-    options[:hint] =
-      @template.link_to('Textile Reference',
-                         'http://redcloth.org/hobix.com/textile/quick.html',
-                         target: '_blank', class: 'textile-hint') <<
-      options[:hint].to_s.html_safe
-    @template.content_tag(:div, self.input(field, options),
-                          class: 'textile-holder')
-  end
 end
 

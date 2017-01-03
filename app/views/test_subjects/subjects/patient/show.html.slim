@@ -1,0 +1,30 @@
+.card
+  h3.card-header = title "Showing #{TestSubject.title} #{@test_subject}"
+  .card-block
+    p
+      b Code:
+      = @test_subject.code
+    p
+      b Site:
+      = @test_subject.site.name
+    p
+      b Birthdate:
+      = @test_subject.birthdate
+    p
+      b Blood type:
+      = @test_subject.blood_type
+    p
+      b Gender:
+      = @test_subject.gender
+    p
+      b Race:
+      = @test_subject.race
+    p
+      b Practitioner:
+      = @test_subject.practitioner
+    p
+      b Notes:
+      = @test_subject.notes
+    br/
+    = edit_link edit_test_subject_path(@test_subject)
+

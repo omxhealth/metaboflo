@@ -1,0 +1,33 @@
+h1= title 'Patients'
+= search_form_for @search, url: test_subjects_path, html: { method: :get } do |f|
+  table.list
+    thead
+      tr.header
+        th Code
+        th Site
+        th # of samples
+        th Practitioner
+        th Notes
+        th colspan="3"
+      tr.table-search
+        th= f.text_field :code_cont, size: 12
+        th= f.select :site_id_eq, Site.order(:name).map { |s| [s.name, s.id] }, include_blank: true
+        th
+        th= f.text_field :practitioner_cont, size: 15
+        th= f.text_field :notes_cont
+        th colspan="3"
+          = table_search_actions
+    tbody
+      - @test_subjects.each do |patient|
+        tr
+          td= link_to(patient.code, patient)
+          td= patient.site.name
+          td #{patient.samples.length} <small>(#{link_to 'display', test_subject_samples_path(patient)})</small>
+          td= patient.practitioner
+          td= truncate(patient.notes)
+          td= show_link patient
+          td= edit_link edit_test_subject_path(patient)
+          td= destroy_link patient
+
+= new_link 'patient', new_test_subject_path
+

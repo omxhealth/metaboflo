@@ -6,7 +6,7 @@ class DietsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @diets }
+      format.xml  { render xml: @diets }
     end
   end
 
@@ -17,7 +17,7 @@ class DietsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @diet }
+      format.xml  { render xml: @diet }
     end
   end
 
@@ -28,7 +28,7 @@ class DietsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @diet }
+      format.xml  { render xml: @diet }
     end
   end
 
@@ -44,11 +44,11 @@ class DietsController < ApplicationController
 
     respond_to do |format|
       if @diet.save
-        format.html { redirect_to(@diet), notice: 'Diet was successfully created.' }
-        format.xml  { render :xml => @diet, :status => :created, :location => @diet }
+        format.html { redirect_to @diet, notice: 'Diet was successfully created.' }
+        format.xml  { render xml: @diet, status: :created, location: @diet }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @diet.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @diet.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,11 +60,11 @@ class DietsController < ApplicationController
 
     respond_to do |format|
       if @diet.update(diet_params)
-        format.html { redirect_to(@diet), notice: 'Diet was successfully updated.' }
+        format.html { redirect_to @diet, notice: 'Diet was successfully updated.' }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @diet.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @diet.errors, status: :unprocessable_entity }
       end
     end
   end
