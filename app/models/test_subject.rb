@@ -42,31 +42,32 @@ class TestSubject < ActiveRecord::Base
     self.samples.present? ? self.samples.last.id : nil
   end
 
-  #Return a representative data file.
+  # Return a representative data file.
   def data_file
     files = DataFile.where("data_files.has_concentrations = ? AND test_subjects.id = ?", true, id).
                      select('DISTINCT data_files.*').
                      joins(experiment: { sample: :test_subject })
-    files[0] #For now just return the first one
+    files[0] # For now just return the first one
   end
 
-  #Return features representing this test subject.
+  # Return features representing this test subject.
   def features
     df = self.data_file
     if df.nil?
-      return Hash.new
+      {}
     else
       feats = Hash.new
       df.concentrations.each do |c|
-        if !c.metabolite.nil?
+        if c.metabolite.present?
           feats[c.metabolite.name] = c.concentration_value
         end
       end
-      return feats
+      feats
     end
   end
 
-  def TestSubject.title
-    SUBJECT_CONFIG[:title]
+  def self.title
+    'Subject'
+    # SUBJECT_CONFIG[:title]
   end
 end

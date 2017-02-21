@@ -1,12 +1,12 @@
 class Batch < ActiveRecord::Base
   has_many :samples
 
-  accepts_nested_attributes_for :samples#, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:data].blank? }
+  accepts_nested_attributes_for :samples
 
-  validates :name, :presence => true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
   # ========= Validations specifically for the pH step =========
-  validate :phs, :if => :phing_sample?
+  validate :phs, if: :phing_sample?
   attr_accessor :phing
 
   def phing_sample?

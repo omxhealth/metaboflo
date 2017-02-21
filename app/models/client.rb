@@ -9,7 +9,7 @@ class Client < ActiveRecord::Base
   has_many :samples
   has_many :sample_manifests
 
-  validates :name, :presence => true
+  validates :name, presence: true
 
   def to_s
     self.email

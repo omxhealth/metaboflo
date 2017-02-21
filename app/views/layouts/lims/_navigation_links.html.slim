@@ -1,6 +1,6 @@
 li.nav-item.dropdown
   a.nav-link.dropdown-toggle href="#" data-toggle="dropdown"
-    ' #{TestSubject.title.pluralize}
+    ' Subjects
   div.dropdown-menu
     = link_to "All #{TestSubject.title.pluralize}", test_subjects_path, class: 'dropdown-item'
     = link_to 'Diets', diets_path, class: 'dropdown-item'
