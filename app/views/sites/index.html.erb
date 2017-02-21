@@ -15,13 +15,13 @@
 	<% else %>
 		<td>0</td>
 	<% end %>
-    <td><%= show_link site %></td>
-    <td><%= edit_link edit_site_path(site) %></td>
-    <td><%= destroy_link site %></td>
+    <td><%= link_to_show site %></td>
+    <td><%= link_to_edit edit_site_path(site) %></td>
+    <td><%= link_to_destroy site %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= new_link 'site', new_site_path %>
+<%= link_to_new 'site', new_site_path %>

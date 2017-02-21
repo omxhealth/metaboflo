@@ -3,18 +3,18 @@
 <% for test_subject_evaluation in @test_subject_evaluations %>
   <table class="summary">
 
-    <tr><td><%= h test_subject_evaluation.evaluated_on %></td><td><%= show_link test_subject_test_subject_evaluation_path(@test_subject, test_subject_evaluation) %> | <%= edit_link edit_test_subject_test_subject_evaluation_path(@test_subject, test_subject_evaluation) %> | <%= destroy_link test_subject_test_subject_evaluation_path(@test_subject, test_subject_evaluation) %></td></tr>
+    <tr><td><%= h test_subject_evaluation.evaluated_on %></td><td><%= link_to_show test_subject_test_subject_evaluation_path(@test_subject, test_subject_evaluation) %> | <%= link_to_edit edit_test_subject_test_subject_evaluation_path(@test_subject, test_subject_evaluation) %> | <%= link_to_destroy test_subject_test_subject_evaluation_path(@test_subject, test_subject_evaluation) %></td></tr>
 
   	<tr><td>Diagnosis:</td><td><%= test_subject_evaluation.diagnosis %></td></tr>
-  	
+
   	<tr><td>BMI:</td><td><%= BMI(test_subject_evaluation.height, test_subject_evaluation.weight) %></td></tr>
-  	
+
   	<tr><td>Symptoms:</td><td><%= test_subject_evaluation.symptoms.join(', ') %></td></tr>
-  	
+
   </table>
   <br>
 <% end %>
 
 <br />
 
-<%= new_link "#{TestSubject.title.downcase} evaluation", new_test_subject_test_subject_evaluation_path(@test_subject) %>
+<%= link_to_new "#{TestSubject.title.downcase} evaluation", new_test_subject_test_subject_evaluation_path(@test_subject) %>

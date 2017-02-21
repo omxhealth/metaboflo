@@ -24,17 +24,16 @@ html
         = content_for :sidebar do
           h2 #{TestSubject.title} Summary
           #subject-tree data-source="#{tree_test_subject_path(@test_subject)}"
-
       .row
         - if content_for?(:sidebar)
           #sidebar-content
             #sidebar == yield :sidebar
           #main-content.with-sidebar
-            == render '/layouts/lims/messages'
+            == render '/layouts/flash'
             == yield
         - else
           #main-content.without-sidebar
-            == render '/layouts/lims/messages'
+            == render '/layouts/flash'
             == yield
 
     footer

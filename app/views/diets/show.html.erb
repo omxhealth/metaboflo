@@ -10,7 +10,7 @@
 			<th>Name</th>
 			<th>Amount (%)</th>
 		</tr>
-		
+
 		<% @diet.diet_ingredients.each do |diet_ingredient| -%>
 		<tr>
 			<td><%= diet_ingredient.ingredient.name %></td>
@@ -29,7 +29,7 @@
 			<th>Name</th>
 			<th>Amount</th>
 		</tr>
-		
+
 		<% @diet.compositions.each do |composition| -%>
 		<tr>
 			<td><%= composition.nutrient.name %></td>
@@ -41,4 +41,4 @@
 
 <br />
 
-<%= edit_link edit_diet_path(@diet) %>
+<%= link_to_edit edit_diet_path(@diet) %>

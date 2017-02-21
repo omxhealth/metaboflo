@@ -11,5 +11,4 @@
 //= require jstree
 //= require tether
 //= require bootstrap
-//= require yui-min
 //= require_tree .

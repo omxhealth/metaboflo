@@ -25,9 +25,9 @@ h1= title 'Patients'
           td #{patient.samples.length} <small>(#{link_to 'display', test_subject_samples_path(patient)})</small>
           td= patient.practitioner
           td= truncate(patient.notes)
-          td= show_link patient
-          td= edit_link edit_test_subject_path(patient)
-          td= destroy_link patient
+          td= link_to_show patient
+          td= link_to_edit edit_test_subject_path(patient)
+          td= link_to_destroy patient
 
-= new_link 'patient', new_test_subject_path
+= link_to_new 'patient', new_test_subject_path
 

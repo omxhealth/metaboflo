@@ -1,10 +1,10 @@
 <% title 'Home' %>
 <h1>Welcome to Metaboflo</h1>
 <p>
-	Welcome to the Metaboflo Laboratory Information Management System (LIMS). 
+	Welcome to the Metaboflo Laboratory Information Management System (LIMS).
 	Metaboflo is a central repository for study management and metabolomics scientific information.<br />
 </p>
-		
+
 <table class="list stats">
   <tr class="header">
     <th colspan="2">General Statistics</th>
@@ -37,9 +37,9 @@
   	<tr class="<%= cycle('odd', 'even') %>">
   		<td><%= experiment.name %></td>
   		<td><%= experiment.perform_on %></td>
-  		<td><%= show_link [experiment.sample, experiment] %></td>
-  		<td><%= edit_link edit_sample_experiment_path(experiment.sample, experiment) %></td>
-  		<td><%= destroy_link [experiment.sample, experiment] %></td>
+  		<td><%= link_to_show [experiment.sample, experiment] %></td>
+  		<td><%= link_to_edit edit_sample_experiment_path(experiment.sample, experiment) %></td>
+  		<td><%= link_to_destroy [experiment.sample, experiment] %></td>
   	</tr>
   	<% end %>
   </table>

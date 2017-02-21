@@ -29,9 +29,9 @@
 		  <td>-</td>
 		<% end %>
 		<td><%= user.email %></td>
-		<td><%= show_link user %></td>
-		<td><%= edit_link edit_user_path(user) %></td>
-		<td><%= destroy_link user %></td>
+		<td><%= link_to_show user %></td>
+		<td><%= link_to_edit edit_user_path(user) %></td>
+		<td><%= link_to_destroy user %></td>
 	</tr>
 
 	<% end %>
@@ -39,4 +39,4 @@
 
 <br />
 
-<%= new_link 'user', new_user_path %>
+<%= link_to_new 'user', new_user_path %>

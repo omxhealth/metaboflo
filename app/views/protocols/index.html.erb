@@ -11,13 +11,13 @@
 <tr class="<%= cycle('odd', 'even') %>">
     <td><%= protocol.name %></td>
     <td><%= protocol.version %></td>
-    <td><%= show_link protocol %></td>
-    <td><%= edit_link edit_protocol_path(protocol) %></td>
-    <td><%= destroy_link protocol %></td>
+    <td><%= link_to_show protocol %></td>
+    <td><%= link_to_edit edit_protocol_path(protocol) %></td>
+    <td><%= link_to_destroy protocol %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= new_link 'protocol', new_protocol_path %>
+<%= link_to_new 'protocol', new_protocol_path %>

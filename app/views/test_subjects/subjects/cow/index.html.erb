@@ -13,12 +13,12 @@
 		<td><%= test_subject.code %></td>
 		<td><%= test_subject.birthdate %></td>
 		<td><%= test_subject.samples.length %> (<%= link_to 'display', test_subject_samples_path(test_subject) %>)</td>
-		<td><%= show_link test_subject %></td>
-		<td><%= edit_link edit_test_subject_path(test_subject) %></td>
-		<td><%= destroy_link test_subject %></td>
+		<td><%= link_to_show test_subject %></td>
+		<td><%= link_to_edit edit_test_subject_path(test_subject) %></td>
+		<td><%= link_to_destroy test_subject %></td>
 	</tr>
 	<% end %>
 </table>
 <br />
 
-<%= new_link TestSubject.title.downcase, new_test_subject_path %>
+<%= link_to_new TestSubject.title.downcase, new_test_subject_path %>

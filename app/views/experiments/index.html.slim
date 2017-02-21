@@ -1,0 +1,46 @@
+h1= @sample.blank? ? 'Experiments' : "Experiments for sample # @sample "
+
+table.list
+  thead
+    tr
+      th= TestSubject.title
+      th Sample
+      th Title
+      th Type
+      th Description
+      th To be analyzed by
+      th To be analyzed on
+      th Analyzed by
+      th Analyzed on
+      th Data Files
+      th colspan="3"
+  tbody
+    - @experiments.each do |experiment|
+      tr
+        td= link_to(experiment.sample.root, experiment.sample.root)
+        td= link_to(experiment.sample, experiment.sample)
+        td= experiment.name
+        td= experiment.experiment_type.name unless experiment.experiment_type.nil?
+        td= truncate(experiment.description, :length => 50)
+        td= link_to(experiment.assigned_to.name, experiment.assigned_to) if experiment.assigned_to.present?
+        td= experiment.perform_on
+        td
+          - if experiment.performed_by
+            = link_to(experiment.performed_by.name, experiment.performed_by)
+          - else
+            = nah nil
+        td = nah experiment.performed_on
+        td
+          - if experiment.data_files.length > 0
+            ul
+              - experiment.data_files.each do |data_file|
+                li= link_to data_file.data_file_name, data_file.data.url
+          - else
+            = nah
+        td= link_to_show [experiment.sample, experiment]
+        td= link_to_edit edit_sample_experiment_path(experiment.sample, experiment)
+        td= link_to_destroy [experiment.sample, experiment]
+
+- if @sample.present?
+  = link_to_new 'experiment for this sample', new_sample_experiment_path(@sample)
+

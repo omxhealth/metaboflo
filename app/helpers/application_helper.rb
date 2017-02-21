@@ -72,25 +72,24 @@ module ApplicationHelper
     end
   end
 
-
-  def destroy_link(params, title='delete')
+  def link_to_destroy(params, title='delete')
     link_to "#{icon(:remove)} #{title}".html_safe, params,
       data: { confirm: 'Are you sure you want to delete this entry?' },
       method: :delete, class: 'btn btn-outline-danger btn-sm',
       title: 'Delete Entry'
   end
 
-  def edit_link(params, title='edit')
+  def link_to_edit(params, title='edit')
     link_to "#{icon(:edit)} #{title}".html_safe, params,
       class: 'btn btn-sm btn-outline-primary', title: 'Edit Entry'
   end
 
-  def show_link(params, title='view')
+  def link_to_show(params, title='view')
     link_to "#{icon(:eye)} #{title}".html_safe, params,
       class: 'btn btn-sm btn-outline-primary', title: 'Show Entry'
   end
 
-  def new_link(title, params)
+  def link_to_new(title, params)
     title ||= 'new'
     link_to "#{icon(:'plus-square')} add #{title}".html_safe, params, class: 'btn btn-sm btn-outline-success'
   end

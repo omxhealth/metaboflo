@@ -22,12 +22,12 @@
 		  <% end %>
 		</td>
 		<td><%= lab_test.collected_at %></td>
-		<td><%= show_link test_subject_lab_test_path(@test_subject, lab_test) %></td>
-		<td><%= edit_link edit_test_subject_lab_test_path(@test_subject, lab_test) %></td>
-		<td><%= destroy_link test_subject_lab_test_path(@test_subject, lab_test) %></td>
+		<td><%= link_to_show test_subject_lab_test_path(@test_subject, lab_test) %></td>
+		<td><%= link_to_edit edit_test_subject_lab_test_path(@test_subject, lab_test) %></td>
+		<td><%= link_to_destroy test_subject_lab_test_path(@test_subject, lab_test) %></td>
 	</tr>
 	<% end %>
 </table>
 
 <br />
-<%= new_link 'lab test', new_test_subject_lab_test_path(@test_subject) %>
+<%= link_to_new 'lab test', new_test_subject_lab_test_path(@test_subject) %>

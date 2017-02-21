@@ -51,24 +51,24 @@ h1
               br
           td
             - if sample.aliquot?
-              = show_link sample_sample_path(sample.sample, sample)
+              = link_to_show sample_sample_path(sample.sample, sample)
             - else
-              = show_link test_subject_sample_path(sample.test_subject, sample)
+              = link_to_show test_subject_sample_path(sample.test_subject, sample)
           td
             - if sample.aliquot?
-              = edit_link edit_sample_sample_path(sample.sample, sample)
+              = link_to_edit edit_sample_sample_path(sample.sample, sample)
             - else
-              = edit_link edit_test_subject_sample_path(sample.test_subject, sample)
+              = link_to_edit edit_test_subject_sample_path(sample.test_subject, sample)
           td
             - if sample.aliquot?
-              = destroy_link sample_sample_path(sample.sample, sample)
+              = link_to_destroy sample_sample_path(sample.sample, sample)
             - else
-              = destroy_link test_subject_sample_path(sample.test_subject, sample)
+              = link_to_destroy test_subject_sample_path(sample.test_subject, sample)
 br
 - if defined? @parent
   - if @parent.kind_of?(Sample)
-    = new_link "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent)
+    = link_to_new "aliquot of sample #{@parent.id}", new_sample_sample_path(@parent)
   - elsif @parent.kind_of?(TestSubject)
-    = new_link "sample for #{TestSubject.title.downcase} #{@parent.code}",
+    = link_to_new "sample for #{TestSubject.title.downcase} #{@parent.code}",
         new_test_subject_sample_path(@parent)
 

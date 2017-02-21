@@ -52,14 +52,14 @@
 
 <br />
 
-<%= edit_link edit_test_subject_path(@test_subject) %>
+<%= link_to_edit edit_test_subject_path(@test_subject) %>
 
 <br />
 <br />
 
 <fieldset>
   <legend>Diet Information</legend>
-  
+
   <% if @meals.length > 0 %>
     <table class="list">
       <tr>
@@ -75,18 +75,18 @@
         <td><%= meal.amount %></td>
         <td><%= meal.consumed_during_period %></td>
         <td><%= meal.consumed_on_day %></td>
-        <td><%= show_link test_subject_meal_path(@test_subject, meal) %></td>
-        <td><%= edit_link edit_test_subject_meal_path(@test_subject, meal) %></td>
-        <td><%= destroy_link test_subject_meal_path(@test_subject, meal) %></td>
+        <td><%= link_to_show test_subject_meal_path(@test_subject, meal) %></td>
+        <td><%= link_to_edit edit_test_subject_meal_path(@test_subject, meal) %></td>
+        <td><%= link_to_destroy test_subject_meal_path(@test_subject, meal) %></td>
       </tr>
     <% end %>
     </table>
-    
+
     <br />
-    
-    <%= new_link "meal for #{TestSubject.title.downcase} #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
+
+    <%= link_to_new "meal for #{TestSubject.title.downcase} #{@test_subject.code}", new_test_subject_meal_path(@test_subject) %>
   <% else %>
     No current diet information.
   <% end %>
 </fieldset>
-  
+

@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    == content_for(:meta_tags)
+    title = content_for?(:title) ? yield(:title) : 'Metaboflo'
+    == stylesheet_link_tag 'client', media: 'all',
+        "data-turbolinks-track" => true
+    == javascript_include_tag 'application', media: 'all',
+        "data-turbolinks-track" => true
+    == yield :css
+    == yield :javascript
+
+    == csrf_meta_tags
+
+  body[class="#{params[:controller].parameterize.dasherize}-c
+              #{params[:action].parameterize}-a"]
+    header == render 'layouts/client/navigation'
+    main role="main"
+      .row
+        #main-content
+          == render '/layouts/flash'
+          == yield
+    footer

@@ -26,7 +26,7 @@
 		<%= link_to 'Today', @gantt.params.merge(:month => nil, :year => nil), :method => :get, :class => 'icon icon-home' %>
 		<% end %>
 	</fieldset>
-		
+
 	<% zoom = 1
 	@gantt.zoom.times { zoom = zoom * 2 }
 
@@ -75,25 +75,25 @@
 			<td style="padding: 0px">
 				<div style="position:relative;height:<%= t_height + 24 %>px;overflow:auto;">
 					<div style="width:<%= g_width-1 %>px;height:<%= headers_height %>px;background: #eee;" class="gantt_hdr">&nbsp;</div>
-					<% 
+					<%
 					#
 					# Months headers
 					#
 					month_f = @gantt.date_from
 					left = 0
 					height = (show_weeks ? header_height : header_height + g_height)
-					@gantt.months.times do 
+					@gantt.months.times do
 						width = ((month_f >> 1) - month_f) * zoom - 1
 						%>
 						<div style="left:<%= left %>px;width:<%= width %>px;height:<%= height %>px;" class="gantt_hdr">
 							<%= link_to "#{month_f.year}-#{month_f.month}", @gantt.params.merge(:year => month_f.year, :month => month_f.month), :title => "#{month_f.month} #{month_f.year}"%>
 						</div>
-						<% 
+						<%
 						left = left + width + 1
 						month_f = month_f >> 1
 					end %>
 
-					<% 
+					<%
 					#
 					# Weeks headers
 					#
@@ -109,7 +109,7 @@
 							width = (7 - @gantt.date_from.cwday + 1) * zoom-1
 							%>
 							<div style="left:<%= left %>px;top:19px;width:<%= width %>px;height:<%= height %>px;" class="gantt_hdr">&nbsp;</div>
-							<% 
+							<%
 							left = left + width+1
 						end %>
 						<%
@@ -119,13 +119,13 @@
 							<div style="left:<%= left %>px;top:19px;width:<%= width %>px;height:<%= height %>px;" class="gantt_hdr">
 								<small><%= week_f.cweek if width >= 16 %></small>
 							</div>
-							<% 
+							<%
 							left = left + width+1
 							week_f = week_f+7
 						end
 					end %>
 
-					<% 
+					<%
 					#
 					# Days headers
 					#
@@ -133,13 +133,13 @@
 						left = 0
 						height = g_height + header_height - 1
 						wday = @gantt.date_from.cwday
-						(@gantt.date_to - @gantt.date_from + 1).to_i.times do 
+						(@gantt.date_to - @gantt.date_from + 1).to_i.times do
 							width =  zoom - 1
 							%>
 							<div style="left:<%= left %>px;top:37px;width:<%= width %>px;height:<%= height %>px;font-size:0.7em;<%= "background:#f1f1f1;" if wday > 5 %>" class="gantt_hdr">
 								<%= Date::DAYNAMES[wday % 7].first %>
 							</div>
-							<% 
+							<%
 							left = left + width+1
 							wday = wday + 1
 							wday = 1 if wday > 7
@@ -151,7 +151,7 @@
 					# Tasks
 					#
 					top = headers_height + 10
-					@gantt.events.each do |i| 
+					@gantt.events.each do |i|
 						i_start_date = (i.start_date >= @gantt.date_from ? i.start_date : @gantt.date_from )
 						i_end_date = (i.due_before <= @gantt.date_to ? i.due_before : @gantt.date_to )
 
@@ -161,7 +161,7 @@
 
 						i_late_date = [i_end_date, Date.today].min if i_start_date < Date.today
 
-						i_left = ((i_start_date - @gantt.date_from)*zoom).floor 	
+						i_left = ((i_start_date - @gantt.date_from)*zoom).floor
 						i_width = ((i_end_date - i_start_date + 1)*zoom).floor - 2                  # total width of the issue (- 2 for left and right borders)
 						d_width = ((i_done_date - i_start_date)*zoom).floor - 2                     # done width
 						l_width = i_late_date ? ((i_late_date - i_start_date+1)*zoom).floor - 2 : 0 # delay width
@@ -207,6 +207,6 @@
 	</table>
 </div>
 
-<%= new_link 'task', new_task_path %> | 
-<%= link_to 'Tasks', tasks_path %> | 
+<%= link_to_new 'task', new_task_path %> |
+<%= link_to 'Tasks', tasks_path %> |
 <%= link_to 'Calendar', calendar_tasks_path, :class => 'icon icon-calendar' %>

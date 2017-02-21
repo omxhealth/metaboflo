@@ -9,13 +9,13 @@
 <% @nutrients.each do |nutrient| %>
   <tr>
     <td><%= nutrient.name %></td>
-    <td><%= show_link nutrient %></td>
-    <td><%= edit_link edit_nutrient_path(nutrient) %></td>
-    <td><%= destroy_link nutrient %></td>
+    <td><%= link_to_show nutrient %></td>
+    <td><%= link_to_edit edit_nutrient_path(nutrient) %></td>
+    <td><%= link_to_destroy nutrient %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= new_link 'nutrient', new_nutrient_path %>
+<%= link_to_new 'nutrient', new_nutrient_path %>

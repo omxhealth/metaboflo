@@ -12,7 +12,7 @@
 <hr>
 
 <% for test in tests(@lab_test, true) %>
-  
+
   <% name = test.gsub('_', ' ').capitalize() %>
   <% if not @lab_test.send("#{test}_value").nil? %>
     <p>
@@ -24,4 +24,4 @@
 <% end %>
 
 
-<%= edit_link edit_test_subject_lab_test_path(@test_subject, @lab_test) %>
+<%= link_to_edit edit_test_subject_lab_test_path(@test_subject, @lab_test) %>

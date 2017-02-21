@@ -13,8 +13,8 @@ h1 Showing #{@sample.aliquot? ? 'aliquot' : 'sample'} #{@sample.barcode} from #{
         dd = link_to(@sample.root.to_s, test_subject_path(@sample.root))
     .card-footer
       .btn-group
-        = new_link 'aliquot', new_sample_sample_path(@sample)
-        = new_link 'experiment', new_sample_experiment_path(@sample)
+        = link_to_new 'aliquot', new_sample_sample_path(@sample)
+        = link_to_new 'experiment', new_sample_experiment_path(@sample)
 
   .card
     .card-header Client-related Information
@@ -81,5 +81,5 @@ h1 Showing #{@sample.aliquot? ? 'aliquot' : 'sample'} #{@sample.barcode} from #{
 
 br
 
-= edit_link @sample.aliquot? ? edit_sample_sample_path(@sample.sample, @sample) : edit_test_subject_sample_path(@test_subject, @sample)
+= link_to_edit @sample.aliquot? ? edit_sample_sample_path(@sample.sample, @sample) : edit_test_subject_sample_path(@test_subject, @sample)
 

@@ -5,7 +5,7 @@
   Groups allow you to make arbitrary collections of <%= TestSubject.title.pluralize.downcase %>, samples and experiments.
   You can organize your data into groups that can later be exported, watched for changes, or used in cohort studies.
 </p>
-  
+
 <div id="grouping-links">
 	<% Grouping.valid_types.each do |grouping_type| %>
 	<%= link_to "#{humanized_type grouping_type} Groups", :type => grouping_type %>
@@ -26,9 +26,9 @@
     <td><%= grouping.name %></td>
     <td><%= grouping.description %></td>
     <td><%= grouping.assignables.count %></td>
-    <td><%= show_link({:action => 'show', :id => grouping, :type => @type}) %></td>
-    <td><%= edit_link({:action => 'edit', :id => grouping, :type => @type}) %></td>
-    <td><%= destroy_link({:action => 'destroy', :id => grouping, :type => @type}) %></td>
+    <td><%= link_to_show({:action => 'show', :id => grouping, :type => @type}) %></td>
+    <td><%= link_to_edit({:action => 'edit', :id => grouping, :type => @type}) %></td>
+    <td><%= link_to_destroy({:action => 'destroy', :id => grouping, :type => @type}) %></td>
   </tr>
   <% end %>
 </table>
@@ -36,4 +36,4 @@
 
 <br />
 
-<%= new_link("#{humanized_type(@type).downcase} group", {:action => 'new', :type => @type}) %>
+<%= link_to_new("#{humanized_type(@type).downcase} group", {:action => 'new', :type => @type}) %>

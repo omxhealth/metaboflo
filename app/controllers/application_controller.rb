@@ -8,10 +8,12 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def layout_by_resource
-    if devise_controller? && resource_name == :client
-      'public'
-    else
+    if user_signed_in?
       'lims'
+    elsif client_signed_in?
+      'client'
+    else
+      'public'
     end
   end
 

@@ -17,13 +17,13 @@
 		<td><%= medication.stopped_on %></td>
 		<td><%= boolean_to_english(medication.currently_taking) %></td>
 		<td><%= medication.drugbank_reference %></td>
-		<td><%= show_link test_subject_medication_path(@test_subject, medication) %></td>
-		<td><%= edit_link edit_test_subject_medication_path(@test_subject, medication) %></td>
-		<td><%= destroy_link test_subject_medication_path(@test_subject, medication) %></td>
+		<td><%= link_to_show test_subject_medication_path(@test_subject, medication) %></td>
+		<td><%= link_to_edit edit_test_subject_medication_path(@test_subject, medication) %></td>
+		<td><%= link_to_destroy test_subject_medication_path(@test_subject, medication) %></td>
 	</tr>
 	<% end %>
 </table>
 
 <br />
 
-<%= new_link 'medication', new_test_subject_medication_path(@test_subject) %>
+<%= link_to_new 'medication', new_test_subject_medication_path(@test_subject) %>

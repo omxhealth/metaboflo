@@ -7,22 +7,22 @@
     <p>
     <strong>Sample type</strong><br />
     <span class="sample-type <%= @experiment.sample.sample_type.downcase %>"><%= @experiment.sample.sample_type %></span>
-  </p>    
+  </p>
 
   <% if @experiment.sample.barcode.present? %>
   <p>
     <strong>Sample barcode</strong><br />
     <%= @experiment.sample.barcode %>
-  </p>    
+  </p>
   <% end -%>
 
   <% if @experiment.sample.original_amount.present? %>
   <p>
     <strong>Original Amount</strong><br />
     <%= @experiment.sample.original_amount %> <%= @experiment.sample.original_unit %>
-  </p>    
+  </p>
   <% end -%>
-  
+
   <% if @experiment.sample.location_information? %>
     <% if @experiment.sample.site.present? %>
     <p>
@@ -104,7 +104,7 @@
 <% end -%>
 
 <p class="actions">
-<%= edit_link edit_sample_experiment_path(@sample, @experiment) %>
+<%= link_to_edit edit_sample_experiment_path(@sample, @experiment) %>
 </p>
 
 
@@ -127,15 +127,15 @@ There are no data file associated with this experiment. <br />
   		<td><%= link_to data_file.data_file_name, data_file.data.url %></td>
   		<td><%= number_to_human_size(data_file.data_file_size) %></td>
   		<td><%= link_to data_file.data_file_type.name, data_file_type_path(data_file.data_file_type) %></td>
-  		<td><%= show_link experiment_data_file_path(@experiment, data_file) %></td>
-  		<td><%= destroy_link experiment_data_file_path(@experiment, data_file) %></td>
+  		<td><%= link_to_show experiment_data_file_path(@experiment, data_file) %></td>
+  		<td><%= link_to_destroy experiment_data_file_path(@experiment, data_file) %></td>
   	</tr>
   	<% end %>
   </table>
 <% end %>
 
 <p class="action">
-<%= new_link 'Upload new data file', new_experiment_data_file_path(@experiment) %> 
+<%= link_to_new 'Upload new data file', new_experiment_data_file_path(@experiment) %>
 </p>
 </div>
 

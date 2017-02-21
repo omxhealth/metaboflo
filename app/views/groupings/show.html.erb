@@ -17,7 +17,7 @@
 		<thead>
 			<tr>
 				<th><%= humanized_type(@type) %></th>
-				<th>Remove</th>		
+				<th>Remove</th>
 			</tr>
 		</thead>
 		<tbody id="assignable-associations">
@@ -31,4 +31,4 @@
 	<br />
 </div>
 
-<%= edit_link({:action => 'edit', :type => @type}) %>
+<%= link_to_edit({:action => 'edit', :type => @type}) %>

@@ -5,29 +5,20 @@ Rails.application.routes.draw do
   get 'contact' => 'public/pages#contact'
   get 'services' => 'public/pages#services'
 
-  ## User routes
-  devise_for :users do
-    get 'landing' => 'bovine#index', as: :user_root
-  end
-
-  resources :users do
-    resources :user_pictures
-    resources :tasks
-  end
-
   ## Client routes
-  devise_for :clients do
-    get 'clients/home' => 'clients/home#index', as: :client_root
-  end
+  devise_for :clients
 
   namespace :clients do
-    resources :samples, only: [ :index, :show ]
+    resources :samples, only: [:index, :show]
     resources :sample_manifests do
-      get 'print', on: :member
+      get :print, on: :member
     end
-    resources :home, only: [ :index ]
+    resources :home, only: [:index]
+    root 'home#index'
   end
-  resources :clients
+
+  ## User routes
+  devise_for :users
 
   namespace :workflows do
     resources :experiments
@@ -44,34 +35,31 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :clients
+
+  resources :users do
+    resources :user_pictures
+    resources :tasks
+  end
+
   namespace :batches do
     resources :batches, only: [:new, :create] do
-      collection do
-        get :unprepped
-      end
+      get :unprepped, on: :collection
     end
 
     resources :preparations, only: [:new, :create] do
-      collection do
-        get :non_ph
-      end
+      get :non_ph, on: :collection
     end
 
     resources :phs, only: [:edit, :update] do
-      collection do
-        get :no_experiment
-      end
+      get :no_experiment, on: :collection
     end
   end
 
   resources :nutrients
   resources :metabolites do
-    collection do
-      post :search
-    end
+    post :search, on: :collection
   end
-
-  ## Resources
 
   # Diets/etc.
   resources :nutrients
@@ -97,15 +85,11 @@ Rails.application.routes.draw do
 
   # Studies
   resources :studies do
-    member do
-      get :analysis
-    end
+    get :analysis, on: :member
   end
 
   resources :metabolites do
-    collection do
-      post :search
-    end
+    post :search, on: :collection
   end
 
   resources :experiments do
@@ -130,26 +114,18 @@ Rails.application.routes.draw do
   # Sample/test subject tracking
   resources :samples do
     resources :samples do
-      member do
-        post :finish
-      end
+      post :finish, on: :member
     end
     resources :experiments
     resources :grouping_assignments
-    member do
-      post :finish
-    end
+    post :finish, on: :member
   end
 
   resources :test_subjects do
-    member do
-      get :tree
-    end
+    get :tree, on: :member
     resources :meals
     resources :samples do
-      member do
-        post :finish
-      end
+      post :finish, on: :member
     end
     resources :grouping_assignments
     resources :lab_tests
@@ -177,9 +153,5 @@ Rails.application.routes.draw do
       controller: 'groupings', defaults: { type: grouping_type }
   end
 
-  ## Named routes
-  get 'admin' => 'administrators#index', as: :admin
-
-  ## Route URL
-  root 'public/pages#home'
+  root 'samples#index'
 end

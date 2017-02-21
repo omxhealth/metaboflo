@@ -14,7 +14,7 @@
         <td><%= check_box_tag 'samples[]', s.id %></td>
         <td><%= s.barcode %></td>
         <td><%= s.collected_on %></td>
-        <%# show_link s.sample ? sample_sample_path(s.sample, s) : test_subject_sample_path(s.test_subject, s) %>
+        <%# link_to_show s.sample ? sample_sample_path(s.sample, s) : test_subject_sample_path(s.test_subject, s) %>
       </tr>
     <% end %>
 

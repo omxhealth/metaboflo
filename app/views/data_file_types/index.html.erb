@@ -11,13 +11,13 @@
   <tr class="<%= cycle('odd', 'even') %>">
     <td><%= data_file_type.name %></td>
     <td><%= data_file_type.description %></td>
-    <td><%= show_link data_file_type %></td>
-    <td><%= edit_link edit_data_file_type_path(data_file_type) %></td>
-    <td><%= destroy_link(data_file_type) %></td>
+    <td><%= link_to_show data_file_type %></td>
+    <td><%= link_to_edit edit_data_file_type_path(data_file_type) %></td>
+    <td><%= link_to_destroy(data_file_type) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= new_link 'data file type', new_data_file_type_path %>
+<%= link_to_new 'data file type', new_data_file_type_path %>

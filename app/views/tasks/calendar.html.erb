@@ -9,15 +9,15 @@
 	</fieldset>
 
 	<p style="float:right; margin:0px;">
-	<%= link_to ('&#171; ' + (@month==1 ? "#{Date::MONTHNAMES[12]} #{@year-1}" : "#{Date::MONTHNAMES[@month-1]}")).html_safe, 
+	<%= link_to ('&#171; ' + (@month==1 ? "#{Date::MONTHNAMES[12]} #{@year-1}" : "#{Date::MONTHNAMES[@month-1]}")).html_safe,
 		{ :year => (@month==1 ? @year-1 : @year), :month =>(@month==1 ? 12 : @month-1) }, :method => :get %> |
-	<%= link_to ((@month==12 ? "#{Date::MONTHNAMES[1]} #{@year+1}" : "#{Date::MONTHNAMES[@month+1]}") + ' &#187;').html_safe, 
+	<%= link_to ((@month==12 ? "#{Date::MONTHNAMES[1]} #{@year+1}" : "#{Date::MONTHNAMES[@month+1]}") + ' &#187;').html_safe,
 		{ :year => (@month==12 ? @year+1 : @year), :month =>(@month==12 ? 1 : @month+1) }, :method => :get %>
 	</p>
 	<p style="margin:0px;">
 		<%= link_to 'Today', { :month => nil, :year => nil }, :method => :get, :class => 'icon icon-home' %>
 	</p>
-	
+
 	<table class="cal" style="clear: both">
 		<thead>
 			<tr><td></td><% 7.times do |i| %><th><%= Date::DAYNAMES[(@calendar.first_wday+i)%7] %></th><% end %></tr>
@@ -28,16 +28,16 @@
 				<% while day <= @calendar.enddt %>
 				<%= "<th>#{day.cweek}</th>".html_safe if day.cwday == @calendar.first_wday %>
 				<td class="<%= day.month==@calendar.month ? 'even' : 'odd' %><%= ' today' if Date.today == day %>">
-					<p class="day-num"><%= day.day %></p>	
+					<p class="day-num"><%= day.day %></p>
 					<% @calendar.events_on(day).each do |i| %>
 					<% if i.is_a? Task %>
 					<div class="tooltip">
 						<%= if day == i.start_date && day == i.due_date
 							image_tag('icons/arrow_bw.png')
 						elsif day == i.start_date
-							image_tag('icons/arrow_from.png') 
+							image_tag('icons/arrow_from.png')
 						elsif day == i.due_date
-							image_tag('icons/arrow_to.png') 
+							image_tag('icons/arrow_to.png')
 						end %>
 						<%= link_to i.subject, task_path(i) %>
 						<span class="tip"><%= render_task_tooltip i %></span>
@@ -58,6 +58,6 @@
 
 </div>
 
-<%= new_link 'task', new_task_path %> | 
-<%= link_to 'Tasks', tasks_path %> | 
+<%= link_to_new 'task', new_task_path %> |
+<%= link_to 'Tasks', tasks_path %> |
 <%= link_to 'Gantt', gantt_tasks_path, :class => 'icon icon-report' %>

@@ -1,0 +1,7 @@
+li.nav-item = link_to 'Submit New Sample', new_clients_sample_manifest_path, class: 'nav-link'
+li.nav-item = link_to 'My Manifests', clients_sample_manifests_path, class: 'nav-link'
+li.nav-item = link_to 'Order Tracking', clients_samples_path, class: 'nav-link'
+li.nav-item.dropdown
+  a.nav-link.dropdown-toggle href="#" data-toggle="dropdown" Account
+  div.dropdown-menu
+    = link_to 'Logout', destroy_client_session_path, method: 'delete', class: 'dropdown-item'
